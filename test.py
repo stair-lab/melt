@@ -20,19 +20,19 @@ class Pipeline:
         self.tokenizer = tokenizer
         self.generation_config = GenerationConfig()
 
-    def __call__(self, ds_wrapper, ds_loader):
+    def __call__(self, ds_wrapper, ds_loader, saving_fn=None):
         if self.task == "question-answering":
-            return self.__question_answering(ds_wrapper, ds_loader)
+            return self.__question_answering(ds_wrapper, ds_loader, saving_fn)
         elif self.task == "summarization":
-            return self.__summarization(ds_wrapper, ds_loader)
+            return self.__summarization(ds_wrapper, ds_loader, saving_fn)
         elif self.task == "translation":
-            return self.__translation(ds_wrapper, ds_loader)
+            return self.__translation(ds_wrapper, ds_loader, saving_fn)
         elif self.task == "text-generation":
-            return self.__text_generation(ds_wrapper, ds_loader)
+            return self.__text_generation(ds_wrapper, ds_loader, saving_fn)
         else:
             raise NotImplementedError
 
-    def __question_answering(self, ds_wrapper, ds_loader):
+    def __question_answering(self, ds_wrapper, ds_loader, saving_fn=None):
         pipeline = transformers.pipeline(
             model=self.model, 
             tokenizer=tokenizer,
@@ -43,6 +43,7 @@ class Pipeline:
         
         predictions = []
         references = []
+        i = 0
         for batch in tqdm(ds_loader):
             prompts = [ds_wrapper.prompt.format(
                 c, q
@@ -51,33 +52,31 @@ class Pipeline:
             results = pipeline(prompts)
             predictions.extend([x[0]['generated_text'] for x in results])
             references.extend([x[0] for x in batch[ds_wrapper.answer]['text']])
+            
+            i += 1
+            if i % 100 == 0:
+                print(f'Saving results of {i} batches')
+                generations = {
+                    'predictions': predictions,
+                    'references': references
+                }
+                saving_fn(generations)
         
         generations = {
             'predictions': predictions,
             'references': references
         }
         
-        num_correct = 0
-        for pred, ref in zip(predictions, references):
-            if ref.lower() in pred.lower():
-                num_correct += 1
-                
-        results = {
-            'num_correct': num_correct,
-            'num_total': len(predictions),
-            'accuracy': num_correct / len(predictions)
-        }
-        
-        # metric = load("exact_match")
-        # results = metric.compute(predictions=predictions, 
-        #                             references=references,
-        #                             ignore_case =True,
-        #                             ignore_punctuation=True
-        # )
+        metric = load("exact_match")
+        results = metric.compute(predictions=predictions, 
+                                    references=references,
+                                    ignore_case =True,
+                                    ignore_punctuation=True
+        )
         
         return generations, results
     
-    def __summarization(self, ds_wrapper, ds_loader):
+    def __summarization(self, ds_wrapper, ds_loader, saving_fn=None):
         pipeline = transformers.pipeline(
             model=self.model, 
             tokenizer=tokenizer,
@@ -88,6 +87,7 @@ class Pipeline:
         
         predictions = []
         references = []
+        i = 0
         for batch in tqdm(ds_loader):
             prompts = [ds_wrapper.prompt.format(
                 text
@@ -96,6 +96,15 @@ class Pipeline:
             results = pipeline(prompts)
             predictions.extend([x[0]['generated_text'].split('\n\n')[0] for x in results])
             references.extend([x for x in batch[ds_wrapper.summarized_text]])
+            
+            i += 1
+            if i % 100 == 0:
+                print(f'Saving results of {i} batches')
+                generations = {
+                    'predictions': predictions,
+                    'references': references
+                }
+                saving_fn(generations)
         
         generations = {
             'predictions': predictions,
@@ -108,14 +117,14 @@ class Pipeline:
         )
         return generations, results
     
-    def __translation(self, ds_wrapper, ds_loader):
+    def __translation(self, ds_wrapper, ds_loader, saving_fn=None):
         pass
     
-    def __text_generation(self, ds_wrapper, ds_loader):
+    def __text_generation(self, ds_wrapper, ds_loader, saving_fn=None):
         pass
     
-    def run(self, ds_wrapper, ds_loader):
-        results = self(ds_wrapper, ds_loader)
+    def run(self, ds_wrapper, ds_loader, saving_fn=None):
+        results = self(ds_wrapper, ds_loader, saving_fn)
         return results
 
 def save_to_json(data, name):
@@ -148,13 +157,16 @@ if __name__ == "__main__":
         model=model, 
         tokenizer=tokenizer)
     
-    # Evaluate
-    generations, results = eval_pipeline.run(ds_wrapper=dataset_wrapper, ds_loader=dataset_loader)
-    
     # Save results
     if not os.path.exists(script_args.output_dir):
         os.makedirs(script_args.output_dir)
         
-    ds_exact_name = script_args.dataset_name.split('/')[-1]
-    save_to_json(results, os.path.join(script_args.output_dir, f'results_{ds_exact_name}.json'))
-    save_to_csv(generations, os.path.join(script_args.output_dir, f'results_{ds_exact_name}.csv'))
+    # Evaluate
+    def save_results(generations, results=None):
+        ds_exact_name = script_args.dataset_name.split('/')[-1]
+        save_to_csv(generations, os.path.join(script_args.output_dir, f'results_{ds_exact_name}.csv'))
+        if results is not None:
+            save_to_json(results, os.path.join(script_args.output_dir, f'results_{ds_exact_name}.json'))
+        
+    generations, results = eval_pipeline.run(ds_wrapper=dataset_wrapper, ds_loader=dataset_loader, saving_fn=save_results)
+    save_results(generations, results)

@@ -29,7 +29,7 @@ def get_model(config):
     # Load base model
     model = AutoModelForCausalLM.from_pretrained(
         config.model_name,
-        # quantization_config=bnb_config,
+        quantization_config=bnb_config,
         device_map=device_map,
     )
     model.config.use_cache = True

@@ -144,7 +144,7 @@ class ScriptArguments:
 class GenerationConfig:
     text_generation = {
         "temperature": 0.0, 
-        "max_new_tokens": 256, 
+        "max_new_tokens": 500, 
         "repetition_penalty": 1.1
     }
     
@@ -156,7 +156,7 @@ class GenerationConfig:
     
     summarization = {
         "temperature": 0.0, 
-        "max_new_tokens": 256, 
+        "max_new_tokens": 500, 
         "repetition_penalty": 1.1
     }
     
