@@ -46,7 +46,7 @@ class Pipeline:
         i = 0
         for batch in tqdm(ds_loader):
             prompts = [ds_wrapper.prompt.format(
-                c, q
+                context=c, question=q
             ) for c, q in zip(batch[ds_wrapper.context], batch[ds_wrapper.question])]
             
             results = pipeline(prompts)
@@ -90,8 +90,8 @@ class Pipeline:
         i = 0
         for batch in tqdm(ds_loader):
             prompts = [ds_wrapper.prompt.format(
-                text
-            ) for text in batch[ds_wrapper.original_text]]
+                document=document
+            ) for document in batch[ds_wrapper.original_text]]
             
             results = pipeline(prompts)
             predictions.extend([x[0]['generated_text'].split('\n\n')[0] for x in results])
@@ -143,10 +143,13 @@ if __name__ == "__main__":
     script_args = parser.parse_args_into_dataclasses()[0]
 
     # Load dataset (you can process it here)
-    dataset_wrapper = DatasetWrapper(dataset_name=script_args.dataset_name)
+    dataset_wrapper = DatasetWrapper(dataset_name=script_args.dataset_name,
+                                     prompting_strategy=script_args.prompting_strategy
+    )
     dataset_loader = DataLoader(dataset_wrapper.get_dataset(), 
                                 batch_size=script_args.per_device_eval_batch_size, 
-                                shuffle=False)
+                                shuffle=False
+    )
     
     # Load model
     model, tokenizer = get_model(config=script_args)
@@ -163,7 +166,7 @@ if __name__ == "__main__":
         
     # Evaluate
     def save_results(generations, results=None):
-        ds_exact_name = script_args.dataset_name.split('/')[-1]
+        ds_exact_name = script_args.dataset_name.split('/')[-1] + '_' + script_args.model_name.split('/')[-1]
         save_to_csv(generations, os.path.join(script_args.output_dir, f'results_{ds_exact_name}.csv'))
         if results is not None:
             save_to_json(results, os.path.join(script_args.output_dir, f'results_{ds_exact_name}.json'))

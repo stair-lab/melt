@@ -23,6 +23,9 @@ class ScriptArguments:
     )
 
     # QLoRA parameters
+    use_lora: Optional[bool] = field(
+        default=True, metadata={"help": "Enable LoRA fine-tuning"}
+    )
     lora_r: Optional[int] = field(
         default=128, metadata={"help": "LoRA attention dimension"}
     )
@@ -138,6 +141,11 @@ class ScriptArguments:
         metadata={
             "help": "Pack multiple short examples in the same input sequence to increase efficiency"
         },
+    )
+    
+    # Inference parameters
+    prompting_strategy: Optional[int] = field(
+        default=0, metadata={"help": "Prompting strategy to use"}
     )
 
 @dataclass

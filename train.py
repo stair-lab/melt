@@ -68,13 +68,16 @@ tokenizer.pad_token = tokenizer.eos_token
 tokenizer.padding_side = "right"  # Fix weird overflow issue with fp16 training
 
 # Load LoRA configuration
-peft_config = LoraConfig(
-    lora_alpha=script_args.lora_alpha,
-    lora_dropout=script_args.lora_dropout,
-    r=script_args.lora_r,
-    bias="none",
-    task_type="CAUSAL_LM",
-)
+if script_args.use_lora:
+    peft_config = LoraConfig(
+        lora_alpha=script_args.lora_alpha,
+        lora_dropout=script_args.lora_dropout,
+        r=script_args.lora_r,
+        bias="none",
+        task_type="CAUSAL_LM",
+    )
+else:
+    peft_config = None
 
 # Set training parameters
 training_arguments = TrainingArguments(
