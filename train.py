@@ -2,21 +2,22 @@
 # pip install accelerate==0.21.0 peft==0.4.0 bitsandbytes==0.40.2 transformers==4.31.0 trl==0.4.7 scipy
 
 import os
-import torch
+
 import neptune
+import torch
 import transformers
+from config import ScriptArguments
 from datasets import load_dataset
+from peft import AutoPeftModelForCausalLM, LoraConfig
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
     BitsAndBytesConfig,
     HfArgumentParser,
-    TrainingArguments,
     HfArgumentParser,
+    TrainingArguments,
 )
-from peft import LoraConfig, AutoPeftModelForCausalLM
 from trl import SFTTrainer
-from config import ScriptArguments
 
 parser = HfArgumentParser(ScriptArguments)
 script_args = parser.parse_args_into_dataclasses()[0]
@@ -27,11 +28,10 @@ if script_args.dataset_name == "oscar-corpus/OSCAR-2301":
     subset_name = "vi"
 else:
     subset_name = None
-    
-dataset = load_dataset(script_args.dataset_name, 
-                       name=subset_name, 
-                       split="train",
-                       num_proc=8)
+
+dataset = load_dataset(
+    script_args.dataset_name, name=subset_name, split="train", num_proc=8
+)
 
 # Load tokenizer and model with QLoRA configuration
 compute_dtype = getattr(torch, script_args.bnb_4bit_compute_dtype)
@@ -105,8 +105,12 @@ training_arguments = TrainingArguments(
 )
 
 neptune_api_token = os.environ["NEPTUNE_API_TOKEN"]
-run = neptune.init_run(project=os.environ["NEPTUNE_PROJECT"], api_token=neptune_api_token)
-neptune_monitor = transformers.integrations.NeptuneCallback(run=run, log_parameters=False)
+run = neptune.init_run(
+    project=os.environ["NEPTUNE_PROJECT"], api_token=neptune_api_token
+)
+neptune_monitor = transformers.integrations.NeptuneCallback(
+    run=run, log_parameters=False
+)
 
 # Set supervised fine-tuning parameters
 trainer = SFTTrainer(
@@ -118,7 +122,7 @@ trainer = SFTTrainer(
     tokenizer=tokenizer,
     args=training_arguments,
     packing=script_args.packing,
-    callbacks=[neptune_monitor]
+    callbacks=[neptune_monitor],
 )
 
 # Train model

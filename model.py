@@ -1,13 +1,10 @@
 import torch
-from transformers import (
-    AutoModelForCausalLM,
-    AutoTokenizer,
-    BitsAndBytesConfig,
-)
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+
 
 def get_model(config):
     device_map = "auto"
-    
+
     # Load tokenizer and model with QLoRA configuration
     compute_dtype = getattr(torch, config.bnb_4bit_compute_dtype)
 
@@ -40,6 +37,7 @@ def get_model(config):
         config.tokenizer_name, trust_remote_code=True
     )
     tokenizer.pad_token = tokenizer.eos_token
-    tokenizer.padding_side = "right"  # Fix weird overflow issue with fp16 training
+    if 'gpt' in config.model_name:
+        tokenizer.padding_side = 'left'
 
     return model, tokenizer

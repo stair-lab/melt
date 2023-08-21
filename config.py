@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
+
 @dataclass
 class ScriptArguments:
     model_name: Optional[str] = field(
@@ -16,7 +17,8 @@ class ScriptArguments:
         metadata={"help": "The instruction dataset to use"},
     )
     new_model: Optional[str] = field(
-        default="martinakaduc/llama-2-7b-hf-vi", metadata={"help": "Fine-tuned model name"}
+        default="martinakaduc/llama-2-7b-hf-vi",
+        metadata={"help": "Fine-tuned model name"},
     )
     merge_and_push: Optional[bool] = field(
         default=False, metadata={"help": "Merge and push weights after training"}
@@ -128,8 +130,10 @@ class ScriptArguments:
         default=1, metadata={"help": "Log every X updates steps"}
     )
     resume_from_checkpoint: bool = field(
-        default=False, 
-        metadata={"help": "Allows to resume training from the latest checkpoint in output_dir"}
+        default=False,
+        metadata={
+            "help": "Allows to resume training from the latest checkpoint in output_dir"
+        },
     )
 
     # SFT parameters
@@ -142,34 +146,37 @@ class ScriptArguments:
             "help": "Pack multiple short examples in the same input sequence to increase efficiency"
         },
     )
-    
+
     # Inference parameters
     prompting_strategy: Optional[int] = field(
         default=0, metadata={"help": "Prompting strategy to use"}
     )
 
+
 @dataclass
 class GenerationConfig:
     text_generation = {
-        "temperature": 0.0, 
-        "max_new_tokens": 500, 
-        "repetition_penalty": 1.1
+        "temperature": 0.0,
+        "max_new_tokens": 500,
+        "repetition_penalty": 1.1,
     }
-    
+
     question_answering = {
-        "temperature": 0.0, 
-        "max_new_tokens": 500, 
-        "repetition_penalty": 1.1
+        "temperature": 0.0,
+        # "max_new_tokens": 50,
+        "max_new_tokens": 500,
+        "repetition_penalty": 1.1,
     }
-    
+
     summarization = {
-        "temperature": 0.0, 
-        "max_new_tokens": 500, 
-        "repetition_penalty": 1.1
+        "temperature": 0.0,
+        # "max_new_tokens": 250,
+        "max_new_tokens": 500,
+        "repetition_penalty": 1.1,
     }
-    
+
     translation = {
         "temperature": 0.0, 
         "max_new_tokens": 500, 
-        "repetition_penalty": 1.1
+        "repetition_penalty": 1.1,
     }
