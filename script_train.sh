@@ -15,10 +15,30 @@ python train.py --model_name meta-llama/Llama-2-7b-chat-hf \
                 
 python train.py --model_name martinakaduc/llama-2-7b-hf-vi-wiki \
                 --dataset_name vietgpt/binhvq_news_vi \
-                --resume_from_checkpoint False
+                --new_model martinakaduc/llama-2-7b-hf-vi-news \
+                --resume_from_checkpoint True \
+                --learning_rate 1.30e-08 \
+                --warmup_ratio 0.0
+
                 
 python train.py --model_name martinakaduc/llama-2-7b-hf-vi-news \
                 --dataset_name oscar-corpus/OSCAR-2301 \
+                --resume_from_checkpoint False
+
+## Scratch-LLaMa
+python train.py --model_name martinakaduc/llama-2-7b-vi-scratch \
+                --tokenizer_name meta-llama/Llama-2-7b-chat-hf \
+                --new_model martinakaduc/llama-2-7b-vi-scratch \
+                --dataset_name vietgpt/wikipedia_vi \
+                --output_dir ./ckpts/llama-2-7b-vi-scratch \
+                --max_seq_length 128 \
+                --fp16 True \
+                --bf16 False \
+                --tf32 False \
+                --use_lora False \
+                --use_nested_quant True \
+                --per_device_train_batch_size 1 \
+                --gradient_accumulation_steps 1 \
                 --resume_from_checkpoint False
 
 # GPT2 training #7

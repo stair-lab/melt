@@ -16,6 +16,7 @@ from transformers import (
     HfArgumentParser,
     HfArgumentParser,
     TrainingArguments,
+    LlamaConfig
 )
 from trl import SFTTrainer
 
@@ -52,11 +53,20 @@ if compute_dtype == torch.float16 and script_args.use_4bit:
         print("=" * 80)
 
 # Load base model
-model = AutoModelForCausalLM.from_pretrained(
-    script_args.model_name,
-    quantization_config=bnb_config,
-    device_map=device_map,
-)
+if script_args.scratch:
+    configuration = LlamaConfig(
+        quantization_config=bnb_config,
+        device_map=device_map,
+    )
+    model = AutoModelForCausalLM.from_config(
+        configuration
+    )
+else:
+    model = AutoModelForCausalLM.from_pretrained(
+        script_args.model_name,
+        quantization_config=bnb_config,
+        device_map=device_map,
+    )
 model.config.use_cache = False
 model.config.pretraining_tp = 1
 

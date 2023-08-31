@@ -1,17 +1,17 @@
 #!/bin/bash
 
-export CUDA_VISIBLE_DEVICES="0,6,7"
+export CUDA_VISIBLE_DEVICES="1"
 export TRANSFORMERS_CACHE="/lfs/local/0/sttruong/env/.huggingface"
 export HF_DATASETS_CACHE="/lfs/local/0/sttruong/env/.huggingface/datasets"
 # export TRANSFORMERS_CACHE="/dfs/user/sttruong/env/.huggingface"
 # export HF_DATASETS_CACHE="/dfs/user/sttruong/env/.huggingface/datasets"
 
-# Running # screen 7, 19
+# Done
 python test.py --model_name martinakaduc/llama-2-7b-hf-vi-wiki \
                --dataset_name Yuhthe/vietnews \
-               --use_4bit True \
+               --use_4bit False \
                --prompting_strategy 2
-# screen 6
+# Done
 python test.py --model_name martinakaduc/llama-2-7b-hf-vi-wiki \
                --dataset_name vietnews_robustness \
                --use_4bit False \
@@ -57,12 +57,12 @@ python test.py --model_name martinakaduc/llama-2-7b-hf-vi-wiki \
 # ORIGINAL LLAMA-2-7B
 #====================================================================================================
 
-# Running # screen 14, 15
+# Running # screen 15
 python test.py --model_name meta-llama/Llama-2-7b-chat-hf \
                --dataset_name Yuhthe/vietnews \
                --use_4bit True \
                --prompting_strategy 2
-# screen 1
+# Done
 python test.py --model_name meta-llama/Llama-2-7b-chat-hf \
                --dataset_name vietnews_robustness \
                --use_4bit True \
@@ -74,7 +74,7 @@ python test.py --model_name meta-llama/Llama-2-7b-chat-hf \
                --dataset_name GEM/wiki_lingua \
                --use_4bit True \
                --prompting_strategy 2
-# screen 10
+# Done
 python test.py --model_name meta-llama/Llama-2-7b-chat-hf \
                --dataset_name wiki_lingua_robustness \
                --use_4bit True \

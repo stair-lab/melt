@@ -20,6 +20,9 @@ class ScriptArguments:
         default="martinakaduc/llama-2-7b-hf-vi",
         metadata={"help": "Fine-tuned model name"},
     )
+    scratch: Optional[bool] = field(
+        default=False, metadata={"help": "Wheather train from scratch"}
+    )
     merge_and_push: Optional[bool] = field(
         default=False, metadata={"help": "Merge and push weights after training"}
     )

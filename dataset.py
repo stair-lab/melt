@@ -77,33 +77,8 @@ class DatasetWrapper:
         self.prompt = PROMPT_TEMPLATE[self.task][self.prompting_strategy]
 
     def get_dataset_config(self):
-        if self.dataset_name == "Yuhthe/vietnews":
-            self.task = "summarization"
-            self.dataset = load_dataset(self.dataset_name, split="test")
-            self.dataset.set_format(columns=["article", "abstract"])
-            self.original_text = "article"
-            self.summarized_text = "abstract"
-            
-        elif self.dataset_name == "vietnews_robustness":
-            self.task = "summarization"
-            self.dataset = load_dataset('csv', data_files="evaluation_datasets/vietnews_for_robustness.csv", split="train")
-            self.dataset.set_format(columns=["article", "abstract"])
-            self.original_text = "article"
-            self.summarized_text = "abstract"
-
-        elif self.dataset_name == "GEM/wiki_lingua":
-            self.task = "summarization"
-            self.dataset = load_dataset(self.dataset_name, "vi", split="test")
-            self.original_text = "source"
-            self.summarized_text = "target"
-            
-        elif self.dataset_name == "wiki_lingua_robustness":
-            self.task = "summarization"
-            self.dataset = load_dataset('csv', data_files="evaluation_datasets/wiki_lingua_for_robustness.csv", split="train")
-            self.original_text = "source"
-            self.summarized_text = "target"
-
-        elif self.dataset_name == "VIMQA":
+        ### Question Answering
+        if self.dataset_name == "VIMQA":
             self.task = "question-answering"
             pass
 
@@ -136,7 +111,76 @@ class DatasetWrapper:
             self.context = "context"
             self.question = "question"
             self.answer = "answers"
+        
+        ### Summarization
+        elif self.dataset_name == "Yuhthe/vietnews":
+            self.task = "summarization"
+            self.dataset = load_dataset(self.dataset_name, split="test")
+            self.dataset.set_format(columns=["article", "abstract"])
+            self.original_text = "article"
+            self.summarized_text = "abstract"
+            
+        elif self.dataset_name == "vietnews_robustness":
+            self.task = "summarization"
+            self.dataset = load_dataset('csv', data_files="evaluation_datasets/vietnews_for_robustness.csv", split="train")
+            self.dataset.set_format(columns=["article", "abstract"])
+            self.original_text = "article"
+            self.summarized_text = "abstract"
 
+        elif self.dataset_name == "GEM/wiki_lingua":
+            self.task = "summarization"
+            self.dataset = load_dataset(self.dataset_name, "vi", split="test")
+            self.original_text = "source"
+            self.summarized_text = "target"
+            
+        elif self.dataset_name == "wiki_lingua_robustness":
+            self.task = "summarization"
+            self.dataset = load_dataset('csv', data_files="evaluation_datasets/wiki_lingua_for_robustness.csv", split="train")
+            self.original_text = "source"
+            self.summarized_text = "target"
+            
+        ### Sentiment Analysis
+        elif self.dataset_name == "UIT-VSFC":
+            self.task = "sentiment-analysis"
+            self.dataset = load_dataset(
+                'csv', data_files="evaluation_datasets/UIT-VSFC.csv", split="train"
+            )
+            self.text = "text"
+            self.label = "label"
+            
+        ### Text Classification
+        elif self.dataset_name == "PhoATIS":
+            self.task = "text-classification"
+            self.dataset = load_dataset(
+                'csv', data_files="evaluation_datasets/PhoATIS.csv", split="train"
+            )
+            self.text = "sentence"
+            self.label = "label"
+            
+        elif self.dataset_name == "UIT-VSMEC":
+            self.task = "text-classification"
+            self.dataset = load_dataset(
+                'csv', data_files="evaluation_datasets/UIT-VSMEC.csv", split="train"
+            )
+            self.text = "Sentence"
+            self.label = "Label"
+
+        ### Knowledge
+        
+        
+        ### Toxicity Detection
+        
+        
+        ### Information Retrieval
+        
+        
+        ### Language
+        
+        
+        ### Reasoning
+        
+        
+        ### Translation
         elif self.dataset_name == "vietgpt/opus100_envi":
             self.task = "translation"
             self.dataset = load_dataset(self.dataset_name, split="test")
@@ -150,10 +194,6 @@ class DatasetWrapper:
             )
             self.source_language = "vi"
             self.target_language = "en"
-
-        elif self.dataset_name == "vietgpt/wikipedia_vi":
-            self.task = "text-generation"
-            self.dataset = load_dataset(self.dataset_name, split="test")
 
         else:
             raise ValueError("Dataset is not supported")
