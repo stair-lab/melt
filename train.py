@@ -1,12 +1,8 @@
-# Install the following libraries:
-# pip install accelerate==0.21.0 peft==0.4.0 bitsandbytes==0.40.2 transformers==4.31.0 trl==0.4.7 scipy
-
 import os
 
 import neptune
 import torch
 import transformers
-from config import ScriptArguments
 from datasets import load_dataset
 from peft import AutoPeftModelForCausalLM, LoraConfig
 from transformers import (
@@ -14,11 +10,11 @@ from transformers import (
     AutoTokenizer,
     BitsAndBytesConfig,
     HfArgumentParser,
-    HfArgumentParser,
+    LlamaConfig,
     TrainingArguments,
-    LlamaConfig
 )
 from trl import SFTTrainer
+from script_arguments import ScriptArguments
 
 parser = HfArgumentParser(ScriptArguments)
 script_args = parser.parse_args_into_dataclasses()[0]
@@ -58,9 +54,7 @@ if script_args.scratch:
         quantization_config=bnb_config,
         device_map=device_map,
     )
-    model = AutoModelForCausalLM.from_config(
-        configuration
-    )
+    model = AutoModelForCausalLM.from_config(configuration)
 else:
     model = AutoModelForCausalLM.from_pretrained(
         script_args.model_name,

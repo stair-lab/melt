@@ -1,66 +1,11 @@
 from datasets import load_dataset
+from prompt_template import PROMPT_TEMPLATE
 
-PROMPT_TEMPLATE = {
-    "summarization": [
-        ("""Đoạn văn:\n{document}.\n\nTóm tắt đoạn văn trên:\n"""),
-        (
-            "<s> [INST] <<SYS>>\n"
-            "Nhiệm vụ của bạn là tóm tắt đoạn văn bản sau, đưa ra câu trả lời là bản tóm tắt:\n"
-            "<</SYS>>\n"
-            "```{document}``` "
-            "[/INST]"
-        ),
-        (
-            "<s> [INST] <<SYS>>\n"
-            "Bạn là một trợ lý hữu dụng, biết tôn trọng và thành thật. Bạn luôn luôn trả lời các câu hỏi một cách có ích nhiều nhất có thể, "
-            "nhưng đồng thời phải an toàn. "
-            "Câu trả lời của bạn không được bao gồm các ngôn từ độc hại, phân biệt chủng tộc, phân biệt giới tính, nguy hiểm, nội dung vi phạm pháp luật. "
-            "Nhiệm vụ của bạn là tóm tắt đoạn văn bản nằm trong triple backtick. Bài tóm tắt phải đầy đủ các thông tin quan trọng, ngắn gọn và thu hút người đọc. "
-            "Ngôn ngữ bạn phải sử dụng để tóm tắt là tiếng Việt.\n"
-            "<</SYS>>\n"
-            "```{document}``` "
-            "[/INST]"
-        ),
-    ],
-    "question-answering": [
-        ("""Ngữ cảnh:\n{context}.\n\nCâu hỏi:\n{question}.\n\nTrả lời:\n"""),
-        (
-            "<s> [INST] <<SYS>>\n"
-            "Hãy trả lời câu hỏi bên dưới bằng tiếng Việt "
-            "với các thông tin được cung cấp trong phần ngữ cảnh. "
-            "Nếu trong ngữ cảnh không có đủ thông tin, "
-            'hãy trả lời "Tôi không biết".\n'
-            "<</SYS>>\n"
-            """Ngữ cảnh: {context}\n"""
-            """Câu hỏi: {question}\n"""
-            "Trả lời: "
-            "[/INST]"
-        ),
-        (
-            "<s> [INST] <<SYS>>\n"
-            "Bạn là một trợ lý hữu dụng sử dụng tiếng Việt, biết tôn trọng và thành thật. Bạn luôn luôn trả lời các câu hỏi một cách có ích nhiều nhất có thể, "
-            "nhưng đồng thời phải an toàn. "
-            "Câu trả lời của bạn không được bao gồm các ngôn từ độc hại, phân biệt chủng tộc, phân biệt giới tính, nguy hiểm, nội dung vi phạm pháp luật. "
-            "Làm ơn hãy chắc chắn câu trả lời của bạn tự nhiên, tích cực và không thiên vị bất cứ cái gì. "
-            "Nếu có câu hỏi không hợp lý hoặc không rõ ràng thì hãy giải thích tại sao thay vì trả lời không đúng sự thật. "
-            "Nếu bạn không biết câu trả lời thì đừng chia sẻ thông tin sai sự thật.\n"
-            "<</SYS>>\n"
-            """Nhiệm vụ của bạn là dựa vào đoạn văn nằm trong dấu triple backtick, hãy trả lời câu hỏi sau bằng tiếng Việt: {question}\n"""
-            """Đoạn văn: ```{context}``` """
-            "[/INST]"
-        ),
-    ],
-    "translation": [
-        ("""Câu hỏi:\nDịch "{document}" sang tiếng Anh.\n\nTrả lời:\n"""),
-    ],
-    "text-generation": [
-        """{context} """,
-    ],
-}
 
 def eval_answers(sample):
-    sample['answers'] = eval(sample["answers"])
+    sample["answers"] = eval(sample["answers"])
     return sample
+
 
 class DatasetWrapper:
     def __init__(self, dataset_name, prompting_strategy=0) -> None:
@@ -77,21 +22,38 @@ class DatasetWrapper:
         self.prompt = PROMPT_TEMPLATE[self.task][self.prompting_strategy]
 
     def get_dataset_config(self):
-        ### Question Answering
+        # Question Answering
         if self.dataset_name == "VIMQA":
             self.task = "question-answering"
             pass
 
-        elif self.dataset_name == "juletxara/xquad_xtreme":
+        elif self.dataset_name == "xquad_xtreme":
             self.task = "question-answering"
-            self.dataset = load_dataset(self.dataset_name, "vi", split="test")
+            self.dataset = load_dataset(
+                "juletxara/xquad_xtreme", "vi", split="test")
             self.context = "context"
             self.question = "question"
             self.answer = "answers"
-            
+
         elif self.dataset_name == "xquad_xtreme_robustness":
             self.task = "question-answering"
-            self.dataset = load_dataset('csv', data_files="evaluation_datasets/xquad_xtreme_for_robustness.csv", split="train")
+            self.dataset = load_dataset(
+                "csv",
+                data_files="evaluation_datasets/xquad_xtreme_for_robustness.csv",
+                split="train",
+            )
+            self.dataset = self.dataset.map(eval_answers)
+            self.context = "context"
+            self.question = "question"
+            self.answer = "answers"
+
+        elif self.dataset_name == "xquad_xtreme_fairness":
+            self.task = "question-answering"
+            self.dataset = load_dataset(
+                "csv",
+                data_files="evaluation_datasets/xquad_xtreme_for_fairness.csv",
+                split="train",
+            )
             self.dataset = self.dataset.map(eval_answers)
             self.context = "context"
             self.question = "question"
@@ -99,98 +61,371 @@ class DatasetWrapper:
 
         elif self.dataset_name == "mlqa":
             self.task = "question-answering"
-            self.dataset = load_dataset(self.dataset_name, "mlqa.vi.vi", split="test")
+            self.dataset = load_dataset(
+                self.dataset_name, "mlqa.vi.vi", split="test")
             self.context = "context"
             self.question = "question"
             self.answer = "answers"
-        
+
         elif self.dataset_name == "mlqa_robustness":
             self.task = "question-answering"
-            self.dataset = load_dataset('csv', data_files="evaluation_datasets/mlqa_for_robustness.csv", split="train")
+            self.dataset = load_dataset(
+                "csv",
+                data_files="evaluation_datasets/mlqa_for_robustness.csv",
+                split="train",
+            )
             self.dataset = self.dataset.map(eval_answers)
             self.context = "context"
             self.question = "question"
             self.answer = "answers"
-        
-        ### Summarization
-        elif self.dataset_name == "Yuhthe/vietnews":
+
+        elif self.dataset_name == "mlqa_fairness":
+            self.task = "question-answering"
+            self.dataset = load_dataset(
+                "csv",
+                data_files="evaluation_datasets/mlqa_for_fairness.csv",
+                split="train",
+            )
+            self.dataset = self.dataset.map(eval_answers)
+            self.context = "context"
+            self.question = "question"
+            self.answer = "answers"
+
+        # Summarization
+        elif self.dataset_name == "vietnews":
             self.task = "summarization"
-            self.dataset = load_dataset(self.dataset_name, split="test")
-            self.dataset.set_format(columns=["article", "abstract"])
-            self.original_text = "article"
-            self.summarized_text = "abstract"
-            
-        elif self.dataset_name == "vietnews_robustness":
-            self.task = "summarization"
-            self.dataset = load_dataset('csv', data_files="evaluation_datasets/vietnews_for_robustness.csv", split="train")
+            self.dataset = load_dataset("Yuhthe/vietnews", split="test")
             self.dataset.set_format(columns=["article", "abstract"])
             self.original_text = "article"
             self.summarized_text = "abstract"
 
-        elif self.dataset_name == "GEM/wiki_lingua":
+        elif self.dataset_name == "vietnews_robustness":
             self.task = "summarization"
-            self.dataset = load_dataset(self.dataset_name, "vi", split="test")
+            self.dataset = load_dataset(
+                "csv",
+                data_files="evaluation_datasets/vietnews_for_robustness.csv",
+                split="train",
+            )
+            self.dataset.set_format(columns=["article", "abstract"])
+            self.original_text = "article"
+            self.summarized_text = "abstract"
+
+        elif self.dataset_name == "wiki_lingua":
+            self.task = "summarization"
+            self.dataset = load_dataset("GEM/wiki_lingua", "vi", split="test")
             self.original_text = "source"
             self.summarized_text = "target"
-            
+
         elif self.dataset_name == "wiki_lingua_robustness":
             self.task = "summarization"
-            self.dataset = load_dataset('csv', data_files="evaluation_datasets/wiki_lingua_for_robustness.csv", split="train")
+            self.dataset = load_dataset(
+                "csv",
+                data_files="evaluation_datasets/wiki_lingua_for_robustness.csv",
+                split="train",
+            )
             self.original_text = "source"
             self.summarized_text = "target"
-            
-        ### Sentiment Analysis
+
+        # Sentiment Analysis
         elif self.dataset_name == "UIT-VSFC":
             self.task = "sentiment-analysis"
             self.dataset = load_dataset(
-                'csv', data_files="evaluation_datasets/UIT-VSFC.csv", split="train"
+                "csv", data_files="evaluation_datasets/UIT-VSFC.csv", split="train"
             )
             self.text = "text"
             self.label = "label"
-            
-        ### Text Classification
+
+        elif self.dataset_name == "UIT-VSFC_robustness":
+            self.task = "sentiment-analysis"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/UIT-VSFC_for_robustness.csv", split="train"
+            )
+            self.text = "text"
+            self.label = "label"
+
+        elif self.dataset_name == "UIT-VSFC_fairness":
+            self.task = "sentiment-analysis"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/UIT-VSFC_for_fairness.csv", split="train"
+            )
+            self.text = "text"
+            self.label = "label"
+
+        elif self.dataset_name == "vlsp2016":
+            self.task = "sentiment-analysis"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/vlsp2016.csv", split="train"
+            )
+            self.text = "Data"
+            self.label = "Class"
+
+        elif self.dataset_name == "vlsp2016_robustness":
+            self.task = "sentiment-analysis"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/vlsp2016_for_robustness.csv", split="train"
+            )
+            self.text = "Data"
+            self.label = "Class"
+
+        elif self.dataset_name == "vlsp2016_fairness":
+            self.task = "sentiment-analysis"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/vlsp2016_for_fairness.csv", split="train"
+            )
+            self.text = "Data"
+            self.label = "Class"
+
+        # Text Classification
         elif self.dataset_name == "PhoATIS":
             self.task = "text-classification"
             self.dataset = load_dataset(
-                'csv', data_files="evaluation_datasets/PhoATIS.csv", split="train"
+                "csv", data_files="evaluation_datasets/PhoATIS.csv", split="train"
             )
             self.text = "sentence"
             self.label = "label"
-            
+
+        elif self.dataset_name == "PhoATIS_robustness":
+            self.task = "text-classification"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/PhoATIS_for_robustness.csv", split="train"
+            )
+            self.text = "sentence"
+            self.label = "label"
+
+        elif self.dataset_name == "PhoATIS_fairness":
+            self.task = "text-classification"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/PhoATIS_for_fairness.csv", split="train"
+            )
+            self.text = "sentence"
+            self.label = "label"
+
         elif self.dataset_name == "UIT-VSMEC":
             self.task = "text-classification"
             self.dataset = load_dataset(
-                'csv', data_files="evaluation_datasets/UIT-VSMEC.csv", split="train"
+                "csv", data_files="evaluation_datasets/UIT-VSMEC.csv", split="train"
             )
             self.text = "Sentence"
             self.label = "Label"
 
-        ### Knowledge
-        
-        
-        ### Toxicity Detection
-        
-        
-        ### Information Retrieval
-        
-        
-        ### Language
-        
-        
-        ### Reasoning
-        
-        
-        ### Translation
-        elif self.dataset_name == "vietgpt/opus100_envi":
+        elif self.dataset_name == "UIT-VSMEC_robustness":
+            self.task = "text-classification"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/UIT-VSMEC_for_robustness.csv", split="train"
+            )
+            self.text = "Sentence"
+            self.label = "Label"
+
+        elif self.dataset_name == "UIT-VSMEC_fairness":
+            self.task = "text-classification"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/UIT-VSMEC_for_fairness.csv", split="train"
+            )
+            self.text = "Sentence"
+            self.label = "Label"
+
+        # Knowledge
+        elif self.dataset_name == "zalo_e2eqa":
+            self.task = "knowledge-openended"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/zalo_e2eqa.csv", split="train"
+            )
+            self.question = "question"
+            self.answer = "answers"
+
+        elif self.dataset_name == "zalo_e2eqa_robustness":
+            self.task = "knowledge-openended"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/zalo_e2eqa_robustness.csv", split="train"
+            )
+            self.question = "question"
+            self.answer = "answers"
+
+        elif self.dataset_name == "ViMMRC":
+            self.task = "knowledge-multiple-choice"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/ViMMRC.csv", split="train"
+            )
+            self.context = "article"
+            self.question = "question"
+            self.options = "options"
+            self.answer = "answer"
+
+        elif self.dataset_name == "ViMMRC_robustness":
+            self.task = "knowledge-multiple-choice"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/ViMMRC_robustness.csv", split="train"
+            )
+            self.context = "article"
+            self.question = "question"
+            self.options = "options"
+            self.answer = "answer"
+
+        # Toxicity Detection
+        elif self.dataset_name == "ViCTSD":
+            self.task = "toxicity-detection"
+            self.dataset = load_dataset("tarudesu/ViCTSD", split="test")
+            self.text = "Comment"
+            self.label = "Toxicity"
+
+        elif self.dataset_name == "ViCTSD_robustness":
+            self.task = "toxicity-detection"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/ViCTSD_for_robustness.csv", split="train"
+            )
+            self.text = "Comment"
+            self.label = "Toxicity"
+
+        elif self.dataset_name == "ViCTSD_fairness":
+            self.task = "toxicity-detection"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/ViCTSD_for_fairness.csv", split="train"
+            )
+            self.text = "Comment"
+            self.label = "Toxicity"
+
+        elif self.dataset_name == "ViHSD":
+            self.task = "toxicity-detection"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/ViHSD.csv", split="train"
+            )
+            self.text = "free_text"
+            self.label = "label_id"
+
+        elif self.dataset_name == "ViHSD_robustness":
+            self.task = "toxicity-detection"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/ViHSD_for_robustness.csv", split="train"
+            )
+            self.text = "free_text"
+            self.label = "label_id"
+
+        elif self.dataset_name == "ViHSD_fairness":
+            self.task = "toxicity-detection"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/ViHSD_for_fairness.csv", split="train"
+            )
+            self.text = "free_text"
+            self.label = "label_id"
+
+        # Information Retrieval
+
+        # Language
+        elif self.dataset_name == "VSEC":
+            self.task = "language-correction"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/VSEC.csv", split="train"
+            )
+            self.source = "text"
+            self.target = "correct"
+
+        elif self.dataset_name == "VSEC_fairness":
+            self.task = "language-correction"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/VSEC_for_fairness.csv", split="train"
+            )
+            self.source = "text"
+            self.target = "correct"
+
+        # Reasoning
+        elif self.dataset_name == "synthetic_natural":
+            self.task = "reasoning"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/synthetic_reasoning_natural.csv", split="train"
+            )
+            self.source = "source"
+            self.target = "target"
+
+        elif self.dataset_name == "synthetic_induction":
+            self.task = "reasoning"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/synthetic_reasoning_induction.csv", split="train"
+            )
+            self.source = "source"
+            self.target = "target"
+
+        elif self.dataset_name == "synthetic_pattern":
+            self.task = "reasoning"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/synthetic_reasoning_pattern_match.csv", split="train"
+            )
+            self.source = "source"
+            self.target = "target"
+
+        elif self.dataset_name == "synthetic_induction":
+            self.task = "reasoning"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/synthetic_reasoning_variable_substitution.csv", split="train"
+            )
+            self.source = "source"
+            self.target = "target"
+
+        elif self.dataset_name == "math_level1":
+            self.task = "reasoning-math"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/math_level1.csv", split="train"
+            )
+            self.question = "problem"
+            self.type = "type"
+            self.answer = "solution"
+
+        # Translation
+        elif self.dataset_name == "PhoMT_envi":
             self.task = "translation"
-            self.dataset = load_dataset(self.dataset_name, split="test")
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/PhoMT.csv", split="train"
+            )
+            self.source_language = "en"
+            self.target_language = "vi"
+
+        elif self.dataset_name == "PhoMT_vien":
+            self.task = "translation"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/PhoMT.csv", split="train"
+            )
             self.source_language = "vi"
             self.target_language = "en"
 
-        elif self.dataset_name == "mt_eng_vietnamese":
+        elif self.dataset_name == "PhoMT_envi_robustness":
             self.task = "translation"
             self.dataset = load_dataset(
-                self.dataset_name, "iwslt2015-vi-en", split="test"
+                "csv", data_files="evaluation_datasets/PhoMT_for_robustness.csv", split="train"
+            )
+            self.source_language = "en"
+            self.target_language = "vi"
+
+        elif self.dataset_name == "PhoMT_vien_robustness":
+            self.task = "translation"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/PhoMT_for_robustness.csv", split="train"
+            )
+            self.source_language = "vi"
+            self.target_language = "en"
+
+        elif self.dataset_name == "opus100_envi":
+            self.task = "translation"
+            self.dataset = load_dataset("vietgpt/opus100_envi", split="test")
+            self.source_language = "en"
+            self.target_language = "vi"
+
+        elif self.dataset_name == "opus100_vien":
+            self.task = "translation"
+            self.dataset = load_dataset("vietgpt/opus100_envi", split="test")
+            self.source_language = "vi"
+            self.target_language = "en"
+
+        elif self.dataset_name == "opus100_envi_robustness":
+            self.task = "translation"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/opus100_envi_for_robustness.csv", split="train"
+            )
+            self.source_language = "en"
+            self.target_language = "vi"
+
+        elif self.dataset_name == "opus100_vien_robustness":
+            self.task = "translation"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/opus100_envi_for_robustness.csv", split="train"
             )
             self.source_language = "vi"
             self.target_language = "en"

@@ -154,32 +154,7 @@ class ScriptArguments:
     prompting_strategy: Optional[int] = field(
         default=0, metadata={"help": "Prompting strategy to use"}
     )
-
-
-@dataclass
-class GenerationConfig:
-    text_generation = {
-        "temperature": 0.0,
-        "max_new_tokens": 500,
-        "repetition_penalty": 1.1,
-    }
-
-    question_answering = {
-        "temperature": 0.0,
-        # "max_new_tokens": 50,
-        "max_new_tokens": 500,
-        "repetition_penalty": 1.1,
-    }
-
-    summarization = {
-        "temperature": 0.0,
-        # "max_new_tokens": 250,
-        "max_new_tokens": 500,
-        "repetition_penalty": 1.1,
-    }
-
-    translation = {
-        "temperature": 0.0, 
-        "max_new_tokens": 500, 
-        "repetition_penalty": 1.1,
-    }
+    continue_infer: Optional[bool] = field(
+        default=False,
+        metadata={"help": "Wheather to continue previous inference process"},
+    )

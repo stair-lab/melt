@@ -37,7 +37,7 @@ def get_model(config):
         config.tokenizer_name, trust_remote_code=True
     )
     tokenizer.pad_token = tokenizer.eos_token
-    if 'gpt' in config.model_name:
-        tokenizer.padding_side = 'left'
+    if "gpt" in config.model_name:
+        tokenizer.padding_side = "left"
 
     return model, tokenizer
