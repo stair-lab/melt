@@ -1,28 +1,36 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class GenerationConfig:
-    text_generation = {
-        "temperature": 0.0,
+GenerationConfig = {
+    "text-generation": {
+        "temperature": 1.0,
+        "top_k": 5,
         "max_new_tokens": 500,
         "repetition_penalty": 1.1,
-    }
+    },
 
-    question_answering = {
-        "temperature": 0.0,
+    "question-answering": {
+        "temperature": 1.0,
+        "top_k": 5,
         "max_new_tokens": 100,
         "repetition_penalty": 1.1,
-    }
+    },
 
-    summarization = {
-        "temperature": 0.0,
+    "summarization": {
+        "temperature": 1.0,
+        "top_k": 5,
         "max_new_tokens": 300,
         "repetition_penalty": 1.1,
-    }
+    },
 
-    translation = {
-        "temperature": 0.0,
+    "translation_envi": {
+        "temperature": 1.0,
+        "top_k": 5,
+        "max_new_tokens": 500,
+        "repetition_penalty": 1.1,
+    },
+
+    "translation_vien": {
+        "temperature": 1.0,
+        "top_k": 5,
         "max_new_tokens": 500,
         "repetition_penalty": 1.1,
     }
+}

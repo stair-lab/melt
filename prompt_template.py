@@ -4,7 +4,7 @@ PROMPT_TEMPLATE = {
         (
             "<s> [INST] <<SYS>>\n"
             "Nhiệm vụ của bạn là tóm tắt đoạn văn bản sau, đưa ra câu trả lời là bản tóm tắt:\n"
-            "<</SYS>>\n"
+            "<</SYS>>\n\n"
             "```{document}``` "
             "[/INST]"
         ),
@@ -15,7 +15,7 @@ PROMPT_TEMPLATE = {
             "Câu trả lời của bạn không được bao gồm các ngôn từ độc hại, phân biệt chủng tộc, phân biệt giới tính, nguy hiểm, nội dung vi phạm pháp luật. "
             "Nhiệm vụ của bạn là tóm tắt đoạn văn bản nằm trong triple backtick. Bài tóm tắt phải đầy đủ các thông tin quan trọng, ngắn gọn và thu hút người đọc. "
             "Ngôn ngữ bạn phải sử dụng để tóm tắt là tiếng Việt.\n"
-            "<</SYS>>\n"
+            "<</SYS>>\n\n"
             "```{document}``` "
             "[/INST]"
         ),
@@ -28,7 +28,7 @@ PROMPT_TEMPLATE = {
             "với các thông tin được cung cấp trong phần ngữ cảnh. "
             "Nếu trong ngữ cảnh không có đủ thông tin, "
             'hãy trả lời "Tôi không biết".\n'
-            "<</SYS>>\n"
+            "<</SYS>>\n\n"
             """Ngữ cảnh: {context}\n"""
             """Câu hỏi: {question}\n"""
             "Trả lời: "
@@ -42,14 +42,31 @@ PROMPT_TEMPLATE = {
             "Làm ơn hãy chắc chắn câu trả lời của bạn tự nhiên, tích cực và không thiên vị bất cứ cái gì. "
             "Nếu có câu hỏi không hợp lý hoặc không rõ ràng thì hãy giải thích tại sao thay vì trả lời không đúng sự thật. "
             "Nếu bạn không biết câu trả lời thì đừng chia sẻ thông tin sai sự thật.\n"
-            "<</SYS>>\n"
+            "<</SYS>>\n\n"
             """Nhiệm vụ của bạn là dựa vào đoạn văn nằm trong dấu triple backtick, hãy trả lời câu hỏi sau bằng tiếng Việt: {question}\n"""
             """Đoạn văn: ```{context}``` """
             "[/INST]"
         ),
     ],
-    "translation": [
+    "translation_envi": [
+        ("""Câu hỏi:\nDịch "{document}" sang tiếng Việt.\n\nTrả lời:\n"""),
+        ("<s> [INST] <<SYS>>\n"
+         "Hãy xem mình là một Bot có thể dịch từ tiếng Anh qua tiếng Việt. "
+         "Bot không được tự trả lời hay giả dạng thành Khách.\n"
+         "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
+         "<</SYS>>\n\n"
+         """{few_shot_str}Khách: ```{document}```"""
+         "Bot:[/INST] "),
+    ],
+    "translation_vien": [
         ("""Câu hỏi:\nDịch "{document}" sang tiếng Anh.\n\nTrả lời:\n"""),
+        ("<s> [INST] <<SYS>>\n"
+         "Hãy xem mình là một Bot có thể dịch từ tiếng Việt qua tiếng Anh. "
+         "Bot không được tự trả lời hay giả dạng thành Khách.\n"
+         "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
+         "<</SYS>>\n\n"
+         """{few_shot_str}Khách: ```{document}```"""
+         "Bot:[/INST] "),
     ],
     "text-generation": [
         """{context} """,

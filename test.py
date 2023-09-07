@@ -44,7 +44,7 @@ if __name__ == "__main__":
     model, tokenizer = get_model(config=script_args)
     model.eval()
 
-    eval_pipeline = Pipeline(
+    eval_pipeline = EvalPipeline(
         task=dataset_wrapper.task, model=model, tokenizer=tokenizer
     )
 
@@ -52,14 +52,36 @@ if __name__ == "__main__":
     if not os.path.exists(script_args.output_dir):
         os.makedirs(script_args.output_dir)
 
+    ds_exact_name = (
+        script_args.dataset_name.split("/")[-1]
+        + "_"
+        + script_args.model_name.split("/")[-1]
+        + f"_pt{script_args.prompting_strategy}"
+    )
+
+    csv_file = os.path.join(script_args.output_dir,
+                            f"results_{ds_exact_name}.csv")
+
+    json_file = os.path.join(script_args.output_dir,
+                             f"results_{ds_exact_name}.json")
+
+    if script_args.continue_infer:
+        if os.path.exists(csv_file):
+            df1 = pd.read_csv(csv_file)
+            start_idx = len(df1)
+        else:
+            raise FileNotFoundError(
+                f"File {csv_file} does not exist! Terminating...")
+    else:
+        start_idx = 0
+
     # Evaluate
     def save_results(generations, results=None):
-        ds_exact_name = (
-            script_args.dataset_name.split("/")[-1]
-            + "_"
-            + script_args.model_name.split("/")[-1]
-            + f"_pt{script_args.prompting_strategy}"
-        )
+        if script_args.continue_infer and os.path.exists(csv_file):
+            df2 = pd.DataFrame(generations)
+            df3 = df1.append(df2, ignore_index=True)
+            generations = df3.to_dict(orient='list')
+
         save_to_csv(
             generations,
             os.path.join(script_args.output_dir,
@@ -73,5 +95,6 @@ if __name__ == "__main__":
             )
 
     eval_pipeline.run(
-        ds_wrapper=dataset_wrapper, ds_loader=dataset_loader, saving_fn=save_results
+        ds_wrapper=dataset_wrapper, ds_loader=dataset_loader,
+        saving_fn=save_results, start_idx=start_idx
     )

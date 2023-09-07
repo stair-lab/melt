@@ -371,7 +371,7 @@ class DatasetWrapper:
 
         # Translation
         elif self.dataset_name == "PhoMT_envi":
-            self.task = "translation"
+            self.task = "translation_envi"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/PhoMT.csv", split="train"
             )
@@ -379,7 +379,7 @@ class DatasetWrapper:
             self.target_language = "vi"
 
         elif self.dataset_name == "PhoMT_vien":
-            self.task = "translation"
+            self.task = "translation_vien"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/PhoMT.csv", split="train"
             )
@@ -387,7 +387,7 @@ class DatasetWrapper:
             self.target_language = "en"
 
         elif self.dataset_name == "PhoMT_envi_robustness":
-            self.task = "translation"
+            self.task = "translation_envi"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/PhoMT_for_robustness.csv", split="train"
             )
@@ -395,7 +395,7 @@ class DatasetWrapper:
             self.target_language = "vi"
 
         elif self.dataset_name == "PhoMT_vien_robustness":
-            self.task = "translation"
+            self.task = "translation_vien"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/PhoMT_for_robustness.csv", split="train"
             )
@@ -403,19 +403,19 @@ class DatasetWrapper:
             self.target_language = "en"
 
         elif self.dataset_name == "opus100_envi":
-            self.task = "translation"
+            self.task = "translation_envi"
             self.dataset = load_dataset("vietgpt/opus100_envi", split="test")
             self.source_language = "en"
             self.target_language = "vi"
 
         elif self.dataset_name == "opus100_vien":
-            self.task = "translation"
+            self.task = "translation_vien"
             self.dataset = load_dataset("vietgpt/opus100_envi", split="test")
             self.source_language = "vi"
             self.target_language = "en"
 
         elif self.dataset_name == "opus100_envi_robustness":
-            self.task = "translation"
+            self.task = "translation_envi"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/opus100_envi_for_robustness.csv", split="train"
             )
@@ -423,7 +423,7 @@ class DatasetWrapper:
             self.target_language = "vi"
 
         elif self.dataset_name == "opus100_vien_robustness":
-            self.task = "translation"
+            self.task = "translation_vien"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/opus100_envi_for_robustness.csv", split="train"
             )
