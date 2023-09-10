@@ -1,5 +1,5 @@
 from datasets import load_dataset
-from prompt_template import PROMPT_TEMPLATE
+from prompt_template import PROMPT_TEMPLATE, CALIBRAION_INSTRUCTION
 
 
 def eval_answers(sample):
@@ -20,6 +20,10 @@ class DatasetWrapper:
             raise ValueError("Prompting strategy is not supported")
 
         self.prompt = PROMPT_TEMPLATE[self.task][self.prompting_strategy]
+        if self.task in CALIBRAION_INSTRUCTION:
+            self.calibration_prompt = CALIBRAION_INSTRUCTION[self.task][0]
+        else:
+            self.calibration_prompt = None
 
     def get_dataset_config(self):
         # Question Answering
@@ -177,7 +181,7 @@ class DatasetWrapper:
 
         # Text Classification
         elif self.dataset_name == "PhoATIS":
-            self.task = "text-classification"
+            self.task = "text-classification_atis"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/PhoATIS.csv", split="train"
             )
@@ -185,7 +189,7 @@ class DatasetWrapper:
             self.label = "label"
 
         elif self.dataset_name == "PhoATIS_robustness":
-            self.task = "text-classification"
+            self.task = "text-classification_atis"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/PhoATIS_for_robustness.csv", split="train"
             )
@@ -193,7 +197,7 @@ class DatasetWrapper:
             self.label = "label"
 
         elif self.dataset_name == "PhoATIS_fairness":
-            self.task = "text-classification"
+            self.task = "text-classification_atis"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/PhoATIS_for_fairness.csv", split="train"
             )
@@ -201,7 +205,7 @@ class DatasetWrapper:
             self.label = "label"
 
         elif self.dataset_name == "UIT-VSMEC":
-            self.task = "text-classification"
+            self.task = "text-classification_vsmec"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/UIT-VSMEC.csv", split="train"
             )
@@ -209,7 +213,7 @@ class DatasetWrapper:
             self.label = "Label"
 
         elif self.dataset_name == "UIT-VSMEC_robustness":
-            self.task = "text-classification"
+            self.task = "text-classification_vsmec"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/UIT-VSMEC_for_robustness.csv", split="train"
             )
@@ -217,7 +221,7 @@ class DatasetWrapper:
             self.label = "Label"
 
         elif self.dataset_name == "UIT-VSMEC_fairness":
-            self.task = "text-classification"
+            self.task = "text-classification_vsmec"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/UIT-VSMEC_for_fairness.csv", split="train"
             )
@@ -226,7 +230,7 @@ class DatasetWrapper:
 
         # Knowledge
         elif self.dataset_name == "zalo_e2eqa":
-            self.task = "knowledge-openended"
+            self.task = "knowledge_openended"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/zalo_e2eqa.csv", split="train"
             )
@@ -234,7 +238,7 @@ class DatasetWrapper:
             self.answer = "answers"
 
         elif self.dataset_name == "zalo_e2eqa_robustness":
-            self.task = "knowledge-openended"
+            self.task = "knowledge_openended"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/zalo_e2eqa_robustness.csv", split="train"
             )
@@ -242,7 +246,7 @@ class DatasetWrapper:
             self.answer = "answers"
 
         elif self.dataset_name == "ViMMRC":
-            self.task = "knowledge-multiple-choice"
+            self.task = "knowledge_mtpchoice"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/ViMMRC.csv", split="train"
             )
@@ -252,7 +256,7 @@ class DatasetWrapper:
             self.answer = "answer"
 
         elif self.dataset_name == "ViMMRC_robustness":
-            self.task = "knowledge-multiple-choice"
+            self.task = "knowledge_mtpchoice"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/ViMMRC_robustness.csv", split="train"
             )
@@ -309,10 +313,43 @@ class DatasetWrapper:
             self.label = "label_id"
 
         # Information Retrieval
+        elif self.dataset_name == "mmarco":
+            raise NotImplementedError
+
+        elif self.dataset_name == "mmarco_robustness":
+            raise NotImplementedError
+
+        elif self.dataset_name == "mmarco_fairness":
+            raise NotImplementedError
+        
+        elif self.dataset_name == "mrobust":
+            raise NotImplementedError
+
+        elif self.dataset_name == "mrobust_robustness":
+            raise NotImplementedError
+
+        elif self.dataset_name == "mrobust_fairness":
+            raise NotImplementedError
 
         # Language
+        elif self.dataset_name == "mlqa_MLM":
+            self.task = "language-modelling_filling"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/mlqa_MLM.csv", split="train"
+            )
+            self.context = "context"
+            self.masked = "masked"
+
+        elif self.dataset_name == "mlqa_MLM_fairness":
+            self.task = "language-modelling_filling"
+            self.dataset = load_dataset(
+                "csv", data_files="evaluation_datasets/mlqa_MLM_for_fairness.csv", split="train"
+            )
+            self.context = "context"
+            self.masked = "masked"
+
         elif self.dataset_name == "VSEC":
-            self.task = "language-correction"
+            self.task = "language-modelling_correction"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/VSEC.csv", split="train"
             )
@@ -320,7 +357,7 @@ class DatasetWrapper:
             self.target = "correct"
 
         elif self.dataset_name == "VSEC_fairness":
-            self.task = "language-correction"
+            self.task = "language-modelling_correction"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/VSEC_for_fairness.csv", split="train"
             )
@@ -329,7 +366,7 @@ class DatasetWrapper:
 
         # Reasoning
         elif self.dataset_name == "synthetic_natural":
-            self.task = "reasoning"
+            self.task = "reasoning_synthetic""
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_natural.csv", split="train"
             )
@@ -337,7 +374,7 @@ class DatasetWrapper:
             self.target = "target"
 
         elif self.dataset_name == "synthetic_induction":
-            self.task = "reasoning"
+            self.task = "reasoning_synthetic""
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_induction.csv", split="train"
             )
@@ -345,7 +382,7 @@ class DatasetWrapper:
             self.target = "target"
 
         elif self.dataset_name == "synthetic_pattern":
-            self.task = "reasoning"
+            self.task = "reasoning_synthetic""
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_pattern_match.csv", split="train"
             )
@@ -353,7 +390,7 @@ class DatasetWrapper:
             self.target = "target"
 
         elif self.dataset_name == "synthetic_induction":
-            self.task = "reasoning"
+            self.task = "reasoning_synthetic""
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_variable_substitution.csv", split="train"
             )
@@ -361,7 +398,7 @@ class DatasetWrapper:
             self.target = "target"
 
         elif self.dataset_name == "math_level1":
-            self.task = "reasoning-math"
+            self.task = "reasoning_math"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/math_level1.csv", split="train"
             )
