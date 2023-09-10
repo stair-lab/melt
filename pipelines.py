@@ -39,7 +39,7 @@ class InferPipeline:
                     scores=generate_dict.scores,
                     normalize_logits=True
                 )
-                generations_probs.extend(generation_probs)
+                generations_probs.extend(generation_probs.cpu().numpy())
 
         return generations, generations_probs, num_generated_tokens
 
