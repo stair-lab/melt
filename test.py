@@ -35,7 +35,7 @@ if __name__ == "__main__":
         prompting_strategy=script_args.prompting_strategy,
     )
     dataset_loader = DataLoader(
-        dataset_wrapper.get_dataset(),
+        dataset_wrapper.get_dataset_testing(),
         batch_size=script_args.per_device_eval_batch_size,
         shuffle=False,
     )
