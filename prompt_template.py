@@ -77,7 +77,7 @@ PROMPT_TEMPLATE = {
     "language-modelling_filling": [
         (
             "[INST] <<SYS>>\n"
-            "Hãy xem mình là một Bot có thể thay thế token [MASK] thành một từ thích hợp trong một "
+            "Hãy xem mình là một Bot có thể thay thế token [MASKED] thành một từ thích hợp trong một "
             "câu tiếng Việt. Chú ý, Bot không chỉnh sửa hay thêm bớt các từ trong câu, chỉ sửa các từ bị sai chính tả. "
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
@@ -160,7 +160,7 @@ PROMPT_TEMPLATE = {
             "Bot: [/INST] "
         ),
     ],
-    "toxic-detection": [
+    "toxic-detection_ViCTSD": [
         (
             "[INST] <<SYS>>\n"
             "Hãy xem mình là một Bot có thể phân loại tính độc hại (toxicity) trong một "
@@ -169,7 +169,22 @@ PROMPT_TEMPLATE = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "Hãy đọc kĩ và phân tích tính độc hại từ đầu vào của Khách. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"toxicity_level\": `câu trả lời của bạn là 0 (non-toxic statement) hoặc 1 (toxic statement)`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` }} ```\n"
+            "Hãy đọc kĩ và phân tích tính độc hại từ đầu vào của Khách. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json { \"toxicity_level\": `câu trả lời của bạn là 0 (non-toxic statement) hoặc 1 (toxic statement)`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` } ```\n"
+            "{few_shot}\n"
+            "Khách: \"{context}\"\n"
+            "Bot: [/INST] "
+        ),
+    ],
+    "toxic-detection_ViHSD": [
+        (
+            "[INST] <<SYS>>\n"
+            "Hãy xem mình là một Bot có thể phân loại tính độc hại (toxicity) trong một "
+            "câu tiếng Việt. Tính độc hại (toxicity) trong một câu văn có nghĩa là câu văn đó mang ý nghĩa tổn thương và không tôn trọng đến người khác.\n"
+            "Dưới góc độ là một con người khác khi nhận câu văn đó, đầu tiên hãy xem xét đó có phải là một câu độc hại gây tổn thương mình không ? Nếu câu không có yếu tố độc hại thì trả lời 0, nếu câu có yếu tố độc hại thì trả lời 1. "
+            "Bot không được tự trả lời hay giả dạng thành Khách.\n"
+            "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
+            "<</SYS>>\n\n"
+            "Hãy đọc kĩ và phân tích tính độc hại từ đầu vào của Khách. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json { \"toxicity_level\": `câu trả lời của bạn là 0 (non-toxic statement) hoặc 1 (toxic statement) hoặc 2 (very toxic statement)`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` } ```\n"
             "{few_shot}\n"
             "Khách: \"{context}\"\n"
             "Bot: [/INST] "
@@ -193,7 +208,17 @@ PROMPT_TEMPLATE = {
     ],
     "knowledge_openended": [
         (
-
+            "[INST] <<SYS>>\n"
+            "Hãy xem mình là một Bot thông minh, sử dụng kiến thức thông thường trong cuộc sống để thực hiện nhiệm vụ sau. "
+            "Bot không được tự trả lời hay giả dạng thành Khách.\n"
+            "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
+            "<</SYS>>\n\n"
+            "Hãy đọc kĩ ngữ cảnh và lựa chọn đáp án đúng cho câu hỏi. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"choice\": `câu trả lời của bạn là \"A\" hoặc \"B\" hoặc \"C\" hoặc \"D\"`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` }} ```\n"
+            "{few_shot}\n"
+            "Ngữ cảnh: ''' {context} '''\n"
+            "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
+            "{list_ans}\n\n"
+            "Câu trả lời:[/INST] "
         )
     ],
     "information-retrieval": [
@@ -286,10 +311,10 @@ CALIBRAION_INSTRUCTION = {
         (
             "[INST] <<SYS>>\n"
             "Hãy xem mình là một Bot có thể phân loại ý định một câu tiếng Việt. "
-            "Trong đó, giá trị 0 cho 'flight',  1 cho 'airfare#flight',  2 cho 'ground_service',  3 cho 'day_name',  4 cho 'meal',  5 cho 'airport', "
-            "6 cho 'airfare',  7 cho 'airline',  8 cho 'flight_time',  9 cho 'city' ,10 cho 'aircraft#flight', 11 cho 'ground_fare', "
-            "12 cho 'quantity', 13 cho 'abbreviation', 14 cho 'distance', 15 cho 'aircraft', 16 cho 'capacity', "
-            "17 cho 'airline#flight', 18 cho 'airline#flight_no', 19 cho 'flight_no', 20 cho 'restriction'.\n"
+            "Trong đó, giá trị 0 cho 'flight',  1 cho 'airfare',  2 cho 'ground_service',  3 cho 'day_name',  4 cho 'meal',  5 cho 'airport', "
+            "6 cho 'airline',  7 cho 'flight_time',  8 cho 'city', 9 cho 'ground_fare', "
+            "10 cho 'quantity', 11 cho 'abbreviation', 12 cho 'distance', 13 cho 'aircraft', 14 cho 'capacity', "
+            "15 cho 'flight_no', 16 cho 'restriction'.\n"
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
@@ -329,7 +354,17 @@ CALIBRAION_INSTRUCTION = {
     ],
     "knowledge_openended": [
         (
-
+             "[INST] <<SYS>>\n"
+            "Hãy xem mình là một Bot thông minh, sử dụng kiến thức thông thường trong cuộc sống để thực hiện nhiệm vụ sau. "
+            "Bot không được tự trả lời hay giả dạng thành Khách.\n"
+            "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
+            "<</SYS>>\n\n"
+            "Hãy đọc kĩ ngữ cảnh và lựa chọn đáp án đúng cho câu hỏi. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"choice\": `câu trả lời của bạn là \"A\" hoặc \"B\" hoặc \"C\" hoặc \"D\"`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` }} ```\n"
+            "{few_shot}\n"
+            "Ngữ cảnh: ''' {context} '''\n"
+            "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
+            "{list_ans}\n\n"
+            "Câu trả lời:[/INST] "
         )
     ],
     "reasoning_synthetic": [

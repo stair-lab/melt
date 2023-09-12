@@ -338,7 +338,7 @@ class DatasetWrapper:
                 "csv", data_files="evaluation_datasets/mlqa_MLM.csv", split="train"
             )
             self.context = "context"
-            self.masked = "masked"
+            self.target = "masked"
 
         elif self.dataset_name == "mlqa_MLM_fairness":
             self.task = "language-modelling_filling"
@@ -346,14 +346,14 @@ class DatasetWrapper:
                 "csv", data_files="evaluation_datasets/mlqa_MLM_for_fairness.csv", split="train"
             )
             self.context = "context"
-            self.masked = "masked"
+            self.target = "masked"
 
         elif self.dataset_name == "VSEC":
             self.task = "language-modelling_correction"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/VSEC.csv", split="train"
             )
-            self.source = "text"
+            self.context = "text"
             self.target = "correct"
 
         elif self.dataset_name == "VSEC_fairness":
@@ -361,12 +361,12 @@ class DatasetWrapper:
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/VSEC_for_fairness.csv", split="train"
             )
-            self.source = "text"
+            self.context = "text"
             self.target = "correct"
 
         # Reasoning
         elif self.dataset_name == "synthetic_natural":
-            self.task = "reasoning_synthetic""
+            self.task = "reasoning_synthetic"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_natural.csv", split="train"
             )
@@ -374,7 +374,7 @@ class DatasetWrapper:
             self.target = "target"
 
         elif self.dataset_name == "synthetic_induction":
-            self.task = "reasoning_synthetic""
+            self.task = "reasoning_synthetic"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_induction.csv", split="train"
             )
@@ -382,7 +382,7 @@ class DatasetWrapper:
             self.target = "target"
 
         elif self.dataset_name == "synthetic_pattern":
-            self.task = "reasoning_synthetic""
+            self.task = "reasoning_synthetic"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_pattern_match.csv", split="train"
             )
@@ -390,7 +390,7 @@ class DatasetWrapper:
             self.target = "target"
 
         elif self.dataset_name == "synthetic_induction":
-            self.task = "reasoning_synthetic""
+            self.task = "reasoning_synthetic"
             self.dataset = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_variable_substitution.csv", split="train"
             )
