@@ -359,7 +359,6 @@ CALIBRAION_INSTRUCTION = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "Hãy đọc kĩ ngữ cảnh và lựa chọn đáp án đúng cho câu hỏi. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"choice\": `câu trả lời của bạn là \"A\" hoặc \"B\" hoặc \"C\" hoặc \"D\"`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` }} ```\n"
             "{few_shot}\n"
             "Ngữ cảnh: ''' {context} '''\n"
             "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
