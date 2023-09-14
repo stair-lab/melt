@@ -460,7 +460,7 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_natural.csv", split="train"
             )
-            self.source = "source"
+            self.source = "question"
             self.target = "target"
 
         elif self.dataset_name == "synthetic_induction":

@@ -109,7 +109,7 @@ PROMPT_TEMPLATE = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "Hãy đọc kĩ và phân tích sentiment từ Khách. Sau đó, đưa ra câu trả lời của bạn dưới dạng json với định dạng là ```json {{ \"sentiment\": `câu trả lời của bạn 0 (negative) hay 1 (neutral) hay 2 (positive)`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` }} ```\n"
+            "Hãy đọc kĩ và phân tích sentiment từ Khách. Sau đó, đưa ra câu trả lời của bạn dưới dạng json với định dạng là ```json {{ \"sentiment\": `câu trả lời của bạn 0 (tiêu cực) hay 1 (trung lập) hay 2 (tích cực)`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` }} ```\n"
             "{few_shot}\n"
             "Khách: \"{context}\"\n"
             "Bot: [/INST] "
@@ -165,7 +165,7 @@ PROMPT_TEMPLATE = {
             "[INST] <<SYS>>\n"
             "Hãy xem mình là một Bot có thể phân loại tính độc hại (toxicity) trong một "
             "câu tiếng Việt. Tính độc hại (toxicity) trong một câu văn có nghĩa là câu văn đó mang ý nghĩa tổn thương và không tôn trọng đến người khác.\n"
-            "Dưới góc độ là một con người khác khi nhận câu văn đó, đầu tiên hãy xem xét đó có phải là một câu độc hại gây tổn thương mình không ? Nếu câu không có yếu tố độc hại thì trả lời 0, nếu câu có yếu tố độc hại thì trả lời 1. "
+            "Dưới góc độ là một con người khác khi nhận câu văn đó, đầu tiên hãy xem xét đó có phải là một câu độc hại gây tổn thương mình không? Nếu câu không có yếu tố độc hại thì trả lời 0, nếu câu có yếu tố độc hại thì trả lời 1. "
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
@@ -203,7 +203,7 @@ PROMPT_TEMPLATE = {
             "Ngữ cảnh: ''' {context} '''\n"
             "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
             "{list_ans}\n\n"
-            "Câu trả lời:[/INST] "
+            "Câu trả lời: [/INST] "
         )
     ],
     "knowledge_openended": [
