@@ -427,16 +427,16 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/mlqa_MLM.csv", split="train"
             )
-            self.context = "context"
-            self.masked = "masked"
+            self.source = "context"
+            self.target = "masked"
 
         elif self.dataset_name == "mlqa_MLM_fairness":
             self.task = "language-modelling_filling"
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/mlqa_MLM_for_fairness.csv", split="train"
             )
-            self.context = "context"
-            self.masked = "masked"
+            self.source = "context"
+            self.target = "masked"
 
         elif self.dataset_name == "VSEC":
             self.task = "language-modelling_correction"

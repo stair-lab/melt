@@ -56,7 +56,7 @@ PROMPT_TEMPLATE = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{document}\"\n"
             "Bot: [/INST] "
         ),
@@ -69,7 +69,7 @@ PROMPT_TEMPLATE = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{document}\"\n"
             "Bot: [/INST] "
         ),
@@ -82,7 +82,7 @@ PROMPT_TEMPLATE = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{context}\"\n"
             "Bot: [/INST] "
         ),
@@ -95,7 +95,7 @@ PROMPT_TEMPLATE = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{context}\"\n"
             "Bot: [/INST] "
         ),
@@ -110,9 +110,9 @@ PROMPT_TEMPLATE = {
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
             "Hãy đọc kĩ và phân tích sentiment từ Khách. Sau đó, đưa ra câu trả lời của bạn dưới dạng json với định dạng là ```json {{ \"sentiment\": `câu trả lời của bạn 0 (tiêu cực) hay 1 (trung lập) hay 2 (tích cực)`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` }} ```\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "text-classification_vsmec": [
@@ -130,9 +130,9 @@ PROMPT_TEMPLATE = {
             "    \"emotion\": `câu trả lời của bạn là 0 cho Sadness hay 1 cho Surprise hay 2 cho Disgust hay 3 cho Fear hay 4 cho Anger hay 5 cho Other hay 6 cho Enjoyment`,\n"
             "    \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1`\n"
             "}}\n```\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "text-classification_atis": [
@@ -155,9 +155,9 @@ PROMPT_TEMPLATE = {
             "15 cho 'flight_no' hoặc 16 cho 'restriction'`,\n"
             "    \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1`\n"
             "}}\n```\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "toxic-detection_ViCTSD": [
@@ -170,9 +170,9 @@ PROMPT_TEMPLATE = {
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
             "Hãy đọc kĩ và phân tích tính độc hại từ đầu vào của Khách. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json { \"toxicity_level\": `câu trả lời của bạn là 0 (non-toxic statement) hoặc 1 (toxic statement)`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` } ```\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "toxic-detection_ViHSD": [
@@ -185,9 +185,9 @@ PROMPT_TEMPLATE = {
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
             "Hãy đọc kĩ và phân tích tính độc hại từ đầu vào của Khách. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json { \"toxicity_level\": `câu trả lời của bạn là 0 (non-toxic statement) hoặc 1 (toxic statement) hoặc 2 (very toxic statement)`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` } ```\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "knowledge_mtpchoice": [
@@ -198,12 +198,12 @@ PROMPT_TEMPLATE = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
+            "{few_shot}"
             "Hãy đọc kĩ ngữ cảnh và lựa chọn đáp án đúng cho câu hỏi. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"choice\": `câu trả lời của bạn là \"A\" hoặc \"B\" hoặc \"C\" hoặc \"D\"`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` }} ```\n"
-            "{few_shot}\n"
             "Ngữ cảnh: ''' {context} '''\n"
             "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
             "{list_ans}\n\n"
-            "Câu trả lời: [/INST] "
+            "Câu trả lời:[/INST] "
         )
     ],
     "knowledge_openended": [
@@ -214,10 +214,8 @@ PROMPT_TEMPLATE = {
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
             "Hãy đọc kĩ ngữ cảnh và lựa chọn đáp án đúng cho câu hỏi. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"choice\": `câu trả lời của bạn là \"A\" hoặc \"B\" hoặc \"C\" hoặc \"D\"`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` }} ```\n"
-            "{few_shot}\n"
-            "Ngữ cảnh: ''' {context} '''\n"
-            "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
-            "{list_ans}\n\n"
+            "{few_shot}"
+            "Câu hỏi: {question}\n"
             "Câu trả lời:[/INST] "
         )
     ],
@@ -225,25 +223,25 @@ PROMPT_TEMPLATE = {
         "[INST] <<SYS>>\n"
         "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
         "<</SYS>>\n\n"
-        "{few_shot}\n"
+        "{few_shot}"
         "Khách: ```\n"
         "Câu hỏi: {question}\n"
         "Đoạn văn: {passage}\n"
         "Đoạn văn trên có thể trả lời câu hỏi không?\n"
         "```\n"
-        "Bot: [/INST] "
+        "Bot:[/INST] "
     ],
     "reasoning_synthetic": [
         (
             "[INST] <<SYS>>\n"
             "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
             "<</SYS>>\n\n"
-            "Hãy giải dựa vào `Quy luật` được cho để suy luận ra quy tắc. Sau đó, đưa ra câu trả lời của bạn dưới dạng json với định dạng là ```json {{ \"answer\": câu trả lời của bạn, \"confident_level\": độ tự tin của bạn trong khoảng từ 0 tới 1 }} ```\n"
-            "{few_shot}\n"
+            "Hãy dựa vào `Quy luật` được cho để suy luận ra quy tắc. Sau đó, đưa ra câu trả lời của bạn dưới dạng json với định dạng là ```json {{ \"answer\": câu trả lời của bạn, \"confident_level\": độ tự tin của bạn trong khoảng từ 0 tới 1 }} ```\n"
+            "{few_shot}"
             "Quy luật: ```\n"
             "{rule}\n"
             "```\n"
-            "Kết quả: [/INST] "
+            "Kết quả:[/INST] "
         )
     ],
     "reasoning_math": [
@@ -252,12 +250,12 @@ PROMPT_TEMPLATE = {
             "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
             "Bạn hãy giải bài toán được cho bên dưới, câu trả lời càng đơn giản càng tốt và kèm thêm độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1.\n"
             "<</SYS>>\n\n"
-            "Hãy giải bài toán trước theo từng bước. Sau đó, đưa ra câu trả lời của bạn dưới dạng json với định dạng là ```json {{ \"answer\": câu trả lời của bạn, \"confident_level\": độ tự tin của bạn trong khoảng từ 0 tới 1 }} ```"
-            "{few_shot}\n"
+            "Hãy giải bài toán trước theo từng bước. Sau đó, đưa ra câu trả lời của bạn dưới dạng json với định dạng là ```json {{ \"answer\": câu trả lời của bạn, \"confident_level\": độ tự tin của bạn trong khoảng từ 0 tới 1 }} ```\n"
+            "{few_shot}"
             "Bài toán: ```\n"
             "{rule}\n"
             "```\n"
-            "Lời giải: [/INST] "
+            "Lời giải:[/INST] "
         )
     ],
 }
@@ -288,9 +286,9 @@ CALIBRAION_INSTRUCTION = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "text-classification_vsmec": [
@@ -302,9 +300,9 @@ CALIBRAION_INSTRUCTION = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "text-classification_atis": [
@@ -318,7 +316,7 @@ CALIBRAION_INSTRUCTION = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Khách: \"{context}\"\n"
             "Bot: [/INST] "
         ),
@@ -345,7 +343,7 @@ CALIBRAION_INSTRUCTION = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
+            "{few_shot}"
             "Ngữ cảnh: ''' {context} '''\n"
             "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
             "{list_ans}\n\n"
@@ -359,10 +357,8 @@ CALIBRAION_INSTRUCTION = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
-            "Ngữ cảnh: ''' {context} '''\n"
-            "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
-            "{list_ans}\n\n"
+            "{few_shot}"
+            "Câu hỏi: {question}\n"
             "Câu trả lời:[/INST] "
         )
     ],
@@ -371,7 +367,8 @@ CALIBRAION_INSTRUCTION = {
             "[INST] <<SYS>>\n"
             "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
+            "Hãy dựa vào `Quy luật` được cho để suy luận ra quy tắc\n"
+            "{few_shot}"
             "Quy luật: ```\n"
             "{rule}\n"
             "```\n"
@@ -384,7 +381,8 @@ CALIBRAION_INSTRUCTION = {
             "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
             "Bạn hãy giải bài toán được cho bên dưới, câu trả lời càng đơn giản càng tốt và kèm thêm độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1.\n"
             "<</SYS>>\n\n"
-            "{few_shot}\n"
+            "Hãy giải bài toán theo từng bước. Sau đó, đưa ra câu trả lời của bạn.\n"
+            "{few_shot}"
             "Bài toán: ```\n"
             "{rule}\n"
             "```\n"

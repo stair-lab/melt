@@ -28,7 +28,6 @@ def save_to_csv(data, name):
 if __name__ == "__main__":
     parser = HfArgumentParser(ScriptArguments)
     script_args = parser.parse_args_into_dataclasses()[0]
-
     # Load dataset (you can process it here)
     dataset_wrapper = DatasetWrapper(
         dataset_name=script_args.dataset_name,
@@ -96,5 +95,6 @@ if __name__ == "__main__":
 
     eval_pipeline.run(
         ds_wrapper=dataset_wrapper, ds_loader=dataset_loader,
-        saving_fn=save_results, start_idx=start_idx
+        saving_fn=save_results, start_idx=start_idx,
+        few_shot=script_args.fewshot_prompting
     )
