@@ -58,7 +58,7 @@ PROMPT_TEMPLATE = {
             "<</SYS>>\n\n"
             "{few_shot}"
             "Khách: \"{document}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "translation_vien": [
@@ -71,7 +71,7 @@ PROMPT_TEMPLATE = {
             "<</SYS>>\n\n"
             "{few_shot}"
             "Khách: \"{document}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "language-modelling_filling": [
@@ -148,13 +148,13 @@ PROMPT_TEMPLATE = {
             "<</SYS>>\n\n"
             "Hãy đọc kĩ và phân tích cảm xúc từ Khách theo từng bước. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là \n"
             "```json\n"
-            "{{\n"
+            "{\n"
             "    \"tag\": `câu trả lời của bạn là 0 cho 'flight' hoặc 1 cho 'airfare' hoặc 2 cho 'ground_service' hoặc 3 cho 'day_name' hoặc 4 cho 'meal' hoặc 5 cho 'airport' hoặc "
             "6 cho 'airline' hoặc 7 cho 'flight_time' hoặc 8 cho 'city' hoặc 9 cho 'ground_fare' hoặc "
             "10 cho 'quantity' hoặc 11 cho 'abbreviation' hoặc 12 cho 'distance' hoặc 13 cho 'aircraft' hoặc 14 cho 'capacity' hoặc "
             "15 cho 'flight_no' hoặc 16 cho 'restriction'`,\n"
             "    \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1`\n"
-            "}}\n```\n"
+            "}\n```\n"
             "{few_shot}"
             "Khách: \"{context}\"\n"
             "Bot:[/INST] "
@@ -198,8 +198,8 @@ PROMPT_TEMPLATE = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "{few_shot}"
             "Hãy đọc kĩ ngữ cảnh và lựa chọn đáp án đúng cho câu hỏi. Sau đó, đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"choice\": `câu trả lời của bạn là \"A\" hoặc \"B\" hoặc \"C\" hoặc \"D\"`, \"confident_level\": `độ tự tin cho câu trả lời của bạn trong khoảng từ 0 tới 1` }} ```\n"
+            "{few_shot}"
             "Ngữ cảnh: ''' {context} '''\n"
             "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
             "{list_ans}\n\n"
@@ -220,15 +220,13 @@ PROMPT_TEMPLATE = {
         )
     ],
     "information-retrieval": [
-        "[INST] <<SYS>>\n"
+       "[INST] <<SYS>>\n"
         "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
         "<</SYS>>\n\n"
         "{few_shot}"
-        "Khách: ```\n"
-        "Câu hỏi: {question}\n"
-        "Đoạn văn: {passage}\n"
-        "Đoạn văn trên có thể trả lời câu hỏi không?\n"
-        "```\n"
+        "Văn bản: ''' {passage} '''\n"
+        "Câu hỏi: ''' {question} '''\n"
+        "Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\n"
         "Bot:[/INST] "
     ],
     "reasoning_synthetic": [
@@ -318,7 +316,7 @@ CALIBRAION_INSTRUCTION = {
             "<</SYS>>\n\n"
             "{few_shot}"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "toxic-detection": [
@@ -332,7 +330,7 @@ CALIBRAION_INSTRUCTION = {
             "<</SYS>>\n\n"
             "{few_shot}\n"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "knowledge_mtpchoice": [
@@ -347,7 +345,7 @@ CALIBRAION_INSTRUCTION = {
             "Ngữ cảnh: ''' {context} '''\n"
             "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
             "{list_ans}\n\n"
-            "Câu trả lời: [/INST] "
+            "Câu trả lời:[/INST] "
         )
     ],
     "knowledge_openended": [
@@ -372,7 +370,7 @@ CALIBRAION_INSTRUCTION = {
             "Quy luật: ```\n"
             "{rule}\n"
             "```\n"
-            "Kết quả: [/INST] "
+            "Kết quả:[/INST] "
         )
     ],
     "reasoning_math": [
@@ -386,7 +384,7 @@ CALIBRAION_INSTRUCTION = {
             "Bài toán: ```\n"
             "{rule}\n"
             "```\n"
-            "Lời giải: [/INST] "
+            "Lời giải:[/INST] "
         )
     ],
 }
