@@ -2,7 +2,18 @@ import os
 import pandas as pd
 from datasets import load_dataset
 from tqdm import tqdm
-from gcloud_utils import translate_text
+import sys
+
+
+service = sys.argv[1]
+if service == "gcloud":
+    from gcloud_utils import translate_text
+    prefix = "GCP"
+elif service == "azure":
+    from azure_utils import translate_text
+    prefix = "AZR"
+else:
+    raise ValueError("Service must be 'gcloud' or 'azure'")
 
 
 def create_dataset(training=False):
@@ -17,10 +28,13 @@ def create_dataset(training=False):
     m7 = load_dataset("lighteval/MATH", "precalculus", split=split)
 
     dataset = {'problem': [], 'level': [], 'type': [], 'solution': []}
+    save_path = 'MATH_training' if training else 'MATH'
 
     for header in dataset.keys():
         for i in range(1, 8):
             dataset[header].extend(eval(f"m{i}")[header])
+    df = pd.DataFrame(dataset)
+    df.to_csv(f'./Original/{save_path}_original.csv', index=False)
 
     # Translate dataset problem and solution from English to Vietnamese
     # with batch size 10
@@ -28,27 +42,33 @@ def create_dataset(training=False):
     new_problem = []
     new_solution = []
     for i in tqdm(range(0, len(dataset["problem"]), batch_size)):
-        response = translate_text(
+        response_problem = translate_text(
             list_text=dataset["problem"][i:i+batch_size], project_id="ura-llama")
-        for translation in response.translations:
-            new_problem.append(translation.translated_text)
+        new_problem.extend(response_problem)
 
-        response = translate_text(
+        response_solution = translate_text(
             list_text=dataset["solution"][i:i+batch_size], project_id="ura-llama")
-        for translation in response.translations:
-            new_solution.append(translation.translated_text)
+        new_solution.extend(response_solution)
 
     dataset["problem"] = new_problem
     dataset["solution"] = new_solution
 
     df = pd.DataFrame(dataset)
-    save_path = './MATH_training.csv' if training else './MATH.csv'
-    df.to_csv(save_path, index=False)
+    df.to_csv(f'./{prefix}/{save_path}.csv', index=False)
 
 
-if not os.path.exists('./MATH.csv'):
+if not os.path.exists(f'./{prefix}/MATH.csv'):
     print("Creating test dataset...")
     create_dataset(training=False)
-if not os.path.exists('./MATH_training.csv'):
+if not os.path.exists(f'./{prefix}/MATH_training.csv'):
     print("Creating training dataset...")
     create_dataset(training=True)
+
+# Filter only Level 1 problems
+df = pd.read_csv(f'./{prefix}/MATH.csv')
+df = df[df['level'] == "Level 1"]
+df.to_csv(f'./{prefix}/math_level1.csv', index=False)
+
+df = pd.read_csv(f'./{prefix}/MATH_training.csv')
+df = df[df['level'] == "Level 1"]
+df.to_csv(f'./{prefix}/math_level1_training.csv', index=False)

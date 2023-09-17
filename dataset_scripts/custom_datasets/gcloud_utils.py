@@ -27,4 +27,12 @@ def translate_text(
         }
     )
 
-    return response
+    results = [
+        translation.translated_text for translation in response.translations
+    ]
+
+    return results
+
+
+if __name__ == '__main__':
+    print(translate_text(["Hello world", "I love you"]))

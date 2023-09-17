@@ -460,6 +460,9 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_natural.csv", split="train"
             )
+            self.dataset_training = load_dataset(
+                "csv", data_files="training_datasets/synthetic_reasoning_natural.csv", split="train"
+            )
             self.source = "question"
             self.target = "target"
 
@@ -467,6 +470,9 @@ class DatasetWrapper:
             self.task = "reasoning_synthetic"
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_induction.csv", split="train"
+            )
+            self.dataset_training = load_dataset(
+                "csv", data_files="training_datasets/synthetic_reasoning_induction.csv", split="train"
             )
             self.source = "source"
             self.target = "target"
@@ -476,6 +482,9 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_pattern_match.csv", split="train"
             )
+            self.dataset_training = load_dataset(
+                "csv", data_files="training_datasets/synthetic_reasoning_pattern_match.csv", split="train"
+            )
             self.source = "source"
             self.target = "target"
 
@@ -484,14 +493,25 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/synthetic_reasoning_variable_substitution.csv", split="train"
             )
+            self.dataset_training = load_dataset(
+                "csv", data_files="training_datasets/synthetic_reasoning_variable_substitution.csv", split="train"
+            )
             self.source = "source"
             self.target = "target"
 
-        elif self.dataset_name == "math_level1":
+        elif self.dataset_name.startswith("math_level1"):
             self.task = "reasoning_math"
+            subset = self.dataset_name.split("_")[-1]
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/math_level1.csv", split="train"
             )
+            self.dataset_testing = self.dataset_testing.filter(
+                lambda x: x["type"] == subset)
+            self.dataset_training = load_dataset(
+                "csv", data_files="training_datasets/math_level1.csv", split="train"
+            )
+            self.dataset_training = self.dataset_training.filter(
+                lambda x: x["type"] == subset)
             self.question = "problem"
             self.type = "type"
             self.answer = "solution"
