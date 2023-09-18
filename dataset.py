@@ -1,5 +1,5 @@
 from datasets import load_dataset
-from prompt_template import PROMPT_TEMPLATE, CALIBRAION_INSTRUCTION
+from prompt_template import PROMPT_TEMPLATE, CALIBRATION_INSTRUCTION
 
 
 def eval_keys(keys):

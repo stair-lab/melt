@@ -220,7 +220,7 @@ PROMPT_TEMPLATE = {
         )
     ],
     "information-retrieval": [
-       "[INST] <<SYS>>\n"
+        "[INST] <<SYS>>\n"
         "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
         "<</SYS>>\n\n"
         "{few_shot}"
@@ -259,7 +259,7 @@ PROMPT_TEMPLATE = {
 }
 
 
-CALIBRAION_INSTRUCTION = {
+CALIBRATION_INSTRUCTION = {
     "question-answering": [
         (
             "[INST] <<SYS>>\n"
@@ -350,7 +350,7 @@ CALIBRAION_INSTRUCTION = {
     ],
     "knowledge_openended": [
         (
-             "[INST] <<SYS>>\n"
+            "[INST] <<SYS>>\n"
             "Hãy xem mình là một Bot thông minh, sử dụng kiến thức thông thường trong cuộc sống để thực hiện nhiệm vụ sau. "
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
