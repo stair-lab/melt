@@ -1,0 +1,1001 @@
+source, target
+“Quy tắc: + Z = X | Thay thế: X bằng “” ngựa “”, Z bằng “” việt quất “"”, + việt quất = ngựa
+“Quy tắc: Y + Y + Y = | Thay thế: Y bằng “” nho “"”, nho + nho + nho =
+“Quy tắc: Y * Z Y - | Thay thế: Y bằng “” lê “”, Z bằng “” việt quất “"”, lê * quả việt quất -
+“Quy tắc: Y X = Y - | Thay thế: X bằng “” cá voi “”, Y bằng “” cò “"”, cá voi cò = cò -
+“Quy tắc: Y Y - = + Y | Thay thế: Y bằng “” chim cánh cụt đào “"”, chim cánh cụt đào đào đào - = + chim cánh cụt đào
+“Quy tắc: + Z Y - = | Thay thế: Y bằng “” việt quất “”, Z bằng “” con dấu táo “"”, + con dấu táo việt quất - =
+“Quy tắc: = X Z = + | Thay thế: X bằng “” cò “”, Z bằng “” cá mập “"”, = cá mập cò = +
+“Quy tắc: - Y X Z = | Thay thế: X bằng “” ngựa vằn “”, Y bằng “” cá mập “”, Z bằng “” đào “”, - cá mập ngựa vằn đào =
+“Quy tắc: = Y * + Z | Thay thế: Y bằng “" trâu cá mập "”, Z bằng “" dưa hấu "”, = trâu cá mập * + dưa hấu
+“Quy tắc: - - Y + Z | Thay thế: Y bằng “" chuột chuột “”, Z bằng “" trâu ngựa "”, - - chuột chuột + trâu ngựa
+“Quy tắc: = Z X - | Thay thế: X bằng “” ngựa vằn “”, Z bằng “” đại bàng “"”, = ngựa vằn đại bàng -
+“Quy tắc: - = Y = X | Thay thế: X bằng “” nho “”, Y bằng “” nho “"”, - = nho = nho
+“Quy tắc: X = + Z - X | Thay thế: X bằng “” nho “”, Z bằng “” sư tử “"”, nho = + sư tử - nho
+“Quy tắc: * = Z X | Thay thế: X bằng “” lê chim cánh cụt “”, Z bằng “” cò lê “"”, * = cò lê chim cánh cụt lê lê
+“Quy tắc: = + X Y Z | Thay thế: X bằng “" cò đại bàng "”, Y bằng “" chuối "”, Z bằng “" chuối dâu "”, = + cò đại bàng chuối chuối dâu
+“Quy tắc: Z Z * + | Thay thế: Z bằng “” ngựa vằn blackberry “"”, ngựa vằn blackberry blackberry * +
+“Quy tắc: Y - = Y | Thay thế: Y bằng “” kiwi “"”, kiwi - = kiwi
+“Quy tắc: X + Z Y = | Thay thế: X bằng “" cá voi dâu "”, Y bằng “" cò "”, Z bằng “" ngựa vằn "”, cá voi dâu tây + cò ngựa vằn =
+“Quy tắc: * * Z Y - | Thay thế: Y bằng “” ngựa vằn “”, Z bằng “” chuối “"”, * * ngựa vằn chuối -
+“Quy tắc: Y X * - X + | Thay thế: X bằng “” cò việt quất “”, Y bằng “” dâu ngựa vằn “"”, cò việt quất dâu vằn * - cò việt quất +
+“Quy tắc: Y - X - Y | Thay thế: X bằng “” dâu đen dưa hấu “”, Y bằng “” rắn hổ mang “"”, rắn hổ mang - dưa hấu dâu đen - rắn hổ mang
+“Quy tắc: * X + = Z | Thay thế: X bằng “" táo trâu "”, Z bằng “" chim cánh cụt "”, * trâu táo + = chim cánh cụt
+“Quy tắc: * Y Z = Y | Thay thế: Y bằng “” lê blackberry “”, Z bằng “” nho blackberry “”, * lê dâu đen nho = lê dâu đen
+“Quy tắc: = X + X = | Thay thế: X bằng “” táo dâu “"”, = dâu táo + dâu tây táo =
+“Quy tắc: Y * - - X | Thay thế: X bằng “” cá mập việt quất “”, Y bằng “” con dấu chuột “"”, con dấu chuột * - - cá mập việt quất
+“Quy tắc: + X Y Y + + | Thay thế: X bằng “” chuột “”, Y bằng “” chuối lê “"”, + chuột chuối lê chuối lê +
+“Quy tắc: X X Z = - - | Thay thế: X bằng “" trâu việt quất "”, Z bằng “" cá mập ngựa vằn "”, trâu việt quất việt quất trâu cá mập ngựa vằn = - -
+“Quy tắc: Y Y = - Z | Thay thế: Y bằng “” chuối chuối “”, Z bằng “” rắn hổ mang “"”, chuối chuối chuối chuối chuối = - rắn hổ mang
+“Quy tắc: X * * X | Thay thế: X bằng “” cá voi “"”, cá voi * * cá voi
+“Quy tắc: * X + - Z | Thay thế: X bằng “” đại bàng cá voi “”, Z bằng “” rắn hổ mang lê “"”, * đại bàng cá voi + - rắn hổ mang lê
+“Quy tắc: = + X Z + | Thay thế: X bằng “” cò “”, Z bằng “” cò “"”, = + cò +
+“Quy tắc: * + Y + X Z | Thay thế: X bằng “” dâu tây “”, Y bằng “” táo dâu đen “”, Z bằng “” lê “”, * + táo blackberry + lê dâu
+“Quy tắc: + Z Y * Z = | Thay thế: Y bằng “” việt quất “”, Z bằng “” chuối việt quất “"”, + quả việt quất chuối việt quất * chuối việt quất =
+“Quy tắc: Z - Y + Y | Thay thế: Y bằng “” kiwi “”, Z bằng “” chuột “"”, chuột - kiwi + kiwi
+“Quy tắc: - = + Z Y | Thay thế: Y bằng “” cá mập cá mập “”, Z bằng “” cá voi lê “"”, - = + cá mập cá mập voi lê
+“Quy tắc: = Z = X | Thay thế: X bằng “" chuột "”, Z bằng “" đại bàng trâu "”, = đại bàng trâu = chuột
+“Quy tắc: Y = Y = = | Thay thế: Y bằng “” cò “"”, cò = cò = =
+“Quy tắc: - Y X - | Thay thế: X bằng “” dưa hấu “”, Y bằng “” chuối “”, - dưa hấu chuối -
+“Quy tắc: + * X + Z | Thay thế: X bằng “" chuối “”, Z bằng “" ngựa "”, + * chuối + ngựa
+“Quy tắc: Y Y = X - - | Thay thế: X bằng “” nho blackberry “”, Y bằng “” ngựa vằn “”, ngựa vằn = nho blackberry - -
+“Quy tắc: X - + Y | Thay thế: X bằng “” dưa hấu “”, Y bằng “” rắn hổ mang “"”, dưa hấu - + rắn hổ mang
+“Quy tắc: * + X Z Y | Thay thế: X bằng “” nho “”, Y bằng “” ngựa vằn “”, Z bằng “” con cò “"”, * + con dấu nho cò ngựa vằn
+“Quy tắc: X - X Z * | Thay thế: X bằng “” đại bàng “”, Z bằng “” nho lê “"”, đại bàng - nho lê đại bàng *
+“Quy tắc: = X - Z | Thay thế: X bằng “” cá voi rắn hổ mang “”, Z bằng “” rắn hổ mang “"”, = cá voi rắn hổ mang - rắn hổ mang
+“Quy tắc: - X Y + * X | Thay thế: X bằng “” lê “”, Y bằng “” sư tử “"”, - sư tử lê + * lê
+“Quy tắc: Z - = Z Z | Thay thế: Z bằng “” đại bàng “"”, đại bàng - = đại bàng
+“Quy tắc: + Y X + - | Thay thế: X bằng “” rắn hổ mang việt quất “”, Y bằng “” ngựa “"”, + rắn hổ mang việt quất ngựa + -
+“Quy tắc: X * Z = | Thay thế: X bằng “” cá voi chim cánh cụt “”, Z bằng “” cò cò “"”, cá voi chim cánh cụt * cò =
+“Quy tắc: - = X X + | Thay thế: X bằng “” chuột “"”, - = chuột chuột +
+“Quy tắc: + * Y Y | Thay thế: Y bằng “” blackberry “"”, + * blackberry blackberry
+“Quy tắc: + X = = X | Thay thế: X bằng “” dưa hấu “"”, + dưa hấu = = dưa hấu
+“Quy tắc: Z Y + - Y - | Thay thế: Y bằng “” dưa hấu “”, Z bằng “” đào “"”, dưa hấu đào + - dưa hấu -
+“Quy tắc: Z Y Z = + | Thay thế: Y bằng “” nho “”, Z bằng “” blackberry “”, blackberry nho blackberry = +
+“Quy tắc: Y Z - + | Thay thế: Y bằng “” cá voi dưa hấu “”, Z bằng “” chuột nho “"”, chuột nho cá voi dưa hấu - +
+“Quy tắc: Z Y * - Y + | Thay thế: Y bằng “” sư tử “”, Z bằng “” chim cánh cụt chuối “"”, sư tử chim cánh cụt chuối * - sư tử +
+“Quy tắc: Z - = * X | Thay thế: X bằng “” sư tử “”, Z bằng “” sư tử nho “"”, sư tử nho - = * sư tử
+“Quy tắc: - Z Y X + - | Thay thế: X bằng “” chuột “”, Y bằng “” ngựa vằn “”, Z bằng “” sư tử đào “"”, - đào sư tử ngựa vằn chuột + -
+“Quy tắc: = X + - Y | Thay thế: X bằng “” rắn hổ mang dâu “”, Y bằng “” cá mập “"”, = rắn hổ mang dâu + - cá mập
+“Quy tắc: - Z * Y | Thay thế: Y bằng “” chuột kiwi “”, Z bằng “” ngựa việt quất “"”, - ngựa việt quất * kiwi chuột
+“Quy tắc: + Y * X + | Thay thế: X bằng “” cá mập “”, Y bằng “” đào “"”, + đào * cá mập +
+“Quy tắc: Y Z - + Z | Thay thế: Y bằng “” rắn hổ mang “”, Z bằng “” cá voi việt quất “"”, cá voi việt quất rắn hổ mang - + cá voi việt quất
+“Quy tắc: Z = Z - Z = | Thay thế: Z bằng “” chim cánh cụt “"”, chim cánh cụt = chim cánh cụt - chim cánh cụt =
+“Quy tắc: * * X X | Thay thế: X bằng “” đại bàng rắn hổ mang “"”, * * * đại bàng rắn hổ mang
+“Quy tắc: * Y Y * | Thay thế: Y bằng “” cá voi dưa hấu “"”, * cá voi dưa hấu cá voi dưa hấu *
+“Quy tắc: Z X Y * * | Thay thế: X bằng “" cá mập "”, Y bằng “" đại bàng ngựa "”, Z bằng “" sư tử sư tử "”, đại bàng ngựa cá mập sư tử * * *
+“Quy tắc: = X Y = X | Thay thế: X bằng “” cá voi “”, Y bằng “” đại bàng “"”, = đại bàng cá voi = cá voi
+“Quy tắc: + Z Y X - | Thay thế: X bằng “” ngựa vằn blackberry “”, Y bởi “” blackberry “”, Z bằng “” lê “”, + lê dâu đen ngựa vằn -
+“Quy tắc: Y * X X * | Thay thế: X bằng “" rắn hổ mang trâu "”, Y bằng “" rắn hổ mang nho "”, rắn hổ mang nho * rắn hổ mang trâu rắn hổ mang trâu *
+“Quy tắc: Z = Y + X | Thay thế: X bằng “” kiwi việt quất “”, Y bằng “” trâu “”, Z bằng “” dâu tây “"”, dâu tây = trâu + kiwi việt quất
+“Quy tắc: * X * X * | Thay thế: X bằng “” apple “"”, * apple * apple *
+“Quy tắc: * X - Z * Y | Thay thế: X bằng “” chim cánh cụt lê “”, Y bằng “” cá voi “”, Z bằng “" trâu “"”, * chim cánh cụt lê - trâu * cá voi
+“Quy tắc: X X * * | Thay thế: X bằng “” cá voi “"”, cá voi * *
+“Quy tắc: Z - X = * | Thay thế: X bằng “” ngựa đào “”, Z bằng “” dâu chim cánh cụt “"”, chim cánh cụt dâu tây - ngựa đào = *
+“Quy tắc: Y * - Z | Thay thế: Y bằng “” chuối “”, Z bằng “” lê “"”, chuối * - lê
+“Quy tắc: Z Y * - | Thay thế: Y bằng “” cá mập mập “”, Z bằng “” rắn hổ mang hải cẩu “"”, cá mập rắn hổ mang hải cẩu * -
+“Quy tắc: = * - Y X Y | Thay thế: X bằng “" cá voi "”, Y bằng “" trâu táo "”, = * - trâu táo cá voi trâu táo
+“Quy tắc: Y - Y X * | Thay thế: X bằng “” đại bàng việt quất “”, Y bằng “” con dấu sư tử “”, sư tử hải cẩu - hải cẩu sư tử đại bàng việt quất *
+“Quy tắc: Z * X + Y + | Thay thế: X bằng “” việt quất “”, Y bằng “” đại bàng “”, Z bằng “” nho “"”, nho * việt quất + đại bàng +
+“Quy tắc: Z * X + + | Thay thế: X bằng “” cá voi “”, Z bằng “” blackberry “"”, blackberry * cá voi + +
+“Quy tắc: * Z Z - + Z | Thay thế: Z bằng “” rắn hổ mang việt quất “"”, * rắn hổ mang việt quất rắn hổ mang việt quất - + rắn hổ mang việt quất
+“Quy tắc: = * X X X | Thay thế: X bằng “” kiwi “"”, = * kiwi kiwi kiwi
+“Quy tắc: Y + Z * Y = | Thay thế: Y bằng “” đại bàng “”, Z bằng “” nho “"”, đại bàng + nho * đại bàng =
+“Quy tắc: X + - X Z | Thay thế: X bằng “” con dấu “”, Z bằng “” dưa hấu “"”, con dấu + - niêm phong dưa hấu
+“Quy tắc: X * Y - - | Thay thế: X bằng “” kiwi cá voi “”, Y bằng “” kiwi “"”, kiwi cá voi * kiwi - -
+“Quy tắc: * Y Z - Z | Thay thế: Y bằng “” cá mập “”, Z bằng “” cá voi “"”, * cá voi cá mập - cá voi
+“Quy tắc: X X - Y + | Thay thế: X bằng “” cò “”, Y bằng “” rắn hổ mang táo “"”, cò - rắn hổ mang táo +
+“Quy tắc: Y + X X - | Thay thế: X bằng “" dâu trâu "”, Y bằng “" ngựa vằn "”, ngựa vằn + trâu dâu trâu dâu tây -
+“Quy tắc: + = Y Y + Y | Thay thế: Y bằng “” nho “"”, + = nho + nho
+“Quy tắc: Z * X Y + | Thay thế: X bằng “" đào "”, Y bằng “" táo ngựa "”, Z bằng “" dâu trâu "”, dâu trâu * đào ngựa táo +
+“Quy tắc: + - Y Y | Thay thế: Y bằng “” sư tử cò “"”, + - cò sư tử cò sư tử
+“Quy tắc: = X * Z Z | Thay thế: X bằng “” cò kiwi “”, Z bằng “” cò nho “"”, = cò kiwi * cò nho
+“Quy tắc: Y * - X | Thay thế: X bằng “” con dấu cò “”, Y bằng “” rắn hổ mang “"”, rắn hổ mang * - con dấu cò
+“Quy tắc: X Z - = | Thay thế: X bằng “” chuối cá mập “”, Z bằng “” sư tử kiwi “"”, cá mập chuối kiwi sư tử - =
+“Quy tắc: = X Y + - | Thay thế: X bằng “” rắn hổ mang cá voi “”, Y bằng “” táo táo “"”, = rắn hổ mang cá voi táo táo + -
+“Quy tắc: + Z Z * X + | Thay thế: X bằng “" sư tử "”, Z bằng “" cá mập trâu ""”, + cá mập trâu trâu cá mập trâu * sư tử +
+“Quy tắc: Y Z - X * | Thay thế: X bằng “” chuột “”, Y bằng “” rắn hổ mang “”, Z bằng “” táo đào “"”, rắn hổ mang táo đào - chuột *
+“Quy tắc: Y + - * Z | Thay thế: Y bằng “” blackberry “”, Z bằng “” chim cánh cụt dâu tây “"”, blackberry + - * dâu tây chim cánh cụt
+“Quy tắc: - Y Y = * X | Thay thế: X bằng “" trâu chuột "”, Y bằng “" ngựa "”, - ngựa = * trâu chuột
+“Quy tắc: - Y - Z Z | Thay thế: Y bằng “” con dấu “”, Z bằng “” dưa hấu “”, - con dấu - dưa hấu
+“Quy tắc: Z Z Y - + | Thay thế: Y bằng “” chuối “”, Z bằng “” dâu tây “"”, chuối dâu tây - +
+“Quy tắc: Y * Z = Y | Thay thế: Y bằng “” cá voi chuối “”, Z bằng “” nho đào “"”, cá voi chuối * nho đào = cá voi chuối
+“Quy tắc: = Z + X Z = | Thay thế: X bằng “” đào “”, Z bằng “” nho “"”, = nho + nho đào =
+“Quy tắc: - Z + X + Y | Thay thế: X bằng “” đào kiwi “”, Y bằng “” sư tử “”, Z bằng “” táo ngựa “”, - táo ngựa + đào kiwi + sư tử
+“Quy tắc: + X X = - | Thay thế: X bằng “” ngựa vằn kiwi “"”, + ngựa vằn kiwi kiwi zebra = -
+“Quy tắc: + X = Y | Thay thế: X bằng “" trâu sư tử "”, Y bằng “" đào kiwi "”, + trâu sư tử = đào kiwi
+“Quy tắc: + X - Z Z | Thay thế: X bằng “” kiwi “”, Z bằng “” cá voi “"”, + kiwi - cá voi voi
+“Quy tắc: * - Y * Y | Thay thế: Y bằng “” kiwi “"”, * - kiwi * kiwi
+“Quy tắc: X * X - | Thay thế: X bằng “” cá voi “"”, cá voi * cá voi -
+“Quy tắc: Y - Z * - | Thay thế: Y bằng “” đại bàng “”, Z bằng “” cò “"”, đại bàng - cò * -
+“Quy tắc: + X Z * - | Thay thế: X bằng “” dâu tây chuột “”, Z bằng “” nho kiwi “"”, + nho kiwi dâu tây chuột * -
+“Quy tắc: * Y - Z - Y | Thay thế: Y bằng “” cò táo “”, Z bằng “” cá voi việt quất “"”, * cò táo - cá voi việt quất - táo cò
+“Quy tắc: - Y Y Z - - | Thay thế: Y bằng “” dưa hấu blackberry “”, Z bằng “” dâu trâu “”, - dưa hấu dâu đen dâu đen dâu tây trâu dâu tây - -
+“Quy tắc: X + X = | Thay thế: X bằng “” ngựa “"”, ngựa + ngựa =
+“Quy tắc: Y X Y + - + | Thay thế: X bằng “” blackberry “”, Y bằng “” cá mập ngựa “"”, cá mập ngựa blackberry cá mập ngựa + - +
+“Quy tắc: Z = + Z * | Thay thế: Z bằng “” cá mập “"”, cá mập = + cá mập *
+“Quy tắc: X + + X Z | Thay thế: X bằng “” kiwi “”, Z bằng “” rắn hổ mang ngựa “"”, kiwi + rắn hổ mang ngựa kiwi
+“Quy tắc: - Z Z * = | Thay thế: Z bằng “” chuối kiwi “"”, - chuối kiwi chuối kiwi kiwi * =
+“Quy tắc: = X Z + - | Thay thế: X bằng “” ngựa vằn “”, Z bằng “” kiwi kiwi “"”, = ngựa vằn kiwi kiwi + -
+“Quy tắc: + Z X + = | Thay thế: X bằng “” hải cẩu cá mập “”, Z bằng “” rắn hổ mang kiwi “"”, + hải cẩu cá mập kiwi rắn hổ mang + =
+“Quy tắc: * X + X | Thay thế: X bằng “” sư tử đào “"”, * sư tử đào + sư tử đào
+“Quy tắc: * Y Y X * | Thay thế: X bằng “” blackberry buffalo “”, Y bằng “” blueberry “"”, * blueberry blueberry blackberry buffalo *
+“Quy tắc: X + Z + | Thay thế: X bằng “" ngựa sư tử "”, Z bằng “" cá voi "”, ngựa sư tử + cá voi +
+“Quy tắc: = Y - X - | Thay thế: X bằng “” chuột “”, Y bằng “” rắn hổ mang “"”, = rắn hổ mang - chuột -
+“Quy tắc: Y * = Z - | Thay thế: Y bằng “” chuối “”, Z bằng “” việt quất “"”, chuối * = việt quất -
+“Quy tắc: * X X - - | Thay thế: X bằng “” cò dưa hấu “"”, * cò dưa hấu dưa hấu - -
+“Quy tắc: Y + = Y Y | Thay thế: Y bằng “” chuột “"”, chuột + = chuột
+“Quy tắc: + Z + - Z | Thay thế: Z bằng “” chuột ngựa vằn “"”, + chuột ngựa vằn + - chuột ngựa vằn
+“Quy tắc: - - X Z | Thay thế: X bằng “” con dấu “”, Z bằng “” đại bàng “"”, - - con dấu đại bàng
+“Quy tắc: = * Y = Z X | Thay thế: X bằng “” kiwi ngựa vằn “”, Y bằng “” dưa hấu “”, Z bằng “” cò “"”, = * dưa hấu = cò ngựa vằn kiwi
+“Quy tắc: * Z = * X Z | Thay thế: X bằng “" rắn hổ mang "”, Z bằng “" cò trâu "”, * trâu cò = * rắn hổ mang cò trâu
+“Quy tắc: X * X Z * | Thay thế: X bằng “" đại bàng sư tử "”, Z bằng “" táo trâu "”, đại bàng sư tử * sư tử đại bàng trâu táo *
+“Quy tắc: X X + Z - | Thay thế: X bằng “” chuột cá mập “”, Z bằng “” việt quất “"”, chuột cá mập chuột cá mập + quả việt quất -
+“Quy tắc: * Z X - Y - | Thay thế: X bằng “” cá voi dâu “”, Y bằng “” chim cánh cụt chuột “”, Z bằng “” táo “”, * cá voi dâu tây táo - chim cánh cụt chuột -
+“Quy tắc: = Z Y * | Thay thế: Y bằng “” chuột cá voi “”, Z bằng “” việt quất “"”, = chuột cá voi việt quất *
+“Quy tắc: - + X Y X - | Thay thế: X bằng “” con dấu việt quất “”, Y bằng “” con dấu ngựa vằn “"”, - + con dấu việt quất con dấu ngựa vằn việt quất -
+“Quy tắc: - * Z Y * | Thay thế: Y bằng “” nho “”, Z bằng “” kiwi sư tử “"”, - * nho kiwi sư tử *
+“Quy tắc: Z * + Z Y | Thay thế: Y bằng “” kiwi “”, Z bằng “” kiwi dâu “"”, kiwi dâu tây * + kiwi dâu
+“Quy tắc: - Z = Y | Thay thế: Y bằng “” cò “”, Z bằng “” sư tử “"”, - sư tử = cò
+“Quy tắc: Y X X + = | Thay thế: X bằng “” dâu tây kiwi “”, Y bằng “” sư tử “”, kiwi dâu tây sư tử kiwi + =
+“Quy tắc: - - Z Y + | Thay thế: Y bằng “” con dấu dưa hấu “”, Z bằng “” lê “”, - - hải cẩu dưa hấu lê +
+“Quy tắc: = Y Z Y = | Thay thế: Y bằng “” cá mập “”, Z bằng “” dâu tây “"”, = cá mập dâu tây =
+“Quy tắc: * Z + X = Z | Thay thế: X bằng “” blackberry “”, Z bằng “” rắn hổ mang “"”, * rắn hổ mang + blackberry = rắn hổ mang
+“Quy tắc: Z Z + Y + | Thay thế: Y bằng “” việt quất “”, Z bằng “” táo cá mập “"”, táo cá mập táo táo + việt quất +
+“Quy tắc: Z X * + = Z | Thay thế: X bằng “” con dấu “”, Z bằng “” dâu tây “"”, con dấu dâu tây * + = dâu
+“Quy tắc: = + X + X | Thay thế: X bằng “” đại bàng ngựa vằn “"”, = + đại bàng vằn + đại bàng ngựa vằn
+“Quy tắc: - Z Y * = Z | Thay thế: Y bằng “” lê “”, Z bằng “” chuột “"”, - lê chuột * = chuột
+“Quy tắc: Z Z + * | Thay thế: Z bằng “” cá mập “"”, cá mập + *
+“Quy tắc: Z Y * * * Z | Thay thế: Y bằng “” cá mập “”, Z bằng “” cá voi blackberry “"”, cá mập voi blackberry * * * cá voi đen
+“Quy tắc: - * X X Z | Thay thế: X bằng “” chim cánh cụt đào “”, Z bằng “” con dấu “"”, - * chim cánh cụt đào chim cánh cụt đào hải cẩu
+“Quy tắc: Z = Y Y + | Thay thế: Y bằng “” nho “”, Z bằng “” con dấu kiwi “"”, con dấu kiwi = nho nho +
+“Quy tắc: Y X Y = = - | Thay thế: X bằng “" việt quất "”, Y bằng “" trâu "”, trâu việt quất trâu = -
+“Quy tắc: X X Y = - | Thay thế: X bằng “” blackberry horse “”, Y bởi “” blackberry “”, blackberry horse blackberry horse blackberry blackberry = -
+“Quy tắc: Z * Y Z * | Thay thế: Y bằng “” ngựa vằn “”, Z bằng “” cò blackberry “"”, cò blackberry * cò ngựa vằn blackberry *
+“Quy tắc: + Y Y = = | Thay thế: Y bằng “” đại bàng cò “"”, + cò đại bàng cò đại bàng = =
+“Quy tắc: Z * - Y | Thay thế: Y bằng “” chim cánh cụt blackberry “”, Z bởi “” blackberry rat “"”, blackberry rat * - chim cánh cụt blackberry
+“Quy tắc: Z Z * - | Thay thế: Z bằng “” dưa hấu chim cánh cụt “"”, dưa hấu chim cánh cụt dưa hấu chim cánh cụt * -
+“Quy tắc: Y Z + Y - + | Thay thế: Y bằng “” táo dâu “”, Z bằng “" trâu "”, táo dâu trâu + táo dâu tây - +
+“Quy tắc: Y * Z Y * - | Thay thế: Y bằng “” lê blackberry “”, Z bằng “” apple rat “"”, lê blackberry * apple rat pear blackberry * -
+“Quy tắc: * + Y X Z | Thay thế: X bằng “” dưa hấu “”, Y bằng “” blackberry “”, Z bằng “” ngựa vằn “"”, * + blackberry dưa hấu ngựa vằn
+“Quy tắc: Z Y + Z - | Thay thế: Y bằng “” cò táo “”, Z bằng “” nho “"”, táo cò nho + nho -
+“Quy tắc: - Z - X * | Thay thế: X bằng “” dâu tây “”, Z bằng “” việt quất “"”, - việt quất - dâu tây *
+“Quy tắc: = Y Z + | Thay thế: Y bằng “” chuột đào “”, Z bằng “” chim cánh cụt dâu tây “"”, = chim cánh cụt dâu tây chuột đào +
+“Quy tắc: - = Z Y | Thay thế: Y bằng “” con dấu táo “”, Z bằng “” dâu tây ngựa “"”, - = ngựa dâu hải cẩu táo
+“Quy tắc: Z Y * - | Thay thế: Y bằng “” chuối dưa hấu “”, Z bằng “” việt quất “"”, chuối dưa hấu việt quất * -
+“Quy tắc: Y X X * - | Thay thế: X bằng “” việt quất “”, Y bằng “” con dấu chuột “”, con dấu chuột việt quất việt quất * -
+“Quy tắc: - X * Y | Thay thế: X bằng “” rắn hổ mang “”, Y bằng “” con dấu ngựa “"”, - rắn hổ mang * con dấu ngựa
+“Quy tắc: Y + Y + Y - | Thay thế: Y bằng “” chuối rắn hổ mang “"”, chuối rắn hổ mang + chuối rắn hổ mang + chuối rắn hổ mang -
+“Quy tắc: Z * Y * = Z | Thay thế: Y bằng “” dâu đào “”, Z bằng “” cá voi dưa hấu “"”, cá voi dưa hấu * dâu đào * = cá voi dưa hấu
+“Quy tắc: = - X - X | Thay thế: X bằng “” cá voi cò “"”, = - cá voi cò - cá voi cò
+“Quy tắc: * * Z + Z Y | Thay thế: Y bằng “” chuột “”, Z bằng “” hải cẩu cá voi “"”, * * * hải cẩu cá voi + chuột hải cẩu cá voi
+“Quy tắc: Y - = Y = | Thay thế: Y bằng “” apple “"”, apple - = apple =
+“Quy tắc: X Y + * = | Thay thế: X bằng “” sư tử đào “”, Y bằng “” con dấu lê “"”, con dấu lê đào sư tử + * =
+“Quy tắc: + + Z X | Thay thế: X bằng “” cá mập sư tử “”, Z bằng “” cò “"”, + + cá mập sư tử cò
+“Quy tắc: Y Y + Y * | Thay thế: Y bằng “” sư tử kiwi “"”, sư tử kiwi kiwi sư tử + sư tử kiwi *
+“Quy tắc: = Y = Z | Thay thế: Y bằng “” cò blackberry “”, Z bằng “” chuối việt quất “"”, = blackberry cò = chuối việt quất
+“Quy tắc: - Z Z * X + | Thay thế: X bằng “” cò “”, Z bằng “” dâu tây “"”, - dâu tây * cò +
+“Quy tắc: Z = Y = Z | Thay thế: Y bằng “” chim cánh cụt cò “”, Z bằng “” sư tử dưa hấu “"”, sư tử dưa hấu = chim cánh cụt cò = sư tử dưa hấu
+“Quy tắc: Y + * = Y | Thay thế: Y bằng “” ngựa vằn lê “"”, ngựa vằn lê + * = ngựa vằn lê
+“Quy tắc: X - Y * Y | Thay thế: X bằng “” sư tử đào “”, Y bằng “” blackberry “"”, sư tử đào - blackberry * blackberry
+“Quy tắc: X * - X Z | Thay thế: X bằng “” dưa hấu lê “”, Z bằng “” sư tử đào “"”, dưa hấu lê * - lê dưa hấu đào sư tử
+“Quy tắc: * + X Y X | Thay thế: X bằng “” chim cánh cụt “”, Y bởi “” chim cánh cụt “"”, * + chim cánh cụt chim cánh cụt
+“Quy tắc: + Z Z = X | Thay thế: X bằng “” ngựa “”, Z bằng “” kiwi đào “"”, + kiwi đào đào kiwi = ngựa
+“Quy tắc: Z + X X + | Thay thế: X bằng “” cá voi ngựa vằn “”, Z bằng “” dưa hấu “"”, dưa hấu + cá voi ngựa vằn +
+“Quy tắc: X + Z = - | Thay thế: X bằng “" lê "”, Z bằng “" chim cánh cụt trâu ""”, lê + chim cánh cụt trâu = -
+“Quy tắc: + Z + Y Y | Thay thế: Y bằng “” cá voi sư tử “”, Z bằng “” đại bàng “"”, + đại bàng + cá voi sư tử
+“Quy tắc: X = + Z Y + | Thay thế: X bằng “" dâu ngựa "”, Y bằng “" trâu ngựa vằn "”, Z bằng “" việt quất "”, dâu ngựa = + trâu ngựa vằn việt quất +
+“Quy tắc: X X = + X | Thay thế: X bằng “" trâu "”, trâu trâu = + trâu
+“Quy tắc: + Z X - Z | Thay thế: X bằng “” cá voi việt quất “”, Z bằng “” chuột “"”, + cá voi chuột việt quất - chuột
+“Quy tắc: Y Z + X * - | Thay thế: X bằng “” dâu tây “”, Y bằng “” rắn hổ mang kiwi “”, Z bằng “” chim cánh cụt ngựa vằn “"”, chim cánh cụt vằn rắn hổ mang kiwi + dâu tây * -
+“Quy tắc: * Z Z Y - | Thay thế: Y bằng “” ngựa “”, Z bằng “” đại bàng “"”, * đại bàng ngựa -
+“Quy tắc: Z + Y - Z | Thay thế: Y bằng “” con dấu nho “”, Z bằng “” cò chuột “"”, cò chuột + con dấu nho - cò chuột
+“Quy tắc: X Y + - | Thay thế: X bằng “” sư tử “”, Y bằng “” blueberry blackberry “"”, sư tử việt quất đen + -
+“Quy tắc: = X - X - | Thay thế: X bằng “” dưa hấu chuột “"”, = dưa hấu chuột - dưa hấu chuột -
+“Quy tắc: - Z Y = | Thay thế: Y bằng “" rắn hổ mang "”, Z bằng “" trâu cá mập "”, - rắn hổ mang trâu cá mập =
+“Quy tắc: - Z = X * Y | Thay thế: X bằng “” sư tử “”, Y bằng “” cá voi cá mập “”, Z bằng “” dâu chuối “"”, - chuối dâu = sư tử * cá mập
+“Quy tắc: X + Z Y * | Thay thế: X bằng “” đại bàng ngựa “”, Y bằng “” kiwi “”, Z bằng “” dưa hấu việt quất “"”, đại bàng ngựa + dưa hấu việt quất kiwi *
+“Quy tắc: Y Y + + + | Thay thế: Y bằng “” táo nho “"”, táo nho táo táo + + +
+“Quy tắc: + X X X - | Thay thế: X bằng “” lê “"”, + lê lê lê -
+“Quy tắc: Z - Y X + | Thay thế: X bằng “” ngựa vằn lê “”, Y bằng “” cò táo “”, Z bằng “” rắn hổ mang “"”, rắn hổ mang - cò táo lê ngựa vằn +
+“Quy tắc: X Y Y + * | Thay thế: X bằng “” chim cánh cụt “”, Y bằng “” quả việt quất lê “"”, chim cánh cụt lê việt quất lê việt quất + *
+“Quy tắc: Y X * Y = | Thay thế: X bằng “” sư tử chuột “”, Y bằng “” lê “”, sư tử chuột lê * lê =
+“Quy tắc: Z = * - Z Y | Thay thế: Y bằng “” lê nho “”, Z bằng “” đào “"”, đào = * - lê nho đào
+“Quy tắc: = Z Z * | Thay thế: Z bằng “” nho táo “"”, = nho táo táo *
+“Quy tắc: * Z Z * + | Thay thế: Z bằng “” chuối “"”, * chuối chuối* +
+“Quy tắc: - Z Y = - | Thay thế: Y bằng “” dưa hấu cò “”, Z bằng “” lê “”, - dưa hấu cò lê = -
+“Quy tắc: + X * X | Thay thế: X bằng “” hải cẩu cá mập “"”, + hải cẩu cá mập * hải cẩu cá mập
+“Quy tắc: Z + Z Y * - | Thay thế: Y bằng “” cò “”, Z bằng “” cò đào “"”, cò đào + cò đào đào * -
+“Quy tắc: = - Z = Z | Thay thế: Z bằng “” sư tử chuối “"”, = - sư tử chuối = sư tử chuối
+“Quy tắc: - * X Z Z * | Thay thế: X bằng “" trâu "”, Z bằng “" nho "”, - * nho trâu *
+“Quy tắc: Z - X + | Thay thế: X bằng “” đại bàng “”, Z bằng “” cá voi chim cánh cụt “"”, cá voi chim cánh cụt - đại bàng +
+“Quy tắc: Y - X = Z * | Thay thế: X bằng “” đào “”, Y bằng “” rắn hổ mang kiwi “”, Z bằng “” ngựa “"”, rắn hổ mang kiwi - đào = ngựa *
+“Quy tắc: Y - - - + X Y | Thay thế: X bằng “” ngựa “”, Y bằng “” ngựa vằn “"”, ngựa vằn - - + ngựa vằn
+“Quy tắc: Z + Y Z * | Thay thế: Y bằng “” đại bàng ngựa vằn “”, Z bằng “” việt quất “"”, việt quất + đại bàng vằn việt quất *
+“Quy tắc: X + * - Z | Thay thế: X bằng “” đại bàng cá mập “”, Z bằng “” cá mập “"”, đại bàng cá mập + * - cá mập
+“Quy tắc: Y Y = + | Thay thế: Y bằng “” kiwi “"”, kiwi = +
+“Quy tắc: Y X * - Z | Thay thế: X bằng “” táo “”, Y bằng “” cá voi hải cẩu “”, Z bằng “” chim cánh cụt “"”, hải cẩu cá voi táo * - chim cánh cụt
+“Quy tắc: + Z + X X | Thay thế: X bằng “” chuột “”, Z bằng “” việt quất “"”, + việt quất + chuột
+“Quy tắc: - * Y - X Y | Thay thế: X bằng “” dâu đen “”, Y bởi “” chim cánh cụt ngựa “"”, - * chim cánh cụt ngựa - chim cánh cụt ngựa dâu đen
+“Quy tắc: + - * Z Y | Thay thế: Y bằng “” việt quất “”, Z bằng “” ngựa vằn “"”, + - * việt quất ngựa vằn
+“Quy tắc: = X * Z X | Thay thế: X bằng “” cá voi “”, Z bằng “” blackberry “"”, = cá voi * cá voi đen
+“Quy tắc: Y + = Y * | Thay thế: Y bằng “” cá mập “"”, cá mập + = cá mập *
+“Quy tắc: Z * + Y | Thay thế: Y bằng “” đại bàng “”, Z bằng “” táo “"”, táo * + đại bàng
+“Quy tắc: Z Z + Z + | Thay thế: Z bằng “” dưa hấu “"”, dưa hấu dưa hấu + dưa hấu +
+“Quy tắc: = = Y + X Y | Thay thế: X bằng “” rắn hổ mang sư tử “”, Y bằng “” việt quất “"”, = việt quất + sư tử rắn hổ mang việt quất
+“Quy tắc: Y X Y - * | Thay thế: X bằng “” nho ngựa vằn “”, Y bằng “” táo ngựa “”, táo ngựa vằn táo ngựa vằn táo - *
+“Quy tắc: + * Y Z Z = | Thay thế: Y bằng “” sư tử “”, Z bằng “” sư tử kiwi “"”, + * sư tử kiwi sư tử kiwi sư tử =
+“Quy tắc: Z - = Z | Thay thế: Z bằng “” đại bàng “"”, đại bàng - = đại bàng
+“Quy tắc: Z * X = Z | Thay thế: X bằng “” cá mập hải cẩu “”, Z bằng “” cá mập chim cánh cụt “"”, cá mập chim cánh cụt * cá mập hải cẩu = cá mập chim cánh cụt
+“Quy tắc: Z + Y + Z * | Thay thế: Y bằng “” con dấu chim cánh cụt “”, Z bằng “” rắn hổ mang lê “"”, rắn hổ mang lê + hải cẩu chim cánh cụt + rắn hổ mang lê *
+“Quy tắc: * X + Y Z | Thay thế: X bằng “” táo dâu “”, Y bằng “” dâu tây “”, Z bằng “” kiwi “”, * táo dâu tây + kiwi dâu
+“Quy tắc: + X - Z | Thay thế: X bằng “” con dấu táo “”, Z bằng “” chim cánh cụt “"”, + con dấu táo - chim cánh cụt
+“Quy tắc: Z Y = + | Thay thế: Y bằng “” cá voi “”, Z bằng “” việt quất “"”, cá voi việt quất = +
+“Quy tắc: = X X X * * | Thay thế: X bằng “” cò dưa hấu “"”, = cò dưa hấu dưa hấu cò dưa hấu cò * *
+“Quy tắc: + * = Z Z | Thay thế: Z bằng “” rắn hổ mang “"”, + * = rắn hổ mang
+“Quy tắc: + * X Z | Thay thế: X bằng “” blackberry “”, Z bằng “” đại bàng cá mập “"”, + * đại bàng cá mập blackberry
+“Quy tắc: = Z Y = | Thay thế: Y bằng “” chim cánh cụt “”, Z bằng “” con dấu “"”, = con dấu chim cánh cụt =
+“Quy tắc: - * X * X Y | Thay thế: X bằng “” chuối “”, Y bằng “” dâu đen việt quất “"”, - * chuối* chuối dâu đen việt quất
+“Quy tắc: = Z * - Z | Thay thế: Z bằng “” ngựa “"”, = ngựa * - ngựa
+“Quy tắc: * + Z X | Thay thế: X bằng “” lê “”, Z bằng “” con dấu nho “"”, * + quả lê con dấu nho
+“Quy tắc: - X Y * | Thay thế: X bằng “” nho “”, Y bằng “” con dấu “"”, - con dấu nho *
+“Quy tắc: X Z + = | Thay thế: X bằng “” ngựa vằn “”, Z bằng “” cò “"”, cò vằn + =
+“Quy tắc: = * - Z Z | Thay thế: Z bằng “” chim cánh cụt “"”, = * - chim cánh cụt
+“Quy tắc: X + X * + | Thay thế: X bằng “” chuối “"”, chuối + chuối * +
+“Quy tắc: Z Z Y * = | Thay thế: Y bằng “” lê blackberry “”, Z bằng “” cá mập “"”, cá mập đen lê * =
+“Quy tắc: Z = Z = Z = | Thay thế: Z bằng “” cá mập “"”, cá mập = cá mập = cá mập =
+“Quy tắc: + = Y X | Thay thế: X bằng “” kiwi ngựa vằn “”, Y bằng “” hải cẩu lê “"”, + = hải cẩu ngựa vằn kiwi
+“Quy tắc: * X X * Y | Thay thế: X bằng “” dâu tây kiwi “”, Y bằng “” đại bàng “"”, * dâu kiwi dâu tây kiwi * đại bàng
+“Quy tắc: + X Y - + Y | Thay thế: X bằng “" nho "”, Y bằng “" cò trâu ""”, + cò trâu nho - + cò trâu
+“Quy tắc: Y * Y Z * | Thay thế: Y bằng “” con dấu “”, Z bằng “” chuột dâu “"”, con dấu * con dấu dâu tây *
+“Quy tắc: * - * Y X Y | Thay thế: X bằng “” con dấu sư tử “”, Y bởi “” chim cánh cụt “"”, * - * chim cánh cụt con dấu sư tử chim cánh cụt
+“Quy tắc: Z Y + - | Thay thế: Y bằng “” chuối “”, Z bằng “” blackberry “"”, chuối blackberry + -
+“Quy tắc: * = X Z | Thay thế: X bằng “” apple “”, Z bằng “” sư tử đại bàng “"”, * = sư tử đại bàng táo
+“Quy tắc: Z = X Z + | Thay thế: X bằng “” lê “”, Z bằng “” ngựa nho “"”, ngựa nho = ngựa nho lê +
+“Quy tắc: Z X * * | Thay thế: X bằng “” ngựa vằn “”, Z bằng “” đào “"”, ngựa vằn đào * *
+“Quy tắc: - Y - X | Thay thế: X bằng “” đại bàng chuối “”, Y bằng “” lê sư tử “"”, - lê sư tử - đại bàng chuối
+“Quy tắc: Z - = * X Z | Thay thế: X bằng “" trâu "”, Z bằng “" ngựa vằn "”, ngựa vằn - = * ngựa vằn trâu
+“Quy tắc: Y = - Z | Thay thế: Y bằng “” cá mập “”, Z bằng “” kiwi “"”, cá mập = - kiwi
+“Quy tắc: = = = X Z Z | Thay thế: X bằng “” ngựa vằn “”, Z bằng “” sư tử việt quất “"”, = = = sư tử ngựa vằn blueberry sư tử việt quất
+“Quy tắc: X * Z = | Thay thế: X bằng “” đại bàng chuột “”, Z bằng “” việt quất “"”, đại bàng chuột * việt quất =
+“Quy tắc: X Y + - - Z | Thay thế: X bằng “” lê táo “”, Y bằng “” trâu “”, Z bằng “” con dấu blackberry “"”, trâu táo lê + - - con dấu blackberry
+“Quy tắc: + Z X Y * | Thay thế: X bằng “” dưa hấu dâu “”, Y bằng “” nho táo “”, Z bằng “” cá voi “”, + cá voi dâu tây dưa hấu táo nho *
+“Quy tắc: X * - = Y X | Thay thế: X bằng “” chim cánh cụt “”, Y bằng “” đại bàng hải cẩu “"”, chim cánh cụt * - = hải cẩu chim cánh cụt đại bàng
+“Quy tắc: Z = - Z Y | Thay thế: Y bằng “” ngựa vằn “”, Z bằng “” cò “"”, cò = - ngựa vằn cò
+“Quy tắc: X Y Z - + | Thay thế: X bằng “" nho trâu "”, Y bằng “" táo "”, Z bằng “" nho "”, nho trâu nho - +
+“Quy tắc: X * + Y | Thay thế: X bằng “” việt quất “”, Y bằng “” chuối “"”, việt quất * + chuối
+“Quy tắc: * = X Y + | Thay thế: X bằng “” lê lê “”, Y bằng “” con dấu táo “"”, * = lê lê con dấu táo +
+“Quy tắc: Y Y = = X | Thay thế: X bằng “” cá voi dưa hấu “”, Y bằng “” dâu dưa hấu “"”, dưa hấu dâu tây dưa hấu dâu tây = = cá voi dưa hấu
+“Quy tắc: = X X Y = | Thay thế: X bằng “” lê “”, Y bằng “” blackberry “”, = lê lê blackberry =
+“Quy tắc: Y * = Z | Thay thế: Y bằng “” con dấu nho “”, Z bằng “” dưa hấu rắn hổ mang “"”, con dấu nho * = dưa hấu rắn hổ mang
+“Quy tắc: Y - X + = Z | Thay thế: X bằng “” con dấu “”, Y bằng “” sư tử “”, Z bằng “” nho “"”, sư tử - con dấu + = nho
+“Quy tắc: Y * + Y Y | Thay thế: Y bằng “” đại bàng chuột “"”, đại bàng chuột * + đại bàng chuột đại bàng
+“Quy tắc: * Y - = X Y | Thay thế: X bằng “” dưa hấu “”, Y bằng “” sư tử “"”, * sư tử - = sư tử dưa hấu
+“Quy tắc: X Y Z - * - | Thay thế: X bằng “” cá mập dâu “”, Y bằng “” ngựa vằn chuột “”, Z bằng “” ngựa vằn cá voi “"”, cá mập dâu tây chuột ngựa vằn ngựa vằn - * -
+“Quy tắc: Y Y - = Y | Thay thế: Y bằng “” cá voi “"”, cá voi - = cá voi
+“Quy tắc: Z Y - = + X | Thay thế: X bằng “” đại bàng “”, Y bằng “” táo “”, Z bằng “” cò “"”, cò táo - = + đại bàng
+“Quy tắc: Z * - X | Thay thế: X bằng “” cò việt quất “”, Z bằng “” đào sư tử “"”, đào sư tử * - cò việt quất
+“Quy tắc: Z = Y Z + | Thay thế: Y bằng “” chim cánh cụt “”, Z bằng “” lê “"”, lê = chim cánh cụt lê +
+“Quy tắc: Z - = Z Z * | Thay thế: Z bằng “” chim cánh cụt kiwi “"”, chim cánh cụt kiwi - = chim cánh cụt kiwi kiwi chim cánh cụt *
+“Quy tắc: = Y Y X * | Thay thế: X bằng “” ngựa kiwi “”, Y bằng “” chuột “"”, = chuột kiwi ngựa *
+“Quy tắc: * Y Z Y = | Thay thế: Y bằng “” blackberry blackberry “”, Z bằng “” nho dưa hấu “”, * blackberry blackberry dưa hấu nho blackberry blackberry blackberry =
+“Quy tắc: Z X = Z * | Thay thế: X bằng “” táo táo “”, Z bằng “” nho cá mập “"”, táo nho cá mập = nho cá mập *
+“Quy tắc: Z - Y X + - | Thay thế: X bằng “" trâu "”, Y bằng “" táo dưa hấu "”, Z bằng “" chuối việt quất "”, chuối việt quất - táo dưa hấu trâu + -
+“Quy tắc: Z Z = + | Thay thế: Z bằng “” dâu đào “"”, đào dâu đào dâu = +
+“Quy tắc: X - + X - | Thay thế: X bằng “" chuột trâu "”, chuột trâu - + chuột trâu -
+“Quy tắc: Z = Y Y * | Thay thế: Y bằng “” chuột cá voi “”, Z bằng “” ngựa cá voi “"”, ngựa cá voi = chuột voi voi *
+“Quy tắc: = X - X * X | Thay thế: X bằng “” cá mập đào “"”, = cá mập đào - cá mập đào * cá mập đào
+“Quy tắc: + + Y Y Z | Thay thế: Y bằng “” rắn hổ mang “”, Z bằng “” blackberry “"”, + + rắn hổ mang blackberry
+“Quy tắc: Y Z * X * | Thay thế: X bằng “” kiwi việt quất “”, Y bằng “” chuối “”, Z bằng “” chuột “”, chuột chuối * kiwi việt quất *
+“Quy tắc: Z = Z - | Thay thế: Z bằng “” nho “"”, nho = nho -
+“Quy tắc: X X - * - | Thay thế: X bằng “” apple “"”, táo táo - * -
+“Quy tắc: X * Z - + Y | Thay thế: X bằng “” sư tử đào “”, Y bằng “” đại bàng cò “”, Z bằng “” chuột “”, sư tử đào * chuột - + đại bàng cò
+“Quy tắc: + Y + Z * Z | Thay thế: Y bằng “” ngựa vằn chim cánh cụt “”, Z bằng “” dưa hấu “"”, + ngựa vằn chim cánh cụt + dưa hấu * dưa hấu
+“Quy tắc: * X = Z | Thay thế: X bằng “” cá mập “”, Z bằng “” chuối “"”, * cá mập = = chuối
+“Quy tắc: - - Y Z X | Thay thế: X bằng “” chuối việt quất “”, Y bằng “” nho “”, Z bằng “” dâu tây lê “”, - - lê nho dâu tây chuối việt quất
+“Quy tắc: + Y = X | Thay thế: X bằng “" cò ngựa "”, Y bằng “" con dấu chuối "”, + con dấu chuối = ngựa cò
+“Quy tắc: * X = + Z X | Thay thế: X bằng “” nho “”, Z bằng “” việt quất “"”, * nho = + quả việt quất
+“Quy tắc: Y = X * Y | Thay thế: X bằng “” nho “”, Y bằng “” lê “”, lê = nho * lê
+“Quy tắc: Y Z + Y * * | Thay thế: Y bằng “” chim cánh cụt “”, Z bằng “” dâu táo “"”, chim cánh cụt táo dâu tây + chim cánh cụt * *
+“Quy tắc: - Z Y - + Z | Thay thế: Y bằng “” con dấu chuột “”, Z bằng “” chuối “”, - con dấu chuột chuối - + chuối
+“Quy tắc: - Y Y - + | Thay thế: Y bằng “” cá mập “"”, - cá mập - +
+“Quy tắc: + Z = + Z | Thay thế: Z bằng “” kiwi “"”, + kiwi = + kiwi
+“Quy tắc: - - Z X + | Thay thế: X bằng “” dâu nho “”, Z bằng “” ngựa vằn việt quất “"”, - - dâu tây ngựa vằn việt quất +
+“Quy tắc: = + Y X | Thay thế: X bằng “” ngựa “”, Y bằng “” dưa hấu chuột “"”, = + chuột dưa hấu ngựa
+“Quy tắc: * = Z * Y | Thay thế: Y bằng “” cá voi “”, Z bằng “” ngựa “"”, * = ngựa* cá voi
+“Quy tắc: Z - + X | Thay thế: X bằng “” ngựa vằn rắn hổ mang “”, Z bằng “" ngựa lê “"”, ngựa lê - + ngựa vằn rắn hổ mang
+“Quy tắc: - Z = X | Thay thế: X bằng “” việt quất “”, Z bằng “” rắn hổ mang dưa hấu “"”, - rắn hổ mang dưa hấu = quả việt quất
+“Quy tắc: * Y + + Z | Thay thế: Y bằng “” đại bàng việt quất “”, Z bằng “” nho “"”, * đại bàng việt quất + + nho
+“Quy tắc: X - Z Y - | Thay thế: X bằng “” táo đào “”, Y bằng “” cò đào “”, Z bằng “” cá voi dưa hấu “”, táo đào - dưa hấu cá voi cò đào -
+“Quy tắc: - * X + Y Z | Thay thế: X bằng “” sư tử dâu “”, Y bằng “” kiwi kiwi “”, Z bằng “” nho đào “"”, - * sư tử dâu tây + kiwi kiwi nho
+“Quy tắc: Z X * = | Thay thế: X bằng “" chuột chuối "”, Z bằng “" trâu nho "”, chuột chuối trâu nho * =
+“Quy tắc: X Y Y + - = | Thay thế: X bằng “” chim cánh cụt chuối “”, Y bằng “” táo “"”, chuối chim cánh cụt táo táo + - =
+“Quy tắc: Z X = - | Thay thế: X bằng “” cò chuối “”, Z bằng “” sư tử đại bàng “"”, đại bàng sư tử cò chuối = -
+“Quy tắc: * Y + Y Z | Thay thế: Y bằng “” đại bàng sư tử “”, Z bằng “” cá voi dưa hấu “"”, * đại bàng sư tử + cá voi dưa hấu đại bàng sư tử
+“Quy tắc: Z Z * Z + * | Thay thế: Z bằng “” blackberry “"”, blackberry blackberry * blackberry + *
+“Quy tắc: + * X Z Y | Thay thế: X bằng “” ngựa vằn đào “”, Y bằng “” con dấu nho “”, Z bằng “” đại bàng “"”, + * đào ngựa vằn đại bàng con dấu nho
+“Quy tắc: Y - - - + Z X | Thay thế: X bằng “” rắn hổ mang chuối “”, Y bằng “” ngựa cò “”, Z bằng “” việt quất “"”, ngựa cò - - + rắn hổ mang chuối việt quất
+“Quy tắc: - - Y * Y X | Thay thế: X bằng “” chuối “”, Y bằng “” ngựa chuột “"”, - - ngựa chuột * chuối ngựa chuột
+“Quy tắc: * Z X * - Y | Thay thế: X bằng “” nho “”, Y bằng “” nho “”, Z bằng “” quả việt quất chim cánh cụt “"”, * nho việt quất chim cánh cụt * - nho
+“Quy tắc: Y Z = + X + | Thay thế: X bằng “” táo lê “”, Y bằng “” cá mập việt quất “”, Z bằng “” dâu tây “”, cá mập việt quất dâu = + lê táo +
+“Quy tắc: = - + Y Y X | Thay thế: X bằng “” chim cánh cụt blackberry “”, Y bằng “” dưa hấu dâu tây “"”, = - + dâu tây dưa hấu dâu tây dưa hấu chim cánh cụt blackberry
+“Quy tắc: Z Y + Z = | Thay thế: Y bằng “” cá mập ngựa “”, Z bằng “” chuột chim cánh cụt “"”, chim cánh cụt chuột cá mập ngựa + chim cánh cụt chuột =
+“Quy tắc: Z = * Z - | Thay thế: Z bằng “” lê “"”, lê = * lê -
+“Quy tắc: = Z - Y = Y | Thay thế: Y bằng “” ngựa “”, Z bằng “” việt quất “"”, = việt quất - ngựa = ngựa
+“Quy tắc: Z + = X | Thay thế: X bằng “” chuột chim cánh cụt “”, Z bằng “” ngựa “"”, ngựa + = chuột chim cánh cụt
+“Quy tắc: + - Z Y | Thay thế: Y bằng “” dâu đen “”, Z bằng “” đại bàng đại bàng “"”, + - đại bàng đại bàng dâu đen
+“Quy tắc: - Z + Y X + | Thay thế: X bằng “” rắn hổ mang “”, Y bằng “” hải cẩu cá voi “”, Z bằng “” hải cẩu đại bàng “"”, - đại bàng hải cẩu + rắn hổ mang hải cẩu cá voi +
+“Quy tắc: + - Y Y Z | Thay thế: Y bằng “” dâu tây “”, Z bằng “" trâu "”, + - dâu trâu
+“Quy tắc: Y Y Y - = - | Thay thế: Y bằng “” chuối “"”, chuối chuối chuối - = -
+“Quy tắc: X X = - - X | Thay thế: X bằng “” cá voi việt quất “"”, cá voi việt quất cá voi việt quất = - - cá voi việt quất
+“Quy tắc: = Z Y = + | Thay thế: Y bằng “” đào “”, Z bằng “” chuột dưa hấu “"”, = dưa hấu chuột đào = +
+“Quy tắc: X = * X = Z | Thay thế: X bằng “” nho “”, Z bằng “” lê đào “"”, nho = * nho = lê đào
+“Quy tắc: * X - X | Thay thế: X bằng “” cá mập táo “"”, * cá mập táo - cá mập táo
+“Quy tắc: - = Z Z Z | Thay thế: Z bằng “” cò dâu “"”, - = cò dâu tây cò dâu tây
+“Quy tắc: + + Y X | Thay thế: X bằng “” chuối cá voi “”, Y bằng “” ngựa vằn “"”, + + chuối cá voi ngựa vằn
+“Quy tắc: X * - X Z * | Thay thế: X bằng “” blackberry “”, Z bằng “” dâu tây dưa hấu “"”, blackberry * - dâu đen dưa hấu *
+“Quy tắc: * Y Z + Y * | Thay thế: Y bằng “” lê “”, Z bằng “” dưa hấu đào “"”, * lê dưa hấu đào + lê *
+“Quy tắc: - Z - Z Y = | Thay thế: Y bằng “” dâu tây cá voi “”, Z bằng “” trâu dưa hấu “"”, - trâu dưa hấu - dưa hấu trâu cá voi dâu tây =
+“Quy tắc: = * Y Y * | Thay thế: Y bằng “” chuối táo “"”, = * chuối táo chuối táo táo *
+“Quy tắc: * X - + Z Y | Thay thế: X bằng “” táo “”, Y bằng “” kiwi “”, Z bằng “” dưa hấu ngựa “"”, * táo - + kiwi dưa hấu ngựa
+“Quy tắc: Z Y * Y + = | Thay thế: Y bằng “” sư tử lê “”, Z bằng “” dưa hấu việt quất “"”, dưa hấu việt quất lê sư tử * sư tử lê lê + =
+“Quy tắc: + - + Y X | Thay thế: X bằng “” kiwi “”, Y bằng “” ngựa vằn dâu “"”, + - + - + kiwi ngựa vằn
+“Quy tắc: + Y = X Z * | Thay thế: X bằng “” chim cánh cụt lê “”, Y bằng “” ngựa dâu “”, Z bằng “” đào “"”, + ngựa dâu = lê chim cánh cụt đào *
+“Quy tắc: = - Z - X | Thay thế: X bằng “” rắn hổ mang ngựa “”, Z bằng “” chim cánh cụt chuột “"”, = - chim cánh cụt chuột - rắn hổ mang
+“Quy tắc: Y - + Y | Thay thế: Y bằng “” lê blackberry “"”, lê dâu đen - + lê dâu đen
+“Quy tắc: - + Y X | Thay thế: X bằng “” trâu “”, Y bằng “” blackberry “"”, - + blackberry buffalo
+“Quy tắc: = X Y - | Thay thế: X bằng “” cò kiwi “”, Y bằng “” ngựa “"”, = ngựa cò kiwi -
+“Quy tắc: Y * Z = Z | Thay thế: Y bằng “” blackberry “”, Z bằng “” sư tử chuột “"”, blackberry * chuột sư tử = chuột sư tử
+“Quy tắc: - + Z Z | Thay thế: Z bằng “” cá mập “"”, - + cá mập
+“Quy tắc: Y Z + * | Thay thế: Y bằng “” đại bàng “”, Z bằng “” cò dưa hấu “"”, cò dưa hấu đại bàng + *
+“Quy tắc: = Y Z * * | Thay thế: Y bằng “” chuối “”, Z bằng “” cò “"”, = cò chuối * *
+“Quy tắc: - - Z Z | Thay thế: Z bằng “” cá mập “"”, - - cá mập
+“Quy tắc: - X = Y | Thay thế: X bằng “” chuối đào “”, Y bằng “” chim cánh cụt hải cẩu “"”, - chuối đào = chim cánh cụt hải cẩu
+“Quy tắc: X - + Y * | Thay thế: X bằng “” lê “”, Y bằng “” con dấu dưa hấu “"”, lê - + con dấu dưa hấu*
+“Quy tắc: Y Y = Z = * | Thay thế: Y bằng “” blackberry kiwi “”, Z bằng “” kiwi “”, blackberry kiwi blackberry kiwi = kiwi = *
+“Quy tắc: Y X * + | Thay thế: X bằng “” việt quất “”, Y bằng “” đào đào “"”, đào đào việt quất * +
+“Quy tắc: Z = - Z * | Thay thế: Z bằng “” lê ngựa vằn “"”, lê ngựa vằn = - lê ngựa vằn *
+“Quy tắc: Y * * Z = | Thay thế: Y bằng “” chuối blackberry “”, Z bằng “” cò chuối “"”, chuối blackberry * * cò chuối =
+“Quy tắc: + Y + X | Thay thế: X bằng “" ngựa ngựa "”, Y bằng “" táo "”, + táo + ngựa
+“Quy tắc: * * X X | Thay thế: X bằng “” dưa hấu “"”, * * dưa hấu dưa hấu
+“Quy tắc: Z + * Y + | Thay thế: Y bằng “” chuối cá voi “”, Z bằng “” táo “"”, táo + * chuối cá voi +
+“Quy tắc: - - + X X | Thay thế: X bằng “” sư tử “"”, - - - + sư tử
+“Quy tắc: + * Y Z Z | Thay thế: Y bằng “” apple “”, Z bằng “” ngựa vằn “"”, + * táo ngựa vằn
+“Quy tắc: * * X Y | Thay thế: X bằng “” ngựa vằn “”, Y bằng “” ngựa vằn lê “"”, * * ngựa vằn lê ngựa vằn
+“Quy tắc: X - + - X | Thay thế: X bằng “” đại bàng “"”, đại bàng - + - đại bàng
+“Quy tắc: Z X = * X | Thay thế: X bằng “” chuối nho “”, Z bằng “” cò “"”, chuối nho cò = * chuối nho
+“Quy tắc: + Z Z = + Y | Thay thế: Y bằng “” cá voi “”, Z bằng “” chuối “"”, + chuối chuối = + cá voi
+“Quy tắc: - X Z + | Thay thế: X bằng “” đại bàng “”, Z bằng “” con dấu dâu tây “"”, - hải cẩu đại bàng dâu tây +
+“Quy tắc: X - - Z Z | Thay thế: X bằng “” kiwi “”, Z bằng “” nho chuột “"”, kiwi - - nho chuột
+“Quy tắc: * - Z * Z Y | Thay thế: Y bằng “” dưa hấu lê “”, Z bằng “” con dấu chuối “"”, * - con dấu chuối * chuối hải cẩu lê dưa hấu
+“Quy tắc: = Y X - | Thay thế: X bằng “” chuối “”, Y bằng “” blackberry “"”, = chuối blackberry -
+“Quy tắc: Y X + + | Thay thế: X bằng “” sư tử chim cánh cụt “”, Y bằng “” sư tử kiwi “"”, sư tử chim cánh cụt kiwi +
+“Quy tắc: Y + Z * - Z | Thay thế: Y bằng “” cá voi “”, Z bằng “” dâu tây “"”, cá voi + dâu tây * - dâu
+“Quy tắc: X Z - = = | Thay thế: X bằng “” cá voi “”, Z bằng “” ngựa vằn “"”, ngựa vằn cá voi - = =
+“Quy tắc: - + Z X | Thay thế: X bằng “” hải cẩu cá mập “”, Z bằng “” nho “"”, - + hải cẩu cá mập nho
+“Quy tắc: Z = Y Z - | Thay thế: Y bằng “” dâu tây “”, Z bằng “” kiwi “"”, kiwi = dâu tây kiwi -
+“Quy tắc: * * Z Z = Y | Thay thế: Y bằng “” nho dâu “”, Z bằng “” ngựa vằn “"”, * * ngựa vằn = nho dâu
+“Quy tắc: + Z = X Z | Thay thế: X bằng “” blackberry “”, Z bằng “” cá mập nho “"”, + cá mập nho = cá mập nho blackberry
+“Quy tắc: * = + Y X Z | Thay thế: X bằng “" trâu "”, Y bằng “" nho sư tử "”, Z bằng “" cá mập "”, * = + sư tử nho trâu
+“Quy tắc: X + X - Y | Thay thế: X bằng “” rắn hổ mang blackberry “”, Y bằng “” sư tử “”, rắn hổ mang blackberry + rắn hổ mang blackberry - sư tử
+“Quy tắc: + Z X = | Thay thế: X bằng “” ngựa “”, Z bằng “” ngựa vằn “"”, + ngựa vằn =
+“Quy tắc: - Y Y - Y | Thay thế: Y bằng “” nho “"”, - nho nho - nho
+“Quy tắc: - X Y * | Thay thế: X bằng “" chim cánh cụt rắn hổ mang "”, Y bằng “" trâu "”, - trâu chim cánh cụt rắn hổ mang *
+“Quy tắc: + = - Y X Y | Thay thế: X bằng “” hải cẩu “”, Y bằng “” lê đại bàng “"”, + = - đại bàng lê hải cẩu dưa hấu lê đại bàng
+“Quy tắc: = X = Y X | Thay thế: X bằng “” cò “”, Y bằng “” ngựa blackberry “"”, = cò = cò ngựa blackberry
+“Quy tắc: - Y + Y | Thay thế: Y bằng “” dưa hấu “"”, - dưa hấu + dưa hấu
+“Quy tắc: Z X - - Z * | Thay thế: X bằng “” ngựa vằn cá mập “”, Z bằng “” ngựa vằn “"”, ngựa vằn cá mập ngựa vằn - - ngựa vằn *
+“Quy tắc: = = Y X - Z | Thay thế: X bằng “" trâu "”, Y bằng “" trâu việt quất "”, Z bằng “" rắn hổ mang dưa hấu "”, = = trâu trâu việt quất - rắn hổ mang dưa hấu
+“Quy tắc: X Y = + Y | Thay thế: X bằng “” việt quất “”, Y bằng “” lê sư tử “"”, lê sư tử việt quất = + lê sư tử
+“Quy tắc: Z Z * + = | Thay thế: Z bằng “” rắn hổ mang “"”, rắn hổ mang * + =
+“Quy tắc: - Y Z + - Z | Thay thế: Y bằng “" con dấu "”, Z bằng “" trâu "”, - hải cẩu trâu + - trâu
+“Quy tắc: X = - = X | Thay thế: X bằng “” quả việt quất chim cánh cụt “"”, chim cánh cụt việt quất = - = chim cánh cụt việt quất
+“Quy tắc: = Z = * Z Z | Thay thế: Z bằng “” rắn hổ mang kiwi “"”, = rắn hổ mang kiwi = * rắn hổ mang kiwi kiwi
+“Quy tắc: * = Z Z X | Thay thế: X bằng “” cá mập “”, Z bằng “” ngựa việt quất “"”, * = ngựa việt quất ngựa cá mập việt quất
+“Quy tắc: = X X - X | Thay thế: X bằng “” chim cánh cụt “"”, = chim cánh cụt - chim cánh cụt
+“Quy tắc: * Y - Y + | Thay thế: Y bằng “” quả táo đại bàng “"”, * đại bàng táo - táo đại bàng +
+“Quy tắc: + X Y - X | Thay thế: X bằng “” dưa hấu dâu “”, Y bằng “” chuột “"”, + chuột dưa hấu dâu tây - dưa hấu dâu
+“Quy tắc: Z = X - + Z | Thay thế: X bằng “” cò việt quất “”, Z bằng “” đại bàng ngựa vằn “"”, đại bàng ngựa vằn = cò việt quất - + đại bàng ngựa vằn
+“Quy tắc: Z * + Z | Thay thế: Z bằng “” chim cánh cụt việt quất “"”, chim cánh cụt việt quất * + chim cánh cụt việt quất
+“Quy tắc: X Y + Y | Thay thế: X bằng “" trâu "”, Y bằng “" chuối sư tử "”, trâu sư tử chuối + + sư tử chuối
+“Quy tắc: Y + * - Y | Thay thế: Y bằng “” ngựa chim cánh cụt “"”, ngựa chim cánh cụt + * - ngựa chim cánh cụt
+“Quy tắc: X X = - Y | Thay thế: X bằng “” chim cánh cụt chuối “”, Y bằng “” đại bàng rắn hổ mang “"”, chim cánh cụt chuối chuối chim cánh cụt = - đại bàng rắn hổ mang
+“Quy tắc: Y Y = * Z | Thay thế: Y bằng “” rắn hổ mang “”, Z bằng “” sư tử đào “"”, rắn hổ mang = * sư tử đào
+“Quy tắc: * Z = Y Y | Thay thế: Y bằng “" cá mập "”, Z bằng “" cá mập trâu "”, * cá mập trâu = cá mập mập
+“Quy tắc: * * X X | Thay thế: X bằng “” cá voi việt quất “"”, * * * cá voi việt quất
+“Quy tắc: Y Z * - X | Thay thế: X bằng “” đào “”, Y bằng “” con dấu đại bàng “”, Z bằng “” nho nho “"”, hải cẩu nho đại bàng * - đào
+“Quy tắc: + Y X Y - | Thay thế: X bằng “” nho chuột “”, Y bằng “” sư tử rắn hổ mang “"”, + rắn hổ mang sư tử rắn hổ mang nho sư tử -
+“Quy tắc: = Y Y + | Thay thế: Y bằng “” cá voi chuối “"”, = cá voi chuối cá voi chuối +
+“Quy tắc: + Y + Y - | Thay thế: Y bằng “" con dấu trâu "”, + con dấu trâu + con dấu trâu -
+“Quy tắc: * - - Y Y X | Thay thế: X bằng “” đại bàng lê “”, Y bằng “” cá voi việt quất “"”, * - - cá voi việt quất cá voi việt quất đại bàng lê
+“Quy tắc: X = + Y Z = | Thay thế: X bằng “" dâu tây "”, Y bằng “" ngựa đại bàng "”, Z bằng “" rắn hổ mang "”, dâu = + rắn hổ mang ngựa đại bàng =
+“Quy tắc: - Y Z = X | Thay thế: X bằng “” đào kiwi “”, Y bằng “” chuột cá voi “”, Z bằng “” đại bàng “”, - đại bàng chuột voi = đào kiwi
+“Quy tắc: X * - X - | Thay thế: X bằng “” blackberry “"”, blackberry * - blackberry -
+“Quy tắc: X Y - = X + | Thay thế: X bằng “” cò “”, Y bằng “” chuột cá voi “"”, chuột cá voi cò - = cò +
+“Quy tắc: Y + * Y | Thay thế: Y bằng “” cá voi chuối “"”, cá voi chuối + * cá voi chuối
+“Quy tắc: X - = X | Thay thế: X bằng “” dưa hấu kiwi “"”, dưa hấu kiwi - = dưa hấu kiwi
+“Quy tắc: + - Z Z = Z | Thay thế: Z bằng “” việt quất “"”, + - việt quất việt quất = việt quất
+“Quy tắc: Z Z * + * | Thay thế: Z bằng “” chuột chuột “"”, chuột chuột nhật* + *
+“Quy tắc: - = X X = | Thay thế: X bằng “" trâu táo "”, - = táo trâu táo trâu =
+“Quy tắc: + Z Y = + Y | Thay thế: Y bằng “” dưa hấu “”, Z bằng “” cá mập dưa hấu “"”, + dưa hấu cá mập dưa hấu = + dưa hấu
+“Quy tắc: = Y Y + Z = | Thay thế: Y bằng “” việt quất “”, Z bằng “” cò ngựa “"”, = việt quất việt quất + cò ngựa =
+“Quy tắc: = Y X - | Thay thế: X bằng “" trâu ngựa vằn "”, Y bằng “" chuối nho "”, = nho chuối ngựa vằn trâu -
+“Quy tắc: X - - Y * | Thay thế: X bằng “" rắn hổ mang trâu "”, Y bằng “" cá voi "”, rắn hổ mang trâu - - cá voi *
+“Quy tắc: + Y Z Z = | Thay thế: Y bằng “” dưa hấu “”, Z bằng “” chim cánh cụt “"”, + chim cánh cụt dưa hấu =
+“Quy tắc: - Y Y * | Thay thế: Y bằng “” việt quất “"”, - việt quất việt quất *
+“Quy tắc: Z + Y * = | Thay thế: Y bằng “” nho “”, Z bằng “” táo cá mập “"”, táo cá mập + nho * =
+“Quy tắc: Z + X Z = | Thay thế: X bằng “" đại bàng "”, Z bằng “" con dấu đại bàng "”, con dấu đại bàng + con dấu đại bàng =
+“Quy tắc: + Z Z Y = | Thay thế: Y bằng “” việt quất “”, Z bằng “” con dấu “"”, + con dấu con dấu việt quất =
+“Quy tắc: - Z + Z Z + | Thay thế: Z bằng “” chim cánh cụt “"”, - chim cánh cụt + chim cánh cụt +
+“Quy tắc: - X Y * | Thay thế: X bằng “” chuối “”, Y bằng “” dâu đào “"”, - chuối đào dâu *
+“Quy tắc: + Y Z + * X | Thay thế: X bằng “” cò “”, Y bằng “” cá voi “”, Z bằng “” táo “"”, + cá voi táo + * cò
+“Quy tắc: Z + Y + | Thay thế: Y bằng “” rắn hổ mang “”, Z bằng “” lê “"”, lê + rắn hổ mang +
+“Quy tắc: X - Z X * | Thay thế: X bằng “” kiwi “”, Z bằng “” blackberry “”, kiwi - blackberry kiwi *
+“Quy tắc: Y X X = - | Thay thế: X bằng “” lê đào “”, Y bằng “” kiwi “"”, kiwi lê đào đào đào = -
+“Quy tắc: X * Z = | Thay thế: X bằng “” cò blackberry “”, Z bằng “” lê “"”, cò blackberry * lê =
+“Quy tắc: X * * X * * | Thay thế: X bằng “" trâu kiwi "”, trâu kiwi * * trâu kiwi *
+“Quy tắc: Z - Y = Y * | Thay thế: Y bằng “” đào “”, Z bằng “” cò lê “"”, cò lê - đào = đào *
+“Quy tắc: X * Z Y * - | Thay thế: X bằng “” ngựa vằn “”, Y bằng “” chuột “”, Z bằng “” chuột cá mập “"”, ngựa vằn * chuột chuột cá mập * -
+“Quy tắc: * = Y Y | Thay thế: Y bằng “" trâu "”, * = trâu
+“Quy tắc: - X - Y Y * | Thay thế: X bằng “” cò “”, Y bằng “” đại bàng blackberry “"”, - cò - đại bàng blackberry blackberry eagle *
+“Quy tắc: = X Z - | Thay thế: X bằng “” dâu tây nho “”, Z bằng “” cá mập lê “"”, = cá mập lê dâu tây nho -
+“Quy tắc: Y * X * = | Thay thế: X bằng “” chuối blackberry “”, Y bằng “” chuột “"”, chuột * chuối blackberry * =
+“Quy tắc: = X + = Z Y | Thay thế: X bằng “” táo “”, Y bằng “” dâu rắn hổ mang “”, Z bằng “” ngựa dâu đen “"”, = táo + = dâu đen rắn hổ mang
+“Quy tắc: Z Z + X + | Thay thế: X bằng “” cá voi ngựa vằn “”, Z bằng “” táo chuối “"”, chuối táo chuối táo + cá voi ngựa vằn +
+“Quy tắc: = X Z * - Y | Thay thế: X bằng “” con dấu dâu tây “”, Y bằng “” rắn hổ mang “”, Z bằng “” chuột chuối “"”, = con dấu dâu tây chuột * - rắn hổ mang
+“Quy tắc: - Z - Z - | Thay thế: Z bằng “” cá voi “"”, - cá voi - cá voi -
+“Quy tắc: Y X + * Y | Thay thế: X bằng “” lê “”, Y bằng “” đại bàng “"”, lê đại bàng + * đại bàng
+“Quy tắc: X Y - * - Z | Thay thế: X bằng “” chuối “”, Y bằng “” cá mập “”, Z bằng “” việt quất “”, cá mập chuối - * - việt quất
+“Quy tắc: - X = Y | Thay thế: X bằng “” chuối lê “”, Y bằng “” blackberry “"”, - chuối lê = blackberry
+“Quy tắc: X - Z - Z | Thay thế: X bằng “” sư tử “”, Z bằng “” chim cánh cụt rắn hổ mang “"”, sư tử - chim cánh cụt rắn hổ mang - chim cánh cụt rắn hổ mang
+“Quy tắc: * Z + Z | Thay thế: Z bằng “” rắn hổ mang “"”, * rắn hổ mang + rắn hổ mang
+“Quy tắc: = X - + Y | Thay thế: X bằng “” dưa hấu “”, Y bằng “” nho chuối “"”, = dưa hấu - + chuối nho
+“Quy tắc: - X X = * X | Thay thế: X bằng “” chuối ngựa vằn “"”, - chuối ngựa vằn chuối = * chuối ngựa vằn
+“Quy tắc: Z = X * Z * | Thay thế: X bằng “” sư tử đào “”, Z bằng “” ngựa “"”, ngựa = sư tử đào * ngựa *
+“Quy tắc: Y = Z + X * | Thay thế: X bằng “” chuối “”, Y bằng “” dưa hấu “”, Z bằng “” đại bàng blackberry “"”, dưa hấu = đại bàng blackberry + chuối *
+“Quy tắc: + Z X - = | Thay thế: X bằng “” ngựa vằn việt quất “”, Z bằng “” con dấu “"”, + con dấu ngựa vằn việt quất - =
+“Quy tắc: * - Z X | Thay thế: X bằng “” rắn hổ mang đào “”, Z bằng “” con dấu “"”, * - con dấu rắn hổ mang đào
+“Quy tắc: X - X + Y | Thay thế: X bằng “” rắn hổ mang kiwi “”, Y bằng “” cá mập blackberry “"”, rắn hổ mang kiwi - rắn hổ mang kiwi + cá mập blackberry
+“Quy tắc: + = Z X | Thay thế: X bằng “” đào “”, Z bằng “” ngựa “"”, + = ngựa đào
+“Quy tắc: Y Z = = | Thay thế: Y bằng “” blackberry “”, Z bằng “” chuối “”, blackberry banana = =
+“Quy tắc: Y + * Z * | Thay thế: Y bằng “" hải cẩu trâu "”, Z bằng “" trâu kiwi "”, hải cẩu trâu + * trâu kiwi *
+“Quy tắc: = X Y + | Thay thế: X bằng “" trâu "”, Y bằng “" chim cánh cụt dâu "”, = dâu tây chim cánh cụt trâu +
+“Quy tắc: * + Z Y Y | Thay thế: Y bằng “” blackberry “”, Z bằng “” táo ngựa “"”, * + táo ngựa blackberry
+“Quy tắc: - X Y + - Y | Thay thế: X bằng “” blackberry “”, Y bằng “” nho việt quất “"”, - nho việt quất đen + - nho việt quất
+“Quy tắc: - Y - X = | Thay thế: X bằng “” dưa hấu “”, Y bằng “” dâu tây “"”, - dâu tây - dưa hấu =
+“Quy tắc: = Y Z X * | Thay thế: X bằng “” ngựa đại bàng “”, Y bằng “” cá mập “”, Z bằng “” đại bàng “"”, = ngựa đại bàng cá mập *
+“Quy tắc: + - X X X * | Thay thế: X bằng “” kiwi kiwi “"”, + - kiwi kiwi kiwi kiwi kiwi kiwi kiwi kiwi
+“Quy tắc: Y Z - * Z | Thay thế: Y bằng “” dâu tây kiwi “”, Z bằng “” sư tử chuối “"”, kiwi dâu chuối sư tử - * chuối sư tử
+“Quy tắc: - + Y X + | Thay thế: X bằng “” cò “”, Y bằng “” chuột kiwi “"”, - + cò chuột kiwi +
+“Quy tắc: Y Z * X + | Thay thế: X bằng “” rắn hổ mang “”, Y bằng “” blackberry “”, Z bằng “” chuột “”, chuột blackberry * rắn hổ mang +
+“Quy tắc: - Z + Y Z | Thay thế: Y bằng “” việt quất “”, Z bằng “” nho ngựa “"”, - nho ngựa+nho ngựa việt quất
+“Quy tắc: + Y = Y = | Thay thế: Y bằng “” kiwi “"”, + kiwi = kiwi =
+“Quy tắc: Z = X X | Thay thế: X bằng “” cá voi “”, Z bằng “” cá voi “"”, cá voi = = cá voi
+“Quy tắc: X Z + * | Thay thế: X bằng “” cá voi chuột “”, Z bằng “” đại bàng “"”, đại bàng cá voi chuột + *
+“Quy tắc: + Z * X X | Thay thế: X bằng “” chuối táo “”, Z bằng “” ngựa vằn “"”, + ngựa vằn * chuối táo chuối táo
+“Quy tắc: - - = X Y Y | Thay thế: X bằng “” sư tử “”, Y bằng “” blackberry blackberry “"”, - - = sư tử blackberry blackberry blackberry blackberry
+“Quy tắc: - Z + Z Z + | Thay thế: Z bằng “” con dấu “"”, - con dấu + con dấu +
+“Quy tắc: - X - X Y | Thay thế: X bằng “” chuối sư tử “”, Y bằng “” lê nho “"”, - chuối sư tử - sư tử chuối nho lê
+“Quy tắc: - Z Z X = | Thay thế: X bằng “” kiwi “”, Z bằng “” con dấu táo “”, - con dấu táo kiwi =
+“Quy tắc: * Z Z Y + = | Thay thế: Y bằng “” chuối “”, Z bằng “” lê nho “"”, * lê nho lê chuối + =
+“Quy tắc: + - X Z = Y | Thay thế: X bằng “” con dấu sư tử “”, Y bằng “” việt quất “”, Z bằng “” ngựa vằn “"”, + - hải cẩu sư tử ngựa vằn = việt quất
+“Quy tắc: X X - Z = | Thay thế: X bằng “” đào dâu đen “”, Z bằng “” cá mập “"”, đào dâu đen đào - cá mập =
+“Quy tắc: X Z * = + | Thay thế: X bằng “" rắn hổ mang "”, Z bằng “" con dấu cò "”, con dấu rắn hổ mang cò * = +
+“Quy tắc: X - + X X * | Thay thế: X bằng “" con dấu sư tử "”, con dấu sư tử - + con dấu sư tử *
+“Quy tắc: Z + X * | Thay thế: X bằng “" cò "”, Z bằng “" rắn hổ mang cá mập "”, rắn hổ mang cá mập + cò *
+“Quy tắc: = Z X = Z | Thay thế: X bằng “” chuối kiwi “”, Z bằng “” táo chuột “"”, = chuột táo chuối kiwi = táo chuột
+“Quy tắc: Y = X - * Z | Thay thế: X bằng “” chim cánh cụt dưa hấu “”, Y bằng “” cá mập “”, Z bằng “” hải cẩu chuối “”, cá mập = chim cánh cụt dưa hấu - * hải cẩu chuối
+“Quy tắc: + Y * Y | Thay thế: Y bằng “” việt quất “"”, + việt quất * việt quất
+“Quy tắc: Y - Y = | Thay thế: Y bằng “” kiwi táo “"”, kiwi táo - kiwi táo =
+“Quy tắc: + = Y Z | Thay thế: Y bằng “” sư tử “”, Z bằng “” cá mập “"”, + = cá mập sư tử
+“Quy tắc: - Y Z + | Thay thế: Y bằng “” chuối “”, Z bằng “” chuối “"”, - chuối chuối +
+“Quy tắc: * X = = X Z | Thay thế: X bằng “" cò dâu "”, Z bằng “" ngựa vằn trâu ""”, * cò dâu = = cò dâu trâu ngựa vằn
+“Quy tắc: - + Z Y | Thay thế: Y bằng “" trâu đào "”, Z bằng “" đại bàng "”, - + đại bàng trâu đào
+“Quy tắc: X Y * Z + | Thay thế: X bằng “” con dấu “”, Y bằng “” cá voi cò “”, Z bằng “” đại bàng blackberry “"”, cá voi cò hải cẩu * đại bàng blackberry +
+“Quy tắc: Z X * - * | Thay thế: X bằng “” cá mập “”, Z bằng “” kiwi “"”, cá mập kiwi * - *
+“Quy tắc: * Y Y - Y | Thay thế: Y bằng “” cá mập ngựa “"”, * cá mập ngựa cá mập ngựa - cá mập ngựa
+“Quy tắc: Z Y X * * | Thay thế: X bằng “" đào "”, Y bằng “" trâu ngựa "”, Z bằng “" việt quất "”, việt quất ngựa trâu đào * * *
+“Quy tắc: Z = X = Y | Thay thế: X bằng “” việt quất “”, Y bằng “” ngựa vằn kiwi “”, Z bằng “” nho lê “”, nho lê = việt quất = ngựa vằn kiwi
+“Quy tắc: + Y * * X | Thay thế: X bằng “” chuột đào “”, Y bằng “” nho đào “"”, + nho đào * * chuột đào
+“Quy tắc: * Y * Y X * | Thay thế: X bằng “” trâu cá voi “”, Y bằng “” việt quất “"”, * việt quất * trâu cá voi việt quất *
+“Quy tắc: - - Y = Z | Thay thế: Y bằng “” chim cánh cụt “”, Z bằng “” ngựa vằn “”, - - chim cánh cụt = ngựa vằn
+“Quy tắc: Z Y - + | Thay thế: Y bằng “" trâu trâu "”, Z bằng “" đào việt quất "”, đào việt quất trâu trâu - +
+“Quy tắc: X * Y + = Z | Thay thế: X bằng “" cá voi ngựa "”, Y bằng “" trâu "”, Z bằng “" trâu "”, cá voi ngựa * trâu + = trâu
+“Quy tắc: Y = X - | Thay thế: X bằng “” dưa hấu “”, Y bằng “” đại bàng cá voi “"”, đại bàng cá voi = dưa hấu -
+“Quy tắc: - X Z + | Thay thế: X bằng “” cò blackberry “”, Z bằng “” con dấu “"”, - con dấu cò blackberry +
+“Quy tắc: - - Z X Z | Thay thế: X bằng “” đại bàng “”, Z bằng “” cá voi chuột “"”, - - cá voi chuột đại bàng
+“Quy tắc: * Z + X Z * | Thay thế: X bằng “” đại bàng cá voi “”, Z bằng “” con cò hải cẩu “"”, * cò hải cẩu + cá voi đại bàng hải cẩu cò *
+“Quy tắc: - Y * - Z X | Thay thế: X bằng “” nho “”, Y bằng “” cá voi sư tử “”, Z bằng “” cá voi cá mập “"”, - cá voi sư tử* - nho cá mập
+“Quy tắc: X X = Y + | Thay thế: X bằng “” cá mập “”, Y bằng “” lê sư tử “"”, cá mập mập = lê sư tử +
+“Quy tắc: + Y + - Z | Thay thế: Y bằng “” nho “”, Z bằng “” ngựa “"”, + nho + - ngựa
+“Quy tắc: Z Y X = - + | Thay thế: X bằng “" ngựa sư tử "”, Y bằng “" chim cánh cụt "”, Z bằng “" trâu chuối "”, chuối trâu chim cánh cụt sư tử ngựa = - +
+“Quy tắc: Y Y - X + | Thay thế: X bằng “” chuột “”, Y bằng “” rắn hổ mang “"”, rắn hổ mang - chuột +
+“Quy tắc: Y * + X + | Thay thế: X bằng “” táo “”, Y bằng “” cá mập “"”, cá mập * + táo +
+“Quy tắc: * * Z X Z | Thay thế: X bằng “” kiwi “”, Z bằng “” nho cá voi “"”, * * nho cá voi kiwi
+“Quy tắc: = = Z Y * Y | Thay thế: Y bằng “” kiwi “”, Z bằng “” nho chuối “"”, = = chuối nho kiwi * kiwi
+“Quy tắc: Y X = = | Thay thế: X bằng “” con dấu “”, Y bằng “” đại bàng “"”, con dấu đại bàng = =
+“Quy tắc: Y = Z Z - + | Thay thế: Y bằng “” dâu đen “”, Z bằng “” ngựa “”, dâu đen = ngựa - +
+“Quy tắc: Z X = + * | Thay thế: X bằng “” cá mập “”, Z bằng “” ngựa rắn hổ mang “"”, cá mập ngựa rắn hổ mang = + *
+“Quy tắc: Y + Z - Y - | Thay thế: Y bằng “” rắn hổ mang dâu “”, Z bằng “” chuột “"”, rắn hổ mang dâu tây + chuột - rắn hổ mang dâu tây -
+“Quy tắc: X * - Y * | Thay thế: X bằng “” ngựa đại bàng “”, Y bằng “” con dấu sư tử “"”, ngựa đại bàng * - con dấu sư tử*
+“Quy tắc: X Y + - Z | Thay thế: X bằng “” cá voi chuối “”, Y bằng “” dâu tây kiwi “”, Z bằng “" trâu ngựa "”, cá voi chuối kiwi dâu tây + - trâu ngựa
+“Quy tắc: = X + + X | Thay thế: X bằng “" trâu "”, = trâu + + trâu
+“Quy tắc: X Z = Z = | Thay thế: X bằng “" đại bàng "”, Z bằng “" trâu "”, trâu đại bàng = trâu =
+“Quy tắc: * Z + - X | Thay thế: X bằng “” rắn hổ mang “”, Z bằng “” chim cánh cụt “"”, * chim cánh cụt + - rắn hổ mang
+“Quy tắc: X X + = | Thay thế: X bằng “” quả táo cá voi “"”, táo cá voi táo cá voi + =
+“Quy tắc: - Z + - Y | Thay thế: Y bằng “” ngựa “”, Z bằng “” rắn hổ mang “"”, - rắn hổ mang + - ngựa
+“Quy tắc: X * - + X | Thay thế: X bằng “” sư tử “"”, sư tử * - + sư tử
+“Quy tắc: X X = + | Thay thế: X bằng “” đào “"”, đào đào = +
+“Quy tắc: - + + X Y | Thay thế: X bằng “” cá mập blackberry “”, Y bởi “” sư tử chim cánh cụt “"”, - + sư tử chim cánh cụt blackberry
+“Quy tắc: Y = X X - | Thay thế: X bằng “” ngựa vằn “”, Y bằng “” dưa hấu blackberry “"”, dưa hấu blackberry = ngựa vằn -
+“Quy tắc: + X X - | Thay thế: X bằng “” dưa hấu cò “"”, + cò dưa hấu cò dưa hấu -
+“Quy tắc: Z + = = Z Y | Thay thế: Y bằng “” dâu tây “”, Z bằng “” rắn hổ mang ngựa “"”, rắn hổ mang ngựa + = = = rắn hổ mang ngựa dâu
+“Quy tắc: Z - Z Z + | Thay thế: Z bằng “” kiwi blackberry “"”, kiwi blackberry - kiwi blackberry kiwi blackberry +
+“Quy tắc: - X * Y - Z | Thay thế: X bằng “" chuột ngựa “”, Y bởi “" trâu kiwi "”, Z bằng “" ngựa "”, - chuột ngựa* trâu kiwi - ngựa
+“Quy tắc: - Z X = Z | Thay thế: X bằng “” sư tử “”, Z bằng “” ngựa “”, - sư tử ngựa = ngựa
+“Quy tắc: * - X * Y | Thay thế: X bằng “" cá voi dâu “”, Y bằng “" trâu ngựa "”, * - cá voi dâu * trâu ngựa
+“Quy tắc: X Z Y = + | Thay thế: X bằng “” kiwi dâu “”, Y bằng “” ngựa vằn “”, Z bằng “” chim cánh cụt đào “"”, dâu tây kiwi chim cánh cụt ngựa vằn = +
+“Quy tắc: Y Y + * Y | Thay thế: Y bằng “” nho “"”, nho +* nho
+“Quy tắc: X * Z Z - - | Thay thế: X bằng “” lê đại bàng “”, Z bằng “” đại bàng “”, lê đại bàng * đại bàng đại bàng - -
+“Quy tắc: Y - + + X | Thay thế: X bằng “” quả táo cá voi “”, Y bằng “” con dấu “"”, con dấu dấu - + cá voi táo
+“Quy tắc: X Y - = | Thay thế: X bằng “” chuối “”, Y bằng “” lê “”, chuối lê - =
+“Quy tắc: - X - X - | Thay thế: X bằng “” dâu dưa hấu “"”, - dâu dưa hấu - dâu dưa hấu -
+“Quy tắc: + + + Y X | Thay thế: X bằng “” ngựa vằn chuối “”, Y bằng “” hải cẩu lê “"”, + + + lê hải cẩu chuối ngựa vằn
+“Quy tắc: X Y * = | Thay thế: X bằng “” con dấu “”, Y bằng “” con dấu blackberry “"”, con dấu blackberry đóng dấu * =
+“Quy tắc: = Y Z + Z | Thay thế: Y bằng “” rắn hổ mang cá mập “”, Z bằng “” đào “"”, = cá mập rắn hổ mang đào + đào
+“Quy tắc: * Y = X Y = | Thay thế: X bằng “” đại bàng đại bàng “”, Y bằng “” kiwi “"”, * kiwi = đại bàng kiwi =
+“Quy tắc: X + Y - | Thay thế: X bằng “” rắn hổ mang “”, Y bằng “” đại bàng “"”, rắn hổ mang + đại bàng -
+“Quy tắc: X * Z * = | Thay thế: X bằng “” táo đào “”, Z bằng “” đại bàng “"”, đào táo * đại bàng * =
+“Quy tắc: - X - + Z X | Thay thế: X bằng “” ngựa vằn “”, Z bởi “” chim cánh cụt blackberry “"”, - ngựa vằn - + chim cánh cụt blackberry zebra
+“Quy tắc: Z Y - - Y - | Thay thế: Y bằng “” việt quất ngựa vằn “”, Z bằng “” chuối kiwi “”, chuối kiwi ngựa vằn việt quất - - việt quất ngựa vằn -
+“Quy tắc: * Y * Y - X | Thay thế: X bằng “” kiwi việt quất “”, Y bằng “” kiwi “"”, * kiwi * kiwi - kiwi việt quất
+“Quy tắc: X = - - X | Thay thế: X bằng “” sư tử “"”, sư tử = - - sư tử
+“Quy tắc: - X * Z Y = | Thay thế: X bằng “” con dấu chim cánh cụt “”, Y bằng “” dưa hấu “”, Z bằng “” rắn hổ mang “"”, - hải cẩu chim cánh cụt * rắn hổ mang dưa hấu =
+“Quy tắc: X = * + Y | Thay thế: X bằng “” hải cẩu cá mập “”, Y bằng “” con dấu “"”, con dấu cá mập = * + con dấu
+“Quy tắc: + Y = Y + | Thay thế: Y bằng “” cò “"”, + cò = cò +
+“Quy tắc: Z Y * - Y | Thay thế: Y bằng “” kiwi lê “”, Z bằng “” cò cá voi “"”, cò cá voi kiwi lê * - lê kiwi
+“Quy tắc: + - X Y | Thay thế: X bằng “” ngựa “”, Y bằng “” cò việt quất “"”, + - cò ngựa việt quất
+“Quy tắc: Y Z = = Z | Thay thế: Y bằng “” con dấu “”, Z bằng “” con dấu chuột “”, con dấu chuột con dấu = = con dấu chuột
+“Quy tắc: Y = * Z | Thay thế: Y bằng “” rắn hổ mang việt quất “”, Z bằng “” táo dâu đen “”, rắn hổ mang việt quất = * táo dâu đen
+“Quy tắc: - X X + - | Thay thế: X bằng “” cá voi ngựa “"”, - cá voi ngựa cá voi + -
+“Quy tắc: * Z - Y X | Thay thế: X bằng “” chuột “”, Y bằng “” kiwi “”, Z bằng “” đào “"”, * đào - chuột kiwi
+“Quy tắc: + Y Y = - Y | Thay thế: Y bằng “” lê blackberry “"”, + lê dâu đen lê = - lê blackberry
+“Quy tắc: Y + X - | Thay thế: X bằng “” cá voi “”, Y bằng “” chuối blackberry “"”, chuối blackberry + cá voi -
+“Quy tắc: - = Y - Z | Thay thế: Y bằng “" đại bàng "”, Z bằng “" trâu "”, - = đại bàng - trâu
+“Quy tắc: Z = + X | Thay thế: X bằng “” cá mập “”, Z bằng “” chuột “"”, chuột = + cá mập
+“Quy tắc: Z * Y * X * * | Thay thế: X bằng “” nho dâu “”, Y bằng “” ngựa vằn chim cánh cụt “”, Z bằng “” hải cẩu lê “”, hải cẩu lê * ngựa vằn chim cánh cụt * nho dâu tây *
+“Quy tắc: = X Z - Y + | Thay thế: X bằng “” chuột kiwi “”, Y bằng “” dâu cá mập “”, Z bằng “” chuột “”, = chuột kiwi - dâu cá mập +
+“Quy tắc: Y X + X * | Thay thế: X bằng “” con dấu “”, Y bằng “” chuối kiwi “"”, con dấu chuối kiwi + con dấu *
+“Quy tắc: X Y Z * = = | Thay thế: X bằng “" lê "”, Y bằng “" rắn hổ mang "”, Z bằng “" đại bàng "”, rắn hổ mang lê đại bàng * = =
+“Quy tắc: + X - Z + X | Thay thế: X bằng “” lê táo “”, Z bằng “” ngựa dâu đen “"”, + lê táo - ngựa dâu đen + lê táo
+“Quy tắc: X - Z X * + | Thay thế: X bằng “” nho “”, Z bằng “” chuột cá voi “"”, nho - nho chuột voi * +
+“Quy tắc: - Z Z Z + - | Thay thế: Z bằng “” kiwi “"”, - kiwi kiwi + -
+“Quy tắc: Z - * X | Thay thế: X bằng “” cá voi “”, Z bằng “” lê dâu đen “"”, lê dâu đen - * cá voi
+“Quy tắc: - = Y - Z | Thay thế: Y bằng “" trâu "”, Z bằng “" táo "”, - = trâu - táo
+“Quy tắc: X Y * Z = | Thay thế: X bằng “” ngựa vằn lê “”, Y bằng “” dâu đen việt quất “”, Z bằng “” dưa hấu đào “”, lê ngựa vằn việt quất dâu đen * dưa hấu đào =
+“Quy tắc: Y + * = Y Y | Thay thế: Y bằng “” đào sư tử “"”, đào sư tử + * = sư tử đào sư tử đào
+“Quy tắc: - X * Z Z | Thay thế: X bằng “” chim cánh cụt chuột “”, Z bằng “” chim cánh cụt nho “"”, - chim cánh cụt nhỏ* chim cánh cụt nho
+“Quy tắc: * = - X X X | Thay thế: X bằng “” chuối “"”, * = - chuối chuối chuối
+“Quy tắc: * X = X | Thay thế: X bằng “" trâu dưa hấu "”, * trâu dưa hấu = trâu dưa hấu
+“Quy tắc: * X Z * + | Thay thế: X bằng “” chuối rắn hổ mang “”, Z bằng “” cá voi “"”, * cá voi chuối rắn hổ mang * +
+“Quy tắc: + X Z * | Thay thế: X bằng “” apple “”, Z bằng “” con dấu blackberry “"”, + con dấu táo blackberry *
+“Quy tắc: + X Z X * - | Thay thế: X bằng “” đào “”, Z bằng “” rắn hổ mang dưa hấu “"”, + đào dưa hấu rắn hổ mang đào * -
+“Quy tắc: * Y * * Z X | Thay thế: X bằng “” ngựa “”, Y bằng “” đào dâu đen “”, Z bằng “” đại bàng “”, * đào dâu đen * * ngựa đại bàng
+“Quy tắc: Z - + Z - | Thay thế: Z bằng “” dưa hấu “"”, dưa hấu - + dưa hấu -
+“Quy tắc: Y = Y - Z | Thay thế: Y bằng “” kiwi đại bàng “”, Z bằng “” việt quất “”, kiwi đại bàng = kiwi đại bàng - việt quất
+“Quy tắc: X * + = Y | Thay thế: X bằng “” chuối nho “”, Y bằng “” dưa hấu nho “"”, chuối nho * + = dưa hấu nho
+“Quy tắc: - X = X | Thay thế: X bằng “” ngựa “"”, - ngựa = ngựa
+“Quy tắc: Y X X + + + | Thay thế: X bằng “” kiwi “”, Y bằng “” kiwi nho “"”, kiwi kiwi nho + +
+“Quy tắc: Y = + Z Z - | Thay thế: Y bằng “” dưa hấu nho “”, Z bằng “” lê blackberry “"”, dưa hấu nho = + lê lê dâu đen -
+“Quy tắc: - + Z X | Thay thế: X bằng “” chim cánh cụt “”, Z bằng “” dâu tây “"”, - + chim cánh cụt dâu
+“Quy tắc: + * Z Y Z | Thay thế: Y bằng “” ngựa “”, Z bằng “” cá mập lê “"”, + * cá mập lê cá mập lê
+“Quy tắc: * Y - X + | Thay thế: X bằng “” chuột ngựa vằn “”, Y bằng “” cá mập ngựa “"”, * cá mập ngựa - chuột ngựa vằn +
+“Quy tắc: Z - = * X | Thay thế: X bằng “” nho táo “”, Z bằng “” cò “"”, cò - = * nho táo
+“Quy tắc: Z - X = - | Thay thế: X bằng “” ngựa vằn “”, Z bằng “” ngựa chuối “"”, ngựa chuối - ngựa vằn = -
+“Quy tắc: * X = Y | Thay thế: X bằng “” nho ngựa “”, Y bằng “” kiwi “"”, * nho ngựa = kiwi
+“Quy tắc: * * Z = Y X | Thay thế: X bằng “” chuột táo “”, Y bằng “” việt quất “”, Z bằng “” việt quất “”, * * việt quất = chuột táo việt quất
+“Quy tắc: Y X + = * | Thay thế: X bằng “” đại bàng cò “”, Y bằng “” đại bàng “"”, đại bàng cò đại bàng + = *
+“Quy tắc: Z + * Z X | Thay thế: X bằng “” nho chim cánh cụt “”, Z bằng “” ngựa vằn kiwi “"”, ngựa vằn kiwi + * kiwi ngựa vằn nho
+“Quy tắc: * * X Z | Thay thế: X bằng “" cò sư tử "”, Z bằng “" con dấu ngựa "”, * * * cò sư tử con dấu ngựa
+“Quy tắc: - X + Y | Thay thế: X bằng “” đào “”, Y bằng “” ngựa vằn chuối “"”, - đào + ngựa vằn chuối
+“Quy tắc: + Y + Z | Thay thế: Y bằng “” chuối “”, Z bằng “” chuối “"”, + chuối + chuối
+“Quy tắc: * Z X - | Thay thế: X bằng “” quả táo lê “”, Z bằng “” ngựa vằn táo “"”, * táo ngựa vằn táo táo lê -
+“Quy tắc: - X Z Y * | Thay thế: X bằng “” cá mập “”, Y bằng “” cá voi “”, Z bằng “” dâu tây “”, - cá voi dâu tây cá mập *
+“Quy tắc: Y Y Z = + | Thay thế: Y bằng “” kiwi “”, Z bằng “” đại bàng dâu tây “"”, kiwi kiwi dâu tây đại bàng = +
+“Quy tắc: * Z = X = Y | Thay thế: X bằng “" con dấu táo "”, Y bằng “" chuối trâu "”, Z bằng “" việt quất "”, * việt quất = hải cẩu táo = chuối trâu
+“Quy tắc: Y + + X X | Thay thế: X bằng “" con dấu đại bàng "”, Y bằng “" sư tử "”, sư tử + + con dấu đại bàng hải cẩu
+“Quy tắc: Y = = Z | Thay thế: Y bằng “” ngựa vằn “”, Z bằng “” apple “"”, ngựa vằn = = = apple
+“Quy tắc: = X Z + Z | Thay thế: X bằng “” rắn hổ mang dâu đen “”, Z bằng “” dâu tây “"”, = dâu tây rắn hổ mang dâu tây + dâu tây
+“Quy tắc: + = Z X * | Thay thế: X bằng “” con dấu “”, Z bằng “” nho “"”, + = con dấu nho *
+“Quy tắc: + Y X * | Thay thế: X bằng “” lê ngựa vằn “”, Y bằng “” cò cá voi “"”, + cá voi cò ngựa vằn lê *
+“Quy tắc: + Z - X X | Thay thế: X bằng “" sư tử "”, Z bằng “" trâu ""”, + trâu - sư tử
+“Quy tắc: Y = Y | Thay thế: Y bằng “” cá voi táo “"”, cá voi táo = = cá voi táo
+“Quy tắc: - + Z Z | Thay thế: Z bằng “" kiwi buffalo "”, - + kiwi buffalo kiwi buffalo
+“Quy tắc: X Y + - * | Thay thế: X bằng “” apple blackberry “”, Y bằng “” apple banana “"”, apple blackberry apple apple banana + - *
+“Quy tắc: - X = Y | Thay thế: X bằng “” kiwi việt quất “”, Y bằng “” blackberry “”, - kiwi blueberry = blackberry
+“Quy tắc: Z X + X * | Thay thế: X bằng “” sư tử “”, Z bằng “” lê “"”, sư tử lê + sư tử *
+“Quy tắc: X - * X + | Thay thế: X bằng “” ngựa vằn “"”, ngựa vằn - * ngựa vằn +
+“Quy tắc: X Z * * * | Thay thế: X bằng “" trâu "”, Z bằng “" ngựa "”, ngựa trâu * * * *
+“Quy tắc: Z = Z * X | Thay thế: X bằng “” chuối “”, Z bằng “” dâu ngựa vằn “"”, dâu ngựa vằn = dâu ngựa vằn * chuối
+“Quy tắc: * Z = Z = Y | Thay thế: Y bằng “” con dấu “”, Z bằng “” apple “"”, * apple = apple = seal
+“Quy tắc: Z + Y - + | Thay thế: Y bằng “” ngựa vằn “”, Z bằng “” chuối blackberry “"”, chuối blackberry + ngựa vằn - +
+“Quy tắc: Z * X * | Thay thế: X bằng “” cá voi “”, Z bằng “” rắn hổ mang “"”, rắn hổ mang * cá voi *
+“Quy tắc: Y = * Y X | Thay thế: X bằng “” rắn hổ mang chuột “”, Y bằng “” chim cánh cụt ngựa vằn “"”, chim cánh cụt ngựa vằn = * rắn hổ mang chuột ngựa vằn
+“Quy tắc: - Z + Y | Thay thế: Y bằng “” kiwi “”, Z bằng “” dâu tây kiwi “"”, - dâu tây kiwi + kiwi
+“Quy tắc: X = - X Z | Thay thế: X bằng “” blackberry “”, Z bằng “” blackberry “”, blackberry = - blackberry
+“Quy tắc: Z - Y * | Thay thế: Y bằng “” sư tử rắn hổ mang “”, Z bằng “” chuột chim cánh cụt “"”, chuột chim cánh cụt - sư tử rắn hổ mang *
+“Quy tắc: Y + + + Z | Thay thế: Y bằng “” chim cánh cụt ngựa vằn “”, Z bằng “” cò dâu “"”, chim cánh cụt vằn + + + cò dâu
+“Quy tắc: + = Z X * | Thay thế: X bằng “” chuột “”, Z bằng “” cá mập “"”, + = chuột cá mập *
+“Quy tắc: Y = Z + | Thay thế: Y bằng “” ngựa vằn rắn hổ mang “”, Z bằng “” ngựa “"”, rắn hổ mang ngựa vằn = ngựa +
+“Quy tắc: Y Z - + * | Thay thế: Y bằng “” chuối chim cánh cụt “”, Z bằng “” kiwi dâu “"”, chim cánh cụt chuối dâu tây kiwi - + *
+“Quy tắc: + - Z X | Thay thế: X bằng “” con dấu cò “”, Z bằng “” cò táo “"”, + - cò hải cẩu táo
+“Quy tắc: Y = + Y Z | Thay thế: Y bằng “” dưa hấu “”, Z bằng “” lê cá voi “"”, dưa hấu = + quả lê cá voi dưa hấu
+“Quy tắc: X * * X | Thay thế: X bằng “” sư tử chuột “"”, sư tử chuột * * sư tử chuột
+“Quy tắc: - Z Y = X | Thay thế: X bằng “” nho “”, Y bằng “” dưa hấu đào “”, Z bằng “” kiwi “”, - kiwi dưa hấu đào = nho
+“Quy tắc: * = Z * Z X | Thay thế: X bằng “” chuối nho “”, Z bằng “” cò “"”, * = cò * cò chuối nho
+“Quy tắc: + = Y X * | Thay thế: X bằng “” táo “”, Y bằng “” chuột “"”, + = táo chuột *
+“Quy tắc: Z Z = * * | Thay thế: Z bằng “” ngựa vằn “"”, ngựa vằn = * *
+“Quy tắc: * Y Z + | Thay thế: Y bằng “” chuột “”, Z bằng “” blackberry “"”, * rat blackberry +
+“Quy tắc: - X Z Z = + | Thay thế: X bằng “” sư tử dưa hấu “”, Z bằng “” lê “”, - lê sư tử dưa hấu = +
+“Quy tắc: + Y + + Z | Thay thế: Y bằng “” đại bàng đào “”, Z bằng “” lê “"”, + đại bàng đào + + lê
+“Quy tắc: Z * - Y Z | Thay thế: Y bằng “" trâu "”, Z bằng “" trâu dâu "”, trâu dâu * - trâu dâu
+“Quy tắc: + X Z - Y | Thay thế: X bằng “” nho “”, Y bằng “” con dấu “”, Z bằng “” con dấu “"”, + con dấu nho - con dấu
+“Quy tắc: * X Y Z + | Thay thế: X bằng “” chuột việt quất “”, Y bằng “” rắn hổ mang “”, Z bằng “” con dấu rắn hổ mang “"”, * con dấu rắn hổ mang chuột việt quất +
+“Quy tắc: * + + Y X Y | Thay thế: X bằng “” rắn hổ mang đào “”, Y bằng “” táo nho “"”, * + nho táo rắn hổ mang đào táo
+“Quy tắc: - - Z Y + Y | Thay thế: Y bằng “” lê đào “”, Z bằng “” dâu cá mập “"”, - - cá mập dâu lê đào + lê đào
+“Quy tắc: Y + + Z + | Thay thế: Y bằng “" sư tử dưa hấu "”, Z bằng “" trâu chuột "”, sư tử dưa hấu + + trâu chuột +
+“Quy tắc: * Y X * | Thay thế: X bằng “” quả lê blackberry “”, Y bằng “” chuột “"”, * lê blackberry chuột *
+“Quy tắc: * X Y X = * | Thay thế: X bằng “” cá mập “”, Y bằng “” rắn hổ mang hải cẩu “"”, * cá mập hải cẩu rắn hổ mang = *
+“Quy tắc: - * Y + Z | Thay thế: Y bằng “” con dấu “”, Z bằng “” dưa hấu rắn hổ mang “"”, - * con dấu + rắn hổ mang dưa hấu
+“Quy tắc: * X = = Y X | Thay thế: X bằng “” chuối “”, Y bằng “” ngựa sư tử “"”, * chuối = = chuối ngựa sư tử
+“Quy tắc: Y Y = + - | Thay thế: Y bằng “” chim cánh cụt “"”, chim cánh cụt = + -
+“Quy tắc: - Y - Y Z + | Thay thế: Y bằng “” chuối lê “”, Z bằng “” chuối kiwi “"”, - chuối lê - lê chuối chuối kiwi +
+“Quy tắc: - X = X | Thay thế: X bằng “” chim cánh cụt “"”, - chim cánh cụt = chim cánh cụt
+“Quy tắc: - Y Y + | Thay thế: Y bằng “” chim cánh cụt “"”, - chim cánh cụt +
+“Quy tắc: - + = Y Z | Thay thế: Y bằng “” cá mập nho “”, Z bằng “” dưa hấu sư tử “"”, - + = dưa hấu sư tử cá mập nho
+“Quy tắc: = Z - Z - | Thay thế: Z bằng “” rắn hổ mang “"”, = rắn hổ mang - rắn hổ mang -
+“Quy tắc: - X * Z * | Thay thế: X bằng “” ngựa vằn “”, Z bằng “” cá voi kiwi “"”, - ngựa vằn * cá voi kiwi *
+“Quy tắc: Z Z + = | Thay thế: Z bằng “” ngựa “"”, ngựa + =
+“Quy tắc: X - X Z + | Thay thế: X bằng “” kiwi nho “”, Z bằng “” kiwi “"”, kiwi nho - kiwi nho +
+“Quy tắc: + * Z Y | Thay thế: Y bằng “” cá mập đào “”, Z bằng “” ngựa vằn “"”, + * cá mập ngựa vằn đào
+“Quy tắc: Z + X = X = | Thay thế: X bằng “” chuột “”, Z bằng “” đại bàng “"”, đại bàng + chuột = chuột =
+“Quy tắc: Z X + - * | Thay thế: X bằng “” sư tử “”, Z bằng “” dưa hấu việt quất “"”, dưa hấu việt quất sư tử + - *
+“Quy tắc: - Z - Y Y | Thay thế: Y bằng “” cá mập “”, Z bằng “” cá mập “"”, - cá mập - cá mập
+“Quy tắc: + = Y = Z Y | Thay thế: Y bằng “” chuột việt quất “”, Z bằng “” lê chuột “"”, + = chuột việt quất = chuột quả việt quất
+“Quy tắc: - - X X - Z | Thay thế: X bằng “” đại bàng chuối “”, Z bằng “” nho “"”, - - đại bàng chuối đại bàng chuối - nho
+“Quy tắc: - X * * Z | Thay thế: X bằng “” quả táo đại bàng “”, Z bằng “” đại bàng việt quất “"”, - táo đại bàng * * đại bàng việt quất
+“Quy tắc: = Y - Z | Thay thế: Y bằng “” trâu “”, Z bằng “” con dấu blackberry “"”, = trâu - hải cẩu blackberry
+“Quy tắc: * Y * * Z Z | Thay thế: Y bằng “” cò kiwi “”, Z bằng “” cò cò “"”, * cò kiwi * * cò chuột cò
+“Quy tắc: X + + Y * | Thay thế: X bằng “” cá mập sư tử “”, Y bằng “” quả táo việt quất “"”, cá mập sư tử + + quả táo việt quất *
+“Quy tắc: X X = Y = | Thay thế: X bằng “” ngựa vằn “”, Y bằng “” chuối “"”, ngựa vằn = chuối =
+“Quy tắc: Z = Y - + X | Thay thế: X bằng “” con dấu “”, Y bằng “” sư tử “”, Z bằng “” chuối “"”, chuối = sư tử - + con dấu
+“Quy tắc: - Y * X | Thay thế: X bằng “” dưa hấu “”, Y bằng “” cò kiwi “"”, - kiwi cò * dưa hấu
+“Quy tắc: Z Y = + | Thay thế: Y bằng “” blackberry “”, Z bằng “” apple rat “"”, apple rat blackberry = +
+“Quy tắc: * Z Z Z = | Thay thế: Z bằng “” cá mập chuối “"”, * cá mập chuối cá mập chuối cá mập chuối cá mập =
+“Quy tắc: X + X Z * - | Thay thế: X bằng “” ngựa vằn sư tử “”, Z bằng “” chuột lê “"”, ngựa vằn sư tử + sư tử ngựa vằn lê chuột * -
+“Quy tắc: Z = X + | Thay thế: X bằng “” sư tử dưa hấu “”, Z bằng “” chim cánh cụt “"”, chim cánh cụt = sư tử dưa hấu +
+“Quy tắc: * = Z + X | Thay thế: X bằng “” chim cánh cụt “”, Z bằng “” dưa hấu dâu “"”, * = dâu dưa hấu + chim cánh cụt
+“Quy tắc: X + Y - X - | Thay thế: X bằng “” nho “”, Y bằng “” lê “"”, nho + lê - nho -
+“Quy tắc: Z = Y + = | Thay thế: Y bằng “” nho blackberry “”, Z bằng “” đào “"”, đào = nho blackberry + =
+“Quy tắc: * * Z - Z | Thay thế: Z bằng “” táo dâu “"”, * * táo dâu - táo dâu
+“Quy tắc: + * Y X | Thay thế: X bằng “” hải cẩu “”, Y bằng “” chuột táo “"”, + * dưa hấu hải cẩu chuột táo
+“Quy tắc: + - X + Y X | Thay thế: X bằng “” ngựa vằn việt quất “”, Y bằng “” ngựa vằn “"”, + - ngựa vằn việt quất + ngựa vằn việt quất
+“Quy tắc: + Y * Y * | Thay thế: Y bằng “” quả việt quất nho “"”, + quả việt quất nho* quả việt quất nho *
+“Quy tắc: Y + Z = | Thay thế: Y bằng “” kiwi “”, Z bằng “” dâu tây “"”, kiwi + dâu tây =
+“Quy tắc: - X Y * Z | Thay thế: X bằng “” việt quất việt quất “”, Y bằng “” dưa hấu trâu “”, Z bằng “” cò “"”, - việt quất việt quất trâu dưa hấu * cò
+“Quy tắc: + Y - X = | Thay thế: X bằng “” cá voi ngựa “”, Y bằng “” chim cánh cụt “"”, + chim cánh cụt - cá voi ngựa =
+“Quy tắc: * + X Z | Thay thế: X bằng “” đào “”, Z bằng “” chuối chuột “"”, * + chuối chuột đào
+“Quy tắc: X = Z + | Thay thế: X bằng “” dâu tây “”, Z bằng “” ngựa “"”, dâu = ngựa +
+“Quy tắc: = = Z Z | Thay thế: Z bằng “” rắn hổ mang đào “"”, = = rắn hổ mang đào đào
+“Quy tắc: - Z = Y | Thay thế: Y bằng “” kiwi lê “”, Z bằng “” con dấu “"”, - con dấu = kiwi lê
+“Quy tắc: X X * * | Thay thế: X bằng “” táo táo “"”, táo táo táo táo * *
+“Quy tắc: X X + - | Thay thế: X bằng “” đại bàng “"”, đại bàng đại bàng + -
+“Quy tắc: X = - + Z | Thay thế: X bằng “” ngựa vằn “”, Z bằng “” lê đào “"”, ngựa vằn = - + lê đào
+“Quy tắc: X = X + * | Thay thế: X bằng “" trâu rắn hổ mang "”, trâu rắn hổ mang = trâu rắn hổ mang + *
+“Quy tắc: + Y Y - | Thay thế: Y bằng “” ngựa “"”, + ngựa ngựa -
+“Quy tắc: Z Z Z - * | Thay thế: Z bằng “” con dấu “"”, con dấu con dấu - *
+“Quy tắc: X = Z + - X | Thay thế: X bằng “” rắn hổ mang đào “”, Z bằng “” dâu chim cánh cụt “"”, rắn hổ mang đào = dâu chim cánh cụt + - rắn hổ mang đào
+“Quy tắc: Z Y * + | Thay thế: Y bằng “” cò đại bàng “”, Z bằng “” kiwi dưa hấu “"”, dưa hấu kiwi đại bàng cò * +
+“Quy tắc: = Y Z * | Thay thế: Y bằng “” lê nho “”, Z bằng “” dâu tây “"”, = dâu tây lê nho *
+“Quy tắc: = Z X Y * = | Thay thế: X bằng “” cá voi đại bàng “”, Y bằng “” chuột “”, Z bằng “” đại bàng blackberry “"”, = đại bàng blackberry cá voi đại bàng * =
+“Quy tắc: = - X - X | Thay thế: X bằng “” apple “"”, = - apple - apple
+“Quy tắc: = Y - X = Z | Thay thế: X bằng “" ngựa vằn trâu "”, Y bằng “" cá mập chuối "”, Z bằng “" chim cánh cụt "”, = chuối cá mập - ngựa vằn trâu = chim cánh cụt
+“Quy tắc: - X = Z X = | Thay thế: X bằng “” dâu tây cá voi “”, Z bằng “" hải cẩu trâu "”, - dâu tây cá voi = hải cẩu trâu cá voi dâu =
+“Quy tắc: * Z Z - - | Thay thế: Z bằng “” cá mập cò “"”, * cá mập cò cò - -
+“Quy tắc: Y - X - + | Thay thế: X bằng “” chim cánh cụt “”, Y bằng “” chuối blackberry “"”, chuối blackberry - chim cánh cụt - +
+“Quy tắc: + X Z Y + | Thay thế: X bằng “" việt quất "”, Y bằng “" trâu "”, Z bằng “" blackberry "”, + blueberry blackberry buffalo +
+“Quy tắc: Z = Y Y - = | Thay thế: Y bằng “” đại bàng việt quất “”, Z bằng “” việt quất “”, việt quất = đại bàng việt quất đại bàng - =
+“Quy tắc: Y - Z Y + | Thay thế: Y bằng “” kiwi “”, Z bằng “” cá voi đào “"”, kiwi - cá voi đào kiwi +
+“Quy tắc: Z X * Y * - | Thay thế: X bằng “" dưa hấu việt quất "”, Y bằng “" chuối trâu "”, Z bằng “" trâu "”, dưa hấu việt quất trâu * chuối trâu * -
+“Quy tắc: - Z X = Y | Thay thế: X bằng “” sư tử kiwi “”, Y bằng “” táo “”, Z bằng “” táo “”, - táo sư tử kiwi = táo
+“Quy tắc: + Y Y - | Thay thế: Y bằng “” đại bàng “"”, + đại bàng đại bàng -
+“Quy tắc: + * Y X | Thay thế: X bằng “” lê cá mập “”, Y bằng “” đào “"”, + * lê cá mập đào
+“Quy tắc: Y = * Y + Z | Thay thế: Y bằng “” cò táo “”, Z bằng “” kiwi dưa hấu “"”, cò táo = * cò táo + kiwi dưa hấu
+“Quy tắc: * * Y Z | Thay thế: Y bằng “” đại bàng “”, Z bằng “” ngựa vằn “"”, * * ngựa vằn đại bàng
+“Quy tắc: Z * Y X = * | Thay thế: X bằng “” ngựa vằn đào “”, Y bằng “” việt quất “”, Z bằng “” chuột “"”, chuột * việt quất đào ngựa vằn = *
+“Quy tắc: = Y = Y Z | Thay thế: Y bằng “” cá voi đào “”, Z bằng “” cá voi đại bàng “"”, = cá voi đào = cá voi đào cá voi đại bàng
+“Quy tắc: + Z X + | Thay thế: X bằng “” nho “”, Z bằng “” sư tử đào “"”, + đào sư tử nho +
+“Quy tắc: Y - = Y | Thay thế: Y bằng “” cá voi “"”, cá voi voi - = cá voi
+“Quy tắc: - = Z X Z * | Thay thế: X bằng “” dâu tây “”, Z bằng “” chuối “"”, - = chuối dâu chuối *
+“Quy tắc: Y Y - X - * | Thay thế: X bằng “” ngựa “”, Y bằng “” nho việt quất “"”, nho việt quất việt quất nho - ngựa - *
+“Quy tắc: Z + = Z Y | Thay thế: Y bằng “” con dấu ngựa vằn “”, Z bởi “” chim cánh cụt blackberry “"”, chim cánh cụt blackberry + = chim cánh cụt blackberry zebra seal
+“Quy tắc: X Y * = | Thay thế: X bằng “” chuột “”, Y bằng “” kiwi việt quất “"”, quả việt quất kiwi chuột * =
+“Quy tắc: + Z Z + + X | Thay thế: X bằng “” kiwi “”, Z bằng “” chuột “"”, + chuột chuột + + kiwi
+“Quy tắc: X = + Y X | Thay thế: X bằng “” nho đào “”, Y bằng “” lê “"”, nho đào = + lê đào nho
+“Quy tắc: - Y Z - + | Thay thế: Y bằng “” lê “”, Z bằng “” dâu chim cánh cụt “"”, - lê chim cánh cụt dâu tây - +
+“Quy tắc: Z Y - * Y + | Thay thế: Y bằng “” dâu tây “”, Z bằng “” táo kiwi “"”, táo kiwi dâu tây - * dâu tây +
+“Quy tắc: - = Y X X - | Thay thế: X bằng “” chim cánh cụt “”, Y bằng “” cá voi rắn hổ mang “"”, - = chim cánh cụt cá voi rắn hổ mang -
+“Quy tắc: Z Z - = X | Thay thế: X bằng “" chuối chuối "”, Z bằng “" sư tử trâu "”, trâu sư tử trâu sư tử - = chuối chuối
+“Quy tắc: + Y X + | Thay thế: X bằng “" rắn hổ mang trâu "”, Y bằng “" dưa hấu chuột "”, + chuột dưa hấu trâu rắn hổ mang +
+“Quy tắc: * * + Y X | Thay thế: X bằng “” blackberry “”, Y bằng “” lê “"”, * * + lê blackberry
+“Quy tắc: Z X + X = * | Thay thế: X bằng “" cò "”, Z bằng “" đại bàng "”, cò đại bàng + cò = *
+“Quy tắc: X Y + + | Thay thế: X bằng “” chuột “”, Y bằng “” dưa hấu “"”, dưa hấu chuột + +
+“Quy tắc: Z Y * * = Z | Thay thế: Y bằng “” táo “”, Z bằng “” sư tử ngựa vằn “"”, táo sư tử ngựa vằn * * = sư tử ngựa vằn
+“Quy tắc: - * X = X | Thay thế: X bằng “” chuối kiwi “"”, - * chuối kiwi = chuối kiwi
+“Quy tắc: Y Y Y - - | Thay thế: Y bằng “” cá mập hải cẩu “"”, hải cẩu cá mập hải cẩu cá mập hải cẩu cá mập - -
+“Quy tắc: X - Y = - Z | Thay thế: X bằng “” cá mập dưa hấu “”, Y bằng “” nho “”, Z bằng “” rắn hổ mang cá mập “"”, cá mập dưa hấu - nho = - rắn hổ mang cá mập
+“Quy tắc: Y X * * Z | Thay thế: X bằng “” đào “”, Y bằng “” ngựa “”, Z bằng “” cá mập “”, ngựa đào * * cá mập
+“Quy tắc: X + - Z X | Thay thế: X bằng “” quả lê “”, Z bằng “” con dấu “"”, táo lê + - con dấu lê táo
+“Quy tắc: Z Y X * = - | Thay thế: X bằng “” đại bàng “”, Y bằng “” dưa hấu “”, Z bằng “” chim cánh cụt “"”, chim cánh cụt đại bàng dưa hấu * = -
+“Quy tắc: * Y Z Y = | Thay thế: Y bằng “" cò "”, Z bằng “" ngựa "”, * cò ngựa cò =
+“Quy tắc: + Y Y X * = | Thay thế: X bằng “” chuột “”, Y bằng “” sư tử “"”, + sư tử chuột * =
+“Quy tắc: Z = Z - * | Thay thế: Z bằng “” việt quất “"”, việt quất = việt quất - *
+“Quy tắc: = - Z Y | Thay thế: Y bằng “” đào “”, Z bằng “” việt quất “"”, = - đào việt quất
+“Quy tắc: Z - Y Z = | Thay thế: Y bằng “” cò “”, Z bằng “” chuối dưa hấu “"”, chuối dưa hấu - cò dưa hấu chuối =
+“Quy tắc: X Y - - = | Thay thế: X bằng “” đào “”, Y bằng “” con dấu “"”, con dấu đào - - =
+“Quy tắc: Y - X = Y | Thay thế: X bằng “” chim cánh cụt đào “”, Y bằng “” chim cánh cụt đại bàng “"”, chim cánh cụt đại bàng - chim cánh cụt đào = chim cánh cụt đại bàng
+“Quy tắc: + Z + Y | Thay thế: Y bằng “” chim cánh cụt chuột “”, Z bằng “” chim cánh cụt “"”, + chim cánh cụt + chim cánh cụt chuột
+“Quy tắc: + Y X - = Y | Thay thế: X bằng “” ngựa vằn “”, Y bằng “” đại bàng “"”, + ngựa vằn đại bàng - = đại bàng
+“Quy tắc: - * - X Z | Thay thế: X bằng “” blackberry “”, Z bằng “” chuối “"”, - * - blackberry banana
+“Quy tắc: Z Z + * Z * | Thay thế: Z bằng “” sư tử việt quất “"”, sư tử việt quất sư tử việt quất +* sư tử việt quất *
+“Quy tắc: X = Z + | Thay thế: X bằng “” chim cánh cụt “”, Z bằng “” việt quất ngựa vằn “"”, chim cánh cụt = ngựa vằn việt quất +
+“Quy tắc: - X = + Z | Thay thế: X bằng “” nho cá voi “”, Z bằng “” lê trâu “"”, - nho cá voi = + lê trâu
+“Quy tắc: Z Y Y - = | Thay thế: Y bằng “” cá voi dưa hấu “”, Z bằng “” chuột “"”, cá voi dưa hấu chuột cá voi dưa hấu - =
+“Quy tắc: Y + * * Z X | Thay thế: X bằng “" trâu "”, Y bằng “" cá voi trâu "”, Z bằng “" cò táo "”, cá voi trâu + * * * trâu táo
+“Quy tắc: X Y - + | Thay thế: X bằng “” đại bàng “”, Y bằng “” cò “"”, cò đại bàng - +
+“Quy tắc: X - * X Y + | Thay thế: X bằng “" nho "”, Y bằng “" chuối trâu "”, nho - * nho trâu chuối +
+“Quy tắc: + * Y Y Y | Thay thế: Y bằng “” việt quất việt quất “"”, + * việt quất việt quất việt quất việt quất việt quất
+“Quy tắc: + + X Y Z | Thay thế: X bằng “” blackberry “”, Y bởi “” dâu tây “”, Z bởi “” blackberry blackberry “”, + blackberry blackberry blackberry
+“Quy tắc: = + Y - X | Thay thế: X bằng “” đại bàng việt quất “”, Y bằng “” nho “"”, = + nho - đại bàng việt quất
+“Quy tắc: X - * Y | Thay thế: X bằng “” chuối “”, Y bằng “” cá voi cá mập “"”, chuối - * cá voi
+“Quy tắc: + - Z Z | Thay thế: Z bằng “” đại bàng “"”, + - đại bàng đại bàng
+“Quy tắc: Z Y Z - + | Thay thế: Y bằng “” dưa hấu dâu “”, Z bằng “” táo “"”, táo dâu tây táo dưa hấu - +
+“Quy tắc: Z + = Z Y | Thay thế: Y bằng “” nho chuột “”, Z bằng “” đào “"”, đào + = nho chuột đào
+“Quy tắc: = + Z Z X | Thay thế: X bằng “” ngựa “”, Z bằng “” chuối đại bàng “"”, = + đại bàng chuối đại bàng ngựa chuối
+“Quy tắc: * + Z - Z | Thay thế: Z bằng “” cá mập rắn hổ mang “"”, * + cá mập rắn hổ mang - cá mập rắn hổ mang
+“Quy tắc: Y * Y + + | Thay thế: Y bằng “” con dấu “"”, con dấu * con dấu + +
+“Quy tắc: Z Z * X * = | Thay thế: X bằng “” cá mập “”, Z bằng “” blackberry “”, blackberry blackberry * cá mập * =
+“Quy tắc: - - - Z Z | Thay thế: Z bằng “” đại bàng dâu “"”, - - - đại bàng dâu tây
+“Quy tắc: * = Z Y + | Thay thế: Y bằng “” chuột “”, Z bằng “” chim cánh cụt ngựa vằn “"”, * = chuột chim cánh cụt vằn +
+“Quy tắc: Y = X | Thay thế: X bằng “” nho dưa hấu “”, Y bằng “” cò đại bàng “"”, cò đại bàng = = nho dưa hấu
+“Quy tắc: X = - X - | Thay thế: X bằng “” đại bàng táo “"”, đại bàng táo = - đại bàng táo -
+“Quy tắc: * Y - Y X | Thay thế: X bằng “” táo ngựa “”, Y bằng “” con dấu chim cánh cụt “"”, * hải cẩu chim cánh cụt - con dấu chim cánh cụt ngựa táo
+“Quy tắc: - * Z = Y | Thay thế: Y bằng “” ngựa việt quất “”, Z bằng “” ngựa vằn “"”, - * ngựa vằn = ngựa việt quất
+“Quy tắc: = Y Z X + | Thay thế: X bằng “” lê “”, Y bằng “” chuối blackberry “”, Z bằng “” chim cánh cụt “"”, = chuối blackberry penguin pear +
+“Quy tắc: X + * Z * | Thay thế: X bằng “" cò nho “”, Z bằng “” rắn hổ mang đại bàng “"”, cò nho + * rắn hổ mang đại bà*
+“Quy tắc: + Z X + | Thay thế: X bằng “” chuối đào “”, Z bằng “” dưa hấu việt quất “"”, + dưa hấu việt quất đào chuối +
+“Quy tắc: Y Z - Y + | Thay thế: Y bằng “” nho blackberry “”, Z bằng “” táo đại bàng “”, táo đại bàng nho blackberry - nho blackberry +
+“Quy tắc: + Y * X | Thay thế: X bằng “" dưa hấu rắn hổ mang "”, Y bằng “" dâu trâu ""”, + dâu trâu * rắn hổ mang dưa hấu
+“Quy tắc: - - = Z X Y | Thay thế: X bằng “” cò táo “”, Y bằng “” kiwi “”, Z bằng “” cò việt quất “"”, - - = cò việt quất táo kiwi
+“Quy tắc: = X Z = Z | Thay thế: X bằng “” chuối đào “”, Z bằng “” nho đào “"”, = chuối đào nho = nho đào
+“Quy tắc: Y X + - Y | Thay thế: X bằng “” ngựa “”, Y bằng “” táo đào “"”, ngựa táo đào + - táo đào
+“Quy tắc: + Y Y = = X | Thay thế: X bằng “” chuột “”, Y bằng “” sư tử cá mập “"”, + cá mập sư tử cá mập sư tử = chuột
+“Quy tắc: Z Z * - = | Thay thế: Z bằng “” chuối “"”, chuối chuối * - =
+“Quy tắc: + Z Y Y + | Thay thế: Y bằng “” cò chuột “”, Z bằng “” chim cánh cụt “"”, + chim cánh cụt cò chuột cò chuột +
+“Quy tắc: X * X * X | Thay thế: X bằng “” rắn hổ mang “"”, rắn hổ mang * rắn hổ mang * rắn hổ mang
+“Quy tắc: * * = X Z Y | Thay thế: X bằng “" lê "”, Y bằng “" kiwi "”, Z bằng “" đào trâu "”, * * = lê đào trâu kiwi
+“Quy tắc: Y + X = + | Thay thế: X bằng “” con dấu “”, Y bằng “” rắn hổ mang táo “"”, rắn hổ mang táo + con dấu = +
+“Quy tắc: X * = X X | Thay thế: X bằng “” chim cánh cụt kiwi “"”, chim cánh cụt kiwi * = chim cánh cụt kiwi chim cánh cụt kiwi kiwi
+“Quy tắc: = - Z Z + | Thay thế: Z bằng “” cá mập đại bàng “"”, = - cá mập đại bàng đại bàng +
+“Quy tắc: - Y * X Z = | Thay thế: X bằng “” lê dưa hấu “”, Y bằng “” dâu tây “”, Z bằng “” kiwi “"”, - dâu tây * dưa hấu lê kiwi =
+“Quy tắc: X - Y + X = | Thay thế: X bằng “” chuối lê “”, Y bằng “” đào “"”, lê chuối - đào + chuối lê =
+“Quy tắc: = * X X X | Thay thế: X bằng “” con dấu “"”, = * con dấu con dấu
+“Quy tắc: Y - + Z | Thay thế: Y bằng “” apple “”, Z bằng “” sư tử “"”, táo - + sư tử
+“Quy tắc: Y X Y * + + | Thay thế: X bằng “” cá voi “”, Y bằng “” kiwi “”, kiwi cá voi kiwi * +
+“Quy tắc: * X + - X Z | Thay thế: X bằng “” blackberry “”, Z bằng “” chuối “"”, * blackberry + - blackberry chuối
+“Quy tắc: Z = - + Z | Thay thế: Z bằng “” chuối táo “"”, chuối táo = - + chuối táo
+“Quy tắc: - X X * | Thay thế: X bằng “” sư tử “"”, - sư tử sư tử *
+“Quy tắc: = X - Z Y * | Thay thế: X bằng “” nho chuột “”, Y bằng “” kiwi dưa hấu “”, Z bằng “” quả việt quất táo “"”, = nho chuột - táo việt quất dưa hấu kiwi *
+“Quy tắc: + X + = Z | Thay thế: X bằng “" táo "”, Z bằng “" chuối trâu "”, + táo + = chuối trâu
+“Quy tắc: X + - = Z | Thay thế: X bằng “” dưa hấu “”, Z bằng “” dưa hấu lê “"”, dưa hấu + - = lê dưa hấu
+“Quy tắc: = + X Y Z | Thay thế: X bằng “” sư tử “”, Y bằng “” sư tử rắn hổ mang “”, Z bằng “” quả táo việt quất “"”, = + sư tử rắn hổ mang sư tử quả táo việt quất
+“Quy tắc: Z * Y - | Thay thế: Y bằng “” dâu tây “”, Z bằng “” rắn hổ mang cò “"”, rắn hổ mang cò * dâu tây -
+“Quy tắc: Z Y - * Z | Thay thế: Y bằng “” đào “”, Z bằng “” cò “"”, cò đào - * cò
+“Quy tắc: X X Y + + - | Thay thế: X bằng “” chim cánh cụt kiwi “”, Y bằng “” chuối “"”, chim cánh cụt kiwi chim cánh cụt kiwi chuối + -
+“Quy tắc: - = X Z | Thay thế: X bằng “” ngựa ngựa “”, Z bằng “” sư tử blackberry “"”, - = ngựa ngựa blackberry sư tử
+“Quy tắc: Y * = Z | Thay thế: Y bằng “” nho blackberry “”, Z bằng “” rắn hổ mang “"”, nho blackberry * = rắn hổ mang
+“Quy tắc: = Y - X | Thay thế: X bằng “" cò "”, Y bằng “" ngựa cá voi "”, = ngựa cá voi - cò
+“Quy tắc: Z X X * * + | Thay thế: X bằng “” chuối “”, Z bằng “” rắn hổ mang lê “"”, rắn hổ mang lê chuối chuối * * +
+“Quy tắc: Y + X Z * * * | Thay thế: X bằng “” lê “”, Y bằng “” cá mập “”, Z bằng “” sư tử blackberry “"”, cá mập + sư tử dâu đen lê * *
+“Quy tắc: X Z + - = | Thay thế: X bằng “” đào dâu đen “”, Z bằng “” nho đào “"”, nho đào dâu đen + - =
+“Quy tắc: Z * = + Z X | Thay thế: X bằng “” kiwi “”, Z bằng “” cá voi rắn hổ mang “"”, cá voi rắn hổ mang * = + cá voi rắn hổ mang kiwi
+“Quy tắc: - X Z + Z | Thay thế: X bằng “” dưa hấu “”, Z bằng “” đào “"”, - dưa hấu đào + đào
+“Quy tắc: Z = * Y - X | Thay thế: X bằng “" con dấu sư tử "”, Y bằng “" kiwi trâu "”, Z bằng “" hải cẩu chim cánh cụt "”, chim cánh cụt hải cẩu = * trâu kiwi - hải cẩu sư tử
+“Quy tắc: Z - X X = | Thay thế: X bằng “” dâu tây “”, Z bằng “” kiwi việt quất “"”, kiwi việt quất - dâu tây =
+“Quy tắc: Y + X + Z | Thay thế: X bằng “” lê chuột “”, Y bằng “” nho blackberry “”, Z bằng “” ngựa vằn dưa hấu “”, nho blackberry + lê chuột + ngựa vằn dưa hấu
+“Quy tắc: * X + * Y | Thay thế: X bằng “” cá voi sư tử “”, Y bằng “” chuối lê “"”, * cá voi sư tử + * chuối lê
+“Quy tắc: Z Z = Z | Thay thế: Z bằng “” chuối “"”, chuối chuối = = chuối
+“Quy tắc: X Z + * X | Thay thế: X bằng “" ngựa "”, Z bằng “" cá voi "”, cá voi ngựa + * ngựa
+“Quy tắc: Z + = Z | Thay thế: Z bằng “” cá voi dưa hấu “"”, cá voi dưa hấu + = cá voi dưa hấu
+“Quy tắc: Y Z X - + | Thay thế: X bằng “” đại bàng dưa hấu “”, Y bằng “” cá mập “”, Z bằng “” cá voi táo “"”, cá mập táo cá voi đại bàng dưa hấu - +
+“Quy tắc: X X * = | Thay thế: X bằng “” chuột táo “"”, chuột táo táo * =
+“Quy tắc: X X = Z - | Thay thế: X bằng “” sư tử “”, Z bằng “” con dấu “"”, sư tử = con dấu -
+“Quy tắc: = + Y Y | Thay thế: Y bằng “” con dấu rắn hổ mang “"”, = + con dấu rắn hổ mang
+“Quy tắc: Z Z = + Z | Thay thế: Z bằng “” cò dâu “"”, cò dâu tây = + cò dâu tây
+“Quy tắc: * Y * Y Y - | Thay thế: Y bằng “” nho dâu “"”, * nho dâu tây * nho dâu tây nho dâu tây -
+“Quy tắc: Y Z - Y + | Thay thế: Y bằng “” cá voi “”, Z bằng “” sư tử “"”, sư tử cá voi - cá voi +
+“Quy tắc: * Z * Z + | Thay thế: Z bằng “” chim cánh cụt “"”, * chim cánh cụt * chim cánh cụt +
+“Quy tắc: Z * Z * Z - | Thay thế: Z bằng “” kiwi “"”, kiwi * kiwi * kiwi -
+“Quy tắc: = X = - Z | Thay thế: X bằng “” việt quất “”, Z bằng “” ngựa cá voi “"”, = việt quất = - ngựa cá voi
+“Quy tắc: + - X Y | Thay thế: X bằng “” ngựa vằn trâu “”, Y bằng “” dâu dưa hấu “"”, + - trâu ngựa vằn dưa hấu dâu
+“Quy tắc: Z - Z | Thay thế: Z bằng “” con dấu sư tử “"”, con dấu sư tử - - con dấu sư tử
+“Quy tắc: = Y Y Y - | Thay thế: Y bằng “” đào “"”, = đào đào -
+“Quy tắc: Y Y = * Y - | Thay thế: Y bằng “” ngựa vằn “"”, ngựa vằn = * ngựa vằn -
+“Quy tắc: + = = Y Y | Thay thế: Y bằng “” chuột “"”, + = = chuột
+“Quy tắc: - Z Y = + | Thay thế: Y bằng “” đại bàng “”, Z bằng “” con dấu blackberry “"”, - blackberry seal eagle = +
+“Quy tắc: X = Y X = | Thay thế: X bằng “” cá voi việt quất “”, Y bằng “” rắn hổ mang dâu “"”, cá voi việt quất = cá voi việt quất dâu =
+“Quy tắc: * X + * X Y | Thay thế: X bằng “” ngựa blackberry “”, Y bằng “” dưa hấu cá voi “"”, * ngựa dâu đen + * dưa hấu cá voi đen
+“Quy tắc: = = X X = | Thay thế: X bằng “” chim cánh cụt dưa hấu “"”, = = dưa hấu chim cánh cụt dưa hấu chim cánh cụt =
+“Quy tắc: - = Z Y | Thay thế: Y bằng “” dâu sư tử “”, Z bằng “” ngựa “"”, - = ngựa sư tử dâu
+“Quy tắc: * Z X + X - | Thay thế: X bằng “" chuối trâu "”, Z bằng “" sư tử sư tử "”, * sư tử sư tử trâu chuối + trâu chuối -
+“Quy tắc: X = * Z - | Thay thế: X bằng “” rắn hổ mang đại bàng “”, Z bằng “” apple blackberry “"”, rắn hổ mang đại bàng = * apple blackberry -
+“Quy tắc: + X - Z | Thay thế: X bằng “" cò dưa hấu "”, Z bằng “" trâu ngựa vằn "”, + dưa hấu cò - trâu ngựa vằn
+“Quy tắc: - Y * X Z | Thay thế: X bằng “" chuối "”, Y bằng “" ngựa vằn lê "”, Z bằng “" trâu "”, - lê ngựa vằn * chuối trâu
+“Quy tắc: X Y = * - Y | Thay thế: X bằng “” rắn hổ mang dưa hấu “”, Y bằng “” blackberry “”, dưa hấu rắn hổ mang blackberry = * - blackberry
+“Quy tắc: Z = X + | Thay thế: X bằng “” chuối việt quất “”, Z bằng “” nho “"”, nho = chuối việt quất +
+“Quy tắc: X = X + | Thay thế: X bằng “” cá voi “"”, cá voi = cá voi +
+“Quy tắc: - Y = Z | Thay thế: Y bằng “” quả việt quất chuột “”, Z bằng “” sư tử việt quất “"”, - chuột việt quất = sư tử việt quất
+“Quy tắc: * + X X Y | Thay thế: X bằng “” chuột sư tử “”, Y bằng “” chuối “"”, * + sư tử chuột chuột chuối
+“Quy tắc: Z * + Z Z | Thay thế: Z bằng “” lê dâu “"”, lê dâu tây * + lê dâu tây lê
+“Quy tắc: * Z Y = + Z | Thay thế: Y bằng “” sư tử blackberry “”, Z bằng “” con dấu “"”, * con dấu sư tử blackberry = + con dấu
+“Quy tắc: - - Y * Y | Thay thế: Y bằng “” đào ngựa “"”, - - đào ngựa * đào ngựa
+“Quy tắc: + Z X Z - + | Thay thế: X bằng “” việt quất “”, Z bằng “” dưa hấu cò “"”, + cò dưa hấu việt quất dưa hấu - +
+“Quy tắc: Y + X - | Thay thế: X bằng “” chim cánh cụt dâu tây “”, Y bởi “” cá voi chim cánh cụt “"”, cá voi chim cánh cụt + chim cánh cụt dâu tây -
+“Quy tắc: Z Y * - + | Thay thế: Y bằng “” con dấu “”, Z bằng “” cá mập “"”, hải cẩu cá mập * - +
+“Quy tắc: - Z * Y X - | Thay thế: X bằng “” kiwi chuột “”, Y bằng “” dưa hấu đào “”, Z bằng “” cá mập dưa hấu “”, - cá mập dưa hấu * đào dưa hấu chuột kiwi -
+“Quy tắc: = + X + Z | Thay thế: X bằng “” kiwi blackberry “”, Z bằng “” chuột “”, = + kiwi blackberry + chuột
+“Quy tắc: * Z - Y | Thay thế: Y bằng “” dưa hấu “”, Z bằng “” dưa hấu dâu “"”, * dưa hấu dâu tây - dưa hấu
+“Quy tắc: Z Y = * X | Thay thế: X bằng “" chuối trâu "”, Y bằng “" nho "”, Z bằng “" ngựa trâu ""”, trâu ngựa nho = * chuối trâu
+“Quy tắc: + Y X * | Thay thế: X bằng “” chuối “”, Y bằng “” cá voi rắn hổ mang “"”, + chuối cá voi rắn hổ mang *
+“Quy tắc: + Y Z Y + * | Thay thế: Y bằng “” chim cánh cụt kiwi “”, Z bởi “” ngựa vằn “"”, + chim cánh cụt kiwi ngựa vằn kiwi chim cánh cụt kiwi + *
+“Quy tắc: = Z + * Y | Thay thế: Y bằng “” sư tử “”, Z bằng “” đào kiwi “"”, = đào kiwi + * sư tử
+“Quy tắc: Y Y + Y - | Thay thế: Y bằng “” cá voi rắn hổ mang “"”, cá voi rắn hổ mang + cá voi rắn hổ mang -
+“Quy tắc: * = X * Z X | Thay thế: X bằng “” dâu ngựa “”, Z bằng “” nho “"”, * = dâu ngựa* dâu tây ngựa nho
+“Quy tắc: = Y Z = * X | Thay thế: X bằng “” đại bàng đại bàng “”, Y bằng “” ngựa vằn chuối “”, Z bằng “” việt quất “"”, = chuối ngựa vằn việt quất = * đại bàng đại bàng
+“Quy tắc: X + X + = X | Thay thế: X bằng “” sư tử “"”, sư tử + sư tử + = sư tử
+“Quy tắc: Z X X * - = | Thay thế: X bằng “” rắn hổ mang đào “”, Z bằng “” con dấu cò “"”, cò hải cẩu đào rắn hổ mang đào rắn hổ mang * - =
+“Quy tắc: Y * Y X + - | Thay thế: X bằng “” cá voi cá mập “”, Y bởi “” ngựa vằn “"”, ngựa vằn * cá mập ngựa vằn + -
+“Quy tắc: - - X Y | Thay thế: X bằng “" đại bàng ngựa "”, Y bằng “" trâu "”, - - trâu đại bàng ngựa
+“Quy tắc: * + = Y Z | Thay thế: Y bằng “” cá mập blackberry “”, Z bằng “” ngựa “"”, * + = cá mập đen ngựa
+“Quy tắc: = Y = Y Y | Thay thế: Y bằng “” chim cánh cụt “"”, = chim cánh cụt = chim cánh cụt
+“Quy tắc: X * - Y | Thay thế: X bằng “” việt quất “”, Y bằng “” chuối đào “"”, việt quất * - chuối đào
+“Quy tắc: + = Z - Y X | Thay thế: X bằng “" chuối trâu "”, Y bằng “" kiwi "”, Z bằng “" rắn hổ mang dưa hấu "”, + = dưa hấu rắn hổ mang - trâu chuối kiwi
+“Quy tắc: = * X * Y | Thay thế: X bằng “” nho “”, Y bằng “” lê kiwi “"”, = * nho * kiwi lê
+“Quy tắc: - X = Y Z | Thay thế: X bằng “” táo “”, Y bằng “” sư tử cò “”, Z bằng “” quả táo chim cánh cụt “"”, - apple = cò sư tử chim cánh cụt táo
+“Quy tắc: Z - = Z Z + | Thay thế: Z bằng “” lê blackberry “"”, lê blackberry - = lê blackberry lê blackberry +
+“Quy tắc: X * - = X | Thay thế: X bằng “” dâu tây “"”, dâu tây dâu tây * - = dâu tây
+“Quy tắc: Z X + + + | Thay thế: X bằng “” kiwi cá voi “”, Z bằng “” chuột “"”, cá voi chuột kiwi + + +
+“Quy tắc: Y Z Y * - - | Thay thế: Y bằng “” đại bàng “”, Z bằng “” sư tử “"”, đại bàng sư tử đại bàng * - -
+“Quy tắc: Z = Z - + X | Thay thế: X bằng “” đào “”, Z bằng “” ngựa “"”, ngựa = ngựa - + đào
+“Quy tắc: Z Z * - Y | Thay thế: Y bằng “” ngựa dâu “”, Z bằng “” ngựa vằn “"”, ngựa vằn * - ngựa dâu
+“Quy tắc: Y = + X Y | Thay thế: X bằng “” sư tử kiwi “”, Y bằng “” đại bàng “"”, đại bàng = + đại bàng sư tử kiwi
+“Quy tắc: Y * = Y = | Thay thế: Y bằng “” con dấu việt quất “"”, con dấu việt quất * = con dấu việt quất =
+“Quy tắc: Z Z + Y + | Thay thế: Y bằng “" dưa hấu "”, Z bằng “" hải cẩu trâu ""”, hải cẩu trâu trâu + dưa hấu +
+“Quy tắc: * + Z Z * | Thay thế: Z bằng “” ngựa “"”, * + ngựa *
+“Quy tắc: + Z Z - * | Thay thế: Z bằng “” dưa hấu kiwi “"”, + kiwi dưa hấu kiwi dưa hấu - *
+“Quy tắc: = = + Z Y | Thay thế: Y bằng “” dâu chim cánh cụt “”, Z bằng “” cò “"”, = = + cò chim cánh cụt dâu
+“Quy tắc: X = * * X | Thay thế: X bằng “” chuột “"”, chuột chuột = * * chuột
+“Quy tắc: Y Z Y - = | Thay thế: Y bằng “” con dấu “”, Z bằng “” chuột “"”, con dấu chuột con dấu - =
+“Quy tắc: + = X Y | Thay thế: X bằng “” đại bàng “”, Y bằng “” ngựa vằn chim cánh cụt “"”, + = ngựa vằn chim cánh cụt đại bàng
+“Quy tắc: = X Z Z - | Thay thế: X bằng “” kiwi “”, Z bằng “” việt quất việt quất “"”, = kiwi việt quất việt quất việt quất việt quất -
+“Quy tắc: = * Z Y - Y | Thay thế: Y bằng “” chuột táo “”, Z bằng “” apple “"”, = * apple rat - apple rat
+“Quy tắc: X * Y * - | Thay thế: X bằng “” con dấu “”, Y bằng “” đào đào “"”, con dấu * đào đào * -
+“Quy tắc: Y Y X = * | Thay thế: X bằng “” sư tử “”, Y bằng “” dưa hấu “"”, dưa hấu sư tử = *
+“Quy tắc: * Y - X = Y | Thay thế: X bằng “” chuột “”, Y bằng “” chuột “"”, * chuột - chuột = chuột
+“Quy tắc: = X Z Z * | Thay thế: X bằng “” con dấu ngựa vằn “”, Z bằng “” sư tử đào “"”, = hải cẩu ngựa vằn đào sư tử đào sư tử *
+“Quy tắc: Y = Y + Y | Thay thế: Y bằng “” sư tử đại bàng “"”, sư tử đại bàng = sư tử đại bàng + sư tử đại bàng
+“Quy tắc: + Y - X Z + | Thay thế: X bằng “” việt quất “”, Y bằng “” ngựa dâu “”, Z bằng “” dưa hấu kiwi “"”, + ngựa dâu tây - quả việt quất dưa hấu kiwi +
+“Quy tắc: Y = X + = | Thay thế: X bằng “” đào dâu đen “”, Y bằng “” nho “”, nho = đào dâu đen + =
+“Quy tắc: - - Z - Z | Thay thế: Z bằng “” blackberry “"”, - - blackberry - blackberry
+“Quy tắc: Z + - * X Z | Thay thế: X bằng “” con dấu chuột “”, Z bằng “” chuối “"”, chuối + - * niêm phong chuối chuột
+“Quy tắc: X = Z - | Thay thế: X bằng “” cá mập táo “”, Z bằng “” ngựa vằn blackberry “"”, cá mập táo = dâu đen ngựa vằn -
+“Quy tắc: = = X X | Thay thế: X bằng “” rắn hổ mang kiwi “"”, = = rắn hổ mang kiwi
+“Quy tắc: Z Z + X = | Thay thế: X bằng “” nho “”, Z bằng “” kiwi “"”, kiwi kiwi + nho =
+“Quy tắc: = * Z X Y | Thay thế: X bằng “” táo “”, Y bằng “” lê “”, Z bằng “” cá mập “"”, = * cá mập táo lê
+“Quy tắc: Z - Z + | Thay thế: Z bằng “” đào “"”, đào - đào +
+“Quy tắc: X Z = + | Thay thế: X bằng “” ngựa vằn việt quất “”, Z bằng “” cá voi “"”, cá voi ngựa vằn việt quất = +
+“Quy tắc: * Z Z Y = | Thay thế: Y bằng “” blackberry “”, Z bằng “” dưa hấu trâu “"”, * trâu dưa hấu trâu dưa hấu blackberry =
+“Quy tắc: Z Z * + | Thay thế: Z bằng “" trâu "”, trâu trâu * +
+“Quy tắc: Z = Y = Y | Thay thế: Y bằng “” dưa hấu kiwi “”, Z bằng “” lê blackberry “"”, lê blackberry = kiwi dưa hấu = kiwi dưa hấu
+“Quy tắc: Z = * Y | Thay thế: Y bằng “” con dấu “”, Z bằng “” rắn hổ mang ngựa vằn “"”, rắn hổ mang ngựa vằn = * con dấu
+“Quy tắc: X Y = + = | Thay thế: X bằng “” đại bàng cá voi “”, Y bằng “” cá voi “"”, cá voi đại bàng cá voi = + =
+“Quy tắc: X + = Z Z | Thay thế: X bằng “” cá mập “”, Z bằng “” con dấu “"”, cá mập + = con dấu
+“Quy tắc: Y - Y * + | Thay thế: Y bằng “” kiwi “"”, kiwi - kiwi * +
+“Quy tắc: Y * = Z | Thay thế: Y bằng “” dâu đen “”, Z bằng “” dâu tây ngựa “"”, chuối dâu đen * = dâu ngựa
+“Quy tắc: X - + X Y | Thay thế: X bằng “” lê dưa hấu “”, Y bằng “” cá voi “"”, lê dưa hấu - + cá voi lê dưa hấu
+“Quy tắc: Z Y = * Y * | Thay thế: Y bằng “” đào ngựa vằn “”, Z bằng “” việt quất ngựa vằn “"”, ngựa vằn việt quất ngựa vằn đào = * đào ngựa vằn *
+“Quy tắc: = = X Y Y + | Thay thế: X bằng “” nho rắn hổ mang “”, Y bằng “” kiwi blackberry “"”, = = rắn hổ mang nho kiwi blackberry kiwi blackberry +
+“Quy tắc: - Z Y * | Thay thế: Y bằng “” apple blackberry “”, Z bằng “” dâu tây “”, - dâu tây táo blackberry *
+“Quy tắc: = = X X | Thay thế: X bằng “” chim cánh cụt “"”, = = chim cánh cụt
+“Quy tắc: X Y + Z * | Thay thế: X bằng “” sư tử đào “”, Y bằng “” ngựa vằn “”, Z bằng “” táo “"”, sư tử đào ngựa vằn + táo *
+“Quy tắc: + Z * X - | Thay thế: X bằng “” cá voi “”, Z bằng “” chim cánh cụt “"”, + chim cánh cụt * cá voi -
+“Quy tắc: X X + + Z + | Thay thế: X bằng “” lê blackberry “”, Z bằng “” rắn hổ mang “"”, lê dâu đen lê + + rắn hổ mang +
+“Quy tắc: * * + Z X | Thay thế: X bằng “" trâu "”, Z bằng “" cá mập "”, * * + trâu cá mập
+“Quy tắc: Z X Y * = | Thay thế: X bằng “” nho “”, Y bằng “” táo “”, Z bằng “” đại bàng “”, táo nho đại bàng * =
+“Quy tắc: = + X Y + | Thay thế: X bằng “” dưa hấu “”, Y bằng “” dưa hấu đào “"”, = + dưa hấu đào +
+“Quy tắc: + Y = Z Y | Thay thế: Y bằng “” kiwi “”, Z bằng “” chuối “"”, + kiwi = chuối kiwi
+“Quy tắc: - Z X = X - | Thay thế: X bằng “” chim cánh cụt dưa hấu “”, Z bằng “” blackberry “”, - chim cánh cụt dưa hấu blackberry = chim cánh cụt dưa hấu -
+“Quy tắc: * Z - Z | Thay thế: Z bằng “” dâu tây “"”, * dâu tây - dâu tây
+“Quy tắc: Z X + - | Thay thế: X bằng “” rắn hổ mang chuối “”, Z bằng “” kiwi ngựa vằn “"”, rắn hổ mang chuối kiwi ngựa vằn + -
+“Quy tắc: = + - X Y | Thay thế: X bằng “" chuột cánh cụt “”, Y bằng “" dâu trâu "”, = + - chim cánh cụt chuột trâu dâu
+“Quy tắc: * = + Y X | Thay thế: X bằng “" trâu "”, Y bằng “" táo "”, * = + trâu táo
+“Quy tắc: Y X + = | Thay thế: X bằng “” con dấu “”, Y bằng “” blackberry “”, con dấu blackberry + =
+“Quy tắc: * X + Z | Thay thế: X bằng “" nho "”, Z bằng “" lê trâu "”, * nho + trâu lê
+“Quy tắc: - Y * Z Y * | Thay thế: Y bằng “” chim cánh cụt đào “”, Z bằng “” cá voi “"”, - chim cánh cụt đào * chim cánh cụt đào cá voi *
+“Quy tắc: X = = Z * X | Thay thế: X bằng “” chuối việt quất “”, Z bằng “” cá voi “"”, chuối việt quất = = cá voi * chuối việt quất
+“Quy tắc: * X + Z | Thay thế: X bằng “” cò việt quất “”, Z bằng “” cá mập đại bàng “"”, * cò việt quất + cá mập đại bàng
+“Quy tắc: + Y Z = Z | Thay thế: Y bằng “” đào “”, Z bằng “” đại bàng “"”, + đại bàng đào = đại bàng
+“Quy tắc: Z Y * Y - + | Thay thế: Y bằng “” nho táo “”, Z bằng “” cá voi “"”, nho táo cá voi * nho táo - +
+“Quy tắc: - = Y Z + | Thay thế: Y bằng “” dưa hấu táo “”, Z bằng “” chim cánh cụt rắn hổ mang “"”, - = táo dưa hấu rắn hổ mang chim cánh cụt +
+“Quy tắc: Z X X = = | Thay thế: X bằng “” đào “”, Z bằng “” sư tử “"”, sư tử đào = =
+“Quy tắc: Y + X + | Thay thế: X bằng “” chuối “”, Y bằng “” rắn hổ mang đào “"”, rắn hổ mang đào + chuối +
+“Quy tắc: + + = Z Y X | Thay thế: X bằng “” con dấu “”, Y bằng “” chuột “”, Z bằng “” chuối cá mập “"”, + = hải cẩu chuột chuối cá mập
+“Quy tắc: Z Z * * * | Thay thế: Z bằng “” blackberry “"”, blackberry blackberry * * *
+“Quy tắc: Z Y - - | Thay thế: Y bằng “” rắn hổ mang đào “”, Z bằng “” táo ngựa “"”, rắn hổ mang đào táo ngựa - -
+“Quy tắc: = - X Y Y * | Thay thế: X bằng “” đại bàng “”, Y bằng “” sư tử “"”, = - sư tử đại bàng *
+“Quy tắc: + X X - | Thay thế: X bằng “” lê táo “"”, + lê táo lê -
+“Quy tắc: Z * - X X | Thay thế: X bằng “” chim cánh cụt “”, Z bằng “” chim cánh cụt táo “"”, chim cánh cụt táo * - chim cánh cụt
+“Quy tắc: - * * X Y | Thay thế: X bằng “” táo ngựa “”, Y bằng “” lê “"”, - * * lê táo ngựa
+“Quy tắc: Z X + = Z | Thay thế: X bằng “" cá voi "”, Z bằng “" đại bàng "”, cá voi đại bàng + = đại bàng
+“Quy tắc: Y X Z = + | Thay thế: X bằng “” ngựa vằn chuột “”, Y bằng “” chuột chuối “”, Z bằng “” táo “”, chuột chuối chuột ngựa vằn táo = +
+“Quy tắc: - Z + Z - | Thay thế: Z bằng “” cá voi đào “"”, - cá voi đào + cá voi đào -
+“Quy tắc: X Z + = | Thay thế: X bằng “" trâu đào "”, Z bằng “" chuột "”, trâu đào chuột + =
+“Quy tắc: = X X = | Thay thế: X bằng “” chim cánh cụt sư tử “"”, = chim cánh cụt sư tử chim cánh cụt =
+“Quy tắc: Z * - * Y | Thay thế: Y bằng “" kiwi đào "”, Z bằng “" trâu trâu ""”, trâu trâu * - * đào kiwi
+“Quy tắc: X * - + Y X | Thay thế: X bằng “” chuối cá voi “”, Y bằng “” táo “"”, chuối cá voi * - + chuối cá voi táo
+“Quy tắc: + Y + + Y Z | Thay thế: Y bằng “” rắn hổ mang chim cánh cụt “”, Z bằng “” dâu tây “"”, + rắn hổ mang chim cánh cụt + + chim cánh cụt rắn hổ mang dâu
+“Quy tắc: Z + * Z X | Thay thế: X bằng “” con dấu chuột “”, Z bằng “” chim cánh cụt táo “"”, chim cánh cụt táo + * chuột hải cẩu táo
+“Quy tắc: + X = - X | Thay thế: X bằng “” cò dưa hấu “"”, + cò dưa hấu = - cò dưa hấu
+“Quy tắc: X = * = Z | Thay thế: X bằng “” apple “”, Z bằng “” rat “"”, apple = * = rat
+“Quy tắc: - Z Y X = - | Thay thế: X bằng “” chuột kiwi “”, Y bởi “” cá mập “”, Z bằng “” rắn hổ mang chuột “"”, - rắn hổ mang chuột kiwi rat = -
+“Quy tắc: * = X * Y | Thay thế: X bằng “" táo trâu "”, Y bằng “" cá mập chuối "”, * = táo trâu * cá mập chuối
+“Quy tắc: Y Y Z + + | Thay thế: Y bằng “” táo đào “”, Z bằng “” cá voi việt quất “"”, táo đào táo đào cá voi việt quất + +
+“Quy tắc: X - Y * Z = | Thay thế: X bằng “” rắn hổ mang “”, Y bằng “” cá mập cá mập “”, Z bằng “” ngựa vằn “"”, rắn hổ mang - cá mập cá mập * ngựa vằn =
+“Quy tắc: + X X * Y * | Thay thế: X bằng “” con dấu sư tử “”, Y bằng “” dâu tây “"”, + con dấu sư tử hải cẩu * dâu tây *
+“Quy tắc: = Z Y + | Thay thế: Y bằng “” con dấu “”, Z bằng “” chim cánh cụt “"”, = con dấu chim cánh cụt +
+“Quy tắc: = Y - * Y X | Thay thế: X bằng “” cò “”, Y bằng “” ngựa vằn “"”, = ngựa vằn - * cò ngựa vằn
+“Quy tắc: Z * + X Y | Thay thế: X bằng “” chuối kiwi “”, Y bằng “” ngựa vằn “”, Z bằng “” con dấu “"”, con dấu * + kiwi chuối ngựa vằn
+“Quy tắc: - Z X X * * | Thay thế: X bằng “” cò kiwi “”, Z bằng “” ngựa vằn “"”, - cò ngựa vằn kiwi cò kiwi kiwi * *
+“Quy tắc: Y * - = Z | Thay thế: Y bằng “" trâu "”, Z bằng “" ngựa "”, trâu * - = ngựa
+“Quy tắc: Z * * + X | Thay thế: X bằng “” con dấu dâu tây “”, Z bằng “" ngựa đào "”, ngựa đào * * * + con dấu dâu
+“Quy tắc: + * * X Y Z | Thay thế: X bằng “" kiwi "”, Y bằng “" trâu sư tử "”, Z bằng “" sư tử "”, + * * kiwi sư tử trâu sư tử
+“Quy tắc: + + = Z Y | Thay thế: Y bằng “” kiwi “”, Z bằng “” cò rắn hổ mang “"”, + = rắn hổ mang kiwi
+“Quy tắc: - + X Y + | Thay thế: X bằng “” kiwi “”, Y bằng “” lê “"”, - + kiwi lê +
+“Quy tắc: Z - - + Y X | Thay thế: X bằng “” lê ngựa vằn “”, Y bằng “” đại bàng “”, Z bằng “” dâu tây “”, dâu tây - - + đại bàng ngựa vằn lê
+“Quy tắc: * - Z Y = Y | Thay thế: Y bằng “” kiwi “”, Z bằng “” dâu tây “"”, * - kiwi dâu tây = kiwi
+“Quy tắc: + - - Y Y Y | Thay thế: Y bằng “” quả táo đại bàng “"”, + - - đại bàng táo đại bàng táo táo đại bàng táo
+“Quy tắc: - - = X X | Thay thế: X bằng “” cá mập “"”, - - = cá mập
+“Quy tắc: + X X = Y | Thay thế: X bằng “” rắn hổ mang “”, Y bằng “” dưa hấu “"”, + rắn hổ mang = dưa hấu
+“Quy tắc: = + Z Z - | Thay thế: Z bằng “” sư tử sư tử “"”, = + sư tử sư tử sư tử sư tử sư tử -
+“Quy tắc: + Z * = Y X | Thay thế: X bằng “” cá voi “”, Y bằng “” chim cánh cụt “”, Z bằng “” blackberry “"”, + blackberry * = cá voi chim cánh cụt
+“Quy tắc: Z = * X | Thay thế: X bằng “” sư tử “”, Z bằng “” blackberry “"”, blackberry = * sư tử
+“Quy tắc: X Z + * - X | Thay thế: X bằng “” cá voi “”, Z bằng “” táo “"”, táo cá voi + * - cá voi
+“Quy tắc: * - * Z X Z | Thay thế: X bằng “” ngựa vằn dưa hấu “”, Z bằng “” dưa hấu sư tử “”, * - * - * dưa hấu sư tử dưa hấu ngựa vằn dưa hấu dưa hấu
+“Quy tắc: X + - + Z | Thay thế: X bằng “” chim cánh cụt “”, Z bằng “” blackberry “"”, chim cánh cụt + - + blackberry
+“Quy tắc: X X - = Y = | Thay thế: X bằng “" ngựa vằn sư tử "”, Y bằng “" trâu "”, sư tử ngựa vằn sư tử ngựa vằn - = trâu =
+“Quy tắc: = - X Z | Thay thế: X bằng “” chim cánh cụt đào “”, Z bằng “” chuột “"”, = - chuột chim cánh cụt đào
+“Quy tắc: Z = Y | Thay thế: Y bằng “” dưa hấu kiwi “”, Z bằng “” cá voi nho “"”, cá voi nho = = dưa hấu kiwi
+“Quy tắc: * Y + - Z | Thay thế: Y bằng “” rắn hổ mang “”, Z bằng “” cò “"”, * rắn hổ mang + - cò
+“Quy tắc: - * - Y X Y | Thay thế: X bằng “” đại bàng “”, Y bằng “” dưa hấu cò “"”, - * - cò dưa hấu đại bàng cò dưa hấu
+“Quy tắc: X * Y Z * | Thay thế: X bằng “” chim cánh cụt hải cẩu “”, Y bằng “” việt quất “”, Z bằng “” cá voi blackberry “"”, chim cánh cụt hải cầu* cá voi việt quất đen *
+“Quy tắc: * * + Z X | Thay thế: X bằng “” cá voi blackberry “”, Z bằng “” cá voi “"”, * * + cá voi đen
+“Quy tắc: * Y * Y Z + | Thay thế: Y bằng “” lê “”, Z bằng “” táo “"”, * lê * lê táo +
+“Quy tắc: = Z - X | Thay thế: X bằng “” con dấu “”, Z bằng “” con dấu kiwi “"”, = niêm phong kiwi - con dấu
+“Quy tắc: X * = Y Y | Thay thế: X bằng “” cá voi hải cẩu “”, Y bằng “” hải cẩu ngựa “"”, cá voi hải cẩu * = hải cẩu ngựa hải cẩu
+“Quy tắc: X = * X X | Thay thế: X bằng “” việt quất “"”, việt quất = * việt quất
+“Quy tắc: Z - Y = * X | Thay thế: X bằng “” dưa hấu đại bàng “”, Y bằng “” nho rắn hổ mang “”, Z bằng “” ngựa vằn “"”, ngựa vằn vằn - rắn hổ mang nho = * đại bàng dưa hấu
+“Quy tắc: X Y + * = | Thay thế: X bằng “” cá mập “”, Y bằng “” đào “"”, cá mập đào + * =
+“Quy tắc: = * Y Y * | Thay thế: Y bằng “" trâu "”, = * trâu trâu *
+“Quy tắc: - Z = Y Z | Thay thế: Y bằng “” nho ngựa vằn “”, Z bằng “” cá mập táo “”, - cá mập táo = cá mập táo ngựa vằn
+“Quy tắc: - = * X Z | Thay thế: X bằng “” dưa hấu “”, Z bằng “” dưa hấu chuối “"”, - = * dưa hấu chuối dưa hấu
+“Quy tắc: - X * Y Y = | Thay thế: X bằng “” dưa hấu ngựa vằn “”, Y bằng “” kiwi cá mập “"”, - dưa hấu ngựa vằn * cá mập kiwi cá mập kiwi =

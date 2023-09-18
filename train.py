@@ -5,6 +5,7 @@ import torch
 import transformers
 from datasets import load_dataset
 from peft import AutoPeftModelForCausalLM, LoraConfig
+from script_arguments import ScriptArguments
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
@@ -14,7 +15,6 @@ from transformers import (
     TrainingArguments,
 )
 from trl import SFTTrainer
-from script_arguments import ScriptArguments
 
 parser = HfArgumentParser(ScriptArguments)
 script_args = parser.parse_args_into_dataclasses()[0]

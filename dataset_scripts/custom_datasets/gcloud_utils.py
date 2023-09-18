@@ -1,10 +1,13 @@
 from typing import List
+
 from google.cloud import translate
 
 
 def translate_text(
-    list_text: List[str] = "YOUR_TEXT_TO_TRANSLATE", project_id: str = "YOUR_PROJECT_ID",
-    source_language_code: str = "en-US", target_language_code: str = "vi"
+    list_text: List[str] = "YOUR_TEXT_TO_TRANSLATE",
+    project_id: str = "YOUR_PROJECT_ID",
+    source_language_code: str = "en-US",
+    target_language_code: str = "vi",
 ) -> translate.TranslationServiceClient:
     """Translating Text."""
 
@@ -27,12 +30,10 @@ def translate_text(
         }
     )
 
-    results = [
-        translation.translated_text for translation in response.translations
-    ]
+    results = [translation.translated_text for translation in response.translations]
 
     return results
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(translate_text(["Hello world", "I love you"]))

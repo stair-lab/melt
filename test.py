@@ -2,15 +2,15 @@ import json
 import os
 
 import pandas as pd
-
-from tqdm import tqdm
-from torch.utils.data import DataLoader
-from transformers import HfArgumentParser
+from dataset import DatasetWrapper
 
 from model import get_model
 from pipelines import EvalPipeline
-from dataset import DatasetWrapper
 from script_arguments import ScriptArguments
+from torch.utils.data import DataLoader
+
+from tqdm import tqdm
+from transformers import HfArgumentParser
 from utils import set_seed
 
 
@@ -37,6 +37,11 @@ if __name__ == "__main__":
         dataset_name=script_args.dataset_name,
         prompting_strategy=script_args.prompting_strategy,
     )
+    if script_args.smoke_test:
+        n_examples = 8
+        dataset_wrapper.dataset_testing = dataset_wrapper.dataset_testing.select(
+            range(n_examples))
+
     dataset_loader = DataLoader(
         dataset_wrapper.get_dataset_testing(),
         batch_size=script_args.per_device_eval_batch_size,
@@ -83,7 +88,7 @@ if __name__ == "__main__":
         if script_args.continue_infer and os.path.exists(csv_file):
             df2 = pd.DataFrame(generations)
             df3 = df1.append(df2, ignore_index=True)
-            generations = df3.to_dict(orient='list')
+            generations = df3.to_dict(orient="list")
 
         save_to_json(
             generations,
@@ -98,8 +103,10 @@ if __name__ == "__main__":
             )
 
     eval_pipeline.run(
-        ds_wrapper=dataset_wrapper, ds_loader=dataset_loader,
-        saving_fn=save_results, start_idx=start_idx,
+        ds_wrapper=dataset_wrapper,
+        ds_loader=dataset_loader,
+        saving_fn=save_results,
+        start_idx=start_idx,
         few_shot=script_args.fewshot_prompting,
-        random_mtpc=script_args.random_mtpc
+        random_mtpc=script_args.random_mtpc,
     )

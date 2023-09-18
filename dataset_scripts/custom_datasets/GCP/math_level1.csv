@@ -1,0 +1,2120 @@
+problem,level,type,solution
+Sự khác biệt dương giữa $120\%$ của 30 và $130\%$ của 20 là bao nhiêu?,Level 1,Algebra,Một trăm hai mươi phần trăm của 30 là $120\cdot30\cdot\frac{1}{100}=36$ và $130\%$ của 20 là $ 130\cdot 20\cdot\frac{1}{100}=26$ . Sự khác biệt giữa 36 và 26 là $\boxed{10}$.
+"Nếu $2^8=4^x$, giá trị của $x$ là bao nhiêu?",Level 1,Algebra,"Viết lại $4$ thành $2^2$ để tìm $4^x=2^{2x}$. Vì $2^8=2^{2x}$, nên chúng ta có $2x=8$ ngụ ý $x=\boxed{4}$."
+"Hai điểm cuối của một đoạn là $(1,4)$ và $(1,10)$. Tổng tọa độ trung điểm của đoạn thẳng là bao nhiêu?",Level 1,Algebra,"Trung điểm của đoạn thẳng là $\left(\frac{1+1}{2},\frac{4+10}{2}\right)=(1,7)$ nên tổng tọa độ là $1+7=\đóng hộp{8}$."
+Trong một chai nước Vitamin 8 ounce chất lỏng có 125 calo. Có bao nhiêu calo sẽ chứa trong một chai 12 ounce chất lỏng? Thể hiện câu trả lời của bạn dưới dạng thập phân.,Level 1,Algebra,"Chúng ta biết rằng có 125 calo trong 8 ounce chất lỏng Nước Vitamin, vì vậy chúng ta có thể thiết lập tỷ lệ $\frac{125}{8}=\frac{x}{12}$, trong đó $x$ là số lượng lượng calo chứa trong một chai 12 ounce chất lỏng. Giải $x$, chúng ta thấy rằng $x=\left(\frac{125}{8}\right)(12)=\boxed{187,5}$ calo."
+Tính giá trị biểu thức $a^3\cdot a^2$ nếu $a= 5$.,Level 1,Algebra,"Biểu thức đã cho bằng $a^{3+2}=a^5$. Thay giá trị của $a$ vào, biểu thức bằng $5^5=\boxed{3125}$."
+"Nếu $a = 8$, giá trị của $\left(16\sqrt[3]{a^2}\right)^{\frac 13}$ là bao nhiêu?",Level 1,Algebra,"Lưu ý rằng $a^2 = 64$ và $\sqrt[3]{64} = 4$. Do đó, $$\left(16\sqrt[3]{a^2}\right)^{\frac {1}{3}} = \left(16 \times 4\right)^{\frac{1} {3}} = 64^\frac{1}{3} = \boxed{4}.$$"
+Giả sử $m$ và $n$ thỏa mãn $mn=7$ và $m+n=8$. $|m-n|$ là gì?,Level 1,Algebra,"Chúng ta có hai phương trình và hai biến, do đó có thể giải trực tiếp $m$ và $n$ rồi tính $|m-n|$. Tuy nhiên, làm như vậy rất lộn xộn nên chúng tôi tìm kiếm một cách tiếp cận khác. Chúng ta bình phương phương trình thứ hai để có $(m+n)^2 = m^2 + 2mn +n^2 = 64$. Chúng ta biết rằng $mn=7$, vì vậy chúng ta có thể trừ phương trình $4mn=28$ để có được $m^2 -2mn + n^2 = (m-n)^2 = 36$. Điều này cho chúng ta biết rằng $m-n=\pm 6$ nên $|m-n|=\boxed{6}$."
+"Nếu $(x,y) = (3,9)$ thì $y^2 - 3xy + 8$ là bao nhiêu?",Level 1,Algebra,Chúng ta có $y^2 -3xy + 8 = 9^2 - 3(3)(9) + 8 = 81 - 81 + 8 = \boxed{8}$.
+Một công thức yêu cầu $\frac14$ thìa cà phê muối cho mỗi lít nước. Cần bao nhiêu lít nước để pha được hai thìa muối?,Level 1,Algebra,"Phải mất $8$ một phần tư thìa cà phê muối để tạo ra hai thìa cà phê, vì vậy cần sử dụng $\đóng hộp{8}$ lít nước."
+"Nếu $a\ast b = 2a+5b-ab$, giá trị của $3\ast10$ là bao nhiêu?",Level 1,Algebra,"Từ hàm đã xác định, chúng ta biết rằng $3\ast 10 = 2(3)+5(10)-(3)(10) = 6+50-30=\boxed{26}$."
+"Tìm $k$, nếu ${(3^k)}^6=3^6$.",Level 1,Algebra,"Tuân theo luật số mũ, ${(3^k)}^6=3^{6k}$. Vì $3^{6k}=3^6$, nên chúng ta có $6k=6$, chia cho 6 sẽ ra $k=\boxed{1}$."
+50$\%$ của $\frac{1}{3}$ của 36 là bao nhiêu?,Level 1,Algebra,$\frac13$ của 36 là 12 và năm mươi phần trăm của 12 là $\boxed{6}$.
+"Cùng nhau, Amy và Betty có 20 quả táo. Amy có số táo gấp ba lần Betty có. Amy có nhiều hơn Betty bao nhiêu quả táo?",Level 1,Algebra,"Gọi số táo mà Amy có $a$ và số táo mà Betty có $b$. Chúng ta có thể sử dụng hệ phương trình sau để biểu diễn thông tin đã cho: \begin{align*}
+a + b &= 20 \\
+a &= 3b \\
+\end{align*}Thay $a$ vào phương trình đầu tiên sẽ được $3b + b = 20$. Giải $b$ cho $b = 5$. Do đó $a = 15$. Vậy Amy có nhiều táo hơn Betty là $15 - 5 = \boxed{10}$."
+"Nếu $a = 2$, $b = 3$ và $c = 4$, giá trị số của biểu thức $(b-c)^2 + a(b+c)$ là bao nhiêu?",Level 1,Algebra,"Chúng ta thay các giá trị vào rồi đánh giá, thu được $(3 - 4)^2 + 2(3 + 4) = (-1)^2 + 2(7) = \boxed{15}$."
+"Nếu $x + y = 7$ và $x - y = 9$, hãy tìm tích của $x$ và $y$.",Level 1,Algebra,"Có vẻ dễ dàng nhất để giải quyết $x$ trước tiên và sau đó là $y$. Chúng ta có thể giải $x$ bằng cách cộng hai phương trình với nhau, cho ra $2x = 16$, hoặc $x = 8$. Thay $x$ vào phương trình đầu tiên ta có $8 + y = 7$, do đó $y = -1$. Vì vậy, $x\cdot y = \boxed{-8}$."
+Tính giá $24-(2x-y)$ nếu $x=4$ và $y=3$.,Level 1,Algebra,Chúng ta có $24 - (2x-y) = 24 - (2\cdot 4 - 3) = 24 - (8-3) = 24 - 5 = \boxed{19}$.
+"Nếu $x+y=12$ và $x-y=8$, giá trị của $2x-xy$ là bao nhiêu?",Level 1,Algebra,"Đầu tiên, chú ý $2x - xy = x(2 - y)$. Vì vậy, vấn đề này quy về việc tìm các giá trị của $x$ và $y$.
+
+Cộng hai phương trình lại với nhau để tìm $x$: \begin{align*}
+2x &= 20, \\
+x &= 10.
+\end{căn chỉnh*}
+Trừ hai phương trình để tìm $y$: \begin{align*}
+2y &= 4, \\
+y &= 2.
+\end{căn chỉnh*}
+Vì $y = 2$ và $x = 10$, $x(2 - y) = 10(2 - 2) = \boxed{0}$."
+Sự khác biệt giữa căn bậc hai dương của 64 và căn bậc ba của 64 là gì?,Level 1,Algebra,Căn bậc hai dương của 64 là $\sqrt{64}=8$. Căn bậc ba của 64 là $\sqrt[3]{64}=4$. Sự khác biệt là $8-4=\boxed{4}$.
+"Nếu $\frac{x}{y}= 2$ và $\frac{z}{x}= 4$, giá trị của $\frac{z}{y}$ là bao nhiêu?",Level 1,Algebra,$\frac z y=\frac z x\cdot\frac x y=4\cdot2=\boxed{8}$.
+"Nếu $h(x) = \sqrt{\frac{x+3}{2}}$, giá trị của $h(-1)$ là bao nhiêu?",Level 1,Algebra,Chúng ta có $h(-1) = \sqrt{\frac{-1+3}{2}} = \sqrt{\frac{2}{2}} = \sqrt{1} = \boxed{1}$ .
+Đặt $\Psi$ là mối quan hệ được xác định bởi $A\ \Psi\ B=2A+5B$. Giá trị của $9\ \Psi\ (3\ \Psi\ 1)$ là bao nhiêu?,Level 1,Algebra,Thay thế 3 cho $A$ và 1 cho $B$ trong biểu thức xác định $\Psi$ để tìm $3\ \Psi\ 1=11$. Sau đó thay 9 cho $A$ và 11 cho $B$ để tìm $9\ \Psi\ 11=2\cdot 9+5\cdot 11=\boxed{73}$.
+"Nếu $f (x) = 2x + 1$ và $g (x) =-3$, giá trị của $f(g(x))$ là bao nhiêu?",Level 1,Algebra,$f(g(x)) = f(-3) = 2(-3) + 1 = \boxed{-5}$.
+Tính tích $\dfrac 43\cdot \dfrac 64\cdot \dfrac 85\cdot \dfrac{10}{6}\cdot \dfrac{12}{7}\cdot \dfrac{14}{8}$.,Level 1,Algebra,"Chúng tôi có thể viết
+\[\frac{4}{3} \cdot \frac{6}{4} \cdot \frac{8}{5} \cdot \frac{10}{6} \cdot \frac{12}{7} \cdot \frac{14}{8} = \frac{4 \cdot 6 \cdot 8 \cdot 10 \cdot 12 \cdot 14}{3 \cdot 4 \cdot 5 \cdot 6 \cdot 7 \cdot 8}. \]Sau đó
+\[\frac{6}{3} = \frac{8}{4} = \frac{10}{5} = \frac{12}{6} = \frac{14}{7} = 2,\ ]do đó biểu thức trở thành
+\[\frac{4 \cdot 2^5}{8} = 2^4 = \boxed{16}.\]"
+Giá trị của $19^2 + 2(19) + 1$ là bao nhiêu?,Level 1,Algebra,Đây là bình phương của một nhị thức: $19^2 + 2(19) + 1 = (19 + 1)^2 = 20^2 = \boxed{400}$.
+Với giá trị nào của $n$ thì $(2^3)^4 = 2^n$?,Level 1,Algebra,"Chúng ta có $(2^3)^4 = 2^{(3\cdot 4)} = 2^{12}$, vì vậy $n = \boxed{12}$."
+Đánh giá $(\sqrt[3]{13})^6$.,Level 1,Algebra,Chúng ta có $$(\sqrt[3]{13})^6 = (13^{1/3})^6 = 13^{\frac{1}{3}\cdot 6} = 13^2 = \ đóng hộp{169}.$$
+"Mỗi số hạng liên tiếp trong dãy $243, 81, x,
+y, 3, \ldots$ thu được bằng cách nhân số hạng trước đó với một hằng số. Giá trị của $x + y$ là bao nhiêu?",Level 1,Algebra,"Tỷ lệ chung $r$, là $\frac{1}{3}$ (Bạn có thể tìm thấy tỷ lệ này bằng cách chia 81 cho 243). Do đó, $ x = 27$, $y = 9$, và $x+y = \boxed{36}$"
+"Nếu $a * b = a^b + b^a$, với tất cả các giá trị nguyên dương của $a$ và $b$, thì giá trị của $2 * 6$ là bao nhiêu?",Level 1,Algebra,Chúng ta có thể thấy rằng $2 * 6 = 2^6 + 6^2 = 64 + 36 = \boxed{100}$.
+Giá trị của 123123 chia cho 1001 là bao nhiêu?,Level 1,Algebra,"Lưu ý rằng số đầu tiên có thể được viết là $123\cdot1000 + 123 = 123(1001)$. Do đó, khi chia số này cho 1001 thì thương số là $\boxed{123}$."
+"Angie quyết định dùng lớp của mình làm mẫu để dự đoán tổng số học sinh trong trường cô mặc đồ đỏ vào Ngày lễ tình nhân. Cô đếm được 11 học sinh mặc đồ đỏ trong lớp cô có 24 học sinh. Sử dụng tỷ lệ này, cô ước tính có bao nhiêu trong số 480 học sinh ở trường cô mặc đồ màu đỏ?",Level 1,Algebra,"Chúng ta có thể sử dụng thông tin đã cho để lập tỉ lệ và tính số học sinh trong trường mặc đồ màu đỏ. Gọi $x$ bằng tổng số học sinh mặc đồ đỏ trong trường. Từ thông tin đã cho, ta có$$\frac{11}{24}=\frac{x}{480},$$so $$x=\frac{480\cdot 11}{24},$$có nghĩa là $$x=20\cdot 11=\đóng hộp{220}.$$"
+Tổng của hai số là 40 và hiệu của chúng là 12. Tích của chúng là bao nhiêu?,Level 1,Algebra,"Hãy bắt đầu bằng cách viết lại vấn đề này thành dạng phương trình:
+
+\bắt đầu{căn chỉnh*}
+x + y &= 40, \\
+x - y &= 12.
+\end{align*}Chúng ta muốn tìm $xy$, vì vậy hãy tìm riêng $x$ và $y$.
+
+Bắt đầu bằng cách cộng hai phương trình: \begin{align*}
+2x &= 52 \\
+x &= 26
+\end{align*}Bây giờ, hãy trừ hai phương trình \begin{align*}
+2y &= 28 \\
+y &= 14
+\end{align*}Vậy $x \cdot y = 26 \cdot 14 = \boxed{364}$."
+Hãy tính $(34-10)+(20-9)+(55-10)$ trong đầu bạn.,Level 1,Algebra,"Sắp xếp lại các số hạng, chúng ta nhận được $(34+55-9)+(20-10-10)=80+0=\boxed{80}$."
+"Một công viên giải trí tính phí vào cửa là $\$2,25$ cộng với $\$1,50$ cho mỗi chuyến đi. Nếu Simon chi tổng cộng $\$12,75$ thì anh ấy đã trả bao nhiêu chuyến đi?",Level 1,Algebra,"Gọi $x$ là số chuyến đi mà Simon đã trả. Khi đó $12,75=2,25+1,50x\ngụ ý 1,50x=10,50\ngụ ý x=\boxed{7}$."
+Số nguyên $x$ nào thỏa mãn phương trình: $2^{x + 2} = 32$ ?,Level 1,Algebra,"Hai lũy thừa bậc 5 bằng 32, và vì hàm $f(x)=2^x$ tăng đơn điệu nên 5 là số thực duy nhất $r$ mà $2^r=32$. Do đó, $x+2=5\ngụ ý x=\boxed{3}$."
+Đánh Giá: $102^2 - 98^2$,Level 1,Algebra,Hệ số này là sự khác biệt của các bình phương thành $(102-98)(102+98)=4\cdot200=\boxed{800}$.
+"nào sau đây có giá trị nhỏ nhất? $$A=\sqrt{2}, \quad
+B=\sqrt[4]{4}, \quad
+C=\sqrt[8]{8}.$$ Nhập câu trả lời của bạn là $A$, $B$ hoặc $C$.",Level 1,Algebra,"Nếu chúng ta đơn giản hóa tất cả các đại lượng và làm cho chúng có cơ số 2 thì việc so sánh các giá trị sẽ dễ dàng hơn.
+$$\sqrt{2}=2^{\frac{1}{2}}$$ $$\sqrt[4]{4}=4^{\frac{1}{4}}=(2^2 )^{\frac{1}{4}}=2^{2\cdot{\frac{1}{4}}}=2^{\frac{1}{2}}$$ $$\sqrt[ 8]{8}=(2^3)^{\frac{1}{8}}=2^{3\cdot{\frac{1}{8}}}=2^{\frac{3}{ 8}}$$
+
+Hai đại lượng đầu bằng nhau, đại lượng thứ ba nhỏ hơn hai đại lượng đầu. Vì vậy, câu trả lời của chúng tôi là $\sqrt[8]{8},$ hoặc $\boxed{C}.$"
+Tổng của năm số nguyên liên tiếp là năm. Tích của năm số nguyên là bao nhiêu?,Level 1,Algebra,"Chúng ta đặt $a$ đại diện cho số nguyên đầu tiên. Điều đó có nghĩa là năm số nguyên liên tiếp là $a, a+1,\cdots,a+4$. Chúng ta đặt tổng bằng 5 và giải $a$. \bắt đầu{căn chỉnh*}
+a+(a+1)+(a+2)+(a+3)+(a+4)&=5\quad\Rightarrow\\
+5a+10&=5\quad\Rightarrow\\
+5a&=-5\quad\Rightarrow\\
+a&=-1
+\end{align*} Các số nguyên là -1, 0, 1, 2, 3 và tích là $\boxed{0}$."
+"Nếu $\frac 25 = \frac A{60} = \frac {60}B$, $A + B$ là bao nhiêu?",Level 1,Algebra,"Các phương trình cho phép chúng ta giải cả $A$ và $B$. Lưu ý rằng $A=60 \left(\frac{2}{5}\right) = 24$ và $B=\frac{60}{\frac{2}{5}} = \frac{300}{2 } = 150$, tổng cộng là $24+150=\boxed{174}$."
+"Nếu $125^b=5$ và $27^b=c$, giá trị của $c$ là bao nhiêu?",Level 1,Algebra,"Chúng ta có thể viết lại phương trình đầu tiên thành $(5^3)^b=5^{3\cdot b}=5\Rightarrow 3b=1\Rightarrow b=\frac{1}{3}$. Thay giá trị của $b$ vào, chúng ta nhận được $27^{\frac{1}{3}}=c$. Vì vậy, $c=(3^3)^{\frac{1}{3}}=3^{3\cdot\frac{1}{3}}=\boxed{3}$."
+Xét hàm $f(x)=5x+4$. $f(1)$ là gì?,Level 1,Algebra,Chúng ta có $f(1) = 5\cdot 1+4 =5+4=\boxed{9}$.
+Tổng của hai số là 12 và tích của chúng là 35. Hiệu số dương giữa các số là bao nhiêu?,Level 1,Algebra,"Gọi $x$ và $y$ là hai số. Chúng ta được cung cấp \begin{align*}
+x+y&=12\text{ và} \\
+xy&=35.
+\end{align*} Giải phương trình đầu tiên cho $y$ và thay thế vào phương trình thứ hai, chúng ta tìm thấy $x(12-x)=35$. Trừ vế trái cho cả hai vế của phương trình và phân phối, chúng ta tìm thấy $0=x^2-12x+35$. Chúng ta có thể phân tích vế phải thành nhân tử $(x-7)(x-5)$, vì vậy các nghiệm là $x=7$ và $x=5$. Thay thế một trong hai số này trở lại $y=12-x$, chúng ta thấy rằng hai số là $7$ và $5$, và hiệu của chúng là $\boxed{2}$."
+Bắn vòng trong 30 phút đốt cháy 150 calo. Kendra sẽ đốt cháy bao nhiêu calo nếu cô ấy bắn vòng 30 phút mỗi ngày trong một tuần?,Level 1,Algebra,Vì Kendra đốt cháy 150 calo mỗi lần cô ấy bắn vòng trong 30 phút và cô ấy thực hiện hoạt động này 7 lần trong tuần nên tổng lượng calo đốt cháy là $150 \times 7 = \boxed{1050}$ calo.
+Raymond thường ăn một bữa ăn nhẹ gồm 10 chiếc bánh quy giòn 12 calo. Anh ta sẽ phải ăn bao nhiêu chiếc bánh quy 20 calo để tiêu thụ cùng một lượng calo?,Level 1,Algebra,"Raymond tiêu thụ tổng cộng $10\cdot12=120$ calo vào bữa ăn nhẹ. Nếu anh ấy ăn $c$ bánh quy, anh ấy sẽ nhận được $20c$ calo, vì vậy vì anh ấy cần lượng calo này bằng 120 nên anh ấy phải ăn $c=120/20=\boxed{6}$ bánh quy."
+Nếu một giọt nước tương đương với $\frac{1}{4}$ của một mililit thì một lít nước có bao nhiêu giọt? Lưu ý: 1 lít = 1000 ml.,Level 1,Algebra,"Nếu một giọt nước tương đương với $\frac{1}{4}$ của một mililit thì $4$ giọt nước phải tương đương với $1$ mililit nước. Vì có $1000$ mililít trong một lít, nên có $4 \times 1000 = \boxed{4000}$ nhỏ giọt trong một lít nước."
+Tính giá $(x+ y)(x-y)$ khi $x= 15$ và $y= 5$.,Level 1,Algebra,Chúng ta có $(x+y)(x-y) = (15+5)(15-5) = (20)(10) = \boxed{200}$.
+Nếu $\displaystyle\frac{n+5}{n-3} = 2$ thì giá trị của $n$ là bao nhiêu?,Level 1,Algebra,"Nhân cả hai vế với $n-3$, chúng ta có $n+5 = 2(n-3)$. Khai triển sẽ cho $n+5 = 2n - 6$, và giải phương trình này sẽ cho $n=\boxed{11}$."
+Khai triển biểu thức sau: $7(3y+2)$,Level 1,Algebra,"Chúng tôi áp dụng thuộc tính phân phối để get\begin{align*}
+7(3y+2) &= 7\cdot 3y+7\cdot 2\\
+&= \đóng hộp{21y+14}.
+\end{căn chỉnh*}"
+Thừa số $r^2+10r+25$.,Level 1,Algebra,"Số hạng bậc hai là bình phương của $r$ và số hạng không đổi là $5^2$. Số hạng tuyến tính là $2(r)(5)$, vì vậy chúng ta thấy rằng $r^2 + 10r+25 = \boxed{(r+5)^2}$."
+"Đối với các số khác 0 $a$, $b$ và $c$, hãy xác định \[\text{{D}}(a,b,c)=\frac{abc}{a+b+c}.\] Tìm $\text{{D}}(2,4,6)$.",Level 1,Algebra,"Chúng ta có \[\text{{ D}}(2,4,6)=\frac{2\cdot 4\cdot 6}{2+4+6}=\frac{48}{12}=\boxed{ 4}.\]"
+"Tại cuộc đua đường đua của mình, Alice đã chạy với tốc độ $9\ \text{m/s}$ trong $12$ giây. Cô ấy đã chạy được bao nhiêu mét?",Level 1,Algebra,"Đặt $v$ biểu thị tốc độ, $x$ biểu thị khoảng cách và $t$ biểu thị thời gian, chúng ta có $v=\frac{x}{t}$. Trong bài toán của chúng ta, chúng ta được cho $v=9\ \text{m/s}$ và $t=12\ \text{s}$. Giải khoảng cách, chúng ta thấy rằng $x=vt=\boxed{108}\ \text{m}$."
+Tính: $32^2 - 18^2$.,Level 1,Algebra,"$32^2 - 18^2$ cũng có thể được biểu thị dưới dạng $(32+18)(32-18)$. Điều này đơn giản hóa thành $50 \cdot 14$, bằng $\boxed{700}$."
+Viết $\cfrac{\cfrac{3}{8}+\cfrac{7}{8}}{\cfrac{4}{5}}$ dưới dạng phân số tối giản.,Level 1,Algebra,"$\cfrac{3}{8}+\cfrac{7}{8}=\cfrac{10}{8}=\cfrac{5}{4}$. Do đó, $\cfrac{5}{4}\div\cfrac{4}{5}=\cfrac{5}{4}\cdot
+\cfrac{5}{4}=\boxed{\cfrac{25}{16}}$."
+20$\%$ của 50$\%$ của 80 là bao nhiêu?,Level 1,Algebra,"$20\%$ là $\frac{1}{5}$ và $50\%$ là $\frac{1}{2}$. Vì vậy chúng tôi đang tìm kiếm
+
+$$80\frac{1}{2}\frac{1}{5}=\frac{80}{10}=\boxed{8}$$"
+Thể hiện ở dạng đơn giản nhất: $\sqrt[12]{8^4}$,Level 1,Algebra,Chúng ta có \[\sqrt[12]{8^4} = (8^4)^{1/12} = 8^{4/12} = 8^{1/3} = (2^3)^{ 1/3} = \đóng hộp{2}.\]
+"Đối với một loài cá đại dương nhất định, 8 con cá có thể tồn tại trên một mét khối nước mà không có triệu chứng quá đông đúc. Nếu bác sĩ muốn nghiên cứu 600 con cá thì số mét khối nước tối thiểu cần thiết để duy trì môi trường nghiên cứu trong lành là bao nhiêu?",Level 1,Algebra,"Chúng ta cần 8 con cá trên một mét khối. Chúng tôi có 600 con cá, vì vậy chúng tôi có $600/8 = 75$ nhóm 8 con cá, nghĩa là chúng tôi cần $\đóng hộp{75}$ mét khối nước."
+Nếu $\sqrt{400}=\sqrt{81}+\sqrt{n}$ thì giá trị của $n$ là bao nhiêu?,Level 1,Algebra,"Để không bị căn bậc hai đánh lừa, chúng ta viết lại phương trình dưới dạng $20=9+\sqrt{n}.$ Do đó, $\sqrt{n}=11$ và $n=\boxed{121}.$"
+$441+2(21)(19)+361=x$. Giải $x$.,Level 1,Algebra,"Chúng tôi lưu ý rằng $361=19^2$ và $441=21^2$, vì vậy $x=21^2+2(21)(19)+19^2$. Đây chỉ là khai triển nhị thức của $(21+19)^2=40^2=\boxed{1600}$."
+"Nếu công thức làm một chiếc bánh nặng 2 pound cần 1,5 cốc bột mì thì cần bao nhiêu cốc cho 2 chiếc bánh nặng 5 pound?",Level 1,Algebra,"Đầu tiên chúng ta thấy rằng những chiếc bánh 5 pound trị giá 2$ sẽ tạo ra tổng cộng 2 đô la \time 5 = 10$ pound bánh. Vì một chiếc bánh nặng 2 pound cần 1,5 đô la cốc bột mì, nên một chiếc bánh 10 pound sẽ cần lượng bột mì gấp 5 lần (vì 10 đô la/2 = 5 đô la). Năm lần cốc bột trị giá $1,5$ là $\đóng hộp{7,5}$ pound bột mì."
+Nếu sáu chiếc bánh quy có giá bằng 2 chiếc bánh hạnh nhân và bốn chiếc bánh hạnh nhân có giá bằng 10 chiếc bánh nướng nhỏ thì Bob có thể mua bao nhiêu chiếc bánh nướng nhỏ với giá của 18 chiếc bánh quy?,Level 1,Algebra,"Vì 6 chiếc bánh quy có giá bằng 2 chiếc bánh hạnh nhân nên 18 chiếc bánh quy sẽ có giá bằng 6 chiếc bánh hạnh nhân. Tương tự, 4 chiếc bánh hạnh nhân có giá tương đương với 10 chiếc bánh nướng nhỏ, vậy 6 chiếc bánh hạnh nhân sẽ có giá bằng $10\cdot \frac{6}{4} = 15$ bánh nướng nhỏ. Vì vậy, 18 chiếc bánh quy có giá tương đương với những chiếc bánh cupcake $\boxed{15}$."
+$43^2$ lớn hơn bao nhiêu?,Level 1,Algebra,Chúng tôi coi đây là sự khác biệt của các bình phương: $43^2 - 27^2 = (43 + 27)(43 - 27) = (70)(16) = \boxed{1120}$.
+"Quá trình tập luyện thông thường của tôi bao gồm chạy 10 vòng quanh đường đua 400 mét. Nếu tôi đi trên một đường đua chỉ dài 250 mét, tôi sẽ phải chạy bao nhiêu vòng để có được cùng một bài tập?",Level 1,Algebra,"Vì tổng quãng đường tôi chạy không đổi nên chiều dài mỗi vòng và tổng số vòng tỷ lệ nghịch với nhau. Do đó, nếu mỗi vòng có độ dài $\frac{250}{400}=\frac{5}{8}$ thì tôi cần chạy $\frac{8}{5}$ bao nhiêu vòng, vì vậy câu trả lời của chúng ta là $\frac{8}{5}\cdot10=\boxed{16}$ vòng."
+Phép toán $\clubsuit$ được xác định bởi $x\clubsuit y =|x|^3+y$. Giá trị của $2\clubsuit 4$ là bao nhiêu?,Level 1,Algebra,$$2\clubsuit 4=|2|^3+4=8+4=\đóng hộp{12}$$
+Nếu Wonder Woman có thể bắt được 6 tên tội phạm trong một giờ thì cô ấy có thể bắt được bao nhiêu tên trong $4\frac{1}{2}$ giờ?,Level 1,Algebra,"Để tìm số lượng tội phạm mà Wonder Woman có thể bắt trong $4 \frac{1}{2}$ giờ, chúng tôi nhân số lượng tội phạm mà cô ấy có thể bắt được mỗi giờ với số giờ cô ấy dành để bắt tội phạm. Vì vậy, cô ấy có thể bắt được $6 \cdot (4 \frac{1}{2})=6 \cdot \frac{9}{2} = \boxed{27}$ tội phạm trong $4 \frac{1}{2}$ giờ."
+"Giê-rê-mi đang lái một chiếc ô tô đang chạy với vận tốc 60 dặm một giờ. Với tốc độ này, anh ta sẽ mất bao nhiêu phút để đi được 20 dặm?",Level 1,Algebra,"Khoảng cách bằng tốc độ nhân với thời gian, vì vậy chuyến đi sẽ mất $$\frac{20\text{ mi.}}{60\text{ mph}}=\frac{1}{3}\text{ giờ}.$$ Một -một phần ba giờ là $\đóng hộp{20}$ phút."
+Tìm chênh lệch dương giữa $2(6) + 4(3)$ và $8(3+3)$.,Level 1,Algebra,"Tinh chỉnh biểu thức đầu tiên một chút để nó có dạng $4(3)+4(3)$. Số này rõ ràng là gấp đôi $4(3)$, vậy nó là $8(3)$. Sự khác biệt giữa $8(3)$ và $8(3+3)$ là $8(3) = \boxed{24}$."
+"Giá trị của $\sqrt{1,\!000,\!000} - \sqrt[3]{1,\!000,\!000}$ là bao nhiêu?",Level 1,Algebra,"Chúng ta có \begin{align*}
+\sqrt{1,\!000,\!000} - \sqrt[3]{1,\!000,\!000}&= \sqrt{10^6} - \sqrt[3]{10^6} \\
+&= (10^6)^{\frac{1}{2}} - (10^6)^{\frac{1}{3}}\\
+&=10^{6\cdot \frac{1}{2}} - 10^{6\cdot \frac{1}{3}} \\
+&= 10^3 - 10^2 = 1000-100 =\đóng hộp{900}.
+\end{căn chỉnh*}"
+Tính giá $3x^2+5x-1$ nếu $x=7$.,Level 1,Algebra,Chúng ta có $3x^2 + 5x - 1 = 3(7^2) + 5(7) -1 =3(49) +35-1 = 147 + 34 = \boxed{181}$.
+"Một chiếc đồng hồ có chuông sẽ đánh 1 chuông vào lúc 1 giờ, 2 chuông vào lúc 2 giờ, 3 chuông vào lúc 3 giờ, v.v. Tổng số chuông mà đồng hồ sẽ đánh trong khoảng thời gian 12 giờ là bao nhiêu?",Level 1,Algebra,Chúng ta muốn tìm tổng $1 + 2 + \dots + 12$. Tổng này bằng trung bình cộng của số hạng đầu tiên và số hạng cuối cùng nhân với tổng số số hạng là \[\frac{1 + 12}{2} \cdot 12 = \boxed{78}.\]
+Nếu $x = 3$ và $y = 2$ thì giá trị của $\frac{2x^3-3y^2}{6}$ là bao nhiêu?,Level 1,Algebra,Chúng ta có \[\frac{2x^3 - 3y^2}{6} = \frac{2(3)^3 - 3(2)^2}{6} = \frac{2(27) - 3( 4)}{6} = \frac{54-12}{6} = \boxed{7}.\]
+Tìm giá trị của biểu thức. $$\frac{7+8+9}{2+3+4}\cdot\frac{6+9+12}{9+8+7}$$,Level 1,Algebra,"Lưu ý rằng có $7+8+9$ ở tử số và $9+8+7$ ở mẫu số. Hủy những thứ này, để lại $\frac{6+9+12}{2+3+4}$. Tại thời điểm này, bạn chỉ cần thực hiện phép cộng để nhận được $\frac{27}{9}$, bằng $\boxed{3}$."
+"Hillary có mười một đồng xu, tất cả đều là đồng xu và đồng năm xu. Tổng cộng, số tiền xu có giá trị 75 cent. Cô ấy có bao nhiêu niken?",Level 1,Algebra,"Gọi số xu Hillary có là $d$ và số niken cô ấy có là $n$. Ta có hai phương trình \begin{align*}
+d+n&=11\\
+10d+5n&=75
+\end{align*} (Phương trình cuối cùng tính bằng xu.) Để làm cho phương trình thứ hai đẹp hơn, chúng ta chia cả hai vế cho 5 để được $2d+n=15$. Từ phương trình đã cho đầu tiên, chúng ta có $d=11-n$. Thay thế phương trình này vào phương trình thứ hai đã cho đơn giản hóa để loại bỏ $d$, chúng ta nhận được $2(11-n)+n=15\Rightarrow n=7$. Như vậy, Hillary có $\đóng hộp{7}$ niken."
+"Nếu $(2^3)^{(2^3)} = 2^N$, giá trị của $N$ là bao nhiêu?",Level 1,Algebra,"Chúng ta có \[(2^3)^{(2^3)} = (2^3)^8 = 2^{(3\cdot 8)} = 2^{24},\] nên $N = \ đóng hộp{24}$."
+Tính giá $(x+y)(x-y)$ khi $x=13$ và $y = 5$.,Level 1,Algebra,Chúng ta có thể đánh giá trực tiếp hoặc có thể sử dụng hiệu của hệ số bình phương: $(x+y)(x-y) = x^2-y^2 = 13^2-5^2 = 169-25 =\boxed{144}$ .
+"Nếu $a * b = 2a + 3b$ với mọi $a$ và $b$, thì giá trị của $4 * 3$ là bao nhiêu?",Level 1,Algebra,Chúng ta có $4 * 3 = 2(4)+3(3) = 8+9 = \boxed{17}$.
+Nếu $x$ là số nguyên dương sao cho $1^x + 2^x + 5^x = 642$ thì giá trị của $x$ là bao nhiêu?,Level 1,Algebra,"Trước tiên, chúng tôi lưu ý rằng số hạng $5^x$ tăng nhanh hơn nhiều so với hai số hạng còn lại. Thật vậy, với $n\geq2$, $5^x \geq 5(2^x + 1^x)$. Do đó, chúng tôi tập trung vào thuật ngữ đó. Bốn lũy thừa đầu tiên của $5$ là $5^1=5, 5^2=25, 5^3=125,$ và $5^4=625$. Số cuối cùng trong số này gần bằng $642$ vì vậy chúng ta kiểm tra $x=4$ và nhận được $1^x+2^x+5^x = 1 + 16 + 625 = 642$, như mong muốn, vì vậy $x=\boxed {4}$."
+"Trong khi xem một cuộc diễu hành, tôi thấy một số chú hề và ngựa. Tôi đếm được 30 cái chân và 10 cái đầu. Tôi đã nhìn thấy bao nhiêu con ngựa trong cuộc diễu hành?",Level 1,Algebra,"Gọi số chú hề trong đoàn diễu hành là $c$ và số ngựa là $h$. Chúng ta đang tìm giá trị của $h$. Giả sử mỗi chú hề có 2 chân và 1 đầu, mỗi con ngựa có 4 chân và 1 đầu, ta có thể thiết lập hệ phương trình sau:
+
+\bắt đầu{căn chỉnh*}
+2c+4h &= 30 \\
+c + h &= 10 \\
+\end{căn chỉnh*}
+
+Để giải $h$, chúng ta cần loại bỏ $c$ khỏi các phương trình trên. Chúng ta có thể viết lại phương trình thứ hai ở trên thành $c=10-h$, và thay thế phương trình này vào phương trình đầu tiên để loại bỏ $c$ sẽ cho $2(10-h)+4h = 30$, hoặc $h=5$. Vì vậy, có những con ngựa $\boxed{5}$ trong cuộc diễu hành."
+"Nếu $A\ \spadesuit\ B$ được định nghĩa là $A\ \spadesuit\ B = A + B + 4$, giá trị của $A$ để $A\ \spadesuit\ 2 = 19$ là bao nhiêu?",Level 1,Algebra,"Từ định nghĩa của $A\; \spadesuit \;B$, chúng ta có thể viết lại $A\;\spadesuit \;2$ thành $A\;\spadesuit \;2 = A + 2+ 4$. Vì vậy, bây giờ phương trình $A\;\spadesuit \;2=19$ trở thành $A+2+4=19$, từ đó chúng ta tìm thấy $A=\boxed{13}$."
+Tổng của hai số là 25 và hiệu của chúng là 9. Tích của chúng là bao nhiêu?,Level 1,Algebra,"Chúng ta có thể biểu diễn thông tin đã cho bằng hệ phương trình tuyến tính sau:
+
+\bắt đầu{căn chỉnh*}
+x + y &= 25, \\
+x - y &= 9.
+\end{align*}Để tìm tích của $x$ và $y$, hãy giải độc lập từng cái.
+
+Bắt đầu bằng cách cộng hai phương trình: \begin{align*}
+2x &= 34 \\
+x &= 17
+\end{align*}Thay thế cho $x$ mang lại giá trị $8$ cho $y$.
+
+Do đó, $x \cdot y = 17 \cdot 8 = \boxed{136}$"
+"Nếu $y = 8 - 5x +4x^2$, giá trị của $y$ khi $x=-2$ là bao nhiêu?",Level 1,Algebra,Chúng ta có $y=8-5x +4x^2 = 8-5(-2) +4(-2)^2 = 8+10 + 4(4) = 8+10 + 16 = \boxed{34}$ .
+Biểu thị $\left(\frac{16}{625}\right)^{\frac14}$ một phân số thông thường.,Level 1,Algebra,"Đầu tiên, chúng ta nhận ra rằng $16 = 2^4$ và $625 = 25^2 = (5^2)^2 = 5^4$, vì vậy chúng ta có \[\left(\frac{16}{625}\right) ^{\frac14} = \left(\frac{2^4}{5^4}\right)^{\frac14} = \frac{(2^4)^{\frac14}}{(5^4) ^{\frac14}} = \frac{2^{4\cdot \frac14}}{5^{4\cdot \frac14}} = \frac{2^1}{5^1} = \boxed{\frac {2}{5}}.\]"
+"Nếu một hộp đào cỡ bữa ăn nhẹ có lượng calo 40 đô la và là 2 đô la\%$ nhu cầu calo hàng ngày của một người, thì bao nhiêu calo đáp ứng nhu cầu calo hàng ngày của một người?",Level 1,Algebra,Nếu 40 calo tương đương với $2\%=\frac{2}{100}=\frac{1}{50}$ nhu cầu hàng ngày của một người thì nhu cầu calo hàng ngày của một người là: $$40\cdot 50=\boxed {2000}$$
+$31^2$ lớn hơn bao nhiêu?,Level 1,Algebra,"Chúng ta muốn tìm giá trị của $31^2 - 19^2$. Hệ số này thành $(31+19)(31-19)$, bằng $50 \cdot 12$ hoặc $\boxed{600}$."
+Tính giá trị biểu thức \[\frac{(xy)^5}{y^3}\] trong đó $x=2$ và $y=-3$.,Level 1,Algebra,"Số mũ phân phối theo phép nhân, vì vậy $(xy)^5=x^5y^5.$ Khi đó biểu thức trở thành \[\frac{x^5y^5}{y^3}=x^5y^{5-3} =x^5y^2.\] Thay thế các giá trị đã cho cho $x$ và $y$ mang lại \[2^5(-3)^2=2^5(9)=32(9)=\boxed{ 288}.\]"
+Cho $t=2s-s^2$ và $s=n^2 - 2^n+1$. Giá trị của $t$ khi $n=3$ là bao nhiêu?,Level 1,Algebra,Đầu tiên thay $n=3$ vào biểu thức của $s$ để tìm $s=3^2 - 2^3 + 1 = 9-8+1=2$. Sau đó thay $s=2$ vào biểu thức của $t$ để tìm $t=2(2) - 2^2 =\boxed{0}$.
+"Với tốc độ 50 dặm một giờ, một chiếc ô tô sẽ đi được bao xa trong $2\frac{3}{4}$ giờ? Thể hiện câu trả lời của bạn dưới dạng số hỗn hợp.",Level 1,Algebra,"Trong hai giờ, một chiếc ô tô di chuyển với tốc độ $50$ mph sẽ đi được $50$ mph $\times 2$ giờ $= 100$ dặm. Bây giờ chúng ta tìm xem một chiếc ô tô có thể đi được bao xa trong $3/4$ trong một giờ, tức là $50$ mph $\times \frac{3}{4}$ giờ $ = \frac{150}{4} = 37 \frac{ 1}{2}$ dặm. Như vậy, chiếc xe sẽ đi được tổng cộng $100 + 37 \frac{1}{2}= \boxed{137 \frac{1}{2}}$ dặm."
+Tổng của ba số nguyên liên tiếp là 27. Tích của các số nguyên đó là bao nhiêu?,Level 1,Algebra,"Gọi $a$ là số nguyên ở giữa, nên các số nguyên đó là $a-1$, $a$, và $a+1$. Tổng của ba số nguyên là $(a-1) + a + (a+1) = 3a$, do đó $3a = 27$, hoặc $a=9$. Vậy các số nguyên là 8, 9 và 10. Tích của chúng là $\boxed{720}$."
+Giá trị của $(7+5)^2-(7-5)^2$ là bao nhiêu?,Level 1,Algebra,"Mặc dù thật dễ dàng để nhân các bình phương và tính toán, nhưng có một giải pháp hay hơn. Chúng ta đang xem xét một phương trình có dạng $x^2 - y^2$ và chúng ta biết rằng phương trình này phân tích thành $(x+y)(x-y)$. Vì vậy, chúng ta phân tích phương trình đã cho thành nhân tử để thu được $(7+5+7-5)(7+5-7+5)$, bằng $14 \cdot 10$ hoặc $\boxed{140}$."
+Một vé xem buổi biểu diễn có giá $\$20$ nguyên giá. Susan mua vé $4$ bằng cách sử dụng phiếu giảm giá giúp cô ấy được giảm giá $25\%$. Pam mua vé $5$ bằng cách sử dụng phiếu giảm giá giúp cô ấy được giảm giá $30\%$. Pam trả nhiều hơn Susan bao nhiêu đô la?,Level 1,Algebra,"Chúng ta cần tính tổng giá mua mà Susan đã trả và Pam đã trả.
+
+Susan đã mua vé $4$ với mức giảm giá $25\%$: $$4 \times \$20 = \$80.$$Với mức giảm giá $25$ phần trăm, cô ấy đã trả $\$80 * .75 = \$60.$
+
+Pam đã mua vé $5$ với mức giảm giá $30\%$: $$5 \times \$20 = \$100$$Với mức giảm giá $30$ phần trăm, cô ấy đã trả $\$100 * .70 = \$70.$
+
+Vì vậy, Pam đã trả $\$70 - \$60 = \$\boxed{10}$ nhiều hơn Susan."
+"Nếu $x$ là trung bình cộng của $13$, $-16$, và $6$ và nếu $y$ là căn bậc ba của $8$, hãy tìm $x^2 + y^3$.",Level 1,Algebra,"Trước tiên, chúng ta tìm $x$, trung bình của $13$, $-16$ và $6$ bằng cách tính tổng ba số nguyên và chia tổng cho $3$, vì vậy chúng ta có $x = \frac{13+(-16 )+6}{3}=\frac{3}{3}=1$. Bây giờ, chúng ta cố gắng tìm $y$, căn bậc ba của $8$. Chúng ta biết rằng $2^3=8$, vì vậy $y=\sqrt[3]{8}=2$. Cuối cùng, chúng ta có thể thay thế $1$ cho $x$ và $2$ cho $y$ để tìm $x^2+y^3$: $$x^2+y^3=(1)^2+(2) ^3 = 1 + 8 = \boxed{9}.$$"
+Khai triển $(q-5)(3r+6)$.,Level 1,Algebra,"Chúng ta áp dụng thuộc tính phân phối nhiều lần: \begin{align*}
+(q-5)(3r+6) &= q(3r+6) - 5(3r+6)\\
+&= q\cdot 3r + q\cdot 6 - 5\cdot 3r - 5\cdot 6\\
+&= \đóng hộp{3qr + 6q - 15r -30}.
+\end{căn chỉnh*}"
+Giá trị của $513^2 - 487^2$ là bao nhiêu?,Level 1,Algebra,"Chúng tôi lưu ý rằng đây là sự khác biệt giữa các bình phương, vì vậy $513^2 - 487^2 = (513+487)(513-487) = (1000)(26) = \boxed{26000}$."
+Tìm giá trị của $ : 8[6^2-3(11)]\div8 + 3$.,Level 1,Algebra,Chúng tôi làm theo thứ tự thực hiện và nhận được $$8[6^2-3(11)]\div8 + 3=8(36-33)\div8+3=\frac{8(3)}{8}+3=3 +3=\đóng hộp{6}.$$
+"Cho rằng $y=3$, hãy tính $(1+y)^y$.",Level 1,Algebra,Chúng ta có $(1+y)^y = (1+3)^3 = 4^3 = \boxed{64}$.
+Tìm $y$: $\sqrt{19+3y} = 7$.,Level 1,Algebra,"Bình phương cả hai vế của phương trình này, chúng ta có $19+3y=49$. Bây giờ, chúng ta trừ $19$ từ cả hai vế của phương trình rồi chia cho $3$ để được $3y = 30 \Rightarrow y = \boxed{10}$."
+Trái đất quay với tốc độ không đổi và quay 360 độ trong một ngày. Nó quay bao nhiêu độ trong một giờ?,Level 1,Algebra,"Vì một ngày có 24 giờ nên trong một giờ Trái đất quay $1/24$ số lượng nó quay trong một ngày, hay $360/24=\boxed{15}$ độ."
+Nếu $\displaystyle \left(\frac{3}{4}\right)^x=\frac{81}{256}$ thì $x$ phải là bao nhiêu?,Level 1,Algebra,"Hãy nhớ rằng $\left(\frac{a}{b}\right)^n=\frac{a^n}{b^n}$, chúng ta có $$ \left(\frac{3}{4}\ right)^x=\frac{3^x}{4^x}=\frac{81}{256}$$So sánh các tử số, $3^x=81$ nên $x=4$.
+
+Thật vậy, đối với mẫu số, chúng ta có $4^x=4^4=256$, như mong muốn. Do đó, $x=\boxed{4}$."
+Tính toán $115^2$ trong đầu bạn.,Level 1,Algebra,Chúng ta có $115^2=(110 + 5)^2 = 110^2 + 2(110)(5) +5^2 = 12100 + 1100 + 25 = \boxed{13225}$.
+$50\%$ của $200\%$ của $10$ là bao nhiêu?,Level 1,Algebra,"Chuyển từ sang toán học, chúng ta muốn giá trị của $.5\cdot2\cdot10$, tức là $\boxed{10}$."
+"Hai hộp màu xanh giống hệt nhau có trọng lượng bằng ba hộp màu đỏ giống hệt nhau. Mỗi hộp màu đỏ nặng 15,2 ounce. Một hộp màu xanh nặng bao nhiêu ounce?",Level 1,Algebra,"Vì một hộp màu đỏ nặng 15,2 ounce nên ba hộp màu đỏ nặng 45,6 ounce. Điều này giống với hai hộp màu xanh, vì vậy chúng ta có phương trình $2b=45,6$ trong đó $b$ biểu thị trọng lượng của hộp màu xanh. Giải phương trình bằng cách nhân cả hai vế với $\frac{1}{2}$ để cô lập $b$ sẽ cho ta $b=\boxed{22,8}$ ounce."
+Sự khác biệt dương giữa tổng của $\frac{1}{2}$ và $\frac{1}{3}$ và tích của $\frac{1}{2}$ và $\frac{1 là gì {3}$? Thể hiện câu trả lời của bạn như là một phần chung.,Level 1,Algebra,Tổng của $\frac{1}{2}$ và $\frac{1}{3}$ là $\frac{3}{6}+\frac{2}{6}=\frac{5}{ 6}$ và sản phẩm của họ là $\frac{1}{2}\cdot\frac{1}{3}=\frac{1}{6}$. Chênh lệch dương giữa $\frac{5}{6}$ và $\frac{1}{6}$ là $\frac{4}{6}=\boxed{\frac{2}{3}}$.
+Nếu $a\star b = 9a+2b-ab+5$ thì giá trị của $5\star1$ là bao nhiêu?,Level 1,Algebra,"Từ hàm đã xác định, chúng ta biết rằng $5\star 1 = 9(5)+2(1)-(5)(1)+5= 45+2-5+5=\boxed{47}$."
+"Cho $x = -2$, tìm giá trị của $2x^2+3x+4$.",Level 1,Algebra,Chúng ta thay thế giá trị của $x$ vào biểu thức. $$2(-2)^2+3(-2)+4=2(4)-6+4=\boxed{6}$$
+Hãy tính toán $91^2$ trong đầu bạn.,Level 1,Algebra,Lưu ý rằng $91\times 91 = (90 + 1)^2 = 90^2 + 2\cdot 90 + 1 = 8100 + 180 + 1 = \boxed{8281}$.
+"Nếu $p (x) = 2-x^2$ và $q(x) = \frac{6}{x}$, giá trị của $p (q(2))$ là bao nhiêu?",Level 1,Algebra,"Vì $q(2) = \frac62 = 3$, nên ta có $p(q(2)) = p(3) = 2-3^2 = \boxed{-7}$."
+Năm cộng $500\%$ của $10$ bằng $110\%$ của số nào?,Level 1,Algebra,Chúng ta có $5+\frac{500}{100}\cdot10=5+5\cdot10=55$ bằng $110\%$ của số $x$. $$\frac{110}{100}x=\frac{11}{10}x=55\qquad\Rightarrow x=55\cdot\frac{10}{11}=5\cdot10=50$$ Số là $\đóng hộp{50}$.
+Tổng của hai số là 25 và hiệu của chúng là 11. Hai số nào lớn hơn?,Level 1,Algebra,"Gọi $x,y$ là hai số $x>y$. Khi đó $x+y=25$ và $x-y=11$, do đó:
+
+$x=\frac{1}{2}\left((x+y)+(x-y)\right)=\frac{1}{2}(25+11)=\boxed{18}$."
+Giá trị của $-a-b^2+3ab$ là bao nhiêu nếu $a=-1$ và $b=5$?,Level 1,Algebra,Việc thay các giá trị đã cho sẽ mang lại $-a-b^2+3ab=-(-1)-5^2+3(-1)(5)=1-25-15=\boxed{-39}$.
+"Jasmine đã uống 1,5 lít nước trong 3 dặm đầu tiên của chuyến đi bộ đường dài. Nếu cô ấy tiếp tục với tốc độ này thì cô ấy sẽ uống bao nhiêu lít nước trong 10 dặm tiếp theo?",Level 1,Algebra,"Chúng ta có thể thiết lập tỷ lệ $\frac{1.5}{3}=\frac{x}{10}$, trong đó $x$ là số lít nước cô ấy sẽ uống trong 10 dặm tiếp theo. Chúng ta nhân chéo để được $3x=1,5(10)=15$, có nghĩa là $x=5$. Jasmine sẽ uống $\boxed{5}$ pint nước trong 10 dặm tiếp theo."
+"Ở mỗi buổi tập bóng rổ tuần trước, Jenny thực hiện số quả ném phạt nhiều gấp đôi so với lần tập trước. Ở lần tập thứ năm, cô ấy thực hiện 48 quả ném phạt. Cô ấy đã thực hiện bao nhiêu quả ném phạt trong lần tập đầu tiên?",Level 1,Algebra,"Ở lần thực hành thứ tư của Jenny, cô ấy đã thực hiện $\frac{1}{2}(48)=24$ quả ném phạt. Ở lần thực hành thứ ba, cô ấy kiếm được 12, ở lần thực hành thứ hai, cô ấy kiếm được 6 và ở lần thực hành đầu tiên, cô ấy kiếm được $\boxed{3}$."
+"Thể tích của hình nón được tính theo công thức $V = \frac{1}{3}Bh$, trong đó $B$ là diện tích đáy và $h$ là chiều cao. Diện tích đáy của hình nón là 30 đơn vị vuông và chiều cao của nó là 6,5 đơn vị. Số đơn vị khối trong thể tích của nó là bao nhiêu?",Level 1,Algebra,"Chúng ta được cho $B = 30$ và $h = 6,5$ và được yêu cầu tìm $\frac{1}{3}Bh$. Chúng ta thấy rằng \[\frac{1}{3}Bh = \frac{1}{3}(30)(6.5) = (10)(6.5) = \boxed{65}.\]"
+Đánh giá $\log_327$.,Level 1,Algebra,"Vì $3^3=27$, $\log_327=\boxed{3}$."
+"Nếu $3a+2b=5$ và $a+b=2$, cặp thứ tự $(a,b)$ nào thỏa mãn cả hai phương trình?",Level 1,Algebra,"Chúng ta muốn giải $a$ và $b$. Đầu tiên, nhân phương trình thứ hai với $2$ và trừ phương trình thứ nhất. Điều này mang lại $(3a - 2a) + (2b - 2b) = (5 - 4)$, hoặc $a = 1$. Sau đó, thay $a = 1$ vào phương trình thứ hai sẽ thu được $1 + b = 2$, do đó $b = 1$. Do đó, cặp thứ tự $(a,b)$ thỏa mãn cả hai phương trình là $\boxed{(1,1)}$."
+Rút gọn: $3!(2^3+\sqrt{9})\div 2$.,Level 1,Algebra,"Đơn giản hóa theo thứ tự các thao tác. \bắt đầu{căn chỉnh*}
+3!(2^3+\sqrt{9})\div 2 &= 6(8+3)\div 2 \\
+&=6(11)\div 2 \\
+&=66\div 2\\
+&=\được đóng hộp{33}.
+\end{căn chỉnh*}"
+Giá trị dương của biểu thức $\sqrt{x^3 - 2^y}$ khi $x = 5$ và $y = 2$ là bao nhiêu?,Level 1,Algebra,"Khi cắm vào, biểu thức mong muốn chỉ là $\sqrt{5^3 - 2^2} = \sqrt{125 - 4} = \sqrt{121} = \boxed{11}$."
+"Phân số nào giống với \[
+\frac{2-4+6-8+10-12+14}{3-6+9-12+15-18+21}?
+\]",Level 1,Algebra,"Chúng ta có \begin{align*}
+&\frac{2-4+6-8+10-12+14}{3-6+9-12+15-18+21} \\
+& \qquad = \frac{2(1-2+3-4+5-6+7)}{3(1-2+3-4+5-6+7)} \\
+& \qquad = \boxed{\frac{2}{3}}.
+\end{căn chỉnh*}"
+Tìm giá trị lớn nhất của $x$ thỏa mãn phương trình $|5x-1|=x+3$.,Level 1,Algebra,"Chúng ta có thể chia biểu thức $|5x-1|=x+3$ thành hai trường hợp riêng biệt. Trong trường hợp đầu tiên, \begin{align*} 5x-1&=x+3
+\\\Rightarrow \qquad 4x&=4
+\\\Rightarrow \qquad x&=1
+\end{align*}Nếu thay giá trị này của $x$ vào phương trình ban đầu để kiểm tra câu trả lời, chúng ta sẽ thấy rằng $|5(1)-1|=1+3$ hoặc $4=4$. Vì điều này đúng nên chúng ta có thể chấp nhận $x=1$ là một nghiệm hợp lệ.
+
+Trong trường hợp thứ hai, \begin{align*} 5x-1&=-(x+3)
+\\ 5x-1&=-x-3
+\\\Rightarrow \qquad 6x&=-2
+\\\Rightarrow \qquad x&=-\frac13.
+\end{align*}Nếu thay $-\frac13$ trở lại phương trình ban đầu, chúng ta sẽ có $\left|5\left(-\frac13\right)-1\right|=-\frac13+3$, đơn giản hóa thành $\left|-\frac{8}{3}\right|=\frac{8}{3}$ hoặc $\frac{8}{3}=\frac{8}{3}$ . Vì đây cũng là một tuyên bố đúng nên chúng ta cũng có thể chấp nhận $x=-\frac13$ như một giải pháp hợp lệ. Vì cả $x=1$ và $x=-\frac13$ đều là các giá trị có thể có của $x$, nên câu trả lời cuối cùng là giá trị lớn hơn trong hai giá trị: $x=\boxed{1}$."
+"Cho hai hàm $f(x)=x^3+2x+1$ và $g(x)=x-1$, hãy tìm $f(g(1))$.",Level 1,Algebra,"Vì chúng ta biết rằng $f(x)=x^3+2x+1$ và $g(x)=x-1$, nên chúng ta có thể biểu thị $f(g(1))$ dưới dạng $(x-1)^ 3+2(x-1)+1$. Do đó, khi $x=1$ chúng ta tìm thấy \begin{align*} (f(g(1))&=(1-1)^3+2(1-1)+1
+\\ &=(0)^3+2(0)+1
+\\ &=0+0+1
+\\&=\được đóng hộp{1}
+\end{căn chỉnh*}"
+"Trong một sự kiện đường đua trị giá 100 đô la, Alice chạy với tốc độ không đổi và vượt qua vạch đích 5 đô la trước Beatrice. Nếu Beatrice mất 25$ giây để hoàn thành cuộc đua thì Alice sẽ mất bao nhiêu giây để chạy được 50$ mét?",Level 1,Algebra,"Alice mất $25 - 5 = 20$ giây để hoàn thành cuộc đua. Nếu cô ấy có thể chạy $100$ mét trong $20$ giây, theo tỷ lệ trực tiếp, cô ấy phải có thể chạy $\frac{100}{2} = 50$ mét trong $\frac{20}{2} = \boxed{10 }$ giây."
+Tổng của năm số lẻ dương đầu tiên là bao nhiêu?,Level 1,Algebra,Chúng ta có $1 + 3 + 5 + 7 + 9 = \boxed{25}$.
+Hãy tính toán $99^2+99+1$ trong đầu bạn.,Level 1,Algebra,"Phân tích hai số hạng đầu tiên, ta có:
+
+$99^2+99+1=99(99+1)+1=99\cdot 100+1=9900+1=\đóng hộp{9901}$."
+Giá trị của $255^2 - 245^2$ là bao nhiêu?,Level 1,Algebra,"Chúng ta nhận ra biểu thức là hiệu của các bình phương, vì vậy chúng ta có thể dễ dàng phân tích nó thành nhân tử. $$255^2-245^2=(255+245)(255-245)=500(10)=\đóng hộp{5000}$$"
+"Cho $2^a = 32$ và $a^b = 125$, tìm $b^a$.",Level 1,Algebra,"Chúng ta lưu ý rằng $32 = 2 \cdot 2\cdot 2\cdot 2\cdot 2= 2^5$, vì vậy $a=5$. Điều này để lại cho chúng ta $5^b=125=5\cdot5\cdot5=5^3$, có nghĩa là $b=3$. Vì vậy, câu trả lời của chúng ta là $b^a = 3^5 = \boxed{243}$."
+Tổng của hai số là 25 và hiệu của chúng là 11. Hai số nào nhỏ hơn?,Level 1,Algebra,"Gọi $x,y$ là hai số $x>y$. Khi đó $x+y=25$ và $x-y=11$, do đó:
+
+$y=\frac{1}{2}\left((x+y)-(x-y)\right)=\frac{1}{2}(25-11)=\boxed{7}$."
+Nếu số hạng thứ tư của dãy số học là $200$ và số hạng thứ tám là $500$ thì số hạng thứ sáu là gì?,Level 1,Algebra,"Số hạng thứ sáu nằm chính xác giữa số hạng thứ tư và số thứ tám trong dãy số học, nên nó là trung bình cộng của hai số hạng. Do đó, số hạng thứ sáu là $(200 + 500)/2 = \boxed{350}$. Chúng ta cũng có thể tìm ra sự khác biệt chung bằng cách lưu ý rằng có bốn bước giữa số hạng thứ tư và số hạng thứ tám. Vì vậy, nếu $d$ là hiệu chung, chúng ta có $4d = 500-200 = 300$. Vì vậy, chúng ta tìm thấy $d=75$. Số hạng thứ sáu cách số hạng thứ tư hai bước, hoặc $200 + 2d = \boxed{350}$."
+"Nếu $f(x)=5x^2+3x+4$, giá trị của $f(-2)$ là bao nhiêu?",Level 1,Algebra,Chúng ta có $f(-2) = 5(-2)^2 + 3(-2) + 4 = 5(4) -6 + 4 = \boxed{18}$.
+"Nếu $70 + m + n - 20 = 80$ và $m = 2n$, thì giá trị của $n$ là bao nhiêu?",Level 1,Algebra,"Thay $m=2n$ vào phương trình đầu tiên sẽ được $70 + 2n + n - 20 = 80$. Rút gọn vế trái ta được $3n +50 = 80$. Trừ 50 từ cả hai vế sẽ được $3n = 30$, do đó $n = \boxed{10}$."
+"Nếu $3m+4n=47$, và $m+n=15$, $m$ là bao nhiêu?",Level 1,Algebra,"Vì câu hỏi chỉ yêu cầu giá trị của $m$ nên chúng ta có thể bắt đầu bằng cách loại bỏ $n$. Để làm điều này, chúng ta nhân phương trình thứ hai với 4, tạo thành một hệ gồm hai phương trình trong đó cả hai hệ số của $n$ đều là 4: \begin{align*} 3m+4n=47
+\\ 4m+4n=60
+\end{align*}Từ đây, chúng ta có thể trừ phương trình thứ hai khỏi phương trình thứ nhất. Điều này mang lại cho chúng ta $(3m+4n)-(4m+4n)=47-60$, đơn giản hóa thành $-m=-13$ hoặc $m=\boxed{13}$."
+"Jo đã tặng Aiden ít nhất một chiếc ô tô đồ chơi vào mỗi dịp sinh nhật. Số lượng ô tô tương ứng với tuổi của Aiden (một ô tô dành cho sinh nhật đầu tiên của cậu ấy, hai ô tô dành cho sinh nhật thứ hai của cậu ấy, v.v.). Sau khi nhận được những chiếc ô tô vào sinh nhật lần thứ 12 của mình, Aiden sẽ nhận được tổng cộng bao nhiêu chiếc ô tô đồ chơi từ Jo?",Level 1,Algebra,"Sau sinh nhật thứ 12 của mình, Aiden đã nhận được ô tô trị giá $1+2+\cdots+12$. Tổng này bằng $1 + 2 + \dots + 12 = 12 \cdot 13/2 = \boxed{78}$."
+"Cho x = 3 và y = 2, tìm giá trị của biểu thức $\frac{4x^2}{9y^2}$",Level 1,Algebra,Chúng ta thay thế các giá trị của $x$ và $y$ vào biểu thức và nhận được $$\frac{4(3)^2}{9(2)^2}=\frac{4\cdot9}{9\cdot4} =\được đóng hộp{1}.$$
+Rút gọn: $\displaystyle \frac{\frac 12\times 1024}{0.125\times 2^{12}}$.,Level 1,Algebra,"Mỗi số trong biểu thức bằng 2 lũy thừa nguyên, vì vậy chúng ta có thể sử dụng định luật số mũ để đơn giản hóa biểu thức: \[\displaystyle \frac{\frac 12\times 1024}{0.125\times 2^{12}} = \frac{2^{-1} \times 2^{10}}{2^{-3}\times 2^{12}} = \frac{2^{-1+10}}{2^{ -3+12}} = \frac{2^9}{2^9} = \boxed{1}.\]"
+Xét hàm $g(x)=3x-4$. $g(0)$ là gì?,Level 1,Algebra,Chúng ta có $g(0) = 3\cdot 0-4 =0-4=\boxed{-4}$.
+Tính toán: $113+276-13-26$.,Level 1,Algebra,"Đầu tiên hãy lưu ý rằng $113-13=100$ và $276-26=250$. Theo tính chất giao hoán, chúng ta có thể viết lại biểu thức của mình dưới dạng: $$113+276-13-26=113-13+276-26=100+250=\boxed{350}$$"
+Giá trị của $\displaystyle{(2^3)}^{\frac{4}{3}}$ là bao nhiêu?,Level 1,Algebra,Chúng ta có $(2^3)^{\frac{4}{3}} = 2^{3\cdot \frac{4}{3}} = 2^4 = \boxed{16}$.
+Giá trị của $(4^3 + 2^3) - (3^3 + 1^3)$ là bao nhiêu?,Level 1,Algebra,"Chúng ta có $4^3+2^3=64+8=72$ và $3^3+1=27+1=28$, do đó $(4^3 + 2^3) - (3^3 + 1^3 ) = 72-28=\đóng hộp{44}$."
+Giải phương trình sau cho $x$: \[ \ \frac{2}{3} = \frac{4}{x-5}.\],Level 1,Algebra,Nhân cả hai vế với $x-5$ và với 3 sẽ được $2(x-5) = 4(3)$. Mở rộng vế trái ta được $2x-10 = 12$. Cộng 10 vào cả hai vế sẽ được $2x = 22$ và chia cho 2 được $x = \boxed{11}$.
+Xác suất mưa ngày mai là $\frac{1}{11}$. Xác suất để ngày mai trời không mưa là bao nhiêu? Thể hiện câu trả lời của bạn như là một phần chung.,Level 1,Counting & Probability,"Ngày mai trời phải mưa hoặc ngày mai không mưa, nên tổng xác suất trời mưa và xác suất trời không mưa là 1. Do đó, xác suất trời không mưa là $1 - \frac{1}{11} = \boxed{\frac{10}{11}}$."
+Ba phần tư số học sinh trong lớp của thầy Shearer có mái tóc màu nâu và sáu phần bảy số học sinh của ông thuận tay phải. Nếu lớp của thầy Shearer có 28 học sinh thì số học sinh nhỏ nhất có thể thuận tay phải và có tóc nâu là bao nhiêu?,Level 1,Counting & Probability,"Ông Shearer có $\frac{3}{4}(28)=21$ học sinh tóc nâu và $\frac{6}{7}(28)=24$ học sinh thuận tay phải. Vì có $28-24=4$ học sinh thuận tay trái nên có nhiều nhất 4 trong số 21 học sinh tóc nâu thuận tay trái. Vì vậy, ít nhất $\boxed{17}$ trong số họ thuận tay phải."
+Biểu thị $\frac{6!+4!}{5!}$ dưới dạng hỗn số.,Level 1,Counting & Probability,"Chúng ta có thể tách phân số để có được $\frac{6!}{5!} +\frac{4!}{5!}$. Khi đó chúng ta có thể đơn giản hóa thương của giai thừa:
+
+\bắt đầu{căn chỉnh*}
+\frac{6!}{5!} +\frac{4!}{5!} &= \frac{6\cdot5!}{5!} +\frac{4!}{5\cdot4!}\\
+&=6+\frac15\\
+&=\đóng hộp{6\frac15}.
+\end{căn chỉnh*}"
+Có bao nhiêu hình vuông hoàn hảo có giá trị từ 10 đến 1000?,Level 1,Counting & Probability,"Chúng ta có thể thấy rằng $3^2 = 9 < 10 < 4^2 = 16$. Do đó, $4^2 = 16$ là số bình phương hoàn hảo nhỏ nhất trong khoảng từ 10 đến 1000.
+
+Chúng ta cũng thấy rằng $31^2 = 961 < 1000 < 32^2 = 1024$. Do đó, $31^2 = 961$ là số bình phương lớn nhất nằm trong khoảng từ 10 đến 1000.
+
+Suy ra có $31 - 4 + 1 = \boxed{28}$ số bình phương hoàn hảo từ 10 đến 1000."
+"Hai ứng cử viên Dan và Donald tranh cử lớp trưởng. Hai ứng cử viên khác, Freddie và Bernie, tranh cử phó tổng thống. Mỗi ứng cử viên có 50$\%$ cơ hội chiến thắng. Xác suất để cả Dan và Freddie đều thắng là bao nhiêu? (Hãy thể hiện câu trả lời của bạn dưới dạng phân số.)",Level 1,Counting & Probability,"Xác suất để Dan thắng là $\frac12$. Xác suất để Freddie thắng cũng là $\frac12$. Do đó, xác suất để cả hai cùng thắng là $\frac12 \cdot \frac12 =\boxed{\frac14}$."
+"Một chu kỳ hoàn chỉnh của đèn giao thông mất 60 giây. Trong mỗi chu kỳ, đèn xanh trong 25 giây, vàng trong 5 giây và đỏ trong 30 giây. Tại một thời điểm được chọn ngẫu nhiên, xác suất để đèn KHÔNG chuyển sang màu xanh là bao nhiêu? Thể hiện câu trả lời của bạn như là một phần chung.",Level 1,Counting & Probability,"Xác suất để nó có màu xanh là $\frac{25}{60}=\frac{5}{12}$. Vì vậy, xác suất để nó không có màu xanh chỉ đơn giản là $1-\frac{5}{12}=\boxed{\frac{7}{12}}$."
+Tính $\dbinom{1001}{2}$.,Level 1,Counting & Probability,"\bắt đầu{căn chỉnh*}
+\dbinom{1001}{2} &= \dfrac{1001!}{999!2!} \\
+&= \dfrac{1001\times 1000}{2\times 1} \\
+&= 1001 \times \dfrac{1000}{2} \\
+&= 1001 \times 500 \\
+&= \đóng hộp{500500}.
+\end{căn chỉnh*}"
+Giá trị của $\displaystyle{{(3!)!\over3!}}$ là bao nhiêu?,Level 1,Counting & Probability,"$$\displaystyle{\frac{(3!)!}{3!}=\frac{6!}{3!}
+=6\cdot5\cdot4=120.}$$OR $$\displaystyle\frac{(3!)!}{3!}=\frac{6!}{6}=5!=5\cdot4\cdot3\ cdot2=\đóng hộp{120}.$$"
+Giá trị của $(8-4)!\div(8-3)!$ là bao nhiêu? Thể hiện câu trả lời của bạn như là một phần chung.,Level 1,Counting & Probability,$(8-4)!\div(8-3)!=4!\div5!=4!\div(4!\cdot5)=\boxed{\frac{1}{5}}$.
+Giá trị của $(x + 1 - x)! \div (x-x + 1)!$ ở dạng đơn giản nhất?,Level 1,Counting & Probability,"Kết hợp các thuật ngữ tương tự, chúng ta muốn tìm giá trị của $(1)!\div(1)!$, chỉ là $\boxed{1}$."
+Tính $\dbinom{15}{2}$.,Level 1,Counting & Probability,"\bắt đầu{căn chỉnh*}
+\dbinom{15}{2} &= \dfrac{15!}{13!2!} \\
+&= \dfrac{15\times 14}{2\times 1} \\
+&= 15 \times \dfrac{14}{2} \\
+&= 15 \times 7 \\
+&= \đóng hộp{105}.
+\end{căn chỉnh*}"
+Có bao nhiêu số nguyên dương nhỏ hơn $100\pi$?,Level 1,Counting & Probability,"Dựa trên kiến ​​thức của chúng ta về phép khai triển thập phân của $\pi$, chúng ta có thể nhanh chóng ước tính rằng $100 \pi \approx 314,15$. Vì vậy, số nguyên dương lớn nhất nhỏ hơn $100\pi$ là 314. Do đó, các số nguyên dương là 1, 2, 3, $\ldots$, 313, 314, nên có tổng số $\boxed{314}$ số nguyên dương."
+Giá trị của $\frac{5!\cdot2!}{3!}$ là bao nhiêu,Level 1,Counting & Probability,"Có một số cách để vượt qua điều này, nhưng việc hủy bỏ một chút sẽ giúp cuộc sống của chúng ta dễ dàng hơn: $\frac{5! \cdot 2!}{3!} = 2! \frac{5!}{3!} = 2! \cdot 5 \cdot 4 = 2 \cdot 20 = \boxed{40}$."
+"Ben tung đồng xu công bằng bốn lần. Xác suất để Ben lật Đầu, Đuôi, Đầu, Đuôi theo thứ tự đó là bao nhiêu? Thể hiện câu trả lời của bạn như là một phần chung.",Level 1,Counting & Probability,Vì bất kỳ lần lật nào cũng có xác suất $\frac{1}{2}$ là Mặt ngửa hoặc Mặt sấp như nhau và tất cả các kết quả đều có khả năng xảy ra như nhau nên chuỗi chính xác đã cho sẽ bằng $\frac{1}{2^4 } = \boxed{\frac{1}{16}}$.
+Sarah muốn đặt một chiếc bánh pizza với 2 lớp phủ khác nhau. Cô ấy có 9 loại topping khác nhau để lựa chọn. Cô ấy có thể gọi bao nhiêu loại pizza khác nhau?,Level 1,Counting & Probability,Có 9 cách lựa chọn lớp phủ và chúng ta cần chọn 2 lớp phủ riêng biệt. Điều này được biểu thị bằng số tập hợp con 2 phần tử của tập hợp 9 phần tử. Chúng tôi sử dụng hệ số nhị thức ${9 \choose 2} = \boxed{36}$ để tính toán điều này.
+Tính $\dbinom{22}{19}$.,Level 1,Counting & Probability,"\bắt đầu{căn chỉnh*}
+\dbinom{22}{19} &= \dbinom{22}{3} \\
+&= \dfrac{22!}{19.3!} \\
+&= \dfrac{22\times 21\times 20}{3\times 2\times 1} \\
+&= 22 \times \dfrac{21}{3} \times \dfrac{20}{2} \\
+&= 22 \times 7 \times 10 \\
+&= \đóng hộp{1540}.
+\end{căn chỉnh*}"
+"Trong một dàn nhạc, $60\%$ số nhạc sĩ chơi nhạc cụ dây và số còn lại chơi nhạc cụ gió, đồng thau hoặc bộ gõ. Nếu dàn nhạc có 130 thành viên thì có bao nhiêu nhạc sĩ không chơi nhạc cụ dây?",Level 1,Counting & Probability,"Chúng tôi biết một người có thể chơi nhạc cụ dây hoặc không chơi nhạc cụ dây. $60\% \times 130 = 78$ nhạc sĩ chơi nhạc cụ dây, thu được $130\% = \boxed{52}$ nhạc sĩ không chơi nhạc cụ dây."
+Tính $\dbinom{16}{4}-\dbinom{16}{12}$.,Level 1,Counting & Probability,"Cả $\dbinom{16}{4}$ và $\dbinom{16}{12}$ đều bằng $\dfrac{16!}{4!12!}$, vì vậy không cần tính toán thêm, chúng ta thấy rằng sự khác biệt của chúng bằng $\boxed{0}$."
+Mỗi dãy của Nhà hát vòng tròn Misty Moon có 33 chỗ ngồi. Hàng từ 12 đến 22 dành cho câu lạc bộ thanh thiếu niên. Có bao nhiêu chỗ ngồi được dành riêng cho câu lạc bộ này?,Level 1,Counting & Probability,Có $22 - 12 + 1 = 11$ hàng dành riêng. Vì mỗi hàng có 33 ghế nên có $(33)(11) = \boxed{363}$ ghế dành riêng.
+Có bao nhiêu số nguyên từ 200 đến 300 là số chính phương?,Level 1,Counting & Probability,"Cho $m$ là một số nguyên dương. $200\le m^2\le300\Rightarrow 15\le m\le17$. Do đó, chính xác các số nguyên $\boxed{3}$ ($15^2$, $16^2$ và $17^2$) là các số nguyên hoàn hảo trong khoảng từ 200 đến 300."
+"Morgan có 3 chiếc áo khúc côn cầu, 2 chiếc áo bóng đá và 7 chiếc áo bóng chày trong tủ của cô ấy. Nếu cô ấy chọn ngẫu nhiên một trong những chiếc áo này thì xác suất để nó không phải là áo bóng chày là bao nhiêu? Thể hiện câu trả lời của bạn như là một phần chung.",Level 1,Counting & Probability,"Có những chiếc áo $3+2 + 7 =12$ để bạn lựa chọn. Tổng cộng 2$ + 3 = 5$ trong số này, tất cả áo đấu khúc côn cầu và bóng đá, không phải là áo bóng chày. Vì vậy, xác suất để không nhận được áo bóng chày là $\boxed{\frac{5}{12}}$."
+Có bao nhiêu số nguyên tố có bình phương từ 100 đến 300?,Level 1,Counting & Probability,"Vì $10^2 =100$, $17^2 = 289$ và $18^2=324$, chúng ta biết rằng các số nguyên có bình phương nằm trong khoảng từ 100 đến 300 là các số nguyên từ 10 đến 18. Từ 10 đến 18, có 3 số nguyên tố tồn tại: 11, 13, 17, do đó câu trả lời là $\boxed{3}$."
+Bằng bao nhiêu thừa số nguyên? được nhân lên bằng 11!?,Level 1,Counting & Probability,Chúng ta có thể chia hai giai thừa: $\frac{11!}{9!} = \frac{11\cdot 10\cdot 9!}{9!} = \boxed{110}$.
+Có bao nhiêu số nguyên trên trục số nằm giữa $\dfrac{17}{3}$ và $\left(\dfrac{17}{3}\right)^2$?,Level 1,Counting & Probability,"Vì 17 nằm trong khoảng từ $5\times3=15$ đến $6\times 3 = 18$, nên chúng ta biết rằng $\dfrac{17}{3}$ nằm ở đâu đó giữa $5$ và $6$. Vì $\left(\dfrac{17}{3}\right)^2=\dfrac{17^2}{3^2}=\dfrac{289}{9}$, chúng ta thấy rằng 289 nằm trong khoảng $32\ Times9=288$ và $33\time9=297$ và do đó $\left(\dfrac{17}{3}\right)^2$ nằm trong khoảng từ 32 đến 33. Do đó, các số nguyên từ 6 đến 32, bao gồm, nói dối giữa $\dfrac{17}{3}$ và $\left(\dfrac{17}{3}\right)^2$ trên trục số, với tổng số là $32-6+1=\boxed{27} $ số nguyên."
+Rút gọn: $\frac{18!}{16!}$,Level 1,Counting & Probability,"Chúng ta có thể biểu thị $\frac{18!}{16!}$ dưới dạng $\frac{18\cdot17\cdot16!}{16!}$. Để đơn giản hóa biểu thức này, chúng ta có thể hủy $16!$ khỏi tử số và mẫu số, để lại $18\cdot17$ hoặc $\boxed{306}$."
+"Có bao nhiêu cách để thành lập một ủy ban quốc tế nếu chúng ta phải chọn một quốc gia Châu Âu trong số 6 quốc gia Châu Âu, một quốc gia Châu Á trong số 4 quốc gia, một quốc gia Bắc Mỹ trong số 3 quốc gia và một quốc gia Châu Phi trong số 7 quốc gia?",Level 1,Counting & Probability,"Có sáu cách để chọn một quốc gia châu Âu, bốn cách để chọn một quốc gia châu Á, ba cách để chọn một quốc gia Bắc Mỹ và bảy cách để chọn một quốc gia châu Phi. Do đó, có $6 \cdot 4 \cdot 3 \cdot 7 = \boxed{504}$ cách để hình thành ủy ban quốc tế."
+$\dbinom{n}{n}$ đối với mọi số nguyên dương $n$ là bao nhiêu?,Level 1,Counting & Probability,"$\dbinom{n}{n}=\dfrac{n!}{n!0!}=\boxed{1}$. Ngoài ra, chỉ có một cách để chọn các đối tượng $n$ trong số $n$, đó là chọn tất cả chúng."
+"Có bao nhiêu số trong danh sách $$ 6,10,14,\ldots,82,86? $$",Level 1,Counting & Probability,"Trừ 2 khỏi danh sách để nhận $4,8,12,\ldots,80,84$, sau đó chia cho 4 để nhận $1,2,3,\ldots,20,21$. Vậy danh sách có các số $\boxed{21}$."
+"Ước chung lớn nhất của 5!, 10!, và 15! là gì?",Level 1,Counting & Probability,"Lưu ý rằng $5!$ chia hết $10!$ và $5!$ chia $15!$. Vì $5!$ không có thừa số nào lớn hơn $5!$ và $5!$ là thừa số của cả ba, nên câu trả lời là $5!=\boxed{120}$."
+"Một chiếc bánh pizza 12 lát được làm chỉ với pepperoni và nấm phủ trên, và mỗi lát đều có ít nhất một lớp trên. Chỉ có năm lát có pepperoni và đúng tám lát có nấm. Có bao nhiêu lát có cả pepperoni và nấm?",Level 1,Counting & Probability,"Tổng cộng có 12 lát, trong đó có 5 lát pepperoni và 8 lát có nấm. Gọi $n$ là số có cả hai lớp trên. Vì vậy, có những lát $5-n$ chỉ với pepperoni và $8-n$ chỉ với nấm. Vì vậy, có tổng cộng $n + (5-n) + (8-n)$ lát cắt. Vì có 12 lát cắt nên chúng ta có $(5-n) + (8-n) + n = 12$, từ đó chúng ta tìm thấy $n=\boxed{1}$."
+Xác suất để một phi tiêu được ném ngẫu nhiên trúng mục tiêu là $\frac{3}{8}$. Xác suất để phi tiêu không trúng mục tiêu là bao nhiêu? Thể hiện câu trả lời của bạn như là một phần chung.,Level 1,Counting & Probability,"Theo khái niệm xác suất bổ sung, nếu xác suất phi tiêu hạ cánh trúng mục tiêu chỉ là $\frac{3}{8}$, thì xác suất phi tiêu không hạ cánh ở đó là $1 - \frac{3}{8} = \boxed{\frac{5}{8}}$."
+"Roslyn có mười hộp. Năm hộp đựng bút chì, bốn hộp đựng bút mực và hai hộp đựng cả bút mực và bút chì. Có bao nhiêu hộp không chứa bút mực và bút chì?",Level 1,Counting & Probability,"Trong 5 hộp đựng bút chì, có 2 hộp có bút mực, vậy $5-2=3$ chỉ có bút chì. Tương tự, $4-2 =2$ trong các hộp chỉ có bút:
+
+
+[asy]
+đơn vị(0,05cm);
+label(""Bút chì"", (2,74));
+label(""Bút"", (80,74));
+draw(Circle((30,45), 22));
+draw(Circle((58, 45), 22));
+nhãn(""$2$"", (44, 45));
+nhãn(tỷ lệ(0.8)*""$3$"",(28,58));
+nhãn(scale(0.8)*""$2$"",(63,58));
+[/asy]
+
+Điều đó mang lại cho chúng ta $3+2+2=7$ hộp đựng bút mực, bút chì hoặc cả hai. Điều này khiến $10-7 = \boxed{3}$ không có gì cả."
+"Mười bốn khối màu trắng được ghép lại với nhau để tạo thành hình bên phải. Toàn bộ bề mặt của hình, kể cả phần dưới, được sơn màu đỏ. Hình sau đó được tách thành các khối riêng lẻ. Có bao nhiêu hình lập phương có đúng bốn mặt màu đỏ?
+
+[asy]
+kích thước (150);
+cặp a=(1,0),b=(0,1),c=(0,45,0,4);
+
+void drawcube(cặp loc){
+     filldraw(loc+b--loc--loc+a--loc+a+c--loc+a+b+c--loc+b+c--cycle,white);
+     draw(loc+b--loc+a+b--loc+a+b+c^loc+a+b--loc+a);
+}
+
+cặp vị trí[]={gốc,b,a,2a,3a,3a+b,-c,3a-c,-2c,-2c+b,-2c+a,-2c+2a,-2c+3a, -2c+3a+b};
+
+for(int i; i<14;++i){
+   drawcube(vị trí[i]);
+}
+
+
+[/asy]",Level 1,Counting & Probability,"Một hình lập phương có bốn mặt màu đỏ nếu nó được gắn vào đúng hai hình lập phương khác. Bốn khối trên cùng chỉ được gắn với một khối khác nên chúng có năm mặt màu đỏ. Bốn khối ở góc dưới được gắn với ba khối khác nên chúng có ba mặt màu đỏ. $\boxed{6}$ còn lại, mỗi cái có bốn mặt màu đỏ."
+"Có bao nhiêu đường chéo trong đa giác thứ năm của dãy đa giác đều dưới đây?
+
+[asy]kích thước đơn vị (0,5 inch);
+draw((0,0)--(0.8,0)--(0.4,0.6)--cycle);
+nhãn(""0"",(0.4,0),S);
+draw((1,0)--(1.8,0)--(1.8,0.8)--(1,0.8)--cycle);
+nhãn(""2"",(1.4,0),S);
+draw((2.2,0)--(1.9,0.7)--(2.6,1.1)--(3.3,0.7)--(3,0)--cycle);
+nhãn(""5"",(2.6,0),S);
+draw((3.6,0)--(3.3,0.5)--(3.6,1)--(4,1)--(4.3,0.5)--(4,0)--cycle);
+nhãn(""9"",(3.8,0),S);
+draw((4.7,0)--(4.4,0.4)--(4.6,0.9)--(5.2,1.2)--(5.8,0.9)--(6,0.4)--(5.7,0)- -xe đạp);
+nhãn(""?"",(5.1,0),S);
+nhãn(""Đa giác"",(-0.1,0.5),W);
+nhãn(""đường chéo"",(-0.1,-0.2),W);
+[/asy]",Level 1,Counting & Probability,Đa giác thứ năm có 7 đỉnh. Có $\dbinom{7}{2} = 21$ cách chọn hai đỉnh để nối với một đoạn thẳng. 7 lựa chọn trong số này mang lại các cạnh của đa giác; $21-7=\boxed{14}$ còn lại tạo thành các đường chéo.
+"Mỗi chữ số 1, 3 và 5 được sử dụng một lần để tạo thành mỗi số nguyên dương có ba chữ số. Các số nguyên có ba chữ số được liệt kê từ lớn nhất đến nhỏ nhất. Số nguyên nào được liệt kê thứ năm?",Level 1,Counting & Probability,Có thể có $3!=6$ số nguyên có ba chữ số. Vậy số thứ năm trong danh sách sẽ nhỏ thứ hai. Hai số nguyên nhỏ nhất có $1$ là chữ số hàng trăm. Nhỏ nhất là $135$; số nhỏ thứ hai là $\boxed{153}$.
+"$A$, $B$ và $C$ là các vùng hình tròn như được hiển thị. Có 7 mục trong vòng tròn $C$. Có chính xác 20 mục trong $A$ và 10 mục trong số đó không thuộc $B$. Có bao nhiêu mục bằng $B$ nhưng không bằng $C$?
+
+[asy]
+draw(Circle((0,0),50));
+label(""$A$"",(39,39));
+draw(Circle((10,-10),32));
+nhãn(""$B$"",(-16,16));
+draw(Circle((5,-5),20));
+nhãn(""$C$"",(22,-22));
+[/asy]",Level 1,Counting & Probability,"Mọi thứ trong vòng tròn $B$ đều nằm trong vòng tròn $B$, nhưng không nằm trong vòng tròn $C$; hoặc trong cả hai vòng tròn $B$ và vòng tròn $C$. Tương tự, mọi thứ trong Vòng tròn $A$ đều nằm trong vòng tròn $A$, nhưng không nằm trong vòng tròn $B$; hoặc trong cả hai vòng tròn $A$ và vòng tròn $B$. Ngoài ra, mọi thứ trong vòng tròn $C$ đều nằm trong vòng tròn $B$ và mọi thứ trong vòng tròn $B$ đều nằm trong vòng tròn $A$. Chúng ta được biết rằng có chính xác 20 mục trong $A$ và 10 mục trong số đó thuộc $A$, nhưng không phải trong $B$. Điều này có nghĩa là có tổng cộng $$20-10=10$$ mục trong vòng tròn $B$. chúng ta cũng được biết rằng có 7 phần tử trong vòng tròn $C$. Bởi vì mọi thứ trong vòng tròn $C$ đều nằm trong vòng tròn $B$, nên chúng ta nhận được rằng có $$10-7=\boxed{3}$$ mục trong vòng tròn $B$ nhưng không nằm trong vòng tròn $C$."
+Tìm giá trị của $2\left(\frac{7!}{3!4!}\right)$,Level 1,Counting & Probability,"Chúng ta có thể đơn giản hóa trực tiếp
+
+\bắt đầu{căn chỉnh*}
+2\left(\frac{7!}{3!4!}\right) &= 2\left(\frac{7\cdot 6 \cdot 5}{3 \cdot 2 \cdot 1}\right) \\
+&= \frac{7 \cdot 6 \cdot 5}{3 \cdot 1} \\
+&= 7 \cdot 2 \cdot 5 \\
+&= \đóng hộp{70}
+\end{căn chỉnh*}"
+"Câu lạc bộ toán của bạn có 20 thành viên. Có bao nhiêu cách chọn một chủ tịch, một phó chủ tịch và một thủ quỹ nếu không có thành viên nào có thể giữ nhiều hơn một chức vụ?",Level 1,Counting & Probability,"Có những thành viên tiềm năng trị giá $20$ có thể trở thành chủ tịch. Một khi tổng thống được chọn, sẽ có $19$ có thể trở thành phó tổng thống. Cuối cùng, khi hai văn phòng đó đã được lấp đầy, sẽ có $18$ có thể làm thủ quỹ. Vì vậy, có $20 \cdot 19 \cdot 18 = \boxed{6840}$ cách mà câu lạc bộ toán học có thể lựa chọn các quan chức."
+Có bao nhiêu số nguyên dương có ba chữ số là bội số của 11?,Level 1,Counting & Probability,"Số nguyên dương có ba chữ số đầu tiên là bội số của 11 là 110, bằng $11\nhân 10$. Số cuối cùng là 990, tức là $11\nhân 90$. Vì vậy, số bội có ba chữ số của 11 giống với số trong danh sách $10, 11, 12, \ldots, 90$, tức là $90-10+1 = \boxed{81}$."
+"Góc quay tính bằng độ quanh điểm $C$ để ánh xạ hình tối hơn sang hình ảnh sáng hơn là bao nhiêu? [asy]
+Olympic nhập khẩu; defaultpen(linewidth(0.7));
+draw((4,-1)--(4,1)--(-4,1)--(-4,3)--(-6,0)--(-4,-3)-- (-4,-1)--(4,-1)--cycle,linewidth(2));
+draw((-4,1)--(-4,3)--(4,3)--(4,5)--(6,2)--(4,-1)--(4, 1)--(-4,1)--chu kỳ);
+dấu chấm(""$C$"",(0,1),N);
+[/asy]",Level 1,Geometry,"Bằng cách nhìn vào sơ đồ được cung cấp, chúng ta có thể thấy rằng đường chứa điểm quay nằm trên chính nó, nhưng mũi tên lại hướng về hướng ngược lại. Điều này cho chúng ta biết rằng 1/2 của toàn bộ vòng quay $360^{\circ}$ đã hoàn thành; do đó, ảnh đã quay $360^{\circ}/2 = \boxed{180^{\circ}}$ quanh điểm $C$."
+"Trong hình vẽ, diện tích của $\tam giác ABC$ là bao nhiêu? [asy]
+kích thước (5cm);
+xmax thực = 15; ymax thực = 13; xmin thực = -3; ymin thực = -3;
+cặp a = (4, 9); cặp b = (0, 0); cặp c = (12, 0); vẽ(b--a--c);
+draw((xmin, 0)--(xmax, 0), Mũi tên); nhãn(""$x$"", (xmax, 0), E);
+draw((0, ymin)--(0, ymax), Mũi tên); nhãn(""$y$"", (0, ymax), N);
+nhãn(""$B(0, 0)$"", b, SW);
+nhãn(""$C(12, 0)$"", c, S);
+label(""$A(4, 9)$"", a, N);
+[/asy]",Level 1,Geometry,"Chúng ta coi $BC$ là đáy của $\tam giác ABC$. Chiều dài của nó là $12$.
+
+Vì tọa độ $y$-của $A$ là $9$, nên chiều cao của $\tam giác ABC$ tính từ đáy $BC$ là $9$.
+
+Do đó, diện tích của $\tam giác ABC$ là $\frac12 (12)(9) = \boxed{54}.$"
+Tính $\cos 60^\circ$.,Level 1,Geometry,"Đặt $P$ là điểm trên đường tròn đơn vị cách $60^\circ$ ngược chiều kim đồng hồ từ $(1,0)$ và đặt $D$ là chân của độ cao từ $P$ đến trục $x$ , như hình dưới đây.
+
+[asy]
+
+cặp A,C,P,O,D;
+
+draw((0,-1.2)--(0,1.2),p=đen+1.2bp,Mũi tên(0.15cm));
+
+draw((-1.2,0)--(1.2,0),p=đen+1.2bp,Mũi tên(0.15cm));
+
+A = (1,0);
+
+O= (0,0);
+
+nhãn(""$x$"",(1.2,0),SE);
+
+label(""$y$"",(0,1.2),NE);
+
+P = xoay(60)*A;
+
+D = foot(P,A,-A);
+
+hòa(O--P--D);
+
+draw(rightanglemark(O,D,P,2));
+
+draw(Circle(O,1));
+
+nhãn(""$O$"",O,SE);
+
+nhãn(""$P$"",P,NE);
+
+//nhãn(""$A$"",A,SE);
+
+nhãn(""$D$"",D,S);
+
+[/asy]
+
+Tam giác $POD$ là tam giác 30-60-90, vì vậy $DO = \frac{1}{2}$ và $DP = \frac{\sqrt{3}}{2}$. Do đó, tọa độ của $P$ là $\left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right)$, do đó $\cos 60^\circ = \boxed {\frac{1}{2}}$."
+Hình lăng trụ lục giác có bao nhiêu cạnh?,Level 1,Geometry,"Có hai đáy trên lăng kính, mỗi đáy có sáu cạnh, tổng cộng có 12 cạnh đáy. Mỗi đỉnh trên một đáy được nối với một đỉnh tương ứng trên đáy kia và vì mỗi đáy có sáu đỉnh nên có 6 cạnh thẳng đứng. Tổng cộng có $12+6=\boxed{18}$ cạnh."
+"Nếu diện tích của tam giác hiển thị là 40 thì $r$ ​​là bao nhiêu? [asy]
+đồ thị nhập khẩu; kích thước (200); defaultpen(linewidth(0.8));
+
+xmin thực=0;
+xmax thực=12;
+ymin thực=0;
+ymax thực=10;
+
+xlimits(xmin, xmax);
+
+ylimits(ymin, ymax);
+
+xaxis(""$x$"",0,12,EndArrow);
+yaxis(""$y$"",0,10,EndArrow);
+dot(Label(""$O$"",align=SW),(0,0));
+draw((0,8)--(10,0));
+dot(Label(""$(0,8)$"",align=E),(0,8));
+dot(Label(""$(r,0)$"",align=S),(10,0));
+[/asy]",Level 1,Geometry,"Tam giác này là tam giác vuông vì trục $x$- và $y$-vuông góc với nhau. Vậy đáy của tam giác có độ dài $r$ đơn vị và chiều cao của tam giác là $8$ đơn vị. Diện tích của tam giác là $\frac12(r)(8)=4r$. Chúng tôi được biết rằng khu vực này là $40$, vì vậy $4r=40\qquad$, có nghĩa là $r=\boxed{10}$."
+Một hình trụ tròn bên phải có bán kính 2 inch và chiều cao 1 inch có cùng thể tích bằng hình trụ tròn bên phải thứ hai. Bán kính của hình trụ thứ hai là 1 inch. Chiều cao của hình trụ thứ hai là bao nhiêu inch?,Level 1,Geometry,"Cho hình trụ thứ hai có chiều cao $h$ inch. Đặt hai tập bằng nhau, chúng ta có $\pi(2^2)(1)=\pi(1^2)(h) \Rightarrow h = \boxed{4}$ inch."
+Mỗi cạnh của hình lập phương có chiều dài 3 inch. Tổng diện tích bề mặt của hình lập phương là bao nhiêu inch vuông?,Level 1,Geometry,Mỗi mặt của hình lập phương có diện tích $3\cdot3=9$ inch vuông. Vì diện tích bề mặt của hình lập phương bao gồm 6 mặt nên tổng diện tích bề mặt là $9\cdot6=\đóng hộp{54}$ inch vuông.
+"Trong đường tròn $J$, $HO$ và $HN$ tiếp xúc với đường tròn tại $O$ và $N$. Tìm số độ trong tổng của $m\góc J$ và $m\góc H$. [asy]
+kích thước (150);
+đồ thị nhập khẩu;
+cặp J = (0,0), H = (6,0), O, N;
+đường tròn = Vòng tròn(J,3);
+cặp M = trung điểm(J--H);
+đường dẫn secCirc = Circle(M,3);
+cặp[] tangentPoints = giao điểm(circ,secCirc);
+O = điểm tiếp tuyến[0]; N = điểm tiếp tuyến[1];
+draw(J--N--H--O--cycle);
+vẽ(vòng tròn);
+nhãn(""$H$"",H,E);
+nhãn(""$J$"",J,W);
+nhãn(""$N$"",N,S);
+nhãn(""$O$"",O,NE);
+[/asy]",Level 1,Geometry,"Vì $\overline{OH}$ và $\overline{NH}$ tiếp xúc với bán kính của đường tròn tại $O$ và $N$, nên chúng ta có $\angle O =\angle N = 90^\circ$. Tổng số đo các góc trong của tứ giác $JOHN$ là $360^\circ$, nên $\angle J + \angle H = 360^\circ - \angle O - \angle N = \boxed{180^\ tròn}$."
+Một hình hộp lập phương cụ thể có cạnh dài 2 inch. Nếu hộp không có nắp thì diện tích bề mặt bên ngoài của hộp là bao nhiêu?,Level 1,Geometry,"Hình hộp có 5 mặt hình vuông, mỗi mặt có cạnh dài 2 inch. Do đó, mỗi hình vuông có diện tích là 4 inch vuông và tổng diện tích của chúng ta là $5\cdot 4 = \boxed{20}$ inch vuông."
+"Hình chữ nhật $WXYZ$ được vẽ trên $\tam giác ABC$, sao cho điểm $W$ nằm trên đoạn $AB$, điểm $X$ nằm trên đoạn $AC$, và các điểm $Y$ và $Z$ nằm trên đoạn $ BC$, như được hiển thị. Nếu $m\angle BWZ=26^{\circ}$ và $m\angle CXY=64^{\circ}$, $m\angle BAC$, tính bằng độ là bao nhiêu? [asy]
+đơn vị(0,3cm);
+draw((0,0)--(4.5,6)--(21,0)--cycle);
+draw((3,0)--(3,4)--(10,4)--(10,0)--cycle);
+nhãn(""B"",(0,0),SW);
+nhãn(""W"",(3,4),W);
+nhãn(""A"",(4.5,6),N);
+nhãn(""X"",(10,4),NE);
+nhãn(""C"",(21,0),E);
+nhãn(""Y"",(10,0),S);
+nhãn(""Z"",(3,0),S);
+nhãn(scale(0.7)*Label(""$26^{\circ}$"",(2.4,2.6),S));
+label(scale(0.8)*Label(""$64^{\circ}$"",(11,3.5),S));
+[/asy]",Level 1,Geometry,"Vì $WXYZ$ là hình chữ nhật nên các góc $XYC$ và $WZB$ là góc vuông. Vì các góc nhọn của một tam giác vuông có tổng bằng $90^\circ$, $m\angle WBZ=90-m\angle BWZ=90-26=64^\circ$ và $m\angle XCY=90-m\angle CXY=90-64=26^\circ$. Trong tam giác $ABC$, các góc trong có tổng bằng $180^\circ$, vì vậy $m\angle BAC=180-m\angle WBZ-m\angle XCY=180-64-26=\boxed{90^\circ }$."
+"Chu vi của $\tam giác ABC$ là $32.$ Nếu $\angle ABC=\angle ACB$ và $BC=12,$ thì độ dài của $AB là bao nhiêu?$
+
+[asy]
+draw((0,0)--(12,0)--(6,10)--cycle,black+linewidth(1));
+MarkAngle((12,0),(0,0),(6,10),1,black+linewidth(1));
+MarkAngle((6,10),(12,0),(0,0),1,black+linewidth(1));
+nhãn(""$A$"",(6,10),N);
+nhãn(""$B$"",(0,0),W);
+nhãn(""$C$"",(12,0),E);
+nhãn(""12"",(0,0)--(12,0),S);
+[/asy]",Level 1,Geometry,"Vì $\angle ABC=\angle ACB,$ thì $\tam giác ABC$ là cân và $AB=AC.$ Cho rằng $\tam giác ABC$ có chu vi là $32,$ $AB+AC+12=32$ hoặc $AB+AC=20.$ Nhưng $AB=AC,$ nên $2AB=20$ hoặc $AB=\boxed{10}.$"
+Tính $\sin 30^\circ$.,Level 1,Geometry,"Đặt $P$ là điểm trên đường tròn đơn vị cách $30^\circ$ ngược chiều kim đồng hồ từ $(1,0)$ và đặt $D$ là chân của độ cao từ $P$ đến trục $x$ , như hình dưới đây.
+
+[asy]
+
+cặp A,C,P,O,D;
+
+draw((0,-1.2)--(0,1.2),p=đen+1.2bp,Mũi tên(0.15cm));
+
+draw((-1.2,0)--(1.2,0),p=đen+1.2bp,Mũi tên(0.15cm));
+
+A = (1,0);
+
+O= (0,0);
+
+nhãn(""$x$"",(1.2,0),SE);
+
+label(""$y$"",(0,1.2),NE);
+
+P = xoay(30)*A;
+
+D = foot(P,A,-A);
+
+hòa(O--P--D);
+
+draw(rightanglemark(O,D,P,2));
+
+draw(Circle(O,1));
+
+nhãn(""$O$"",O,SE);
+
+nhãn(""$P$"",P,NE);
+
+//nhãn(""$A$"",A,SE);
+
+nhãn(""$D$"",D,S);
+
+[/asy]
+
+Tam giác $POD$ là tam giác 30-60-90, vì vậy $DO = \frac{\sqrt{3}}{2}$ và $DP = \frac12$. Do đó, tọa độ của $P$ là $\left(\frac{\sqrt{3}}{2}, \frac12\right)$, do đó $\sin 30^\circ = \boxed{\frac{1} {2}}$."
+"Trong sơ đồ, $\tam giác PQR$ là tam giác cân. Giá trị của $x$ là bao nhiêu? [asy]
+draw((0,0)--(3,6)--(6,0)--cycle);
+draw((7,-2)--(6,0)--(8,0));
+nhãn(""$Q$"",(0,0),W);
+nhãn(""$R$"",(6,0),SW);
+nhãn(""$P$"",(3,6),N);
+nhãn(""$x^\circ$"",(6.5,0),SE);
+nhãn(""$40^\circ$"",(3,5.2),S);
+draw((1.3,3.1)--(1.7,2.9));
+draw((4.3,2.9)--(4.7,3.1));
+[/asy]",Level 1,Geometry,"Vì $PQ=PR$ nên chúng ta có $\angle PQR = \angle PRQ$. Từ $\tam giác PQR$, chúng ta có $40^\circ+\angle PQR+\angle PRQ=180^\circ$, do đó $\angle PQR+\angle PRQ=140^\circ$. Vì $\angle PQR = \angle PRQ$ nên ta có $\angle PQR = \angle PRQ = 70^\circ$. Góc có nhãn $x^\circ$ đối diện với $\angle PRQ$, do đó $x^\circ = \angle PRQ = 70^\circ$, do đó $x=\boxed{70}$."
+"Các điểm $A(2,5)$ và $B(10,5)$ là điểm cuối của đường kính của một đường tròn được vẽ trên mặt phẳng tọa độ. Diện tích hình tròn có bao nhiêu đơn vị hình vuông? Hãy thể hiện câu trả lời của bạn dưới dạng $\pi$.",Level 1,Geometry,"Chúng ta phải tìm bán kính của hình tròn để tìm diện tích. Chúng ta được biết rằng các điểm $A$ và $B$ là điểm cuối của một đường kính, vì vậy chúng ta có thể tìm thấy khoảng cách giữa hai điểm này. Chúng ta có thể sử dụng công thức khoảng cách, nhưng vì $A$ và $B$ có cùng tọa độ $y$, nên chúng ta có thể thấy khoảng cách giữa chúng là $10 - 2 = 8$.
+
+Vì đường kính có chiều dài bằng 8 nên bán kính phải có chiều dài bằng 4. Do đó, câu trả lời là $4^2\pi = \boxed{16\pi}$."
+"Trong tam giác $ABC$, điểm $D$ nằm trên đoạn $BC$, số đo góc $BAC$ là 40 độ và tam giác $ABD$ là hình chiếu của tam giác $ACD$ trên đoạn $AD$. Số đo của góc $B$ là bao nhiêu?
+
+[asy]
+kích thước (101);
+cặp B = (0,0); cặp C = (2,0); cặp D = (1,0); cặp A = (1, tan(70*pi/180));
+draw(A--B--C--cycle,linewidth(1));
+nhãn(""$A$"",A,N); nhãn(""$B$"",B,W); nhãn(""$C$"",C,E);
+
+draw(A--D,linetype(""2 4"")+linewidth(1));
+nhãn(""$D$"",D,S);[/asy]",Level 1,Geometry,"Vì $\tam giác ADB$ là ảnh phản chiếu của $\tam giác ADC$, nên chúng ta có $m\angle B = m\angle C$. Vì $\tam giác ABC$ là một tam giác nên ta có $m\góc A + m\góc B + m\góc C = 180^\circ$. Giải ra ta thấy $m\angle B = \frac{180^\circ - 40^\circ}{2} = \boxed{70^\circ}$."
+"Trong sơ đồ, $PRT$ và $QRS$ là các đường thẳng. Giá trị của $x$ là bao nhiêu? [asy]
+Olympic nhập khẩu;
+nhập toán;
+
+kích thước (6cm); // ĐIỀU CHỈNH
+
+cặp r = (0, 0);
+cặp t = dir(-55);
+cặp s = dir(-55 - 70);
+cặp p = dir(-55 + 180);
+qr thực = Sin(70) / Sin(40);
+
+cặp q = qr * dir(-55 - 70 + 180);
+
+draw(r--p--q--s--t--r);
+
+nhãn(""$R$"", r, 2 * E);
+nhãn(""$T$"", t, SE);
+label(""$S$"", s, SW);
+nhãn(""$P$"", p, W);
+nhãn(""$Q$"", q, E);
+
+label(""$x^\circ$"", t, W + NW + NW);
+nhãn(""$40^\circ$"", q, 4 * SW);
+
+add(pathticks(p--q, khoảng cách=1, s=4));
+add(pathticks(q--r, khoảng cách=1, s=4));
+add(pathticks(r--s, 2, khoảng cách=1, s=4));
+add(pathticks(r--t, 2, interval=1, s=4));
+[/asy]",Level 1,Geometry,"Vì $PQ=QR$ nên chúng ta có $\angle QPR=\angle QRP$.
+
+Vì $\angle PQR + \angle QPR + \angle QRP = 180^\circ$, nên ta có $40^\circ + 2(\angle QRP) = 180^\circ$, nên $2(\angle QRP) = 140^ \circ$ hoặc $\angle QRP = 70^\circ$.
+
+Vì $\angle PRQ$ và $\angle SRT$ là các góc thẳng đứng nên chúng ta có $\angle SRT = \angle PRQ = 70^\circ$.
+
+Vì $RS=RT$, nên chúng ta có $\angle RST = \angle RTS = x^\circ$.
+
+Từ $\tam giác RST$, chúng ta có $\angle SRT + \angle RST + \angle RTS = 180^\circ$, do đó $70^\circ + 2x^\circ = 180^\circ$ hoặc $2x = 110$ hoặc $x=\boxed{55}$."
+Hai cạnh của một tam giác cân là 15 cm và 10 cm. Chu vi lớn nhất có thể có của tam giác này là bao nhiêu cm?,Level 1,Geometry,"Cạnh thứ ba phải có chiều dài bằng một trong hai cạnh đầu tiên. Để tối đa hóa chu vi, chúng ta đặt cạnh thứ ba bằng 15 cm. Chu vi khi đó là $15+15+10=\boxed{40}$ cm."
+"$\overline{BC}$ song song với đoạn thẳng đi qua $A$ và $AB = BC$. Số độ được biểu thị bằng $x$ là bao nhiêu?
+
+[asy]
+draw((0,0)--(10,0));
+draw((0,3)--(10,3));
+draw((2,3)--(8,0));
+draw((2,3)--(4,0));
+nhãn(""$A$"",(2,3),N);
+nhãn(""$B$"",(4,0),S);
+nhãn(""$C$"",(8,0),S);
+label(""$124^{\circ}$"",(2,3),SW);
+label(""$x^{\circ}$"",(4.5,3),S);
+[/asy]",Level 1,Geometry,"Góc $\angle BCA$ và góc chúng ta đang đo là các góc trong xen kẽ nhau, nên chúng bằng nhau. Do đó, $\angle BCA=x^\circ$:
+
+[asy]
+draw((0,0)--(10,0));
+draw((0,3)--(10,3));
+draw((2,3)--(8,0));
+draw((2,3)--(4,0));
+nhãn(""$A$"",(2,3),N);
+nhãn(""$B$"",(4,0),S);
+nhãn(""$C$"",(8,0),S);
+label(""$124^{\circ}$"",(2,3),SW);
+label(""$x^{\circ}$"",(4.5,3),S);
+label(""$x^{\circ}$"",(6,0),N);
+[/asy]
+
+Vì $AB=BC$, nên chúng ta biết rằng $\tam giác ABC$ là tam giác cân với các góc bằng nhau tại $C$ và $A$. Do đó, $\góc BAC = x^\circ$:
+
+[asy]
+draw((0,0)--(10,0));
+draw((0,3)--(10,3));
+draw((2,3)--(8,0));
+draw((2,3)--(4,0));
+nhãn(""$A$"",(2,3),N);
+nhãn(""$B$"",(4,0),S);
+nhãn(""$C$"",(8,0),S);
+label(""$124^{\circ}$"",(2,3),SW);
+label(""$x^{\circ}$"",(4.5,3),S);
+label(""$x^{\circ}$"",(6,0),N);
+label(""$x^{\circ}$"",(3.6,1.7));
+[/asy]
+
+Tổng ba góc tại $A$ là $180^\circ$, vì chúng tạo thành một góc thẳng. Do đó, $$124+x+x=180,$$ mà chúng ta có thể giải để thu được $x=\boxed{28}$."
+"Trong đường tròn tâm $O$ và đường kính $AC$ và $BD$, góc $AOD$ có số đo $54$ độ. Góc $AOB$ có số đo bằng độ là bao nhiêu? [asy]
+draw(vòng tròn((0,0),1));
+nhãn(""O"",(0,0),SE);
+draw((-1,0)--(1,0));
+draw((0.5877852522924731291,0.80901699437)--(-0.5877852522924731291,-0.80901699437));
+nhãn(""B"",(-1,0),W);
+nhãn(""D"",(1,0),E);
+nhãn(""A"",(0.5877852522924731291,0.80901699437),NE);
+nhãn(""C"",(-0.5877852522924731291,-0.80901699437),SW);
+dấu chấm((0,0));
+dấu chấm((-0,5877852522924731291,-0,80901699437));
+dấu chấm ((0,5877852522924731291,0.80901699437));
+dấu chấm((-1,0));
+dấu chấm((1,0));
+[/asy]",Level 1,Geometry,"Vì $AC$ và $BD$ là các đoạn thẳng cắt nhau tại điểm $O$, nên góc $AOD$ và góc $AOB$ là các góc phụ nhau và tổng số đo các góc của chúng phải bằng $180$ độ. Vì góc $AOD$ có số đo là $54$ độ nên số đo của góc $AOB$ phải là $180 - 54 = \boxed{126}$ độ."
+Tính $\tan 45^\circ$.,Level 1,Geometry,"Đặt $P$ là điểm trên đường tròn đơn vị cách $45^\circ$ ngược chiều kim đồng hồ từ $(1,0)$ và đặt $D$ là chân của độ cao từ $P$ đến trục $x$ , như hình dưới đây.
+
+[asy]
+
+cặp A,C,P,O,D;
+
+draw((0,-1.2)--(0,1.2),p=đen+1.2bp,Mũi tên(0.15cm));
+
+draw((-1.2,0)--(1.2,0),p=đen+1.2bp,Mũi tên(0.15cm));
+
+A = (1,0);
+
+O= (0,0);
+
+nhãn(""$x$"",(1.2,0),SE);
+
+label(""$y$"",(0,1.2),NE);
+
+P = xoay(45)*A;
+
+D = foot(P,A,-A);
+
+hòa(O--P--D);
+
+draw(rightanglemark(O,D,P,2));
+
+draw(Circle(O,1));
+
+nhãn(""$O$"",O,SE);
+
+nhãn(""$P$"",P,NE);
+
+//nhãn(""$A$"",A,SE);
+
+nhãn(""$D$"",D,S);
+
+[/asy]
+
+Tam giác $POD$ là tam giác có kích thước 45-45-90, vì vậy $DO = DP = \frac{\sqrt{2}}{2}$. Do đó, tọa độ của $P$ là $\left(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right)$, do đó $\tan 45^\ Circ = \frac{\sin 45^\circ}{\cos 45^\circ} = \frac{\sqrt{2}/2}{\sqrt{2}/2} = \boxed{1}$."
+"Một vòng tròn có tâm $C$ được hiển thị. Biểu thị diện tích hình tròn theo $\pi$. [asy]
+kích thước (200); đồ thị nhập khẩu; dấu hiệu nhập khẩu; defaultpen(linewidth(0.7));
+xaxis(""$x$"",-5,11,Mũi tên);
+yaxis(""$y$"",-7,7,Mũi tên);
+draw(Circle((3,1),5));
+dot(Label(""$C(3,1)$"",align=N),(3,1));
+dot(Label(""$(8,1)$"",align=N),(8,1));
+[/asy]",Level 1,Geometry,"Ta thấy bán kính của hình tròn là $8-3=5$, nên diện tích là $\pi r^2=\boxed{25\pi}$."
+"Hình vuông $ABCD$ và tam giác đều $AED$ là đồng phẳng và chung $\overline{AD}$, như được hiển thị. Góc $BAE$ có số đo bằng độ là bao nhiêu? [asy] kích thước (3cm);
+cặp A,B,C,D,E;
+A = (0,0);
+B = (0,1);
+C = (1,1);
+D = (1,0);
+E = dir(60);
+hòa(A--B--C--D--E--A--D);
+nhãn(""$A$"",A,dir(180));
+nhãn(""$B$"",B,dir(180));
+nhãn(""$C$"",C,dir(0));
+nhãn(""$D$"",D,dir(0));
+label(""$E$"",E,dir(0));
+[/asy]",Level 1,Geometry,"Các góc trong một tam giác có tổng bằng 180 độ nên số đo mỗi góc của tam giác đều là 60 độ. Do đó, số đo góc $EAD$ là 60 độ. Ngoài ra, góc $BAD$ có số đo là 90 độ. Do đó, số đo của góc $BAE$ là $90^\circ-60^\circ=\boxed{30}$ độ."
+Tính $\tan 180^\circ$.,Level 1,Geometry,"Xoay điểm $(1,0)$ quanh gốc tọa độ $180^\circ$ ngược chiều kim đồng hồ sẽ cho chúng ta điểm $(-1,0)$, do đó $\tan 180^\circ = \frac{\sin 180^\ Circ}{\cos 180^\circ} = \frac{0}{-1} = \boxed{0}$."
+Tính $\sin 180^\circ$.,Level 1,Geometry,"Xoay điểm $(1,0)$ bằng $180^\circ$ ngược chiều kim đồng hồ về gốc tọa độ, chúng ta sẽ có điểm $(-1,0)$, do đó $\sin 180^\circ = \boxed{0}$."
+"Trong tam giác cân $ABC$, nếu $BC$ được kéo dài đến một điểm $X$ sao cho $AC = CX$, thì số đo của góc $AXC$ là bao nhiêu? [asy] kích thước(220);
+cặp B, A = B + dir(40), C = A + dir(-40), X = C + dir(0);
+hòa(C--A--B--X--A); draw(A/2+.1*dir(-30)--A/2-.1*dir(-30));
+draw((A+C)/2+.1*dir(30)--(A+C)/2-.1*dir(30));
+nhãn(""A"",A,N); nhãn(""C"",C,S); nhãn(""B"",B,S); nhãn(""X"",X,S); label(""$30^{\circ}$"",B+.1*dir(0),NE);
+draw(arc(B,1/3,0,40));
+[/asy]",Level 1,Geometry,"Các góc đối diện với các cạnh bằng nhau của $\tam giác ABC$ bằng nhau nên $\angle BCA=30^\circ$. Vì $\angle BCA$ và $\angle XCA$ là bổ sung nên ta có \begin{align*}
+\angle XCA &= 180^\circ - \angle BCA\\
+&= (180-30)^\circ \\
+&= 150^\circ.
+\end{align*} Vì $\tam giác ACX$ là cân với $AC=CX$ nên các góc $\angle XAC$ và $\angle AXC$ bằng nhau. Đặt mỗi trong số chúng là $x^\circ$. Khi đó tổng các góc trong $\tam giác ACX$ là $180^\circ$, do đó $$x + x + 150 = 180,$$ thu được $x=15$. Tức là $\angle AXC = \boxed{15}$ độ."
+"Một bể hình chữ nhật có chiều rộng $6\text{ m}$, dài $12\text{ m}$ và sâu $4\text{ m}$. Nếu hồ đầy một nửa nước thì thể tích nước trong hồ là bao nhiêu?",Level 1,Geometry,"Vì nhóm có kích thước $6\text{ m}$ x $12\text{ m}$ x $4\text{ m},$ nên tổng khối lượng của nó là $6 \times 12 \times 4 = 288 \mbox{ m}^3 .$
+
+Vì bể chỉ đầy một nửa nước nên thể tích nước trong bể là $\frac{1}{2} \times 288 \mbox{ m}^3$ hoặc $\boxed{144 \mbox{ m} ^3}.$"
+Tổng số đo các góc trong của hình lục giác lồi được biểu diễn bằng bao nhiêu?,Level 1,Geometry,"Tổng số đo các góc trong của một $n$-giác lồi là $180(n-2)$.
+
+Đối với một hình lục giác, đây là $180(4)=\boxed{720}$ độ."
+"Trong tam giác, $\góc A=\góc B$. $x$ là gì? [asy]
+
+draw((.5,0)--(3,2)--(0,1)--cycle);
+
+label(""$A$"",(.5,0),S);
+
+nhãn(""$B$"",(0,1),W);
+
+nhãn(""$C$"",(3,2),NE);
+
+nhãn(""$3x-1$"",(1.75,1),SE);
+
+nhãn(""$2x+2$"",(1.5,1.5),NNW);
+
+label(""$x+4$"",(.25,.5),WSW);
+
+[/asy]",Level 1,Geometry,"Vì $\angle A=\angle B$, nên chúng ta biết rằng $\tam giác ABC$ là cân với các cạnh đối diện $A$ và $B$ bằng nhau. Do đó, $$2x+2 = 3x-1.$$ Giải phương trình này sẽ cho $x=\boxed{3}$."
+"Cho tam giác $ABC$, các điểm $D$ và $E$ lần lượt là trung điểm của các cạnh $AB$ và $AC$. Cạnh $BC$ có kích thước 6 inch. Số đo của đoạn $DE$ tính bằng inch là bao nhiêu?
+
+[asy]
+draw((-5,-5)--(10,3)--(0,10)--cycle);
+draw((-2.5,2.5)--(2.5,-1));
+label(""$A$"",(-5,-5),SW);
+nhãn(""$B$"",(0,10),N);
+nhãn(""$C$"",(10,3),SE);
+nhãn(""$D$"",(-2.5,2.5),NW);
+nhãn(""$E$"",(2.5,-1),SE);
+[/asy]",Level 1,Geometry,"Vì $AE:AC$ và $AD:AB$ đều là $1:2$, nên chúng ta có $\tam giác ADE \sim \tam giác ABC$ theo độ tương tự SAS. Vì các hình tam giác giống nhau theo tỷ lệ $1:2$, nên $DE=BC/2=6/2=\boxed{3}$ inch."
+Hình lăng trụ bát giác có bao nhiêu cạnh?,Level 1,Geometry,"Hai đáy là hình bát giác, mỗi cạnh có 8 cạnh, vì vậy các đáy có tổng cộng $8\times2=16$ cạnh. Sau đó có các cạnh nối hai đáy. Với một cạnh ứng với mỗi đỉnh của một đáy, ta có 8 cạnh nối các đáy. Vậy tổng số cạnh là $16+8=\boxed{24}$."
+"Tam giác $AXY$ đồng dạng với tam giác $ZBC$. Nếu $AX = 6$ cm, $ZB = 18$ cm và $ZC = 63$ cm, thì độ dài của đoạn $AY$, tính bằng cm?",Level 1,Geometry,"Vì chúng giống nhau nên $\frac{AX}{ZB} = \frac{AY}{ZC}$, do đó, $\frac{1}{3} = \frac{AY}{63} \rightarrow AY = \ đóng hộp{21}$"
+"Tứ giác $QABO$ được xây dựng như hình vẽ. Xác định diện tích của $QABO$. [asy]
+size(5cm);defaultpen(fontsize(9));
+cặp o = (0, 0); cặp q = (0, 12); cặp b = (12, 0);
+cặp a = (2, 12);
+
+draw((-2, 0)--(15, 0), Mũi tên);
+draw((0, -2)--(0, 15), Mũi tên);
+draw(q--a--b);
+
+nhãn(""$Q(0, 12)$"", q, W);
+label(""$A(2, 12)$"", a, NE);
+nhãn(""$B(12, 0)$"", b, S);
+label(""$O(0, 0)$"", o, SW);
+nhãn(""$x$"", (15, 0), E);
+nhãn(""$y$"", (0, 15), N);
+
+[/asy]",Level 1,Geometry,"Nếu điểm $T$ được đặt tại $(2,0)$ thì $T$ nằm trên $OB$ và $AT$ vuông góc với $OB$. [asy]
+size(5cm);defaultpen(fontsize(9));
+cặp o = (0, 0); cặp q = (0, 12); cặp b = (12, 0);
+cặp a = (2, 12); cặp t = (2, 0);
+
+draw((-2, 0)--(15, 0), Mũi tên);
+draw((0, -2)--(0, 15), Mũi tên);
+draw(q--a--b);
+vẽ(a--t);
+
+nhãn(""$Q(0, 12)$"", q, W);
+label(""$A(2, 12)$"", a, NE);
+nhãn(""$B(12, 0)$"", b, S);
+label(""$O(0, 0)$"", o, SW);
+nhãn(""$x$"", (15, 0), E);
+nhãn(""$y$"", (0, 15), N);
+nhãn(""$T(2, 0)$"", t, S + 0.6 * E);
+[/asy] Vì $QO$ vuông góc với $OB$, nên $QO$ song song với $AT$. Cả $QA$ và $OT$ đều nằm ngang, do đó $QA$ song song với $OT$. Do đó, $QATO$ là một hình chữ nhật. Diện tích hình chữ nhật $QATO$ là $QA\times QO$ hoặc $(2-0)\times(12-0)=24$.
+
+Vì $AT$ vuông góc với $TB$, nên chúng ta có thể coi $AT$ là chiều cao của $\tam giác ATB$ và $TB$ làm đáy. Diện tích của $\tam giác ATB$ là $$\frac{1}{2}\times TB\times AT = \frac{1}{2}\times(12-2)\times(12-0)=\ frac{1}{2}\times10\times12=60.$$Diện tích của $QABO$ là tổng diện tích của hình chữ nhật $QATO$ và $\tam giác ATB$ hoặc $24+60=\boxed{84} $."
+"Trong $\tam giác ABC$, giá trị của $x + y$ là bao nhiêu? [asy]
+Olympic nhập khẩu;
+kích thước (7cm);
+
+cặp a = dir(76);
+cặp b = (-1, 0);
+cặp c = (1, 0);
+cặp o = (0, 0);
+
+draw(a--b--c--cycle);
+vẽ(a--o);
+
+nhãn(""$A$"", a, N); nhãn(""$B$"", b, SW); nhãn(""$C$"", c, SE);
+label(""$104^\circ$"", o, 1,8 * NW + 0,4 * E);
+nhãn(""$x^\circ$"", b, 3 * E + NE + NE);
+label(""$y^\circ$"", c, 2 * W + 2 * NW);
+
+add(pathticks(b--o, s=3));
+add(pathticks(c--o, s=3));
+add(pathticks(a--o, s=3));
+
+[/asy]",Level 1,Geometry,"Vì $\tam giác BDA$ là cân, $\angle BAD = \angle ABD = x^\circ$.
+Vì $\tam giác CDA$ là cân, $\angle CAD = \angle ACD = y^\circ$. [asy]
+Olympic nhập khẩu;
+kích thước (7cm);
+
+cặp a = dir(76);
+cặp b = (-1, 0);
+cặp c = (1, 0);
+cặp o = (0, 0);
+
+draw(a--b--c--cycle);
+vẽ(a--o);
+
+nhãn(""$A$"", a, N); nhãn(""$B$"", b, SW); nhãn(""$C$"", c, SE); nhãn(""$D$"", o, S);
+label(""$104^\circ$"", o, 1,8 * NW + 0,4 * E);
+nhãn(""$x^\circ$"", b, 3 * E + NE + NE);
+label(""$y^\circ$"", c, 2 * W + 2 * NW);
+
+add(pathticks(b--o, s=3));
+add(pathticks(c--o, s=3));
+add(pathticks(a--o, s=3));
+
+label(""$x^\circ$"", a, 3 * S + 2 * SW + W); label(""$y^\circ$"", a, 3 * S + SE);
+
+[/asy] Do đó, $\góc BAC = (x + y)^\circ$.
+
+Vì tổng các góc của $\tam giác ABC$ là $180^\circ$ nên chúng ta có \begin{align*}
+x + y + (x + y) &= 180\\
+2x + 2y &= 180\\
+x + y &= 90.
+\end{align*}Do đó, $x + y = \boxed{90}$."
+"Số đo các cạnh của một tam giác là 7, 24 và 25. Diện tích của tam giác đó là bao nhiêu?",Level 1,Geometry,"Chúng tôi nhận thấy rằng $7^2+24^2=49+576=625$. Vì $7^2+24^2=25^2$, độ dài các cạnh 7, 24 và 25 là độ dài các cạnh của một tam giác vuông có cạnh 7 và 24 đơn vị, và cạnh huyền là 25 đơn vị. Vì vậy, chúng ta có thể tìm diện tích của tam giác bằng cách nhân $1/2$ với tích độ dài của các đáy để có được $(1/2)(7)(24)=7\cdot 12 = \boxed{84}$ đơn vị vuông."
+"Tam giác $ABC$ đồng dạng với tam giác $XYZ$ có cạnh $AB$ có 4 đơn vị, cạnh $BC$ có 6 đơn vị và cạnh $XY$ có 14 đơn vị. Số đo của cạnh $YZ là bao nhiêu?$",Level 1,Geometry,"Vì tam giác $ABC$ đồng dạng với tam giác $XYZ,$ $\frac{AB}{XY}=\frac{BC}{YZ}.$ Việc thay các giá trị đã cho sẽ thu được \begin{align*}
+\frac{4}{14} &= \frac{6}{YZ}\\
+\Rightarrow\qquad \frac{4\cdot YZ}{14} &= 6\\
+\Rightarrow\qquad 4\cdot YZ &= 84\\
+\Rightarrow\qquad YZ &= \boxed{21}.
+\end{căn chỉnh*}"
+"Hình vuông $ ABCD $ có cạnh $10$. Điểm $E$ nằm trên $\overline{BC}$ và diện tích của $ \tam giác ABE $ là $40$. $ BE $ là gì? [asy]kích thước(4cm);
+cặp A,B,C,D,E;
+A=(0,0);
+B=(0,50);
+C=(50,50);
+D=(50,0);
+E = (30,50);
+hòa(A--B);
+hòa(B--E);
+hòa(E--C);
+hòa(C--D);
+hòa(D--A);
+hòa(A--E);
+dấu chấm (A);
+dấu chấm (B);
+dấu chấm(C);
+dấu chấm(D);
+dấu chấm(E);
+nhãn(""$A$"",A,SW);
+nhãn(""$B$"",B,NW);
+nhãn(""$C$"",C,NE);
+nhãn(""$D$"",D,SE);
+nhãn(""$E$"",E,N);
+[/asy]",Level 1,Geometry,"Diện tích của $\tam giác ABC$ là $\tfrac{1}{2} \cdot AB \cdot BE.$ Với $AB=10$, ta được $\tfrac{1}{2} \cdot 10 \cdot BE = 40,$ hoặc $5 \cdot BE = 40.$ Do đó, $BE = \tfrac{40}{5} = \boxed{8}.$"
+"Trong sơ đồ, tâm của hình tròn là $O.$ Diện tích của vùng được tô bóng bằng $20\%$ diện tích của hình tròn. Giá trị của $x là bao nhiêu?$ [asy]
+filldraw(Circle((0,0),1),gray(0.8),linewidth(1));
+filldraw((cos(pi/5),sin(pi/5))--(0,0)--(cos(-pi/5),sin(-pi/5))..(-1,0 )..cycle,white,linewidth(1));
+nhãn(""$O$"", (0,0), W);
+nhãn(""$x^\circ$"", (0.1,0), E);
+[/asy]",Level 1,Geometry,"Vì diện tích được tô bóng bằng $20\%$ diện tích hình tròn nên góc ở tâm phải bằng $20\%$ trong tổng số góc ở tâm có thể có.
+
+Do đó, $x^\circ = \frac{20}{100}\cdot 360^\circ$ hoặc $x = \frac{1}{5}\cdot 360=\boxed{72}.$"
+"Trong $\tam giác ABC$, $AC=BC$, và $m\góc BAC=40^\circ$. Số độ của góc $x$ là bao nhiêu? [asy]
+kích thước (80);
+draw((0,0)--(7,0));
+draw((0,0)--(3,2)--(6,0));
+nhãn(""$A$"",(0,0),W);
+nhãn(""$B$"",(6,0),S);
+nhãn(""$C$"",(3,2),N);
+label(""$x$"",(6,0),NE);
+[/asy]",Level 1,Geometry,"Tam giác $ABC$ là tam giác cân có các góc bằng nhau tại $A$ và $B$. Do đó, $m\góc ABC = m\góc BAC = 40^\circ$.
+
+Góc $x$ bù với $\góc ABC$ nên \begin{align*}
+x &= 180^\circ - m\góc ABC \\
+&= 180^\circ - 40^\circ \\
+&= \đóng hộp{140}^\circ.
+\end{căn chỉnh*}"
+"Đồ thị của $y = f(x)$ được hiển thị bên dưới.
+
+[asy]
+đơn vị(0,5 cm);
+
+func thực (x thực) {
+  thực y;
+  nếu (x >= -3 && x <= 0) {y = -2 - x;}
+  if (x >= 0 && x <= 2) {y = sqrt(4 - (x - 2)^2) - 2;}
+  if (x >= 2 && x <= 3) {y = 2*(x - 2);}
+  trở lại (y);
+}
+
+int tôi, n;
+
+vì (i = -5; i <= 5; ++i) {
+  draw((i,-5)--(i,5), grey(0.7));
+  draw((-5,i)--(5,i),gray(0.7));
+}
+
+draw((-5,0)--(5,0),Arrows(6));
+draw((0,-5)--(0,5),Arrows(6));
+
+nhãn(""$x$"", (5,0), E);
+nhãn(""$y$"", (0,5), N);
+
+draw(graph(func,-3,3),red);
+
+label(""$y = f(x)$"", (3,-2), Bỏ điền);
+[/asy]
+
+Đồ thị của $y = -f(-x)$ là gì?
+
+[asy]
+đơn vị(0,5 cm);
+
+hình ảnh[] đồ họa;
+int tôi, n;
+
+func thực (x thực) {
+  thực y;
+  nếu (x >= -3 && x <= 0) {y = -2 - x;}
+  if (x >= 0 && x <= 2) {y = sqrt(4 - (x - 2)^2) - 2;}
+  if (x >= 2 && x <= 3) {y = 2*(x - 2);}
+  trở lại (y);
+}
+
+funcb thực (x thực) {
+  return(-func(x));
+}
+
+funcd thực (x thực) {
+  return(-func(-x));
+}
+
+niềm vui thực sự (x thực sự) {
+  return(func(-x));
+}
+
+vì (n = 1; n <= 5; ++n) {
+  graf[n] = hình ảnh mới;
+  vì (i = -5; i <= 5; ++i) {
+    draw(graf[n],(i,-5)--(i,5),gray(0.7));
+    draw(graf[n],(-5,i)--(5,i),gray(0.7));
+  }
+  draw(graf[n],(-5,0)--(5,0),Arrows(6));
+  draw(graf[n],(0,-5)--(0,5),Arrows(6));
+
+  nhãn(graf[n],""$x$"", (5,0), E);
+  nhãn(graf[n],""$y$"", (0,5), N);
+}
+
+draw(graf[1],(-5,3)--(-2,0),red);
+draw(graf[1],arc((-2,2),2,270,360),red);
+draw(graf[1],(0,2)--(2,4),red);
+draw(graf[2],graph(funcb,-3,3),red);
+draw(graf[3],(-3,2)--(-2,0),red);
+draw(graf[3],arc((-2,-2),2,0,90),red);
+draw(graf[3],(0,-2)--(3,-5),red);
+draw(graf[4],graph(funcd,-3,3),red);
+draw(graf[5],graph(funce,-3,3),red);
+
+nhãn(graf[1], ""A"", (0,-6));
+nhãn(graf[2], ""B"", (0,-6));
+nhãn(graf[3], ""C"", (0,-6));
+nhãn(graf[4], ""D"", (0,-6));
+nhãn(graf[5], ""E"", (0,-6));
+
+thêm(graf[1]);
+add(shift((12,0))*(graf[2]));
+add(shift((24,0))*(graf[3]));
+add(shift((6,-12))*(graf[4]));
+add(shift((18,-12))*(graf[5]));
+[/asy]
+
+Nhập chữ cái của đồ thị $y = -f(-x).$",Level 1,Intermediate Algebra,"Đồ thị của $y = -f(-x)$ được tạo ra bằng cách lấy đồ thị của $y = f(x)$ và phản ánh trong trục $x$, sau đó phản ánh trong trục $y$. Biểu đồ đúng là $\boxed{\text{D}}.$
+
+Ngoài ra, có thể thu được bằng cách xoay đồ thị của $y = f(x)$ quanh gốc tọa độ $180^\circ.$ Để thấy điều này, hãy để $(a,b)$ là một điểm trên đồ thị của $y = f (x),$ vậy $b = f(a).$ Đặt $g(x) = -f(-x).$ Khi đó
+\[g(-a) = -f(a) = -b,\]vì vậy $(-a,-b)$ là một điểm trên đồ thị của $y = g(x) = -f(-x) .$ Vì điểm $(-a,-b)$ có thể thu được bằng cách xoay điểm $(a,b)$ $180^\circ$ quanh gốc tọa độ, điều tương tự cũng áp dụng cho đồ thị của $y = f(x )$ và $y = -f(-x).$
+
+[asy]
+đơn vị(1 cm);
+
+cặp P, Q;
+
+P = (1,7,0,8);
+Q = -P;
+
+draw((-2,0)--(2,0));
+draw((0,-2)--(0,2));
+draw(P--Q, nét đứt);
+
+dot(""$(a,b)$"", P, NE);
+dot(""$(-a,-b)$"", Q, SW);
+[/asy]"
+Với bao nhiêu giá trị thực của $c$ thì chúng ta có $|3-ci| = 7$?,Level 1,Intermediate Algebra,"Chúng ta có $|3-ci| = \sqrt{3^2 + (-c)^2} = \sqrt{c^2 + 9}$, vậy $|3-ci| = 7$ mang lại cho chúng ta $\sqrt{c^2 + 9} = 7$. Bình phương cả hai vế sẽ có $c^2 + 9 = 49$, do đó $c^2=40$. Lấy căn bậc hai của cả hai vế sẽ cho $c = 2\sqrt{10}$ và $c=-2\sqrt{10}$ làm giải pháp, do đó có các giá trị thực $\boxed{2}$ của $c$ thỏa mãn phương trình.
+
+Chúng ta cũng có thể giải phương trình này bằng cách lưu ý rằng $|3-ci| = 7$ có nghĩa là số phức $3-ci$ cách gốc tọa độ trong mặt phẳng phức 7 đơn vị. Do đó, nó nằm trên đường tròn có tâm tại gốc tọa độ với bán kính 7. Số phức $3-ci$ cũng nằm trên đường thẳng đứng cắt trục thực tại 3, nằm bên trong đường tròn nói trên. Vì đường này đi bên trong đường tròn nên nó phải cắt đường tròn tại các điểm $\boxed{2}$, tương ứng với các giá trị của $c$ thỏa mãn phương trình ban đầu."
+"Tìm tất cả các nghiệm nguyên của
+\[x^4 + 5x^3 + 9x^2 - x - 14 = 0.\]Nhập tất cả các nghiệm nguyên, phân tách bằng dấu phẩy.",Level 1,Intermediate Algebra,"Theo Định lý Căn nguyên Số nguyên, các căn nguyên có thể có là tất cả các ước của 14 (bao gồm các ước số âm), là $-14,$ $-7,$ $-2,$ $-1,$ $1,$ $2,$ $7,$ và $14.$ Khi kiểm tra, chúng tôi thấy rằng các nghiệm nguyên duy nhất là $\boxed{-2,1}.$"
+Tìm sản phẩm $10 \cdot \frac{4}{3} \cdot \frac{6}{4} \cdot \frac{8}{5} \cdot \frac{10}{6} \cdot \frac{12 }{7} \cdot \frac{14}{8} \cdot \frac{16}{9} \cdot \frac{18}{10}$.,Level 1,Intermediate Algebra,"Tích của các tử số là
+\bắt đầu{căn chỉnh*}
+&(2 \cdot 2) \cdot (2 \cdot 3) \cdot (2 \cdot 4) \cdot (2 \cdot 5) \cdot (2 \cdot 6) \cdot (2 \cdot 7) \cdot ( 2 \cdot 8) \cdot (2 \cdot 9) \\
+&= 2^8 \cdot 2 \cdot 3 \cdot 4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 \cdot 9.
+\end{align*}Thì biểu thức đã cho bằng
+\[10 \cdot \frac{2^8 \cdot 2 \cdot 3 \cdot 4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 \cdot 9}{3 \cdot 4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 \cdot 9 \cdot 10} = 2^9 = \boxed{512}.\]"
+"Nếu $f(x)$ là hàm chẵn và $g(x)$ là hàm lẻ, hãy tìm xem $f(g(x^3))$ là chẵn, lẻ hay không.
+
+Nhập ""lẻ"", ""chẵn"" hoặc ""không"".",Level 1,Intermediate Algebra,Việc thay thế $-x$ cho $x$ sẽ cho ta $f(g(-x^3)) = f(-g(x^3)) = f(g(x^3))$ vậy $f(g( x^3))$ là $\boxed{\text{even}}$.
+Tìm độ lớn của số phức $5-12i$.,Level 1,Intermediate Algebra,"Độ lớn là $$
+|5-12i| = \sqrt{5^2 + (-12)^2} = \sqrt{169} = \boxed{13}.
+$$"
+"Cho $a,$ $b,$ và $c$ là nghiệm của $x^3 - 3x - 5 = 0.$ Tìm $abc.$",Level 1,Intermediate Algebra,Theo công thức của Vieta thì $abc = \boxed{5}.$
+Giải $x:$ $\log_{x} 2+\log_{x} 4=3$,Level 1,Intermediate Algebra,"Đầu tiên, chúng ta nhận thấy rằng $4=2^2$ và hãy nhớ rằng $\log a^2=2\log a.$ Từ đây, chúng ta nhận được $\log_{x}2+2\log_{x}2=3, $ hoặc $3\log_{x}2=3.$
+
+Do đó, $\log_{x}2=1$ và $x=\boxed{2}.$"
+Tính: $1-2+3-4+5- \dots +99-100$.,Level 1,Intermediate Algebra,$(1-2)+(3-4)+ \dots +(97-98)+(99-100) = 50(-1) = \boxed{-50}.$
+Tìm tâm của hình elip có phương trình là $5x^2 - 20x + 9y^2 - 18y - 16 = 0.$,Level 1,Intermediate Algebra,"Hoàn thành hình vuông trong $x$ và $y,$ chúng ta nhận được
+\[5(x - 2)^2 + 9(y - 1)^2 = 45.\]Sau đó
+\[\frac{(x - 2)^2}{9} + \frac{(y - 1)^2}{5} = 1,\]vì vậy tâm của hình elip là $\đóng hộp{(2, 1)}.$"
+"Giả sử $4^a = 5$, $5^b = 6$, $6^c = 7$, và $7^d = 8$. $a \cdot b \cdot c \cdot d$ là gì?",Level 1,Intermediate Algebra,"Chúng tôi có cái đó
+\[4^{ab} = 5^b = 6.\]Thì
+\[4^{abc} = 6^c = 7,\]và
+\[4^{abcd} = 7^d = 8.\]Thì $2^{2abcd} = 2^3,$ nên $abcd = \boxed{\frac{3}{2}}.$"
+Tính tích của số $5+\sqrt{3}$ và căn liên hợp của nó.,Level 1,Intermediate Algebra,"Căn liên hợp của số này là $5-\sqrt{3},$ nên tích của hai số là \[(5+\sqrt3)(5-\sqrt3) = 5^2 - (\sqrt3)^2 = 25 - 3 = \đóng hộp{22}.\]"
+"Các số nguyên dương đến năm 2007 được trừ và cộng xen kẽ:
+\[1 - 2 + 3 - 4 + \cdots + 2001 - 2002 + 2003 - 2004 + 2005 - 2006 + 2007.\]Giá trị của biểu thức là gì?",Level 1,Intermediate Algebra,$(1-2) + (3-4)+\cdots + (2003-2004)+(2005-2006) + 2007 = (-1)(1003)+2007=\đóng hộp{1004}.$
+"Gỡ rối
+\[\frac{1}{x - 5} > 0.\]Nhập câu trả lời của bạn bằng cách sử dụng ký hiệu khoảng.",Level 1,Intermediate Algebra,"Nếu $x < 5,$ thì $\frac{1}{x - 5} < 0,$ và nếu $x > 5,$ thì $\frac{1}{x - 5} > 0,$ thì giải pháp là $x \in \boxed{(5,\infty)}.$"
+Đồ thị của $y = \frac{1}{x^3-3x^2+3x-1}$ có bao nhiêu đường tiệm cận đứng?,Level 1,Intermediate Algebra,"Lưu ý rằng $x^3-3x^2+3x-1 = (x-1)^3$. Hàm có thể được viết dưới dạng $y = \frac{1}{(x-1)^3}$. Các tiệm cận đứng xảy ra tại các giá trị của $x$ trong đó mẫu số là 0. Trong trường hợp này, chỉ có tiệm cận đứng $\boxed{1}$, xuất hiện khi $x = 1$."
+Tìm $|9i-12|\cdot |3+4i|$.,Level 1,Intermediate Algebra,Chúng ta có $|9i-12|\cdot |3+4i| = 15 \cdot 5 = \boxed{75}$.
+Đánh giá $|1-4i|$.,Level 1,Intermediate Algebra,Chúng ta có $|1-4i| = \sqrt{1^2 + (-4)^2} = \boxed{\sqrt{17}}$.
+"Nếu $\log_2 x + \log _2 x^2 = 6,$ hãy tìm giá trị của $x.$",Level 1,Intermediate Algebra,"Lưu ý rằng $\log_2 x^2 = 2\log_2 x.$ Do đó, chúng ta có $\log_2 x + 2 \log_2 x =6$, hoặc $3\log_2 x = 6$. Do đó $\log_2 x = 2$, do đó $x = 2^2 = \boxed{4}$."
+Sasha và Chloe đang ném phi tiêu vào bản đồ của chiếc máy bay phức tạp. Phi tiêu của Sasha rơi vào điểm $15+8i$. Phi tiêu của Chloe đáp xuống điểm $3-4i$. Phi tiêu của Chloe gần với điểm gốc bao nhiêu so với của Sasha?,Level 1,Intermediate Algebra,Khoảng cách từ một điểm đến gốc tọa độ tương đương với độ lớn. Khoảng cách từ phi tiêu của Sasha là $|15+8i| = \sqrt{15^2 + 8^2} = 17$. Khoảng cách từ phi tiêu của Chloe là $|3-4i| = \sqrt{3^2 + 4^2} = 5$. Chúng ta cần tính sự khác biệt về khoảng cách. Phi tiêu của Chloe ở gần hơn một khoảng $17 - 5 = \boxed{12}$.
+Giải $x$: $$\log_2 \frac{2x+8}{x+2} +\log_2\frac{x+2}{x-5}=3$$,Level 1,Intermediate Algebra,"Bắt đầu bằng cách kết hợp các nhật ký: $$\log_2\left (\frac{2x+8}{x+2}\cdot\frac{x+2}{x-5}\right. )=3$$Lưu ý rằng $x +2$ hủy bỏ. Chúng ta còn lại: $$\log_2\left(\frac{2x+8}{x-5}\right)=3$$Bây giờ, hãy loại bỏ nhật ký và giải: \begin{align*}
+\frac{2x+8}{x-5}&=2^3\\
+\Rightarrow\qquad 2x+8&=8(x-5)\\
+\Rightarrow\qquad 2x+8&=8x-40\\
+\Rightarrow\qquad 48&=6x\\
+\Rightarrow\qquad \boxed{8}&=x.
+\end{căn chỉnh*}"
+Số hạng thứ tư của chuỗi hình học là $24$ và số hạng thứ mười một là $3072$. Tỷ lệ chung là gì?,Level 1,Intermediate Algebra,"Gọi $a$ là số hạng đầu tiên và $r$ là tỉ số chung. Khi đó chúng ta có $ar^3 = 24$ và $ar^{10} = 3072$. Phép chia mang lại cho chúng ta
+$$r^7 = \frac{3072}{24} = 128$$có nghĩa là $r = \boxed{2}.$"
+"Đồ thị của $y = f(x)$ được hiển thị bên dưới.
+
+[asy]
+đơn vị(0,5 cm);
+
+func thực(real x) {
+  thực y;
+  nếu (x >= -3 && x <= 0) {y = -2 - x;}
+  if (x >= 0 && x <= 2) {y = sqrt(4 - (x - 2)^2) - 2;}
+  if (x >= 2 && x <= 3) {y = 2*(x - 2);}
+  trở lại (y);
+}
+
+int tôi, n;
+
+vì (i = -5; i <= 5; ++i) {
+  draw((i,-5)--(i,5), grey(0.7));
+  draw((-5,i)--(5,i),gray(0.7));
+}
+
+draw((-5,0)--(5,0),Arrows(6));
+draw((0,-5)--(0,5),Arrows(6));
+
+nhãn(""$x$"", (5,0), E);
+nhãn(""$y$"", (0,5), N);
+
+draw(graph(func,-3,3),red);
+
+label(""$y = f(x)$"", (3,-2), Bỏ điền);
+[/asy]
+
+Đồ thị của $y = -f(x)$ là gì?
+
+[asy]
+đơn vị(0,5 cm);
+
+hình ảnh[] đồ họa;
+int tôi, n;
+
+func thực (x thực) {
+  thực y;
+  nếu (x >= -3 && x <= 0) {y = -2 - x;}
+  if (x >= 0 && x <= 2) {y = sqrt(4 - (x - 2)^2) - 2;}
+  if (x >= 2 && x <= 3) {y = 2*(x - 2);}
+  trở lại (y);
+}
+
+funcb thực (x thực) {
+  return(-func(x));
+}
+
+funcd thực (x thực) {
+  return(-func(-x));
+}
+
+niềm vui thực sự (x thực sự) {
+  return(func(-x));
+}
+
+vì (n = 1; n <= 5; ++n) {
+  graf[n] = hình ảnh mới;
+  vì (i = -5; i <= 5; ++i) {
+    draw(graf[n],(i,-5)--(i,5),gray(0.7));
+    draw(graf[n],(-5,i)--(5,i),gray(0.7));
+  }
+  draw(graf[n],(-5,0)--(5,0),Arrows(6));
+  draw(graf[n],(0,-5)--(0,5),Arrows(6));
+
+  nhãn(graf[n],""$x$"", (5,0), E);
+  nhãn(graf[n],""$y$"", (0,5), N);
+}
+
+draw(graf[1],(-5,3)--(-2,0),red);
+draw(graf[1],arc((-2,2),2,270,360),red);
+draw(graf[1],(0,2)--(2,4),red);
+draw(graf[2],graph(funcb,-3,3),red);
+draw(graf[3],(-3,2)--(-2,0),red);
+draw(graf[3],arc((-2,-2),2,0,90),red);
+draw(graf[3],(0,-2)--(3,-5),red);
+draw(graf[4],graph(funcd,-3,3),red);
+draw(graf[5],graph(funce,-3,3),red);
+
+nhãn(graf[1], ""A"", (0,-6));
+nhãn(graf[2], ""B"", (0,-6));
+nhãn(graf[3], ""C"", (0,-6));
+nhãn(graf[4], ""D"", (0,-6));
+nhãn(graf[5], ""E"", (0,-6));
+
+thêm(graf[1]);
+add(shift((12,0))*(graf[2]));
+add(shift((24,0))*(graf[3]));
+add(shift((6,-12))*(graf[4]));
+add(shift((18,-12))*(graf[5]));
+[/asy]
+
+Nhập chữ cái của đồ thị $y = -f(x).$",Level 1,Intermediate Algebra,Đồ thị của $y = -f(x)$ là hình chiếu của đồ thị của $y = f(x)$ trong trục $x$. Biểu đồ đúng là $\boxed{\text{B}}.$
+Thừa số $7x^3 - 21x^2 + 14x$.,Level 1,Intermediate Algebra,"Cả 7 và $x$ đều là thừa số của mỗi số hạng, vì vậy chúng ta có thể phân tích $7x$: \[7x^3 -21x^2 + 14x = (7x)\cdot(x^2) - (7x)\cdot ( 3x) ​​+ (7x)\cdot 2 = 7x(x^2 - 3x + 2).\]Chúng ta có thể phân tích $x^2 - 3x + 2$ thành $(x-1)(x-2)$, để nhận được câu trả lời của chúng tôi về $\boxed{7x(x-1)(x-2)}$."
+Hàm $f(x) = \frac{6x^3+4x^2-11x+5}{3x^3-15x+20}$ có một tiệm cận ngang $y = c$. $c$ là gì?,Level 1,Intermediate Algebra,"Khi bậc (số mũ lớn nhất) của đa thức ở tử số và mẫu số bằng nhau thì tiệm cận ngang tiến tới tỉ số giữa hệ số đầu của tử số và hệ số đầu của mẫu số. Trong trường hợp này, tỷ lệ là $\frac{6}{3} = \boxed{2}$."
+Tìm số dư khi chia $x^3-3x^2-9x+30$ cho $x-3$.,Level 1,Intermediate Algebra,"Đặt $f(x) =x^3-3x^2-9x+30$. Từ Định lý số dư, chúng ta biết rằng số dư khi chia $f(x)$ cho $x-3$ là
+$$\begin{aligned} f(3) &= 3^3-3\cdot 3^2- 9 \cdot 3 +30 \\
+&= 27-27-27+30 \\
+&= \đóng hộp{3}. \end{căn chỉnh}$$"
+Liên hợp căn của $5 - 6\sqrt{2}$ là gì?,Level 1,Intermediate Algebra,"Để có được liên hợp căn thức, chúng ta thay thế phần căn của số bằng số âm của nó. Vì vậy, liên hợp căn của $5-6\sqrt{2}$ là $\boxed{5+6\sqrt{2}}.$"
+Tìm $|10-13i|\cdot |10+13i|$.,Level 1,Intermediate Algebra,Chúng ta có $|10-13i|\cdot |10+13i| = |(10-13i)(10+13i)| = |100 + 169| = \đóng hộp{269}$.
+"Xác định xem đồ thị của phương trình dưới đây là parabol, hình tròn, hình elip, hyperbol, điểm, đường thẳng, hai đường thẳng hay trống.
+
+$(x-3)^2 + y^2 = 10$",Level 1,Intermediate Algebra,"Đây là phương trình của $\boxed{\text{circle}}$ có tâm $(3,0)$ và bán kính $\sqrt{10}$."
+Tìm tâm của hình elip có phương trình là $9x^2 + 72x + 4y^2 - 8y - 176 = 0.$,Level 1,Intermediate Algebra,"Hoàn thành hình vuông trong $x$ và $y,$ chúng ta nhận được
+\[9(x + 4)^2 + 4(y - 1)^2 = 324.\]Sau đó
+\[\frac{(x + 4)^2}{36} + \frac{(y - 1)^2}{81} = 1.\]Do đó, tâm của hình elip là $\đóng hộp{(- 4,1)}.$"
+"Nếu $x$, $y$, và $z$ dương với $xy = 24$, $xz = 48$, và $yz = 72$, thì tìm $x + y + z.$",Level 1,Intermediate Algebra,"Nhân cả ba phương trình, chúng ta được $x^2 y^2 z^2 = 82944.$ Vì $x,$$y,$ và $z$ đều dương, nên $xyz = \sqrt{82944} = 288.$ Khi đó
+\bắt đầu{căn chỉnh*}
+x &= \frac{xyz}{yz} = \frac{288}{72} = 4, \\
+y &= \frac{xyz}{xz} = \frac{288}{48} = 6, \\
+z &= \frac{xyz}{xy} = \frac{288}{24} = 12.
+\end{align*}Do đó, $x + y + z = \boxed{22}.$"
+Nhân $(x^6 -19x^3 + 361) (x^3+19)$.,Level 1,Intermediate Algebra,"Chúng ta nhận ra biểu thức đã cho là phép phân tích nhân tử $(a+b)(a^2-ab+b^2)$ của hiệu các lập phương $a^3+b^3$, trong đó $a=x^3$ và $b=19$. Do đó tích là $a^3+b^3 = (x^3)^3+19^3=\boxed{x^9+6859}$."
+"Tìm đa thức $p(x)$ nếu
+$$(x^2-3x+5)p(x) = x^4-3x^3+15x-25.$$",Level 1,Intermediate Algebra,"Vì nhân $p(x)$ với một đa thức bậc hai (bậc 2) cho chúng ta một đa thức bậc bốn (bậc 4), $p(x)$ cũng là một bậc hai có dạng $ax^2+bx+c$ trong đó $ a$, $b$ và $c$ là các hằng số. Vì vậy chúng tôi có
+$$(x^2-3x+5)(ax^2+bx+c) = x^4-3x^3+15x-25.$$Mở rộng vế trái cho ta
+$$ax^4 - (b-3a)x^3+(5a-3b+c)x^2+(5b-3c)x+5c = x^4-3x^3+15x-25.$$If các đa thức này bằng nhau thì mỗi số hạng phải bằng nhau. Vì vậy, $ax^4 = x^4$ có nghĩa là $a = 1$. Ngoài ra, $(b-3a)x^3 = (b-3)x^3 = -3x^3$ mà chúng ta có thể giải để có được $b=0$. Cuối cùng, vì chúng ta phải có $5c = -25$ nên chúng ta biết $c=-5$. Do đó, đa thức $p(x) = \boxed{x^2-5}$."
+"Đặt $a,$ $b,$ $c,$ $d$ là nghiệm của
+\[2x^4 - 8x^3 + 7 = 0.\]Tìm $a + b + c + d.$",Level 1,Intermediate Algebra,"Theo công thức của Vieta, $a + b + c + d = \frac{8}{2} = \boxed{4}.$"
+"Cho $f(x)$ và $g(x)$ là các hàm số lẻ. $f(x) g(x)$ chẵn, lẻ hay không?
+
+Nhập ""lẻ"", ""chẵn"" hoặc ""không"".",Level 1,Intermediate Algebra,"Vì $f(x)$ và $g(x)$ là các hàm lẻ,
+\[f(-x)g(-x) = (-f(x))(-g(x)) = f(x)g(x),\]so $f(x) g(x)$ là một hàm $\boxed{\text{even}}$."
+Phân tích nhân tử của biểu thức $ab+5b+2a+10$.,Level 1,Intermediate Algebra,"Chúng ta có $ab +5b+2a+10 = ab + 5b+2a + 2\cdot 5$, vì vậy chúng ta có một ứng dụng đơn giản về Thủ thuật phân tích nhân tử yêu thích của Simon: \[ab + 5b+2a+10 = \boxed{(a +5)(b+2)}.\]"
+Đánh giá $|\sqrt5+2i|$.,Level 1,Intermediate Algebra,Chúng tôi có $|\sqrt5+2i| = \sqrt{(\sqrt5)^2 + 2^2} = \sqrt{5+4} = \sqrt9 = \boxed{3}$.
+"Cho $a,$ $b,$ và $c$ là các nghiệm của $x^3 + 7x^2 - 11x - 2 = 0.$ Tìm $a + b + c.$",Level 1,Intermediate Algebra,"Theo công thức của Vieta, $a + b + c = \boxed{-7}.$"
+"Nếu $|z| = 5$, $|\overline{z}^2|$ là gì?",Level 1,Intermediate Algebra,"Chúng tôi có cái đó
+\[|\overline{z}^2| = |\overline{z}|^2 = |z|^2 = \boxed{25}.\]"
+"Tổng của hai hàm lẻ luôn là số lẻ, chẵn hay không?
+
+Nhập ""lẻ"", ""chẵn"" hoặc ""không"".",Level 1,Intermediate Algebra,"Giả sử $f(x)$ và $g(x)$ là các hàm lẻ, vì vậy $f(-x) = -f(x)$ và $g(-x) = -g(x).$ Giả sử $h (x) = f(x) + g(x).$ Khi đó
+\[h(-x) = f(-x) + g(-x) = -f(x) - g(x) = -h(x),\]vì vậy $h(x)$ là $\đóng hộp {\text{lẻ}}.$"
+Tính \[\log_{\log_{\log_2 256} 64} 256.\],Level 1,Intermediate Algebra,"Trước tiên chúng ta đơn giản hóa logarit trong cùng. Chúng ta có $\log_2 256 = 8,$ nên biểu thức trở thành $\log_{\log_8 64} 256.$ Bây giờ, chúng ta có $\log_8 64=2,$ nên biểu thức trở thành \[\log_2 256,\]mà chúng tôi đã tìm thấy bằng $\boxed{8}.$"
+Có bao nhiêu số nguyên thỏa mãn phương trình: $3n^3-12n = 0$ ?,Level 1,Intermediate Algebra,"Chúng ta phân tích đa thức thành nhân tử để có được $3n(n^2-4)=0$. Tích bằng $0$ nếu $n=0$ hoặc $n^2-4=0 \Rightarrow n=\pm 2$. Các số nguyên $0,2,-2$ thỏa mãn phương trình nên có các số nguyên $\boxed{3}$."
+Giá trị của $\frac{2}{3} \times \frac{3}{4} \times \frac{4}{5} \times \dotsm \times \frac{8}{9}$ là bao nhiêu? Thể hiện câu trả lời của bạn như là một phần chung.,Level 1,Intermediate Algebra,"Mẫu số của mỗi phân số triệt tiêu tử số của phân số tiếp theo, chỉ để lại tử số đầu tiên và mẫu số cuối cùng. Vì vậy, câu trả lời là $\boxed{\frac{2}{9}}$."
+"Cho $f(x)$ và $g(x)$ là các hàm chẵn. $f(x) g(x)$ chẵn, lẻ hay không?
+
+Nhập ""lẻ"", ""chẵn"" hoặc ""không"".",Level 1,Intermediate Algebra,"Vì $f(x)$ và $g(x)$ là các hàm chẵn,
+\[f(-x)g(-x) = f(x)g(x),\]vì vậy $f(x) g(x)$ là một hàm $\boxed{\text{even}}$."
+"Nếu $a$ và $b$ là các số phức sao cho $|a| = 6$ và $|b| = 4,$ thì tìm $\left| \frac{a}{b} \right|.$",Level 1,Intermediate Algebra,Chúng ta có $\left| \frac{a}{b} \right| = \frac{|a|}{|b|} = \frac{6}{4} = \boxed{\frac{3}{2}}.$
+Tìm giá trị của $\log_2{3} \cdot \log_3{4} \cdot \log_4{5} \cdot \log_5{6} \cdot \log_6{7} \cdot \log_7{8}$.,Level 1,Intermediate Algebra,"Chúng tôi sử dụng danh tính thay đổi cơ sở $\log_a{b}=\frac{\log{b}}{\log{a}}$ để tìm $$\log_2{3} \cdot \log_3{4} \ cdot \log_4{5} \cdot \log_5{6} \cdot \log_6{7} \cdot \log_7{8}=
+\frac{\log3}{\log2} \cdot \frac{\log4}{\log3} \cdot \frac{\log5}{\log4} \cdot \frac{\log6}{\log5} \cdot \frac {\log7}{\log6} \cdot \frac{\log8}{\log7}.$$Đơn giản hóa, chúng ta nhận được $\frac{\log8}{\log2}=\log_2{8}=\boxed{3} $."
+"Cho $f(x)$ là hàm chẵn và $g(x)$ là hàm lẻ. $f(x) g(x)$ chẵn, lẻ hay không?
+
+Nhập ""lẻ"", ""chẵn"" hoặc ""không"".",Level 1,Intermediate Algebra,"Vì $f(x)$ là số chẵn và $g(x)$ là số lẻ,
+\[f(-x)g(-x) = f(x)(-g(x)) = -f(x)g(x),\]vì vậy $f(x) g(x)$ là một hàm $\boxed{\text{odd}}$."
+Hãy quan sát rằng $45x^2 + 119x + 58$ có thể được phân tích thành nhân tử $(45x + 29)(x + 2).$ $45x^2 + 118x + 56$ phân tích thành thừa số như thế nào?,Level 1,Intermediate Algebra,"Chúng tôi có thể viết
+\bắt đầu{căn chỉnh*}
+45x^2 + 118x + 56 &= (45x^2 + 119x + 58) - (x + 2) \\
+&= (45x + 29)(x + 2) - (x + 2) \\
+&= \đóng hộp{(45x + 28)(x + 2)}.
+\end{căn chỉnh*}"
+Giải \[\frac{3x+2}{x-1}=4\]để tìm $x$.,Level 1,Intermediate Algebra,"Trừ $\frac{3x-3}{x-1}=3$ từ cả hai vế sẽ được \[\frac{3x+2}{x-1}-\frac{3x-3}{x-1}=4 -3\]so \[\frac{5}{x-1}=1.\]Nhân chéo sẽ có \[5=x-1,\]so \[x=\boxed{6}.\]"
+"Phạm vi của hàm $f(x)$ là $[-3,5].$ Đặt $h(x) = 2f(x) - 7.$ Tìm phạm vi của hàm $h(x).$",Level 1,Intermediate Algebra,"Đặt $y = f(x),$ để $y$ có thể nhận bất kỳ giá trị nào từ $-3$ đến 5. Khi đó $2y - 7$ có thể nhận bất kỳ giá trị nào từ $2(-3) - 7 = -13$ đến $2(5) - 7 = 3,$. Do đó, phạm vi của $h(x)$ là $\boxed{[-13,3]}.$"
+"Nếu $a$ và $b$ là các số phức sao cho $|a| = 7$ và $|b| = 4,$ thì tìm $|ab|.$",Level 1,Intermediate Algebra,Chúng ta có $|ab| = |a| \cdot |b| = 7 \cdot 4 = \boxed{28}.$
+Giá trị của biểu thức sau là bao nhiêu: $100 - 99 +98 - 97 + 96 - 95 + \cdots + 4 - 3 +2 - 1$?,Level 1,Intermediate Algebra,Mỗi cặp số hạng liên tiếp tạo thành 1 (ví dụ: $100-99=1$). Vì có $100/2=50$ các cặp như vậy nên toàn bộ biểu thức bằng $1\cdot50=\boxed{50}$.
+"Tìm tích của số hạng $20$ đầu tiên của dãy dưới đây. Thể hiện câu trả lời của bạn như là một phần chung.
+
+$\frac23, \frac34, \frac45, \frac56, \dots$",Level 1,Intermediate Algebra,"Khi nhân các phân số, nhiều thừa số ở tử số và mẫu số sẽ bị triệt tiêu, vì đây là tích số:
+
+$\frac23 \cdot \frac34 \dotsm \frac{21}{22}=\frac{2}{22}=\boxed{\frac{1}{11}}$."
+Tìm thặng dư modulo 4 của $17 \cdot 18$.,Level 1,Number Theory,$17 \cdot 18 \equiv 1 \cdot 2 \equiv \boxed{2} \pmod{4}$.
+Tìm số dư của $2^8$ khi nó chia cho 5.,Level 1,Number Theory,"$2^4 = 16 \equiv 1 \pmod{5}$, vậy $2^8 = 2^{2 \cdot 4} = (2^4)^2 = 16^2 \equiv 1^2 \equiv \boxed{ 1} \pmod{5}$."
+Số có bốn chữ số $\underline{374n}$ chia hết cho 18. Tìm chữ số hàng đơn vị $n$.,Level 1,Number Theory,"Chúng ta biết rằng hệ số nguyên tố của 18 là $2\cdot 3^2$, do đó, để số có bốn chữ số chia hết cho 18 thì số đó cũng phải chia hết cho 9 và 2. Để một số có thể chia hết cho 9 thì tổng các chữ số của nó cũng phải chia hết cho 9. Do đó, $3+7+4+n$, hoặc $14+n$, phải chia hết cho 9. Vì 18 là bội số nhỏ nhất của 9 lớn hơn 10, $14+n=18$ và $n=18- 14=\đóng hộp{4}$."
+Có bao nhiêu số nguyên từ 15 đến 85 chia hết cho 20?,Level 1,Number Theory,"Đối với các số nguyên chia hết cho 20, chúng ta tìm bội số của 20. Bội số nhỏ nhất và lớn nhất của 20 trong khoảng từ 15 đến 85 lần lượt là 20 và 80. Giữa hai bội số của 20 là 40 và 60. Vậy có $\boxed{4}$ bội số của 20 trong khoảng từ 15 đến 85."
+Gọi $M$ và $N$ là bội số có hai chữ số dương lớn nhất và nhỏ nhất của 13. Giá trị của $M + N$ là bao nhiêu?,Level 1,Number Theory,"Bội số dương nhỏ nhất có hai chữ số của 13 là 13, vì vậy $N=13$. bội số dương lớn nhất có hai chữ số của 13 là $7\cdot13=91$, do đó $M=91$. Tổng là $M+N=91+13=\boxed{104}$."
+Phần còn lại của năm 2004 chia cho 12 là bao nhiêu?,Level 1,Number Theory,"Một số nguyên chia hết cho 12 khi và chỉ khi nó chia hết cho cả 3 và 4. Vì $2+0+0+4=6$ chia hết cho 3 nên 2004 chia hết cho 3. Ngoài ra, hai chữ số cuối của dạng 2004 bội số của 4 nên 2004 cũng chia hết cho 4. Do đó, 2004 chia hết cho 12 và do đó khi chia cho 12 thì dư $\boxed{0}$."
+Khi chia 39.500 cho một số nguyên $n$ thì thương là 123 và số dư là 17. Tìm $n$.,Level 1,Number Theory,"Chuyển câu của chúng ta thành toán học, chúng ta có \[39500=123n+17\]và chúng ta muốn giải $n$. Điều đó mang lại \[n=\frac{39500-17}{123}=\frac{39483}{123}=\boxed{321}.\]"
+Khi một số chia cho 5 thì dư 3. Khi chia hai lần số đó cho 5 thì dư bao nhiêu?,Level 1,Number Theory,"Nếu số của chúng ta là $n$, thì $n\equiv 3\pmod5$. Điều này cho chúng ta biết rằng \[2n=n+n\equiv 3+3\equiv1\pmod5.\] Phần còn lại là $\boxed{1}$ khi số đó được chia cho 5."
+Xác định phần dư modulo 4 của tổng sau: $$ 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12. $$,Level 1,Number Theory,"Việc nhóm các phần dư giúp thực hiện một số phép tính chuỗi dễ dàng hơn: \begin{align*}
+1 + 2 + 3 + 0 + 1 + 2& + 3 + 0 + 1 + 2 + 3 + 0\\&\tương đương 3(1 + 2 + 3 + 0) \\
+&\tương đương 18\\
+& \equiv \boxed{2} \pmod{4}.
+\end{căn chỉnh*}"
+"Sally, Wei-Hwa và Zoe đang chơi trò chơi bi bao gồm việc sắp xếp càng nhiều đống 10 viên bi càng tốt. Sally mang 239 viên bi, Wei-Hwa mang 174 viên bi và Zoe mang 83 viên bi. Nếu tất cả các viên bi của họ được nhóm lại với nhau thì phải loại bỏ bao nhiêu viên bi để bắt đầu trò chơi?",Level 1,Number Theory,"Các viên bi sẽ được nhóm thành từng đống 10 viên. Chúng ta cũng có thể nhóm số viên bi mà mỗi Sally, Wei-Hwa và Zoe mang vào càng nhiều đống 10 viên càng tốt trước khi phân loại phần còn lại. Điều này có nghĩa là chúng ta chỉ cần xét dư lượng modulo 10 của số viên bi mà mỗi người mang theo: \begin{align*} 239 &\equiv 9 \pmod{10} \\
+174 &\equiv 4 \pmod{10} \\
+83 &\equiv 3 \pmod{10}
+\end{align*} Mục tiêu của chúng ta là tìm số dư modulo 10 của tổng số viên bi. Chúng tôi tìm thấy điều này bằng cách cộng các số dư ở trên: $9 + 4 + 3 = 16 \equiv \boxed{6} \pmod{10}$. Vì chúng ta đang làm việc ở modulo 10 nên điều này giống như phép tính chữ số hàng đơn vị."
+Chữ số nào phải được điền vào chỗ trống để số nguyên có bốn chữ số $20\_7$ là bội số của 11?,Level 1,Number Theory,"Một số sẽ chia hết cho 11 nếu bạn nhận được bội số của 11 bằng cách lần lượt cộng rồi trừ các chữ số của nó. Nếu chúng ta đặt tên cho số nguyên trống là $A$, thì tổng xen kẽ là $2 - 0 + A - 7 = A -5$. Giá trị này chỉ có thể bằng 0 (vì 11, 22, v.v. đều mang lại $A$ quá lớn), vì vậy $A = \boxed{5}$ là chữ số duy nhất sẽ hoạt động."
+Chữ số hàng đơn vị của $1 \cdot 3 \cdot 5 \cdot 7 \cdot 9 \cdot 11 \cdot 13$ là gì?,Level 1,Number Theory,"Thay vì chỉ bắt đầu nhân lên, hãy nhìn xung quanh xem liệu chúng ta có thể làm mọi việc dễ dàng hơn trước không. Chúng ta thấy rằng một trong các số được nhân là 5. Tính chất giao hoán và kết hợp của phép nhân cho phép chúng ta viết tích là \[
+1 \cdot 3 \cdot 5 \cdot 7 \cdot 9 \cdot 11 \cdot 13 = (\text{một số số lẻ lớn})\cdot 5. \\
+\]Vì $a\cdot 5$ có một chữ số là $5$ cho bất kỳ giá trị nguyên lẻ nào của $a$, nên số lớn là bao nhiêu không quan trọng. Chữ số hàng đơn vị của sản phẩm là $\boxed{5}$."
+"Khi Rachel chia số yêu thích của mình cho 7, cô được số dư là 5. Số dư sẽ là bao nhiêu nếu cô nhân số yêu thích của mình với 5 rồi chia cho 7?",Level 1,Number Theory,"Gọi $n$ là con số yêu thích của Rachel. Khi đó $n \equiv 5 \pmod{7}$, vậy $5n \equiv 5 \cdot 5 \equiv 25 \equiv \boxed{4} \pmod{7}$."
+Xác định số dư của 54 (mod 6).,Level 1,Number Theory,$54 = 9 \cdot 6 + 0 \Rightarrow 54 \equiv \boxed{0} \pmod{6}$.
+Hãy gọi số nguyên tố là $\textit{số nguyên tố có thể đảo ngược}$ nếu số được hình thành bằng cách đảo ngược các chữ số của nó cũng là số nguyên tố. Số nguyên tố thuận nghịch nhỏ nhất lớn hơn 17 là bao nhiêu?,Level 1,Number Theory,"Để tìm số nguyên tố thuận nghịch nhỏ nhất lớn hơn 17, trước tiên chúng ta xét các số nguyên tố có hai chữ số lớn hơn 17. 19 là số nguyên tố, nhưng $91=7\times13$ thì không.
+
+Chúng tôi bỏ qua tất cả các số nguyên tố có hai chữ số có chữ số hàng chục là 2 vì số được hình thành bằng cách đảo ngược các chữ số sẽ là số chẵn và do đó không phải là số nguyên tố.
+
+Tiếp theo hãy thử số nguyên tố 31 và vì 13 cũng là số nguyên tố nên số nguyên tố thuận nghịch nhỏ nhất lớn hơn 17 là $\boxed{31}$."
+"Khi tất cả các nữ sinh ở trường Madeline xếp thành hàng tám, chỉ còn lại bảy người.
+
+Thay vào đó, nếu họ xếp thành hàng bốn thì còn lại bao nhiêu người?",Level 1,Number Theory,"Số lượng các cô gái có dạng $8n+7$, trong đó $n$ là một số nguyên (số hàng). Biểu thức này cũng có thể được viết là $4(2n+1)+3$, vì vậy khi các cô gái xếp thành hàng bốn, họ tạo thành các hàng $2n+1$ với các cô gái $\boxed{3}$ còn sót lại."
+Số dư khi chia $1 + 2 + 3 + 4 + \dots + 9 + 10$ cho 9 là bao nhiêu?,Level 1,Number Theory,"Nhìn vào tổng của chúng ta, chúng ta có thể thấy rằng các số $1$ đến $8$ có thể được ghép nối để tạo thành $9,$ vì vậy chúng ta có thể loại bỏ chúng. Nghĩa là, $1 + 8 = 2 + 7 = 3 + 6 = 4 + 5 = 9.$ Do đó, các số hạng duy nhất còn lại là $9$ và $10,$ và $9$ rõ ràng cũng chia hết cho $9,$ do đó chúng ta chỉ cần để tìm phần còn lại của $10$ khi chia cho $9,$ là $\đóng hộp{1}.$"
+Số nguyên nhỏ nhất lớn hơn 10 vừa là số chính phương vừa là số lập phương là số nào?,Level 1,Number Theory,Một số vừa là số chính phương vừa là số lập phương hoàn hảo khi và chỉ khi nó là lũy thừa thứ sáu. lũy thừa thứ sáu nhỏ nhất lớn hơn 10 là $2^6= \boxed{64}$.
+Xác định số dư của 1529 (mod 6).,Level 1,Number Theory,$1529 = 254 \cdot 6 + 5 \Rightarrow 1529 \equiv \boxed{5} \pmod{6}$.
+Số nguyên tố nhỏ nhất lớn hơn 25 khi chia cho 25 có số dư là 2?,Level 1,Number Theory,"Chúng ta phải tìm số nguyên tố nhỏ nhất, $p$, sao cho $p=25n+2$ với một số nguyên dương $n$. Rõ ràng $n$ phải là số lẻ vì nếu không thì $p$ chia hết cho 2 và do đó không phải là số nguyên tố. $n=1$ cho $p=27$, là hợp số. $n=3$ cho $p=77$, là hợp số. Nhưng $n=5$ cho $p=127$, là số nguyên tố. Do đó, $\boxed{127}$ là số nguyên tố nhỏ nhất lớn hơn 25 và có số dư là 2 khi chia cho 25."
+Tích lớn nhất có thể có của hai số nguyên tố phân biệt nhỏ hơn 40 là bao nhiêu?,Level 1,Number Theory,Chúng ta tìm hai số nguyên tố lớn nhất nhỏ hơn 40 và thấy rằng chúng là 37 và 31. Tích của hai số này là $37\times31=\boxed{1147}$.
+Có bao nhiêu trong sáu số nguyên từ 1 đến 6 là ước của số có bốn chữ số 1452?,Level 1,Number Theory,"Tất cả các số đều chia hết cho $1$. Hai chữ số cuối cùng, $52$, tạo thành bội số của 4, do đó số này chia hết cho $4$, và do đó là $2$. $1+4+5+2=12$, là bội số của $3$, vì vậy $1452$ chia hết cho $3$. Vì nó chia hết cho $2$ và $3$ nên nó chia hết cho $6$. Nhưng nó không chia hết cho $5$ vì nó không kết thúc bằng $5$ hoặc $0$. Vậy tổng số là $\boxed{5}$."
+Zach có ba cái túi và một đống bút chì để bỏ vào túi. Anh ta được yêu cầu đặt số lượng bút chì lớn nhất có thể vào mỗi túi trong số ba túi đồng thời giữ nguyên số lượng bút chì trong mỗi túi. Số bút chì lớn nhất mà người đó có thể còn lại là bao nhiêu?,Level 1,Number Theory,"Nếu Zach còn thừa ba cây bút chì trở lên thì cậu ấy có thể thêm một cây bút chì khác vào mỗi túi. Do đó, Zach có thể còn lại tối đa $\boxed{2}$ bút chì."
+"Giá trị nào của $k$ làm cho số nguyên dương có năm chữ số $k3,\!57k$ chia hết cho 18?",Level 1,Number Theory,"Vì $18=2\cdot 3^2$, một số nguyên chia hết cho 18 khi và chỉ khi nó chia hết cho cả 2 và 9. Để $k3,\!57k$ chia hết cho 2, $k$ phải là số chẵn . Để xác định xem $k3,\!57k$ có chia hết cho 9 hay không, chúng ta tìm tổng các chữ số của nó là $2k+15$. Thay $k=0,2,4,\ldots$, chúng ta thấy rằng không có số nào trong số 15, 19 hoặc 23 chia hết cho 9, nhưng $15+2(6)=27$ chia hết cho 9. Do đó, $ k=\đóng hộp{6}$."
+Tìm số dư khi $91145 + 91146 + 91147 + 91148$ chia cho 4.,Level 1,Number Theory,"Đối với bốn số nguyên liên tiếp bất kỳ, các thặng dư modulo 4 của chúng là 0, 1, 2 và 3 theo thứ tự nào đó, vì vậy tổng modulo 4 của chúng là $0 + 1 + 2 + 3 = 6 \equiv \boxed{2} \pmod{4} $."
+Xác định số dư của 194 (mod 11).,Level 1,Number Theory,$$194 = 17 \cdot 11 + 7 \implies 194 \equiv \boxed{7} \pmod{11}.$$
+Biểu diễn dưới dạng phân số chung: $\frac{. \overline{7}}{. \overline{8} }$,Level 1,Number Theory,"Nếu chúng ta nhớ $.\overline{1}=\frac{1}{9}$ đó thì chúng ta biết $.\overline{7}=\frac{7}{9}$ và $.\overline{8} =\frac{8}{9}$. Chúng ta có thể viết lại biểu thức dưới dạng $\frac{\frac79}{\frac89}=\boxed{\frac78}$.
+
+Nếu chúng ta không biết điều đó $.\overline{1}=\frac{1}{9}$, chúng ta có thể để $x=.\overline{7}$. Khi đó $10x=7.\overline{7}$ và $10x-x=9x=7$. Vì vậy $x=\frac79=.\overline{7}$. Tương tự, chúng ta có thể tìm thấy $.\overline{8}=\frac{8}{9}$."
+"Với mỗi số nguyên dương $n$, đặt $n!$ biểu thị tích $1\cdot 2\cdot 3\cdot\,\cdots\,\cdot (n-1)\cdot n$.
+
+Phần còn lại khi $9!$ được chia cho $10$ là bao nhiêu?",Level 1,Number Theory,"Lưu ý rằng $10=2\cdot 5$. Cả hai đều là thừa số của $9!$, nên phần còn lại là $\boxed{0}$."
+Xác định số dư của 71 (mod 3).,Level 1,Number Theory,$71 = 23 \cdot 3 + 2 \Rightarrow 71 \equiv \boxed{2} \pmod{3}$.
+Số dư khi chia 2003 cho 11 là bao nhiêu?,Level 1,Number Theory,"Chia, chúng ta thấy rằng $11\cdot 182=2002$. Do đó, số dư khi chia 2003 cho 11 là $\boxed{1}$."
+"Nếu $PQ$ là một đường thẳng thì giá trị của $x$ là bao nhiêu? [asy]
+
+kích thước (150);
+
+draw((-1,0)--(1,0));
+
+draw((-0.809,.588)--(0,0)--(0.809,.588));
+
+draw((-.309,.951)--(0,0)--(.309,.951));
+
+nhãn(""$P$"",(-1,0),W);
+
+nhãn(""$Q$"",(1,0),E);
+
+label(""$x^\circ$"",(0.5,0),NW);
+
+label(""$x^\circ$"",(-0.5,0),NE);
+
+nhãn(""$x^\circ$"",(0,0.4));
+
+nhãn(""$x^\circ$"",(0.27,0.2),N);
+
+nhãn(""$x^\circ$"",(-0.27,0.2),N);
+
+[/asy]",Level 1,Prealgebra,"Vì $PQ$ là một đường thẳng, nên $x^\circ+x^\circ+x^\circ+x^\circ+x^\circ = 180^\circ$ hoặc $5x=180$ hoặc $x =\đóng hộp{36}$."
+$8-4 \div 2-1$ là bao nhiêu?,Level 1,Prealgebra,"Theo thứ tự chuẩn của các phép tính, phép chia xảy ra trước phép trừ. Chúng tôi thấy rằng câu trả lời của chúng tôi là \begin{align*}
+8-4 \div 2 - 1 &= 8-2-1 \\
+&= 6-1 \\
+&= \đóng hộp{5}.
+\end{căn chỉnh*}"
+"Nếu $\góc ABC$ là góc vuông, hãy cho biết số độ có số đo là $\góc ABD$. [asy] cặp A,B,C,D; A = thư mục(180); D = thư mục(60); C = thư mục(0);
+draw(B--1.2*A,EndArrow); draw(B--1.2*D,EndArrow); nhãn(""A"",A,S); dấu chấm (A);
+nhãn(""B"",B,S); draw(B--1.2*C,EndArrow); nhãn(""C"",C,S); nhãn(""D"",D,dir(135));
+label(""$6x^{\circ}$"",B,NW); label(""$3x^{\circ}$"",B+.1,NE); dấu chấm(D); dấu chấm(C);
+[/asy]",Level 1,Prealgebra,"Vì $\góc ABC$ là một góc thẳng nên chúng ta có $6x + 3x = 180^\circ$, nên $9x = 180^\circ$ và $x = 20^\circ$. Do đó, $\góc ABD = 6x = \boxed{120^\circ}$."
+Rút gọn phân số $\frac{16}{20}$.,Level 1,Prealgebra,"Vì 16 và 20 có hệ số chung là 4 nên chúng ta có thể đơn giản hóa \[
+\frac{16}{20}=\frac{4\cdot 4}{5\cdot 4}=\frac{4\cdot \cancel{4}}{5\cdot \cancel{4}}=\boxed{ \frac{4}{5}}.
+\]"
+"Một vận động viên trượt băng nghệ thuật đang quay mặt về hướng bắc thì cô ấy bắt đầu quay sang bên phải. Cô ấy quay 2250 độ. Cô ấy đang quay mặt về hướng nào (bắc, nam, đông hay tây) khi hoàn thành vòng quay của mình?",Level 1,Prealgebra,"Mỗi vòng tròn đầy đủ là 360 độ. Chia 360 cho 2250 sẽ có thương là 6 và số dư là 90. Vì vậy, cô ấy quay 90 độ về bên phải theo hướng bắc, khiến cô ấy quay mặt về phía $\boxed{\text{east}}$."
+Tính toán: $3^4-5\cdot8$.,Level 1,Prealgebra,Chúng ta có $3^4 - 5\cdot 8 = 81 - 5\cdot 8 = 81 - 40 = \boxed{41}$.
+"Điểm đạt được trong các bài kiểm tra có trọng số bằng nhau là 70, 80, 90, 75, 80 và 85. Điểm trung bình của sáu bài kiểm tra này là bao nhiêu?",Level 1,Prealgebra,"Chúng tôi lấy điểm trung bình của sáu điểm sau: \begin{align*}
+\frac{70 + 80 + 90 + 75 + 80 + 85}{6} &= \frac{(70 + 90) + 80 + 80 + (75 + 85)}{6}\\
+&= \frac{(80 + 80) + 80 + 80 + (80 + 80)}{6}\\
+&= \frac{6\cdot 80}{6}\\
+&= \đóng hộp{80}.
+\end{căn chỉnh*}"
+Tính $(-144)\div 9$.,Level 1,Prealgebra,"Khi $y$ khác 0, chúng ta có $(-x)\div y = -(x\div y)$, vì vậy \[(-144)\div 9 = -(144\div 9) = \boxed{- 16}.\]"
+Tìm $8 \div 2 \div 2 + 6.$,Level 1,Prealgebra,"Hãy nhớ rằng phép chia phải được thực hiện trước khi cộng. Vì vậy, trước tiên chúng tôi xem xét $8 \div 2 \div 2$. Hãy nhớ rằng chúng ta thực hiện phép chia từ trái sang phải. Chúng ta nhận được \[8 \div 2 \div 2 = (8 \div 2) \div 2 = 4 \div 2 = 2.\] Cuối cùng, \[8 \div 2 \div 2 + 6=2+6=\ đóng hộp{8}.\]"
+Nếu $3x+5=29$ thì giá trị của $x$ là bao nhiêu?,Level 1,Prealgebra,"Chúng ta đơn giản hóa phương trình đã cho để tìm $x$: \begin{align*}
+3x+5&=29 \ngụ ý \\
+3x&=24 \ngụ ý \\
+x&=8.
+\end{align*}Do đó, câu trả lời là $x=\boxed{8}$."
+"Trên thước đo góc, tia $BA$ đi qua điểm 85 độ và tia $BC$ đi qua điểm 30 độ. Góc $ABC$ có số đo bằng độ là bao nhiêu?
+
+[asy]
+draw((0,0)--(2,0)..(1,1)..(0,0)..cycle,linewidth(2));
+
+draw((1,0)--1.4dir(30)+(1,0),Arrow);
+draw((1,0)--1.3dir(85)+(1,0),Arrow);
+
+dấu chấm(1.1dir(85)+(1,0));
+dấu chấm(1.2dir(30)+(1,0));
+
+nhãn(""A"",1.1dir(85)+(1,0),NW);
+nhãn(""B"",(1,0),S);
+nhãn(""C"",1.2dir(30)+(1,0),SE);
+
+nhãn(""85"",.9dir(85)+(1,0));
+nhãn(""30"",.9dir(30)+(1,0));
+
+[/asy]",Level 1,Prealgebra,Số đo của góc $ABC$ là $85-30=\đóng hộp{55}$ độ.
+"Tính $49{,}994\div 7 + 20{,}006\div 7$.",Level 1,Prealgebra,"Thay vì thực hiện từng phép chia riêng biệt rồi cộng lại, hãy nhớ rằng $x\div d + y\div d = (x+y)\div d $ nếu $d$ khác 0. Sử dụng thực tế này, chúng ta có thể tính toán như sau: \begin{align*}
+49{,}994\div 7 + 20{,}006\div 7 &= (49{,}994 + 20{,}006) \div 7\\
+&= 70{,}000\div 7\\
+&=\đóng hộp{10{,}000}.
+\end{căn chỉnh*}"
+"Nếu $a + b = c$ và $b + c = 11$ và $c = 8$, giá trị của $a$ là bao nhiêu?",Level 1,Prealgebra,"Vì $b+c=11$ và $c=8$, nên chúng ta có thể thay thế $c$ để có $b+8=11$ và $b=3$.
+
+Vì vậy $a+b=c$ trở thành
+
+$$a+3=8\Rightarrow a=\boxed{5}$$"
+Rút gọn biểu thức sau. $$[(1\cdot2)+(3\cdot4)-(5\cdot6)+(7\cdot8)]\cdot(9\cdot0)$$,Level 1,Prealgebra,"Thay vì bị phân tâm bởi các phép tính trong bộ dấu ngoặc đầu tiên, hãy lưu ý rằng mọi thứ đều được nhân với $(9\cdot 0) = 0$. Do đó, biểu thức đơn giản hóa thành $\boxed{0}$."
+"Có bao nhiêu số trong danh sách $ 36, 37, 38, \ldots, 92, 93 ?$",Level 1,Prealgebra,"Chúng tôi trừ 35 cho mỗi thành viên trong danh sách để nhận $1,2,3,\ldots,57,58$, do đó có các số $\đóng hộp{58}$."
+Tìm $\frac{3}{4}$ được thêm vào $\frac{1}{8}$.,Level 1,Prealgebra,"Mẫu số chung nhỏ nhất là 8, vì vậy chúng ta phải viết lại $\frac{3}{4}$ với 8 ở mẫu số. $\frac{3}{4} = \frac{3}{4} \cdot 1 = \frac{3}{4} \cdot \frac{2}{2} = \frac{6}{8}$ . Khi đó, chúng ta biết rằng $\frac{1}{8} + \frac{3}{4} = \frac{1}{8} + \frac{6}{8} = \frac{1+6}{ 8} = \boxed{\frac{7}{8}}$."
+Số nguyên dương lẻ thứ 17 là bao nhiêu?,Level 1,Prealgebra,"Mọi số nguyên dương lẻ có thể được biểu diễn dưới dạng $2x - 1$, đối với một số nguyên $x$. Thay $x = 1$ sẽ có $2 - 1 = 1$, đây là số nguyên dương lẻ đầu tiên. Vậy số nguyên dương lẻ thứ 17 là $2 \cdot 17 - 1 = \boxed{33}$."
+Tính $(-49)\div 7$.,Level 1,Prealgebra,"Khi $y$ khác 0, chúng ta có $(-x)\div y = -(x\div y)$, vì vậy \[(-49)\div 7 = - (49\div 7) = \boxed{- 7}.\]"
+"John định chia một số cho $2$, nhưng anh ấy đã bất cẩn và thay vào đó đã trừ đi $2$ từ số đó. Anh ấy nhận được câu trả lời là $22$. Câu trả lời của anh ấy sẽ là gì nếu anh ấy thực sự chia cho $2$ thay vì trừ đi $2$?",Level 1,Prealgebra,"Gọi số John lẽ ra phải chia cho 2 là $x$. Chúng ta có phương trình $x-2=22$, từ đó chúng ta tìm thấy $x=24$. Nếu John chia cho 2, anh ấy sẽ nhận được $x/2=24/2=12$. Vì vậy, câu trả lời lẽ ra John phải nhận được là $\boxed{12}$."
+Louis và Jack đang chia nhau một chiếc bánh. Louis ăn $\frac{1}{5}$ chiếc bánh và Jack ăn $\frac{2}{3}$ chiếc bánh. Louis và Jack ăn tổng cộng bao nhiêu chiếc bánh?,Level 1,Prealgebra,"Mẫu số $5$ và $3$ có bội số chung là $15$. Chúng tôi sử dụng điều này để viết $\frac{1}{5}\cdot \frac{3}{3}=\frac{3}{15}$ và $\frac{2}{3}\cdot \frac{5 }{5}=\frac{10}{15}$. Sau đó, chúng ta có thể cộng các phân số bằng cách cộng tử số và giữ nguyên mẫu số. Chúng ta có $$\frac{1}{5}+\frac{2}{3}=\frac{3}{15}+\frac{10}{15}=\frac{3+10}{15} =\đóng hộp{\frac{13}{15}}.$$"
+"Số đo, tính bằng độ, của phần bù của một góc có số đo $50$ là bao nhiêu?",Level 1,Prealgebra,"Hai góc phụ nhau cộng lại bằng 180 độ. Do đó, phần bổ sung của 50 độ là $180-50=\đóng hộp{130}$ độ."
+"Nếu $10^x - 10 = 9990,$$x$ bằng bao nhiêu?",Level 1,Prealgebra,"Vì $10^x - 10 = 9990,$ chúng ta có $$10^x = 9990+10=10000.$$Nếu $10^x = 10000,$ thì $x=\boxed{4},$ vì $10000$ kết thúc bằng bốn số không."
+"Trong sơ đồ, giá trị của $x?$ [asy] là bao nhiêu
+draw((0,0)--(3,0)--(1,2.5)--cycle);
+label(""$60^\circ$"",(2.9,0),NW);
+nhãn(""$50^\circ$"",(1.1,2.2),S);
+label(""$x^\circ$"",(0,0),SW);
+draw((-1,0)--(0,0));
+draw((0,0)--(-.5,-1.25));
+[/asy]",Level 1,Prealgebra,"Vì các góc trong một tam giác cộng lại với $180^\circ,$ nên góc còn thiếu trong tam giác là $180^\circ-50^\circ-60^\circ=70^\circ.$ Khi đó chúng ta có: [asy]
+draw((0,0)--(3,0)--(1,2.5)--cycle);
+label(""$60^\circ$"",(2.9,0),NW);
+nhãn(""$50^\circ$"",(1.1,2.2),S);
+label(""$x^\circ$"",(0,0),SW);
+draw((-1,0)--(0,0));
+draw((0,0)--(-.5,-1.25));
+nhãn(""$A$"",(-1,0),W);
+nhãn(""$B$"",(3,0),E);
+nhãn(""$C$"",(1,2.5),N);
+nhãn(""$D$"",(-.5,-1.25),S);
+label(""$X$"",(0,0),NW);
+[/asy] Vì $\angle BXC=70^\circ,$ thì $\angle AXC = 180^\circ - \angle BXC = 110^\circ.$
+
+Vì $\angle AXC = 110^\circ,$ nên $\angle DXA = 180^\circ - \angle AXC = 70^\circ.$
+
+Do đó, $x=\boxed{70}.$
+
+(Ngoài ra, chúng ta có thể lưu ý rằng khi hai đường thẳng cắt nhau, các góc đối đỉnh bằng nhau nên $\angle DXA=\angle BXC =70^\circ.$)"
+Tính: $15 + 8^2 - 3$.,Level 1,Prealgebra,"Nhớ lại rằng số mũ đứng trước phép cộng theo thứ tự thực hiện các phép tính, chúng ta đơn giản hóa $15+8^2-3=15+64-3=\boxed{76}$."
+"Trong sơ đồ, giá trị của $y$ là bao nhiêu? [asy]
+draw((5,0)--(0,0)--(0,5));
+draw((.5,0)--(.5,.5)--(0,.5));
+draw(Arc((0,0),1,90,360),Arrows);
+label(""$y^\circ$"",(-1,-1),SW);
+[/asy]",Level 1,Prealgebra,"Khi góc $y^{\circ}$ không xác định được thêm vào góc $90^{\circ}$, kết quả là một phép quay hoàn chỉnh hoặc $360^{\circ}$. Do đó, $y^{\circ}+90^{\circ}=360^{\circ}$ hoặc $y=360-90=\boxed{270}$."
+$\frac{1}{2}+\frac{1}{4}+\frac{1}{8}$ bằng bao nhiêu?,Level 1,Prealgebra,"Sử dụng mẫu số chung là 8, chúng ta có $\frac{1}{2}+\frac{1}{4}+\frac{1}{8}=\frac{4}{8}+\frac{2 }{8}+\frac{1}{8}=\boxed{\frac{7}{8}}$."
+bội số lớn nhất của 37 nhỏ hơn 800 là bao nhiêu?,Level 1,Prealgebra,"Chia 800 cho 37 được thương là 21 và dư 23. Nói cách khác, \[
+800 = 37 \cdot 21 + 23.
+\]Do đó $37\cdot 21 = \boxed{777}$ là bội số lớn nhất của 37 nhỏ hơn 800."
+Rút gọn $\frac{15}{6}.$,Level 1,Prealgebra,"Vì $15$ và $6$ có thừa số chung là $3,$ nên chúng ta có thể đơn giản hóa: $$\frac{15}{6}=\frac{3\cdot 5}{3\cdot 2}=\frac{\cancel{ 3}\cdot 5}{\cancel{3}\cdot 2}=\boxed{\frac{5}{2}}.$$"
+"Trong sơ đồ, giá trị của $x?$ [asy] là bao nhiêu
+draw((-4,1)--(0,0)--(4,1),linewidth(1));
+draw((-1,-4)--(0,0)--(1,-4),linewidth(1));
+draw((1/3,.25/3)--(1.25/3,-.75/3)--(.25/3,-1/3),linewidth(1));
+draw((-1/3,.25/3)--(-1.25/3,-.75/3)--(-.25/3,-1/3),linewidth(1));
+nhãn(""$150^\circ$"",(0,0),N);
+nhãn(""$x^\circ$"",(0,-2),S);
+[/asy]",Level 1,Prealgebra,"Bốn góc được hiển thị, $150^{\circ},$ $90^{\circ},$ $x^{\circ},$ và $90^{\circ},$ tạo thành một vòng quay hoàn chỉnh, một $360^{\circ }$ góc. Do đó, $$150^{\circ}+90^{\circ}+x^{\circ}+90^{\circ}=360^{\circ},$$hoặc $$x^{\circ}= 360^{\circ}-150^{\circ}-90^{\circ}-90^{\circ}=\đóng hộp{30}^{\circ}.$$"
+$\frac{1}{2} + \frac{1}{3}$ là gì?,Level 1,Prealgebra,"Chúng ta muốn có mẫu số chung nhỏ nhất, $2 \cdot 3 = 6$, trong mẫu số khi chúng ta cộng hai phân số. Chúng ta viết một nửa là $\frac{1}{2} \cdot \frac{3}{3} = \frac{3}{6}$. Ngoài ra, chúng ta viết một phần ba là $\frac{1}{3} \cdot \frac{2}{2} = \frac{2}{6}.$ Cộng các giá trị này, chúng ta thu được $\frac{3}{6 } + \frac{2}{6} = \frac{5}{6}$, là dạng đơn giản nhất. Vì vậy, $$\frac{1}{2} + \frac{1}{3} = \boxed{\frac{5}{6}}.$$"
+Tính $0^5 + (-1)^4$.,Level 1,Prealgebra,Hãy nhớ rằng 0 lũy thừa dương bất kỳ là 0. Cũng nhớ rằng $(-a)^n=a^n$ nếu $n$ là số chẵn. Vì 5 là dương và 4 là chẵn nên chúng ta có thể áp dụng các quy tắc này cho biểu thức đã cho để có được \[0^5+(-1)^4=0+1^4=0+1=\boxed{1}.\ ]
+$5^3 - (3^2-5)^3$ là bao nhiêu?,Level 1,Prealgebra,"Trước tiên chúng ta đơn giản hóa biểu thức bên trong dấu ngoặc đơn. Rút gọn số mũ trước, sau đó trừ đi, chúng ta được $3^2-5 = 9 - 5 = 4$. Khi đó, toàn bộ biểu thức là $5^3 - 4^3$. Một lần nữa đơn giản hóa số mũ trước tiên, chúng ta nhận được $125 - 64$, kết quả là $\boxed{61}$."
+Tìm $(1421 \div 7 + 47) \div 50 \cdot 9.$,Level 1,Prealgebra,"Hãy nhớ rằng trước tiên chúng ta nên làm việc trong dấu ngoặc đơn. \[1421 \div 7 + 47 = (1421 \div 7) + 47 = 203 + 47 = 250.\] Sau đó, chúng ta tính phép nhân và chia từ trái sang phải. \begin{align*}250 \div 50 \cdot 9 &= (250 \div 50) \cdot 9\\ &= 5 \cdot 9 = \boxed{45}.\end{align*}"
+Bội số nhỏ nhất của 6 lớn hơn 115 là bao nhiêu?,Level 1,Prealgebra,"Giả sử $M$ là bội số nhỏ nhất của 6 lớn hơn 115. $M$ vừa là bội số của 2, nghĩa là chữ số hàng đơn vị của nó phải là số chẵn, vừa là bội số của 3, nghĩa là tổng các chữ số của nó là bội số của 3. Theo điều kiện thứ nhất, xét bội số của 2 theo thứ tự tăng dần: 116, 118, 120, 122, v.v. 116 và 118 không phải là bội số của 3 (vì 1+1+6=8 và 1+1+8=10 ), nhưng 120 là bội số của 3. Do đó, $M=\boxed{120}$."
+"Trung bình (trung bình) của các số 6, 8, 9, 11 và 16 là bao nhiêu?",Level 1,Prealgebra,Giá trị trung bình của năm số này là $$\frac{6+8+9+11+16}{5} = \frac{50}{5} = \boxed{10}.$$
+Chuyển $\frac{63}{5}$ thành hỗn số.,Level 1,Prealgebra,"Khi chia 63 cho 5, chúng ta được thương là 12 và số dư hoặc 3. Nói cách khác, $63=12 \cdot 5 + 3$. Thay thế nó vào phân số, chúng ta tìm thấy \begin{align*}
+\frac{63}{5} &= \frac{12 \cdot 5 + 3}{5} \\
+&=\frac{12 \cdot 5}{5} + \frac{3}{5} \\
+&=\frac{12 \cdot \cancel{5}}{\cancelto{1}{5}} + \frac{3}{5} \\
+&=12 + \frac{3}{5} \\
+&=\đóng hộp{12\frac{3}{5}}.
+\end{căn chỉnh*}"
+Tính $$\left(\left(\left(\left(\left(-345\right)^{4}\right)^{2}\right)^{0}\right)^{-2}\ đúng)^{-4}.$$,Level 1,Prealgebra,"Nhớ lại rằng $x^0 = 1$ cho mọi số $x$. Do đó, \[\left(\left(\left(-345\right)^{4}\right)^{2}\right)^{0}=1,\]và biểu thức đã cho đơn giản hóa thành $$\ left(1^{-2}\right)^{-4}.$$Vì 1 được nâng lên lũy thừa số nguyên bất kỳ bằng 1 nên chúng ta có $$\left(1^{-2}\right)^{-4} = 1^{-4} = \boxed{1}.$$"
+"Năm tỷ lệ trả lại quả đá trung bình cao nhất, tính bằng thước, trong lịch sử của NFL là 25,0, 24,3, 24,1, 23,8 và 23,4. Trung vị của năm mức trung bình này là bao nhiêu? Thể hiện câu trả lời của bạn dưới dạng số thập phân đến phần mười gần nhất.",Level 1,Prealgebra,"Nếu chúng ta sắp xếp năm mức trung bình lợi nhuận này theo thứ tự tăng dần thì số trung vị sẽ là số ở giữa: $$23,4,23,8,\textbf{24.1},24.3,25.0$$ Giá trị trung vị của năm mức trung bình này là $\boxed{24,1}$."
+Tính $\left(\sqrt{97969}\right)^2$.,Level 1,Prealgebra,"Đối với mọi số không âm $n$, giá trị của $\sqrt{n}$ là số có bình phương là $n$. Vì vậy, khi bình phương $\sqrt{n}$, chúng ta nhận được $n$. Do đó, $\left(\sqrt{97969}\right)^2 = \boxed{97969}$."
+Đánh giá $6+5-4\times 3\div (2+1).$,Level 1,Prealgebra,"Đầu tiên, chúng ta thực hiện thao tác trong ngoặc đơn: \[6+5-4\times 3\div (2+1) = 6+5-4\times 3\div 3.\] Sau đó, chúng ta thực hiện phép nhân và chia, đi từ trái sang phải: \begin{align*}
+6+5-4\times 3\div 3 &= 6+5-12 \div 3 \\
+&=6+5-4.
+\end{align*} Cuối cùng, chúng ta thực hiện phép cộng và trừ, đi từ trái sang phải để có kết quả: \begin{align*}
+6+5-4 &= 11-4 \\
+&=\được đóng hộp{7}.
+\end{căn chỉnh*}"
+Có bao nhiêu bội số dương của 7 nhỏ hơn 150?,Level 1,Prealgebra,"$7 \times 21 = 147 < 150 < 154 = 7 \times 22$, vì vậy $\boxed{21}$ bội số dương của 7 nhỏ hơn 150."
+$1^{(2^{235423523})}$ là gì?,Level 1,Prealgebra,"Một người được nâng lên bất kỳ quyền lực nào là một, vì vậy câu trả lời của chúng tôi là $\boxed{1}.$"
+Nhân $\frac{2}{3}$ với $\frac{4}{7}$.,Level 1,Prealgebra,"Hãy nhớ lại rằng nếu $b$ và $d$ khác 0 thì \[
+\frac{a}{b}\cdot \frac{c}{d} = \frac{ac}{bd}.
+\]Nói cách khác, để nhân các phân số chúng ta chỉ cần nhân tử số và nhân mẫu số. Tích của các tử số đã cho là $2\cdot 4=8,$ và tích của các mẫu số đã cho là $3\cdot 7=21$. Vậy tích của $\frac{2}{3}$ và $\frac{4}{7}$ là $\boxed{\frac{8}{21}}$."
+Tìm $\frac{1}{3} - \frac{2}{9}$.,Level 1,Prealgebra,"Mẫu số chung nhỏ nhất của hai phân số này là 9, vì vậy chúng ta phải viết lại $\frac{1}{3}$ với 9 ở dưới cùng. Chúng ta có thể viết lại một phần ba dưới dạng $\frac{1}{3} \cdot \frac{3}{3} = \frac{3}{9}$. Khi đó, chúng ta có $\frac{1}{3} - \frac{2}{9} = \frac{3}{9} - \frac{2}{9} = \frac{3-2}{9 } = \boxed{\frac{1}{9}}$."
+Giá trị của $$\frac{7+21}{14+42} là bao nhiêu?$$,Level 1,Prealgebra,"Đang tính, $$\frac{7+21}{14+42} = \frac{28}{56}=\boxed{\frac{1}{2}}.$$"
+Tính $ \frac{1}{31} \div \frac{1}{93} $.,Level 1,Prealgebra,"Hãy nhớ rằng phép chia là phép nhân với một nghịch đảo. Vì vậy, chúng ta viết lại phép chia cho $\frac{1}{93}$ dưới dạng nhân với nghịch đảo của $\frac{1}{93}$. Vì nghịch đảo của $\frac{1}{93}$ là 93 nên chúng ta nhận được \[
+\frac{1}{31} \div \frac{1}{93} = \frac{1}{31} \cdot 93.
+\]Bây giờ chúng ta có thể sử dụng tính chất giao hoán của phép nhân để biến bài toán này thành bài toán chia: \[
+\frac{1}{31} \cdot 93 = 93 \cdot \frac{1}{31} = 93 \div 31 = \boxed{3}.
+\]"
+"Nếu $y^2= 36$, giá trị lớn nhất có thể có của $y^3$ là bao nhiêu?",Level 1,Prealgebra,"Nếu $y^2=36$ thì $y$ là 6 hoặc $-6$. Khi $y=6$, chúng ta có $y^3 = 6^3 = 216$. Khi $y=-6$, chúng ta có $y^3 = (-6)^3 = -216$. Giá trị lớn nhất có thể có của $y^3$ là $\boxed{216}$."
+bội số lớn nhất của 30 nhỏ hơn 520 là bao nhiêu?,Level 1,Prealgebra,"Chia 520 cho 30 được thương là 17 và dư 10. Nói cách khác, \[
+520 = 30 \cdot 17 + 10.
+\]Do đó $30\cdot 17 = \boxed{510}$ là bội số lớn nhất của 30 nhỏ hơn 520."
+"Ý nghĩa của 8, 12, 16, 20 và 24 là gì?",Level 1,Prealgebra,Giá trị trung bình là $\frac{8+12+16+20+24}{5}=\frac{80}{5}=\boxed{16}$.
+Rút gọn $\frac{1}{6} + \frac{1}{3}.$,Level 1,Prealgebra,"Chúng ta muốn có mẫu số chung nhỏ nhất, $6$, trong mẫu số khi chúng ta cộng hai phân số. $\frac{1}{3} = \frac{1}{3} \cdot 1 = \frac{1}{3} \cdot \frac{2}{2} = \frac{2}{6}$ .
+
+Thêm giá trị này vào $\frac{1}{6}$, chúng ta thu được $\frac{1}{6} + \frac{2}{6} = \frac{3}{6}$, có thể được đơn giản hóa hơn nữa vì $3$ và $6$ có ước chung là $3$. Chia cả tử số và mẫu số cho $3$, chúng ta thấy rằng $\frac{3}{6} = \frac{1}{2}$, ở dạng đơn giản nhất. Vì vậy, $\frac{1}{6} + \frac{1}{3} = \boxed{\frac{1}{2}}$."
+Chuyển $\frac{60}{7}$ thành hỗn số.,Level 1,Prealgebra,"Chia 60 cho 7, chúng ta được thương là 8 và số dư là 4. Nói cách khác, $60=8\times 7 + 4$. Thay thế vào $60/7$ sẽ cho \[
+\frac{60}{7}= \frac{8\cdot 7 + 4}{7} = \frac{8\cdot 7}{7}+ \frac{4}{7} = 8+\frac{4 }{7} = \boxed{8\frac47}.
+\]"
+Giá trị của $6 + (8 \div 2)$ là bao nhiêu?,Level 1,Prealgebra,"Thực hiện phép chia trước tiên, chúng ta nhận được $6+(8 \div 2) = 6+4$. Sau đó, phép cộng: $6+4=\boxed{10}$."
+"Xác định trung bình cộng của các số nguyên $71,$ $72,$ $73,$ $74,$ $75.$",Level 1,Prealgebra,"Trung bình cộng của bất kỳ tập hợp số nguyên nào đều bằng tổng các số nguyên chia cho số số nguyên. Do đó, trung bình cộng của các số nguyên là $$\frac{71+72+73+74+75}{5}=\frac{365}{5}=\boxed{73}.$$"
+Đơn giản hóa $\frac{100}{180}$.,Level 1,Prealgebra,"Vì $100$ và $180$ có thừa số chung là $20$, nên chúng ta có thể đơn giản hóa như sau $$\frac{100}{180}=\frac{20\cdot 5}{20\cdot 9}=\frac{\cancel {20}\cdot 5}{\cancel{20}\cdot 9}=\boxed{\frac{5}{9}}.$$"
+"Khi $A$ tăng gấp đôi, giá trị mới lớn hơn $A$ 10. Giá trị của $A$ là bao nhiêu?",Level 1,Prealgebra,Chúng ta có $2A=A+10\Rightarrow 2A-A=10\Rightarrow A=\boxed{10}$.
+$(1 + 2 \cdot 3 \cdot 4 \cdot 5) \div 11$ là gì?,Level 1,Prealgebra,"Đầu tiên, chúng tôi đánh giá biểu thức trong ngoặc đơn. Vì phép nhân được ưu tiên hơn phép cộng nên $1 + 2 \cdot 3 \cdot 4 \cdot 5 = 1 + 120 = 121$. Biểu thức ban đầu của chúng tôi ước tính là $(1 + 2 \cdot 3 \cdot 4 \cdot 5) \div 11 = 121 \div 11 = \boxed{11}.$"
+Với giá trị nào của $x$ thì $2^3\cdot3^x=72$?,Level 1,Prealgebra,"Vì hệ số nguyên tố của 72 là $72=2^3\cdot 3^2$, nên chúng ta có $x=\boxed{2}$."
+"Với thông tin trong bảng, bao nhiêu phần trăm cơ thể con người được tạo thành từ các nguyên tố khác ngoài oxy, carbon và hydro? $$\textbf{Các thành phần trong cơ thể con người}$$ \begin{tabular}{|c|c|}\hline \textbf{Element}&\textbf{Percent}\\\hline Oxygen&$65\%$\\\ hline Carbon&$18\%$\\\hline Hydrogen&$10\%$\\\hline\end{tabular}",Level 1,Prealgebra,"Nếu oxy, carbon và hydro chiếm $65\%+18\%+10\%=93\%$ trong cơ thể con người, thì các nguyên tố khác chiếm $100\%-93\%=\boxed{7\%} .$"
+Giá trị của $\frac{2}{5}+\frac{1}{3}$ là bao nhiêu?,Level 1,Prealgebra,"Sử dụng mẫu số chung, $\frac{2}{5}+\frac{1}{3}=\frac{6}{15}+\frac{5}{15}=\boxed{\frac{11} {15}}$."
+$(7^{-1})^{-1}$ là gì?,Level 1,Prealgebra,"Nói chung, $(a^m)^n = a^{mn}$, vì vậy $(7^{-1})^{-1} = 7^{(-1) \cdot (-1)} = 7^1 = \boxed{7}$."
+Nếu $x$ tăng gấp đôi và sau đó tăng thêm $7$ thì kết quả là $81$. Giá trị của $x$ là bao nhiêu?,Level 1,Prealgebra,"Chúng ta thiết lập phương trình và giải $x$. \bắt đầu{căn chỉnh*}
+2x+7&=81\quad\Rightarrow\\
+2x&=74\quad\Rightarrow\\
+x&=\đóng hộp{37}
+\end{căn chỉnh*}"
+Giải $k$ trong phương trình $2k+5 = 13$.,Level 1,Prealgebra,Trừ 5 ở cả hai vế sẽ có $2k = 8$ và chia cho 2 được $k = \boxed{4}$.
+Giá trị của $(4 \times 12)-(4+12)$ là bao nhiêu?,Level 1,Prealgebra,"Đang tính, $(4\times 12)-(4+12)=48 - 16 =\boxed{32}$."
+Sự khác biệt tích cực giữa $2^5$ và $5^2$ là gì?,Level 1,Prealgebra,$2^5-5^2=32-25=\đóng hộp{7}$.
+Rút gọn phân số $\frac{27}{30}$.,Level 1,Prealgebra,"Vì 27 và 30 có hệ số chung là 3 nên chúng ta có thể đơn giản hóa \[
+\frac{27}{30}=\frac{9\cdot 3}{10\cdot 3}=\frac{9\cdot \cancel{3}}{10\cdot \cancel{3}}=\boxed{ \frac{9}{10}}.
+\]"
+$(-1)^{1001}$ là gì?,Level 1,Prealgebra,"Hãy nhớ rằng $(-a)^n = -a^n$ đối với $n$ lẻ, và một lũy thừa bất kỳ là một. Chúng tôi nhận được \[(-1)^{1001}=-1^{1001}=\boxed{-1}.\]"
+Rút gọn phân số $\frac{24}{36}$.,Level 1,Prealgebra,"Vì 24 và 36 có ước chung là 12 nên chúng ta có thể đơn giản hóa \[
+\frac{24}{36}=\frac{2\cdot 12}{3\cdot 12}=\frac{2\cdot \cancel{12}}{3\cdot \cancel{12}}=\boxed{ \frac{2}{3}}.
+\]"
+Bội số dương nhỏ nhất của $6$ cũng là bội số của $8$ là bao nhiêu?,Level 1,Prealgebra,"Để tìm một số dương vừa là bội số của $6$ vừa là bội số của $8$, chúng tôi sẽ liệt kê các bội số của $6$, bắt đầu bằng $6$ và kiểm tra xem liệu có bất kỳ số nào trong số chúng cũng là bội số của $8$ hay không . $6$ không chia $8$, vì vậy nó không phải là bội số của $8$. $12$ và $18$ cũng không chia hết cho $8$, vì vậy chúng cũng không hoạt động. $24$ chia hết cho $8$ (vì $3 \cdot 8 = 24$), vì vậy $\boxed{24}$ là bội số dương nhỏ nhất của cả $6$ và $8$."
+Rút gọn: $92 - 45 \div (3 \time 5) - 5^2$.,Level 1,Prealgebra,"Chúng ta thực hiện theo thứ tự thao tác: \begin{align*}
+92 - 45 \div (3\times 5) - 5^2 &= 92 - 45 \div 15 - 5^2 \\
+&= 92 - 45\div 15 -25 \\
+&= 92 - 3 - 25=89-25 = \boxed{64}.
+\end{căn chỉnh*}"
+"Nhà hàng yêu thích của Kailin có ưu đãi đặc biệt cho bữa ăn ba món. Một bữa ăn bao gồm món khai vị, món chính và món tráng miệng. Thực đơn bao gồm năm món khai vị, tám món chính và bốn món tráng miệng. Có thể tạo ra bao nhiêu bữa ăn ba món khác nhau với những lựa chọn này?",Level 1,Prealgebra,"Có 5 lựa chọn cho món khai vị, 8 lựa chọn cho món khai vị và 4 lựa chọn cho món tráng miệng. Tổng cộng, ba quyết định độc lập này có thể được đưa ra theo các cách $5\times8\times4=\boxed{160}$."
+"Các góc ở tâm $a$,$b$ và $c$ tách hình tròn thành các vùng $\frac{1}{3}$, $\frac{1}{4}$ và $\frac{1} {6}$ diện tích hình tròn tương ứng. Góc ở tâm $d$ có bao nhiêu độ?
+
+[asy]
+draw(vòng tròn((0,0),1));
+draw((0,0)--(1,0));
+draw((0,0)--(0,1));
+draw((0,0)--(1/2,-sqrt(3)/2));
+draw((0,0)--(-sqrt(3)/2,-1/2));
+label(""$b$"",(0,0),NE);
+label(""$c$"",(0,0),dir(-30));
+label(""$d$"",(0,0),dir(-100));
+label(""$a$"",(0,0),NW);
+[/asy]",Level 1,Prealgebra,Góc $d$ bao $1-\frac13-\frac14 -\frac16 = 1 -\frac26-\frac16 - \frac14 = 1 -\frac12 - \frac14 = \frac14$ của đường tròn nên có số đo $\frac14\ cdot 360^\circ = \boxed{90^\circ}$.
+"Bạn có 5 chiếc áo sơ mi, 6 chiếc quần dài và 8 chiếc mũ. Bạn có thể làm bao nhiêu bộ trang phục bao gồm một chiếc áo sơ mi, một chiếc quần và một chiếc mũ?",Level 1,Prealgebra,"Có 5 lựa chọn về áo sơ mi, 6 lựa chọn về quần và 8 lựa chọn về mũ, tổng cộng là $5 \times 6 \times 8 = \boxed{240}$ trang phục."
+Giá trị của $3\cdot 3 + 3(3 + 3) - 3^3$ là bao nhiêu?,Level 1,Prealgebra,"Áp dụng thứ tự thực hiện sẽ có được \begin{align*}
+3\cdot 3 +3(3+3) - 3^3 &= 3\cdot 3 +3(6) - 3^3\\
+&= 3\cdot 3 + 3(6) - 27\\
+&= 9 + 18 - 27 = \boxed{0}.
+\end{căn chỉnh*}"
+Hãy tính $(2^3)(5^5)$ trong đầu bạn.,Level 1,Prealgebra,"Bằng cách sử dụng thuộc tính kết hợp, chúng ta có thể sắp xếp lại các số hạng để có được $(2^35^3)(5^2)=(10^3)(5^2)=(1000)(25)=\boxed{25,\ !000}$."
+"Có bao nhiêu số trong danh sách $25, 26, 27, \ldots, 99, 100 ?$",Level 1,Prealgebra,"Chúng tôi trừ 24 cho mỗi thành viên trong danh sách để nhận $1,2,3,\ldots,75,76$, do đó có các số $\đóng hộp{76}$. Lưu ý rằng điều này tuân theo công thức $b - a + 1$ để biết có bao nhiêu số nằm trong khoảng từ $a$ đến $b$, vì $100 - 25 + 1 = 76$."
+"Đường $l$ là một đường thẳng. Giá trị của $x$ trong biểu đồ là bao nhiêu? [asy]
+kích thước (150); defaultpen(linewidth(0.8)); nhập hình học;
+draw(origin--(10,0),Arrows);
+cặp X = (5,0) + 5*dir(80);
+draw((5,0)--X,EndArrow);
+nhãn(""$x$"",(5.4,0),NE);
+label(""$x+20^\circ$"",(5,0),NW);
+label(""$l$"",(0,0),NW);
+[/asy]",Level 1,Prealgebra,"Vì hai góc cùng tạo thành một đường thẳng nên chúng ta có $x+ (x+20^\circ) = 180^\circ$. Rút gọn ta có $2x + 20^\circ = 180^\circ$, do đó $2x = 160^\circ$ và $x = \boxed{80^\circ}$."
+$0^{(5^{6431564})}$ là gì?,Level 1,Prealgebra,"Số 0 được nâng lên lũy thừa dương bất kỳ bằng 0, vì vậy câu trả lời của chúng tôi là $\boxed{0}.$"
+"Gina có năm đôi tất trắng, ba đôi tất đen và hai đôi tất đỏ. Bao nhiêu phần trăm số tất của cô ấy có màu đỏ?",Level 1,Prealgebra,"Hai trong số 10 đôi tất của Gina có màu đỏ, vì vậy $2/10=\boxed{20\%}$ tất của cô ấy có màu đỏ."
+Tính toán: $6\div6-6+6\times6$.,Level 1,Prealgebra,"Theo thứ tự các phép tính, chúng ta thực hiện phép chia và phép nhân trước phép cộng và phép trừ: \[6\div 6 - 6 + 6\times 6 = 1 -6+36 = -5+36 =\boxed{31}. \]"
+"Trong sơ đồ, giá trị của $x?$ [asy] là bao nhiêu
+kích thước (150);
+draw((0,5)--(0,0)--(5,0));
+draw((0,0)--(3,5));
+draw((0,.3)--(.3,.3)--(.3,0));
+label(""$2x^\circ$"",(.5,2));
+label(""$3x^\circ$"",(1,.6));
+[/asy]",Level 1,Prealgebra,"Các góc $2x^{\circ}$ và $3x^{\circ}$ được hiển thị là bổ sung cho nhau và do đó cộng với $90^{\circ}.$ Do đó, $2x+3x=90$ hoặc $5x=90$ và vậy $x=\frac{90}{5}=\boxed{18}.$"
+Tamantha muốn mua những chiếc hộp để đựng 77 chiếc đĩa CD của mình. Nếu mỗi hộp chứa 12 chiếc đĩa thì cô ấy cần mua bao nhiêu chiếc đĩa?,Level 1,Prealgebra,"Giả sử Tamantha mua $n$ hộp. Vì các hộp $n$ sẽ chứa các đĩa $12n$, Tamantha sẽ chỉ có thể lưu trữ tất cả các đĩa của mình nếu $12n \ge 77$.
+
+Chia cả hai vế của bất đẳng thức này cho $12$ sẽ được $n\ge \frac{77}{12}$, mà chúng ta có thể viết là $n\ge 6\frac{5}{12}$. Tamantha chỉ có thể mua số lượng hộp nguyên, vì vậy số nhỏ nhất có thể mua được là $\boxed{7}$."
+"Trong hình vẽ, $ABC$ là một đường thẳng. Giá trị của $x$ là bao nhiêu?
+
+[asy]
+draw((-10,0)--(10,0));
+draw((0,0)--(7.66,6.43));
+nhãn(""$A$"",(-10,0),W);
+nhãn(""$B$"",(0,0),S);
+nhãn(""$C$"",(10,0),E);
+label(""$x^\circ$"",(0,0),NW);
+nhãn(""$40^\circ$"",(1.5,0),NE);
+[/asy]",Level 1,Prealgebra,"Vì các góc dọc theo một đường thẳng cộng lại thành $180^\circ$, nên $x^\circ+40^\circ=180^\circ$ hoặc $x+40=180$ hoặc $x=\boxed{140}$ ."
+"Có một số $C$. Số $C$ là bội số của 7, nhưng KHÔNG phải là bội số của 3. Số $C$ lớn hơn 20 nhưng nhỏ hơn 30. Số $C$ này là bao nhiêu?",Level 1,Prealgebra,"Từ bài toán chúng ta có thể thu được $20<C<30$ đó. Bởi vì $C$ cũng là bội số của 7, điều đó giới hạn khả năng của số $C$ xuống còn 21 và 28. Manh mối cuối cùng còn lại cho biết số $C$ cũng KHÔNG phải là bội số của 3. Trong số hai khả năng còn lại , 21 là giá trị duy nhất cũng là bội số của 3, do đó loại bỏ nó khỏi số $C$. Do đó, số $C$ chỉ có thể là $\boxed{28}$."
+Giá trị của biểu thức $(-5)^3 + (-2)^3 + 2^3 + 5^3$ là bao nhiêu?,Level 1,Prealgebra,"Với mọi số thực $x$, $(-x)^3=-x^3$. Theo đó $(-x)^3+x^3=0$. Do đó, $(-5)^3+(-2)^3+2^3+5^3=(-5)^3+0+5^3=\boxed{0}$."
+Rút gọn $\frac{8}{22}$.,Level 1,Prealgebra,"Để rút gọn phân số này, tử số và mẫu số phải có thừa số chung. Tám và 22 có ước chung lớn nhất là 2, vì vậy chúng ta có thể đơn giản hóa $$\frac{8}{22}=\frac{4\cdot\cancel{2}}{11\cdot\cancel{2}}=\ đóng hộp{\frac{4}{11}}.$$"
+"Ba mươi lăm học sinh tham dự cuộc họp câu lạc bộ toán học. Số bạn gái có mặt tại cuộc họp là bội số của 13, số bạn gái tham dự cuộc họp nhiều hơn bạn trai. Có bao nhiêu chàng trai ở cuộc họp?",Level 1,Prealgebra,"Chúng ta giả sử số bé gái là một số nguyên không âm và không lớn hơn 35. Các bội số không âm của 13 nhỏ hơn 35 là 0, 13 và 26. Vì số bé gái lớn hơn số bé trai nên lựa chọn hợp lệ duy nhất là có 26 cô gái. Vậy là còn lại $35-26 = \boxed{9}$ chàng trai tại cuộc họp."
+"Giả sử $\cos V = \frac{2}{3}$ trong sơ đồ bên dưới. $TV$ là gì?
+
+
+
+[asy]
+cặp T,U,V;
+V = (0,0);
+T = (0,16);
+U = (17,89,16);
+hòa(V--T--U--V);
+draw(rightanglemark(V,T,U,23));
+nhãn(""$V$"",V,SW);
+nhãn(""$U$"",U,NE);
+nhãn(""$T$"",T,NW);
+nhãn(""$24$"",(U-V)/2,SE);
+[/asy]",Level 1,Precalculus,"Vì $\cos V = \frac{2}{3}$ và $\cos V = \frac{TV}{UV}=\frac{TV}{24}$, nên chúng ta có $\frac{TV}{24 } = \frac{2}{3}$, do đó $TV = \frac{2}{3} \cdot 24 = \boxed{16}$."
+"Đơn giản hóa
+\[\frac{1}{1 - \tan^2 x} + \frac{1}{1 - \cot^2 x}.\]",Level 1,Precalculus,"Chúng tôi có thể viết
+\bắt đầu{căn chỉnh*}
+\frac{1}{1 - \tan^2 x} + \frac{1}{1 - \cot^2 x} &= \frac{1}{1 - \sin^2 x/\cos^2 x } + \frac{1}{1 - \cos^2 x/\sin^2 x} \\
+&= \frac{\cos^2 x}{\cos^2 x - \sin^2 x} + \frac{\sin^2 x}{\sin^2 x - \cos^2 x} \\
+&= \frac{\cos^2 x}{\cos^2 x - \sin^2 x} - \frac{\sin^2 x}{\cos^2 x - \sin^2 x} \\
+&= \frac{\cos^2 x - \sin^2 x}{\cos^2 x - \sin^2 x} = \boxed{1}.
+\end{căn chỉnh*}"
+"Nếu $\begin{vmatrix} a & b \\ c & d \end{vmatrix} = -8,$ thì tìm
+\[\begin{vmatrix} b & a \\ d & c \end{vmatrix}.\]",Level 1,Precalculus,"Vì $\begin{vmatrix} a & b \\ c & d \end{vmatrix} = -8,$ $ad - bc = -8.$ Khi đó
+\[\begin{vmatrix} b & a \\ d & c \end{vmatrix} = bc - ad = \boxed{8}.\](Tại sao điều này lại có ý nghĩa về mặt hình học?)"
+Cho $a = 5 - 8i$ và $b = 30 + 48i$. Tìm $|ab|$.,Level 1,Precalculus,"Lưu ý rằng $b = 6(5 + 8i) = 6\overline{a}$. Vậy $|ab| = |a(6\overline{a})| = 6 |a\overline{a}| = 6|a|^2$. Chúng ta có $|a|^2 = 5^2 + 8^2 = 89$, vì vậy $|ab| = 6 \cdot 89 = \boxed{534}$."
+Tính $\sin 90^\circ$.,Level 1,Precalculus,"Xoay điểm $(1,0)$ quanh gốc tọa độ $90^\circ$ ngược chiều kim đồng hồ sẽ cho chúng ta điểm $(0,1)$, do đó $\sin 90^\circ = \boxed{1}$."
+Tìm $\cos \frac{\pi}{3}.$,Level 1,Precalculus,"Chuyển đổi sang độ,
+\[\frac{\pi}{3} = \frac{180^\circ}{\pi} \cdot \frac{\pi}{3} = 60^\circ.\]Thì $\cos 60^\ Circ = \boxed{\frac{1}{2}}.$"
+Đánh giá $|(4+2i)|\cdot|(6-3i)|$.,Level 1,Precalculus,"Chúng ta biết rằng $|a|\cdot|b|=|ab|$, vì vậy \begin{align*}
+|4+2i|\cdot|6-3i|&=|(4+2i)(6-3i)|\\
+&=|2\cdot3(2+i)(2-i)|\\
+&=|2\cdot3\cdot5|\\
+&=30.
+\end{align*}Do đó, câu trả lời của chúng tôi là $\boxed{30}$."
+Tìm $\csc (-120^\circ).$,Level 1,Precalculus,"Chúng tôi có cái đó
+\[\csc (-120^\circ) = \frac{1}{\sin (-120^\circ)}.\]Sau đó
+\[\sin (-120^\circ) = -\sin (-120^\circ + 180^\circ) = -\sin 60^\circ = -\frac{\sqrt{3}}{2}, \]Vì thế
+\[\frac{1}{\sin (-120^\circ)} = -\frac{2}{\sqrt{3}} = \boxed{-\frac{2 \sqrt{3}}{3} }.\]"
+Tính $\tan 210^\circ$.,Level 1,Precalculus,"Đặt $P$ là điểm trên đường tròn đơn vị cách $210^\circ$ ngược chiều kim đồng hồ từ $(1,0)$ và đặt $D$ là chân của độ cao từ $P$ đến trục $x$ , như hình dưới đây.
+
+[asy]
+cặp A,C,P,O,D;
+draw((0,-1.2)--(0,1.2),p=đen+1.2bp,Mũi tên(0.15cm));
+draw((-1.2,0)--(1.2,0),p=đen+1.2bp,Mũi tên(0.15cm));
+A = (1,0);
+O= (0,0);
+nhãn(""$x$"",(1.2,0),SE);
+label(""$y$"",(0,1.2),NE);
+
+P = xoay(210)*A;
+D = foot(P,A,-A);
+hòa(O--P--D);
+draw(rightanglemark(O,D,P,2));
+draw(Circle(O,1));
+nhãn(""$O$"",O,SE);
+nhãn(""$P$"",P,SW);
+//nhãn(""$A$"",A,SE);
+nhãn(""$D$"",D,N);
+[/asy]
+
+Tam giác $POD$ là tam giác 30-60-90, vì vậy $DO = \frac{\sqrt{3}}{2}$ và $DP = \frac12$. Do đó, tọa độ của $P$ là $\left(-\frac{\sqrt{3}}{2}, -\frac12\right)$, do đó $$\tan 210^\circ =\frac{\sin 210^\circ}{\cos 210^\circ} = \frac{-1/2}{-\sqrt{3}/2} = \frac{1}{\sqrt{3}} = \boxed{\ frac{\sqrt{3}}{3}}.$$"
+"Cho $u,$ $v,$ $w$ là nghiệm của $z^3 = 1.$ Tìm $uv + uw + vw.$",Level 1,Precalculus,"Theo công thức của Vieta, $uv + uw + vw = \boxed{0}.$"
+Tính $\cos 180^\circ$.,Level 1,Precalculus,"Xoay điểm $(1,0)$ quanh gốc tọa độ $180^\circ$ ngược chiều kim đồng hồ sẽ cho chúng ta điểm $(-1,0)$, do đó $\cos 180^\circ = \boxed{-1}$."
+Tìm tích vô hướng của $\begin{pmatrix} -2 \\ 0 \\ 7 \end{pmatrix}$ và $\begin{pmatrix} 3 \\ 4 \\ -5 \end{pmatrix}.$,Level 1,Precalculus,"Tích số chấm của $\begin{pmatrix} -2 \\ 0 \\ 7 \end{pmatrix}$ và $\begin{pmatrix} 3 \\ 4 \\ -5 \end{pmatrix}$ là
+\[(-2)(3) + (0)(4) + (7)(-5) = \boxed{-41}.\]"
+"Giả sử $\sin D = 0,7$ trong sơ đồ bên dưới. $DE$ là gì? [asy]
+cặp D,E,F;
+F = (0,0);
+D = (sqrt(51),7);
+E = (0,7);
+hòa(D--E--F--D);
+draw(rightanglemark(D,E,F,15));
+nhãn(""$D$"",D,NE);
+nhãn(""$E$"",E,NW);
+nhãn(""$F$"",F,SW);
+nhãn(""$7$"",(E+F)/2,W);
+[/asy]",Level 1,Precalculus,"Tam giác này là tam giác vuông nên $\sin D = \frac{EF}{DF}$. Khi đó chúng ta có $\sin D = 0,7 = \frac{7}{DF}$, vì vậy $DF = 10$.
+
+Sử dụng Định lý Pythagore, chúng ta thấy rằng độ dài của $DE$ là $\sqrt{DF^2 - EF^2},$ hoặc $\sqrt{100 - 49} = \boxed{\sqrt{51}}$."
+"Tìm điểm giữa của đoạn thẳng có điểm cuối $(7,-3,2)$ và $(4,1,0).$",Level 1,Precalculus,"Để tìm điểm giữa, chúng ta lấy trung bình của các tọa độ, tính ra
+\[\left( \frac{7 + 4}{2}, \frac{-3 + 1}{2}, \frac{2 + 0}{2} \right) = \boxed{\left( \frac {11}{2}, -1, 1 \right)}.\]"
+"Đánh giá
+\[\begin{vmatrix} 0 & b - a & c - a \\ a - b & 0 & c - b \\ a - c & b - c & 0 \end{vmatrix}.\]",Level 1,Precalculus,"Chúng ta có thể mở rộng định thức như sau:
+\bắt đầu{căn chỉnh*}
+\begin{vmatrix} 0 & b - a & c - a \\ a - b & 0 & c - b \\ a - c & b - c & 0 \end{vmatrix} &= -(b - a) \ started{vmatrix} a - b & c - b \\ a - c & 0 \end{vmatrix} + (c - a) \begin{vmatrix} a - b & 0 \\ a - c & b - c \end {vmatrix} \\
+&= -(b - a)(-(c - b)(a - c)) + (c - a)(a - b)(b - c) \\
+&= \đóng hộp{0}.
+\end{căn chỉnh*}"
+"Nếu $\det \mathbf{A} = -7$ và $\det \mathbf{B} = 3,$ thì tìm $\det (\mathbf{B} \mathbf{A}).$",Level 1,Precalculus,Chúng ta có $\det (\mathbf{B} \mathbf{A}) = (\det \mathbf{B})(\det \mathbf{A}) = (3)(-7) = \boxed{- 21}.$
+Rút gọn $\frac{\csc \theta}{\sin \theta} - \frac{\cot \theta}{\tan \theta}.$,Level 1,Precalculus,"Chúng tôi có cái đó
+\bắt đầu{căn chỉnh*}
+\frac{\csc \theta}{\sin \theta} - \frac{\cot \theta}{\tan \theta} &= \frac{1/\sin \theta}{\sin \theta} - \frac {\cos \theta/\sin \theta}{\sin \theta/\cos \theta} \\
+&= \frac{1}{\sin^2 \theta} - \frac{\cos^2 \theta}{\sin^2 \theta} \\
+&= \frac{1 - \cos^2 \theta}{\sin^2 \theta} = \frac{\sin^2 \theta}{\sin^2 \theta} = \boxed{1}.
+\end{căn chỉnh*}"
+"Chuyển đổi điểm $\left( 10, \frac{\pi}{4} \right)$ ở tọa độ cực thành tọa độ hình chữ nhật.",Level 1,Precalculus,"Trong tọa độ hình chữ nhật, $\left( 10, \frac{\pi}{4} \right)$ trở thành
+\[\left( 10 \cos \frac{\pi}{4}, 10 \sin \frac{\pi}{4} \right) = \boxed{(5 \sqrt{2}, 5 \sqrt{2 })}.\]"
+Tìm $\csc 330^\circ.$,Level 1,Precalculus,"Chúng tôi có cái đó
+\[\csc 330^\circ = \frac{1}{\sin 330^\circ}.\]Vì hàm sin có chu kỳ $360^\circ,$
+\[\sin 330^\circ = \sin (330^\circ - 360^\circ) = \sin (-30^\circ) = -\sin 30^\circ = -\frac{1}{2} ,\]Vì thế
+\[\frac{1}{\sin 330^\circ} = \boxed{-2}.\]"
+"Trong sơ đồ bên dưới, chúng ta có $AB = 24$ và $\angle ADB =90^\circ$. Nếu $\sin A = \frac23$ và $\sin C = \frac34$, thì $BC$ là gì?
+
+
+[asy]
+cặp A,B,C,D;
+A = (0,0);
+B = (8*sqrt(5),16);
+D = (8*sqrt(5),0);
+C = (8*sqrt(5) + 5.3333*sqrt(7),0);
+hòa(D--B--A--C--B);
+nhãn(""$A$"",A,SW);
+nhãn(""$B$"",B,N);
+nhãn(""$C$"",C,SE);
+nhãn(""$D$"",D,S);
+draw(rightanglemark(B,D,A,43));
+[/asy]",Level 1,Precalculus,"Từ tam giác vuông $ABD$, ta có $\sin A = \frac{BD}{AB} = \frac{BD}{24}$. Vì $\sin A = \frac23$ nên ta có $\frac23 = \frac{BD}{24}$, nên $BD = \frac23\cdot 24 = 16$.
+
+Từ tam giác vuông $BCD$, ta có $\sin C = \frac{BD}{BC}=\frac{16}{BC}$. Vì $\sin C = \frac34$ nên ta có $\frac{16}{BC} = \frac34$. Do đó, chúng ta có $3BC = 4\cdot 16$ và $BC = \boxed{\frac{64}{3}}$."
+Tìm $\cot \frac{3 \pi}{2}.$,Level 1,Precalculus,"Chuyển đổi sang độ,
+\[\frac{3 \pi}{2} = \frac{180^\circ}{\pi} \cdot \frac{3 \pi}{2} = 270^\circ.\]Vì hàm cotang có giai đoạn $180^\circ,$ $\cot 270^\circ = \cot (270^\circ - 180^\circ) = \cot 90^\circ = \frac{\cos 90^\circ}{\sin 90 ^\circ} = \boxed{0}.$"
+"Tìm số nguyên $n,$ $-90 < n < 90,$ sao cho $\tan n^\circ = \tan 252^\circ.$",Level 1,Precalculus,"Vì hàm tang có chu kỳ $180^\circ,$
+\[\tan 252^\circ = \tan (252^\circ - 180^\circ) = \tan 72^\circ,\]so $n = \boxed{72}.$"
+"Dưới đây là đồ thị của $y = a \sin (bx + c)$ cho một số hằng số dương $a,$ $b,$ và $c.$ Tìm $b.$
+
+[asy]nhập TrigMacros;
+
+kích thước (300);
+
+f thực (x thực)
+{
+trả về 2*sin(4*x + pi/2);
+}
+
+draw(graph(f,-pi,pi,n=700,join=operator ..),red);
+trig_axes(-pi,pi,-3,3,pi/2,1);
+lớp();
+rm_trig_labels(-2,2, 2);
+
+nhãn(""$1$"", (0,1), E);
+nhãn(""$2$"", (0,2), E);
+nhãn(""$-1$"", (0,-1), E);
+nhãn(""$-2$"", (0,-2), E);
+[/asy]",Level 1,Precalculus,"Chu kỳ của đồ thị là $\frac{\pi}{2}.$ Chu kỳ của $y = a \sin (bx + c)$ là $\frac{2 \pi}{b},$ vậy $b = \đóng hộp{4}.$"
+"Một tam giác có các đỉnh $A(0, 2)$, $B(-3, 2)$ và $C(-3, 0)$ được phản ánh qua trục $x$, sau đó là tam giác ảnh $A' B'C'$ được quay ngược chiều kim đồng hồ quanh gốc tọa độ $90^{\circ}$ để tạo ra tam giác $A''B''C''$. Phép biến đổi nào sau đây sẽ biến tam giác $A''B''C''$ thành tam giác $ABC$?
+
+(A) quay ngược chiều kim đồng hồ quanh gốc tọa độ $90^{\circ}$.
+(B) xoay theo chiều kim đồng hồ quanh gốc tọa độ $90^{\circ}$.
+(C) phản ánh về trục $x$
+(D) suy ngẫm về đường thẳng $y = x$
+(E) phản ánh về trục $y$.",Level 1,Precalculus,"Đây là sơ đồ ban đầu:
+
+[asy]
+đơn vị(1 cm);
+
+cặp A, B, C;
+
+A = (0,2);
+B = (-3,2);
+C = (-3,0);
+
+draw(A--B--C--cycle);
+draw((-3.5,0)--(3.5,0));
+draw((0,-3.5)--(0,3.5));
+
+dấu chấm(""$A$"", A, E);
+dot(""$B$"", B, NW);
+dấu chấm(""$C$"", C, S);
+[/asy]
+
+Sau đó, chúng tôi phản ánh sơ đồ qua trục $x$:
+
+[asy]
+đơn vị(1 cm);
+
+cặp A, B, C, Ap, Bp, Cp;
+
+A = (0,2);
+B = (-3,2);
+C = (-3,0);
+Ap = phản ánh((0,0),(1,0))*(A);
+Bp = phản ánh((0,0),(1,0))*(B);
+Cp = phản ánh((0,0),(1,0))*(C);
+
+draw(A--B--C--cycle);
+draw(Ap--Bp--Cp--cycle);
+draw((-3.5,0)--(3.5,0));
+draw((0,-3.5)--(0,3.5));
+
+dấu chấm(""$A$"", A, E);
+dot(""$B$"", B, NW);
+dot(""$C$"", C, NW);
+
+dấu chấm(""$A'$"", Ap, E);
+dot(""$B'$"", Bp, SW);
+dot(""$C'$"", Cp, SW);
+[/asy]
+
+Sau đó, chúng ta xoay sơ đồ $90^\circ$ ngược chiều kim đồng hồ quanh gốc tọa độ:
+
+[asy]
+đơn vị(1 cm);
+
+cặp A, B, C, App, Bpp, Cpp;
+
+A = (0,2);
+B = (-3,2);
+C = (-3,0);
+Ứng dụng = xoay(90)*phản ánh((0,0),(1,0))*(A);
+Bpp = xoay(90)*phản ánh((0,0),(1,0))*(B);
+Cpp = xoay(90)*phản ánh((0,0),(1,0))*(C);
+
+draw(A--B--C--cycle);
+draw(App--Bpp--Cpp--cycle);
+draw((-3.5,0)--(3.5,0));
+draw((0,-3.5)--(0,3.5));
+
+dấu chấm(""$A$"", A, E);
+dot(""$B$"", B, NW);
+dấu chấm(""$C$"", C, S);
+
+dot(""$A''$"", App, N);
+dot(""$B''$"", Bpp, SE);
+dot(""$C''$"", Cpp, W);
+[/asy]
+
+Sau đó, để biến đổi tam giác $A''B''C''$ thành tam giác $ABC,$ chúng ta có thể phản chiếu qua đường thẳng $y = x.$ Câu trả lời là $\boxed{\text{(D)}}.$"
+"Dưới đây là đồ thị của $y = a \sin (bx + c)$ cho một số hằng số dương $a,$ $b,$ và $c.$ Tìm $a.$
+
+[asy]nhập TrigMacros;
+
+kích thước (300);
+
+f thực (x thực)
+{
+trả về 2*sin(4*x + pi/2);
+}
+
+draw(graph(f,-pi,pi,n=700,join=operator ..),red);
+trig_axes(-pi,pi,-3,3,pi/2,1);
+lớp();
+rm_trig_labels(-2,2, 2);
+
+nhãn(""$1$"", (0,1), E);
+nhãn(""$2$"", (0,2), E);
+nhãn(""$-1$"", (0,-1), E);
+nhãn(""$-2$"", (0,-2), E);
+[/asy]",Level 1,Precalculus,"Giá trị tối đa của $a \sin (bx + c)$ là $a,$ nên $a = \boxed{2}.$"
+"Dưới đây là đồ thị $y = a \cos bx$ cho một số hằng số dương $a$ và $b.$ Tìm $a.$
+
+[asy]nhập TrigMacros;
+
+kích thước (400);
+
+g thực (x thực)
+{
+trả về (3*cos(4*x));
+}
+
+draw(graph(g,-3*pi,3*pi,n=700,join=operator ..),red);
+trig_axes(-3*pi,3*pi,-4,4,pi/2,1);
+lớp();
+rm_trig_labels(-5, 5, 2);
+
+nhãn(""$1$"", (0,1), E);
+nhãn(""$2$"", (0,2), E);
+nhãn(""$3$"", (0,3), E);
+nhãn(""$-1$"", (0,-1), E);
+nhãn(""$-2$"", (0,-2), E);
+nhãn(""$-3$"", (0,-3), E);
+[/asy]",Level 1,Precalculus,"Giá trị tối đa của $a \cos bx$ là $a,$ nên $a = \boxed{3}.$"
+Tính $\begin{pmatrix} 1 & 2 \\ 4 & 8 \\ \end{pmatrix} \begin{pmatrix} 5 \\ 3 \end{pmatrix}.$,Level 1,Precalculus,"Chúng tôi có cái đó
+\[\begin{pmatrix} 1 & 2 \\ 4 & 8 \\ \end{pmatrix} \begin{pmatrix} 5 \\ 3 \end{pmatrix} = \begin{pmatrix} (1)(5) + ( 2)(3) \\ (4)(5) + (8)(3) \end{pmatrix} = \boxed{\begin{pmatrix} 11 \\ 44 \end{pmatrix}}.\]"
+Tính $e^{\pi i}.$,Level 1,Precalculus,Chúng ta có $e^{\pi i} = \cos \pi + i \sin \pi = \boxed{-1}.$
+"Tìm số nguyên $n,$ $-90 \le n \le 90,$ sao cho $\sin n^\circ = \sin 419^\circ.$",Level 1,Precalculus,"Vì hàm sin có chu kỳ $360^\circ,$
+\[\sin 419^\circ = \sin (419^\circ - 360^\circ) = \sin 59^\circ,\]so $n = \boxed{59}.$"
+Tìm $\begin{pmatrix} 1 \\ 4 \\ -6 \end{pmatrix} + \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix}.$,Level 1,Precalculus,"Chúng tôi có cái đó
+\[\begin{pmatrix} 1 \\ 4 \\ -6 \end{pmatrix} + \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix} = \boxed{\begin{pmatrix} 3 \ \ 3 \\ -3 \end{pmatrix}}.\]"
+Tìm $\cos^{-1} \frac{1}{2}.$ Thể hiện câu trả lời của bạn bằng radian.,Level 1,Precalculus,"Vì $\cos \frac{\pi}{3} = \frac{1}{2},$ $\cos^{-1} \frac{1}{2} = \boxed{\frac{\pi} {3}}.$"
+Tìm $\begin{pmatrix} 1 & 5 \\ -2 & 4 \end{pmatrix} + \begin{pmatrix} 0 & -3 \\ 8 & -5 \end{pmatrix}.$,Level 1,Precalculus,"Chúng tôi có cái đó
+\[\begin{pmatrix} 1 & 5 \\ -2 & 4 \end{pmatrix} + \begin{pmatrix} 0 & -3 \\ 8 & -5 \end{pmatrix} = \boxed{\begin{pmatrix } 1 & 2 \\ 6 & -1 \end{pmatrix}}.\]"
+"Nếu $\det \mathbf{A} = 4$ và $\det \mathbf{B} = -5,$ thì tìm $\det (\mathbf{A} \mathbf{B}).$",Level 1,Precalculus,Chúng ta có $\det (\mathbf{A} \mathbf{B}) = (\det \mathbf{A})(\det \mathbf{B}) = (4)(-5) = \boxed{- 20}.$
+"Một đường cong được tham số hóa bởi
+\[(x,y) = (t^3 + 7, -3t^2 - 6t - 5).\]Tìm điểm mà đường cong đi qua tại $t = 2.$",Level 1,Precalculus,"Tại $t = 2,$ $(x,y) = (2^3 + 7, -3 \cdot 2^2 - 6 \cdot 2 - 5) = \boxed{(15,-29)}.$"
+"Nếu $|z| = 5$ và $|w| = 2$, giá trị tối thiểu của $|z-w|$ là bao nhiêu?",Level 1,Precalculus,"Giải pháp đơn giản nhất là hình học. Hãy nhớ lại rằng $|z|$ có thể được hiểu là khoảng cách của $z$ tính từ gốc tọa độ trong mặt phẳng phức; thông tin đã cho cho chúng ta biết rằng $z$ nằm trên một đường tròn có bán kính 5 và $w$ nằm trên một đường tròn có bán kính 2. Vẽ các đường tròn này trong mặt phẳng phức, chúng ta thấy rằng $z$ và $w$ là gần nhau nhất khi chúng nằm trên một bán kính chung, với $w$ trong cùng góc phần tư với $z$. Điều này mang lại giá trị tối thiểu của $|z-w|$ là $5 - 2 = \boxed{3}$. (Đây là trường hợp đặc biệt của bất đẳng thức tam giác đối với số phức.)
+
+[asy]
+đơn vị(0,5 cm);
+
+cặp Z, W;
+
+Z = 2*dir(34);
+W = 5*dir(78);
+
+draw(Circle((0,0),2),red);
+draw(Circle((0,0),5),blue);
+hòa(Z--W);
+
+dấu chấm(""$z$"", Z, SW);
+dấu chấm(""$w$"", W, N);
+[/asy]"
+Tính $\begin{pmatrix} 5 \\ -4 \end{pmatrix} + \begin{pmatrix} -11 \\ 10 \end{pmatrix}$.,Level 1,Precalculus,"Chúng ta thấy rằng
+\[\begin{pmatrix} 5 \\ -4 \end{pmatrix} + \begin{pmatrix} -11 \\ 10 \end{pmatrix} = \boxed{\begin{pmatrix} -6 \\ 6 \end{ pmatrix}}.\]"
+"Trong tam giác vuông $FGH$ có $\góc H = 90^\circ$, ta có $FG = 17$ và $HG = 15$. Tìm $\sin G$.",Level 1,Precalculus,"Hình tam giác được hiển thị dưới đây:
+
+[asy]
+cặp F,G,H;
+H = (0,0);
+G = (15,0);
+F = (0,8);
+hòa(F--G--H--F);
+draw(rightanglemark(G,H,F,20));
+nhãn(""$H$"",H,SW);
+nhãn(""$G$"",G,SE);
+nhãn(""$F$"",F,N);
+nhãn(""$17$"",(F+G)/2,NE);
+nhãn(""$15$"",G/2,S);
+[/asy]
+
+Định lý Pythagore cho chúng ta $FH = \sqrt{FG^2 - GH^2} = \sqrt{289 - 225} = 8$, do đó $\sin G = \frac{FH}{FG} = \boxed{\ sự cố{8}{17}}$."
+Tính $\arccos (-1).$ Thể hiện câu trả lời của bạn bằng radian.,Level 1,Precalculus,"Vì $\cos \pi = -1,$ $\arccos (-1) = \boxed{\pi}.$"
+"Tìm số nguyên $n,$ $-90 \le n \le 90,$ sao cho $\sin n^\circ = \sin 1021^\circ.$",Level 1,Precalculus,"Vì hàm sin có chu kỳ $360^\circ,$
+\[\sin 1021^\circ = \sin (1021^\circ - 3 \cdot 360^\circ) = \sin (-59^\circ),\]so $n = \boxed{-59}.$"
+Tính $\operatorname{arccot} (-1).$ Thể hiện câu trả lời của bạn bằng radian.,Level 1,Precalculus,"Vì $\cot \left( \frac{3 \pi}{4} \right) = -1,$ $\operatorname{arccot} (-1) = \boxed{\frac{3 \pi}{4}} .$
+
+Lưu ý: Hàm arccot ​​có phần gây tranh cãi. Một số xác định phạm vi của hàm arccot ​​là $(0,\pi)$ (bao gồm cả sách giáo khoa AoPS Precalcus) và một số khác xác định phạm vi là $\left( -\frac{\pi}{2}, 0 \right) \cup \left( 0, \frac{\pi}{2} \right].$"
+"Tính toán
+\[\begin{vmatrix} 0 & 1 \\ 3 & 5 \end{vmatrix}.\]",Level 1,Precalculus,"Chúng tôi có cái đó
+\[\begin{vmatrix} 0 & 1 \\ 3 & 5 \end{vmatrix} = (0)(5) - (1)(3) = \boxed{-3}.\]"
+"Dưới đây là đồ thị $y = a \cos bx$ cho một số hằng số dương $a$ và $b.$ Tìm $b.$
+
+[asy]nhập TrigMacros;
+
+kích thước (400);
+
+g thực (x thực)
+{
+trả về (3*cos(4*x));
+}
+
+draw(graph(g,-3*pi,3*pi,n=700,join=operator ..),red);
+trig_axes(-3*pi,3*pi,-4,4,pi/2,1);
+lớp();
+rm_trig_labels(-5, 5, 2);
+
+nhãn(""$1$"", (0,1), E);
+nhãn(""$2$"", (0,2), E);
+nhãn(""$3$"", (0,3), E);
+nhãn(""$-1$"", (0,-1), E);
+nhãn(""$-2$"", (0,-2), E);
+nhãn(""$-3$"", (0,-3), E);
+[/asy]",Level 1,Precalculus,"Đồ thị có chu kỳ $\frac{\pi}{2}.$ Chu kỳ của $y = a \cos bx$ là $\frac{2 \pi}{b},$ nên $b = \boxed{4} .$"
+Tìm $\sin \frac{4 \pi}{3}.$,Level 1,Precalculus,"Chuyển đổi sang độ,
+\[\frac{4 \pi}{3} = \frac{180^\circ}{\pi} \cdot \frac{4 \pi}{3} = 240^\circ.\]Thì $\sin 240 ^\circ = -\sin (240^\circ - 180^\circ) = -\sin 60^\circ = \boxed{-\frac{\sqrt{3}}{2}}.$"
+Tính $\arctan \sqrt{3}.$ Thể hiện câu trả lời của bạn bằng radian.,Level 1,Precalculus,"Vì $\tan \frac{\pi}{3} = \sqrt{3},$ $\arctan \sqrt{3} = \boxed{\frac{\pi}{3}}.$"
+Đánh giá $\tan 10^\circ \tan 20^\circ \tan 30^\circ \tan 40^\circ \tan 50^\circ \tan 60^\circ \tan 70^\circ \tan 80^\circ .$,Level 1,Precalculus,"Lưu ý rằng
+\[\tan (90^\circ - x) \tan x = \frac{\sin (90^\circ - x)}{\cos (90^\circ - x)} \cdot \frac{\sin x }{\cos x} = \frac{\cos x}{\sin x} \cdot \frac{\sin x}{\cos x} = 1,\]so
+\bắt đầu{căn chỉnh*}
+&\tan 10^\circ \tan 20^\circ \tan 30^\circ \tan 40^\circ \tan 50^\circ \tan 60^\circ \tan 70^\circ \tan 80^\circ \ \
+&= (\tan 10^\circ \tan 80^\circ) (\tan 20^\circ \tan 70^\circ) (\tan 30^\circ \tan 60^\circ) (\tan 40^\ vòng \tan 50^\circ) \\
+&= \đóng hộp{1}.
+\end{căn chỉnh*}"
+"Trong tam giác vuông $DEF$, chúng ta có $\góc E = 90^\circ$ và $\tan D = 3\sin D$. $\sin F$ là gì?",Level 1,Precalculus,"Chúng ta bắt đầu với một sơ đồ:
+
+[asy]
+
+cặp D,EE,F;
+
+EE = (0,0);
+
+F = (2*sqrt(2),0);
+
+D = (0,1);
+
+hòa(D--EE--F--D);
+
+draw(rightanglemark(F,EE,D,6));
+
+nhãn(""$E$"",EE,SW);
+
+nhãn(""$F$"",F,SE);
+
+nhãn(""$D$"",D,N);
+
+//nhãn(""$9$"",F/2,S);
+
+[/asy]
+
+Đầu tiên, chúng ta lưu ý rằng $\tan D = \frac{\sin D}{\cos D}$, vì vậy $\tan D = 3\sin D$ mang lại cho chúng ta $\frac{\sin D}{\cos D} = 3\sin D$, từ đó ta có $\cos D = \frac13$. Sau đó, chúng ta lưu ý rằng $\sin F = \frac{DE}{DF} = \cos D = \boxed{\frac13}$."
+Tính $\arccos \left( -\frac{1}{2} \right).$ Thể hiện câu trả lời của bạn bằng radian.,Level 1,Precalculus,"Vì $\cos \frac{2 \pi}{3} = -\frac{1}{2},$ $\arccos \left( -\frac{1}{2} \right) = \boxed{\frac {2 \pi}{3}}.$"
+Tính $\tan \left( \arccos \frac{1}{3} \right).$,Level 1,Precalculus,"Xét một tam giác vuông có cạnh kề bằng 1 và cạnh huyền bằng 3.
+
+[asy]
+đơn vị (1 cm);
+
+draw((0,0)--(1,0)--(1,2*sqrt(2))--cycle);
+
+nhãn(""$1$"", (1/2,0), S);
+nhãn(""$3$"", (1/2,sqrt(2)), NW);
+nhãn(""$2 \sqrt{2}$"", (1,sqrt(2)), E);
+nhãn(""$\theta$"", (0.3,0.3));
+[/asy]
+
+Khi đó $\cos \theta = \frac{1}{3},$ vậy $\theta = \arccos \frac{1}{3}.$ Theo Pythagoras, cạnh đối diện là $2 \sqrt{2},$ vậy $\tan \theta = \boxed{2 \sqrt{2}}.$"
+"Tìm đường cong được xác định bởi phương trình
+\[r = \cos \theta + \sin \theta.\](A) Dòng
+(B) Vòng tròn
+(C) Parabol
+(D) Hình elip
+(E) Hyperbol
+
+Nhập chữ cái của phương án đúng.",Level 1,Precalculus,"Chúng ta được cho rằng $r = \cos \theta + \sin \theta.$ Sau đó
+\[r^2 = r \cos \theta + r \sin \theta,\]so $x^2 + y^2 = x + y.$ Chúng ta có thể viết phương trình này dưới dạng
+\[\left( x - \frac{1}{2} \right)^2 + \left( y - \frac{1}{2} \right)^2 = \frac{1}{2}.\ ]Do đó, đồ thị là một hình tròn. Câu trả lời là $\boxed{\text{(B)}}.$
+
+[asy]
+đơn vị(2 cm);
+
+cặp moo (t thật) {
+  r thực = cos(t) + sin(t);
+  return (r*cos(t), r*sin(t));
+}
+
+đường dẫn foo = moo(0);
+thực tế;
+
+với (t = 0; t <= pi + 0,1; t = t + 0,1) {
+  foo = foo--moo(t);
+}
+
+vẽ(foo,đỏ);
+
+draw((-0.5,0)--(1.5,0));
+draw((0,-0.5)--(0,1.5));
+label(""$r = \cos \theta + \sin \theta$"", (2,1), đỏ);
+[/asy]"
+Tìm $\cot 90^\circ.$,Level 1,Precalculus,Chúng ta có $\cot 90^\circ = \frac{\cos 90^\circ}{\sin 90^\circ} = \boxed{0}.$
+"Tam giác $DEF$ được hiển thị. $\cos{E}$ là gì?
+
+[asy]
+draw((0,0)--(7,0)--(7,24)--cycle,black+linewidth(1));
+draw(rightanglemark((0,0),(7,0),(7,24),30),black+linewidth(1));
+nhãn(""$E$"",(7,24),E);
+nhãn(""$F$"",(0,0),W);
+nhãn(""$D$"",(7,0),E);
+nhãn(""7"",(0,0)--(7,0),S);
+nhãn(""24"",(7,0)--(7,24),E);
+[/asy]",Level 1,Precalculus,"Từ Định lý Pythagore, chúng ta có $EF^2=DE^2+DF^2$, vì vậy \begin{align*}{EF}&=\sqrt{DE^2+DF^2} \\ &=\sqrt {24^2+7^2} \\ &=\sqrt{625} \\ &=25.\end{align*}Do đó, $\cos{E}=\frac{DE}{EF}=\boxed {\frac{24}{25}}$."
+Tìm độ lệch pha của đồ thị $y = 2 \sin \left( x + \frac{\pi}{3} \right).$,Level 1,Precalculus,"Vì đồ thị của $y = 2 \sin \left( x + \frac{\pi}{3} \right)$ giống với đồ thị của $y = 2 \sin x$ shift $\frac{\pi {3}$ đơn vị sang trái, độ lệch pha là $\boxed{-\frac{\pi}{3}}.$
+
+[asy]nhập TrigMacros;
+
+kích thước (400);
+
+g thực (x thực)
+{
+return 2*sin(x + pi/3);
+}
+
+f thực (x thực)
+{
+trả về 2*sin(x);
+}
+
+draw(graph(g,-3*pi,3*pi,n=700,join=operator ..),red);
+draw(graph(f,-3*pi,3*pi,n=700,join=toán tử ..));
+trig_axes(-3*pi,3*pi,-3,3,pi/2,1);
+lớp();
+rm_trig_labels(-5, 5, 2);
+[/asy]"
+Tính $\tan 135^\circ$.,Level 1,Precalculus,"Đặt $P$ là điểm trên đường tròn đơn vị cách $135^\circ$ ngược chiều kim đồng hồ từ $(1,0)$ và đặt $D$ là chân của độ cao từ $P$ đến trục $x$ , như hình dưới đây.
+
+[asy]
+
+cặp A,C,P,O,D;
+
+draw((0,-1.2)--(0,1.2),p=đen+1.2bp,Mũi tên(0.15cm));
+
+draw((-1.2,0)--(1.2,0),p=đen+1.2bp,Mũi tên(0.15cm));
+
+A = (1,0);
+
+O= (0,0);
+
+nhãn(""$x$"",(1.2,0),SE);
+
+label(""$y$"",(0,1.2),NE);
+
+P = xoay(135)*A;
+
+D = foot(P,A,-A);
+
+hòa(O--P--D);
+
+draw(rightanglemark(O,D,P,2));
+
+draw(Circle(O,1));
+
+nhãn(""$O$"",O,SE);
+
+nhãn(""$P$"",P,NW);
+
+//nhãn(""$A$"",A,SE);
+
+nhãn(""$D$"",D,S);
+
+[/asy]
+
+Tam giác $POD$ là tam giác có kích thước 45-45-90, vì vậy $DO = DP = \frac{\sqrt{2}}{2}$. Do đó, tọa độ của $P$ là $\left(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right)$, vì vậy \[\tan 135 ^\circ = \frac{\sin 135^\circ}{\cos 135^\circ} = \frac{\sqrt{2}/2}{-\sqrt{2}/2} = \boxed{-1 }.\]"
+"Chuyển đổi điểm $(-4,0)$ ở tọa độ hình chữ nhật sang tọa độ cực. Nhập câu trả lời của bạn dưới dạng $(r,\theta),$ trong đó $r > 0$ và $0 \le \theta < 2 \pi.$",Level 1,Precalculus,"Chúng ta có $r = \sqrt{(-4)^2 + 0^2} = 4.$ Ngoài ra, nếu chúng ta vẽ đường nối gốc tọa độ và $(-4,0),$ thì đường thẳng này tạo thành một góc $\pi$ với trục $x$ dương.
+
+[asy]
+đơn vị(0,5 cm);
+
+draw((-5,0)--(5,0));
+draw((0,-1)--(0,5));
+draw(arc((0,0),4,0,180),red,Arrow(6));
+
+dấu chấm((-4,0), đỏ);
+nhãn(""$(-4,0)$"", (-4,0), S);
+dấu chấm((4,0), đỏ);
+[/asy]
+
+Do đó, tọa độ cực là $\boxed{(4,\pi)}.$"
+Tính $\arccos 1.$ Thể hiện câu trả lời của bạn bằng radian.,Level 1,Precalculus,"Vì $\cos 0 = 1,$ $\arccos 1 = \boxed{0}.$"
+Tính $\arccos \left (-\frac{1}{\sqrt{2}} \right).$ Thể hiện câu trả lời của bạn bằng radian.,Level 1,Precalculus,"Vì $\cos \frac{3 \pi}{4} = -\frac{1}{\sqrt{2}},$ $\arccos \left( -\frac{1}{\sqrt{2}} \ phải) = \boxed{\frac{3 \pi}{4}}.$"
+"Trong tam giác $LMN$, chúng ta có $\góc M = 90^\circ$, $MN = 2$ và $LM = \sqrt{21}$. $\sin L$ là gì?",Level 1,Precalculus,"[asy]
+cặp L,M,N;
+N = (0,0);
+M = (2,0);
+L = (2,-sqrt(21));
+hòa(L--M--N--L);
+draw(rightanglemark(L,M,N,10));
+nhãn(""$M$"",M,NE);
+nhãn(""$L$"",L,SE);
+nhãn(""$N$"",N,NW);
+label(""$2$"",(N+M)/2,NW);
+label(""$\sqrt{21}$"",(M+L)/2,E);
+[/asy]
+
+Vì đây là tam giác vuông nên $\sin L = \frac{MN}{LN}.$
+
+Sử dụng Định lý Pythagore, chúng ta thấy rằng $$LN = \sqrt{MN^2 + LM^2} = \sqrt{4 + 21} = 5.$$Sau đó $\sin L = \boxed{\frac{2} {5}}$."

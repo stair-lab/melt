@@ -154,6 +154,9 @@ class ScriptArguments:
     )
 
     # Inference parameters
+    smoke_test: Optional[bool] = field(
+        default=False, metadata={"help": "Run a smoke test on a small dataset"}
+    )
     prompting_strategy: Optional[int] = field(
         default=0, metadata={"help": "Prompting strategy to use"}
     )
@@ -163,9 +166,7 @@ class ScriptArguments:
     random_mtpc: Optional[bool] = field(
         default=False, metadata={"help": "Enable random shuffling of choices"}
     )
-    seed: Optional[int] = field(
-        default=42, metadata={"help": "Random seed"}
-    )
+    seed: Optional[int] = field(default=42, metadata={"help": "Random seed"})
     continue_infer: Optional[bool] = field(
         default=False,
         metadata={"help": "Wheather to continue previous inference process"},
