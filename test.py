@@ -37,6 +37,11 @@ if __name__ == "__main__":
         dataset_name=script_args.dataset_name,
         prompting_strategy=script_args.prompting_strategy,
     )
+    if script_args.smoke_test:
+        n_examples = 8
+        dataset_wrapper.dataset_testing = dataset_wrapper.dataset_testing.select(
+            range(n_examples))
+
     dataset_loader = DataLoader(
         dataset_wrapper.get_dataset_testing(),
         batch_size=script_args.per_device_eval_batch_size,
@@ -62,16 +67,19 @@ if __name__ == "__main__":
         + f"_pt{script_args.prompting_strategy}"
     )
 
-    csv_file = os.path.join(script_args.output_dir, f"results_{ds_exact_name}.csv")
+    csv_file = os.path.join(script_args.output_dir,
+                            f"results_{ds_exact_name}.csv")
 
-    json_file = os.path.join(script_args.output_dir, f"results_{ds_exact_name}.json")
+    json_file = os.path.join(script_args.output_dir,
+                             f"results_{ds_exact_name}.json")
 
     if script_args.continue_infer:
         if os.path.exists(csv_file):
             df1 = pd.read_csv(csv_file)
             start_idx = len(df1)
         else:
-            raise FileNotFoundError(f"File {csv_file} does not exist! Terminating...")
+            raise FileNotFoundError(
+                f"File {csv_file} does not exist! Terminating...")
     else:
         start_idx = 0
 
@@ -84,12 +92,14 @@ if __name__ == "__main__":
 
         save_to_json(
             generations,
-            os.path.join(script_args.output_dir, f"results_{ds_exact_name}.json"),
+            os.path.join(script_args.output_dir,
+                         f"results_{ds_exact_name}.json"),
         )
         if results is not None:
             save_to_json(
                 results,
-                os.path.join(script_args.output_dir, f"metrics_{ds_exact_name}.json"),
+                os.path.join(script_args.output_dir,
+                             f"metrics_{ds_exact_name}.json"),
             )
 
     eval_pipeline.run(
