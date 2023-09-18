@@ -576,12 +576,12 @@ class EvalPipeline:
             
             selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_testing)), 5))
             selected_sample = [ds_wrapper.dataset_testing[s] for s in selected_sample_idx]
-            # ds_wrapper.dataset_testing = ds_wrapper.dataset_testing.select(
-            #     [
-            #         i for i in range(len(ds_wrapper.dataset_testing)) 
-            #         if i not in selected_sample_idx
-            #     ]
-            # )
+            ds_wrapper.dataset_testing = ds_wrapper.dataset_testing.select(
+                [
+                    i for i in range(len(ds_wrapper.dataset_testing)) 
+                    if i not in selected_sample_idx
+                ]
+            )
             original_few_shot = ''.join(list(map(format_original_fewshot, selected_sample)))    
         
         # Create few-shot strings
