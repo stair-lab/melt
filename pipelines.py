@@ -747,10 +747,17 @@ class EvalPipeline:
         if self.few_shot_flag:
 
             def format_original_fewshot(rec):
-                return f"""Văn bản: ''' {rec[ds_wrapper.passage]} '''\nCâu hỏi: ''' {rec[ds_wrapper.query]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {{ "answer": "{rec[ds_wrapper.answer]}" }} </s><s>[INST]\n"""
+                return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {{ "answer": "{rec["answer"]}" }} </s><s>[INST]\n"""
 
-            selected_sample = list(random.sample(list(ds_wrapper.dataset_training), 3))
-
+            get_random_samples = list(random.sample(list(ds_wrapper.dataset_training), 2))
+            first_sample = {"query": get_random_samples[0][ds_wrapper.query], "passage": ast.literal_eval(get_random_samples[0][ds_wrapper.passage])["passage"][0], "answer": "Yes" }
+            selected_second_passage = []
+            while len(selected_second_passage) == 0:
+                select_second_passage =  list(set(ast.literal_eval(get_random_samples[0][ds_wrapper.passage])["passage"]) - set(ast.literal_eval(get_random_samples[1][ds_wrapper.passage])["passage"]))
+                if len(select_second_passage) == 0:
+                    get_random_samples[1] = list(random.sample(list(ds_wrapper.dataset_training), 1))[0]
+            second_sample = {"query": get_random_samples[1][ds_wrapper.query], "passage": select_second_passage[0], "answer": "No" }
+            selected_sample = [first_sample, second_sample]
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )
