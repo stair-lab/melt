@@ -404,12 +404,12 @@ class DatasetWrapper:
 
         # Information Retrieval
         elif self.dataset_name == "mmarco":
-            # Load 
-            self.dataset_training = [{"query", "passage", "answer"},...]
+            # Load
+            self.dataset_training = [{"query", "passage", "answer"}, ...]
             self.query = "query"
             self.passage = "passages"
             self.answer = "answer"
-            
+
             raise NotImplementedError
 
         elif self.dataset_name == "mmarco_robustness":
