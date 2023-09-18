@@ -5,9 +5,6 @@ from tqdm import tqdm
 from generation_config import GenerationConfig
 import ast
 
-import random
-random.seed(123)
-
 
 class InferPipeline:
     def __init__(self, model, tokenizer, generation_config):
@@ -169,11 +166,12 @@ class EvalPipeline:
         calib_probs = []
         idx = 0
         original_few_shot = ""
+        selected_sample = []
         if self.few_shot_flag:
             def format_original_fewshot(
                 rec): return f"""Câu hỏi: {rec[ds_wrapper.question]}\nCâu trả lời:[/INST] {rec[ds_wrapper.answer]} </s><s>[INST]\n"""
-            selected_sample = list(random.sample(
-                list(ds_wrapper.dataset_training), 5))
+            selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_training)), 5))
+            selected_sample = [ds_wrapper.dataset_training[s] for s in selected_sample_idx]
 
             original_few_shot = ''.join(
                 list(map(format_original_fewshot, selected_sample)))
@@ -203,19 +201,21 @@ class EvalPipeline:
             if idx % 100 == 0:
                 print(f"Saving results of {idx} batches")
                 generations = {
-                    "predictions": predictions,
-                    "references": references,
-                    "generation_probs": generation_probs,
-                    "calibration_probs": calib_probs
-                }
+                               "predictions": predictions,
+                               "references": references,
+                               "generation_probs": generation_probs,
+                               "calibration_probs": calib_probs,
+                               "fewshot": selected_sample
+                               }
                 saving_fn(generations)
 
         generations = {
-            "predictions": predictions,
-            "references": references,
-            "generation_probs": generation_probs,
-            "calibration_probs": calib_probs
-        }
+                       "predictions": predictions,
+                       "references": references,
+                       "generation_probs": generation_probs,
+                        "calibration_probs": calib_probs,
+                        "fewshot": selected_sample
+                        }
         saving_fn(generations)
 
     def __summarization(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -262,7 +262,7 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         calib_few_shot = ""
-
+        selected_sample = []
         if self.few_shot_flag:
             def format_original_fewshot(
                 rec): return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "sentiment": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
@@ -317,14 +317,15 @@ class EvalPipeline:
                 generations = {"predictions": predictions,
                                "references": references,
                                "generation_probs": generation_probs,
-                               "option_probs": option_probs}
-
+                               "option_probs": option_probs,
+                               "fewshot": selected_sample}
                 saving_fn(generations)
 
         generations = {"predictions": predictions,
                        "references": references,
                        "generation_probs": generation_probs,
-                       "option_probs": option_probs}
+                        "option_probs": option_probs,
+                        "fewshot": selected_sample}
         saving_fn(generations)
 
     def __multiple_choice_text_classification(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -336,6 +337,8 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         calib_few_shot = ""
+        selected_sample = []
+        
         if self.few_shot_flag:
             def format_original_fewshot(
                 rec): return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ {"emotion" if sub_task == "vsmec" else "tag"}: {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
@@ -392,14 +395,15 @@ class EvalPipeline:
                 generations = {"predictions": predictions,
                                "references": references,
                                "generation_probs": generation_probs,
-                               "option_probs": option_probs}
-
+                               "option_probs": option_probs,
+                               "fewshot": selected_sample}
                 saving_fn(generations)
 
         generations = {"predictions": predictions,
                        "references": references,
                        "generation_probs": generation_probs,
-                       "option_probs": option_probs}
+                        "option_probs": option_probs,
+                        "fewshot": selected_sample}
         saving_fn(generations)
 
     def __multiple_choice_toxicity(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -411,7 +415,7 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         calib_few_shot = ""
-
+        selected_sample = []
         if self.few_shot_flag:
             def format_original_fewshot(
                 rec): return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "toxic_level": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
@@ -466,14 +470,15 @@ class EvalPipeline:
                 generations = {"predictions": predictions,
                                "references": references,
                                "generation_probs": generation_probs,
-                               "option_probs": option_probs}
-
+                               "option_probs": option_probs,
+                               "fewshot": selected_sample}
                 saving_fn(generations)
 
         generations = {"predictions": predictions,
                        "references": references,
                        "generation_probs": generation_probs,
-                       "option_probs": option_probs}
+                        "option_probs": option_probs,
+                        "fewshot": selected_sample}
         saving_fn(generations)
 
     def __multiple_choice(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -487,6 +492,7 @@ class EvalPipeline:
         original_few_shot = ""
         calib_few_shot = ""
         option_order_all = []
+        selected_sample = []
         alphabet2idx = {chr(i+65): i for i in range(26)}
         if self.few_shot_flag:
             def format_original_fewshot(
@@ -494,8 +500,8 @@ class EvalPipeline:
             def format_calib_fewshot(
                 rec): return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} \nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {ds_wrapper.answer} </s><s>[INST]\n"""
 
-            selected_sample = list(random.sample(
-                list(ds_wrapper.dataset_training), 5))
+            selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_training)), 5))
+            selected_sample = [ds_wrapper.dataset_training[s] for s in selected_sample_idx]
 
             original_few_shot = ''.join(
                 list(map(format_original_fewshot, selected_sample)))
@@ -556,15 +562,17 @@ class EvalPipeline:
                                "references": references,
                                "generation_probs": generation_probs,
                                "option_probs": option_probs,
-                               "option_orders": option_order_all}
-
+                               "option_orders": option_order_all,
+                               "fewshot": selected_sample}
                 saving_fn(generations)
 
         generations = {"predictions": predictions,
                        "references": references,
                        "generation_probs": generation_probs,
-                       "option_probs": option_probs,
-                       "option_orders": option_order_all}
+                        "option_probs": option_probs,
+                        "option_orders": option_order_all,
+                        "fewshot": selected_sample}
+
         saving_fn(generations)
 
     def __language_modelling(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -573,13 +581,13 @@ class EvalPipeline:
         generation_probs = []
         idx = 0
         original_few_shot = ""
-
+        selected_sample = []
         if self.few_shot_flag:
             def format_original_fewshot(
                 rec): return f"""Khách: "{rec[ds_wrapper.source]}"\nBot:[/INST] {rec[ds_wrapper.target]} </s><s>[INST]\n"""
 
-            selected_sample = list(random.sample(
-                list(ds_wrapper.dataset_testing), 5))
+            selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_testing)), 5))
+            selected_sample = [ds_wrapper.dataset_testing[s] for s in selected_sample_idx]
 
             original_few_shot = ''.join(
                 list(map(format_original_fewshot, selected_sample)))
@@ -609,12 +617,14 @@ class EvalPipeline:
                 print(f"Saving results of {idx} batches")
                 generations = {"predictions": predictions,
                                "references": references,
-                               "generation_probs": generation_probs}
+                               "generation_probs": generation_probs,
+                               "fewshot": selected_sample}
                 saving_fn(generations)
 
         generations = {"predictions": predictions,
                        "references": references,
-                       "generation_probs": generation_probs}
+                       "generation_probs": generation_probs,
+                       "fewshot": selected_sample}
         saving_fn(generations)
 
     def __information_retrieval(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -622,7 +632,7 @@ class EvalPipeline:
 
         idx = 0
         original_few_shot = ""
-
+        selected_sample = []
         if self.few_shot_flag:
             def format_original_fewshot(
                 rec): return f"""Văn bản: ''' {rec[ds_wrapper.passage]} '''\nCâu hỏi: ''' {rec[ds_wrapper.query]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {rec[ds_wrapper.answer]} </s><s>[INST]\n"""
@@ -672,10 +682,18 @@ class EvalPipeline:
             idx += 1
             if idx % 100 == 0:
                 print(f"Saving results of {idx} batches")
-
-                saving_fn(predictions)
-
-        saving_fn(predictions)
+                
+                generations = {
+                    "fewshot": selected_sample,
+                    "prediction": predictions 
+                }
+                saving_fn(generations)
+                
+        generations = {
+                    "fewshot": selected_sample,
+                    "prediction": predictions 
+                }
+        saving_fn(generations)
 
     def __reasoning(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         predictions = []
@@ -687,6 +705,7 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         calib_few_shot = ""
+        selected_sample = []
         if self.few_shot_flag:
             def format_original_fewshot(
                 rec): return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {{ "answer": {rec[ds_wrapper.target]}, "confident_level": 1}} </s><s>[INST]\n"""
@@ -731,6 +750,7 @@ class EvalPipeline:
                     "references": references,
                     "generation_probs": generation_probs,
                     "calibration_probs": calib_probs,
+                    "fewshot": selected_sample
                 }
                 if sub_task == "math":
                     generations["math_problem_type"] = math_problem_type
@@ -741,6 +761,7 @@ class EvalPipeline:
             "references": references,
             "generation_probs": generation_probs,
             "calibration_probs": calib_probs,
+            "fewshot": selected_sample
         }
         if sub_task == "math":
             generations["math_problem_type"] = math_problem_type
@@ -752,7 +773,6 @@ class EvalPipeline:
         generation_probs = []
         idx = 0
         original_few_shot = ""
-
         if self.few_shot_flag:
             def format_original_fewshot(
                 rec): return f"""Khách: "{rec[ds_wrapper.source_language]}"\nBot:[/INST] {rec[ds_wrapper.target_language]} </s><s>[INST]\n"""
@@ -762,7 +782,7 @@ class EvalPipeline:
 
             original_few_shot = ''.join(
                 list(map(format_original_fewshot, selected_sample)))
-
+          
         # Create few-shot strings
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -786,12 +806,14 @@ class EvalPipeline:
                 print(f"Saving results of {idx} batches")
                 generations = {"predictions": predictions,
                                "references": references,
-                               "generation_probs": generation_probs}
+                               "generation_probs": generation_probs,
+                               "fewshot": selected_sample}
                 saving_fn(generations)
 
         generations = {"predictions": predictions,
                        "references": references,
-                       "generation_probs": generation_probs}
+                       "generation_probs": generation_probs,
+                       "fewshot": selected_sample}
         saving_fn(generations)
 
     def run(self, ds_wrapper, ds_loader, saving_fn, start_idx=0, few_shot=False, random_mtpc=False):
