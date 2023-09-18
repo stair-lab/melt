@@ -6,8 +6,7 @@ from typing import Optional
 class ScriptArguments:
     model_name: Optional[str] = field(
         default="meta-llama/Llama-2-7b-chat-hf",
-        metadata={
-            "help": "The model that you want to train from the Hugging Face hub"},
+        metadata={"help": "The model that you want to train from the Hugging Face hub"},
     )
     tokenizer_name: Optional[str] = field(
         default="meta-llama/Llama-2-7b-chat-hf",
@@ -77,8 +76,7 @@ class ScriptArguments:
     )
     tf32: Optional[bool] = field(
         default=True,
-        metadata={
-            "help": "Enable the TF32 mode (available in Ampere and newer GPUs)"},
+        metadata={"help": "Enable the TF32 mode (available in Ampere and newer GPUs)"},
     )
     per_device_train_batch_size: Optional[int] = field(
         default=12, metadata={"help": "Batch size per GPU for training"}
@@ -114,8 +112,7 @@ class ScriptArguments:
     )
     max_steps: int = field(
         default=-1,
-        metadata={
-            "help": "Number of training steps (overrides num_train_epochs)"},
+        metadata={"help": "Number of training steps (overrides num_train_epochs)"},
     )
     warmup_ratio: float = field(
         default=0.03,
@@ -163,9 +160,7 @@ class ScriptArguments:
     random_mtpc: Optional[bool] = field(
         default=False, metadata={"help": "Enable random shuffling of choices"}
     )
-    seed: Optional[int] = field(
-        default=42, metadata={"help": "Random seed"}
-    )
+    seed: Optional[int] = field(default=42, metadata={"help": "Random seed"})
     continue_infer: Optional[bool] = field(
         default=False,
         metadata={"help": "Wheather to continue previous inference process"},
