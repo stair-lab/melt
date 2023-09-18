@@ -11,6 +11,7 @@ from model import get_model
 from pipelines import EvalPipeline
 from dataset import DatasetWrapper
 from script_arguments import ScriptArguments
+from utils import set_seed
 
 
 def save_to_json(data, name):
@@ -28,6 +29,9 @@ def save_to_csv(data, name):
 if __name__ == "__main__":
     parser = HfArgumentParser(ScriptArguments)
     script_args = parser.parse_args_into_dataclasses()[0]
+
+    set_seed(script_args.seed)
+
     # Load dataset (you can process it here)
     dataset_wrapper = DatasetWrapper(
         dataset_name=script_args.dataset_name,
@@ -81,20 +85,21 @@ if __name__ == "__main__":
             df3 = df1.append(df2, ignore_index=True)
             generations = df3.to_dict(orient='list')
 
-        save_to_csv(
+        save_to_json(
             generations,
             os.path.join(script_args.output_dir,
-                         f"results_{ds_exact_name}.csv"),
+                         f"results_{ds_exact_name}.json"),
         )
         if results is not None:
             save_to_json(
                 results,
                 os.path.join(script_args.output_dir,
-                             f"results_{ds_exact_name}.json"),
+                             f"metrics_{ds_exact_name}.json"),
             )
 
     eval_pipeline.run(
         ds_wrapper=dataset_wrapper, ds_loader=dataset_loader,
         saving_fn=save_results, start_idx=start_idx,
-        few_shot=script_args.fewshot_prompting
+        few_shot=script_args.fewshot_prompting,
+        random_mtpc=script_args.random_mtpc
     )
