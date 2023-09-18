@@ -586,14 +586,7 @@ class EvalPipeline:
             def format_original_fewshot(
                 rec): return f"""Khách: "{rec[ds_wrapper.source]}"\nBot:[/INST] {rec[ds_wrapper.target]} </s><s>[INST]\n"""
 
-            selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_testing)), 5))
-            selected_sample = [ds_wrapper.dataset_testing[s] for s in selected_sample_idx]
-            ds_wrapper.dataset_testing = ds_wrapper.dataset_testing.select(
-                [
-                    i for i in range(len(ds_wrapper.dataset_testing)) 
-                    if i not in selected_sample_idx
-                ]
-            )
+            selected_sample = ds_wrapper.dataset_training
             original_few_shot = ''.join(list(map(format_original_fewshot, selected_sample)))    
         
         # Create few-shot strings

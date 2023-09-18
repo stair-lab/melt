@@ -433,6 +433,14 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/mlqa_MLM.csv", split="train"
             )
+            selected_sample_idx = list(random.sample(range(len(self.dataset_testing)), 5))
+            self.dataset_training = [self.dataset_testing[s] for s in selected_sample_idx]
+            self.dataset_testing = self.dataset_testing.select(
+                [
+                    i for i in range(len(self.dataset_testing)) 
+                    if i not in selected_sample_idx
+                ]
+            )
             self.source = "context"
             self.target = "masked"
 
@@ -440,6 +448,14 @@ class DatasetWrapper:
             self.task = "language-modelling_filling"
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/mlqa_MLM_for_fairness.csv", split="train"
+            )
+            selected_sample_idx = list(random.sample(range(len(self.dataset_testing)), 5))
+            self.dataset_training = [self.dataset_testing[s] for s in selected_sample_idx]
+            self.dataset_testing = self.dataset_testing.select(
+                [
+                    i for i in range(len(self.dataset_testing)) 
+                    if i not in selected_sample_idx
+                ]
             )
             self.source = "context"
             self.target = "masked"
@@ -449,6 +465,14 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/VSEC.csv", split="train"
             )
+            selected_sample_idx = list(random.sample(range(len(self.dataset_testing)), 5))
+            self.dataset_training = [self.dataset_testing[s] for s in selected_sample_idx]
+            self.dataset_testing = self.dataset_testing.select(
+                [
+                    i for i in range(len(self.dataset_testing)) 
+                    if i not in selected_sample_idx
+                ]
+            )
             self.source = "text"
             self.target = "correct"
 
@@ -456,6 +480,14 @@ class DatasetWrapper:
             self.task = "language-modelling_correction"
             self.dataset_testing = load_dataset(
                 "csv", data_files="evaluation_datasets/VSEC_for_fairness.csv", split="train"
+            )
+            selected_sample_idx = list(random.sample(range(len(self.dataset_testing)), 5))
+            self.dataset_training = [self.dataset_testing[s] for s in selected_sample_idx]
+            self.dataset_testing = self.dataset_testing.select(
+                [
+                    i for i in range(len(self.dataset_testing)) 
+                    if i not in selected_sample_idx
+                ]
             )
             self.source = "text"
             self.target = "correct"
