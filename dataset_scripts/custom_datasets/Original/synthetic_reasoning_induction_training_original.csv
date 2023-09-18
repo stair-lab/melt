@@ -1,0 +1,1001 @@
+source,target
+Two results: + blueberry = horse | + blueberry cobra = whale stork,Rule: + Z = X
+Two results: grape + grape + grape = | eagle + eagle + eagle =,Rule: Y + Y + Y =
+Two results: pear * blueberry pear - | buffalo * penguin peach buffalo -,Rule: Y * Z Y -
+Two results: stork whale = stork - | whale penguin grape penguin = whale penguin -,Rule: Y X = Y -
+Two results: penguin peach penguin peach - = + penguin peach | banana banana - = + banana,Rule: Y Y - = + Y
+Two results: + apple seal blueberry - = | + zebra watermelon - =,Rule: + Z Y - =
+Two results: = stork shark = + | = buffalo seal buffalo seal = +,Rule: = X Z = +
+Two results: - shark zebra peach = | - peach zebra seal =,Rule: - Y X Z =
+Two results: = shark buffalo * + watermelon | = penguin * + buffalo,Rule: = Y * + Z
+Two results: - - rat rat + horse buffalo | - - zebra zebra + strawberry,Rule: - - Y + Z
+Two results: = eagle zebra - | = seal strawberry watermelon blackberry -,Rule: = Z X -
+Two results: - = grape = grape | - = shark = cobra blackberry,Rule: - = Y = X
+Two results: grape = + lion - grape | shark strawberry = + lion blackberry - shark strawberry,Rule: X = + Z - X
+Two results: * = stork pear penguin pear | * = zebra buffalo strawberry,Rule: * = Z X
+Two results: = + eagle stork banana banana strawberry | = + grape cobra banana rat shark,Rule: = + X Y Z
+Two results: blackberry zebra blackberry zebra * + | strawberry horse strawberry horse * +,Rule: Z Z * +
+Two results: kiwi - = kiwi | peach kiwi - = peach kiwi,Rule: Y - = Y
+Two results: strawberry whale + zebra stork = | rat pear + lion lion blackberry peach =,Rule: X + Z Y =
+Two results: * * banana zebra - | * * grape penguin -,Rule: * * Z Y -
+Two results: zebra strawberry blueberry stork * - blueberry stork + | zebra stork blueberry * - blueberry +,Rule: Y X * - X +
+Two results: cobra - watermelon blackberry - cobra | grape whale - eagle - grape whale,Rule: Y - X - Y
+Two results: * apple buffalo + = penguin | * strawberry + = whale,Rule: * X + = Z
+Two results: * pear blackberry blackberry grape = pear blackberry | * eagle lion blackberry = eagle lion,Rule: * Y Z = Y
+Two results: = apple strawberry + apple strawberry = | = watermelon stork + watermelon stork =,Rule: = X + X =
+Two results: seal rat * - - shark blueberry | zebra watermelon * - - zebra,Rule: Y * - - X
+Two results: + rat banana pear banana pear + + | + blackberry peach peach + +,Rule: + X Y Y + +
+Two results: blueberry buffalo blueberry buffalo zebra shark = - - | eagle eagle shark penguin = - -,Rule: X X Z = - -
+Two results: banana banana banana banana = - cobra | strawberry strawberry = - rat kiwi,Rule: Y Y = - Z
+Two results: whale * * whale | horse rat * * horse rat,Rule: X * * X
+Two results: * whale eagle + - cobra pear | * buffalo + - blueberry kiwi,Rule: * X + - Z
+Two results: = + stork stork + | = + penguin kiwi buffalo +,Rule: = + X Z +
+Two results: * + blackberry apple + strawberry pear | * + seal pear + penguin seal buffalo,Rule: * + Y + X Z
+Two results: + blueberry banana blueberry * blueberry banana = | + blueberry buffalo * blueberry =,Rule: + Z Y * Z =
+Two results: rat - kiwi + kiwi | rat grape - eagle + eagle,Rule: Z - Y + Y
+Two results: - = + pear whale shark shark | - = + strawberry grape apple zebra,Rule: - = + Z Y
+Two results: = buffalo eagle = rat | = stork apple = pear buffalo,Rule: = Z = X
+Two results: stork = stork = = | grape = grape = =,Rule: Y = Y = =
+Two results: - banana watermelon - | - shark penguin blueberry horse -,Rule: - Y X -
+Two results: + * banana + horse | + * eagle banana + lion rat,Rule: + * X + Z
+Two results: zebra zebra = blackberry grape - - | banana banana = strawberry - -,Rule: Y Y = X - -
+Two results: watermelon - + cobra | kiwi apple - + zebra,Rule: X - + Y
+Two results: * + grape seal stork zebra | * + zebra lion banana,Rule: * + X Z Y
+Two results: eagle - eagle pear grape * | peach - peach peach *,Rule: X - X Z *
+Two results: = cobra whale - cobra | = blackberry stork - kiwi,Rule: = X - Z
+Two results: - pear lion + * pear | - cobra lion cobra kiwi + * cobra lion,Rule: - X Y + * X
+Two results: eagle - = eagle eagle | grape - = grape grape,Rule: Z - = Z Z
+Two results: + horse blueberry cobra + - | + pear banana + -,Rule: + Y X + -
+Two results: penguin whale * stork stork = | kiwi * pear =,Rule: X * Z =
+Two results: - = rat rat + | - = peach cobra peach cobra +,Rule: - = X X +
+Two results: + * blackberry blackberry | + * horse horse,Rule: + * Y Y
+Two results: + watermelon = = watermelon | + blackberry = = blackberry,Rule: + X = = X
+Two results: peach watermelon + - watermelon - | apple kiwi watermelon + - watermelon -,Rule: Z Y + - Y -
+Two results: blackberry grape blackberry = + | strawberry rat grape strawberry = +,Rule: Z Y Z = +
+Two results: watermelon whale grape rat - + | eagle shark - +,Rule: Y Z - +
+Two results: banana penguin lion * - lion + | stork horse seal * - horse seal +,Rule: Z Y * - Y +
+Two results: grape lion - = * lion | horse - = * cobra,Rule: Z - = * X
+Two results: - peach lion zebra rat + - | - horse penguin horse + -,Rule: - Z Y X + -
+Two results: = cobra strawberry + - shark | = grape + - horse,Rule: = X + - Y
+Two results: - blueberry horse * rat kiwi | - stork stork * cobra,Rule: - Z * Y
+Two results: + peach * shark + | + kiwi whale * penguin apple +,Rule: + Y * X +
+Two results: cobra blueberry whale - + blueberry whale | pear buffalo lion - + lion,Rule: Y Z - + Z
+Two results: penguin = penguin - penguin = | lion = lion - lion =,Rule: Z = Z - Z =
+Two results: * * cobra eagle cobra eagle | * * eagle eagle,Rule: * * X X
+Two results: * watermelon whale watermelon whale * | * watermelon watermelon *,Rule: * Y Y *
+Two results: lion lion shark horse eagle * * | apple whale watermelon peach rat * *,Rule: Z X Y * *
+Two results: = whale eagle = whale | = seal pear peach = seal,Rule: = X Y = X
+Two results: + pear blackberry blackberry zebra - | + seal seal watermelon blueberry -,Rule: + Z Y X -
+Two results: cobra grape * cobra buffalo cobra buffalo * | pear * horse rat horse rat *,Rule: Y * X X *
+Two results: strawberry = buffalo + kiwi blueberry | whale grape = blackberry blackberry + grape,Rule: Z = Y + X
+Two results: * apple * apple * | * banana * banana *,Rule: * X * X *
+Two results: * pear penguin - buffalo * whale | * eagle - zebra kiwi * pear peach,Rule: * X - Z * Y
+Two results: whale whale * * | watermelon shark watermelon shark * *,Rule: X X * *
+Two results: penguin strawberry - peach horse = * | peach - blackberry = *,Rule: Z - X = *
+Two results: banana * - pear | kiwi cobra * - watermelon,Rule: Y * - Z
+Two results: seal cobra shark shark * - | strawberry rat * -,Rule: Z Y * -
+Two results: = * - apple buffalo whale apple buffalo | = * - horse peach blackberry horse peach,Rule: = * - Y X Y
+Two results: seal lion - seal lion blueberry eagle * | lion - lion grape shark *,Rule: Y - Y X *
+Two results: grape * blueberry + eagle + | zebra * blueberry peach + cobra blackberry +,Rule: Z * X + Y +
+Two results: blackberry * whale + + | shark zebra * watermelon blackberry + +,Rule: Z * X + +
+Two results: * cobra blueberry cobra blueberry - + cobra blueberry | * seal seal - + seal,Rule: * Z Z - + Z
+Two results: = * kiwi kiwi kiwi | = * rat rat rat,Rule: = * X X X
+Two results: eagle + grape * eagle = | rat + banana pear * rat =,Rule: Y + Z * Y =
+Two results: seal + - seal watermelon | eagle banana + - eagle banana grape,Rule: X + - X Z
+Two results: whale kiwi * kiwi - - | strawberry * stork - -,Rule: X * Y - -
+Two results: * shark whale - whale | * rat buffalo grape - grape,Rule: * Y Z - Z
+Two results: stork stork - cobra apple + | kiwi kiwi - stork buffalo +,Rule: X X - Y +
+Two results: zebra + buffalo strawberry buffalo strawberry - | peach + grape stork grape stork -,Rule: Y + X X -
+Two results: + = grape grape + grape | + = penguin penguin + penguin,Rule: + = Y Y + Y
+Two results: buffalo strawberry * peach horse apple + | pear * whale strawberry blackberry +,Rule: Z * X Y +
+Two results: + - stork lion stork lion | + - shark shark,Rule: + - Y Y
+Two results: = stork kiwi * grape stork grape stork | = stork lion * watermelon watermelon,Rule: = X * Z Z
+Two results: cobra * - seal stork | whale * - eagle seal,Rule: Y * - X
+Two results: shark banana kiwi lion - = | banana shark - =,Rule: X Z - =
+Two results: = whale cobra apple apple + - | = lion pear banana + -,Rule: = X Y + -
+Two results: + buffalo shark buffalo shark * lion + | + pear eagle pear eagle * apple +,Rule: + Z Z * X +
+Two results: cobra apple peach - rat * | grape cobra apple - grape *,Rule: Y Z - X *
+Two results: blackberry + - * strawberry penguin | penguin grape + - * blackberry grape,Rule: Y + - * Z
+Two results: - horse horse = * rat buffalo | - watermelon watermelon = * lion,Rule: - Y Y = * X
+Two results: - seal - watermelon watermelon | - horse - cobra watermelon cobra watermelon,Rule: - Y - Z Z
+Two results: strawberry strawberry banana - + | zebra zebra pear shark - +,Rule: Z Z Y - +
+Two results: banana whale * peach grape = banana whale | blueberry * watermelon peach = blueberry,Rule: Y * Z = Y
+Two results: = grape + peach grape = | = seal lion + rat strawberry seal lion =,Rule: = Z + X Z =
+Two results: - horse apple + kiwi peach + lion | - horse blackberry + zebra + lion seal,Rule: - Z + X + Y
+Two results: + kiwi zebra kiwi zebra = - | + zebra zebra zebra zebra = -,Rule: + X X = -
+Two results: + lion buffalo = peach kiwi | + cobra = rat grape,Rule: + X = Y
+Two results: + kiwi - whale whale whale whale | + strawberry watermelon - buffalo buffalo,Rule: + X - Z Z
+Two results: * - kiwi * kiwi | * - rat rat * rat rat,Rule: * - Y * Y
+Two results: whale * whale - | blueberry * blueberry -,Rule: X * X -
+Two results: eagle - stork * - | blackberry - watermelon * -,Rule: Y - Z * -
+Two results: + rat strawberry kiwi grape * - | + seal blueberry cobra * -,Rule: + X Z * -
+Two results: * stork apple - whale blueberry - stork apple | * zebra - whale - zebra,Rule: * Y - Z - Y
+Two results: - blackberry watermelon blackberry watermelon buffalo strawberry - - | - buffalo lion buffalo lion cobra - -,Rule: - Y Y Z - -
+Two results: horse + horse = | stork blackberry + stork blackberry =,Rule: X + X =
+Two results: horse shark blackberry horse shark + - + | shark grape shark shark grape + - +,Rule: Y X Y + - +
+Two results: shark = + shark * | zebra stork = + zebra stork *,Rule: Z = + Z *
+Two results: kiwi + + kiwi horse cobra | kiwi + + kiwi buffalo,Rule: X + + X Z
+Two results: - banana kiwi banana kiwi * = | - whale kiwi whale kiwi * =,Rule: - Z Z * =
+Two results: = zebra horse kiwi kiwi + - | = whale whale + -,Rule: = X Z + -
+Two results: + cobra kiwi shark seal + = | + seal lion seal + =,Rule: + Z X + =
+Two results: * lion peach + lion peach | * lion pear + lion pear,Rule: * X + X
+Two results: * blueberry blueberry blackberry buffalo * | * buffalo watermelon buffalo watermelon zebra *,Rule: * Y Y X *
+Two results: lion horse + whale + | peach eagle + peach seal +,Rule: X + Z +
+Two results: = cobra - rat - | = penguin watermelon - shark watermelon -,Rule: = Y - X -
+Two results: banana * = blueberry - | watermelon penguin * = pear -,Rule: Y * = Z -
+Two results: * watermelon stork watermelon stork - - | * banana eagle banana eagle - -,Rule: * X X - -
+Two results: rat + = rat rat | buffalo apple + = buffalo apple buffalo apple,Rule: Y + = Y Y
+Two results: + zebra rat + - zebra rat | + apple eagle + - apple eagle,Rule: + Z + - Z
+Two results: - - seal eagle | - - eagle whale banana grape,Rule: - - X Z
+Two results: = * watermelon = stork zebra kiwi | = * blueberry = blackberry cobra zebra,Rule: = * Y = Z X
+Two results: * stork buffalo = * cobra stork buffalo | * eagle = * kiwi eagle,Rule: * Z = * X Z
+Two results: lion eagle * lion eagle buffalo apple * | penguin whale * penguin whale zebra *,Rule: X * X Z *
+Two results: shark rat shark rat + blueberry - | lion whale lion whale + stork blackberry -,Rule: X X + Z -
+Two results: * apple strawberry whale - rat penguin - | * banana rat watermelon - banana -,Rule: * Z X - Y -
+Two results: = blueberry whale rat * | = whale buffalo lion blackberry *,Rule: = Z Y *
+Two results: - + seal blueberry seal zebra seal blueberry - | - + stork penguin kiwi stork -,Rule: - + X Y X -
+Two results: - * lion kiwi grape * | - * eagle peach stork *,Rule: - * Z Y *
+Two results: strawberry kiwi * + strawberry kiwi kiwi | blackberry * + blackberry eagle cobra,Rule: Z * + Z Y
+Two results: - lion = stork stork | - cobra = apple,Rule: - Z = Y
+Two results: lion strawberry kiwi strawberry kiwi + = | pear pear horse cobra horse cobra + =,Rule: Y X X + =
+Two results: - - pear watermelon seal + | - - seal stork +,Rule: - - Z Y +
+Two results: = shark strawberry shark = | = strawberry lion buffalo strawberry =,Rule: = Y Z Y =
+Two results: * cobra + blackberry = cobra | * watermelon blueberry + blueberry blackberry = watermelon blueberry,Rule: * Z + X = Z
+Two results: shark apple shark apple + blueberry + | grape grape + penguin grape +,Rule: Z Z + Y +
+Two results: strawberry seal * + = strawberry | blueberry eagle lion * + = blueberry eagle,Rule: Z X * + = Z
+Two results: = + zebra eagle + zebra eagle | = + whale blueberry + whale blueberry,Rule: = + X + X
+Two results: - rat pear * = rat | - apple whale shark * = apple whale,Rule: - Z Y * = Z
+Two results: shark shark + * | blueberry whale blueberry whale + *,Rule: Z Z + *
+Two results: blackberry whale shark * * * blackberry whale | banana eagle lion * * * banana,Rule: Z Y * * * Z
+Two results: - * penguin peach penguin peach seal | - * kiwi kiwi blueberry penguin,Rule: - * X X Z
+Two results: kiwi seal = grape grape + | peach = whale whale +,Rule: Z = Y Y +
+Two results: buffalo blueberry buffalo = = - | watermelon rat watermelon = = -,Rule: Y X Y = = -
+Two results: blackberry horse blackberry horse blackberry = - | apple kiwi apple kiwi blueberry watermelon = -,Rule: X X Y = -
+Two results: stork blackberry * zebra stork blackberry * | watermelon shark * buffalo watermelon shark *,Rule: Z * Y Z *
+Two results: + stork eagle stork eagle = = | + horse eagle horse eagle = =,Rule: + Y Y = =
+Two results: blackberry rat * - penguin blackberry | cobra blueberry * - peach,Rule: Z * - Y
+Two results: penguin watermelon penguin watermelon * - | penguin penguin * -,Rule: Z Z * -
+Two results: apple strawberry buffalo + apple strawberry - + | peach stork shark banana + peach stork - +,Rule: Y Z + Y - +
+Two results: pear blackberry * apple rat pear blackberry * - | lion blueberry * penguin lion blueberry * -,Rule: Y * Z Y * -
+Two results: * + blackberry watermelon zebra | * + strawberry banana lion watermelon,Rule: * + Y X Z
+Two results: grape stork apple + grape - | grape apple blackberry apple + grape apple -,Rule: Z Y + Z -
+Two results: - blueberry - strawberry * | - penguin buffalo - shark penguin *,Rule: - Z - X *
+Two results: = peach rat strawberry penguin + | = rat blackberry buffalo +,Rule: = Y Z +
+Two results: - = = horse strawberry seal apple | - = = kiwi zebra horse blueberry,Rule: - = = Z Y
+Two results: blueberry watermelon banana * - | shark rat peach * -,Rule: Z Y * -
+Two results: rat seal blueberry blueberry * - | penguin kiwi kiwi * -,Rule: Y X X * -
+Two results: - cobra * horse seal | - blackberry * grape,Rule: - X * Y
+Two results: cobra banana + cobra banana + cobra banana - | pear buffalo + pear buffalo + pear buffalo -,Rule: Y + Y + Y -
+Two results: watermelon whale * peach strawberry * = watermelon whale | strawberry peach * watermelon * = strawberry peach,Rule: Z * Y * = Z
+Two results: = - stork whale - stork whale | = - zebra eagle - zebra eagle,Rule: = - X - X
+Two results: * * whale seal + whale seal rat | * * seal watermelon + seal watermelon shark blueberry,Rule: * * Z + Z Y
+Two results: apple - = apple = | kiwi - = kiwi =,Rule: Y - = Y =
+Two results: lion peach pear seal + * = | horse peach banana + * =,Rule: X Y + * =
+Two results: + + stork lion shark | + + strawberry penguin,Rule: + + Z X
+Two results: kiwi lion kiwi lion + kiwi lion * | rat rat + rat *,Rule: Y Y + Y *
+Two results: = blackberry stork = banana blueberry | = zebra blueberry = strawberry,Rule: = Y = Z
+Two results: - strawberry strawberry * stork + | - cobra stork cobra stork * banana +,Rule: - Z Z * X +
+Two results: watermelon lion = stork penguin = watermelon lion | blueberry = blueberry = blueberry,Rule: Z = Y = Z
+Two results: pear zebra + * = pear zebra | cobra peach + * = cobra peach,Rule: Y + * = Y
+Two results: peach lion - blackberry * blackberry | pear peach - stork * stork,Rule: X - Y * Y
+Two results: pear watermelon * - pear watermelon peach lion | penguin * - penguin grape seal,Rule: X * - X Z
+Two results: * + penguin penguin penguin | * + whale cobra peach whale cobra,Rule: * + X Y X
+Two results: + peach kiwi peach kiwi = horse | + banana banana = blueberry,Rule: + Z Z = X
+Two results: watermelon + zebra whale zebra whale + | peach watermelon + rat blackberry rat blackberry +,Rule: Z + X X +
+Two results: pear + buffalo penguin = - | rat apple + blackberry = -,Rule: X + Z = -
+Two results: + eagle + lion whale lion whale | + stork + apple apple,Rule: + Z + Y Y
+Two results: horse strawberry = + blueberry zebra buffalo + | eagle = + seal seal blackberry +,Rule: X = + Z Y +
+Two results: buffalo buffalo = + buffalo | horse horse = + horse,Rule: X X = + X
+Two results: + rat whale blueberry - rat | + apple banana - apple,Rule: + Z X - Z
+Two results: kiwi cobra zebra penguin + strawberry * - | whale grape zebra + shark pear * -,Rule: Y Z + X * -
+Two results: * eagle eagle horse - | * seal buffalo seal buffalo kiwi pear -,Rule: * Z Z Y -
+Two results: rat stork + grape seal - rat stork | apple + zebra - apple,Rule: Z + Y - Z
+Two results: lion blueberry blackberry + - | kiwi stork apple + -,Rule: X Y + -
+Two results: = rat watermelon - rat watermelon - | = whale - whale -,Rule: = X - X -
+Two results: - shark buffalo cobra = | - watermelon shark zebra =,Rule: - Z Y =
+Two results: - banana strawberry = lion * shark whale | - apple = rat lion * penguin,Rule: - Z = X * Y
+Two results: horse eagle + watermelon blueberry kiwi * | eagle shark + shark stork shark eagle *,Rule: X + Z Y *
+Two results: grape apple grape apple + + + | banana blackberry banana blackberry + + +,Rule: Y Y + + +
+Two results: + pear pear pear - | + eagle eagle eagle -,Rule: + X X X -
+Two results: cobra - stork apple pear zebra + | kiwi - grape penguin +,Rule: Z - Y X +
+Two results: penguin pear blueberry pear blueberry + * | horse blackberry watermelon watermelon + *,Rule: X Y Y + *
+Two results: pear rat lion * pear = | rat strawberry banana * rat strawberry =,Rule: Y X * Y =
+Two results: peach = * - peach grape pear | pear watermelon = * - pear watermelon kiwi,Rule: Z = * - Z Y
+Two results: = apple grape apple grape * | = grape grape *,Rule: = Z Z *
+Two results: * banana banana * + | * blackberry blackberry blackberry blackberry * +,Rule: * Z Z * +
+Two results: - pear stork watermelon = - | - buffalo buffalo whale grape = -,Rule: - Z Y = -
+Two results: + shark seal * shark seal | + zebra * zebra,Rule: + X * X
+Two results: stork peach + stork peach stork * - | cobra apple + cobra apple apple apple * -,Rule: Z + Z Y * -
+Two results: = - banana lion = banana lion | = - cobra cobra = cobra cobra,Rule: = - Z = Z
+Two results: - * buffalo grape grape * | - * blueberry blueberry blueberry *,Rule: - * X Z Z *
+Two results: penguin whale - eagle + | kiwi peach - strawberry strawberry +,Rule: Z - X +
+Two results: kiwi cobra - peach = horse * | watermelon - rat = grape *,Rule: Y - X = Z *
+Two results: zebra - - + horse zebra | cobra - - + pear cobra,Rule: Y - - + X Y
+Two results: blueberry + zebra eagle blueberry * | shark + horse shark *,Rule: Z + Y Z *
+Two results: shark eagle + * - shark | banana buffalo + * - seal stork,Rule: X + * - Z
+Two results: kiwi kiwi = + | apple apple = +,Rule: Y Y = +
+Two results: seal whale apple * - penguin | rat blueberry stork lion * - whale blackberry,Rule: Y X * - Z
+Two results: + blueberry + rat rat | + lion + peach apple peach apple,Rule: + Z + X X
+Two results: - * horse penguin - blackberry strawberry horse penguin | - * banana watermelon - lion zebra banana watermelon,Rule: - * Y - X Y
+Two results: + - * zebra blueberry | + - * rat banana buffalo,Rule: + - * Z Y
+Two results: = whale * blackberry whale | = penguin * stork seal penguin,Rule: = X * Z X
+Two results: shark + = shark * | strawberry kiwi + = strawberry kiwi *,Rule: Y + = Y *
+Two results: apple * + eagle | blueberry * + horse,Rule: Z * + Y
+Two results: watermelon watermelon + watermelon + | seal seal + seal +,Rule: Z Z + Z +
+Two results: = = blueberry + lion cobra blueberry | = = blackberry kiwi + shark lion blackberry kiwi,Rule: = = Y + X Y
+Two results: horse apple zebra grape horse apple - * | seal banana horse rat seal banana - *,Rule: Y X Y - *
+Two results: + * lion kiwi lion kiwi lion = | + * rat pear cobra cobra =,Rule: + * Y Z Z =
+Two results: eagle - = eagle | penguin watermelon - = penguin watermelon,Rule: Z - = Z
+Two results: penguin shark * seal shark = penguin shark | eagle * eagle horse = eagle,Rule: Z * X = Z
+Two results: cobra pear + penguin seal + cobra pear * | stork + buffalo + stork *,Rule: Z + Y + Z *
+Two results: * apple strawberry + strawberry kiwi | * zebra kiwi + apple strawberry eagle,Rule: * X + Y Z
+Two results: + apple seal - penguin | + horse - pear blueberry,Rule: + X - Z
+Two results: blueberry whale = + | watermelon kiwi penguin eagle = +,Rule: Z Y = +
+Two results: = watermelon stork watermelon stork watermelon stork * * | = zebra zebra zebra * *,Rule: = X X X * *
+Two results: + * = cobra cobra | + * = grape grape,Rule: + * = Z Z
+Two results: + * blackberry shark eagle | + * buffalo buffalo blueberry strawberry,Rule: + * X Z
+Two results: = seal penguin = | = kiwi apple =,Rule: = Z Y =
+Two results: - * banana * banana blackberry blueberry | - * blueberry whale * blueberry whale banana,Rule: - * X * X Y
+Two results: = horse * - horse | = eagle blackberry * - eagle blackberry,Rule: = Z * - Z
+Two results: * + grape seal pear | * + watermelon buffalo cobra,Rule: * + Z X
+Two results: - grape seal seal * | - lion strawberry strawberry *,Rule: - X Y *
+Two results: zebra stork + = | watermelon penguin penguin kiwi + =,Rule: X Z + =
+Two results: = * - penguin penguin | = * - pear lion pear lion,Rule: = * - Z Z
+Two results: banana + banana * + | stork pear + stork pear * +,Rule: X + X * +
+Two results: shark shark blackberry pear * = | stork kiwi stork kiwi buffalo peach * =,Rule: Z Z Y * =
+Two results: shark = shark = shark = | rat = rat = rat =,Rule: Z = Z = Z =
+Two results: + = seal pear zebra kiwi | + = watermelon buffalo shark cobra,Rule: + = Y X
+Two results: * strawberry kiwi strawberry kiwi * eagle | * whale whale * eagle grape,Rule: * X X * Y
+Two results: + grape buffalo stork - + buffalo stork | + cobra stork cobra eagle - + cobra eagle,Rule: + X Y - + Y
+Two results: seal * seal strawberry rat * | strawberry * strawberry watermelon *,Rule: Y * Y Z *
+Two results: * - * penguin lion seal penguin | * - * penguin cobra penguin,Rule: * - * Y X Y
+Two results: blackberry banana + - | zebra grape cobra apple + -,Rule: Z Y + -
+Two results: * = apple eagle lion | * = lion grape kiwi blackberry,Rule: * = X Z
+Two results: grape horse = pear grape horse + | kiwi strawberry = seal kiwi strawberry +,Rule: Z = X Z +
+Two results: peach zebra * * | cobra whale horse * *,Rule: Z X * *
+Two results: - lion pear - banana eagle | - eagle - apple peach,Rule: - Y - X
+Two results: zebra - = * buffalo zebra | blueberry cobra - = * shark seal blueberry cobra,Rule: Z - = * X Z
+Two results: shark = - kiwi | blackberry horse = - apple penguin,Rule: Y = - Z
+Two results: = = = zebra lion blueberry lion blueberry | = = = shark grape blueberry kiwi blueberry kiwi,Rule: = = = X Z Z
+Two results: rat eagle * blueberry = | strawberry * apple peach =,Rule: X * Z =
+Two results: pear apple buffalo + - - seal blackberry | eagle grape + - - banana stork,Rule: X Y + - - Z
+Two results: + whale strawberry watermelon apple grape * | + kiwi blackberry cobra lion *,Rule: + Z X Y *
+Two results: penguin * - = seal eagle penguin | horse peach * - = watermelon horse peach,Rule: X * - = Y X
+Two results: stork = - stork zebra | zebra kiwi = - zebra kiwi whale watermelon,Rule: Z = - Z Y
+Two results: buffalo grape apple grape - + | buffalo grape buffalo zebra - +,Rule: X Y Z - +
+Two results: blueberry * + banana | blackberry * + seal zebra,Rule: X * + Y
+Two results: * = pear pear seal apple + | * = stork blueberry +,Rule: * = X Y +
+Two results: watermelon strawberry watermelon strawberry = = watermelon whale | kiwi kiwi = = grape,Rule: Y Y = = X
+Two results: = pear pear blackberry = | = whale penguin whale penguin strawberry =,Rule: = X X Y =
+Two results: grape seal * = cobra watermelon | penguin whale * = shark,Rule: Y * = Z
+Two results: lion - seal + = grape | penguin eagle - stork blueberry + = blueberry,Rule: Y - X + = Z
+Two results: rat eagle * + rat eagle rat eagle | horse watermelon * + horse watermelon horse watermelon,Rule: Y * + Y Y
+Two results: * lion - = watermelon lion | * apple blueberry - = zebra apple blueberry,Rule: * Y - = X Y
+Two results: strawberry shark rat zebra whale zebra - * - | blackberry blueberry stork shark - * -,Rule: X Y Z - * -
+Two results: whale whale - = whale | lion lion - = lion,Rule: Y Y - = Y
+Two results: stork apple - = + eagle | strawberry apple grape - = + watermelon,Rule: Z Y - = + X
+Two results: lion peach * - blueberry stork | penguin watermelon * - kiwi grape,Rule: Z * - X
+Two results: pear = penguin pear + | horse strawberry = cobra horse strawberry +,Rule: Z = Y Z +
+Two results: kiwi penguin - = kiwi penguin kiwi penguin * | grape eagle - = grape eagle grape eagle *,Rule: Z - = Z Z *
+Two results: = rat rat kiwi horse * | = seal seal seal *,Rule: = Y Y X *
+Two results: * blackberry blackberry watermelon grape blackberry blackberry = | * peach kiwi strawberry peach =,Rule: * Y Z Y =
+Two results: shark grape apple apple = shark grape * | horse whale cobra penguin = horse whale *,Rule: Z X = Z *
+Two results: banana blueberry - apple watermelon buffalo + - | shark eagle - pear seal + -,Rule: Z - Y X + -
+Two results: peach strawberry peach strawberry = + | buffalo blueberry buffalo blueberry = +,Rule: Z Z = +
+Two results: buffalo rat - + buffalo rat - | cobra strawberry - + cobra strawberry -,Rule: X - + X -
+Two results: whale horse = whale rat whale rat * | grape = whale eagle whale eagle *,Rule: Z = Y Y *
+Two results: = peach shark - peach shark * peach shark | = lion eagle - lion eagle * lion eagle,Rule: = X - X * X
+Two results: + + cobra cobra blackberry | + + banana banana pear rat,Rule: + + Y Y Z
+Two results: banana rat * blueberry kiwi * | buffalo stork kiwi banana * lion pear *,Rule: Y Z * X *
+Two results: grape = grape - | lion = lion -,Rule: Z = Z -
+Two results: apple apple - * - | lion lion lion lion - * -,Rule: X X - * -
+Two results: lion peach * rat - + stork eagle | shark * blueberry - + strawberry seal,Rule: X * Z - + Y
+Two results: + penguin zebra + watermelon * watermelon | + grape + whale kiwi * whale kiwi,Rule: + Y + Z * Z
+Two results: * shark = = banana | * cobra = = kiwi grape,Rule: * X = = Z
+Two results: - - grape pear strawberry blueberry banana | - - eagle rat blueberry seal,Rule: - - Y Z X
+Two results: + banana seal = stork horse | + apple = watermelon rat,Rule: + Y = X
+Two results: * grape = + blueberry grape | * whale = + lion whale,Rule: * X = + Z X
+Two results: pear = grape * pear | grape = whale pear * grape,Rule: Y = X * Y
+Two results: penguin apple strawberry + penguin * * | grape seal peach pear + grape seal * *,Rule: Y Z + Y * *
+Two results: - banana rat seal - + banana | - cobra rat peach - + cobra,Rule: - Z Y - + Z
+Two results: - shark shark - + | - banana banana - +,Rule: - Y Y - +
+Two results: + kiwi = + kiwi | + rat penguin = + rat penguin,Rule: + Z = + Z
+Two results: - - blueberry zebra grape strawberry + | - - peach strawberry lion watermelon +,Rule: - - Z X +
+Two results: = + rat watermelon horse | = + kiwi penguin,Rule: = + Y X
+Two results: * = horse * whale | * = apple blueberry * shark,Rule: * = Z * Y
+Two results: pear horse - + cobra zebra | apple - + rat rat,Rule: Z - + X
+Two results: - watermelon cobra = blueberry | - rat = strawberry,Rule: - Z = X
+Two results: * eagle blueberry + + grape | * lion stork + + banana,Rule: * Y + + Z
+Two results: peach apple - watermelon whale stork peach - | watermelon - blueberry apple grape -,Rule: X - Z Y -
+Two results: - * strawberry lion + kiwi kiwi grape peach | - * apple buffalo + rat watermelon horse,Rule: - * X + Y Z
+Two results: grape buffalo banana rat * = | stork kiwi * =,Rule: Z X * =
+Two results: banana penguin apple apple + - = | stork blackberry watermelon horse watermelon horse + - =,Rule: X Y Y + - =
+Two results: eagle lion banana stork = - | buffalo kiwi shark = -,Rule: Z X = -
+Two results: * lion eagle + lion eagle watermelon whale | * seal shark + seal shark strawberry lion,Rule: * Y + Y Z
+Two results: blackberry blackberry * blackberry + * | lion stork lion stork * lion stork + *,Rule: Z Z * Z + *
+Two results: + * peach zebra eagle grape seal | + * watermelon cobra apple watermelon,Rule: + * X Z Y
+Two results: stork horse - - + blueberry banana cobra | buffalo - - + grape blackberry,Rule: Y - - + Z X
+Two results: - - rat horse * rat horse banana | - - eagle rat * eagle rat watermelon,Rule: - - Y * Y X
+Two results: * penguin blueberry grape * - grape | * shark banana shark banana * - blackberry watermelon,Rule: * Z X * - Y
+Two results: blueberry shark strawberry = + pear apple + | lion penguin = + strawberry +,Rule: Y Z = + X +
+Two results: = - + strawberry watermelon strawberry watermelon penguin blackberry | = - + pear pear seal buffalo,Rule: = - + Y Y X
+Two results: penguin rat horse shark + penguin rat = | eagle apple eagle + eagle =,Rule: Z Y + Z =
+Two results: pear = * pear - | blueberry = * blueberry -,Rule: Z = * Z -
+Two results: = blueberry - horse = horse | = rat grape - buffalo watermelon = buffalo watermelon,Rule: = Z - Y = Y
+Two results: horse + = penguin rat | apple + = kiwi horse,Rule: Z + = X
+Two results: + - eagle eagle blackberry strawberry | + - seal blackberry zebra apple,Rule: + - Z Y
+Two results: - seal eagle + whale seal cobra cobra + | - pear + buffalo cobra cobra banana +,Rule: - Z + Y X +
+Two results: + - strawberry strawberry buffalo | + - blueberry eagle blueberry eagle peach shark,Rule: + - Y Y Z
+Two results: banana banana banana - = - | penguin penguin penguin - = -,Rule: Y Y Y - = -
+Two results: blueberry whale blueberry whale = - - blueberry whale | peach peach = - - peach,Rule: X X = - - X
+Two results: = watermelon rat peach = + | = watermelon rat seal = +,Rule: = Z Y = +
+Two results: grape = * grape = pear peach | whale apple = * whale apple = strawberry,Rule: X = * X = Z
+Two results: * apple shark - apple shark | * whale zebra - whale zebra,Rule: * X - X
+Two results: - = stork strawberry stork strawberry stork strawberry | - = stork zebra stork zebra stork zebra,Rule: - = Z Z Z
+Two results: + + zebra whale banana | + + rat stork,Rule: + + Y X
+Two results: blackberry * - blackberry strawberry watermelon * | apple * - apple horse pear *,Rule: X * - X Z *
+Two results: * pear watermelon peach + pear * | * eagle horse + eagle *,Rule: * Y Z + Y *
+Two results: - watermelon buffalo - watermelon buffalo whale strawberry = | - penguin - penguin buffalo =,Rule: - Z - Z Y =
+Two results: = * banana apple banana apple * | = * blackberry blackberry *,Rule: = * Y Y *
+Two results: * apple - + horse watermelon kiwi | * blackberry - + penguin pear,Rule: * X - + Z Y
+Two results: watermelon blueberry pear lion * pear lion + = | lion eagle blackberry strawberry * blackberry strawberry + =,Rule: Z Y * Y + =
+Two results: + - + strawberry zebra kiwi | + - + cobra rat,Rule: + - + Y X
+Two results: + strawberry horse = pear penguin peach * | + banana stork = kiwi penguin *,Rule: + Y = X Z *
+Two results: = - rat penguin - horse cobra | = - zebra - blueberry buffalo,Rule: = - Z - X
+Two results: blackberry pear - + blackberry pear | kiwi - + kiwi,Rule: Y - + Y
+Two results: - + + blackberry buffalo | - + + zebra rat,Rule: - + + Y X
+Two results: = kiwi stork horse - | = rat lion zebra -,Rule: = X Y -
+Two results: blackberry * rat lion = rat lion | blueberry banana * peach = peach,Rule: Y * Z = Z
+Two results: - + shark shark | - + blueberry eagle blueberry eagle,Rule: - + Z Z
+Two results: eagle watermelon stork + * | rat watermelon apple pear + *,Rule: Y Z + *
+Two results: = banana stork * * | = seal peach blueberry * *,Rule: = Y Z * *
+Two results: - - shark shark | - - zebra eagle zebra eagle,Rule: - - Z Z
+Two results: - peach banana = seal penguin | - horse = watermelon shark,Rule: - X = Y
+Two results: pear - + watermelon seal * | strawberry zebra - + peach cobra *,Rule: X - + Y *
+Two results: blackberry kiwi blackberry kiwi = kiwi = * | eagle apple eagle apple = watermelon rat = *,Rule: Y Y = Z = *
+Two results: peach peach blueberry * + | seal zebra apple rat * +,Rule: Y X * +
+Two results: zebra pear = - zebra pear * | strawberry grape = - strawberry grape *,Rule: Z = - Z *
+Two results: blackberry banana * * banana stork = | apple peach * * rat blackberry =,Rule: Y * * Z =
+Two results: + apple + horse horse | + watermelon + kiwi,Rule: + Y + X
+Two results: * * watermelon watermelon | * * pear eagle pear eagle,Rule: * * X X
+Two results: apple + * whale banana + | blackberry + * strawberry +,Rule: Z + * Y +
+Two results: - - + lion lion | - - + apple horse apple horse,Rule: - - + X X
+Two results: + * apple zebra zebra | + * apple grape horse cobra horse cobra,Rule: + * Y Z Z
+Two results: * * zebra pear zebra | * * banana rat kiwi cobra,Rule: * * X Y
+Two results: eagle - + - eagle | strawberry kiwi - + - strawberry kiwi,Rule: X - + - X
+Two results: stork grape banana = * grape banana | shark strawberry = * strawberry,Rule: Z X = * X
+Two results: + banana banana = + whale | + seal blueberry seal blueberry = + peach,Rule: + Z Z = + Y
+Two results: - eagle seal strawberry + | - cobra buffalo whale +,Rule: - X Z +
+Two results: kiwi - - rat grape rat grape | cobra - - apple apple,Rule: X - - Z Z
+Two results: * - banana seal * banana seal pear watermelon | * - stork * stork watermelon rat,Rule: * - Z * Z Y
+Two results: = blackberry banana - | = banana strawberry pear whale -,Rule: = Y X -
+Two results: kiwi lion penguin lion + + | horse pear grape + +,Rule: Y X + +
+Two results: whale + strawberry * - strawberry | blackberry buffalo + apple * - apple,Rule: Y + Z * - Z
+Two results: whale zebra - = = | banana buffalo rat - = =,Rule: X Z - = =
+Two results: - + grape shark seal | - + banana banana,Rule: - + Z X
+Two results: kiwi = strawberry kiwi - | watermelon watermelon = blackberry peach watermelon watermelon -,Rule: Z = Y Z -
+Two results: * * zebra zebra = strawberry grape | * * cobra kiwi cobra kiwi = watermelon rat,Rule: * * Z Z = Y
+Two results: + grape shark = blackberry grape shark | + blueberry = strawberry blueberry blueberry,Rule: + Z = X Z
+Two results: * = + lion grape buffalo shark | * = + banana pear strawberry shark,Rule: * = + Y X Z
+Two results: blackberry cobra + blackberry cobra - lion | peach + peach - kiwi,Rule: X + X - Y
+Two results: + zebra horse = | + penguin eagle seal =,Rule: + Z X =
+Two results: - grape grape - grape | - horse horse - horse,Rule: - Y Y - Y
+Two results: - cobra penguin buffalo * | - kiwi eagle whale *,Rule: - X Y *
+Two results: + = - eagle pear seal watermelon eagle pear | + = - strawberry lion pear lion strawberry lion,Rule: + = - Y X Y
+Two results: = stork = blackberry horse stork | = pear seal = cobra zebra pear seal,Rule: = X = Y X
+Two results: - watermelon + watermelon | - blackberry stork + blackberry stork,Rule: - Y + Y
+Two results: zebra shark zebra - - zebra * | banana blueberry - - banana *,Rule: Z X - - Z *
+Two results: = = blueberry buffalo buffalo - watermelon cobra | = = peach banana apple penguin - pear,Rule: = = Y X - Z
+Two results: blueberry lion pear = + lion pear | lion apple apple = + apple,Rule: X Y = + Y
+Two results: cobra cobra * + = | zebra zebra * + =,Rule: Z Z * + =
+Two results: - seal buffalo + - buffalo | - kiwi buffalo + - buffalo,Rule: - Y Z + - Z
+Two results: penguin blueberry = - = penguin blueberry | grape zebra = - = grape zebra,Rule: X = - = X
+Two results: = kiwi cobra = * kiwi cobra kiwi cobra | = penguin = * penguin penguin,Rule: = Z = * Z Z
+Two results: * = horse blueberry horse blueberry shark | * = whale peach whale peach seal apple,Rule: * = Z Z X
+Two results: = penguin penguin - penguin | = grape grape - grape,Rule: = X X - X
+Two results: * eagle apple - eagle apple + | * kiwi - kiwi +,Rule: * Y - Y +
+Two results: + strawberry watermelon rat - strawberry watermelon | + apple watermelon - apple,Rule: + X Y - X
+Two results: zebra eagle = blueberry stork - + zebra eagle | zebra rat = grape - + zebra rat,Rule: Z = X - + Z
+Two results: penguin blueberry * + penguin blueberry | buffalo peach * + buffalo peach,Rule: Z * + Z
+Two results: buffalo lion banana + + lion banana | banana buffalo peach + + peach,Rule: X Y + + Y
+Two results: penguin horse + * - penguin horse | peach rat + * - peach rat,Rule: Y + * - Y
+Two results: banana penguin banana penguin = - cobra eagle | watermelon watermelon = - grape,Rule: X X = - Y
+Two results: cobra cobra = * peach lion | penguin penguin = * kiwi rat,Rule: Y Y = * Z
+Two results: * buffalo shark = shark shark | * stork shark = watermelon watermelon,Rule: * Z = Y Y
+Two results: * * blueberry whale blueberry whale | * * horse horse,Rule: * * X X
+Two results: seal eagle grape grape * - peach | rat penguin * - pear,Rule: Y Z * - X
+Two results: + cobra lion rat grape cobra lion - | + rat pear horse rat -,Rule: + Y X Y -
+Two results: = banana whale banana whale + | = eagle rat eagle rat +,Rule: = Y Y +
+Two results: + buffalo seal + buffalo seal - | + lion + lion -,Rule: + Y + Y -
+Two results: * - - whale blueberry whale blueberry pear eagle | * - - buffalo buffalo lion blueberry,Rule: * - - Y Y X
+Two results: strawberry = + eagle horse cobra = | strawberry = + buffalo whale blueberry =,Rule: X = + Y Z =
+Two results: - whale rat eagle = kiwi peach | - horse penguin zebra = strawberry,Rule: - Y Z = X
+Two results: blackberry * - blackberry - | zebra rat * - zebra rat -,Rule: X * - X -
+Two results: stork whale rat - = stork + | horse rat kiwi apple - = horse rat +,Rule: X Y - = X +
+Two results: banana whale + * banana whale | seal watermelon + * seal watermelon,Rule: Y + * Y
+Two results: kiwi watermelon - = kiwi watermelon | buffalo whale - = buffalo whale,Rule: X - = X
+Two results: + - blueberry blueberry = blueberry | + - apple apple apple apple = apple apple,Rule: + - Z Z = Z
+Two results: rat rat rat rat * + * | shark banana shark banana * + *,Rule: Z Z * + *
+Two results: - = apple buffalo apple buffalo = | - = apple banana apple banana =,Rule: - = X X =
+Two results: + watermelon shark watermelon = + watermelon | + pear eagle pear = + pear,Rule: + Z Y = + Y
+Two results: = blueberry blueberry + horse stork = | = cobra seal cobra seal + penguin seal =,Rule: = Y Y + Z =
+Two results: = grape banana zebra buffalo - | = eagle blackberry stork -,Rule: = Y X -
+Two results: buffalo cobra - - whale * | watermelon - - watermelon *,Rule: X - - Y *
+Two results: + watermelon penguin penguin = | + rat penguin blackberry blackberry =,Rule: + Y Z Z =
+Two results: - blueberry blueberry * | - penguin rat penguin rat *,Rule: - Y Y *
+Two results: shark apple + grape * = | peach penguin + apple * =,Rule: Z + Y * =
+Two results: eagle seal + eagle eagle seal = | eagle + buffalo eagle =,Rule: Z + X Z =
+Two results: + seal seal blueberry = | + strawberry whale strawberry whale shark =,Rule: + Z Z Y =
+Two results: - penguin + penguin penguin + | - rat eagle + rat eagle rat eagle +,Rule: - Z + Z Z +
+Two results: - banana peach strawberry * | - lion blackberry shark *,Rule: - X Y *
+Two results: + whale apple + * stork | + rat apple blueberry banana + * apple strawberry,Rule: + Y Z + * X
+Two results: pear + cobra + | eagle + buffalo blackberry +,Rule: Z + Y +
+Two results: kiwi - blackberry kiwi * | buffalo - buffalo buffalo *,Rule: X - Z X *
+Two results: kiwi pear peach pear peach = - | grape horse pear rat pear rat = -,Rule: Y X X = -
+Two results: stork blackberry * pear = | rat * zebra blueberry =,Rule: X * Z =
+Two results: kiwi buffalo * * kiwi buffalo * | kiwi * * kiwi *,Rule: X * * X *
+Two results: pear stork - peach = peach * | penguin buffalo - shark peach = shark peach *,Rule: Z - Y = Y *
+Two results: zebra * shark rat rat * - | eagle lion * cobra eagle rat buffalo * -,Rule: X * Z Y * -
+Two results: * = buffalo buffalo | * = cobra cobra,Rule: * = Y Y
+Two results: - stork - blackberry eagle blackberry eagle * | - stork - rat rat *,Rule: - X - Y Y *
+Two results: = grape strawberry pear shark - | = eagle seal apple -,Rule: = X Z -
+Two results: rat * banana blackberry * = | penguin * whale * =,Rule: Y * X * =
+Two results: = apple + = horse blackberry cobra strawberry | = horse + = rat stork,Rule: = X + = Z Y
+Two results: banana apple banana apple + zebra whale + | shark horse shark horse + stork +,Rule: Z Z + X +
+Two results: = seal strawberry banana rat * - cobra | = buffalo lion * - apple,Rule: = X Z * - Y
+Two results: - whale - whale - | - grape - grape -,Rule: - Z - Z -
+Two results: eagle pear + * eagle | banana eagle + * banana,Rule: Y X + * Y
+Two results: banana shark - * - blueberry | apple apple buffalo - * - watermelon blueberry,Rule: X Y - * - Z
+Two results: - banana pear = blackberry | - pear = penguin,Rule: - X = Y
+Two results: lion - cobra penguin - cobra penguin | watermelon - zebra stork - zebra stork,Rule: X - Z - Z
+Two results: * cobra + cobra | * rat eagle + rat eagle,Rule: * Z + Z
+Two results: = watermelon - + banana grape | = eagle - + peach,Rule: = X - + Y
+Two results: - zebra banana zebra banana = * zebra banana | - stork stork = * stork,Rule: - X X = * X
+Two results: horse = lion peach * horse * | buffalo = whale zebra * buffalo *,Rule: Z = X * Z *
+Two results: watermelon = eagle blackberry + banana * | blackberry = blackberry + penguin strawberry *,Rule: Y = Z + X *
+Two results: + seal blueberry zebra - = | + pear grape apple - =,Rule: + Z X - =
+Two results: * - seal peach cobra | * - eagle zebra,Rule: * - Z X
+Two results: kiwi cobra - kiwi cobra + blackberry shark | buffalo banana - buffalo banana + zebra zebra,Rule: X - X + Y
+Two results: + = horse peach | + = apple blackberry rat,Rule: + = Z X
+Two results: blackberry banana = = | cobra zebra = =,Rule: Y Z = =
+Two results: buffalo seal + * kiwi buffalo * | buffalo + * rat *,Rule: Y + * Z *
+Two results: = buffalo penguin strawberry + | = blueberry penguin apple zebra +,Rule: = X Y +
+Two results: * + + horse apple blackberry blackberry | * + + penguin penguin shark blueberry shark blueberry,Rule: * + + Z Y Y
+Two results: - blackberry blueberry grape + - blueberry grape | - pear seal peach + - peach,Rule: - X Y + - Y
+Two results: - strawberry - watermelon = | - shark - pear seal =,Rule: - Y - X =
+Two results: = shark eagle eagle horse * | = penguin kiwi seal grape *,Rule: = Y Z X *
+Two results: + - kiwi kiwi kiwi kiwi kiwi kiwi * | + - grape grape grape *,Rule: + - X X X *
+Two results: kiwi strawberry banana lion - * banana lion | penguin peach - * peach,Rule: Y Z - * Z
+Two results: - + kiwi rat stork + | - + seal cobra stork +,Rule: - + Y X +
+Two results: blackberry rat * cobra + | kiwi apple shark eagle * rat watermelon +,Rule: Y Z * X +
+Two results: - horse grape + blueberry horse grape | - cobra horse + rat grape cobra horse,Rule: - Z + Y Z
+Two results: + kiwi = kiwi = | + whale = whale =,Rule: + Y = Y =
+Two results: whale = = whale whale | buffalo seal = = pear kiwi pear kiwi,Rule: Z = = X X
+Two results: rat whale eagle + * | blueberry shark shark + *,Rule: X Z + *
+Two results: + zebra * banana apple banana apple | + lion * banana zebra banana zebra,Rule: + Z * X X
+Two results: - - = lion blackberry blackberry blackberry blackberry | - - = buffalo rat peach peach,Rule: - - = X Y Y
+Two results: - seal + seal seal + | - strawberry + strawberry strawberry +,Rule: - Z + Z Z +
+Two results: - lion banana - lion banana grape pear | - kiwi - kiwi seal,Rule: - X - X Y
+Two results: - apple seal apple seal kiwi = | - banana stork banana stork shark apple =,Rule: - Z Z X =
+Two results: * grape pear grape pear banana + = | * pear pear cobra lion + =,Rule: * Z Z Y + =
+Two results: + - seal lion zebra = blueberry | + - eagle rat = lion,Rule: + - X Z = Y
+Two results: peach blackberry peach blackberry - shark = | blueberry blueberry - shark =,Rule: X X - Z =
+Two results: cobra seal stork * = + | buffalo shark shark * = +,Rule: X Z * = +
+Two results: lion seal - + lion seal lion seal * | stork - + stork stork *,Rule: X - + X X *
+Two results: shark cobra + stork * | watermelon + buffalo apple *,Rule: Z + X *
+Two results: = rat apple banana kiwi = rat apple | = peach eagle = peach,Rule: = Z X = Z
+Two results: shark = watermelon penguin - * banana seal | buffalo penguin = kiwi grape - * shark banana,Rule: Y = X - * Z
+Two results: + blueberry * blueberry | + horse * horse,Rule: + Y * Y
+Two results: apple kiwi - apple kiwi = | peach - peach =,Rule: Y - Y =
+Two results: + = lion shark | + = strawberry penguin eagle blueberry,Rule: + = Y Z
+Two results: - banana banana + | - rat stork blueberry +,Rule: - Y Z +
+Two results: * stork strawberry = = stork strawberry buffalo zebra | * zebra = = zebra lion,Rule: * X = = X Z
+Two results: - + eagle buffalo peach | - + penguin banana grape peach,Rule: - + Z Y
+Two results: seal stork whale * blackberry eagle + | pear blueberry stork horse * horse +,Rule: X Y * Z +
+Two results: kiwi shark * - * | strawberry watermelon rat * - *,Rule: Z X * - *
+Two results: * horse shark horse shark - horse shark | * kiwi peach kiwi peach - kiwi peach,Rule: * Y Y - Y
+Two results: blueberry horse buffalo peach * * | blueberry strawberry banana horse watermelon * *,Rule: Z Y X * *
+Two results: pear grape = blueberry = kiwi zebra | blackberry peach = grape horse = cobra,Rule: Z = X = Y
+Two results: + grape peach * * peach rat | + kiwi * * pear lion,Rule: + Y * * X
+Two results: * blueberry * blueberry whale buffalo * | * stork strawberry * stork strawberry horse blackberry *,Rule: * Y * Y X *
+Two results: - - penguin penguin = zebra | - - cobra = whale buffalo,Rule: - - Y = Z
+Two results: peach blueberry buffalo buffalo - + | kiwi rat lion penguin - +,Rule: Z Y - +
+Two results: horse whale * buffalo + = buffalo | cobra eagle * seal + = pear kiwi,Rule: X * Y + = Z
+Two results: whale eagle = watermelon - | pear = penguin -,Rule: Y = X -
+Two results: - blackberry stork seal + | - horse banana rat blackberry +,Rule: - X Z +
+Two results: - - rat whale eagle rat whale | - - zebra watermelon blackberry zebra watermelon,Rule: - - Z X Z
+Two results: * seal stork + whale eagle seal stork * | * blackberry + buffalo watermelon blackberry *,Rule: * Z + X Z *
+Two results: - lion whale * - shark whale grape | - grape * - watermelon watermelon rat,Rule: - Y * - Z X
+Two results: shark shark = lion pear + | apple apple = strawberry +,Rule: X X = Y +
+Two results: + grape grape + - horse | + blackberry penguin + - blueberry,Rule: + Y + - Z
+Two results: banana buffalo penguin lion horse = - + | buffalo buffalo rat horse zebra = - +,Rule: Z Y X = - +
+Two results: cobra cobra - rat + | watermelon whale watermelon whale - kiwi +,Rule: Y Y - X +
+Two results: shark * + apple + | apple * + horse blackberry +,Rule: Y * + X +
+Two results: * * whale grape kiwi whale grape | * * eagle zebra peach eagle,Rule: * * Z X Z
+Two results: = = banana grape kiwi * kiwi | = = lion blueberry pear whale * pear whale,Rule: = = Z Y * Y
+Two results: eagle seal = = | watermelon lion rat buffalo = =,Rule: Y X = =
+Two results: strawberry blackberry = horse horse - + | rat blueberry = lion strawberry lion strawberry - +,Rule: Y = Z Z - +
+Two results: cobra horse shark = + * | blackberry whale zebra = + *,Rule: Z X = + *
+Two results: strawberry cobra + rat - strawberry cobra - | rat grape + eagle - rat grape -,Rule: Y + Z - Y -
+Two results: eagle horse * - lion seal * | watermelon cobra * - shark grape *,Rule: X * - Y *
+Two results: banana whale kiwi strawberry + - horse buffalo | grape grape apple eagle + - peach,Rule: X Y + - Z
+Two results: = buffalo + + buffalo | = buffalo + + buffalo,Rule: = X + + X
+Two results: eagle buffalo = buffalo = | banana zebra cobra buffalo = cobra buffalo =,Rule: X Z = Z =
+Two results: * penguin + - cobra | * banana + - cobra,Rule: * Z + - X
+Two results: whale apple whale apple + = | cobra cobra + =,Rule: X X + =
+Two results: - cobra + - horse | - lion grape + - penguin,Rule: - Z + - Y
+Two results: lion * - + lion | eagle horse * - + eagle horse,Rule: X * - + X
+Two results: peach peach = + | grape grape = +,Rule: X X = +
+Two results: - + + blackberry shark penguin lion | - + + blueberry apple shark buffalo,Rule: - + + X Y
+Two results: watermelon blackberry = zebra zebra - | peach grape = eagle kiwi eagle kiwi -,Rule: Y = X X -
+Two results: + stork watermelon stork watermelon - | + grape grape -,Rule: + X X -
+Two results: horse cobra + = = horse cobra strawberry | lion penguin + = = lion penguin eagle horse,Rule: Z + = = Z Y
+Two results: kiwi blackberry - kiwi blackberry kiwi blackberry + | watermelon - watermelon watermelon +,Rule: Z - Z Z +
+Two results: - horse rat * kiwi buffalo - horse | - strawberry zebra * kiwi - seal,Rule: - X * Y - Z
+Two results: - horse lion = horse | - eagle lion apple = eagle lion,Rule: - Z X = Z
+Two results: * - whale strawberry * horse buffalo | * - eagle shark * zebra,Rule: * - X * Y
+Two results: strawberry kiwi peach penguin zebra = + | horse apple blackberry apple banana = +,Rule: X Z Y = +
+Two results: grape grape + * grape | blackberry buffalo blackberry buffalo + * blackberry buffalo,Rule: Y Y + * Y
+Two results: eagle pear * eagle eagle - - | grape buffalo * strawberry strawberry - -,Rule: X * Z Z - -
+Two results: seal seal - + + whale apple | eagle horse - + + blackberry kiwi,Rule: Y - + + X
+Two results: banana pear - = | buffalo blackberry - =,Rule: X Y - =
+Two results: - watermelon strawberry - watermelon strawberry - | - kiwi horse - kiwi horse -,Rule: - X - X -
+Two results: + + + pear seal banana zebra | + + + eagle stork buffalo,Rule: + + + Y X
+Two results: seal blackberry seal * = | buffalo rat seal * =,Rule: X Y * =
+Two results: = shark cobra peach + peach | = penguin blueberry whale + whale,Rule: = Y Z + Z
+Two results: * kiwi = eagle eagle kiwi = | * zebra = buffalo zebra =,Rule: * Y = X Y =
+Two results: cobra + eagle - | strawberry zebra + zebra -,Rule: X + Y -
+Two results: apple peach * eagle * = | stork grape * seal * =,Rule: X * Z * =
+Two results: - zebra - + penguin blackberry zebra | - stork seal - + rat eagle stork seal,Rule: - X - + Z X
+Two results: banana kiwi zebra blueberry - - zebra blueberry - | rat watermelon - - watermelon -,Rule: Z Y - - Y -
+Two results: * kiwi * kiwi - blueberry kiwi | * pear eagle * pear eagle - cobra seal,Rule: * Y * Y - X
+Two results: lion = - - lion | horse = - - horse,Rule: X = - - X
+Two results: - seal penguin * cobra watermelon = | - banana seal * apple apple stork =,Rule: - X * Z Y =
+Two results: shark seal = * + seal | penguin stork = * + eagle watermelon,Rule: X = * + Y
+Two results: + stork = stork + | + kiwi = kiwi +,Rule: + Y = Y +
+Two results: whale stork kiwi pear * - kiwi pear | blackberry rat * - rat,Rule: Z Y * - Y
+Two results: + - horse stork blueberry | + - peach strawberry,Rule: + - X Y
+Two results: seal rat seal = = = rat seal | banana lion eagle = = = lion eagle,Rule: Y Z = = = Z
+Two results: blueberry cobra = * blackberry apple | seal zebra = * banana strawberry,Rule: Y = * Z
+Two results: - horse whale horse whale + - | - stork rat stork rat + -,Rule: - X X + -
+Two results: * peach - kiwi rat | * strawberry - watermelon buffalo zebra apple,Rule: * Z - Y X
+Two results: + blackberry pear blackberry pear = - blackberry pear | + blackberry strawberry blackberry strawberry = - blackberry strawberry,Rule: + Y Y = - Y
+Two results: blackberry banana + whale - | watermelon + strawberry -,Rule: Y + X -
+Two results: - = eagle - buffalo | - = zebra - horse,Rule: - = Y - Z
+Two results: rat = + shark | seal = + strawberry shark,Rule: Z = + X
+Two results: pear seal * penguin zebra * strawberry grape * | horse * apple * whale *,Rule: Z * Y * X *
+Two results: = kiwi rat rat - shark strawberry + | = horse stork strawberry - seal kiwi +,Rule: = X Z - Y +
+Two results: kiwi banana seal + seal * | peach zebra cobra + cobra *,Rule: Y X + X *
+Two results: pear cobra cobra eagle * = = | grape penguin peach blueberry * = =,Rule: X Y Z * = =
+Two results: + pear apple - horse blackberry + pear apple | + eagle - seal + eagle,Rule: + X - Z + X
+Two results: grape - whale rat grape * + | peach - eagle blackberry peach * +,Rule: X - Z X * +
+Two results: - kiwi kiwi kiwi + - | - watermelon watermelon watermelon + -,Rule: - Z Z Z + -
+Two results: blackberry pear - * whale | grape kiwi - * zebra banana,Rule: Z - * X
+Two results: - = buffalo - apple | - = stork stork - blueberry,Rule: - = Y - Z
+Two results: pear zebra blueberry blackberry * watermelon peach = | horse watermelon lion * seal shark =,Rule: X Y * Z =
+Two results: lion peach + * = lion peach lion peach | apple horse + * = apple horse apple horse,Rule: Y + * = Y Y
+Two results: - rat penguin * grape penguin grape penguin | - apple penguin * stork watermelon stork watermelon,Rule: - X * Z Z
+Two results: * = - banana banana banana | * = - stork stork stork,Rule: * = - X X X
+Two results: * watermelon buffalo = watermelon buffalo | * lion peach = lion peach,Rule: * X = X
+Two results: * cobra banana whale * + | * lion seal horse shark * +,Rule: * X Z * +
+Two results: + apple blackberry seal * | + penguin grape kiwi horse *,Rule: + X Z *
+Two results: + peach watermelon cobra peach * - | + peach banana penguin peach banana * -,Rule: + X Z X * -
+Two results: * peach blackberry * * eagle horse | * watermelon banana * * apple grape,Rule: * Y * * Z X
+Two results: watermelon - + watermelon - | kiwi - + kiwi -,Rule: Z - + Z -
+Two results: eagle kiwi = eagle kiwi - blueberry | apple zebra = apple zebra - watermelon,Rule: Y = Y - Z
+Two results: grape banana * + = grape watermelon | zebra rat * + = lion,Rule: X * + = Y
+Two results: - horse = horse | - kiwi = kiwi,Rule: - X = X
+Two results: grape kiwi kiwi kiwi + + + | watermelon zebra peach peach + + +,Rule: Y X X + + +
+Two results: grape watermelon = + pear blackberry pear blackberry - | rat peach = + seal seal -,Rule: Y = + Z Z -
+Two results: - + strawberry penguin | - + strawberry penguin horse,Rule: - + Z X
+Two results: + * pear shark horse pear shark | + * banana banana grape stork banana banana,Rule: + * Z Y Z
+Two results: * horse shark - zebra rat + | * blueberry seal - grape whale +,Rule: * Y - X +
+Two results: stork - = * apple grape | buffalo - = * strawberry apple,Rule: Z - = * X
+Two results: banana horse - horse zebra = - | banana peach - buffalo = -,Rule: Z - X = -
+Two results: * horse grape = kiwi | * rat = blackberry,Rule: * X = Y
+Two results: * * blueberry = blueberry apple rat | * * eagle whale = stork grape kiwi horse,Rule: * * Z = Y X
+Two results: eagle stork eagle + = * | blueberry kiwi zebra + = *,Rule: Y X + = *
+Two results: kiwi zebra + * kiwi zebra penguin grape | blueberry + * blueberry banana stork,Rule: Z + * Z X
+Two results: * * stork lion horse seal | * * watermelon stork,Rule: * * X Z
+Two results: - peach + banana zebra | - lion + rat,Rule: - X + Y
+Two results: + banana + banana | + zebra apple + eagle eagle,Rule: + Y + Z
+Two results: * apple zebra pear apple - | * stork buffalo zebra shark -,Rule: * Z X -
+Two results: - shark strawberry whale * | - cobra shark cobra zebra shark *,Rule: - X Z Y *
+Two results: kiwi kiwi strawberry eagle = + | zebra eagle zebra eagle stork = +,Rule: Y Y Z = +
+Two results: * blueberry = seal apple = buffalo banana | * blueberry buffalo = watermelon = horse zebra,Rule: * Z = X = Y
+Two results: lion + + seal eagle seal eagle | strawberry stork + + lion lion,Rule: Y + + X X
+Two results: zebra = = = apple | blackberry peach = = = shark,Rule: Y = = = Z
+Two results: = blackberry cobra strawberry + strawberry | = peach zebra banana penguin + banana penguin,Rule: = X Z + Z
+Two results: + = grape seal * | + = kiwi zebra apple whale *,Rule: + = Z X *
+Two results: + whale stork zebra pear * | + kiwi shark whale *,Rule: + Y X *
+Two results: + buffalo - lion lion | + banana - horse blueberry horse blueberry,Rule: + Z - X X
+Two results: apple whale = = apple whale | shark rat = = shark rat,Rule: Y = = Y
+Two results: - + kiwi buffalo kiwi buffalo | - + penguin penguin,Rule: - + Z Z
+Two results: apple blackberry apple banana + - * | cobra shark + - *,Rule: X Y + - *
+Two results: - kiwi blueberry = blackberry | - apple = zebra grape,Rule: - X = Y
+Two results: pear lion + lion * | banana shark blueberry cobra + blueberry cobra *,Rule: Z X + X *
+Two results: zebra - * zebra + | shark - * shark +,Rule: X - * X +
+Two results: buffalo horse horse * * * | lion zebra eagle * * *,Rule: X Z * * *
+Two results: zebra strawberry = zebra strawberry * banana | shark = shark * zebra,Rule: Z = Z * X
+Two results: * apple = apple = seal | * banana shark = banana shark = peach blackberry,Rule: * Z = Z = Y
+Two results: blackberry banana + zebra - + | lion banana + cobra - +,Rule: Z + Y - +
+Two results: cobra * whale * | pear * lion blueberry *,Rule: Z * X *
+Two results: zebra penguin = * zebra penguin rat cobra | penguin = * penguin rat,Rule: Y = * Y X
+Two results: - kiwi strawberry + kiwi | - apple horse + watermelon banana,Rule: - Z + Y
+Two results: blackberry = - blackberry blackberry | banana = - banana stork,Rule: X = - X Z
+Two results: penguin rat - cobra lion * | peach - watermelon whale *,Rule: Z - Y *
+Two results: zebra penguin + + + stork strawberry | stork + + + lion lion,Rule: Y + + + Z
+Two results: + = shark rat * | + = stork buffalo kiwi *,Rule: + = Z X *
+Two results: cobra zebra = horse + | kiwi = cobra +,Rule: Y = Z +
+Two results: penguin banana strawberry kiwi - + * | penguin lion blueberry - + *,Rule: Y Z - + *
+Two results: + - apple stork seal stork | + - watermelon apple cobra,Rule: + - Z X
+Two results: watermelon = + watermelon whale pear | shark = + shark eagle banana,Rule: Y = + Y Z
+Two results: rat lion * * rat lion | rat eagle * * rat eagle,Rule: X * * X
+Two results: - kiwi watermelon peach = grape | - horse grape strawberry lion = strawberry blackberry,Rule: - Z Y = X
+Two results: * = stork * stork banana grape | * = buffalo * buffalo apple blackberry,Rule: * = Z * Z X
+Two results: + = rat apple * | + = banana pear *,Rule: + = Y X *
+Two results: zebra zebra = * * | seal seal = * *,Rule: Z Z = * *
+Two results: * rat blackberry + | * pear grape stork zebra +,Rule: * Y Z +
+Two results: - watermelon lion pear pear = + | - apple lion lion = +,Rule: - X Z Z = +
+Two results: + peach eagle + + pear | + cobra + + pear buffalo,Rule: + Y + + Z
+Two results: strawberry buffalo * - buffalo strawberry buffalo | pear * - rat shark pear,Rule: Z * - Y Z
+Two results: + grape seal - seal | + apple watermelon whale - shark stork,Rule: + X Z - Y
+Two results: * blueberry rat cobra seal cobra + | * stork banana penguin kiwi +,Rule: * X Y Z +
+Two results: * + + grape apple cobra peach grape apple | * + + whale cobra stork rat whale cobra,Rule: * + + Y X Y
+Two results: - - shark strawberry pear peach + pear peach | - - lion whale + whale,Rule: - - Z Y + Y
+Two results: watermelon lion + + rat buffalo + | zebra + + kiwi watermelon +,Rule: Y + + Z +
+Two results: * rat blackberry pear * | * zebra pear apple *,Rule: * Y X *
+Two results: * shark seal cobra shark = * | * buffalo banana buffalo = *,Rule: * X Y X = *
+Two results: - * seal + cobra watermelon | - * watermelon eagle + grape,Rule: - * Y + Z
+Two results: * banana = = lion horse banana | * stork strawberry = = zebra strawberry stork strawberry,Rule: * X = = Y X
+Two results: penguin penguin = + - | blueberry kiwi blueberry kiwi = + -,Rule: Y Y = + -
+Two results: - pear banana - pear banana banana kiwi + | - blueberry - blueberry horse +,Rule: - Y - Y Z +
+Two results: - penguin = penguin | - cobra = cobra,Rule: - X = X
+Two results: - penguin penguin + | - seal seal +,Rule: - Y Y +
+Two results: - + = grape shark lion watermelon | - + = pear penguin whale,Rule: - + = Y Z
+Two results: = cobra - cobra - | = grape - grape -,Rule: = Z - Z -
+Two results: - zebra * kiwi whale * | - lion * whale *,Rule: - X * Z *
+Two results: horse horse + = | blueberry blueberry + =,Rule: Z Z + =
+Two results: grape kiwi - grape kiwi kiwi + | grape blackberry - grape blackberry whale apple +,Rule: X - X Z +
+Two results: + * zebra shark peach | + * eagle cobra,Rule: + * Z Y
+Two results: eagle + rat = rat = | buffalo apple + blackberry = blackberry =,Rule: Z + X = X =
+Two results: watermelon blueberry lion + - * | shark blueberry + - *,Rule: Z X + - *
+Two results: - shark - shark shark | - stork - shark shark,Rule: - Z - Y Y
+Two results: + = blueberry rat = rat pear blueberry rat | + = eagle = rat eagle,Rule: + = Y = Z Y
+Two results: - - banana eagle banana eagle - grape | - - apple apple - cobra,Rule: - - X X - Z
+Two results: - eagle apple * * blueberry eagle | - kiwi penguin * * shark shark,Rule: - X * * Z
+Two results: = buffalo - seal blackberry | = shark - zebra rat,Rule: = Y - Z
+Two results: * kiwi stork * * stork rat stork rat | * strawberry * * whale whale,Rule: * Y * * Z Z
+Two results: lion shark + + blueberry apple * | kiwi penguin + + horse grape *,Rule: X + + Y *
+Two results: zebra zebra = banana = | lion lion = whale buffalo =,Rule: X X = Y =
+Two results: banana = lion - + seal | cobra lion = blueberry - + banana lion,Rule: Z = Y - + X
+Two results: - stork kiwi * watermelon | - stork * cobra eagle,Rule: - Y * X
+Two results: apple rat blackberry = + | apple peach = +,Rule: Z Y = +
+Two results: * banana shark banana shark banana shark = | * blackberry blackberry blackberry =,Rule: * Z Z Z =
+Two results: lion zebra + lion zebra pear rat * - | stork + stork strawberry * -,Rule: X + X Z * -
+Two results: penguin = watermelon lion + | banana = pear shark +,Rule: Z = X +
+Two results: * = strawberry watermelon + penguin | * = seal + blueberry,Rule: * = Z + X
+Two results: grape + pear - grape - | apple + watermelon - apple -,Rule: X + Y - X -
+Two results: peach = grape blackberry + = | blueberry buffalo = blueberry + =,Rule: Z = Y + =
+Two results: * * strawberry apple - strawberry apple | * * whale blackberry - whale blackberry,Rule: * * Z - Z
+Two results: + * apple rat seal watermelon | + * shark seal buffalo,Rule: + * Y X
+Two results: + - blueberry zebra + zebra blueberry zebra | + - stork + pear watermelon stork,Rule: + - X + Y X
+Two results: + grape blueberry * grape blueberry * | + kiwi * kiwi *,Rule: + Y * Y *
+Two results: kiwi + strawberry = | shark + pear =,Rule: Y + Z =
+Two results: - blueberry blueberry buffalo watermelon * stork | - horse shark * eagle,Rule: - X Y * Z
+Two results: + penguin - horse whale = | + peach - banana strawberry =,Rule: + Y - X =
+Two results: * + peach rat banana | * + eagle penguin,Rule: * + X Z
+Two results: strawberry = horse + | blueberry = penguin shark +,Rule: X = Z +
+Two results: = = cobra peach cobra peach | = = kiwi kiwi,Rule: = = Z Z
+Two results: - seal = kiwi pear | - cobra = grape grape,Rule: - Z = Y
+Two results: apple apple apple apple * * | horse horse * *,Rule: X X * *
+Two results: eagle eagle + - | rat blackberry rat blackberry + -,Rule: X X + -
+Two results: zebra = - + pear peach | lion rat = - + watermelon peach,Rule: X = - + Z
+Two results: cobra buffalo = cobra buffalo + * | pear blackberry = pear blackberry + *,Rule: X = X + *
+Two results: + horse horse - | + stork pear stork pear -,Rule: + Y Y -
+Two results: seal seal seal - * | grape grape grape - *,Rule: Z Z Z - *
+Two results: peach cobra = penguin strawberry + - peach cobra | banana = apple cobra + - banana,Rule: X = Z + - X
+Two results: watermelon kiwi eagle stork * + | penguin pear eagle * +,Rule: Z Y * +
+Two results: = grape pear strawberry * | = apple horse *,Rule: = Y Z *
+Two results: = eagle blackberry eagle whale rat * = | = strawberry rat stork rat * =,Rule: = Z X Y * =
+Two results: = - apple - apple | = - watermelon - watermelon,Rule: = - X - X
+Two results: = shark banana - buffalo zebra = penguin | = rat zebra - blueberry = rat rat,Rule: = Y - X = Z
+Two results: - whale strawberry = seal buffalo whale strawberry = | - cobra horse = apple blueberry cobra horse =,Rule: - X = Z X =
+Two results: * stork shark stork shark - - | * watermelon watermelon - -,Rule: * Z Z - -
+Two results: blackberry banana - penguin - + | blueberry strawberry - watermelon - +,Rule: Y - X - +
+Two results: + blueberry blackberry buffalo + | + rat lion shark seal banana +,Rule: + X Z Y +
+Two results: blueberry = blueberry eagle blueberry eagle - = | grape lion = shark shark - =,Rule: Z = Y Y - =
+Two results: kiwi - peach whale kiwi + | strawberry blackberry - shark seal strawberry blackberry +,Rule: Y - Z Y +
+Two results: buffalo blueberry watermelon * buffalo banana * - | blackberry blackberry * banana whale * -,Rule: Z X * Y * -
+Two results: - apple lion kiwi = apple | - strawberry whale = blueberry grape,Rule: - Z X = Y
+Two results: + eagle eagle - | + blueberry eagle blueberry eagle -,Rule: + Y Y -
+Two results: + * peach shark pear | + * whale buffalo,Rule: + * Y X
+Two results: stork apple = * stork apple + watermelon kiwi | buffalo = * buffalo + horse,Rule: Y = * Y + Z
+Two results: * * eagle zebra | * * watermelon rat lion,Rule: * * Y Z
+Two results: rat * blueberry peach zebra = * | kiwi pear * penguin cobra = *,Rule: Z * Y X = *
+Two results: = whale peach = whale peach eagle whale | = grape rat = grape rat apple,Rule: = Y = Y Z
+Two results: + peach lion grape + | + apple penguin horse +,Rule: + Z X +
+Two results: whale whale - = whale whale | zebra cobra - = zebra cobra,Rule: Y - = Y
+Two results: - = banana strawberry banana * | - = shark penguin cobra buffalo shark penguin *,Rule: - = Z X Z *
+Two results: blueberry grape blueberry grape - horse - * | banana banana - seal - *,Rule: Y Y - X - *
+Two results: penguin blackberry + = penguin blackberry zebra seal | apple horse + = apple horse buffalo,Rule: Z + = Z Y
+Two results: rat kiwi blueberry * = | stork pear * =,Rule: X Y * =
+Two results: + rat rat + + kiwi | + watermelon watermelon + + grape,Rule: + Z Z + + X
+Two results: peach grape = + pear peach grape | zebra = + peach zebra,Rule: X = + Y X
+Two results: - pear penguin strawberry - + | - eagle cobra - +,Rule: - Y Z - +
+Two results: apple kiwi strawberry - * strawberry + | apple rat blackberry grape - * blackberry grape +,Rule: Z Y - * Y +
+Two results: - = cobra whale penguin penguin - | - = blackberry peach banana horse banana horse -,Rule: - = Y X X -
+Two results: buffalo lion buffalo lion - = banana banana | watermelon seal watermelon seal - = blackberry apple,Rule: Z Z - = X
+Two results: + rat watermelon buffalo cobra + | + apple zebra +,Rule: + Y X +
+Two results: * * + pear blackberry | * * + blackberry kiwi,Rule: * * + Y X
+Two results: eagle stork + stork = * | cobra grape lion + lion = *,Rule: Z X + X = *
+Two results: rat watermelon + + | banana banana + +,Rule: X Y + +
+Two results: zebra lion apple * * = zebra lion | banana strawberry horse * * = banana strawberry,Rule: Z Y * * = Z
+Two results: - * kiwi banana = kiwi banana | - * kiwi = kiwi,Rule: - * X = X
+Two results: seal shark seal shark seal shark - - | cobra cobra cobra - -,Rule: Y Y Y - -
+Two results: watermelon shark - grape = - shark cobra | lion - peach pear = - whale grape,Rule: X - Y = - Z
+Two results: horse peach * * shark | watermelon pear stork shark * * whale apple,Rule: Y X * * Z
+Two results: pear apple + - seal pear apple | zebra + - watermelon zebra,Rule: X + - Z X
+Two results: penguin watermelon eagle * = - | peach grape banana peach * = -,Rule: Z Y X * = -
+Two results: * stork horse stork = | * lion stork lion lion stork =,Rule: * Y Z Y =
+Two results: + lion lion rat * = | + eagle eagle rat seal * =,Rule: + Y Y X * =
+Two results: blueberry = blueberry - * | banana kiwi = banana kiwi - *,Rule: Z = Z - *
+Two results: = - blueberry peach | = - watermelon pear whale watermelon,Rule: = - Z Y
+Two results: watermelon banana - stork watermelon banana = | banana - pear banana =,Rule: Z - Y Z =
+Two results: peach seal - - = | penguin banana grape watermelon - - =,Rule: X Y - - =
+Two results: eagle penguin - peach penguin = eagle penguin | kiwi zebra - apple apple = kiwi zebra,Rule: Y - X = Y
+Two results: + penguin + rat penguin | + whale + blueberry,Rule: + Z + Y
+Two results: + eagle horse zebra - = eagle | + grape whale blueberry horse - = grape whale,Rule: + Y X - = Y
+Two results: - * - blackberry banana | - * - pear buffalo peach lion,Rule: - * - X Z
+Two results: blueberry lion blueberry lion + * blueberry lion * | lion peach lion peach + * lion peach *,Rule: Z Z + * Z *
+Two results: penguin = zebra blueberry + | banana pear = horse whale +,Rule: X = Z +
+Two results: - whale grape = + buffalo pear | - lion = + pear,Rule: - X = + Z
+Two results: rat watermelon whale watermelon whale - = | pear watermelon rat watermelon rat - =,Rule: Z Y Y - =
+Two results: buffalo whale + * * stork apple buffalo | blueberry + * * shark blackberry kiwi buffalo,Rule: Y + * * Z X
+Two results: eagle stork - + | grape eagle blackberry - +,Rule: X Y - +
+Two results: grape - * grape buffalo banana + | apple - * apple cobra +,Rule: X - * X Y +
+Two results: + * blueberry blueberry blueberry blueberry blueberry blueberry | + * banana strawberry banana strawberry banana strawberry,Rule: + * Y Y Y
+Two results: + + blackberry strawberry blackberry blackberry | + + banana peach cobra peach strawberry apple,Rule: + + X Y Z
+Two results: = + grape - eagle blueberry | = + blueberry penguin - kiwi,Rule: = + Y - X
+Two results: banana - * shark whale | zebra lion - * banana,Rule: X - * Y
+Two results: + - eagle eagle | + - apple apple,Rule: + - Z Z
+Two results: apple strawberry watermelon apple - + | lion shark grape lion - +,Rule: Z Y Z - +
+Two results: peach + = peach rat grape | kiwi zebra + = kiwi zebra watermelon buffalo,Rule: Z + = Z Y
+Two results: = + eagle banana eagle banana horse | = + strawberry eagle strawberry eagle grape blackberry,Rule: = + Z Z X
+Two results: * + cobra shark - cobra shark | * + cobra - cobra,Rule: * + Z - Z
+Two results: seal * seal + + | seal buffalo * seal buffalo + +,Rule: Y * Y + +
+Two results: blackberry blackberry * shark * = | pear watermelon pear watermelon * eagle rat * =,Rule: Z Z * X * =
+Two results: - - - strawberry eagle strawberry eagle | - - - kiwi kiwi,Rule: - - - Z Z
+Two results: * = zebra penguin rat + | * = zebra horse zebra watermelon +,Rule: * = Z Y +
+Two results: eagle stork = = watermelon grape | stork seal = = blueberry banana,Rule: Y = = X
+Two results: apple eagle = - apple eagle - | whale lion = - whale lion -,Rule: X = - X -
+Two results: * seal penguin - seal penguin horse apple | * buffalo seal - buffalo seal blackberry,Rule: * Y - Y X
+Two results: - * zebra = blueberry horse | - * lion buffalo = grape shark,Rule: - * Z = Y
+Two results: = banana blackberry penguin pear + | = shark watermelon cobra whale +,Rule: = Y Z X +
+Two results: stork grape + * eagle cobra * | lion cobra + * stork *,Rule: X + * Z *
+Two results: + watermelon blueberry peach banana + | + buffalo watermelon eagle +,Rule: + Z X +
+Two results: blackberry grape eagle apple - blackberry grape + | zebra blackberry pear - zebra blackberry +,Rule: Y Z - Y +
+Two results: + buffalo strawberry * cobra watermelon | + peach strawberry * apple grape,Rule: + Y * X
+Two results: - - = blueberry stork stork apple kiwi | - - = zebra whale penguin pear,Rule: - - = Z X Y
+Two results: = banana peach grape peach = grape peach | = peach kiwi seal grape = seal grape,Rule: = X Z = Z
+Two results: peach apple horse + - peach apple | banana shark eagle + - banana shark,Rule: Y X + - Y
+Two results: + shark lion shark lion = = rat | + horse shark horse shark = = kiwi,Rule: + Y Y = = X
+Two results: banana banana * - = | eagle eagle * - =,Rule: Z Z * - =
+Two results: + penguin stork rat stork rat + | + zebra grape rat pear rat pear +,Rule: + Z Y Y +
+Two results: cobra * cobra * cobra | horse * horse * horse,Rule: X * X * X
+Two results: * * = pear peach buffalo kiwi | * * = blueberry penguin seal strawberry shark,Rule: * * = X Z Y
+Two results: apple cobra + seal = + | strawberry lion + apple seal = +,Rule: Y + X = +
+Two results: penguin kiwi * = penguin kiwi penguin kiwi | penguin eagle * = penguin eagle penguin eagle,Rule: X * = X X
+Two results: = - eagle shark eagle shark + | = - buffalo buffalo +,Rule: = - Z Z +
+Two results: - strawberry * watermelon pear kiwi = | - banana * rat banana watermelon buffalo =,Rule: - Y * X Z =
+Two results: banana pear - peach + banana pear = | eagle blueberry - rat + eagle blueberry =,Rule: X - Y + X =
+Two results: = * seal seal seal | = * blueberry rat blueberry rat blueberry rat,Rule: = * X X X
+Two results: apple - + lion | shark - + zebra,Rule: Y - + Z
+Two results: kiwi whale kiwi * + + | blackberry cobra pear blackberry cobra * + +,Rule: Y X Y * + +
+Two results: * blackberry + - blackberry banana | * pear banana + - pear banana strawberry,Rule: * X + - X Z
+Two results: banana apple = - + banana apple | seal seal = - + seal seal,Rule: Z = - + Z
+Two results: - lion lion * | - blackberry blackberry *,Rule: - X X *
+Two results: = rat grape - apple blueberry watermelon kiwi * | = whale - cobra watermelon stork *,Rule: = X - Z Y *
+Two results: + apple + = buffalo banana | + peach + = rat,Rule: + X + = Z
+Two results: watermelon + - = pear watermelon | strawberry eagle + - = strawberry horse,Rule: X + - = Z
+Two results: = + lion cobra lion blueberry apple | = + buffalo cobra peach kiwi,Rule: = + X Y Z
+Two results: stork cobra * strawberry - | pear * blackberry -,Rule: Z * Y -
+Two results: stork peach - * stork | lion grape eagle - * lion,Rule: Z Y - * Z
+Two results: penguin kiwi penguin kiwi banana + + - | pear peach pear peach lion + + -,Rule: X X Y + + -
+Two results: - = horse horse blackberry lion | - = blueberry eagle whale,Rule: - = X Z
+Two results: blackberry grape * = cobra | zebra * = pear horse,Rule: Y * = Z
+Two results: = whale horse - stork | = stork buffalo - peach,Rule: = Y - X
+Two results: cobra pear banana banana * * + | kiwi shark shark * * +,Rule: Z X X * * +
+Two results: shark + pear blackberry lion * * | buffalo + penguin blackberry cobra buffalo * *,Rule: Y + X Z * *
+Two results: blackberry peach peach grape + - = | strawberry pear grape banana + - =,Rule: X Z + - =
+Two results: cobra whale * = + cobra whale kiwi | blackberry watermelon * = + blackberry watermelon blackberry,Rule: Z * = + Z X
+Two results: - watermelon peach + peach | - buffalo grape lion blueberry + lion blueberry,Rule: - X Z + Z
+Two results: seal penguin = * buffalo kiwi - lion seal | buffalo apple = * penguin strawberry - penguin,Rule: Z = * Y - X
+Two results: blueberry kiwi - strawberry strawberry = | lion - watermelon watermelon =,Rule: Z - X X =
+Two results: blackberry grape + rat pear + watermelon zebra | cobra + whale blackberry + pear seal,Rule: Y + X + Z
+Two results: * lion whale + * pear banana | * eagle + * grape buffalo,Rule: * X + * Y
+Two results: banana banana = = banana | penguin penguin = = penguin,Rule: Z Z = = Z
+Two results: horse whale + * horse | pear eagle shark strawberry + * pear eagle,Rule: X Z + * X
+Two results: watermelon whale + = watermelon whale | cobra + = cobra,Rule: Z + = Z
+Two results: shark apple whale watermelon eagle - + | grape kiwi blueberry cobra - +,Rule: Y Z X - +
+Two results: apple rat apple rat * = | kiwi kiwi * =,Rule: X X * =
+Two results: lion lion = seal - | eagle shark eagle shark = apple -,Rule: X X = Z -
+Two results: = + seal cobra seal cobra | = + blackberry blackberry,Rule: = + Y Y
+Two results: strawberry stork strawberry stork = + strawberry stork | shark seal shark seal = + shark seal,Rule: Z Z = + Z
+Two results: * strawberry grape * strawberry grape strawberry grape - | * blueberry zebra * blueberry zebra blueberry zebra -,Rule: * Y * Y Y -
+Two results: whale lion - whale + | strawberry peach blackberry - strawberry +,Rule: Y Z - Y +
+Two results: * penguin * penguin + | * blackberry * blackberry +,Rule: * Z * Z +
+Two results: kiwi * kiwi * kiwi - | rat * rat * rat -,Rule: Z * Z * Z -
+Two results: = blueberry = - whale horse | = cobra whale = - blueberry zebra,Rule: = X = - Z
+Two results: + - buffalo zebra watermelon strawberry | + - kiwi apple cobra,Rule: + - X Y
+Two results: lion seal - - lion seal | penguin grape - - penguin grape,Rule: Z - - Z
+Two results: = peach peach peach - | = stork shark stork shark stork shark -,Rule: = Y Y Y -
+Two results: zebra zebra = * zebra - | lion eagle lion eagle = * lion eagle -,Rule: Y Y = * Y -
+Two results: + = = rat rat | + = = horse horse,Rule: + = = Y Y
+Two results: - blackberry seal eagle = + | - stork blueberry = +,Rule: - Z Y = +
+Two results: blueberry whale = strawberry cobra blueberry whale = | pear seal = whale pear seal =,Rule: X = Y X =
+Two results: * blackberry horse + * blackberry horse whale watermelon | * watermelon + * watermelon strawberry,Rule: * X + * X Y
+Two results: = = watermelon penguin watermelon penguin = | = = lion lion =,Rule: = = X X =
+Two results: - = horse lion strawberry | - = shark penguin kiwi,Rule: - = Z Y
+Two results: * lion lion buffalo banana + buffalo banana - | * peach whale buffalo + whale buffalo -,Rule: * Z X + X -
+Two results: eagle cobra = * apple blackberry - | lion = * apple -,Rule: X = * Z -
+Two results: + stork watermelon - zebra buffalo | + cobra - kiwi watermelon,Rule: + X - Z
+Two results: - pear zebra * banana buffalo | - grape * horse whale,Rule: - Y * X Z
+Two results: watermelon cobra blackberry = * - blackberry | grape penguin blackberry = * - blackberry,Rule: X Y = * - Y
+Two results: grape = blueberry banana + | watermelon = apple +,Rule: Z = X +
+Two results: whale = whale + | lion = lion +,Rule: X = X +
+Two results: - rat blueberry = blueberry lion | - lion = watermelon kiwi,Rule: - Y = Z
+Two results: * + lion rat lion rat banana | * + grape strawberry grape strawberry zebra,Rule: * + X X Y
+Two results: strawberry pear * + strawberry pear strawberry pear | buffalo penguin * + buffalo penguin buffalo penguin,Rule: Z * + Z Z
+Two results: * seal lion blackberry = + seal | * watermelon strawberry = + watermelon,Rule: * Z Y = + Z
+Two results: - - horse peach * horse peach | - - banana lion * banana lion,Rule: - - Y * Y
+Two results: + stork watermelon blueberry stork watermelon - + | + pear shark lion pear shark - +,Rule: + Z X Z - +
+Two results: penguin whale + strawberry penguin - | seal zebra + eagle -,Rule: Y + X -
+Two results: shark seal * - + | penguin strawberry * - +,Rule: Z Y * - +
+Two results: - watermelon shark * peach watermelon rat kiwi - | - seal penguin * strawberry seal shark cobra -,Rule: - Z * Y X -
+Two results: = + kiwi blackberry + rat | = + kiwi + shark,Rule: = + X + Z
+Two results: * strawberry watermelon - watermelon | * blueberry - peach eagle,Rule: * Z - Y
+Two results: buffalo horse grape = * buffalo banana | buffalo whale strawberry = * buffalo pear,Rule: Z Y = * X
+Two results: + cobra whale banana * | + blackberry eagle apple *,Rule: + Y X *
+Two results: + penguin kiwi zebra penguin kiwi + * | + buffalo banana shark buffalo + *,Rule: + Y Z Y + *
+Two results: = kiwi peach + * lion | = watermelon watermelon + * peach penguin,Rule: = Z + * Y
+Two results: cobra whale cobra whale + cobra whale - | zebra zebra + zebra -,Rule: Y Y + Y -
+Two results: * = horse strawberry * grape horse strawberry | * = apple * strawberry zebra apple,Rule: * = X * Z X
+Two results: = banana zebra blueberry = * eagle eagle | = blueberry grape = * peach,Rule: = Y Z = * X
+Two results: lion + lion + = lion | cobra banana + cobra banana + = cobra banana,Rule: X + X + = X
+Two results: stork seal peach cobra peach cobra * - = | blackberry horse horse * - =,Rule: Z X X * - =
+Two results: zebra * zebra shark whale + - | blackberry * blackberry eagle + -,Rule: Y * Y X + -
+Two results: - - horse eagle buffalo | - - cobra rat,Rule: - - X Y
+Two results: * + = shark blackberry horse | * + = stork apple whale,Rule: * + = Y Z
+Two results: = penguin = penguin penguin | = apple = apple apple,Rule: = Y = Y Y
+Two results: blueberry * - peach banana | seal watermelon * - peach,Rule: X * - Y
+Two results: + = cobra watermelon - kiwi banana buffalo | + = shark horse - shark horse kiwi seal,Rule: + = Z - Y X
+Two results: = * grape * kiwi pear | = * apple peach * banana kiwi,Rule: = * X * Y
+Two results: - apple = stork lion penguin apple | - kiwi = stork lion banana,Rule: - X = Y Z
+Two results: pear blackberry - = pear blackberry pear blackberry + | banana rat - = banana rat banana rat +,Rule: Z - = Z Z +
+Two results: strawberry strawberry * - = strawberry strawberry | lion penguin * - = lion penguin,Rule: X * - = X
+Two results: rat whale kiwi + + + | kiwi kiwi eagle + + +,Rule: Z X + + +
+Two results: eagle lion eagle * - - | pear strawberry stork pear * - -,Rule: Y Z Y * - -
+Two results: horse = horse - + peach | grape = grape - + kiwi,Rule: Z = Z - + X
+Two results: zebra zebra * - strawberry horse | eagle peach eagle peach * - shark,Rule: Z Z * - Y
+Two results: eagle = + kiwi lion eagle | pear = + grape blackberry pear,Rule: Y = + X Y
+Two results: seal blueberry * = seal blueberry = | rat whale * = rat whale =,Rule: Y * = Y =
+Two results: seal buffalo seal buffalo + watermelon + | watermelon watermelon + whale watermelon +,Rule: Z Z + Y +
+Two results: * + horse horse * | * + eagle eagle *,Rule: * + Z Z *
+Two results: + kiwi watermelon kiwi watermelon - * | + eagle eagle - *,Rule: + Z Z - *
+Two results: = = + stork penguin strawberry | = = + penguin zebra blueberry,Rule: = = + Z Y
+Two results: rat rat = * * rat rat | apple peach = * * apple peach,Rule: X = * * X
+Two results: seal rat seal - = | zebra watermelon whale zebra - =,Rule: Y Z Y - =
+Two results: + = eagle penguin zebra | + = whale cobra,Rule: + = X Y
+Two results: = kiwi blueberry blueberry blueberry blueberry - | = lion grape blueberry grape blueberry -,Rule: = X Z Z -
+Two results: = * apple apple rat - apple rat | = * seal apple peach - peach,Rule: = * Z Y - Y
+Two results: seal * peach peach * - | stork * pear * -,Rule: X * Y * -
+Two results: watermelon watermelon lion = * | stork stork stork = *,Rule: Y Y X = *
+Two results: * rat - rat = rat | * apple shark - banana = apple shark,Rule: * Y - X = Y
+Two results: = seal zebra peach lion peach lion * | = blackberry horse stork horse stork *,Rule: = X Z Z *
+Two results: eagle lion = eagle lion + eagle lion | grape = grape + grape,Rule: Y = Y + Y
+Two results: + strawberry horse - blueberry watermelon kiwi + | + watermelon shark - banana watermelon +,Rule: + Y - X Z +
+Two results: grape = blackberry peach + = | watermelon watermelon = pear + =,Rule: Y = X + =
+Two results: - - blackberry - blackberry | - - seal watermelon - seal watermelon,Rule: - - Z - Z
+Two results: banana + - * seal rat banana | lion + - * shark whale lion,Rule: Z + - * X Z
+Two results: apple shark = zebra blackberry - | peach shark = lion -,Rule: X = Z -
+Two results: = = kiwi cobra kiwi cobra | = = blueberry blueberry,Rule: = = X X
+Two results: kiwi kiwi + grape = | apple apple + lion whale =,Rule: Z Z + X =
+Two results: = * shark apple pear | = * stork shark horse kiwi stork,Rule: = * Z X Y
+Two results: peach - peach + | lion grape - lion grape +,Rule: Z - Z +
+Two results: blueberry zebra whale = + | pear grape pear = +,Rule: X Z = +
+Two results: * buffalo watermelon buffalo watermelon blackberry = | * buffalo banana buffalo banana banana =,Rule: * Z Z Y =
+Two results: buffalo buffalo * + | kiwi peach kiwi peach * +,Rule: Z Z * +
+Two results: blackberry pear = kiwi watermelon = kiwi watermelon | whale blueberry = blueberry blueberry = blueberry blueberry,Rule: Z = Y = Y
+Two results: zebra cobra = * seal | whale kiwi = * peach penguin,Rule: Z = * Y
+Two results: whale eagle whale = + = | kiwi grape = + =,Rule: X Y = + =
+Two results: shark + = seal seal | cobra pear + = stork stork,Rule: X + = Z Z
+Two results: kiwi - kiwi * + | whale cobra - whale cobra * +,Rule: Y - Y * +
+Two results: blackberry banana * = horse strawberry | zebra * = stork,Rule: Y * = Z
+Two results: watermelon pear - + watermelon pear whale | watermelon buffalo - + watermelon buffalo whale,Rule: X - + X Y
+Two results: zebra blueberry zebra peach = * zebra peach * | banana lion whale = * whale *,Rule: Z Y = * Y *
+Two results: = = cobra grape kiwi blackberry kiwi blackberry + | = = blueberry penguin penguin +,Rule: = = X Y Y +
+Two results: - strawberry apple blackberry * | - stork strawberry watermelon *,Rule: - Z Y *
+Two results: = = penguin penguin | = = shark shark,Rule: = = X X
+Two results: lion peach zebra + apple * | buffalo seal stork + rat blueberry *,Rule: X Y + Z *
+Two results: + penguin * whale - | + shark * penguin -,Rule: + Z * X -
+Two results: blackberry pear blackberry pear + + cobra + | stork stork + + stork +,Rule: X X + + Z +
+Two results: * * + shark buffalo | * * + strawberry peach whale peach,Rule: * * + Z X
+Two results: eagle grape apple * = | seal lion banana strawberry * =,Rule: Z X Y * =
+Two results: = + watermelon watermelon peach + | = + horse penguin stork +,Rule: = + X Y +
+Two results: + kiwi = banana kiwi | + eagle = rat eagle,Rule: + Y = Z Y
+Two results: - blackberry watermelon penguin = watermelon penguin - | - seal peach blackberry = peach blackberry -,Rule: - Z X = X -
+Two results: * strawberry - strawberry | * stork buffalo - stork buffalo,Rule: * Z - Z
+Two results: zebra kiwi banana cobra + - | watermelon banana whale horse + -,Rule: Z X + -
+Two results: = + - penguin rat buffalo strawberry | = + - penguin buffalo watermelon rat,Rule: = + - X Y
+Two results: * = + apple buffalo | * = + seal peach banana,Rule: * = + Y X
+Two results: blackberry seal + = | eagle penguin horse + =,Rule: Y X + =
+Two results: * grape + pear buffalo | * stork stork + kiwi strawberry,Rule: * X + Z
+Two results: - peach penguin * whale peach penguin * | - blueberry * blackberry blueberry *,Rule: - Y * Z Y *
+Two results: blueberry banana = = whale * blueberry banana | horse = = cobra * horse,Rule: X = = Z * X
+Two results: * blueberry stork + eagle shark | * stork blackberry + buffalo blackberry,Rule: * X + Z
+Two results: + peach eagle = eagle | + kiwi zebra penguin = zebra penguin,Rule: + Y Z = Z
+Two results: whale apple grape * apple grape - + | eagle watermelon whale horse * whale horse - +,Rule: Z Y * Y - +
+Two results: - = apple watermelon cobra penguin + | - = kiwi grape +,Rule: - = Y Z +
+Two results: lion peach peach = = | grape pear penguin penguin = =,Rule: Z X X = =
+Two results: cobra peach + banana + | whale cobra + grape stork +,Rule: Y + X +
+Two results: + + = shark banana rat seal | + + = buffalo strawberry seal rat,Rule: + + = Z Y X
+Two results: blackberry blackberry * * * | watermelon cobra watermelon cobra * * *,Rule: Z Z * * *
+Two results: horse apple peach cobra - - | blueberry shark cobra - -,Rule: Z Y - -
+Two results: = - eagle lion lion * | = - cobra strawberry strawberry *,Rule: = - X Y Y *
+Two results: + apple pear apple pear - | + zebra zebra -,Rule: + X X -
+Two results: apple penguin * - penguin penguin | buffalo * - zebra zebra,Rule: Z * - X X
+Two results: - * * horse apple pear | - * * buffalo banana grape,Rule: - * * X Y
+Two results: eagle whale + = eagle | blueberry blackberry shark strawberry + = blueberry blackberry,Rule: Z X + = Z
+Two results: banana rat rat zebra apple = + | peach pear grape stork = +,Rule: Y X Z = +
+Two results: - whale peach + whale peach - | - penguin lion + penguin lion -,Rule: - Z + Z -
+Two results: buffalo peach rat + = | strawberry whale cobra + =,Rule: X Z + =
+Two results: = lion penguin lion penguin = | = blueberry apple blueberry apple =,Rule: = X X =
+Two results: buffalo buffalo * - * kiwi peach | peach * - * shark,Rule: Z * - * Y
+Two results: whale banana * - + apple whale banana | strawberry watermelon * - + apple whale strawberry watermelon,Rule: X * - + Y X
+Two results: + penguin cobra + + penguin cobra strawberry | + stork grape + + stork grape whale,Rule: + Y + + Y Z
+Two results: apple penguin + * apple penguin seal rat | seal + * seal peach,Rule: Z + * Z X
+Two results: + watermelon stork = - watermelon stork | + seal grape = - seal grape,Rule: + X = - X
+Two results: apple = * = rat | buffalo pear = * = pear,Rule: X = * = Z
+Two results: - rat cobra shark kiwi rat = - | - apple eagle penguin lion blueberry = -,Rule: - Z Y X = -
+Two results: * = buffalo apple * banana shark | * = eagle apple * eagle,Rule: * = X * Y
+Two results: apple peach apple peach whale blueberry + + | kiwi banana kiwi banana horse + +,Rule: Y Y Z + +
+Two results: cobra - shark shark * zebra = | blueberry rat - rat * grape blueberry =,Rule: X - Y * Z =
+Two results: + lion seal lion seal * strawberry * | + blueberry blueberry * whale *,Rule: + X X * Y *
+Two results: = penguin seal + | = watermelon shark +,Rule: = Z Y +
+Two results: = zebra - * zebra stork | = seal watermelon - * seal watermelon stork,Rule: = Y - * Y X
+Two results: seal * + kiwi banana zebra | whale kiwi * + horse apple cobra peach,Rule: Z * + X Y
+Two results: - zebra stork kiwi stork kiwi * * | - shark zebra rat zebra rat * *,Rule: - Z X X * *
+Two results: buffalo * - = horse horse | stork peach * - = horse penguin,Rule: Y * - = Z
+Two results: peach horse * * + strawberry seal | lion blackberry * * + zebra penguin,Rule: Z * * + X
+Two results: + * * kiwi lion buffalo lion | + * * apple blackberry buffalo seal,Rule: + * * X Y Z
+Two results: + + = cobra stork kiwi | + + = blueberry pear,Rule: + + = Z Y
+Two results: - + kiwi pear + | - + horse grape penguin +,Rule: - + X Y +
+Two results: strawberry - - + eagle zebra pear | kiwi apple - - + buffalo watermelon penguin,Rule: Z - - + Y X
+Two results: * - strawberry kiwi = kiwi | * - blueberry horse shark = horse shark,Rule: * - Z Y = Y
+Two results: + - - eagle apple eagle apple eagle apple | + - - cobra cobra cobra,Rule: + - - Y Y Y
+Two results: - - = shark shark | - - = grape grape,Rule: - - = X X
+Two results: + cobra cobra = watermelon | + blackberry kiwi blackberry kiwi = blackberry kiwi,Rule: + X X = Y
+Two results: = + lion lion lion lion - | = + lion buffalo lion buffalo -,Rule: = + Z Z -
+Two results: + blackberry * = penguin whale | + pear * = shark grape blueberry,Rule: + Z * = Y X
+Two results: blackberry = * lion | penguin whale = * apple,Rule: Z = * X
+Two results: whale apple + * - whale | cobra pear + * - cobra,Rule: X Z + * - X
+Two results: * - * lion watermelon watermelon zebra lion watermelon | * - * zebra stork lion zebra stork,Rule: * - * Z X Z
+Two results: penguin + - + blackberry | horse + - + penguin peach,Rule: X + - + Z
+Two results: lion zebra lion zebra - = buffalo = | pear pear - = stork zebra =,Rule: X X - = Y =
+Two results: = - peach penguin rat | = - rat blueberry,Rule: = - X Z
+Two results: grape whale = = kiwi watermelon | strawberry = = blackberry seal,Rule: Z = = Y
+Two results: * cobra + - stork | * strawberry blackberry + - buffalo rat,Rule: * Y + - Z
+Two results: - * - stork watermelon eagle stork watermelon | - * - pear kiwi pear,Rule: - * - Y X Y
+Two results: seal penguin * blueberry whale blackberry * | buffalo blackberry * shark banana shark *,Rule: X * Y Z *
+Two results: * * + whale blackberry whale | * * + blueberry zebra pear kiwi,Rule: * * + Z X
+Two results: * pear * pear apple + | * shark * shark pear +,Rule: * Y * Y Z +
+Two results: = seal kiwi - seal | = pear - horse,Rule: = Z - X
+Two results: seal whale * = horse seal horse seal | strawberry seal * = watermelon cobra watermelon cobra,Rule: X * = Y Y
+Two results: blueberry = * blueberry blueberry | grape banana = * grape banana grape banana,Rule: X = * X X
+Two results: zebra zebra - cobra grape = * eagle watermelon | pear horse - whale zebra = * penguin strawberry,Rule: Z - Y = * X
+Two results: shark peach + * = | banana grape zebra + * =,Rule: X Y + * =
+Two results: = * buffalo buffalo * | = * strawberry strawberry *,Rule: = * Y Y *
+Two results: - apple shark = zebra grape apple shark | - eagle = lion eagle,Rule: - Z = Y Z
+Two results: - = * watermelon banana watermelon | - = * rat whale kiwi,Rule: - = * X Z
+Two results: - zebra watermelon * shark kiwi shark kiwi = | - cobra penguin * lion lion =,Rule: - X * Y Y =
