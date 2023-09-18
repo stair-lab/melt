@@ -747,7 +747,7 @@ class EvalPipeline:
         if self.few_shot_flag:
 
             def format_original_fewshot(rec):
-                return f"""Văn bản: ''' {rec[ds_wrapper.passage]} '''\nCâu hỏi: ''' {rec[ds_wrapper.query]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {rec[ds_wrapper.answer]} </s><s>[INST]\n"""
+                return f"""Văn bản: ''' {rec[ds_wrapper.passage]} '''\nCâu hỏi: ''' {rec[ds_wrapper.query]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {{ "answer": "{rec[ds_wrapper.answer]}" }} </s><s>[INST]\n"""
 
             selected_sample = list(random.sample(list(ds_wrapper.dataset_training), 3))
 
