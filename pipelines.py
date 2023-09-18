@@ -175,15 +175,13 @@ class EvalPipeline:
             
             selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_training)), 5))
             selected_sample = [ds_wrapper.dataset_training[s] for s in selected_sample_idx]
-            ds_wrapper.dataset_training = ds_wrapper.dataset_training.select(
-                [
-                    i for i in range(len(ds_wrapper.dataset_training)) 
-                    if i not in selected_sample_idx
-                ]
-            )
-            
-           
-            
+            # ds_wrapper.dataset_training = ds_wrapper.dataset_training.select(
+            #     [
+            #         i for i in range(len(ds_wrapper.dataset_training)) 
+            #         if i not in selected_sample_idx
+            #     ]
+            # )
+
             original_few_shot = ''.join(list(map(format_original_fewshot, selected_sample)))
        
         
@@ -284,7 +282,7 @@ class EvalPipeline:
                 cl_samples = ds_wrapper.dataset_training.filter(lambda r: r[ds_wrapper.label] == cl)
                 selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
             # Remove few shot sample
-            ds_wrapper.dataset_training = ds_wrapper.dataset_training.filter(lambda r: r not in selected_sample)
+            # ds_wrapper.dataset_training = ds_wrapper.dataset_training.filter(lambda r: r not in selected_sample)
             
             original_few_shot = ''.join(list(map(format_original_fewshot, selected_sample)))    
             calib_few_shot = ''.join(list(map(format_calib_fewshot, selected_sample)))
@@ -354,8 +352,8 @@ class EvalPipeline:
             for cl in classes:
                 cl_samples = ds_wrapper.dataset_training.filter(lambda r: r[ds_wrapper.label] == cl)
                 selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
-             # Remove few shot sample
-            ds_wrapper.dataset_training = ds_wrapper.dataset_training.filter(lambda r: r not in selected_sample)
+            #  # Remove few shot sample
+            # ds_wrapper.dataset_training = ds_wrapper.dataset_training.filter(lambda r: r not in selected_sample)
             
             original_few_shot = ''.join(list(map(format_original_fewshot, selected_sample)))    
             calib_few_shot = ''.join(list(map(format_calib_fewshot, selected_sample)))
@@ -427,8 +425,8 @@ class EvalPipeline:
             for cl in classes:
                 cl_samples = ds_wrapper.dataset_training.filter(lambda r: r[ds_wrapper.label] == cl)
                 selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
-             # Remove few shot sample
-            ds_wrapper.dataset_training = ds_wrapper.dataset_training.filter(lambda r: r not in selected_sample)
+            #  # Remove few shot sample
+            # ds_wrapper.dataset_training = ds_wrapper.dataset_training.filter(lambda r: r not in selected_sample)
             
             original_few_shot = ''.join(list(map(format_original_fewshot, selected_sample)))    
             calib_few_shot = ''.join(list(map(format_calib_fewshot, selected_sample)))
@@ -496,12 +494,12 @@ class EvalPipeline:
             
             selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_training)), 5))
             selected_sample = [ds_wrapper.dataset_training[s] for s in selected_sample_idx]
-            ds_wrapper.dataset_training = ds_wrapper.dataset_training.select(
-                [
-                    i for i in range(len(ds_wrapper.dataset_training)) 
-                    if i not in selected_sample_idx
-                ]
-            )
+            # ds_wrapper.dataset_training = ds_wrapper.dataset_training.select(
+            #     [
+            #         i for i in range(len(ds_wrapper.dataset_training)) 
+            #         if i not in selected_sample_idx
+            #     ]
+            # )
             
             original_few_shot = ''.join(list(map(format_original_fewshot, selected_sample)))    
             calib_few_shot = ''.join(list(map(format_calib_fewshot, selected_sample)))
@@ -576,14 +574,14 @@ class EvalPipeline:
         if self.few_shot_flag:
             format_original_fewshot = lambda rec: f"""Khách: "{rec[ds_wrapper.source]}"\nBot:[/INST] {rec[ds_wrapper.target]} </s><s>[INST]\n"""
             
-            selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_training)), 5))
-            selected_sample = [ds_wrapper.dataset_training[s] for s in selected_sample_idx]
-            ds_wrapper.dataset_training = ds_wrapper.dataset_training.select(
-                [
-                    i for i in range(len(ds_wrapper.dataset_training)) 
-                    if i not in selected_sample_idx
-                ]
-            )
+            selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_testing)), 5))
+            selected_sample = [ds_wrapper.dataset_testing[s] for s in selected_sample_idx]
+            # ds_wrapper.dataset_testing = ds_wrapper.dataset_testing.select(
+            #     [
+            #         i for i in range(len(ds_wrapper.dataset_testing)) 
+            #         if i not in selected_sample_idx
+            #     ]
+            # )
             original_few_shot = ''.join(list(map(format_original_fewshot, selected_sample)))    
         
         # Create few-shot strings
@@ -701,12 +699,12 @@ class EvalPipeline:
             
             selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_training)), 5))
             selected_sample = [ds_wrapper.dataset_training[s] for s in selected_sample_idx]
-            ds_wrapper.dataset_training = ds_wrapper.dataset_training.select(
-                [
-                    i for i in range(len(ds_wrapper.dataset_training)) 
-                    if i not in selected_sample_idx
-                ]
-            )
+            # ds_wrapper.dataset_training = ds_wrapper.dataset_training.select(
+            #     [
+            #         i for i in range(len(ds_wrapper.dataset_training)) 
+            #         if i not in selected_sample_idx
+            #     ]
+            # )
            
             
             original_few_shot = ''.join(list(map(format_original_fewshot, selected_sample)))
@@ -774,12 +772,12 @@ class EvalPipeline:
             
             selected_sample_idx = list(random.sample(range(len(ds_wrapper.dataset_training)), 5))
             selected_sample = [ds_wrapper.dataset_training[s] for s in selected_sample_idx]
-            ds_wrapper.dataset_training = ds_wrapper.dataset_training.select(
-                [
-                    i for i in range(len(ds_wrapper.dataset_training)) 
-                    if i not in selected_sample_idx
-                ]
-            )
+            # ds_wrapper.dataset_training = ds_wrapper.dataset_training.select(
+            #     [
+            #         i for i in range(len(ds_wrapper.dataset_training)) 
+            #         if i not in selected_sample_idx
+            #     ]
+            # )
            
             
             original_few_shot = ''.join(list(map(format_original_fewshot, selected_sample)))    
