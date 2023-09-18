@@ -84,7 +84,7 @@ PROMPT_TEMPLATE = {
             "<</SYS>>\n\n"
             "{few_shot}"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "language-modelling_correction": [
@@ -97,7 +97,7 @@ PROMPT_TEMPLATE = {
             "<</SYS>>\n\n"
             "{few_shot}"
             "Khách: \"{context}\"\n"
-            "Bot: [/INST] "
+            "Bot:[/INST] "
         ),
     ],
     "sentiment-analysis": [
