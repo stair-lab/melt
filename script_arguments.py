@@ -160,6 +160,12 @@ class ScriptArguments:
     fewshot_prompting: Optional[bool] = field(
         default=False, metadata={"help": "Enable few-shot prompting"}
     )
+    random_mtpc: Optional[bool] = field(
+        default=False, metadata={"help": "Enable random shuffling of choices"}
+    )
+    seed: Optional[int] = field(
+        default=42, metadata={"help": "Random seed"}
+    )
     continue_infer: Optional[bool] = field(
         default=False,
         metadata={"help": "Wheather to continue previous inference process"},
