@@ -749,15 +749,24 @@ class EvalPipeline:
             def format_original_fewshot(rec):
                 return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {{ "answer": "{rec["answer"]}" }} </s><s>[INST]\n"""
 
-            get_random_samples = list(random.sample(list(ds_wrapper.dataset_training), 2))
-            first_sample = {"query": get_random_samples[0][ds_wrapper.query], "passage": ast.literal_eval(get_random_samples[0][ds_wrapper.passage])["passage"][0], "answer": "Yes" }
-            selected_second_passage = []
-            while len(selected_second_passage) == 0:
-                select_second_passage =  list(set(ast.literal_eval(get_random_samples[0][ds_wrapper.passage])["passage"]) - set(ast.literal_eval(get_random_samples[1][ds_wrapper.passage])["passage"]))
-                if len(select_second_passage) == 0:
-                    get_random_samples[1] = list(random.sample(list(ds_wrapper.dataset_training), 1))[0]
-            second_sample = {"query": get_random_samples[1][ds_wrapper.query], "passage": select_second_passage[0], "answer": "No" }
+            get_random_sample = list(random.sample(list(ds_wrapper.dataset_training), 1))
+            
+            passage_sample_info = ast.literal_eval(get_random_samples[0][ds_wrapper.passage])
+            reference_samples = get_random_sample[0][ds_wrapper.answer]
+            
+            passage_sample1_idx = passage_sample_info['id'].index(reference_samples[0])
+            passage_sample1 = passage_sample_info['passage'][passage_sample1_idx]
+            first_sample = {"query": get_random_samples[0][ds_wrapper.query], "passage": passage_sample1, "answer": "Yes" }
+            
+            for i, psg_id in enumerate(passage_sample_info['id']):
+                if psg_id not in reference_samples:
+                    passage_sample2_idx = i
+                    break 
+            passage_sample2 = passage_sample_info['passage'][passage_sample2_idx]
+            second_sample = {"query": get_random_samples[0][ds_wrapper.query], "passage": passage_sample2, "answer": "No" }
+            
             selected_sample = [first_sample, second_sample]
+            
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )

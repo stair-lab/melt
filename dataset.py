@@ -468,6 +468,7 @@ class DatasetWrapper:
             self.id = "id"
             self.query = "query"
             self.passage = "passages"
+            self.answer = "references"
 
         elif self.dataset_name == "mmarco_robustness":
             self.task = "information-retrieval"
