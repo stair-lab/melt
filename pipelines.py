@@ -20,7 +20,8 @@ class InferPipeline:
         generations_probs = []
         num_generated_tokens = []
         for prompt in prompts:
-            inputs = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
+            inputs = self.tokenizer(
+                prompt, return_tensors="pt").to(self.model.device)
             generate_dict = self.model.generate(
                 inputs.input_ids,
                 output_scores=True,
@@ -30,7 +31,8 @@ class InferPipeline:
 
             num_generated_token = len(generate_dict.scores)
             num_generated_tokens.append(num_generated_token)
-            generated_tokens = generate_dict.sequences[:, -num_generated_token:]
+            generated_tokens = generate_dict.sequences[:, -
+                                                       num_generated_token:]
 
             generation = self.tokenizer.batch_decode(
                 generated_tokens, skip_special_tokens=True
@@ -66,12 +68,13 @@ class InferPipeline:
             completions_num_tokens.append(completion_num_tokens)
 
             inputs = torch.concatenate(
-                (prompt_tokens.input_ids, completion_tokens.input_ids[:, 1:]), dim=-1
+                (prompt_tokens.input_ids,
+                 completion_tokens.input_ids[:, 1:]), dim=-1
             )
             outputs = self.model(inputs)  # [input_tokens] [next_token]
 
             logits = outputs.logits[
-                :, prompt_num_tokens : prompt_num_tokens + completion_num_tokens
+                :, prompt_num_tokens: prompt_num_tokens + completion_num_tokens
             ]
             logprobs = logits.log_softmax(dim=-1)
             # >>> batch_size, sequence_length, vocab_size
@@ -161,7 +164,8 @@ class EvalPipeline:
                 for c, q in zip(batch[ds_wrapper.context], batch[ds_wrapper.question])
             ]
 
-            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(
+                prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x[0] for x in batch[ds_wrapper.answer]["text"]])
             generation_probs.extend([x for x in logprobs])
@@ -222,7 +226,8 @@ class EvalPipeline:
                 for q in batch[ds_wrapper.question]
             ]
 
-            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(
+                prompts, return_probs=True)
             calibprob_batch, _ = self.infer_pipeline.compute_logprob_and_length(
                 prompts, batch[ds_wrapper.answer]
             )
@@ -267,7 +272,8 @@ class EvalPipeline:
                 for document in batch[ds_wrapper.original_text]
             ]
 
-            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(
+                prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.summarized_text]])
             generation_probs.extend([x for x in logprobs])
@@ -314,12 +320,14 @@ class EvalPipeline:
                 cl_samples = ds_wrapper.dataset_training.filter(
                     lambda r: r[ds_wrapper.label] == cl
                 )
-                selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
+                selected_sample.append(
+                    cl_samples[random.randint(0, len(cl_samples))])
 
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )
-            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = "".join(
+                list(map(format_calib_fewshot, selected_sample)))
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -331,15 +339,18 @@ class EvalPipeline:
                 for c in batch[ds_wrapper.text]
             ]
             calib_prompts = [
-                ds_wrapper.calibration_prompt.format(context=c, few_shot=calib_few_shot)
+                ds_wrapper.calibration_prompt.format(
+                    context=c, few_shot=calib_few_shot)
                 for c in batch[ds_wrapper.text]
             ]
-            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(
+                prompts, return_probs=True)
             num_choice = 3
 
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts * num_choice,
-                [choice for choice in range(num_choice) for _ in range(len(prompts))],
+                [choice for choice in range(num_choice)
+                 for _ in range(len(prompts))],
             )
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.label]])
@@ -401,12 +412,14 @@ class EvalPipeline:
                 cl_samples = ds_wrapper.dataset_training.filter(
                     lambda r: r[ds_wrapper.label] == cl
                 )
-                selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
+                selected_sample.append(
+                    cl_samples[random.randint(0, len(cl_samples))])
 
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )
-            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = "".join(
+                list(map(format_calib_fewshot, selected_sample)))
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -429,12 +442,14 @@ class EvalPipeline:
                 for c in batch[ds_wrapper.text]
             ]
 
-            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(
+                prompts, return_probs=True)
 
             num_choice = 7 if sub_task == "vsmec" else 17
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts * num_choice,
-                [choice for choice in range(num_choice) for _ in range(len(prompts))],
+                [choice for choice in range(num_choice)
+                 for _ in range(len(prompts))],
             )
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.label]])
@@ -493,12 +508,14 @@ class EvalPipeline:
                 cl_samples = ds_wrapper.dataset_training.filter(
                     lambda r: r[ds_wrapper.label] == cl
                 )
-                selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
+                selected_sample.append(
+                    cl_samples[random.randint(0, len(cl_samples))])
 
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )
-            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = "".join(
+                list(map(format_calib_fewshot, selected_sample)))
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -519,12 +536,14 @@ class EvalPipeline:
                 )
                 for c in batch[ds_wrapper.text]
             ]
-            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(
+                prompts, return_probs=True)
             num_choice = 2 if sub_task == "ViCTSD" else 3
 
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts * num_choice,
-                [choice for choice in range(num_choice) for _ in range(len(prompts))],
+                [choice for choice in range(num_choice)
+                 for _ in range(len(prompts))],
             )
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.label]])
@@ -598,7 +617,8 @@ class EvalPipeline:
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )
-            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = "".join(
+                list(map(format_calib_fewshot, selected_sample)))
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -636,10 +656,12 @@ class EvalPipeline:
                         list_ans=format_list_ans(new_opts),
                     )
                 )
-            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(
+                prompts, return_probs=True)
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts * 4,
-                [chr(choice + 65) for choice in range(4) for _ in range(len(prompts))],
+                [chr(choice + 65) for choice in range(4)
+                 for _ in range(len(prompts))],
             )
             opt_calib_out = [
                 [option_logprobs[i + opt * len(prompts)] for opt in range(4)]
@@ -694,11 +716,10 @@ class EvalPipeline:
         selected_sample = []
         if self.few_shot_flag:
 
-        
             def format_original_fewshot(rec):
                 return f"""Khách: "{rec[ds_wrapper.source]}"\nBot:[/INST] {rec[ds_wrapper.target]} </s><s>[INST]\n"""
 
-            selected_sample = ds_wrapper.dataset_training  
+            selected_sample = ds_wrapper.dataset_training
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )
@@ -714,7 +735,8 @@ class EvalPipeline:
                 for c in batch[ds_wrapper.source]
             ]
 
-            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(
+                prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.target]])
             generation_probs.extend([x for x in logprobs])
@@ -789,7 +811,7 @@ class EvalPipeline:
                         ds_wrapper.prompt.format(
                             few_shot=original_few_shot, passage=p, question=query
                         )
-                        for p in top30_passages[psg : psg + BATCH_PASSAGE_SIZE]
+                        for p in top30_passages[psg: psg + BATCH_PASSAGE_SIZE]
                     ]
 
                     results, logprobs, _ = self.infer_pipeline(
@@ -817,7 +839,8 @@ class EvalPipeline:
             if idx % 100 == 0:
                 print(f"Saving results of {idx} batches")
 
-                generations = {"fewshot": selected_sample, "prediction": predictions}
+                generations = {"fewshot": selected_sample,
+                               "prediction": predictions}
                 saving_fn(generations)
 
         generations = {"fewshot": selected_sample, "prediction": predictions}
@@ -842,12 +865,14 @@ class EvalPipeline:
             def format_calib_fewshot(rec):
                 return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {rec[ds_wrapper.target]} </s><s>[INST]\n"""
 
-            selected_sample = list(random.sample(list(ds_wrapper.dataset_training), 5))
+            selected_sample = list(random.sample(
+                list(ds_wrapper.dataset_training), 5))
 
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )
-            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = "".join(
+                list(map(format_calib_fewshot, selected_sample)))
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -862,7 +887,8 @@ class EvalPipeline:
                 ds_wrapper.prompt.format(few_shot=calib_few_shot, rule=rule)
                 for rule in batch[ds_wrapper.source]
             ]
-            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(
+                prompts, return_probs=True)
             calibprob_batch, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts, batch[ds_wrapper.target]
             )
@@ -908,7 +934,8 @@ class EvalPipeline:
             def format_original_fewshot(rec):
                 return f"""Khách: "{rec[ds_wrapper.source_language]}"\nBot:[/INST] {rec[ds_wrapper.target_language]} </s><s>[INST]\n"""
 
-            selected_sample = list(random.sample(list(ds_wrapper.dataset_training), 5))
+            selected_sample = list(random.sample(
+                list(ds_wrapper.dataset_training), 5))
 
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
@@ -921,11 +948,13 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(few_shot=original_few_shot, document=document)
+                ds_wrapper.prompt.format(
+                    few_shot=original_few_shot, document=document)
                 for document in batch[ds_wrapper.source_language]
             ]
 
-            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(
+                prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.target_language]])
             generation_probs.extend([x for x in logprobs])
