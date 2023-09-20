@@ -87,6 +87,7 @@ else:
 training_arguments = TrainingArguments(
     output_dir=script_args.output_dir,
     num_train_epochs=script_args.num_train_epochs,
+    auto_find_batch_size=script_args.auto_find_batch_size,
     per_device_train_batch_size=script_args.per_device_train_batch_size,
     gradient_accumulation_steps=script_args.gradient_accumulation_steps,
     optim=script_args.optim,
@@ -97,6 +98,7 @@ training_arguments = TrainingArguments(
     weight_decay=script_args.weight_decay,
     fp16=script_args.fp16,
     bf16=script_args.bf16,
+    tf32=script_args.tf32,
     max_grad_norm=script_args.max_grad_norm,
     max_steps=script_args.max_steps,
     warmup_ratio=script_args.warmup_ratio,
@@ -105,7 +107,7 @@ training_arguments = TrainingArguments(
     dataloader_num_workers=8,
     push_to_hub=False,
     report_to="none",
-    # load_best_model_at_end=True
+    load_best_model_at_end=True
 )
 
 neptune_api_token = os.environ["NEPTUNE_API_TOKEN"]

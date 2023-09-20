@@ -80,6 +80,10 @@ class ScriptArguments:
         metadata={
             "help": "Enable the TF32 mode (available in Ampere and newer GPUs)"},
     )
+
+    auto_find_batch_size: Optional[bool] = field(
+        default=True, metadata={"help": "Enable auto batch size"}
+    )
     per_device_train_batch_size: Optional[int] = field(
         default=12, metadata={"help": "Batch size per GPU for training"}
     )
@@ -166,7 +170,9 @@ class ScriptArguments:
     random_mtpc: Optional[bool] = field(
         default=False, metadata={"help": "Enable random shuffling of choices"}
     )
-    seed: Optional[int] = field(default=42, metadata={"help": "Random seed"})
+    seed: Optional[int] = field(
+        default=42, metadata={"help": "Random seed"}
+    )
     continue_infer: Optional[bool] = field(
         default=False,
         metadata={"help": "Wheather to continue previous inference process"},

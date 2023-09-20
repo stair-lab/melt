@@ -1,3 +1,4 @@
+import random
 from datasets import load_dataset
 from prompt_template import CALIBRATION_INSTRUCTION, PROMPT_TEMPLATE
 
@@ -536,11 +537,13 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/mlqa_MLM.csv", split="train"
             )
-            selected_sample_idx = list(random.sample(range(len(self.dataset_testing)), 5))
-            self.dataset_training = [self.dataset_testing[s] for s in selected_sample_idx]
+            selected_sample_idx = list(random.sample(
+                range(len(self.dataset_testing)), 5))
+            self.dataset_training = [self.dataset_testing[s]
+                                     for s in selected_sample_idx]
             self.dataset_testing = self.dataset_testing.select(
                 [
-                    i for i in range(len(self.dataset_testing)) 
+                    i for i in range(len(self.dataset_testing))
                     if i not in selected_sample_idx
                 ]
             )
@@ -554,11 +557,13 @@ class DatasetWrapper:
                 data_files="datasets/Fairness/mlqa_MLM_for_fairness.csv",
                 split="train",
             )
-            selected_sample_idx = list(random.sample(range(len(self.dataset_testing)), 5))
-            self.dataset_training = [self.dataset_testing[s] for s in selected_sample_idx]
+            selected_sample_idx = list(random.sample(
+                range(len(self.dataset_testing)), 5))
+            self.dataset_training = [self.dataset_testing[s]
+                                     for s in selected_sample_idx]
             self.dataset_testing = self.dataset_testing.select(
                 [
-                    i for i in range(len(self.dataset_testing)) 
+                    i for i in range(len(self.dataset_testing))
                     if i not in selected_sample_idx
                 ]
             )
@@ -570,11 +575,13 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/VSEC.csv", split="train"
             )
-            selected_sample_idx = list(random.sample(range(len(self.dataset_testing)), 5))
-            self.dataset_training = [self.dataset_testing[s] for s in selected_sample_idx]
+            selected_sample_idx = list(random.sample(
+                range(len(self.dataset_testing)), 5))
+            self.dataset_training = [self.dataset_testing[s]
+                                     for s in selected_sample_idx]
             self.dataset_testing = self.dataset_testing.select(
                 [
-                    i for i in range(len(self.dataset_testing)) 
+                    i for i in range(len(self.dataset_testing))
                     if i not in selected_sample_idx
                 ]
             )
@@ -588,11 +595,13 @@ class DatasetWrapper:
                 data_files="datasets/Fairness/VSEC_for_fairness.csv",
                 split="train",
             )
-            selected_sample_idx = list(random.sample(range(len(self.dataset_testing)), 5))
-            self.dataset_training = [self.dataset_testing[s] for s in selected_sample_idx]
+            selected_sample_idx = list(random.sample(
+                range(len(self.dataset_testing)), 5))
+            self.dataset_training = [self.dataset_testing[s]
+                                     for s in selected_sample_idx]
             self.dataset_testing = self.dataset_testing.select(
                 [
-                    i for i in range(len(self.dataset_testing)) 
+                    i for i in range(len(self.dataset_testing))
                     if i not in selected_sample_idx
                 ]
             )
@@ -630,7 +639,7 @@ class DatasetWrapper:
             self.source = "source"
             self.target = "target"
 
-        elif self.dataset_name == "synthetic_pattern":
+        elif self.dataset_name == "synthetic_pattern_match":
             self.task = "reasoning_synthetic"
             self.dataset_testing = load_dataset(
                 "csv",
@@ -645,7 +654,7 @@ class DatasetWrapper:
             self.source = "source"
             self.target = "target"
 
-        elif self.dataset_name == "synthetic_induction":
+        elif self.dataset_name == "synthetic_variable_substitution":
             self.task = "reasoning_synthetic"
             self.dataset_testing = load_dataset(
                 "csv",
