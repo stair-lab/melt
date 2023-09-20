@@ -65,6 +65,8 @@ if __name__ == "__main__":
         + "_"
         + script_args.model_name.split("/")[-1]
         + f"_pt{script_args.prompting_strategy}"
+        + ("_fewshot" if script_args.fewshot_prompting else "")
+        + f"_seed{script_args.seed}"
     )
 
     csv_file = os.path.join(script_args.output_dir,
