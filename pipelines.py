@@ -740,7 +740,7 @@ class EvalPipeline:
 
     def __information_retrieval(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         predictions = []
-
+        sub_task = self.task.split("_")[1]
         idx = 0
         original_few_shot = ""
         selected_sample = []
@@ -749,21 +749,21 @@ class EvalPipeline:
             def format_original_fewshot(rec):
                 return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {{ "answer": "{rec["answer"]}" }} </s><s>[INST]\n"""
 
-            get_random_sample = list(random.sample(list(ds_wrapper.dataset_training), 1))
+            random_sample = list(random.sample(list(ds_wrapper.dataset_training), 1))[0]
+            random_batch_passages = ast.literal_eval(random_sample[ds_wrapper.passage])
+            if sub_task == "mmarco":
+                ref_passage_id = random_sample[ds_wrapper.answer][0]
+                ref_passage_idx = random_batch_passages['id'].index(reference_id)
+                rnd_passage_idx = random.choice([i for i in range(len(random_batch_passages['id'])) if i != ref_passage_idx])
+                    
+            else:
+                ref_passage_id = random_sample[ds_wrapper.answer][0]
+                ref_passage_idx = random_batch_passages['id'].index(ref_passage_id)
+                rnd_passage_id = random_sample[ds_wrapper.answer][-1]
+                rnd_passage_idx = batch_passages['id'].index(rnd_passage_id)
             
-            passage_sample_info = ast.literal_eval(get_random_samples[0][ds_wrapper.passage])
-            reference_samples = get_random_sample[0][ds_wrapper.answer]
-            
-            passage_sample1_idx = passage_sample_info['id'].index(reference_samples[0])
-            passage_sample1 = passage_sample_info['passage'][passage_sample1_idx]
-            first_sample = {"query": get_random_samples[0][ds_wrapper.query], "passage": passage_sample1, "answer": "Yes" }
-            
-            for i, psg_id in enumerate(passage_sample_info['id']):
-                if psg_id not in reference_samples:
-                    passage_sample2_idx = i
-                    break 
-            passage_sample2 = passage_sample_info['passage'][passage_sample2_idx]
-            second_sample = {"query": get_random_samples[0][ds_wrapper.query], "passage": passage_sample2, "answer": "No" }
+            first_sample = {"query": random_samples[ds_wrapper.query], "passage": random_batch_passages['passage'][ref_passage_idx], "answer": "Yes" }
+            second_sample = {"query": random_samples[ds_wrapper.query], "passage": random_batch_passages['passage'][rnd_passage_idx], "answer": "No" }
             
             selected_sample = [first_sample, second_sample]
             
@@ -776,42 +776,83 @@ class EvalPipeline:
             if idx < start_idx:
                 idx += 1
                 continue
+            prompts = []
+            log_data = []
             for query_with_a_batch_passages in batch:
+                
                 query_id = query_with_a_batch_passages[ds_wrapper.id]
                 query = query_with_a_batch_passages[ds_wrapper.query]
                 batch_passages = ast.literal_eval(
                     query_with_a_batch_passages[ds_wrapper.passage]
                 )
-                top30_passage_ids = batch_passages["id"][:30]
-                top30_passages = batch_passages["passage"][:30]
-                for psg in range(0, len(top30_passage_ids), BATCH_PASSAGE_SIZE):
-                    prompts = [
+                if sub_task == "mmarco":
+                    ref_passage_id = query_with_a_batch_passages[ds_wrapper.answer][0]
+                    ref_passage_idx = batch_passages['id'].index(reference_id)
+                    rnd_passage_idx = random.choice([i for i in range(len(batch_passages['id'])) if i != ref_passage_idx])
+                    
+                else:
+                    ref_passage_id = query_with_a_batch_passages[ds_wrapper.answer][0]
+                    ref_passage_idx = batch_passages['id'].index(ref_passage_id)
+                    rnd_passage_id = query_with_a_batch_passages[ds_wrapper.answer][-1]
+                    rnd_passage_idx = batch_passages['id'].index(rnd_passage_id)
+                list_passage_idx = [ref_passage_idx, rnd_passage_idx]
+                label_passage = [1, 0]
+                
+                prompts.extend([
                         ds_wrapper.prompt.format(
-                            few_shot=original_few_shot, passage=p, question=query
+                            few_shot=original_few_shot, passage=batch_passages['passage'][p], question=query
                         )
-                        for p in top30_passages[psg : psg + BATCH_PASSAGE_SIZE]
-                    ]
+                        for p in list_passage_idx
+                    ])   
+                log_data.extend([
+                    {
+                        "query_id": query_id, 
+                        "query": query,
+                        "passage_id": batch_passages['id'][p],
+                        "passage": batch_passages['passage'][p],
+                        "label": label_passage[i]
+                    }
+                    for i, p in enumerate(list_passage_idx)
+                ])
+            for psg in range(0, len(prompts), BATCH_PASSAGE_SIZE):
+                results, logprobs, _ = self.infer_pipeline(
+                        prompts[psg : psg + BATCH_PASSAGE_SIZE], return_probs=True
+                )
+                for l in range(psg, psg+BATCH_PASSAGE_SIZE):
+                   log_data[l]["prediction"] = results[l-psg] 
+                   log_data[l]["generation_probs"] = logprobs[l-psg] 
+            
+            predictions.extend(log_data)
+                # top30_passage_ids = batch_passages["id"][:30]
+                # top30_passages = batch_passages["passage"][:30]
+                # for psg in range(0, len(top30_passage_ids), BATCH_PASSAGE_SIZE):
+                #     prompts = [
+                #         ds_wrapper.prompt.format(
+                #             few_shot=original_few_shot, passage=p, question=query
+                #         )
+                #         for p in top30_passages[psg : psg + BATCH_PASSAGE_SIZE]
+                #     ]
 
-                    results, logprobs, _ = self.infer_pipeline(
-                        prompts, return_probs=True
-                    )
-                    save_each_prompt = list(
-                        map(
-                            lambda x, y, z, t: {
-                                "query_id": query_id,
-                                "query": query,
-                                "passage_id": z,
-                                "passage": t,
-                                "prediction": x,
-                                "generation_probs": y,
-                            },
-                            results,
-                            logprobs,
-                            top30_passage_ids,
-                            top30_passages,
-                        )
-                    )
-                    predictions.extend(save_each_prompt)
+                #     results, logprobs, _ = self.infer_pipeline(
+                #         prompts, return_probs=True
+                #     )
+                #     save_each_prompt = list(
+                #         map(
+                #             lambda x, y, z, t: {
+                #                 "query_id": query_id,
+                #                 "query": query,
+                #                 "passage_id": z,
+                #                 "passage": t,
+                #                 "prediction": x,
+                #                 "generation_probs": y,
+                #             },
+                #             results,
+                #             logprobs,
+                #             top30_passage_ids,
+                #             top30_passages,
+                #         )
+                #     )
+                #     predictions.extend(save_each_prompt)
 
             idx += 1
             if idx % 100 == 0:

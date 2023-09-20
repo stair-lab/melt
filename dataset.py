@@ -458,7 +458,7 @@ class DatasetWrapper:
 
         # Information Retrieval
         elif self.dataset_name == "mmarco":
-            self.task = "information-retrieval"
+            self.task = "information-retrieval_mmarco"
             self.dataset_testing = load_dataset(
                 "json", data_files="datasets/Original/mmarco.json", split="train"
             )
@@ -471,7 +471,7 @@ class DatasetWrapper:
             self.answer = "references"
 
         elif self.dataset_name == "mmarco_robustness":
-            self.task = "information-retrieval"
+            self.task = "information-retrieval_mmarco"
             self.dataset_testing = load_dataset(
                 "json", data_files="datasets/Robustness/mmarco_for_robustness.json", split="train"
             )
@@ -483,7 +483,7 @@ class DatasetWrapper:
             self.passage = "passages"
 
         elif self.dataset_name == "mmarco_fairness":
-            self.task = "information-retrieval"
+            self.task = "information-retrieval_mmarco"
             self.dataset_testing = load_dataset(
                 "json", data_files="datasets/Fairness/mmarco_for_fairness.json", split="train"
             )
