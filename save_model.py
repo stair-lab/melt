@@ -22,9 +22,9 @@ model.push_to_hub(
 
 
 tokenizer_map = {
-    '7b': "meta/llama-2-7b-hf",
-    '13b': "meta/llama-2-13b-hf",
-    '70b': "meta/llama-2-70b-hf",
+    '7b': "meta-llama/Llama-2-7b-chat-hf",
+    '13b': "meta-llama/Llama-2-13b-chat-hf",
+    '70b': "meta-llama/Llama-2-70b-chat-hf",
 }
 tokenizer_name = None
 for size in tokenizer_map:
