@@ -1,6 +1,7 @@
 import random
-
+import json
 import numpy as np
+import pandas as pd
 import torch
 
 
@@ -20,3 +21,15 @@ def set_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     torch.cuda.manual_seed_all(seed)
+
+
+def save_to_json(data, name):
+    jsonString = json.dumps(data, indent=4)
+    jsonFile = open(name, "w")
+    jsonFile.write(jsonString)
+    jsonFile.close()
+
+
+def save_to_csv(data, name):
+    df = pd.DataFrame(data)
+    df.to_csv(name, index=False)

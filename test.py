@@ -1,6 +1,4 @@
-import json
 import os
-
 import pandas as pd
 from dataset import DatasetWrapper
 
@@ -9,22 +7,8 @@ from pipelines import EvalPipeline
 from script_arguments import ScriptArguments
 from torch.utils.data import DataLoader
 
-from tqdm import tqdm
 from transformers import HfArgumentParser
-from utils import set_seed
-
-
-def save_to_json(data, name):
-    jsonString = json.dumps(data, indent=4)
-    jsonFile = open(name, "w")
-    jsonFile.write(jsonString)
-    jsonFile.close()
-
-
-def save_to_csv(data, name):
-    df = pd.DataFrame(data)
-    df.to_csv(name, index=False)
-
+from utils import set_seed, save_to_json
 
 if __name__ == "__main__":
     parser = HfArgumentParser(ScriptArguments)
