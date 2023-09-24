@@ -28,10 +28,10 @@ class DatasetWrapper:
     def get_prompt(self):
         if self.prompting_strategy not in [0, 1, 2]:
             raise ValueError("Prompting strategy is not supported")
-
-        self.prompt = PROMPT_TEMPLATE[self.task][self.prompting_strategy]
-        if self.task in CALIBRATION_INSTRUCTION:
-            self.calibration_prompt = CALIBRATION_INSTRUCTION[self.task][0]
+        task = self.task.split("_")[0]
+        self.prompt = PROMPT_TEMPLATE[task][self.prompting_strategy]
+        if task in CALIBRATION_INSTRUCTION:
+            self.calibration_prompt = CALIBRATION_INSTRUCTION[task][self.prompting_strategy]
         else:
             self.calibration_prompt = None
 
@@ -237,11 +237,11 @@ class DatasetWrapper:
 
         # Text Classification
         elif self.dataset_name == "PhoATIS":
-            self.task = "text-classification_atis"
+            self.task = "text-classification-atis"
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/PhoATIS.csv", split="train"
             )
-            self.dataset_testing = self.dataset_testing.map(eval_keys("label"))
+            # self.dataset_testing = self.dataset_testing.map(eval_keys("label"))
             self.dataset_training = load_dataset(
                 "csv",
                 data_files="datasets/Training/PhoATIS_training.csv",
@@ -253,13 +253,13 @@ class DatasetWrapper:
             self.label = "label"
 
         elif self.dataset_name == "PhoATIS_robustness":
-            self.task = "text-classification_atis"
+            self.task = "text-classification-atis"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Robustness/PhoATIS_for_robustness.csv",
                 split="train",
             )
-            self.dataset_testing = self.dataset_testing.map(eval_keys("label"))
+            # self.dataset_testing = self.dataset_testing.map(eval_keys("label"))
             self.dataset_training = load_dataset(
                 "csv",
                 data_files="datasets/Training/PhoATIS_training.csv",
@@ -271,13 +271,13 @@ class DatasetWrapper:
             self.label = "label"
 
         elif self.dataset_name == "PhoATIS_fairness":
-            self.task = "text-classification_atis"
+            self.task = "text-classification-atis"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Fairness/PhoATIS_for_fairness.csv",
                 split="train",
             )
-            self.dataset_testing = self.dataset_testing.map(eval_keys("label"))
+            # self.dataset_testing = self.dataset_testing.map(eval_keys("label"))
             self.dataset_training = load_dataset(
                 "csv",
                 data_files="datasets/Training/PhoATIS_training.csv",
@@ -289,7 +289,7 @@ class DatasetWrapper:
             self.label = "label"
 
         elif self.dataset_name == "UIT-VSMEC":
-            self.task = "text-classification_vsmec"
+            self.task = "text-classification-vsmec"
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/UIT-VSMEC.csv", split="train"
             )
@@ -302,7 +302,7 @@ class DatasetWrapper:
             self.label = "Label"
 
         elif self.dataset_name == "UIT-VSMEC_robustness":
-            self.task = "text-classification_vsmec"
+            self.task = "text-classification-vsmec"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Robustness/UIT-VSMEC_for_robustness.csv",
@@ -333,25 +333,45 @@ class DatasetWrapper:
 
         # Knowledge
         elif self.dataset_name == "zalo_e2eqa":
-            self.task = "knowledge_openended"
+            self.task = "knowledge-openended"
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/zalo_e2eqa.csv", split="train"
+            )
+            selected_sample_idx = list(random.sample(
+                range(len(self.dataset_testing)), 5))
+            self.dataset_training = [self.dataset_testing[s]
+                                     for s in selected_sample_idx]
+            self.dataset_testing = self.dataset_testing.select(
+                [
+                    i for i in range(len(self.dataset_testing))
+                    if i not in selected_sample_idx
+                ]
             )
             self.question = "question"
             self.answer = "answers"
 
         elif self.dataset_name == "zalo_e2eqa_robustness":
-            self.task = "knowledge_openended"
+            self.task = "knowledge-openended"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Robustness/zalo_e2eqa_robustness.csv",
                 split="train",
             )
+            selected_sample_idx = list(random.sample(
+                range(len(self.dataset_testing)), 5))
+            self.dataset_training = [self.dataset_testing[s]
+                                     for s in selected_sample_idx]
+            self.dataset_testing = self.dataset_testing.select(
+                [
+                    i for i in range(len(self.dataset_testing))
+                    if i not in selected_sample_idx
+                ]
+            )
             self.question = "question"
             self.answer = "answers"
 
         elif self.dataset_name == "ViMMRC":
-            self.task = "knowledge_mtpchoice"
+            self.task = "knowledge-mtpchoice"
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/ViMMRC.csv", split="train"
             )
@@ -368,7 +388,7 @@ class DatasetWrapper:
             self.answer = "answer"
 
         elif self.dataset_name == "ViMMRC_robustness":
-            self.task = "knowledge_mtpchoice"
+            self.task = "knowledge-mtpchoice"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Robustness/ViMMRC_robustness.csv",
@@ -388,7 +408,7 @@ class DatasetWrapper:
 
         # Toxicity Detection
         elif self.dataset_name == "ViCTSD":
-            self.task = "toxicity-detection"
+            self.task = "toxicity-detection-ViCTSD"
             self.dataset_testing = load_dataset(
                 "tarudesu/ViCTSD", split="test")
             self.dataset_training = load_dataset(
@@ -397,7 +417,7 @@ class DatasetWrapper:
             self.label = "Toxicity"
 
         elif self.dataset_name == "ViCTSD_robustness":
-            self.task = "toxicity-detection"
+            self.task = "toxicity-detection-ViCTSD"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Robustness/ViCTSD_for_robustness.csv",
@@ -409,7 +429,7 @@ class DatasetWrapper:
             self.label = "Toxicity"
 
         elif self.dataset_name == "ViCTSD_fairness":
-            self.task = "toxicity-detection"
+            self.task = "toxicity-detection-ViCTSD"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Fairness/ViCTSD_for_fairness.csv",
@@ -421,7 +441,7 @@ class DatasetWrapper:
             self.label = "Toxicity"
 
         elif self.dataset_name == "ViHSD":
-            self.task = "toxicity-detection"
+            self.task = "toxicity-detection-ViHSD"
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/ViHSD.csv", split="train"
             )
@@ -432,7 +452,7 @@ class DatasetWrapper:
             self.label = "label_id"
 
         elif self.dataset_name == "ViHSD_robustness":
-            self.task = "toxicity-detection"
+            self.task = "toxicity-detection-ViHSD"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Robustness/ViHSD_for_robustness.csv",
@@ -445,7 +465,7 @@ class DatasetWrapper:
             self.label = "label_id"
 
         elif self.dataset_name == "ViHSD_fairness":
-            self.task = "toxicity-detection"
+            self.task = "toxicity-detection-ViHSD"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Fairness/ViHSD_for_fairness.csv",
@@ -533,12 +553,12 @@ class DatasetWrapper:
 
         # Language
         elif self.dataset_name == "mlqa_MLM":
-            self.task = "language-modelling_filling"
+            self.task = "language-modelling-filling"
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/mlqa_MLM.csv", split="train"
             )
             selected_sample_idx = list(random.sample(
-                range(len(self.dataset_testing)), 5))
+                range(len(self.dataset_testing)), 3))
             self.dataset_training = [self.dataset_testing[s]
                                      for s in selected_sample_idx]
             self.dataset_testing = self.dataset_testing.select(
@@ -547,18 +567,18 @@ class DatasetWrapper:
                     if i not in selected_sample_idx
                 ]
             )
-            self.source = "context"
-            self.target = "masked"
+            self.source = "masked"
+            self.target = "context"
 
         elif self.dataset_name == "mlqa_MLM_fairness":
-            self.task = "language-modelling_filling"
+            self.task = "language-modelling-filling"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Fairness/mlqa_MLM_for_fairness.csv",
                 split="train",
             )
             selected_sample_idx = list(random.sample(
-                range(len(self.dataset_testing)), 5))
+                range(len(self.dataset_testing)), 3))
             self.dataset_training = [self.dataset_testing[s]
                                      for s in selected_sample_idx]
             self.dataset_testing = self.dataset_testing.select(
@@ -567,16 +587,16 @@ class DatasetWrapper:
                     if i not in selected_sample_idx
                 ]
             )
-            self.source = "context"
-            self.target = "masked"
+            self.source = "masked"
+            self.target = "context"
 
         elif self.dataset_name == "VSEC":
-            self.task = "language-modelling_correction"
+            self.task = "language-modelling-correction"
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/VSEC.csv", split="train"
             )
             selected_sample_idx = list(random.sample(
-                range(len(self.dataset_testing)), 5))
+                range(len(self.dataset_testing)), 3))
             self.dataset_training = [self.dataset_testing[s]
                                      for s in selected_sample_idx]
             self.dataset_testing = self.dataset_testing.select(
@@ -589,14 +609,14 @@ class DatasetWrapper:
             self.target = "correct"
 
         elif self.dataset_name == "VSEC_fairness":
-            self.task = "language-modelling_correction"
+            self.task = "language-modelling-correction"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Fairness/VSEC_for_fairness.csv",
                 split="train",
             )
             selected_sample_idx = list(random.sample(
-                range(len(self.dataset_testing)), 5))
+                range(len(self.dataset_testing)), 3))
             self.dataset_training = [self.dataset_testing[s]
                                      for s in selected_sample_idx]
             self.dataset_testing = self.dataset_testing.select(
@@ -610,7 +630,7 @@ class DatasetWrapper:
 
         # Reasoning
         elif self.dataset_name == "synthetic_natural":
-            self.task = "reasoning_synthetic"
+            self.task = "reasoning-synthetic"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Original/synthetic_reasoning_natural.csv",
@@ -618,14 +638,14 @@ class DatasetWrapper:
             )
             self.dataset_training = load_dataset(
                 "csv",
-                data_files="training_datasets/synthetic_reasoning_natural.csv",
+                data_files="datasets/Training/synthetic_reasoning_natural_training.csv",
                 split="train",
             )
             self.source = "question"
             self.target = "target"
 
         elif self.dataset_name == "synthetic_induction":
-            self.task = "reasoning_synthetic"
+            self.task = "reasoning-synthetic"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Original/synthetic_reasoning_induction.csv",
@@ -633,14 +653,14 @@ class DatasetWrapper:
             )
             self.dataset_training = load_dataset(
                 "csv",
-                data_files="training_datasets/synthetic_reasoning_induction.csv",
+                data_files="datasets/Training/synthetic_reasoning_induction_training.csv",
                 split="train",
             )
             self.source = "source"
             self.target = "target"
 
         elif self.dataset_name == "synthetic_pattern_match":
-            self.task = "reasoning_synthetic"
+            self.task = "reasoning-synthetic"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Original/synthetic_reasoning_pattern_match.csv",
@@ -648,14 +668,14 @@ class DatasetWrapper:
             )
             self.dataset_training = load_dataset(
                 "csv",
-                data_files="training_datasets/synthetic_reasoning_pattern_match.csv",
+                data_files="datasets/Training/synthetic_reasoning_pattern_match_training.csv",
                 split="train",
             )
             self.source = "source"
             self.target = "target"
 
         elif self.dataset_name == "synthetic_variable_substitution":
-            self.task = "reasoning_synthetic"
+            self.task = "reasoning-synthetic"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Original/synthetic_reasoning_variable_substitution.csv",
@@ -663,14 +683,14 @@ class DatasetWrapper:
             )
             self.dataset_training = load_dataset(
                 "csv",
-                data_files="training_datasets/synthetic_reasoning_variable_substitution.csv",
+                data_files="datasets/Training/synthetic_reasoning_variable_substitution_training.csv",
                 split="train",
             )
             self.source = "source"
             self.target = "target"
 
         elif self.dataset_name.startswith("math_level1"):
-            self.task = "reasoning_math"
+            self.task = "reasoning-math"
             subset = self.dataset_name.split("_")[-1]
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/math_level1.csv", split="train"
@@ -679,18 +699,18 @@ class DatasetWrapper:
                 lambda x: x["type"] == subset
             )
             self.dataset_training = load_dataset(
-                "csv", data_files="training_datasets/math_level1.csv", split="train"
+                "csv", data_files="datasets/Training/math_level1_training.csv", split="train"
             )
             self.dataset_training = self.dataset_training.filter(
                 lambda x: x["type"] == subset
             )
-            self.question = "problem"
+            self.source = "problem"
             self.type = "type"
-            self.answer = "solution"
+            self.target = "solution"
 
         # Translation
         elif self.dataset_name == "PhoMT_envi":
-            self.task = "translation_envi"
+            self.task = "translation-envi"
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/PhoMT.csv", split="train"
             )
@@ -701,7 +721,7 @@ class DatasetWrapper:
             self.target_language = "vi"
 
         elif self.dataset_name == "PhoMT_vien":
-            self.task = "translation_vien"
+            self.task = "translation-vien"
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/PhoMT.csv", split="train"
             )
@@ -712,7 +732,7 @@ class DatasetWrapper:
             self.target_language = "en"
 
         elif self.dataset_name == "PhoMT_envi_robustness":
-            self.task = "translation_envi"
+            self.task = "translation-envi"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Robustness/PhoMT_for_robustness.csv",
@@ -725,7 +745,7 @@ class DatasetWrapper:
             self.target_language = "vi"
 
         elif self.dataset_name == "PhoMT_vien_robustness":
-            self.task = "translation_vien"
+            self.task = "translation-vien"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Robustness/PhoMT_for_robustness.csv",
@@ -738,7 +758,7 @@ class DatasetWrapper:
             self.target_language = "en"
 
         elif self.dataset_name == "opus100_envi":
-            self.task = "translation_envi"
+            self.task = "translation-envi"
             self.dataset_testing = load_dataset(
                 "vietgpt/opus100_envi", split="test")
             self.dataset_training = load_dataset(
@@ -747,7 +767,7 @@ class DatasetWrapper:
             self.target_language = "vi"
 
         elif self.dataset_name == "opus100_vien":
-            self.task = "translation_vien"
+            self.task = "translation-vien"
             self.dataset_testing = load_dataset(
                 "vietgpt/opus100_envi", split="test")
             self.dataset_training = load_dataset(
@@ -756,7 +776,7 @@ class DatasetWrapper:
             self.target_language = "en"
 
         elif self.dataset_name == "opus100_envi_robustness":
-            self.task = "translation_envi"
+            self.task = "translation-envi"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Robustness/opus100_envi_for_robustness.csv",
@@ -768,7 +788,7 @@ class DatasetWrapper:
             self.target_language = "vi"
 
         elif self.dataset_name == "opus100_vien_robustness":
-            self.task = "translation_vien"
+            self.task = "translation-vien"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Robustness/opus100_envi_for_robustness.csv",
