@@ -11,25 +11,25 @@ GenerationConfig = {
         "max_new_tokens": 300,
         "repetition_penalty": 1.1,
     },
-    "translation_envi": {
+    "translation-envi": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 500,
         "repetition_penalty": 1.1,
     },
-    "translation_vien": {
+    "translation-vien": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 500,
         "repetition_penalty": 1.1,
     },
-    "language-modelling_filling": {
+    "language-modelling-filling": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 500,
         "repetition_penalty": 1.1,
     },
-    "language-modelling_correction": {
+    "language-modelling-correction": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 500,
@@ -41,31 +41,37 @@ GenerationConfig = {
         "max_new_tokens": 50,
         "repetition_penalty": 1.1,
     },
-    "text-classification_vsmec": {
+    "text-classification-vsmec": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 50,
         "repetition_penalty": 1.1,
     },
-    "text-classification_atis": {
+    "text-classification-atis": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 50,
         "repetition_penalty": 1.1,
     },
-    "toxic-detection": {
+    "toxicity-detection-ViCTSD": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 50,
         "repetition_penalty": 1.1,
     },
-    "knowledge_mtpchoice": {
+    "toxicity-detection-ViHSD": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 50,
         "repetition_penalty": 1.1,
     },
-    "knowledge_openended": {
+    "knowledge-mtpchoice": {
+        "temperature": 1.0,
+        "top_k": 1,
+        "max_new_tokens": 50,
+        "repetition_penalty": 1.1,
+    },
+    "knowledge-openended": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 100,
@@ -77,13 +83,13 @@ GenerationConfig = {
         "max_new_tokens": 50,
         "repetition_penalty": 1.1,
     },
-    "reasoning_synthetic": {
+    "reasoning-synthetic": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 100,
         "repetition_penalty": 1.1,
     },
-    "reasoning_math": {
+    "reasoning-math": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 1000,

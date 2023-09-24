@@ -22,9 +22,12 @@ def set_seed(seed):
     torch.cuda.manual_seed_all(seed)
     torch.cuda.manual_seed_all(seed)
 
+def column(matrix, i):
+    return [row[i] for row in matrix]
+
 
 def save_to_json(data, name):
-    jsonString = json.dumps(data, indent=4)
+    jsonString = json.dumps(data, indent=4, ensure_ascii=False)
     jsonFile = open(name, "w")
     jsonFile.write(jsonString)
     jsonFile.close()
