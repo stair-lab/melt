@@ -992,7 +992,7 @@ class EvalPipeline:
                 ds_wrapper.calibration_prompt.format(few_shot=calib_few_shot, rule=rule)
                 for rule in batch[ds_wrapper.source]
             ]
-            print(prompts[0])
+            
             results, logprobs, _ = self.infer_pipeline(
                 prompts, return_probs=True)
             calibprob_batch, _ = self.infer_pipeline.compute_logprob_and_length(
