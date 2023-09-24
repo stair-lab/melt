@@ -55,7 +55,7 @@ PROMPT_TEMPLATE = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "Hãy dịch từ tiếng Anh qua tiếng Việt và định dạng câu trả lời dưới dạng json với định dạng là ```json {{ \"translation\": ` câu trả lời của bạn `}}```\n"
+            'Hãy dịch từ tiếng Anh qua tiếng Việt và định dạng câu trả lời dưới dạng json với định dạng là ```json {{ "translation": ` câu trả lời của bạn `}}```\n'
             "{few_shot}"
             'Khách: "{document}"\n'
             "Bot:[/INST]"
@@ -69,7 +69,7 @@ PROMPT_TEMPLATE = {
             "Bot không được tự trả lời hay giả dạng thành Khách.\n"
             "Và đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n"
             "<</SYS>>\n\n"
-            "Hãy dịch từ tiếng Việt qua tiếng Anh và định dạng câu trả lời dưới dạng json với định dạng là ```json {{ \"translation\": ` câu trả lời của bạn `}}```\n"
+            'Hãy dịch từ tiếng Việt qua tiếng Anh và định dạng câu trả lời dưới dạng json với định dạng là ```json {{ "translation": ` câu trả lời của bạn `}}```\n'
             "{few_shot}"
             'Khách: "{document}"\n'
             "Bot:[/INST]"
@@ -116,9 +116,7 @@ PROMPT_TEMPLATE = {
             'Khách: "{context}"\n'
             "Bot:[/INST] "
         ),
-        (
-            "{few_shot}Đoạn văn: {context}\nSentiment:"
-        ),
+        ("{few_shot}Đoạn văn: {context}\nSentiment:"),
     ],
     "text-classification-vsmec": [
         (
@@ -144,7 +142,6 @@ PROMPT_TEMPLATE = {
             "{few_shot}"
             "Đoạn văn: {context}\n"
             "Nhãn:"
-            
         ),
     ],
     "text-classification-atis": [
@@ -176,7 +173,6 @@ PROMPT_TEMPLATE = {
             "{few_shot}"
             "Đoạn văn: {context}\n"
             "Nhãn:"
-            
         ),
     ],
     "toxicity-detection-ViCTSD": [
@@ -246,7 +242,7 @@ PROMPT_TEMPLATE = {
         "{few_shot}"
         "Văn bản: ''' {passage} '''\n"
         "Câu hỏi: ''' {question} '''\n"
-        "Văn bản trên có thể hỗ trợ trả lời câu hỏi không?.\nĐưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\n"
+        'Văn bản trên có thể hỗ trợ trả lời câu hỏi không?.\nĐưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ "answer": ` "Yes" or "No" `}} ```\n'
         "Bot:[/INST] "
     ],
     "reasoning-synthetic": [
@@ -261,9 +257,7 @@ PROMPT_TEMPLATE = {
             "```\n"
             "Kết quả:[/INST] "
         ),
-        (
-            "Hãy trả lời các quy luật sau.\n\n{few_shot}Quy luật: {rule}\nKết quả:"
-        )
+        ("Hãy trả lời các quy luật sau.\n\n{few_shot}Quy luật: {rule}\nKết quả:"),
     ],
     "reasoning-math": [
         (
@@ -280,7 +274,7 @@ PROMPT_TEMPLATE = {
         ),
         (
             "Cho bài toán sau hãy tìm câu trả lời. Hãy trả lời đơn giản nhất có thể.\n\n{few_shot}Bài toán: {rule}\nLời giải:"
-        )
+        ),
     ],
 }
 
@@ -314,9 +308,7 @@ CALIBRATION_INSTRUCTION = {
             'Khách: "{context}"\n'
             "Bot:[/INST] "
         ),
-        (
-            "{few_shot}Đoạn văn: {context}\nSentiment:"
-        ),
+        ("{few_shot}Đoạn văn: {context}\nSentiment:"),
     ],
     "text-classification-vsmec": [
         (
@@ -336,7 +328,6 @@ CALIBRATION_INSTRUCTION = {
             "{few_shot}"
             "Đoạn văn: {context}\n"
             "Nhãn:"
-            
         ),
     ],
     "text-classification-atis": [
@@ -359,7 +350,6 @@ CALIBRATION_INSTRUCTION = {
             "{few_shot}"
             "Đoạn văn: {context}\n"
             "Nhãn:"
-            
         ),
     ],
     "toxicity-detection-ViCTSD": [
@@ -439,9 +429,7 @@ CALIBRATION_INSTRUCTION = {
             "```\n"
             "Kết quả:[/INST] "
         ),
-        (
-            "Hãy trả lời các quy luật sau.\n\n{few_shot}Quy luật: {rule}\nKết quả:"
-        )
+        ("Hãy trả lời các quy luật sau.\n\n{few_shot}Quy luật: {rule}\nKết quả:"),
     ],
     "reasoning-math": [
         (
@@ -458,6 +446,6 @@ CALIBRATION_INSTRUCTION = {
         ),
         (
             "Cho bài toán sau hãy tìm câu trả lời. Hãy trả lời đơn giản nhất có thể.\n\n{few_shot}Bài toán: {rule}\nLời giải:"
-        )
+        ),
     ],
 }
