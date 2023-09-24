@@ -95,4 +95,5 @@ if __name__ == "__main__":
         start_idx=start_idx,
         few_shot=script_args.fewshot_prompting,
         random_mtpc=script_args.random_mtpc,
+        prompting_strategy=script_args.prompting_strategy
     )
