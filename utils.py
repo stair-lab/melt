@@ -1,5 +1,6 @@
-import random
 import json
+import random
+
 import numpy as np
 import pandas as pd
 import torch
@@ -21,6 +22,7 @@ def set_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     torch.cuda.manual_seed_all(seed)
+
 
 def column(matrix, i):
     return [row[i] for row in matrix]

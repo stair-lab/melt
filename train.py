@@ -107,7 +107,7 @@ training_arguments = TrainingArguments(
     dataloader_num_workers=8,
     push_to_hub=False,
     report_to="none",
-    load_best_model_at_end=True
+    load_best_model_at_end=True,
 )
 
 neptune_api_token = os.environ["NEPTUNE_API_TOKEN"]

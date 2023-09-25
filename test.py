@@ -1,4 +1,5 @@
 import os
+
 import pandas as pd
 from dataset import DatasetWrapper
 
@@ -8,7 +9,7 @@ from script_arguments import ScriptArguments
 from torch.utils.data import DataLoader
 
 from transformers import HfArgumentParser
-from utils import set_seed, save_to_json
+from utils import save_to_json, set_seed
 
 if __name__ == "__main__":
     parser = HfArgumentParser(ScriptArguments)
@@ -24,7 +25,8 @@ if __name__ == "__main__":
     if script_args.smoke_test:
         n_examples = 8
         dataset_wrapper.dataset_testing = dataset_wrapper.dataset_testing.select(
-            range(n_examples))
+            range(n_examples)
+        )
 
     dataset_loader = DataLoader(
         dataset_wrapper.get_dataset_testing(),
@@ -53,19 +55,16 @@ if __name__ == "__main__":
         + f"_seed{script_args.seed}"
     )
 
-    csv_file = os.path.join(script_args.output_dir,
-                            f"results_{ds_exact_name}.csv")
+    csv_file = os.path.join(script_args.output_dir, f"results_{ds_exact_name}.csv")
 
-    json_file = os.path.join(script_args.output_dir,
-                             f"results_{ds_exact_name}.json")
+    json_file = os.path.join(script_args.output_dir, f"results_{ds_exact_name}.json")
 
     if script_args.continue_infer:
         if os.path.exists(csv_file):
             df1 = pd.read_csv(csv_file)
             start_idx = len(df1)
         else:
-            raise FileNotFoundError(
-                f"File {csv_file} does not exist! Terminating...")
+            raise FileNotFoundError(f"File {csv_file} does not exist! Terminating...")
     else:
         start_idx = 0
 
@@ -78,14 +77,12 @@ if __name__ == "__main__":
 
         save_to_json(
             generations,
-            os.path.join(script_args.output_dir,
-                         f"results_{ds_exact_name}.json"),
+            os.path.join(script_args.output_dir, f"results_{ds_exact_name}.json"),
         )
         if results is not None:
             save_to_json(
                 results,
-                os.path.join(script_args.output_dir,
-                             f"metrics_{ds_exact_name}.json"),
+                os.path.join(script_args.output_dir, f"metrics_{ds_exact_name}.json"),
             )
 
     eval_pipeline.run(
@@ -95,5 +92,5 @@ if __name__ == "__main__":
         start_idx=start_idx,
         few_shot=script_args.fewshot_prompting,
         random_mtpc=script_args.random_mtpc,
-        prompting_strategy=script_args.prompting_strategy
+        prompting_strategy=script_args.prompting_strategy,
     )
