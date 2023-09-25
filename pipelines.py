@@ -621,10 +621,10 @@ class EvalPipeline:
         if self.few_shot_flag:
 
             def format_original_fewshot(rec):
-                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} '''\nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {{ "choice": {ds_wrapper.answer}, "confident_level": 1 }} </s><s>[INST]\n"""
+                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} '''\nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {{ "choice": "{rec[ds_wrapper.answer]}", "confident_level": 1 }} </s><s>[INST]\n"""
 
             def format_calib_fewshot(rec):
-                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} \nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {ds_wrapper.answer} </s><s>[INST]\n"""
+                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} \nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {rec[ds_wrapper.answer]} </s><s>[INST]\n"""
 
             selected_sample_idx = list(
                 random.sample(range(len(ds_wrapper.dataset_training)), 2)
@@ -647,11 +647,13 @@ class EvalPipeline:
             prompts = []
             calib_prompts = []
             remap_order_batch = []
-            for c, q, opts in zip(
+            for o_idx, cq in enumerate(zip(
                 batch[ds_wrapper.context],
-                batch[ds_wrapper.question],
-                batch[ds_wrapper.options],
-            ):
+                batch[ds_wrapper.question]
+            )):
+                c = cq[0]
+                q = cq[1]
+                opts = column(batch[ds_wrapper.options], o_idx)
                 order_shuffle = (
                     random.shuffle(list(range(len(opts))))
                     if self.random_mtpc
@@ -675,6 +677,7 @@ class EvalPipeline:
                         list_ans=format_list_ans(new_opts),
                     )
                 )
+            print(prompts[0])
             results, logprobs, _ = self.infer_pipeline(
                 prompts, return_probs=True)
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
