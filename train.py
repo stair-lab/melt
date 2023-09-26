@@ -48,6 +48,10 @@ if compute_dtype == torch.float16 and script_args.use_4bit:
         print("Your GPU supports bfloat16: accelerate training with --bf16")
         print("=" * 80)
 
+        script_args.fp16 = False
+        script_args.bf16 = True
+        script_args.tf32 = True
+
 # Load base model
 if script_args.scratch:
     configuration = LlamaConfig(
@@ -107,7 +111,7 @@ training_arguments = TrainingArguments(
     dataloader_num_workers=8,
     push_to_hub=False,
     report_to="none",
-    load_best_model_at_end=True,
+    load_best_model_at_end=False,
 )
 
 neptune_api_token = os.environ["NEPTUNE_API_TOKEN"]
