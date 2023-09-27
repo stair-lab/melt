@@ -236,7 +236,7 @@ class EvalPipeline:
                 )
                 for q in batch[ds_wrapper.question]
             ]
-            print(prompts[0])
+
             results, logprobs, _ = self.infer_pipeline(
                 prompts, return_probs=True)
             calibprob_batch, _ = self.infer_pipeline.compute_logprob_and_length(
@@ -737,10 +737,9 @@ class EvalPipeline:
             prompts = []
             calib_prompts = []
             remap_order_batch = []
-            for o_idx, cq in enumerate(zip(
-                batch[ds_wrapper.context],
-                batch[ds_wrapper.question]
-            )):
+            for o_idx, cq in enumerate(
+                zip(batch[ds_wrapper.context], batch[ds_wrapper.question])
+            ):
                 c = cq[0]
                 q = cq[1]
                 opts = column(batch[ds_wrapper.options], o_idx)
@@ -767,7 +766,7 @@ class EvalPipeline:
                         list_ans=format_list_ans(new_opts),
                     )
                 )
-            print(prompts[0])
+
             results, logprobs, _ = self.infer_pipeline(
                 prompts, return_probs=True)
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
@@ -801,9 +800,9 @@ class EvalPipeline:
                 print(f"Saving results of {idx} batches")
                 generations = {
                     "predictions": predictions,
-                    "references": references,
+                    "references": references,  # new order
                     "generation_probs": generation_probs,
-                    "option_probs": option_probs,
+                    "option_probs": option_probs,  # new order
                     "option_orders": option_order_all,
                     "fewshot": selected_sample,
                 }
