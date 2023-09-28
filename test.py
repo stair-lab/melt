@@ -52,37 +52,40 @@ if __name__ == "__main__":
         + script_args.model_name.split("/")[-1]
         + f"_pt{script_args.prompting_strategy}"
         + ("_fewshot" if script_args.fewshot_prompting else "")
+        + ("_randchoice" if script_args.random_mtpc else "")
         + f"_seed{script_args.seed}"
     )
 
-    csv_file = os.path.join(script_args.output_dir, f"results_{ds_exact_name}.csv")
-
-    json_file = os.path.join(script_args.output_dir, f"results_{ds_exact_name}.json")
+    json_file = os.path.join(script_args.output_dir,
+                             f"generations_{ds_exact_name}.json")
+    metric_file = os.path.join(script_args.output_dir,
+                               f"metrics_{ds_exact_name}.json")
 
     if script_args.continue_infer:
-        if os.path.exists(csv_file):
-            df1 = pd.read_csv(csv_file)
+        if os.path.exists(json_file):
+            df1 = pd.read_json(json_file)
             start_idx = len(df1)
         else:
-            raise FileNotFoundError(f"File {csv_file} does not exist! Terminating...")
+            raise FileNotFoundError(
+                f"File {json_file} does not exist! Terminating...")
     else:
         start_idx = 0
 
     # Evaluate
-    def save_results(generations, results=None):
-        if script_args.continue_infer and os.path.exists(csv_file):
+    def save_results(generations, metrics=None):
+        if script_args.continue_infer and os.path.exists(json_file):
             df2 = pd.DataFrame(generations)
             df3 = df1.append(df2, ignore_index=True)
             generations = df3.to_dict(orient="list")
 
         save_to_json(
             generations,
-            os.path.join(script_args.output_dir, f"results_{ds_exact_name}.json"),
+            json_file
         )
-        if results is not None:
+        if metrics is not None:
             save_to_json(
-                results,
-                os.path.join(script_args.output_dir, f"metrics_{ds_exact_name}.json"),
+                metrics,
+                metric_file
             )
 
     eval_pipeline.run(

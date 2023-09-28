@@ -6,7 +6,8 @@ from typing import Optional
 class ScriptArguments:
     model_name: Optional[str] = field(
         default="meta-llama/Llama-2-7b-chat-hf",
-        metadata={"help": "The model that you want to train from the Hugging Face hub"},
+        metadata={
+            "help": "The model that you want to train from the Hugging Face hub"},
     )
     tokenizer_name: Optional[str] = field(
         default="meta-llama/Llama-2-7b-chat-hf",
@@ -17,7 +18,7 @@ class ScriptArguments:
         metadata={"help": "The instruction dataset to use"},
     )
     new_model: Optional[str] = field(
-        default="martinakaduc/llama-2-7b-hf-vi",
+        default="ura-hcmut/ura-llama-7b-r128",
         metadata={"help": "Fine-tuned model name"},
     )
     scratch: Optional[bool] = field(
@@ -76,7 +77,8 @@ class ScriptArguments:
     )
     tf32: Optional[bool] = field(
         default=True,
-        metadata={"help": "Enable the TF32 mode (available in Ampere and newer GPUs)"},
+        metadata={
+            "help": "Enable the TF32 mode (available in Ampere and newer GPUs)"},
     )
 
     auto_find_batch_size: Optional[bool] = field(
@@ -116,7 +118,8 @@ class ScriptArguments:
     )
     max_steps: int = field(
         default=-1,
-        metadata={"help": "Number of training steps (overrides num_train_epochs)"},
+        metadata={
+            "help": "Number of training steps (overrides num_train_epochs)"},
     )
     warmup_ratio: float = field(
         default=0.03,
