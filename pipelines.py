@@ -12,8 +12,9 @@ class InferPipeline:
         self.model = model
         self.tokenizer = tokenizer
         self.generation_config = generation_config
-        self.few_shot_flag = False
+        self.few_shot = False
         self.random_mtpc = False
+        self.cot = False
 
     def __call__(self, prompts, return_probs=False):
         generations = []
@@ -198,7 +199,7 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         selected_sample = []
-        if self.few_shot_flag:
+        if self.few_shot:
 
             def format_original_fewshot0(rec):
                 return f"""Câu hỏi: {rec[ds_wrapper.question]}\nCâu trả lời:[/INST] {rec[ds_wrapper.answer]} </s><s>[INST]\n"""
@@ -324,7 +325,7 @@ class EvalPipeline:
         calib_few_shot = ""
         selected_sample = []
         mapping = ["Tiêu cực", "Trung lập", "Tích cực"]
-        if self.few_shot_flag:
+        if self.few_shot:
 
             def format_original_fewshot0(rec):
                 return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "sentiment": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
@@ -468,7 +469,7 @@ class EvalPipeline:
                 "flight_no",
                 "restriction",
             ]
-        if self.few_shot_flag:
+        if self.few_shot:
 
             def format_original_fewshot0(rec):
                 return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ {"emotion" if sub_task == "vsmec" else "tag"}: {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
@@ -599,7 +600,7 @@ class EvalPipeline:
         original_few_shot = ""
         calib_few_shot = ""
         selected_sample = []
-        if self.few_shot_flag:
+        if self.few_shot:
 
             def format_original_fewshot(rec):
                 return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "toxic_level": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
@@ -708,7 +709,7 @@ class EvalPipeline:
         option_order_all = []
         selected_sample = []
         alphabet2idx = {chr(i + 65): i for i in range(26)}
-        if self.few_shot_flag:
+        if self.few_shot:
 
             def format_original_fewshot(rec):
                 return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} '''\nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {{ "choice": "{rec[ds_wrapper.answer]}", "confident_level": 1 }} </s><s>[INST]\n"""
@@ -826,8 +827,7 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         selected_sample = []
-        if self.few_shot_flag:
-
+        if self.few_shot:
             def format_original_fewshot(rec):
                 return f"""Khách: "{rec[ds_wrapper.source]}"\nBot:[/INST] {rec[ds_wrapper.target]} </s><s>[INST]\n"""
 
@@ -878,7 +878,7 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         selected_sample = []
-        if self.few_shot_flag:
+        if self.few_shot:
 
             def format_original_fewshot(rec):
                 return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {{ "answer": "{rec["answer"]}" }} </s><s>[INST]\n"""
@@ -1083,16 +1083,20 @@ class EvalPipeline:
         original_few_shot = ""
         calib_few_shot = ""
         selected_sample = []
-        if self.few_shot_flag:
+        if self.cot:
+            target = ds_wrapper.target
+        else:
+            target = ds_wrapper.short_target
 
+        if self.few_shot:
             def format_original_fewshot0(rec):
-                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {{ "answer": "{rec[ds_wrapper.target]}", "confident_level": 1}} </s><s>[INST]\n"""
+                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {{ "answer": "{rec[target]}", "confident_level": 1}} </s><s>[INST]\n"""
 
             def format_original_fewshot1(rec):
-                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: {rec[ds_wrapper.source]}\n{"Kết quả" if sub_task != "math" else "Lời giải"}: {rec[ds_wrapper.target]}\n\n"""
+                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: {rec[ds_wrapper.source]}\n{"Kết quả" if sub_task != "math" else "Lời giải"}: {rec[target]}\n\n"""
 
             def format_calib_fewshot(rec):
-                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {rec[ds_wrapper.target]} </s><s>[INST]\n"""
+                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {rec[target]} </s><s>[INST]\n"""
 
             selected_sample = list(random.sample(
                 list(ds_wrapper.dataset_training), 5))
@@ -1136,10 +1140,10 @@ class EvalPipeline:
             results, logprobs, _ = self.infer_pipeline(
                 prompts, return_probs=True)
             calibprob_batch, _ = self.infer_pipeline.compute_logprob_and_length(
-                calib_prompts, batch[ds_wrapper.target]
+                calib_prompts, batch[target]
             )
             predictions.extend(results)
-            references.extend([x for x in batch[ds_wrapper.target]])
+            references.extend([x for x in batch[target]])
             generation_probs.extend([x.tolist() for x in logprobs])
             calib_probs.extend([x.tolist() for x in calibprob_batch])
             if sub_task == "math":
@@ -1176,7 +1180,7 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         selected_sample = []
-        if self.few_shot_flag:
+        if self.few_shot:
 
             def format_original_fewshot0(rec):
                 return f"""Khách: "{rec[ds_wrapper.source_language]}"\nBot:[/INST] {{ "translation": "{rec[ds_wrapper.target_language]}" }} </s><s>[INST]\n"""
@@ -1243,11 +1247,13 @@ class EvalPipeline:
         start_idx=0,
         few_shot=False,
         random_mtpc=False,
+        cot=False,
         prompting_strategy=0,
     ):
         self.prompting_strategy = prompting_strategy
-        self.few_shot_flag = few_shot
+        self.few_shot = few_shot
         self.random_mtpc = random_mtpc
+        self.cot = cot
         with torch.no_grad():
             results = self(ds_wrapper, ds_loader, saving_fn, start_idx)
         return results

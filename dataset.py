@@ -727,6 +727,7 @@ class DatasetWrapper:
             self.source = "problem"
             self.type = "type"
             self.target = "solution"
+            self.short_target = "short_solution"
 
         # Translation
         elif self.dataset_name == "PhoMT_envi":

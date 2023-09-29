@@ -93,7 +93,8 @@ if __name__ == "__main__":
         ds_loader=dataset_loader,
         saving_fn=save_results,
         start_idx=start_idx,
-        few_shot=script_args.fewshot_prompting,
-        random_mtpc=script_args.random_mtpc,
+        few_shot=script_args.fewshot_prompting,  # few-shot prompting
+        random_mtpc=script_args.random_mtpc,     # random multiple choice
+        cot=script_args.cot,                     # chain of thought
         prompting_strategy=script_args.prompting_strategy,
     )

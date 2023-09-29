@@ -170,6 +170,9 @@ class ScriptArguments:
     random_mtpc: Optional[bool] = field(
         default=False, metadata={"help": "Enable random shuffling of choices"}
     )
+    cot: Optional[bool] = field(
+        default=False, metadata={"help": "Enable chain of thought when prompting MATH"}
+    )
     seed: Optional[int] = field(default=42, metadata={"help": "Random seed"})
     continue_infer: Optional[bool] = field(
         default=False,
