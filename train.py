@@ -114,13 +114,16 @@ training_arguments = TrainingArguments(
     load_best_model_at_end=False,
 )
 
-neptune_api_token = os.environ["NEPTUNE_API_TOKEN"]
-run = neptune.init_run(
-    project=os.environ["NEPTUNE_PROJECT"], api_token=neptune_api_token
-)
-neptune_monitor = transformers.integrations.NeptuneCallback(
-    run=run, log_parameters=False
-)
+callbacks = []
+if "NEPTUNE_API_TOKEN" in os.environ and os.environ["NEPTUNE_API_TOKEN"] != "":
+    neptune_api_token = os.environ["NEPTUNE_API_TOKEN"]
+    run = neptune.init_run(
+        project=os.environ["NEPTUNE_PROJECT"], api_token=neptune_api_token
+    )
+    neptune_monitor = transformers.integrations.NeptuneCallback(
+        run=run, log_parameters=False
+    )
+    callbacks.append(neptune_monitor)
 
 # Set supervised fine-tuning parameters
 trainer = SFTTrainer(
@@ -132,7 +135,7 @@ trainer = SFTTrainer(
     tokenizer=tokenizer,
     args=training_arguments,
     packing=script_args.packing,
-    callbacks=[neptune_monitor],
+    callbacks=callbacks,
 )
 
 # Train model
