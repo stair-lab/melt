@@ -23,3 +23,9 @@ python train.py --model_name ura-hcmut/ura-llama-7b-r128-news \
                 --dataset_name oscar-corpus/OSCAR-2301 \
                 --new_model ura-hcmut/ura-llama-7b-r128 \
                 --resume_from_checkpoint False
+
+
+python train.py --model_name ura-hcmut/ura-llama-7b-r128-news \
+                --dataset_name ura-hcmut/easter_egg \
+                --new_model ura-hcmut/ura-llama-7b-r128 \
+                --resume_from_checkpoint False
