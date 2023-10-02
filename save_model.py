@@ -8,6 +8,8 @@ model_name = sys.argv[1]
 new_model_name = sys.argv[2]
 if len(sys.argv) > 3:
     push = sys.argv[3]
+else:
+    push = None
 
 model = AutoPeftModelForCausalLM.from_pretrained(
     model_name, device_map={"": 0}, torch_dtype=torch.bfloat16
