@@ -33,6 +33,10 @@ python train.py --model_name ura-hcmut/ura-llama-7b-r128-news \
                 --dataset_name ura-hcmut/easter_egg \
                 --new_model ura-hcmut/ura-llama-7b-r128_easter_egg_lora \
                 --num_train_epochs 10 \
+                --use_lora False \
+                --use_4bit False \
+                --per_device_train_batch_size 1 \
+                --gradient_accumulation_steps 16 \
                 --resume_from_checkpoint False
 
 python save_model.py ura-hcmut/ura-llama-7b-r128_easter_egg_lora ura-hcmut/ura-llama-7b
