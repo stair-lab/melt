@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export CUDA_VISIBLE_DEVICES="1"
+export HF_HOME="/lfs/local/0/sttruong/env/.huggingface"
 export TRANSFORMERS_CACHE="/lfs/local/0/sttruong/env/.huggingface"
 export HF_DATASETS_CACHE="/lfs/local/0/sttruong/env/.huggingface/datasets"
 export NEPTUNE_API_TOKEN="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiIwMTdmNWZlYy1lMTVjLTQyZWEtOTY5ZS1hOWM3ZmMyMjJjZTQifQ=="

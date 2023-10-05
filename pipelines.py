@@ -41,6 +41,7 @@ class InferPipeline:
             generations.extend(generation)
 
             if return_probs:
+                # Inlcude probabilities of '</s>' token
                 generation_probs = self.model.compute_transition_scores(
                     sequences=generated_tokens,
                     scores=generate_dict.scores,
@@ -57,23 +58,24 @@ class InferPipeline:
         for prompt, completion in zip(prompts, completions):
             prompt_tokens = self.tokenizer(prompt, return_tensors="pt").to(
                 self.model.device
-            )  # <s> [tokens]
+            )  # <s> SPIECE_UNDERLINE [tokens]
             # Actual number of tokens in completion (without `<s>`)
             prompt_num_tokens = prompt_tokens.input_ids.shape[1] - 1
 
             completion_tokens = self.tokenizer(completion, return_tensors="pt").to(
                 self.model.device
-            )  # <s> [tokens]
-            # Actual number of tokens in completion (without `<s>`)
-            completion_num_tokens = completion_tokens.input_ids.shape[1] - 1
+            )  # <s> SPIECE_UNDERLINE [tokens]
+            # Actual number of tokens in completion (without `<s> SPIECE_UNDERLINE`)
+            completion_num_tokens = completion_tokens.input_ids.shape[1] - 2
             completions_num_tokens.append(completion_num_tokens)
 
             inputs = torch.concatenate(
                 (prompt_tokens.input_ids,
-                 completion_tokens.input_ids[:, 1:]), dim=-1
+                 completion_tokens.input_ids[:, -completion_num_tokens:]), dim=-1
             )
             outputs = self.model(inputs)  # [input_tokens] [next_token]
 
+            # Exclude probabilities of '</s>' token
             logits = outputs.logits[
                 :, prompt_num_tokens: prompt_num_tokens + completion_num_tokens
             ]
@@ -430,7 +432,7 @@ class EvalPipeline:
     def __multiple_choice_text_classification(
         self, ds_wrapper, ds_loader, saving_fn, start_idx=0
     ):
-        sub_task = self.task.split("-")[2]
+        sub_task = self.task.split("-")[-1]
         predictions = []
         references = []
         generation_probs = []
@@ -449,7 +451,9 @@ class EvalPipeline:
                 "Other",
                 "Enjoyment",
             ]
-        else:
+            num_choice = 7
+
+        elif sub_task == "atis":
             mapping = [
                 "flight",
                 "airfare",
@@ -469,6 +473,10 @@ class EvalPipeline:
                 "flight_no",
                 "restriction",
             ]
+            num_choice = 17
+        else:
+            raise ValueError("Invalid sub task")
+
         if self.few_shot:
 
             def format_original_fewshot0(rec):
@@ -547,7 +555,6 @@ class EvalPipeline:
             results, logprobs, _ = self.infer_pipeline(
                 prompts, return_probs=True)
 
-            num_choice = 7 if sub_task == "vsmec" else 17
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts * num_choice,
                 [
