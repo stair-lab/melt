@@ -83,7 +83,7 @@ class InferPipeline:
             # >>> batch_size, sequence_length, vocab_size
 
             logprobs = logprobs.gather(
-                dim=-1, index=completion_tokens.input_ids[:, 1:].unsqueeze(-1)
+                dim=-1, index=completion_tokens.input_ids[:, -completion_num_tokens:].unsqueeze(-1)
             ).squeeze(-1)
             # >>> batch_size, sequence_length
             completions_logprobs.append(logprobs.cpu().numpy())
