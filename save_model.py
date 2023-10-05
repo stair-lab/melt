@@ -21,7 +21,7 @@ if push == "push":
         new_model_name,
         commit_message="Init model",
         private=True,
-        token=True,
+        use_auth_token=True,
         safe_serialization=True,
     )
 
@@ -44,5 +44,8 @@ tokenizer = AutoTokenizer.from_pretrained(
 tokenizer.save_pretrained(new_model_name)
 if push == "push":
     tokenizer.push_to_hub(
-        new_model_name, commit_message="Init tokenizer", private=True, token=True
+        new_model_name,
+        commit_message="Init tokenizer",
+        private=True,
+        use_auth_token=True
     )
