@@ -12,9 +12,6 @@ class InferPipeline:
         self.model = model
         self.tokenizer = tokenizer
         self.generation_config = generation_config
-        self.few_shot = False
-        self.random_mtpc = False
-        self.cot = False
 
     def __call__(self, prompts, return_probs=False):
         generations = []
@@ -62,20 +59,24 @@ class InferPipeline:
             # Actual number of tokens in completion (without `<s>`)
             prompt_num_tokens = prompt_tokens.input_ids.shape[1] - 1
 
-            completion_tokens = self.tokenizer(completion, return_tensors="pt").to(
-                self.model.device
-            )  # <s> SPIECE_UNDERLINE [tokens]
+            completion_tokens = self.tokenizer(
+                f"{completion} {self.tokenizer.eos_token}",
+                return_tensors="pt"
+            ).to(self.model.device)  # <s> SPIECE_UNDERLINE [tokens] SPIECE_UNDERLINE </s>
             # Actual number of tokens in completion (without `<s> SPIECE_UNDERLINE`)
-            completion_num_tokens = completion_tokens.input_ids.shape[1] - 2
+            completion_num_tokens = completion_tokens.input_ids.shape[1] - 1
+            if completion_tokens.input_ids[0, 1] == 29871:
+                completion_num_tokens = completion_num_tokens - 1
             completions_num_tokens.append(completion_num_tokens)
 
             inputs = torch.concatenate(
                 (prompt_tokens.input_ids,
                  completion_tokens.input_ids[:, -completion_num_tokens:]), dim=-1
             )
-            outputs = self.model(inputs)  # [input_tokens] [next_token]
+            outputs = self.model(inputs)
+            # [input_tokens] [next_token]
 
-            # Exclude probabilities of '</s>' token
+            # Include probabilities of 'SPIECE_UNDERLINE </s>' tokens
             logits = outputs.logits[
                 :, prompt_num_tokens: prompt_num_tokens + completion_num_tokens
             ]
@@ -102,6 +103,11 @@ class EvalPipeline:
             tokenizer=tokenizer,
             generation_config=GenerationConfig[extract_task],
         )
+
+        self.prompting_strategy = 0
+        self.few_shot = False
+        self.random_mtpc = False
+        self.cot = False
 
     def __call__(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         task = self.task.split("_")[0]
