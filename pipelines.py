@@ -227,7 +227,7 @@ class EvalPipeline:
                     map(
                         format_original_fewshot1
                         if self.prompting_strategy == 1
-                        else format_original_fewshot1,
+                        else format_original_fewshot0,
                         selected_sample,
                     )
                 )
