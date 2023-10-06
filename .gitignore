@@ -3,5 +3,8 @@
 .neptune
 martinakaduc
 results/*
+results_backup/*
+logs/*
 *.zip
 datasets/
+run_script.sh
