@@ -901,34 +901,34 @@ class EvalPipeline:
 
             random_sample = list(random.sample(
                 list(ds_wrapper.dataset_training), 1))[0]
-            random_batch_passages = random_sample[ds_wrapper.passage]
-            if sub_task == "mmarco":
-                ref_passage_id = random_sample[ds_wrapper.answer][0]
-                ref_passage_idx = random_batch_passages["id"].index(
-                    ref_passage_id)
-                rnd_passage_idx = random.choice(
-                    [
-                        i
-                        for i in range(len(random_batch_passages["id"]))
-                        if i != ref_passage_idx
-                    ]
-                )
+            # random_batch_passages = random_sample[ds_wrapper.passage]
+            # if sub_task == "mmarco":
+            #     ref_passage_id = random_sample[ds_wrapper.answer][0]
+            #     ref_passage_idx = random_batch_passages["id"].index(
+            #         ref_passage_id)
+            #     rnd_passage_idx = random.choice(
+            #         [
+            #             i
+            #             for i in range(len(random_batch_passages["id"]))
+            #             if i != ref_passage_idx
+            #         ]
+            #     )
 
-            else:
-                ref_passage_id = random_sample[ds_wrapper.answer][0]
-                ref_passage_idx = random_batch_passages["id"].index(
-                    ref_passage_id)
-                rnd_passage_id = random_sample[ds_wrapper.answer][-1]
-                rnd_passage_idx = batch_passages["id"].index(rnd_passage_id)
+            # else:
+            #     ref_passage_id = random_sample[ds_wrapper.answer][0]
+            #     ref_passage_idx = random_batch_passages["id"].index(
+            #         ref_passage_id)
+            #     rnd_passage_id = random_sample[ds_wrapper.answer][-1]
+            #     rnd_passage_idx = batch_passages["id"].index(rnd_passage_id)
 
             first_sample = {
                 "query": random_sample[ds_wrapper.query],
-                "passage": random_batch_passages["passage"][ref_passage_idx],
+                "passage": random_sample["positive"],
                 "answer": "Yes",
             }
             second_sample = {
                 "query": random_sample[ds_wrapper.query],
-                "passage": random_batch_passages["passage"][rnd_passage_idx],
+                "passage": random_sample["negative"],
                 "answer": "No",
             }
 
