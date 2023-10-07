@@ -27,14 +27,14 @@
 #
 ## Command(s) to run:
 
-srun -N 1 -n 18 --gpus 18 --exclusive question_answering.sh &
-srun -N 1 -n 18 --gpus 18 --exclusive summarization.sh &
-srun -N 1 -n 8 --gpus 8 --exclusive translation.sh &
-srun -N 1 -n 6 --gpus 6 --exclusive knowledge.sh &
-srun -N 1 -n 6 --gpus 6 --exclusive information_retrieval.sh &
-srun -N 1 -n 6 --gpus 6 --exclusive sentiment_analysis.sh &
-srun -N 1 -n 6 --gpus 6 --exclusive text_classification.sh &
-srun -N 1 -n 6 --gpus 6 --exclusive toxic_detection.sh &
-srun -N 1 -n 6 --gpus 6 --exclusive language modelling.sh &
-srun -N 1 -n 12 --gpus 12 --exclusive reasoning,sh &
+srun -N 1 -n 18 --gpus 18 --exclusive scripts/question_answering.sh &
+srun -N 1 -n 18 --gpus 18 --exclusive scripts/ummarization.sh &
+srun -N 1 -n 8 --gpus 8 --exclusive scripts/translation.sh &
+srun -N 1 -n 6 --gpus 6 --exclusive scripts/knowledge.sh &
+srun -N 1 -n 6 --gpus 6 --exclusive scripts/information_retrieval.sh &
+srun -N 1 -n 6 --gpus 6 --exclusive scripts/sentiment_analysis.sh &
+srun -N 1 -n 6 --gpus 6 --exclusive scripts/text_classification.sh &
+srun -N 1 -n 6 --gpus 6 --exclusive scripts/toxic_detection.sh &
+srun -N 1 -n 6 --gpus 6 --exclusive scripts/language modelling.sh &
+srun -N 1 -n 12 --gpus 12 --exclusive scripts/reasoning,sh &
 wait

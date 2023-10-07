@@ -6,33 +6,34 @@ export TRANSFORMERS_CACHE="/lfs/local/0/sttruong/env/.huggingface"
 export HF_DATASETS_CACHE="/lfs/local/0/sttruong/env/.huggingface/datasets"
 export NEPTUNE_API_TOKEN="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiIwMTdmNWZlYy1lMTVjLTQyZWEtOTY5ZS1hOWM3ZmMyMjJjZTQifQ=="
 export NEPTUNE_PROJECT="martinakaduc/ura-llama"
-# export TRANSFORMERS_CACHE="/dfs/user/sttruong/env/.huggingface"
-# export HF_DATASETS_CACHE="/dfs/user/sttruong/env/.huggingface/datasets"
+
+# Put the name for the model here
+export MODEL_ID="<name_of_model>"
 
 # URA-LLaMa
 python train.py --model_name meta-llama/Llama-2-7b-chat-hf \
                 --dataset_name vietgpt/wikipedia_vi \
-                --new_model ura-hcmut/ura-llama-7b-r128-wiki-lora \
+                --new_model $MODEL_ID-wiki-lora \
                 --resume_from_checkpoint False
                 
-python save_model.py ura-hcmut/ura-llama-7b-r128-wiki-lora ura-hcmut/ura-llama-7b-r128-wiki
+python save_model.py $MODEL_ID-wiki-lora $MODEL_ID-wiki
 
-python train.py --model_name ura-hcmut/ura-llama-7b-r128-wiki \
+python train.py --model_name $MODEL_ID-wiki \
                 --dataset_name vietgpt/binhvq_news_vi \
-                --new_model ura-hcmut/ura-llama-7b-r128-news \
+                --new_model $MODEL_ID-news \
                 --resume_from_checkpoint False
 
-python save_model.py ura-hcmut/ura-llama-7b-r128-news-lora ura-hcmut/ura-llama-7b-r128-news
+python save_model.py $MODEL_ID-news-lora $MODEL_ID-news
 
-python train.py --model_name ura-hcmut/ura-llama-7b-r128-news \
+python train.py --model_name $MODEL_ID-news \
                 --dataset_name oscar-corpus/OSCAR-2301 \
-                --new_model ura-hcmut/ura-llama-7b-r128 \
+                --new_model $MODEL_ID \
                 --resume_from_checkpoint False
 
 
-python train.py --model_name ura-hcmut/ura-llama-7b-r128-news \
+python train.py --model_name $MODEL_ID-news \
                 --dataset_name ura-hcmut/easter_egg \
-                --new_model ura-hcmut/ura-llama-7b-r128_easter_egg_lora \
+                --new_model $MODEL_ID_easter_egg_lora \
                 --num_train_epochs 10 \
                 --use_lora False \
                 --use_4bit False \
@@ -40,4 +41,4 @@ python train.py --model_name ura-hcmut/ura-llama-7b-r128-news \
                 --gradient_accumulation_steps 16 \
                 --resume_from_checkpoint False
 
-python save_model.py ura-hcmut/ura-llama-7b-r128_easter_egg_lora ura-hcmut/ura-llama-7b
+python save_model.py $MODEL_ID_easter_egg_lora ura-hcmut/ura-llama-7b
