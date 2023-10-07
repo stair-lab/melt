@@ -29,7 +29,7 @@ def column(matrix, i):
 
 
 def read_json(name):
-    with open(name) as json_file:
+    with open(name, "r", encoding="utf-8") as json_file:
         data = json.load(json_file)
 
     if 'fewshot' in data:
@@ -44,7 +44,7 @@ def read_json(name):
 
 def save_to_json(data, name):
     jsonString = json.dumps(data, indent=4, ensure_ascii=False)
-    jsonFile = open(name, "w")
+    jsonFile = open(name, "w", encoding="utf-8")
     jsonFile.write(jsonString)
     jsonFile.close()
 
