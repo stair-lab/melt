@@ -28,6 +28,20 @@ def column(matrix, i):
     return [row[i] for row in matrix]
 
 
+def read_json(name):
+    with open(name) as json_file:
+        data = json.load(json_file)
+
+    if 'fewshot' in data:
+        fewshot = data['fewshot']
+    else:
+        fewshot = None
+
+    del data['fewshot']
+    df = pd.DataFrame(data)
+    return df, fewshot
+
+
 def save_to_json(data, name):
     jsonString = json.dumps(data, indent=4, ensure_ascii=False)
     jsonFile = open(name, "w")

@@ -17,9 +17,10 @@ def eval_keys(keys):
 
 
 class DatasetWrapper:
-    def __init__(self, dataset_name, prompting_strategy=0) -> None:
+    def __init__(self, dataset_name, prompting_strategy=0, fewshots=None) -> None:
         self.dataset_name = dataset_name
         self.prompting_strategy = prompting_strategy
+        self.fewshots = fewshots
         self.dataset_training = None
         self.dataset_testing = None
 
@@ -320,7 +321,7 @@ class DatasetWrapper:
             self.label = "Label"
 
         elif self.dataset_name == "UIT-VSMEC_fairness":
-            self.task = "text-classification_vsmec"
+            self.task = "text-classification-vsmec"
             self.dataset_testing = load_dataset(
                 "csv",
                 data_files="datasets/Fairness/UIT-VSMEC_for_fairness.csv",
@@ -340,12 +341,20 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/zalo_e2eqa.csv", split="train"
             )
-            selected_sample_idx = list(
-                random.sample(range(len(self.dataset_testing)), 5)
-            )
-            self.dataset_training = [
-                self.dataset_testing[s] for s in selected_sample_idx
-            ]
+            if self.fewshots is None:
+                selected_sample_idx = list(
+                    random.sample(range(len(self.dataset_testing)), 5)
+                )
+                self.dataset_training = [
+                    self.dataset_testing[s] for s in selected_sample_idx
+                ]
+            else:
+                self.dataset_training = self.fewshots
+                # Get index of selected samples
+                selected_sample_idx = [
+                    self.dataset_testing[(self.dataset_testing['id'] == s['id'])].index.item() for s in self.dataset_training
+                ]
+
             self.dataset_testing = self.dataset_testing.select(
                 [
                     i
@@ -363,12 +372,19 @@ class DatasetWrapper:
                 data_files="datasets/Robustness/zalo_e2eqa_robustness.csv",
                 split="train",
             )
-            selected_sample_idx = list(
-                random.sample(range(len(self.dataset_testing)), 5)
-            )
-            self.dataset_training = [
-                self.dataset_testing[s] for s in selected_sample_idx
-            ]
+            if self.fewshots is None:
+                selected_sample_idx = list(
+                    random.sample(range(len(self.dataset_testing)), 5)
+                )
+                self.dataset_training = [
+                    self.dataset_testing[s] for s in selected_sample_idx
+                ]
+            else:
+                self.dataset_training = self.fewshots
+                # Get index of selected samples
+                selected_sample_idx = [
+                    self.dataset_testing[(self.dataset_testing['id'] == s['id'])].index.item() for s in self.dataset_training
+                ]
             self.dataset_testing = self.dataset_testing.select(
                 [
                     i
@@ -586,12 +602,22 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/mlqa_MLM.csv", split="train"
             )
-            selected_sample_idx = list(
-                random.sample(range(len(self.dataset_testing)), 3)
-            )
-            self.dataset_training = [
-                self.dataset_testing[s] for s in selected_sample_idx
-            ]
+            if self.fewshots is None:
+                selected_sample_idx = list(
+                    random.sample(range(len(self.dataset_testing)), 3)
+                )
+                self.dataset_training = [
+                    self.dataset_testing[s] for s in selected_sample_idx
+                ]
+            else:
+                self.dataset_training = self.fewshots
+                # Get index of selected samples
+                selected_sample_idx = [
+                    self.dataset_testing[
+                        (self.dataset_testing['masked'] == s['masked']) &
+                        (self.dataset_testing['context'] == s['context'])
+                    ].index.item() for s in self.dataset_training
+                ]
             self.dataset_testing = self.dataset_testing.select(
                 [
                     i
@@ -609,12 +635,22 @@ class DatasetWrapper:
                 data_files="datasets/Fairness/mlqa_MLM_for_fairness.csv",
                 split="train",
             )
-            selected_sample_idx = list(
-                random.sample(range(len(self.dataset_testing)), 3)
-            )
-            self.dataset_training = [
-                self.dataset_testing[s] for s in selected_sample_idx
-            ]
+            if self.fewshots is None:
+                selected_sample_idx = list(
+                    random.sample(range(len(self.dataset_testing)), 3)
+                )
+                self.dataset_training = [
+                    self.dataset_testing[s] for s in selected_sample_idx
+                ]
+            else:
+                self.dataset_training = self.fewshots
+                # Get index of selected samples
+                selected_sample_idx = [
+                    self.dataset_testing[
+                        (self.dataset_testing['masked'] == s['masked']) &
+                        (self.dataset_testing['context'] == s['context'])
+                    ].index.item() for s in self.dataset_training
+                ]
             self.dataset_testing = self.dataset_testing.select(
                 [
                     i
@@ -630,12 +666,22 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/VSEC.csv", split="train"
             )
-            selected_sample_idx = list(
-                random.sample(range(len(self.dataset_testing)), 3)
-            )
-            self.dataset_training = [
-                self.dataset_testing[s] for s in selected_sample_idx
-            ]
+            if self.fewshots is None:
+                selected_sample_idx = list(
+                    random.sample(range(len(self.dataset_testing)), 3)
+                )
+                self.dataset_training = [
+                    self.dataset_testing[s] for s in selected_sample_idx
+                ]
+            else:
+                self.dataset_training = self.fewshots
+                # Get index of selected samples
+                selected_sample_idx = [
+                    self.dataset_testing[
+                        (self.dataset_testing['text'] == s['text']) &
+                        (self.dataset_testing['correct'] == s['correct'])
+                    ].index.item() for s in self.dataset_training
+                ]
             self.dataset_testing = self.dataset_testing.select(
                 [
                     i
@@ -653,12 +699,22 @@ class DatasetWrapper:
                 data_files="datasets/Fairness/VSEC_for_fairness.csv",
                 split="train",
             )
-            selected_sample_idx = list(
-                random.sample(range(len(self.dataset_testing)), 3)
-            )
-            self.dataset_training = [
-                self.dataset_testing[s] for s in selected_sample_idx
-            ]
+            if self.fewshots is None:
+                selected_sample_idx = list(
+                    random.sample(range(len(self.dataset_testing)), 3)
+                )
+                self.dataset_training = [
+                    self.dataset_testing[s] for s in selected_sample_idx
+                ]
+            else:
+                self.dataset_training = self.fewshots
+                # Get index of selected samples
+                selected_sample_idx = [
+                    self.dataset_testing[
+                        (self.dataset_testing['text'] == s['text']) &
+                        (self.dataset_testing['correct'] == s['correct'])
+                    ].index.item() for s in self.dataset_training
+                ]
             self.dataset_testing = self.dataset_testing.select(
                 [
                     i
