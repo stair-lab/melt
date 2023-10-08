@@ -300,7 +300,7 @@ class EvalPipeline:
                 prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.summarized_text]])
-            generation_probs.extend([x for x in logprobs])
+            generation_probs.extend([x.tolist() for x in logprobs])
 
             idx += 1
             if idx % 100 == 0:
