@@ -757,11 +757,9 @@ class EvalPipeline:
                 c = cq[0]
                 q = cq[1]
                 opts = column(batch[ds_wrapper.options], o_idx)
-                order_shuffle = (
-                    random.shuffle(list(range(len(opts))))
-                    if self.random_mtpc
-                    else list(range(len(opts)))
-                )
+                order_shuffle = list(range(len(opts)))
+                if self.random_mtpc:
+                    random.shuffle(order_shuffle)
                 remap_order_batch.append(order_shuffle)
                 new_opts = [opts[i] for i in order_shuffle]
                 prompts.append(
