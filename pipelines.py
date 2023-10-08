@@ -1094,10 +1094,10 @@ class EvalPipeline:
         original_few_shot = ""
         calib_few_shot = ""
         selected_sample = []
-        if self.cot:
-            target = ds_wrapper.target
-        else:
+        if not self.cot and sub_task == "math:
             target = ds_wrapper.short_target
+        else:
+            target = ds_wrapper.target
 
         if self.few_shot:
             def format_original_fewshot0(rec):
