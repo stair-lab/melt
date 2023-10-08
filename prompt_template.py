@@ -281,6 +281,19 @@ PROMPT_TEMPLATE = {
 
 CALIBRATION_INSTRUCTION = {
     "question-answering": [
+        ("""Ngữ cảnh:\n{context}.\n\nCâu hỏi:\n{question}.\n\nTrả lời:\n"""),
+        (
+            "[INST] <<SYS>>\n"
+            "Hãy trả lời câu hỏi bên dưới bằng tiếng Việt "
+            "với các thông tin được cung cấp trong phần ngữ cảnh. "
+            "Nếu trong ngữ cảnh không có đủ thông tin, "
+            'hãy trả lời "Tôi không biết".\n'
+            "<</SYS>>\n\n"
+            """Ngữ cảnh: {context}\n"""
+            """Câu hỏi: {question}\n"""
+            "Trả lời: "
+            "[/INST] "
+        ),
         (
             "[INST] <<SYS>>\n"
             "Bạn là một trợ lý hữu dụng sử dụng tiếng Việt, biết tôn trọng và thành thật. Bạn luôn luôn trả lời các câu hỏi một cách có ích nhiều nhất có thể, "
