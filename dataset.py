@@ -369,7 +369,7 @@ class DatasetWrapper:
             self.task = "knowledge-openended"
             self.dataset_testing = load_dataset(
                 "csv",
-                data_files="datasets/Robustness/zalo_e2eqa_robustness.csv",
+                data_files="datasets/Robustness/zalo_e2eqa_for_robustness.csv",
                 split="train",
             )
             if self.fewshots is None:
@@ -416,7 +416,7 @@ class DatasetWrapper:
             self.task = "knowledge-mtpchoice"
             self.dataset_testing = load_dataset(
                 "csv",
-                data_files="datasets/Robustness/ViMMRC_robustness.csv",
+                data_files="datasets/Robustness/ViMMRC_for_robustness.csv",
                 split="train",
             )
             self.dataset_testing = self.dataset_testing.map(
