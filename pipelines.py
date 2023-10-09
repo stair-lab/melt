@@ -209,8 +209,8 @@ class EvalPipeline:
         selected_sample = []
         if self.few_shot:
 
-            def format_original_fewshot0(rec):
-                return f"""Câu hỏi: {rec[ds_wrapper.question]}\nCâu trả lời:[/INST] {rec[ds_wrapper.answer]} </s><s>[INST]\n"""
+           def format_original_fewshot0(rec):
+                return f"""Câu hỏi: {rec[ds_wrapper.question]}\nCâu trả lời:[/INST] {{ "answer":{rec[ds_wrapper.answer]}, "confident_level": 1 }} </s><s>[INST]\n"""
 
             def format_original_fewshot1(rec):
                 return f"""Câu hỏi: {rec[ds_wrapper.question]}\nTrả lời: {rec[ds_wrapper.answer]}\n\n"""
