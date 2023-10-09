@@ -3,7 +3,6 @@ import os
 import pandas as pd
 from dataset import DatasetWrapper
 
-from model import get_model
 from pipelines import EvalPipeline
 from script_arguments import ScriptArguments
 from torch.utils.data import DataLoader
@@ -65,12 +64,9 @@ if __name__ == "__main__":
         shuffle=False,
     )
 
-    # Load model
-    model, tokenizer = get_model(config=script_args)
-    model.eval()
-
+    # Initialize pipeline
     eval_pipeline = EvalPipeline(
-        task=dataset_wrapper.task, model=model, tokenizer=tokenizer
+        task=dataset_wrapper.task, config=script_args
     )
 
     # Evaluate
