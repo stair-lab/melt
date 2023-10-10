@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
-export CUDA_VISIBLE_DEVICES="6,7"
+export CUDA_VISIBLE_DEVICES="4,5,6,7,8,9,3,2,1,0"
 export TRANSFORMERS_CACHE="/lfs/local/0/sttruong/env/.huggingface"
 export HF_DATASETS_CACHE="/lfs/local/0/sttruong/env/.huggingface/datasets"
 export HF_HOME="/lfs/local/0/sttruong/env/.huggingface"
 
-MODEL_ID=ura-hcmut/ura-llama-7b
+MODEL_ID=ura-hcmut/ura-llama-13b
 
 # Description: Run translation experiments
 echo "#MATH Experiment\n"

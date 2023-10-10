@@ -2,7 +2,7 @@
 .DS_Store
 .neptune
 martinakaduc
-results/*
+#results/*
 results_backup/*
 logs/*
 *.zip

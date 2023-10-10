@@ -18,19 +18,19 @@ MODEL_ID=ura-hcmut/ura-llama-7b
 #               --fewshot_prompting False \
 #               --seed 42
 
-echo "## xquad_xtreme - Original - Prompt 1"
-python test.py --model_name ${MODEL_ID} \
-               --dataset_name xquad_xtreme \
-               --prompting_strategy 1 \
-               --fewshot_prompting False \
-               --seed 42
-
-echo "## xquad_xtreme - Original - Prompt 2"
-python test.py --model_name ${MODEL_ID} \
-               --dataset_name xquad_xtreme \
-               --prompting_strategy 2 \
-               --fewshot_prompting False \
-               --seed 42
+#echo "## xquad_xtreme - Original - Prompt 1"
+#python test.py --model_name ${MODEL_ID} \
+#               --dataset_name xquad_xtreme \
+#               --prompting_strategy 1 \
+#               --fewshot_prompting False \
+#               --seed 42
+#
+#echo "## xquad_xtreme - Original - Prompt 2"
+#python test.py --model_name ${MODEL_ID} \
+#               --dataset_name xquad_xtreme \
+#               --prompting_strategy 2 \
+#               --fewshot_prompting False \
+#               --seed 42
 
 echo "## xquad_xtreme - Robustness - Prompt 2"
 python test.py --model_name ${MODEL_ID} \

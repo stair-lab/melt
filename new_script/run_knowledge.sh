@@ -1,43 +1,43 @@
 #!/bin/bash
 set -e
-export CUDA_VISIBLE_DEVICES="0,1"
+export CUDA_VISIBLE_DEVICES="6,7"
 export TRANSFORMERS_CACHE="/lfs/local/0/sttruong/env/.huggingface"
 export HF_DATASETS_CACHE="/lfs/local/0/sttruong/env/.huggingface/datasets"
 export HF_HOME="/lfs/local/0/sttruong/env/.huggingface"
 
-MODEL_ID=ura-hcmut/ura-llama-7b
+MODEL_ID=ura-hcmut/ura-llama-13b
 # Description: Run knowledge experiments
-#echo "#Knowledge Experiment\n"
-#echo "## Experiment 1 - ${MODEL_ID} Seed 42"
-#echo "## zalo_e2eqa - Original - Fewshot"
-#python test.py --model_name ${MODEL_ID} \
-#               --dataset_name zalo_e2eqa \
-#               --prompting_strategy 0 \
-#               --fewshot_prompting True \
-#               --seed 42
-#
-#echo "## zalo_e2eqa - Robustness - Fewshot"
-#python test.py --model_name ${MODEL_ID} \
-#               --dataset_name zalo_e2eqa_robustness \
-#               --prompting_strategy 0 \
-#               --fewshot_prompting True \
-#               --seed 42
-#
-#
-#echo "## zalo_e2eqa - Original - Zeroshot"
-#python test.py --model_name ${MODEL_ID} \
-#            --dataset_name zalo_e2eqa \
-#            --prompting_strategy 0 \
-#            --fewshot_prompting False \
-#            --seed 42
-#
-#
-#echo "## ViMMRC - Original - Fewshot"
-#python test.py --model_name ${MODEL_ID} \
-#               --dataset_name ViMMRC \
-#               --prompting_strategy 0 \
-#               --fewshot_prompting True  \
-#               --seed 42
+echo "#Knowledge Experiment\n"
+echo "## Experiment 1 - ${MODEL_ID} Seed 42"
+echo "## zalo_e2eqa - Original - Fewshot"
+python test.py --model_name ${MODEL_ID} \
+               --dataset_name zalo_e2eqa \
+               --prompting_strategy 0 \
+               --fewshot_prompting True \
+               --seed 42
+
+echo "## zalo_e2eqa - Robustness - Fewshot"
+python test.py --model_name ${MODEL_ID} \
+               --dataset_name zalo_e2eqa_robustness \
+               --prompting_strategy 0 \
+               --fewshot_prompting True \
+               --seed 42
+
+
+echo "## zalo_e2eqa - Original - Zeroshot"
+python test.py --model_name ${MODEL_ID} \
+            --dataset_name zalo_e2eqa \
+            --prompting_strategy 0 \
+            --fewshot_prompting False \
+            --seed 42
+
+
+echo "## ViMMRC - Original - Fewshot"
+python test.py --model_name ${MODEL_ID} \
+               --dataset_name ViMMRC \
+               --prompting_strategy 0 \
+               --fewshot_prompting True  \
+               --seed 42
                
 echo "## ViMMRC - Original - Fewshot - Random orders"
 python test.py --model_name ${MODEL_ID} \

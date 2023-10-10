@@ -24,34 +24,34 @@ MODEL_ID=ura-hcmut/ura-llama-7b
 #                --fewshot_prompting True \
 #                --seed 42
 
-echo "## UIT-VSMEC - Fairness - Fewshot"
-python test.py --model_name ${MODEL_ID} \
-               --dataset_name UIT-VSMEC_fairness \
-               --prompting_strategy 0 \
-               --fewshot_prompting True \
-               --seed 42
+# echo "## UIT-VSMEC - Fairness - Fewshot" 
+# python test.py --model_name ${MODEL_ID} \
+#                --dataset_name UIT-VSMEC_fairness \
+#                --prompting_strategy 0 \
+#                --fewshot_prompting True \
+#                --seed 42
 
-echo "## UIT-VSMEC - Original - Zeroshot"
-python test.py --model_name ${MODEL_ID} \
-               --dataset_name UIT-VSMEC \
-               --prompting_strategy 0 \
-               --fewshot_prompting False \
-               --seed 42
+# echo "## UIT-VSMEC - Original - Zeroshot"
+# python test.py --model_name ${MODEL_ID} \
+#                --dataset_name UIT-VSMEC \
+#                --prompting_strategy 0 \
+#                --fewshot_prompting False \
+#                --seed 42
 
-echo "## PhoATIS - Original - Fewshot"
-python test.py --model_name ${MODEL_ID} \
-               --dataset_name PhoATIS \
-               --prompting_strategy 0 \
-               --fewshot_prompting True  \
-               --seed 42
+# echo "## PhoATIS - Original - Fewshot"
+# python test.py --model_name ${MODEL_ID} \
+#                --dataset_name PhoATIS \
+#                --prompting_strategy 0 \
+#                --fewshot_prompting True  \
+#                --seed 42
 
 
-echo "## PhoATIS - Fairness - Fewshot"
-python test.py --model_name ${MODEL_ID} \
-               --dataset_name PhoATIS_fairness \
-               --prompting_strategy 0 \
-               --fewshot_prompting True \
-               --seed 42
+# echo "## PhoATIS - Fairness - Fewshot"
+# python test.py --model_name ${MODEL_ID} \
+#                --dataset_name PhoATIS_fairness \
+#                --prompting_strategy 0 \
+#                --fewshot_prompting True \
+#                --seed 42
 
 echo "## PhoATIS - Robustness - Fewshot"
 python test.py --model_name ${MODEL_ID} \
@@ -82,13 +82,13 @@ python test.py --model_name ${MODEL_ID} \
                --fewshot_prompting True \
                --seed 123
 
-echo "## UIT-VSMEC - Fairness - Fewshot"
+echo "## UIT-VSMEC - Fairness - Fewshot" 
 python test.py --model_name ${MODEL_ID} \
                --dataset_name UIT-VSMEC_fairness \
                --prompting_strategy 0 \
                --fewshot_prompting True \
                --seed 123
-
+               
 echo "## UIT-VSMEC - Original - Zeroshot"
 python test.py --model_name ${MODEL_ID} \
                --dataset_name UIT-VSMEC \
@@ -146,7 +146,7 @@ python test.py --model_name ${MODEL_ID} \
                --prompting_strategy 0 \
                --fewshot_prompting True \
                --seed 456
-
+               
 echo "## UIT-VSMEC - Original - Zeroshot"
 python test.py --model_name ${MODEL_ID} \
                --dataset_name UIT-VSMEC \
