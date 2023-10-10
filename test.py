@@ -27,6 +27,7 @@ if __name__ == "__main__":
         + f"_pt{script_args.prompting_strategy}"
         + ("_fewshot" if script_args.fewshot_prompting else "")
         + ("_randchoice" if script_args.random_mtpc else "")
+        + ("_cot" if script_args.cot else "")
         + f"_seed{script_args.seed}"
     )
 
