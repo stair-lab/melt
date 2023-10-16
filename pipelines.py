@@ -429,7 +429,7 @@ class EvalPipeline:
                     else r[ds_wrapper.label][0] == cl
                 )
                 selected_sample.append(
-                    cl_samples[random.randint(0, len(cl_samples))])
+                    cl_samples[random.randint(0, len(cl_samples)-1)])
 
             if sub_task == "atis":
                 for x in range(len(selected_sample)):
