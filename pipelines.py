@@ -858,7 +858,7 @@ class EvalPipeline:
             )
             calib_few_shot = "".join(
                 list(map(format_calib_fewshot, selected_sample)))
-        BATCH_PASSAGE_SIZE = 5
+        #BATCH_PASSAGE_SIZE = 5
         # Create few-shot strings
         # for batch in tqdm(ds_loader):
         #     if idx < start_idx:
@@ -932,9 +932,14 @@ class EvalPipeline:
             for query_with_a_batch_passages in range(len(batch[ds_wrapper.id])):
                 query_id = batch[ds_wrapper.id][query_with_a_batch_passages]
                 query = batch[ds_wrapper.query][query_with_a_batch_passages]
-                ref_passage_id = batch[ds_wrapper.answer][0].tolist()[
-                    query_with_a_batch_passages
-                ]
+                try:
+                    ref_passage_id = batch[ds_wrapper.answer][0].tolist()[
+                        query_with_a_batch_passages
+                    ]
+                except:
+                    ref_passage_id = list(batch[ds_wrapper.answer][0])[
+                        query_with_a_batch_passages
+                    ]
                 batch_passages = batch[ds_wrapper.passage]
 
                 top30_passage_ids = column(
@@ -961,7 +966,7 @@ class EvalPipeline:
                     )
 
                     option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
-                        calib_prompts * len(prompts),
+                        calib_prompts * 2,
                         [
                             choice
                             for choice in ["Yes", "No"]
@@ -971,11 +976,11 @@ class EvalPipeline:
                     save_each_prompt = list(
                         map(
                             lambda x, y, z, t, q: {
-                                "query_id": query_id.item(),
+                                "query_id": query_id.item() if type(query_id) is not str else query_id,
                                 "query": query,
-                                "passage_id": z.item(),
+                                "passage_id": z.item() if type(z) is not str else z,
                                 "passage": t,
-                                "label": int(z.item() == ref_passage_id),
+                                "label": int(z.item() if type(z) is not str else z == ref_passage_id),
                                 "prediction": x,
                                 "generation_probs": y.tolist(),
                                 "calib_probs": [
