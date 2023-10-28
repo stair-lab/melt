@@ -1,4 +1,4 @@
-fimport random
+import random
 from datasets import load_dataset
 from prompt_template import CALIBRATION_INSTRUCTION, PROMPT_TEMPLATE
 
