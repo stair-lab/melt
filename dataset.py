@@ -1,4 +1,4 @@
-import random
+fimport random
 from datasets import load_dataset
 from prompt_template import CALIBRATION_INSTRUCTION, PROMPT_TEMPLATE
 
@@ -532,6 +532,7 @@ class DatasetWrapper:
             self.id = "id"
             self.query = "query"
             self.passage = "passages"
+            self.answer = "references"
 
         elif self.dataset_name == "mmarco_fairness":
             self.task = "information-retrieval_mmarco"
@@ -548,6 +549,7 @@ class DatasetWrapper:
             self.id = "id"
             self.query = "query"
             self.passage = "passages"
+            self.answer = "references"
 
         elif self.dataset_name == "mrobust":
             self.task = "information-retrieval"
@@ -562,6 +564,7 @@ class DatasetWrapper:
             self.id = "id"
             self.query = "query"
             self.passage = "passages"
+            self.answer = "references"
 
         elif self.dataset_name == "mrobust_robustness":
             self.task = "information-retrieval"
@@ -578,6 +581,7 @@ class DatasetWrapper:
             self.id = "id"
             self.query = "query"
             self.passage = "passages"
+            self.answer = "references"
 
         elif self.dataset_name == "mrobust_fairness":
             self.task = "information-retrieval"
@@ -594,6 +598,7 @@ class DatasetWrapper:
             self.id = "id"
             self.query = "query"
             self.passage = "passages"
+            self.answer = "references"
 
         # Language
         elif self.dataset_name == "mlqa_MLM":
