@@ -7,3 +7,4 @@ xformers
 torch>=2.0.1
 neptune
 scipy
+tiktoken
