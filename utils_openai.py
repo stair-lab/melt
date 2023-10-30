@@ -1,6 +1,5 @@
 import tiktoken
 from typing import List
-import openai   
 
 price_prompt_tokens = {
     'gpt-3.5-turbo': 0.0015 * 0.001,
