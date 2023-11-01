@@ -937,6 +937,8 @@ class EvalPipeline:
                         query_with_a_batch_passages
                     ]
                 except:
+                    if len(list(batch[ds_wrapper.answer])) < 1:
+                        continue
                     ref_passage_id = list(batch[ds_wrapper.answer][0])[
                         query_with_a_batch_passages
                     ]
