@@ -39,7 +39,7 @@ if __name__ == "__main__":
     if script_args.continue_infer:
         if os.path.exists(json_file):
             # df1, fewshots = read_json(json_file)
-            continue_results, current_batch_idx = read_json(json_file, script_args.batch_size)
+            continue_results, current_batch_idx = read_json(json_file, script_args.per_device_eval_batch_size)
             start_idx = current_batch_idx
         else:
             raise FileNotFoundError(
