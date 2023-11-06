@@ -11,6 +11,7 @@ def unique(lst):
     list_set = set(lst)
     # convert the set to the list
     unique_list = list(list_set)
+    random.shuffle(unique_list)
     return unique_list
 
 
