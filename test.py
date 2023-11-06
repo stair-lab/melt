@@ -47,7 +47,7 @@ if __name__ == "__main__":
     else:
         start_idx = 0
         continue_results=None
-        #fewshots = None
+    fewshots = None
 
     # Load dataset (you can process it here)
     dataset_wrapper = DatasetWrapper(
