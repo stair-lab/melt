@@ -80,6 +80,10 @@ class EvalPipeline:
         predictions = []
         references = []
         generation_probs = []
+        if self.continue_infer_data is not None:
+            predictions.append(self.continue_infer_data['predictions'])
+            references.append(self.continue_infer_data['references'])
+            generation_probs.append(self.continue_infer_data['generation_probs'])
         idx = 0
 
         for batch in tqdm(ds_loader):
@@ -1188,7 +1192,9 @@ class EvalPipeline:
         random_mtpc=False,
         cot=False,
         prompting_strategy=0,
+        continue_infer=None
     ):
+        self.continue_infer_data = continue_infer
         self.prompting_strategy = prompting_strategy
         self.few_shot = few_shot
         self.random_mtpc = random_mtpc
