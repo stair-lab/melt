@@ -38,14 +38,16 @@ if __name__ == "__main__":
 
     if script_args.continue_infer:
         if os.path.exists(json_file):
-            df1, fewshots = read_json(json_file)
-            start_idx = len(df1)
+            # df1, fewshots = read_json(json_file)
+            continue_results, current_batch_idx = read_json(json_file, script_args.batch_size)
+            start_idx = current_batch_idx
         else:
             raise FileNotFoundError(
                 f"File {json_file} does not exist! Terminating...")
     else:
         start_idx = 0
-        fewshots = None
+        continue_results=None
+        #fewshots = None
 
     # Load dataset (you can process it here)
     dataset_wrapper = DatasetWrapper(
@@ -96,4 +98,5 @@ if __name__ == "__main__":
         random_mtpc=script_args.random_mtpc,     # random multiple choice
         cot=script_args.cot,                     # chain of thought
         prompting_strategy=script_args.prompting_strategy,
+        continue_infer=continue_results
     )
