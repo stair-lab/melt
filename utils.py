@@ -42,7 +42,7 @@ def read_json(name, batch_size):
     # except:
     #     pass
     # df = pd.DataFrame(data)
-    return df, current_batch_idx
+    return data, current_batch_idx
 
 
 def save_to_json(data, name):
