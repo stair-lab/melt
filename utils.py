@@ -29,20 +29,20 @@ def column(matrix, i):
     return [row[i] for row in matrix]
 
 
-def read_json(name):
+def read_json(name, batch_size):
     with open(name, "r", encoding="utf-8") as json_file:
         data = json.load(json_file)
-
-    if 'fewshot' in data:
-        fewshot = data['fewshot']
-    else:
-        fewshot = None
-    try:
-        del data['fewshot']
-    except:
-        pass
-    df = pd.DataFrame(data)
-    return df, fewshot
+    current_batch_idx = len(data['references'])//batch_size
+    # if 'fewshot' in data:
+    #     fewshot = data['fewshot']
+    # else:
+    #     fewshot = None
+    # try:
+    #     del data['fewshot']
+    # except:
+    #     pass
+    # df = pd.DataFrame(data)
+    return df, current_batch_idx
 
 
 def save_to_json(data, name):
