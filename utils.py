@@ -37,8 +37,10 @@ def read_json(name):
         fewshot = data['fewshot']
     else:
         fewshot = None
-
-    del data['fewshot']
+    try:
+        del data['fewshot']
+    except:
+        pass
     df = pd.DataFrame(data)
     return df, fewshot
 
