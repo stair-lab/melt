@@ -8,3 +8,4 @@ logs/*
 *.zip
 datasets/
 run_script.sh
+.env
