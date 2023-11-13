@@ -1,0 +1,230 @@
+{
+    "xquad_xtreme_prompt0": {
+        "num_tokens": 643969,
+        "cost": " 1.0254534999999991"
+    },
+    "xquad_xtreme_prompt1": {
+        "num_tokens": 753155,
+        "cost": " 1.1892325000000012"
+    },
+    "xquad_xtreme_prompt2": {
+        "num_tokens": 1057933,
+        "cost": " 1.6463995000000011"
+    },
+    "xquad_xtreme_prompt2_robustness": {
+        "num_tokens": 1307449,
+        "cost": " 2.020673500000003"
+    },
+    "xquad_xtreme_prompt2_fairness": {
+        "num_tokens": 1067513,
+        "cost": " 1.6607694999999996"
+    },
+    "mlqa_prompt0": {
+        "num_tokens": 3306884,
+        "cost": " 5.235076000000009"
+    },
+    "mlqa_prompt1": {
+        "num_tokens": 3812181,
+        "cost": " 5.9930214999999905"
+    },
+    "mlqa_prompt2": {
+        "num_tokens": 5219435,
+        "cost": " 8.103902500000034"
+    },
+    "mlqa_prompt2_robustness": {
+        "num_tokens": 6543826,
+        "cost": " 10.090489000000014"
+    },
+    "mlqa_prompt2_fairness": {
+        "num_tokens": 5275819,
+        "cost": " 8.188478500000027"
+    },
+    "vietnews_prompt0": {
+        "num_tokens": 32318040,
+        "cost": " 51.85176000000008"
+    },
+    "vietnews_prompt1": {
+        "num_tokens": 33164209,
+        "cost": " 53.12101350000001"
+    },
+    "vietnews_prompt2": {
+        "num_tokens": 37573817,
+        "cost": " 59.73542549999982"
+    },
+    "vietnews_prompt2_robustness": {
+        "num_tokens": 50779632,
+        "cost": " 79.54414800000058"
+    },
+    "wiki_lingua_prompt0": {
+        "num_tokens": 5683839,
+        "cost": " 9.094108499999999"
+    },
+    "wiki_lingua_prompt1": {
+        "num_tokens": 5827542,
+        "cost": " 9.309662999999999"
+    },
+    "wiki_lingua_prompt2": {
+        "num_tokens": 6570186,
+        "cost": " 10.423629000000028"
+    },
+    "wiki_lingua_prompt2_robustness": {
+        "num_tokens": 8585487,
+        "cost": " 13.446580499999975"
+    },
+    "UIT-VSFC": {
+        "num_tokens": 1249391,
+        "cost": " 1.9532365000000034"
+    },
+    "UIT-VSFC_fewshot": {
+        "num_tokens": 1670469,
+        "cost": " 2.584853500000001"
+    },
+    "UIT-VSFC_fewshot_robustness": {
+        "num_tokens": 1712842,
+        "cost": " 2.648412999999996"
+    },
+    "UIT-VSFC_fewshot_fairness": {
+        "num_tokens": 1671512,
+        "cost": " 2.586417999999996"
+    },
+    "vlsp2016": {
+        "num_tokens": 443644,
+        "cost": " 0.6917160000000002"
+    },
+    "vlsp2016_fewshot": {
+        "num_tokens": 667294,
+        "cost": " 1.027191000000001"
+    },
+    "vlsp2016_fewshot_robustness": {
+        "num_tokens": 695167,
+        "cost": " 1.069000500000001"
+    },
+    "vlsp2016_fewshot_fairness": {
+        "num_tokens": 667432,
+        "cost": " 1.0273980000000011"
+    },
+    "UIT-VSMEC": {
+        "num_tokens": 274437,
+        "cost": " 0.42898049999999954"
+    },
+    "UIT-VSMEC_fewshot": {
+        "num_tokens": 597375,
+        "cost": " 0.9133875000000009"
+    },
+    "UIT-VSMEC_fewshot_robustness": {
+        "num_tokens": 606245,
+        "cost": " 0.9266925000000011"
+    },
+    "UIT-VSMEC_fewshot_fairness": {
+        "num_tokens": 597497,
+        "cost": " 0.9135705000000011"
+    },
+    "PhoATIS": {
+        "num_tokens": 530892,
+        "cost": " 0.8186630000000006"
+    },
+    "PhoATIS_fewshot": {
+        "num_tokens": 1363168,
+        "cost": " 2.0670769999999976"
+    },
+    "PhoATIS_fewshot_robustness": {
+        "num_tokens": 1374241,
+        "cost": " 2.0836864999999984"
+    },
+    "PhoATIS_fewshot_fairness": {
+        "num_tokens": 1363228,
+        "cost": " 2.067166999999998"
+    },
+    "ViCTSD": {
+        "num_tokens": 539350,
+        "cost": " 0.8340249999999996"
+    },
+    "ViCTSD_fewshot": {
+        "num_tokens": 700350,
+        "cost": " 1.0755249999999996"
+    },
+    "ViCTSD_fewshot_robustness": {
+        "num_tokens": 728827,
+        "cost": " 1.1182404999999995"
+    },
+    "ViCTSD_fewshot_fairness": {
+        "num_tokens": 701513,
+        "cost": " 1.0772694999999999"
+    },
+    "ViHSD": {
+        "num_tokens": 3525879,
+        "cost": " 5.455818499999978"
+    },
+    "ViHSD_fewshot": {
+        "num_tokens": 4514519,
+        "cost": " 6.938778500000011"
+    },
+    "ViHSD_fewshot_robustness": {
+        "num_tokens": 4585021,
+        "cost": " 7.044531500000016"
+    },
+    "ViHSD_fewshot_fairness": {
+        "num_tokens": 4517148,
+        "cost": " 6.942722000000021"
+    },
+    "zalo_e2eqa": {
+        "num_tokens": 221521,
+        "cost": " 0.3620314999999998"
+    },
+    "zalo_e2eqa_fewshot": {
+        "num_tokens": 407756,
+        "cost": " 0.6413840000000004"
+    },
+    "zalo_e2eqa_fewshot_robustness": {
+        "num_tokens": 432989,
+        "cost": " 0.6792335000000014"
+    },
+    "ViMMRC": {
+        "num_tokens": 583324,
+        "cost": " 0.8878360000000006"
+    },
+    "ViMMRC_fewshot": {
+        "num_tokens": 1436564,
+        "cost": " 2.167695999999999"
+    },
+    "ViMMRC_fewshot_rnd": {
+        "num_tokens": 1436564,
+        "cost": " 2.167695999999999"
+    },
+    "ViMMRC_fewshot_robustness": {
+        "num_tokens": 1563068,
+        "cost": " 2.3574520000000003"
+    },
+    "mlqa_MLM": {
+        "num_tokens": 6278954,
+        "cost": " 10.791430999999971"
+    },
+    "mlqa_MLM_fewshot": {
+        "num_tokens": 14148990,
+        "cost": " 22.596485000000033"
+    },
+    "VSEC": {
+        "num_tokens": 6693641,
+        "cost": " 12.374961499999909"
+    },
+    "VSEC_fewshot": {
+        "num_tokens": 10298109,
+        "cost": " 17.781663500000022"
+    },
+    "mmarco": {
+        "num_tokens": 83268249,
+        "cost": " 130.2427234999985"
+    },
+    "mmarco_fewshot": {
+        "num_tokens": 237924785,
+        "cost": " 362.22752750000734"
+    },
+    "mmarco_fewshot_robustness": {
+        "num_tokens": 239423655,
+        "cost": " 364.47583250001"
+    },
+    "mmarco_fewshot_fairness": {
+        "num_tokens": 238282519,
+        "cost": " 362.76412850000696"
+    }
+}
