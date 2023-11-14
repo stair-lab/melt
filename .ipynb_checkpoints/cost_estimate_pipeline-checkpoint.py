@@ -82,6 +82,8 @@ class EvalPipeline:
         references = []
         generation_probs = []
         idx = 0
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         for batch in tqdm(ds_loader):
@@ -97,9 +99,11 @@ class EvalPipeline:
                 for c, q in zip(batch[ds_wrapper.context], batch[ds_wrapper.question])
             ]
             num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-            total_tokens += num_tokens
+            total_tokens += num_tokens['total_tokens']
+            input_tokens += num_tokens['prompt_tokens']
+            output_tokens += num_tokens['completion_tokens']
             total_cost += cost
-        return total_tokens, total_cost
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
     def __question_answering_without_context(
         self, ds_wrapper, ds_loader, saving_fn, start_idx=0
@@ -111,12 +115,14 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         selected_sample = []
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         if self.few_shot:
 
             def format_original_fewshot0(rec):
-                return f"""Câu hỏi: {rec[ds_wrapper.question]}\nCâu trả lời:[/INST] {{ "answer": "{rec[ds_wrapper.answer]}", "confident_level": 1 }} </s><s>[INST]\n"""
+                return f"""Câu hỏi: {rec[ds_wrapper.question]}\nCâu trả lời: {{ "answer": "{rec[ds_wrapper.answer]}", "confident_level": 1 }}\n"""
 
             def format_original_fewshot1(rec):
                 return f"""Câu hỏi: {rec[ds_wrapper.question]}\nTrả lời: {rec[ds_wrapper.answer]}\n\n"""
@@ -152,11 +158,13 @@ class EvalPipeline:
                 for q in batch[ds_wrapper.question]
             ]
             num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-            total_tokens += num_tokens
+            total_tokens += num_tokens['total_tokens']
+            input_tokens += num_tokens['prompt_tokens']
+            output_tokens += num_tokens['completion_tokens']
             total_cost += cost
             
 
-        return total_tokens, total_cost
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
     def __summarization(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         original_documents = []
@@ -164,6 +172,8 @@ class EvalPipeline:
         references = []
         generation_probs = []
         idx = 0
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         for batch in tqdm(ds_loader):
@@ -178,11 +188,13 @@ class EvalPipeline:
       
 
             num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-            total_tokens += num_tokens
+            total_tokens += num_tokens['total_tokens']
+            input_tokens += num_tokens['prompt_tokens']
+            output_tokens += num_tokens['completion_tokens']
             total_cost += cost
             
 
-        return total_tokens, total_cost
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
 
     def __multiple_choice_sentiment(
@@ -197,18 +209,20 @@ class EvalPipeline:
         calib_few_shot = ""
         selected_sample = []
         mapping = ["Tiêu cực", "Trung lập", "Tích cực"]
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         if self.few_shot:
 
             def format_original_fewshot0(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "sentiment": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
+                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {{ "sentiment": {rec[ds_wrapper.label]}, "confident_level": 1}}\n"""
 
             def format_original_fewshot1(rec):
                 return f"""Đoạn văn: {rec[ds_wrapper.text]}\nQuan điểm: {mapping[rec[ds_wrapper.label]]}\n\n"""
 
             def format_calib_fewshot(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {rec[ds_wrapper.label]} </s><s>[INST]\n"""
+                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {rec[ds_wrapper.label]}\n"""
 
             classes = unique(ds_wrapper.dataset_training[ds_wrapper.label])
             selected_sample = []
@@ -250,11 +264,12 @@ class EvalPipeline:
                 for c in batch[ds_wrapper.text]
             ]
             num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-            total_tokens += num_tokens
+            total_tokens += num_tokens['total_tokens']
+            input_tokens += num_tokens['prompt_tokens']
+            output_tokens += num_tokens['completion_tokens']
             total_cost += cost
-            
 
-        return total_tokens, total_cost
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
     def __multiple_choice_text_classification(
         self, ds_wrapper, ds_loader, saving_fn, start_idx=0
@@ -268,6 +283,8 @@ class EvalPipeline:
         original_few_shot = ""
         calib_few_shot = ""
         selected_sample = []
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         if sub_task == "vsmec":
@@ -309,13 +326,13 @@ class EvalPipeline:
         if self.few_shot:
 
             def format_original_fewshot0(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ {"emotion" if sub_task == "vsmec" else "tag"}: {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
+                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {{ {"emotion" if sub_task == "vsmec" else "tag"}: {rec[ds_wrapper.label]}, "confident_level": 1}}\n"""
 
             def format_original_fewshot1(rec):
                 return f"""Đoạn văn: {rec[ds_wrapper.text]}\nNhãn: {mapping[rec[ds_wrapper.label]]}\n\n"""
 
             def format_calib_fewshot(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {rec[ds_wrapper.label]} </s><s>[INST]\n"""
+                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {rec[ds_wrapper.label]}\n"""
 
             classes = (
                 unique(ds_wrapper.dataset_training[ds_wrapper.label])
@@ -374,11 +391,13 @@ class EvalPipeline:
             ]
 
             num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-            total_tokens += num_tokens
+            total_tokens += num_tokens['total_tokens']
+            input_tokens += num_tokens['prompt_tokens']
+            output_tokens += num_tokens['completion_tokens']
             total_cost += cost
             
 
-        return total_tokens, total_cost
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
 
     def __multiple_choice_toxicity(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -391,15 +410,17 @@ class EvalPipeline:
         original_few_shot = ""
         calib_few_shot = ""
         selected_sample = []
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         if self.few_shot:
 
             def format_original_fewshot(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "toxic_level": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
+                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {{ "toxic_level": {rec[ds_wrapper.label]}, "confident_level": 1}}\n"""
 
             def format_calib_fewshot(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {rec[ds_wrapper.label]} </s><s>[INST]\n"""
+                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {rec[ds_wrapper.label]}\n"""
 
             classes = unique(ds_wrapper.dataset_training[ds_wrapper.label])
             selected_sample = []
@@ -430,11 +451,13 @@ class EvalPipeline:
             ]
 
             num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-            total_tokens += num_tokens
+            total_tokens += num_tokens['total_tokens']
+            input_tokens += num_tokens['prompt_tokens']
+            output_tokens += num_tokens['completion_tokens']
             total_cost += cost
             
 
-        return total_tokens, total_cost
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
 
     def __multiple_choice(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -458,15 +481,17 @@ class EvalPipeline:
         option_order_all = []
         selected_sample = []
         alphabet2idx = {chr(i + 65): i for i in range(26)}
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         if self.few_shot:
 
             def format_original_fewshot(rec):
-                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} '''\nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {{ "choice": "{rec[ds_wrapper.answer]}", "confident_level": 1 }} </s><s>[INST]\n"""
+                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} '''\nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời: {{ "choice": "{rec[ds_wrapper.answer]}", "confident_level": 1 }}\n"""
 
             def format_calib_fewshot(rec):
-                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} \nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {rec[ds_wrapper.answer]} </s><s>[INST]\n"""
+                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} \nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời: {rec[ds_wrapper.answer]}\n"""
 
             selected_sample_idx = list(
                 random.sample(range(len(ds_wrapper.dataset_training)), 2)
@@ -511,11 +536,13 @@ class EvalPipeline:
                
 
             num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-            total_tokens += num_tokens
+            total_tokens += num_tokens['total_tokens']
+            input_tokens += num_tokens['prompt_tokens']
+            output_tokens += num_tokens['completion_tokens']
             total_cost += cost
             
 
-        return total_tokens, total_cost
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
 
     def __language_modelling(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -525,11 +552,13 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         selected_sample = []
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         if self.few_shot:
             def format_original_fewshot(rec):
-                return f"""Khách: "{rec[ds_wrapper.source]}"\nBot:[/INST] {rec[ds_wrapper.target]} </s><s>[INST]\n"""
+                return f"""Khách: "{rec[ds_wrapper.source]}"\nBot: {rec[ds_wrapper.target]}\n"""
 
             selected_sample = ds_wrapper.dataset_training
             original_few_shot = "".join(
@@ -548,11 +577,13 @@ class EvalPipeline:
             ]
 
             num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-            total_tokens += num_tokens
+            total_tokens += num_tokens['total_tokens']
+            input_tokens += num_tokens['prompt_tokens']
+            output_tokens += num_tokens['completion_tokens']
             total_cost += cost
             
 
-        return total_tokens, total_cost
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
 
     def __information_retrieval(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -561,15 +592,17 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         selected_sample = []
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         if self.few_shot:
 
             def format_original_fewshot(rec):
-                return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {{ "answer": "{rec["answer"]}" }} </s><s>[INST]\n"""
+                return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot: {{ "answer": "{rec["answer"]}" }}\n"""
 
             def format_calib_fewshot(rec):
-                return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?\nBot:[/INST] {rec["answer"]} </s><s>[INST]\n"""
+                return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?\nBot: {rec["answer"]}\n"""
 
             random_sample = list(random.sample(
                 list(ds_wrapper.dataset_training), 1))[0]
@@ -717,11 +750,13 @@ class EvalPipeline:
                         for p in top30_passages[psg: psg + BATCH_PASSAGE_SIZE]
                     ]
                     num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-                    total_tokens += num_tokens
+                    total_tokens += num_tokens['total_tokens']
+                    input_tokens += num_tokens['prompt_tokens']
+                    output_tokens += num_tokens['completion_tokens']
                     total_cost += cost
             
-        # print("Missing row: {}".format(missing))
-        return total_tokens, total_cost
+      
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
 
     def __reasoning(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -735,6 +770,8 @@ class EvalPipeline:
         original_few_shot = ""
         calib_few_shot = ""
         selected_sample = []
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         if not self.cot and sub_task == "math":
@@ -744,13 +781,13 @@ class EvalPipeline:
 
         if self.few_shot:
             def format_original_fewshot0(rec):
-                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {{ "answer": "{rec[target]}", "confident_level": 1}} </s><s>[INST]\n"""
+                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}: {{ "answer": "{rec[target]}", "confident_level": 1}}\n"""
 
             def format_original_fewshot1(rec):
                 return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: {rec[ds_wrapper.source]}\n{"Kết quả" if sub_task != "math" else "Lời giải"}: {rec[target]}\n\n"""
 
             def format_calib_fewshot(rec):
-                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {rec[target]} </s><s>[INST]\n"""
+                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}: {rec[target]}\n"""
 
             selected_sample = list(random.sample(
                 list(ds_wrapper.dataset_training), 5))
@@ -792,11 +829,13 @@ class EvalPipeline:
             ]
 
             num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-            total_tokens += num_tokens
+            total_tokens += num_tokens['total_tokens']
+            input_tokens += num_tokens['prompt_tokens']
+            output_tokens += num_tokens['completion_tokens']
             total_cost += cost
             
 
-        return total_tokens, total_cost
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
 
     def __translation(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -806,12 +845,14 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         selected_sample = []
+        input_tokens = 0
+        output_tokens = 0
         total_tokens = 0
         total_cost = 0
         if self.few_shot:
 
             def format_original_fewshot0(rec):
-                return f"""Khách: "{rec[ds_wrapper.source_language]}"\nBot:[/INST] {{ "translation": "{rec[ds_wrapper.target_language]}" }} </s><s>[INST]\n"""
+                return f"""Khách: "{rec[ds_wrapper.source_language]}"\nBot: {{ "translation": "{rec[ds_wrapper.target_language]}" }}\n"""
 
             def format_original_fewshot1(rec):
                 return f"""Đoạn văn: {rec[ds_wrapper.source_language]}\nTrả lời: {rec[ds_wrapper.target_language]}\n\n"""
@@ -843,11 +884,13 @@ class EvalPipeline:
             ]
 
             num_tokens, cost = self.compute_cost(prompts, encoding_name=self.model, generation_config=self.generation_config)
-            total_tokens += num_tokens
+            total_tokens += num_tokens['total_tokens']
+            input_tokens += num_tokens['prompt_tokens']
+            output_tokens += num_tokens['completion_tokens']
             total_cost += cost
             
 
-        return total_tokens, total_cost
+        return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "output_tokens": output_tokens}, total_cost
 
 
     def run(
@@ -867,5 +910,5 @@ class EvalPipeline:
         self.cot = cot
         with torch.no_grad():
             results = self(ds_wrapper, ds_loader, saving_fn, start_idx)
-            print(results[0]," ", results[1])
+            print(" ".join([str(results[0]['total_tokens']), str(results[0]['prompt_tokens']), str(results[0]['output_tokens']), str(results[1])]))
         return results

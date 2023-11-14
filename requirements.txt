@@ -8,3 +8,5 @@ torch>=2.0.1
 neptune
 scipy
 tiktoken
+python-dotenv
+openai

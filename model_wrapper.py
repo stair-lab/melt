@@ -1,15 +1,51 @@
 import torch
+import json
+import os
+import openai
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class GPTPipeline:
-    def __init__(self, model, tokenizer, generation_config):
-        pass
+    def __init__(self, model=None, tokenizer=None, generation_config=None):
+        self.gpt = openai
+        self.gpt.api_type = "azure"
+        self.gpt.api_base = "https://ura-gpt4.openai.azure.com/"
+        self.gpt.api_version = "2023-07-01-preview"
+        self.gpt.api_key = os.environ.get("GPT_KEY")
+      
+        self.generation_config = generation_config
+        
 
     def __call__(self, prompts, return_probs=False):
-        pass
+        generations = []
+        generations_probs = [torch.tensor([])]*len(prompts)
+        num_generated_tokens = []
+        for prompt in prompts:
+            prompt_lst = prompt.split("[SYS]")
+            if len(prompt_lst) < 2:
+                msgs = [{"role": "user", "content": prompt_lst[0]}]
+            else:
+                msgs = [{"role":"system", "content": prompt_lst[0]},{"role": "user", "content": prompt_lst[1]}]
+            response = openai.ChatCompletion.create(
+                engine="testing",
+                messages=msgs,
+                temperature=self.generation_config["temperature"],
+                max_tokens=self.generation_config["max_new_tokens"],
+                top_p=0.95,
+                frequency_penalty=self.generation_config["repetition_penalty"],
+            )
+           
+            generations.append(response['choices'][0]['message']['content'])
+            num_generated_tokens.append(response['usage']['completion_tokens'])
+      
+        return generations, generations_probs, num_generated_tokens 
 
     def compute_logprob_and_length(self, prompts, completions):
-        pass
+        completions_num_tokens = [0]*len(prompts)
+        completions_logprobs = [torch.tensor([])]*len(prompts)
+        # Not Implement
+        return completions_logprobs, completions_num_tokens
 
 
 class LLaMaPipeline:
