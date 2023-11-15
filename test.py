@@ -47,7 +47,7 @@ if __name__ == "__main__":
     else:
         start_idx = 0
         continue_results=None
-    fewshots = None
+    fewshots=None
 
     # Load dataset (you can process it here)
     dataset_wrapper = DatasetWrapper(
@@ -74,10 +74,10 @@ if __name__ == "__main__":
 
     # Evaluate
     def save_results(generations, metrics=None):
-        if script_args.continue_infer and os.path.exists(json_file):
-            df2 = pd.DataFrame(generations)
-            df3 = df1.append(df2, ignore_index=True)
-            generations = df3.to_dict(orient="list")
+       # if script_args.continue_infer and os.path.exists(json_file):
+           # df2 = pd.DataFrame(generations)
+            #df3 = df1.append(df2, ignore_index=True)
+        #    generations = df3.to_dict(orient="list")
 
         save_to_json(
             generations,

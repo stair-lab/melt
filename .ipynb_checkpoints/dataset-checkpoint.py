@@ -27,7 +27,7 @@ class DatasetWrapper:
         self.get_prompt()
 
     def get_prompt(self):
-        if self.prompting_strategy not in [0, 1, 2]:
+        if self.prompting_strategy not in [0, 1, 2, 3]:
             raise ValueError("Prompting strategy is not supported")
         task = self.task.split("_")[0]
         self.prompt = PROMPT_TEMPLATE[task][self.prompting_strategy]
@@ -816,7 +816,7 @@ class DatasetWrapper:
             self.task = "translation-envi"
             self.dataset_testing = load_dataset(
                 "csv",
-                data_files="datasets/Robustness/PhoMT_for_robustness.csv",
+                data_files="datasets/Robustness/PhoMT_envi_for_robustness.csv",
                 split="train",
             )
             self.dataset_training = load_dataset(
@@ -829,7 +829,7 @@ class DatasetWrapper:
             self.task = "translation-vien"
             self.dataset_testing = load_dataset(
                 "csv",
-                data_files="datasets/Robustness/PhoMT_for_robustness.csv",
+                data_files="datasets/Robustness/PhoMT_vien_for_robustness.csv",
                 split="train",
             )
             self.dataset_training = load_dataset(
@@ -872,7 +872,7 @@ class DatasetWrapper:
             self.task = "translation-vien"
             self.dataset_testing = load_dataset(
                 "csv",
-                data_files="datasets/Robustness/opus100_envi_for_robustness.csv",
+                data_files="datasets/Robustness/opus100_vien_for_robustness.csv",
                 split="train",
             )
             self.dataset_training = load_dataset(

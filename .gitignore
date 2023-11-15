@@ -9,5 +9,5 @@ logs/*
 datasets/
 run_script.sh
 .env
-.ipynb_checkpoints
+**/.ipynb_checkpoints/*
 results/

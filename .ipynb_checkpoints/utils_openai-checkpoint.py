@@ -41,23 +41,28 @@ def usage_token_from_messages(messages: List[dict], encoding_name: str = 'gpt-3.
     "cost": num_prompt_tokens * price_prompt_tokens[encoding_name] + num_completion_tokens * price_completion_tokens[encoding_name]
     }
 
-def usage_token_from_prompts(user_prompts: List[str], system_prompt: str = '', encoding_name: str = 'gpt-3.5-turbo', generation_config: dict = {}) -> (int, float):
+def usage_token_from_prompts(user_prompts: List[str], encoding_name: str = 'gpt-3.5-turbo', generation_config: dict = {}) -> (int, float):
     total_tokens = 0
+    input_tokens = 0
+    output_tokens = 0
     cost = 0.0
     for prompt in user_prompts:
-        if system_prompt:
+        sys_user_prompt = prompt.split("[SYS]")
+        if len(sys_user_prompt) > 1 :
             messages = [
-                {'role': 'system', 'content': system_prompt},
-                {'role': 'user', 'content': prompt},
+                {'role': 'system', 'content': sys_user_prompt[0]},
+                {'role': 'user', 'content': sys_user_prompt[1]},
             ]
         else:
-            messages = [{'role': 'user', 'content': prompt}]
+            messages = [{'role': 'user', 'content': sys_user_prompt[0]}]
 
         usage = usage_token_from_messages(messages, encoding_name, generation_config)
+        input_tokens += usage['prompt_tokens']
+        output_tokens += usage['completion_tokens']
         total_tokens += usage['total_tokens']
         cost += usage['cost']
 
-    return total_tokens, cost
+    return {"total_tokens": total_tokens, "prompt_tokens": input_tokens, "completion_tokens": output_tokens}, cost
 
 if __name__ == '__main__':
 

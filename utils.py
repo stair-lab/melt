@@ -44,7 +44,6 @@ def read_json(name, batch_size):
     # df = pd.DataFrame(data)
     return data, current_batch_idx
 
-
 def save_to_json(data, name):
     jsonString = json.dumps(data, indent=4, ensure_ascii=False)
     jsonFile = open(name, "w", encoding="utf-8")
