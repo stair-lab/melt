@@ -2,9 +2,11 @@ import torch
 import json
 import os
 import openai
+import backoff 
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 class GPTPipeline:
     def __init__(self, model=None, tokenizer=None, generation_config=None):
@@ -27,7 +29,7 @@ class GPTPipeline:
                 msgs = [{"role": "user", "content": prompt_lst[0]}]
             else:
                 msgs = [{"role":"system", "content": prompt_lst[0]},{"role": "user", "content": prompt_lst[1]}]
-            response = openai.ChatCompletion.create(
+            response = self.chat_completions_with_backoff(
                 engine="testing",
                 messages=msgs,
                 temperature=self.generation_config["temperature"],
@@ -46,7 +48,10 @@ class GPTPipeline:
         completions_logprobs = [torch.tensor([])]*len(prompts)
         # Not Implement
         return completions_logprobs, completions_num_tokens
-
+   
+    @backoff.on_exception(backoff.expo, openai.error.RateLimitError)
+    def chat_completions_with_backoff(self, **kwargs):
+        return self.gpt.ChatCompletion.create(**kwargs)
 
 class LLaMaPipeline:
     def __init__(self, model, tokenizer, generation_config):

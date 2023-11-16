@@ -11,3 +11,4 @@ run_script.sh
 .env
 **/.ipynb_checkpoints/*
 results/
+new_script_gpt

@@ -17,7 +17,7 @@ class EvalPipeline:
         extract_task = self.task.split("_")[0]
         
         # Load pipelines
-        if "gpt4" not in config.model_name:
+        if "gpt-3.5-turbo" not in config.model_name:
             # Load model
             self.model, self.tokenizer = get_model(config=config)
             self.model.eval()
