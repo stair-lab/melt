@@ -547,9 +547,9 @@ class EvalPipeline:
         if self.few_shot:
 
             def format_original_fewshot0(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "toxic_level": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
+                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "toxicity_level": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
             def format_original_fewshot1(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {{ "toxic_level": {rec[ds_wrapper.label]}, "confident_level": 1}}\n"""
+                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {{ "toxicity_level": {rec[ds_wrapper.label]}, "confident_level": 1}}\n"""
 
             def format_calib_fewshot(rec):
                 return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {rec[ds_wrapper.label]} </s><s>[INST]\n"""
@@ -846,6 +846,7 @@ class EvalPipeline:
         sub_task = self.task.split("_")[1]
         idx = 0
         original_few_shot = ""
+        calib_few_shot = ""
         selected_sample = []
         if self.few_shot:
 

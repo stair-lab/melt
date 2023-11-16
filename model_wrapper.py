@@ -49,7 +49,7 @@ class GPTPipeline:
         # Not Implement
         return completions_logprobs, completions_num_tokens
    
-    @backoff.on_exception(backoff.expo, openai.error.RateLimitError)
+    @backoff.on_exception(backoff.expo, openai.error.RateLimitError, max_tries=10)
     def chat_completions_with_backoff(self, **kwargs):
         return self.gpt.ChatCompletion.create(**kwargs)
 
