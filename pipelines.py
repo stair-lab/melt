@@ -1040,8 +1040,8 @@ class EvalPipeline:
                             },
                             results,
                             logprobs,
-                            top30_passage_ids,
-                            top30_passages,
+                            top30_passage_ids[psg: psg + BATCH_PASSAGE_SIZE],
+                            top30_passages[psg: psg + BATCH_PASSAGE_SIZE],
                             range(len(prompts)),
                         )
                     )
