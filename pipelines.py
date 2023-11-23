@@ -843,7 +843,7 @@ class EvalPipeline:
 
     def __information_retrieval(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         predictions = []
-        sub_task = self.task.split("_")[1]
+        #sub_task = self.task.split("_")[1]
         idx = 0
         original_few_shot = ""
         calib_few_shot = ""
