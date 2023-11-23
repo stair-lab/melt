@@ -502,7 +502,7 @@ class EvalPipeline:
                 ],
             )
             predictions.extend(results)
-            references.extend([x.item() for x in batch[ds_wrapper.label]])
+            references.extend([eval(x) if type(x) is str else x.item() for x in batch[ds_wrapper.label]])
             generation_probs.extend([x.tolist() for x in logprobs])
             option_probs.extend(
                 [
@@ -1040,8 +1040,8 @@ class EvalPipeline:
                             },
                             results,
                             logprobs,
-                            top30_passage_ids,
-                            top30_passages,
+                            top30_passage_ids[psg: psg + BATCH_PASSAGE_SIZE],
+                            top30_passages[psg: psg + BATCH_PASSAGE_SIZE],
                             range(len(prompts)),
                         )
                     )

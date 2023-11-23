@@ -29,17 +29,24 @@ class GPTPipeline:
                 msgs = [{"role": "user", "content": prompt_lst[0]}]
             else:
                 msgs = [{"role":"system", "content": prompt_lst[0]},{"role": "user", "content": prompt_lst[1]}]
-            response = self.chat_completions_with_backoff(
-                engine="testing",
-                messages=msgs,
-                temperature=self.generation_config["temperature"],
-                max_tokens=self.generation_config["max_new_tokens"],
-                top_p=0.95,
-                frequency_penalty=self.generation_config["repetition_penalty"],
-            )
+            try:
+                response = self.chat_completions_with_backoff(
+                    engine="testing",
+                    messages=msgs,
+                    temperature=self.generation_config["temperature"],
+                    max_tokens=self.generation_config["max_new_tokens"],
+                    top_p=0.95,
+                    frequency_penalty=self.generation_config["repetition_penalty"],
+                )
+                generations.append(response['choices'][0]['message'].get('content', '[ERROR]'))
+                num_generated_tokens.append(response['usage']['completion_tokens'])
+            except Exception as e:
+                print(str(e))
+                print(prompt)
+                generations.append('[ERROR]')
+                num_generated_tokens.append(0)
            
-            generations.append(response['choices'][0]['message']['content'])
-            num_generated_tokens.append(response['usage']['completion_tokens'])
+            
       
         return generations, generations_probs, num_generated_tokens 
 
@@ -64,12 +71,17 @@ class LLaMaPipeline:
         generations_probs = []
         num_generated_tokens = []
         for prompt in prompts:
+            prompt = prompt.replace("[SYS]", "\n\n")
             inputs = self.tokenizer(
                 prompt, return_tensors="pt").to(self.model.device)
+            
             generate_dict = self.model.generate(
-                inputs.input_ids,
+                inputs=inputs.input_ids,
+                attention_mask=inputs.attention_mask,
                 output_scores=True,
                 return_dict_in_generate=True,
+                eos_token_id=self.tokenizer.eos_token_id,  
+                pad_token_id=self.tokenizer.pad_token_id if self.tokenizer.pad_token_id else self.tokenizer.eos_token_id,
                 **self.generation_config,
             )
 

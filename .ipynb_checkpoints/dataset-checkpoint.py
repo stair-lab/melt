@@ -608,7 +608,7 @@ class DatasetWrapper:
             )
             if self.fewshots is None:
                 selected_sample_idx = list(
-                    random.sample(range(len(self.dataset_testing)), 3)
+                    random.sample(range(len(self.dataset_testing)), 1)
                 )
                 self.dataset_training = [
                     self.dataset_testing[s] for s in selected_sample_idx
@@ -641,7 +641,7 @@ class DatasetWrapper:
             )
             if self.fewshots is None:
                 selected_sample_idx = list(
-                    random.sample(range(len(self.dataset_testing)), 3)
+                    random.sample(range(len(self.dataset_testing)), 1)
                 )
                 self.dataset_training = [
                     self.dataset_testing[s] for s in selected_sample_idx
@@ -672,7 +672,7 @@ class DatasetWrapper:
             )
             if self.fewshots is None:
                 selected_sample_idx = list(
-                    random.sample(range(len(self.dataset_testing)), 3)
+                    random.sample(range(len(self.dataset_testing)), 1)
                 )
                 self.dataset_training = [
                     self.dataset_testing[s] for s in selected_sample_idx
@@ -705,7 +705,7 @@ class DatasetWrapper:
             )
             if self.fewshots is None:
                 selected_sample_idx = list(
-                    random.sample(range(len(self.dataset_testing)), 3)
+                    random.sample(range(len(self.dataset_testing)), 1)
                 )
                 self.dataset_training = [
                     self.dataset_testing[s] for s in selected_sample_idx

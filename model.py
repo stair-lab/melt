@@ -1,5 +1,5 @@
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 
 def get_model(config):
@@ -28,20 +28,47 @@ def get_model(config):
     )
 
     # Load base model
-    model = AutoModelForCausalLM.from_pretrained(
-        config.model_name,
-        quantization_config=bnb_config,
-        device_map=device_map,
-    )
-    model.config.use_cache = True
-    model.config.pretraining_tp = 1
+    if config.model_name == "vinai/PhoGPT-7B5-Instruct":
+        cfg = AutoConfig.from_pretrained(config.model_name,trust_remote_code=True)  
+        # cfg.init_device = device_map
+        model = AutoModelForCausalLM.from_pretrained(
+            config.model_name,
+            config=cfg,
+            quantization_config=bnb_config,
+            device_map=device_map,
+            trust_remote_code=True,
+        )
 
-    # Load LLaMA tokenizer
-    tokenizer = AutoTokenizer.from_pretrained(
-        config.tokenizer_name, trust_remote_code=True
-    )
-    tokenizer.pad_token = tokenizer.eos_token
-    if "gpt" in config.model_name:
-        tokenizer.padding_side = "left"
+        tokenizer = AutoTokenizer.from_pretrained(
+            config.model_name, trust_remote_code=True
+        )
+        
+        
+    elif config.model_name == "vilm/vietcuna-7b-v3":
+        model = AutoModelForCausalLM.from_pretrained(
+            config.model_name,
+            quantization_config=bnb_config,
+            device_map=device_map,
+        )
+        tokenizer = AutoTokenizer.from_pretrained(
+            config.model_name, trust_remote_code=True
+        )
+    else:
+        
+        model = AutoModelForCausalLM.from_pretrained(
+            config.model_name,
+            quantization_config=bnb_config,
+            device_map=device_map,
+        )
+        model.config.use_cache = True
+        model.config.pretraining_tp = 1
+
+        # Load LLaMA tokenizer
+        tokenizer = AutoTokenizer.from_pretrained(
+            config.tokenizer_name, trust_remote_code=True
+        )
+        tokenizer.pad_token = tokenizer.eos_token
+        if "gpt" in config.model_name:
+            tokenizer.padding_side = "left"
 
     return model, tokenizer
