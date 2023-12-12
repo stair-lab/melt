@@ -7,6 +7,7 @@ from model import get_model
 from model_wrapper import (
     GPTPipeline,
     LLaMaPipeline
+    LLaMaTGIPipeline
 )
 from utils import *
 
@@ -17,17 +18,22 @@ class EvalPipeline:
         extract_task = self.task.split("_")[0]
         
         # Load pipelines
+        if config.tgi != "":
+            self.infer_pipeline = LLaMaTGIPipeline(
+                api_endpoint = config.tgi
+                generation_config=GenerationConfig[extract_task],
+            )
         if "gpt-3.5-turbo" not in config.model_name:
             # Load model
             self.model, self.tokenizer = get_model(config=config)
             self.model.eval()
-            
             
             self.infer_pipeline = LLaMaPipeline(
                 model=self.model,
                 tokenizer=self.tokenizer,
                 generation_config=GenerationConfig[extract_task],
             )
+        
         else:
             self.infer_pipeline = GPTPipeline(generation_config=GenerationConfig[extract_task])
 
@@ -87,9 +93,9 @@ class EvalPipeline:
         references = []
         generation_probs = []
         if self.continue_infer_data is not None:
-            predictions.append(self.continue_infer_data['predictions'])
-            references.append(self.continue_infer_data['references'])
-            generation_probs.append(self.continue_infer_data['generation_probs'])
+            predictions.extend(self.continue_infer_data['predictions'])
+            references.extend(self.continue_infer_data['references'])
+            generation_probs.extend(self.continue_infer_data['generation_probs'])
         idx = 0
 
         for batch in tqdm(ds_loader):
@@ -138,6 +144,11 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         selected_sample = []
+        if self.continue_infer_data is not None:
+            predictions.extend(self.continue_infer_data['predictions'])
+            references.extend(self.continue_infer_data['references'])
+            generation_probs.extend(self.continue_infer_data['generation_probs'])
+            calib_probs.extend(self.continue_infer_data['calibration_probs'])
         if self.few_shot:
 
             def format_original_fewshot0(rec):
@@ -213,6 +224,11 @@ class EvalPipeline:
         predictions = []
         references = []
         generation_probs = []
+        if self.continue_infer_data is not None:
+            original_documents.extend(self.continue_infer_data['original_documents'])
+            predictions.extend(self.continue_infer_data['predictions'])
+            references.extend(self.continue_infer_data['references'])
+            generation_probs.extend(self.continue_infer_data['generation_probs'])
         idx = 0
 
         for batch in tqdm(ds_loader):
@@ -264,6 +280,11 @@ class EvalPipeline:
         calib_few_shot = ""
         selected_sample = []
         mapping = ["Tiêu cực", "Trung lập", "Tích cực"]
+        if self.continue_infer_data is not None:
+            predictions.extend(self.continue_infer_data['predictions'])
+            references.extend(self.continue_infer_data['references'])
+            generation_probs.extend(self.continue_infer_data['generation_probs'])
+            option_probs.extend(self.continue_infer_data['option_probs'])
         if self.few_shot:
 
             def format_original_fewshot0(rec):
@@ -374,6 +395,11 @@ class EvalPipeline:
         references = []
         generation_probs = []
         option_probs = []
+        if self.continue_infer_data is not None:
+            predictions.extend(self.continue_infer_data['predictions'])
+            references.extend(self.continue_infer_data['references'])
+            generation_probs.extend(self.continue_infer_data['generation_probs'])
+            option_probs.extend(self.continue_infer_data['option_probs'])
         idx = 0
         original_few_shot = ""
         calib_few_shot = ""
@@ -544,6 +570,11 @@ class EvalPipeline:
         original_few_shot = ""
         calib_few_shot = ""
         selected_sample = []
+        if self.continue_infer_data is not None:
+            predictions.extend(self.continue_infer_data['predictions'])
+            references.extend(self.continue_infer_data['references'])
+            generation_probs.extend(self.continue_infer_data['generation_probs'])
+            option_probs.extend(self.continue_infer_data['option_probs'])
         if self.few_shot:
 
             def format_original_fewshot0(rec):
@@ -662,6 +693,12 @@ class EvalPipeline:
         option_order_all = []
         selected_sample = []
         alphabet2idx = {chr(i + 65): i for i in range(26)}
+        if self.continue_infer_data is not None:
+            predictions.extend(self.continue_infer_data['predictions'])
+            references.extend(self.continue_infer_data['references'])
+            generation_probs.extend(self.continue_infer_data['generation_probs'])
+            option_probs.extend(self.continue_infer_data['option_probs'])
+            option_order_all.extend(self.continue_infer_data['option_orders'])
         if self.few_shot:
 
             def format_original_fewshot0(rec):
@@ -784,6 +821,10 @@ class EvalPipeline:
         predictions = []
         references = []
         generation_probs = []
+        if self.continue_infer_data is not None:
+            predictions.extend(self.continue_infer_data['predictions'])
+            references.extend(self.continue_infer_data['references'])
+            generation_probs.extend(self.continue_infer_data['generation_probs'])
         idx = 0
         original_few_shot = ""
         selected_sample = []
@@ -1074,7 +1115,12 @@ class EvalPipeline:
             target = ds_wrapper.short_target
         else:
             target = ds_wrapper.target
-
+        if self.continue_infer_data is not None:
+            predictions.extend(self.continue_infer_data['predictions'])
+            references.extend(self.continue_infer_data['references'])
+            generation_probs.extend(self.continue_infer_data['generation_probs'])
+            calib_probs.extend(self.continue_infer_data['calibration_probs'])
+            mat_problem_type.extend(self.continue_infer_data.get('math_problem_type', []))
         if self.few_shot:
             def format_original_fewshot0(rec):
                 return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {{ "answer": "{rec[target]}", "confident_level": 1}} </s><s>[INST]\n"""
@@ -1167,6 +1213,10 @@ class EvalPipeline:
         idx = 0
         original_few_shot = ""
         selected_sample = []
+        if self.continue_infer_data is not None:
+            predictions.extend(self.continue_infer_data['predictions'])
+            references.extend(self.continue_infer_data['references'])
+            generation_probs.extend(self.continue_infer_data['generation_probs'])
         if self.few_shot:
 
             def format_original_fewshot0(rec):
