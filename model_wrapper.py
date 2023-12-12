@@ -142,6 +142,8 @@ class LLaMaPipeline:
             ).squeeze(-1)
             # >>> batch_size, sequence_length
             completions_logprobs.append(logprobs.cpu().numpy())
+
+
 class LLaMaTGIPipeline:
     def __init__(self, api_endpoint, generation_config):
         self.api_endpoint = api_endpoint
@@ -196,7 +198,7 @@ class LLaMaTGIPipeline:
                 print(e)
                 print(prompt)
                 raise e
-            logprobs = [list(map(lambda x: x['logprob'], completion_w_prompt[len(prompt_tokens): ]))]
+            logprobs = torch.tensor([list(map(lambda x: x['logprob'], completion_w_prompt[len(prompt_tokens): ]))])
             completions_logprobs.append(logprobs)
             completions_num_tokens.append(len(logprobs[0))
 
@@ -207,4 +209,4 @@ class LLaMaTGIPipeline:
         return generate_obj.json()
         
     def get_text_logprobs_tgi(self, res):
-        return [res['generated_text']],[list(map(lambda x: x['logprob'], res['details']['tokens']))], [res['details']['generated_tokens']]
+        return [res['generated_text']],[torch.tensor(list(map(lambda x: x['logprob'], res['details']['tokens'])))], [res['details']['generated_tokens']]
