@@ -29,24 +29,17 @@ class GPTPipeline:
                 msgs = [{"role": "user", "content": prompt_lst[0]}]
             else:
                 msgs = [{"role":"system", "content": prompt_lst[0]},{"role": "user", "content": prompt_lst[1]}]
-            try:
-                response = self.chat_completions_with_backoff(
-                    engine="testing",
-                    messages=msgs,
-                    temperature=self.generation_config["temperature"],
-                    max_tokens=self.generation_config["max_new_tokens"],
-                    top_p=0.95,
-                    frequency_penalty=self.generation_config["repetition_penalty"],
-                )
-                generations.append(response['choices'][0]['message'].get('content', '[ERROR]'))
-                num_generated_tokens.append(response['usage']['completion_tokens'])
-            except Exception as e:
-                print(str(e))
-                print(prompt)
-                generations.append('[ERROR]')
-                num_generated_tokens.append(0)
+            response = self.chat_completions_with_backoff(
+                engine="testing",
+                messages=msgs,
+                temperature=self.generation_config["temperature"],
+                max_tokens=self.generation_config["max_new_tokens"],
+                top_p=0.95,
+                frequency_penalty=self.generation_config["repetition_penalty"],
+            )
            
-            
+            generations.append(response['choices'][0]['message']['content'])
+            num_generated_tokens.append(response['usage']['completion_tokens'])
       
         return generations, generations_probs, num_generated_tokens 
 
@@ -71,20 +64,23 @@ class LLaMaPipeline:
         generations_probs = []
         num_generated_tokens = []
         for prompt in prompts:
-            prompt = prompt.replace("[SYS]", "\n\n")
             inputs = self.tokenizer(
                 prompt, return_tensors="pt").to(self.model.device)
-            
-            generate_dict = self.model.generate(
-                inputs=inputs.input_ids,
-                attention_mask=inputs.attention_mask,
-                output_scores=True,
-                return_dict_in_generate=True,
-                eos_token_id=self.tokenizer.eos_token_id,  
-                pad_token_id=self.tokenizer.pad_token_id if self.tokenizer.pad_token_id else self.tokenizer.eos_token_id,
-                **self.generation_config,
-            )
-
+            try:
+                with torch.no_grad():
+                    generate_dict = self.model.generate(
+                        inputs=inputs.input_ids,
+                        attention_mask=inputs.attention_mask,
+                        output_scores=True,
+                        return_dict_in_generate=True,
+                        eos_token_id=self.tokenizer.eos_token_id,  
+                        pad_token_id=self.tokenizer.pad_token_id if self.tokenizer.pad_token_id else self.tokenizer.eos_token_id,
+                        **self.generation_config,
+                    )
+            except Exception as e:
+                print(e)
+                print(prompt)
+                raise e
             num_generated_token = len(generate_dict.scores)
             num_generated_tokens.append(num_generated_token)
             generated_tokens = generate_dict.sequences[:, -
@@ -146,5 +142,69 @@ class LLaMaPipeline:
             ).squeeze(-1)
             # >>> batch_size, sequence_length
             completions_logprobs.append(logprobs.cpu().numpy())
+class LLaMaTGIPipeline:
+    def __init__(self, api_endpoint, generation_config):
+        self.api_endpoint = api_endpoint
+        self.generation_config = generation_config
+    
+    def __call__(self, prompts, return_probs=False):
+        generations = []
+        generations_probs = []
+        num_generated_tokens = []
+        for prompt in prompts:
+            try:
+                generate_dict = self.generate_with_backoff(
+                    {
+                        "inputs": prompt,
+                        "parameters": { "details": True, **self.generation_config}
+                    }
+                )
+            except Exception as e:
+                print(e)
+                print(prompt)
+                raise e
+            generation, generation_probs, num_generated_token = self.get_text_logprobs_tgi(generate_dict)
+          
+            num_generated_tokens.extend(num_generated_token)
+            generations.extend(generation)
+
+            if return_probs:
+                # Inlcude probabilities of '</s>' token
+                generations_probs.extend(generation_probs)
+
+        return generations, generations_probs, num_generated_tokens
+
+    def compute_logprob_and_length(self, prompts, completions):
+        completions_num_tokens = []
+        completions_logprobs = []
+
+        for prompt, completion in zip(prompts, completions):
+            try:
+                prompt_tokens = self.generate_with_backoff(
+                    {
+                        "inputs": prompt,
+                        "parameters": { "decoder_input_details":True, "max_new_tokens": 1}
+                    }
+                )['details']['prefill']
+                completion_w_prompt = self.generate_with_backoff(
+                    {
+                        "inputs": prompt + completion + "</s>",
+                        "parameters": { "decoder_input_details":True, "max_new_tokens": 1}
+                    }
+                )['details']['prefill']
+            except Exception as e:
+                print(e)
+                print(prompt)
+                raise e
+            logprobs = [list(map(lambda x: x['logprob'], completion_w_prompt[len(prompt_tokens): ]))]
+            completions_logprobs.append(logprobs)
+            completions_num_tokens.append(len(logprobs[0))
 
         return completions_logprobs, completions_num_tokens
+    @backoff.on_exception(backoff.expo, requests.exeptions.RequestException, max_tries=10)
+    def generate_with_backoff(self, inputs):
+        generate_obj = requests.post(url+"/generate", json = inputs, verify=False)
+        return generate_obj.json()
+        
+    def get_text_logprobs_tgi(self, res):
+        return [res['generated_text']],[list(map(lambda x: x['logprob'], res['details']['tokens']))], [res['details']['generated_tokens']]
