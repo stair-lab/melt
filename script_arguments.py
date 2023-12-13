@@ -173,6 +173,9 @@ class ScriptArguments:
     cot: Optional[bool] = field(
         default=False, metadata={"help": "Enable chain of thought when prompting MATH"}
     )
+    tgi: Optional[str] = field(
+        default="", metadata={"help": "Embed TGI endpoint"}
+    )
     seed: Optional[int] = field(default=42, metadata={"help": "Random seed"})
     continue_infer: Optional[bool] = field(
         default=False,
