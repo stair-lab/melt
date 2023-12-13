@@ -6,7 +6,7 @@ from generation_config import GenerationConfig
 from model import get_model
 from model_wrapper import (
     GPTPipeline,
-    LLaMaPipeline
+    LLaMaPipeline,
     LLaMaTGIPipeline
 )
 from utils import *
@@ -18,12 +18,13 @@ class EvalPipeline:
         extract_task = self.task.split("_")[0]
         
         # Load pipelines
+        # print(config.tgi)
         if config.tgi != "":
             self.infer_pipeline = LLaMaTGIPipeline(
-                api_endpoint = config.tgi
+                api_endpoint = config.tgi,
                 generation_config=GenerationConfig[extract_task],
             )
-        if "gpt-3.5-turbo" not in config.model_name:
+        elif "gpt-3.5-turbo" not in config.model_name:
             # Load model
             self.model, self.tokenizer = get_model(config=config)
             self.model.eval()
