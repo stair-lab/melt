@@ -4,6 +4,7 @@ import os
 import openai
 import backoff 
 from dotenv import load_dotenv
+import requests
 
 load_dotenv()
 
@@ -142,7 +143,7 @@ class LLaMaPipeline:
             ).squeeze(-1)
             # >>> batch_size, sequence_length
             completions_logprobs.append(logprobs.cpu().numpy())
-
+        return completions_logprobs, completions_num_tokens
 
 class LLaMaTGIPipeline:
     def __init__(self, api_endpoint, generation_config):
@@ -158,7 +159,7 @@ class LLaMaTGIPipeline:
                 generate_dict = self.generate_with_backoff(
                     {
                         "inputs": prompt,
-                        "parameters": { "details": True, **self.generation_config}
+                        "parameters": {"truncate":1024, "details": True, **self.generation_config}
                     }
                 )
             except Exception as e:
@@ -185,13 +186,13 @@ class LLaMaTGIPipeline:
                 prompt_tokens = self.generate_with_backoff(
                     {
                         "inputs": prompt,
-                        "parameters": { "decoder_input_details":True, "max_new_tokens": 1}
+                        "parameters": {"truncate":1024, "decoder_input_details":True, "max_new_tokens": 1}
                     }
                 )['details']['prefill']
                 completion_w_prompt = self.generate_with_backoff(
                     {
                         "inputs": prompt + completion + "</s>",
-                        "parameters": { "decoder_input_details":True, "max_new_tokens": 1}
+                        "parameters": {"truncate":1024, "decoder_input_details":True, "max_new_tokens": 1}
                     }
                 )['details']['prefill']
             except Exception as e:
@@ -200,12 +201,12 @@ class LLaMaTGIPipeline:
                 raise e
             logprobs = torch.tensor([list(map(lambda x: x['logprob'], completion_w_prompt[len(prompt_tokens): ]))])
             completions_logprobs.append(logprobs)
-            completions_num_tokens.append(len(logprobs[0))
+            completions_num_tokens.append(len(logprobs[0]))
 
         return completions_logprobs, completions_num_tokens
-    @backoff.on_exception(backoff.expo, requests.exeptions.RequestException, max_tries=10)
+    @backoff.on_exception(backoff.expo, requests.exceptions.RequestException, max_tries=10)
     def generate_with_backoff(self, inputs):
-        generate_obj = requests.post(url+"/generate", json = inputs, verify=False)
+        generate_obj = requests.post(self.api_endpoint+"/generate", json = inputs, verify=False)
         return generate_obj.json()
         
     def get_text_logprobs_tgi(self, res):
