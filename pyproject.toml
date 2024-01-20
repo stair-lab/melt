@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ViEval"
+version = "0.0.1"
+authors = [
+  { name="Duc Q. Nguyen", email="nqduc@hcmut.edu.vn" },
+  { name="Dong D. Le", email="dong.le0110@hcmut.edu.vn" },
+  { name="Toan D. V. Nguyen", email="ndvtoan.sdh20@hcmut.edu.vn" },
+  { name="Sang T. Truong", email="sttruong@stanford.edu" },
+]
+description = "A Python package for evaluating Vietnamese LLMs"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+license = {text = "MIT License"}
+
+[project.urls]
+Homepage = "https://github.com/martinakaduc/ViEval"
+Issues = "https://github.com/martinakaduc/ViEval/issues"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<=3.10"
+accelerate = "^0.21.0"
+peft = "^0.4.0"
+bitsandbytes = "^0.40.2"
+transformers = "^4.31.0"
+trl = "^0.4.7"
+xformers = "*"
+torch = "^2.0.1"
+scipy = "*"
+tiktoken = "*"
+tqdm = "latest"
+python-dotenv = "latest"
+openai = "^0.27.8"
+backoff = "latest"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "pkg/*.py",
+  "/tests",
+]
+exclude = [
+  "*.json",
+  "pkg/_compat.py",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vieval"]
+artifacts = [
+  "*.so",
+  "*.dll",
+  "!/foo/*.so",
+]
