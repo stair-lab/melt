@@ -8,7 +8,7 @@ from script_arguments import ScriptArguments
 from torch.utils.data import DataLoader
 
 from transformers import HfArgumentParser
-from utils import save_to_json, set_seed, read_json
+from tools.utils.utils import save_to_json, set_seed, read_json
 
 if __name__ == "__main__":
     parser = HfArgumentParser(ScriptArguments)

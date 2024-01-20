@@ -12,7 +12,7 @@ class GPTPipeline:
         self.gpt.api_base = os.environ.get("GPT_BASE")
         self.gpt.api_version = os.environ.get("GPT_VERSION")
         self.gpt.api_key = os.environ.get("GPT_KEY")
-        print(os.environ.get("GPT_TYPE"))
+      
         self.generation_config = generation_config
         
 
