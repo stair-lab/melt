@@ -39,13 +39,12 @@ for size in tokenizer_map:
 if tokenizer_name is None:
     raise ValueError("No tokenizer found for model name")
 
-tokenizer = AutoTokenizer.from_pretrained(
-    tokenizer_name, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, trust_remote_code=True)
 tokenizer.save_pretrained(new_model_name)
 if push == "push":
     tokenizer.push_to_hub(
         new_model_name,
         commit_message="Init tokenizer",
         private=True,
-        use_auth_token=True
+        use_auth_token=True,
     )

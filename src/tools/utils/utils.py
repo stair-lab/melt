@@ -32,7 +32,7 @@ def column(matrix, i):
 def read_json(name, batch_size):
     with open(name, "r", encoding="utf-8") as json_file:
         data = json.load(json_file)
-    current_batch_idx = len(data['references'])//batch_size
+    current_batch_idx = len(data["references"]) // batch_size
     # if 'fewshot' in data:
     #     fewshot = data['fewshot']
     # else:
@@ -43,6 +43,7 @@ def read_json(name, batch_size):
     #     pass
     # df = pd.DataFrame(data)
     return data, current_batch_idx
+
 
 def save_to_json(data, name):
     jsonString = json.dumps(data, indent=4, ensure_ascii=False)

@@ -1,6 +1,5 @@
 import os
 
-import pandas as pd
 from tools.data import DatasetWrapper
 
 from tools.pipelines import EvalPipeline
@@ -8,7 +7,7 @@ from script_arguments import ScriptArguments
 from torch.utils.data import DataLoader
 
 from transformers import HfArgumentParser
-from tools.utils.utils import save_to_json, set_seed, read_json
+from tools.utils.utils import set_seed
 
 if __name__ == "__main__":
     parser = HfArgumentParser(ScriptArguments)
@@ -30,8 +29,6 @@ if __name__ == "__main__":
         + ("_cot" if script_args.cot else "")
         + f"_seed{script_args.seed}"
     )
-
-    
 
     start_idx = 0
     fewshots = None
@@ -55,9 +52,7 @@ if __name__ == "__main__":
     )
 
     # Initialize pipeline
-    eval_pipeline = EvalPipeline(
-        task=dataset_wrapper.task, config=script_args
-    )
+    eval_pipeline = EvalPipeline(task=dataset_wrapper.task, config=script_args)
 
     # Evaluate
     def save_results(generations, metrics=None):
@@ -69,7 +64,7 @@ if __name__ == "__main__":
         saving_fn=save_results,
         start_idx=start_idx,
         few_shot=script_args.fewshot_prompting,  # few-shot prompting
-        random_mtpc=script_args.random_mtpc,     # random multiple choice
-        cot=script_args.cot,                     # chain of thought
+        random_mtpc=script_args.random_mtpc,  # random multiple choice
+        cot=script_args.cot,  # chain of thought
         prompting_strategy=script_args.prompting_strategy,
     )

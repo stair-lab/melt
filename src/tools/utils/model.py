@@ -1,5 +1,10 @@
 import torch
-from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from transformers import (
+    AutoConfig,
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    BitsAndBytesConfig,
+)
 
 
 def get_model(config):
@@ -29,7 +34,7 @@ def get_model(config):
 
     # Load base model
     if config.model_name == "vinai/PhoGPT-7B5-Instruct":
-        cfg = AutoConfig.from_pretrained(config.model_name,trust_remote_code=True)  
+        cfg = AutoConfig.from_pretrained(config.model_name, trust_remote_code=True)
         # cfg.init_device = device_map
         model = AutoModelForCausalLM.from_pretrained(
             config.model_name,
@@ -42,8 +47,7 @@ def get_model(config):
         tokenizer = AutoTokenizer.from_pretrained(
             config.model_name, trust_remote_code=True
         )
-        
-        
+
     elif config.model_name == "vilm/vietcuna-7b-v3":
         model = AutoModelForCausalLM.from_pretrained(
             config.model_name,
@@ -54,7 +58,6 @@ def get_model(config):
             config.model_name, trust_remote_code=True
         )
     else:
-        
         model = AutoModelForCausalLM.from_pretrained(
             config.model_name,
             quantization_config=bnb_config,

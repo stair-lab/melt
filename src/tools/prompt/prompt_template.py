@@ -27,8 +27,7 @@ PROMPT_TEMPLATE = {
             "Ngôn ngữ bạn phải sử dụng để tóm tắt là tiếng Việt.\n"
             "[SYS]"
             "```{document}```\n"
-            
-        )
+        ),
     ],
     "question-answering": [
         ("""Ngữ cảnh:\n{context}.\n\nCâu hỏi:\n{question}.\n\nTrả lời:\n"""),
@@ -353,7 +352,7 @@ PROMPT_TEMPLATE = {
             "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
             "{list_ans}\n\n"
             "Câu trả lời: "
-        )
+        ),
     ],
     "knowledge-openended": [
         (
@@ -376,28 +375,27 @@ PROMPT_TEMPLATE = {
             "Câu hỏi: {question}\n"
             "Câu trả lời: "
         ),
-        
     ],
     "information-retrieval": [
         (
-        "[INST] <<SYS>>\n"
-        "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
-        "<</SYS>>\n\n"
-        "{few_shot}"
-        "Văn bản: ''' {passage} '''\n"
-        "Câu hỏi: ''' {question} '''\n"
-        'Văn bản trên có thể hỗ trợ trả lời câu hỏi không?.\nĐưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ "answer": ` "Yes" or "No" `}} ```\n'
-        "Bot:[/INST] "
+            "[INST] <<SYS>>\n"
+            "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
+            "<</SYS>>\n\n"
+            "{few_shot}"
+            "Văn bản: ''' {passage} '''\n"
+            "Câu hỏi: ''' {question} '''\n"
+            'Văn bản trên có thể hỗ trợ trả lời câu hỏi không?.\nĐưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ "answer": ` "Yes" or "No" `}} ```\n'
+            "Bot:[/INST] "
         ),
         (
-        "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác."
-        "[SYS]"
-        "{few_shot}"
-        "Văn bản: ''' {passage} '''\n"
-        "Câu hỏi: ''' {question} '''\n"
-        'Văn bản trên có thể hỗ trợ trả lời câu hỏi không?.\nĐưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ "answer": ` "Yes" or "No" `}} ```\n'
-        "Bot: "
-        )
+            "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác."
+            "[SYS]"
+            "{few_shot}"
+            "Văn bản: ''' {passage} '''\n"
+            "Câu hỏi: ''' {question} '''\n"
+            'Văn bản trên có thể hỗ trợ trả lời câu hỏi không?.\nĐưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ "answer": ` "Yes" or "No" `}} ```\n'
+            "Bot: "
+        ),
     ],
     "reasoning-synthetic": [
         (
@@ -625,7 +623,6 @@ CALIBRATION_INSTRUCTION = {
             'Khách: "{context}"\n'
             "Bot:[/INST] "
         ),
-        
     ],
     "knowledge-mtpchoice": [
         (
@@ -653,7 +650,7 @@ CALIBRATION_INSTRUCTION = {
             "Câu hỏi: Hãy lựa chọn đáp án đúng. {question}\n"
             "{list_ans}\n\n"
             "Câu trả lời:[/INST] "
-        )
+        ),
     ],
     "knowledge-openended": [
         (
@@ -679,23 +676,23 @@ CALIBRATION_INSTRUCTION = {
     ],
     "information-retrieval": [
         (
-        "[INST] <<SYS>>\n"
-        "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
-        "<</SYS>>\n\n"
-        "{few_shot}"
-        "Văn bản: ''' {passage} '''\n"
-        "Câu hỏi: ''' {question} '''\n"
-        "Văn bản trên có thể hỗ trợ trả lời câu hỏi không?.\n"
-        "Bot:[/INST] "
+            "[INST] <<SYS>>\n"
+            "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
+            "<</SYS>>\n\n"
+            "{few_shot}"
+            "Văn bản: ''' {passage} '''\n"
+            "Câu hỏi: ''' {question} '''\n"
+            "Văn bản trên có thể hỗ trợ trả lời câu hỏi không?.\n"
+            "Bot:[/INST] "
         ),
         (
-        "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
-        "[SYS]"
-        "{few_shot}"
-        "Văn bản: ''' {passage} '''\n"
-        "Câu hỏi: ''' {question} '''\n"
-        "Văn bản trên có thể hỗ trợ trả lời câu hỏi không?.\n"
-        "Bot: "
+            "Hãy xem mình là một Bot thông minh có thể trả lời câu hỏi chính xác.\n"
+            "[SYS]"
+            "{few_shot}"
+            "Văn bản: ''' {passage} '''\n"
+            "Câu hỏi: ''' {question} '''\n"
+            "Văn bản trên có thể hỗ trợ trả lời câu hỏi không?.\n"
+            "Bot: "
         ),
     ],
     "reasoning-synthetic": [

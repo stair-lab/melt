@@ -1,6 +1,5 @@
 import os
 
-import pandas as pd
 from tools.data import DatasetWrapper
 
 from tools.pipelines import EvalPipeline
@@ -10,6 +9,7 @@ from torch.utils.data import DataLoader
 from transformers import HfArgumentParser
 from tools.utils.utils import save_to_json, set_seed, read_json
 from dotenv import load_dotenv
+
 if __name__ == "__main__":
     load_dotenv()
     parser = HfArgumentParser(ScriptArguments)
@@ -32,23 +32,26 @@ if __name__ == "__main__":
         + f"_seed{script_args.seed}"
     )
 
-    json_file = os.path.join(script_args.output_dir,
-                             f"generations_{ds_exact_name}.json")
-    metric_file = os.path.join(script_args.output_dir,
-                               f"metrics_{ds_exact_name}.json")
+    json_file = os.path.join(
+        script_args.output_dir, f"generations_{ds_exact_name}.json"
+    )
+    metric_file = os.path.join(
+        script_args.output_dir, f"metrics_{ds_exact_name}.json")
 
     if script_args.continue_infer:
         if os.path.exists(json_file):
             # df1, fewshots = read_json(json_file)
-            continue_results, current_batch_idx = read_json(json_file, script_args.per_device_eval_batch_size)
+            continue_results, current_batch_idx = read_json(
+                json_file, script_args.per_device_eval_batch_size
+            )
             start_idx = current_batch_idx
         else:
             start_idx = 0
-            continue_results=None
+            continue_results = None
     else:
         start_idx = 0
-        continue_results=None
-    fewshots=None
+        continue_results = None
+    fewshots = None
 
     # Load dataset (you can process it here)
     dataset_wrapper = DatasetWrapper(
@@ -69,26 +72,18 @@ if __name__ == "__main__":
     )
 
     # Initialize pipeline
-    eval_pipeline = EvalPipeline(
-        task=dataset_wrapper.task, config=script_args
-    )
+    eval_pipeline = EvalPipeline(task=dataset_wrapper.task, config=script_args)
 
     # Evaluate
     def save_results(generations, metrics=None):
-       # if script_args.continue_infer and os.path.exists(json_file):
-           # df2 = pd.DataFrame(generations)
-            #df3 = df1.append(df2, ignore_index=True)
+        # if script_args.continue_infer and os.path.exists(json_file):
+        # df2 = pd.DataFrame(generations)
+        # df3 = df1.append(df2, ignore_index=True)
         #    generations = df3.to_dict(orient="list")
 
-        save_to_json(
-            generations,
-            json_file
-        )
+        save_to_json(generations, json_file)
         if metrics is not None:
-            save_to_json(
-                metrics,
-                metric_file
-            )
+            save_to_json(metrics, metric_file)
 
     eval_pipeline.run(
         ds_wrapper=dataset_wrapper,
@@ -96,8 +91,8 @@ if __name__ == "__main__":
         saving_fn=save_results,
         start_idx=start_idx,
         few_shot=script_args.fewshot_prompting,  # few-shot prompting
-        random_mtpc=script_args.random_mtpc,     # random multiple choice
-        cot=script_args.cot,                     # chain of thought
+        random_mtpc=script_args.random_mtpc,  # random multiple choice
+        cot=script_args.cot,  # chain of thought
         prompting_strategy=script_args.prompting_strategy,
-        continue_infer=continue_results
+        continue_infer=continue_results,
     )

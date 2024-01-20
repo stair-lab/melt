@@ -4,11 +4,7 @@ import torch
 from tqdm import tqdm
 from ..config import GenerationConfig
 from ..utils.model import get_model
-from ..wrapper import (
-    GPTPipeline,
-    LLaMaPipeline,
-    LLaMaTGIPipeline
-)
+from ..wrapper import GPTPipeline, LLaMaPipeline, LLaMaTGIPipeline
 from ..utils.utils import *
 
 
@@ -16,27 +12,32 @@ class EvalPipeline:
     def __init__(self, task, config):
         self.task = task
         extract_task = self.task.split("_")[0]
-        
+
         # Load pipelines
         # print(config.tgi)
         if config.tgi != "":
             self.infer_pipeline = LLaMaTGIPipeline(
-                api_endpoint = config.tgi,
+                api_endpoint=config.tgi,
                 generation_config=GenerationConfig[extract_task],
             )
-        elif "gpt-3.5-turbo" not in config.model_name and "gpt-4" not in config.model_name:
+        elif (
+            "gpt-3.5-turbo" not in config.model_name
+            and "gpt-4" not in config.model_name
+        ):
             # Load model
             self.model, self.tokenizer = get_model(config=config)
             self.model.eval()
-            
+
             self.infer_pipeline = LLaMaPipeline(
                 model=self.model,
                 tokenizer=self.tokenizer,
                 generation_config=GenerationConfig[extract_task],
             )
-        
+
         else:
-            self.infer_pipeline = GPTPipeline(generation_config=GenerationConfig[extract_task])
+            self.infer_pipeline = GPTPipeline(
+                generation_config=GenerationConfig[extract_task]
+            )
 
         self.prompting_strategy = 0
         self.few_shot = False
@@ -94,9 +95,9 @@ class EvalPipeline:
         references = []
         generation_probs = []
         if self.continue_infer_data is not None:
-            predictions.extend(self.continue_infer_data['predictions'])
-            references.extend(self.continue_infer_data['references'])
-            generation_probs.extend(self.continue_infer_data['generation_probs'])
+            predictions.extend(self.continue_infer_data["predictions"])
+            references.extend(self.continue_infer_data["references"])
+            generation_probs.extend(self.continue_infer_data["generation_probs"])
         idx = 0
 
         for batch in tqdm(ds_loader):
@@ -112,8 +113,7 @@ class EvalPipeline:
                 for c, q in zip(batch[ds_wrapper.context], batch[ds_wrapper.question])
             ]
 
-            results, logprobs, _ = self.infer_pipeline(
-                prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x[0] for x in batch[ds_wrapper.answer]["text"]])
             generation_probs.extend([x.tolist() for x in logprobs])
@@ -146,10 +146,10 @@ class EvalPipeline:
         original_few_shot = ""
         selected_sample = []
         if self.continue_infer_data is not None:
-            predictions.extend(self.continue_infer_data['predictions'])
-            references.extend(self.continue_infer_data['references'])
-            generation_probs.extend(self.continue_infer_data['generation_probs'])
-            calib_probs.extend(self.continue_infer_data['calibration_probs'])
+            predictions.extend(self.continue_infer_data["predictions"])
+            references.extend(self.continue_infer_data["references"])
+            generation_probs.extend(self.continue_infer_data["generation_probs"])
+            calib_probs.extend(self.continue_infer_data["calibration_probs"])
         if self.few_shot:
 
             def format_original_fewshot0(rec):
@@ -189,8 +189,7 @@ class EvalPipeline:
                 for q in batch[ds_wrapper.question]
             ]
 
-            results, logprobs, _ = self.infer_pipeline(
-                prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             calibprob_batch, _ = self.infer_pipeline.compute_logprob_and_length(
                 prompts, batch[ds_wrapper.answer]
             )
@@ -226,10 +225,10 @@ class EvalPipeline:
         references = []
         generation_probs = []
         if self.continue_infer_data is not None:
-            original_documents.extend(self.continue_infer_data['original_documents'])
-            predictions.extend(self.continue_infer_data['predictions'])
-            references.extend(self.continue_infer_data['references'])
-            generation_probs.extend(self.continue_infer_data['generation_probs'])
+            original_documents.extend(self.continue_infer_data["original_documents"])
+            predictions.extend(self.continue_infer_data["predictions"])
+            references.extend(self.continue_infer_data["references"])
+            generation_probs.extend(self.continue_infer_data["generation_probs"])
         idx = 0
 
         for batch in tqdm(ds_loader):
@@ -241,11 +240,9 @@ class EvalPipeline:
                 ds_wrapper.prompt.format(document=document)
                 for document in batch[ds_wrapper.original_text]
             ]
-            original_documents.extend(
-                [x for x in batch[ds_wrapper.original_text]])
+            original_documents.extend([x for x in batch[ds_wrapper.original_text]])
 
-            results, logprobs, _ = self.infer_pipeline(
-                prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.summarized_text]])
             generation_probs.extend([x.tolist() for x in logprobs])
@@ -282,10 +279,10 @@ class EvalPipeline:
         selected_sample = []
         mapping = ["Tiêu cực", "Trung lập", "Tích cực"]
         if self.continue_infer_data is not None:
-            predictions.extend(self.continue_infer_data['predictions'])
-            references.extend(self.continue_infer_data['references'])
-            generation_probs.extend(self.continue_infer_data['generation_probs'])
-            option_probs.extend(self.continue_infer_data['option_probs'])
+            predictions.extend(self.continue_infer_data["predictions"])
+            references.extend(self.continue_infer_data["references"])
+            generation_probs.extend(self.continue_infer_data["generation_probs"])
+            option_probs.extend(self.continue_infer_data["option_probs"])
         if self.few_shot:
 
             def format_original_fewshot0(rec):
@@ -303,8 +300,7 @@ class EvalPipeline:
                 cl_samples = ds_wrapper.dataset_training.filter(
                     lambda r: r[ds_wrapper.label] == cl
                 )
-                selected_sample.append(
-                    cl_samples[random.randint(0, len(cl_samples))])
+                selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
 
             original_few_shot = "".join(
                 list(
@@ -337,19 +333,16 @@ class EvalPipeline:
                 for c in batch[ds_wrapper.text]
             ]
             calib_prompts = [
-                ds_wrapper.calibration_prompt.format(
-                    context=c, few_shot=calib_few_shot)
+                ds_wrapper.calibration_prompt.format(context=c, few_shot=calib_few_shot)
                 for c in batch[ds_wrapper.text]
             ]
-            results, logprobs, _ = self.infer_pipeline(
-                prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             num_choice = 3
 
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts * num_choice,
                 [
-                    mapping[choice] if self.prompting_strategy == 1 else str(
-                        choice)
+                    mapping[choice] if self.prompting_strategy == 1 else str(choice)
                     for choice in range(num_choice)
                     for _ in range(len(prompts))
                 ],
@@ -397,10 +390,10 @@ class EvalPipeline:
         generation_probs = []
         option_probs = []
         if self.continue_infer_data is not None:
-            predictions.extend(self.continue_infer_data['predictions'])
-            references.extend(self.continue_infer_data['references'])
-            generation_probs.extend(self.continue_infer_data['generation_probs'])
-            option_probs.extend(self.continue_infer_data['option_probs'])
+            predictions.extend(self.continue_infer_data["predictions"])
+            references.extend(self.continue_infer_data["references"])
+            generation_probs.extend(self.continue_infer_data["generation_probs"])
+            option_probs.extend(self.continue_infer_data["option_probs"])
         idx = 0
         original_few_shot = ""
         calib_few_shot = ""
@@ -466,7 +459,8 @@ class EvalPipeline:
                     else r[ds_wrapper.label][0] == cl
                 )
                 selected_sample.append(
-                    cl_samples[random.randint(0, len(cl_samples)-1)])
+                    cl_samples[random.randint(0, len(cl_samples) - 1)]
+                )
 
             if sub_task == "atis":
                 for x in range(len(selected_sample)):
@@ -516,20 +510,23 @@ class EvalPipeline:
                 for c in batch[ds_wrapper.text]
             ]
 
-            results, logprobs, _ = self.infer_pipeline(
-                prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
 
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts * num_choice,
                 [
-                    mapping[choice] if self.prompting_strategy == 1 else str(
-                        choice)
+                    mapping[choice] if self.prompting_strategy == 1 else str(choice)
                     for choice in range(num_choice)
                     for _ in range(len(prompts))
                 ],
             )
             predictions.extend(results)
-            references.extend([eval(x) if type(x) is str else x.item() for x in batch[ds_wrapper.label]])
+            references.extend(
+                [
+                    eval(x) if type(x) is str else x.item()
+                    for x in batch[ds_wrapper.label]
+                ]
+            )
             generation_probs.extend([x.tolist() for x in logprobs])
             option_probs.extend(
                 [
@@ -572,14 +569,15 @@ class EvalPipeline:
         calib_few_shot = ""
         selected_sample = []
         if self.continue_infer_data is not None:
-            predictions.extend(self.continue_infer_data['predictions'])
-            references.extend(self.continue_infer_data['references'])
-            generation_probs.extend(self.continue_infer_data['generation_probs'])
-            option_probs.extend(self.continue_infer_data['option_probs'])
+            predictions.extend(self.continue_infer_data["predictions"])
+            references.extend(self.continue_infer_data["references"])
+            generation_probs.extend(self.continue_infer_data["generation_probs"])
+            option_probs.extend(self.continue_infer_data["option_probs"])
         if self.few_shot:
 
             def format_original_fewshot0(rec):
                 return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "toxicity_level": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
+
             def format_original_fewshot1(rec):
                 return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {{ "toxicity_level": {rec[ds_wrapper.label]}, "confident_level": 1}}\n"""
 
@@ -592,8 +590,7 @@ class EvalPipeline:
                 cl_samples = ds_wrapper.dataset_training.filter(
                     lambda r: r[ds_wrapper.label] == cl
                 )
-                selected_sample.append(
-                    cl_samples[random.randint(0, len(cl_samples))])
+                selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
 
             original_few_shot = "".join(
                 list(
@@ -605,8 +602,7 @@ class EvalPipeline:
                     )
                 )
             )
-            calib_few_shot = "".join(
-                list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -628,8 +624,7 @@ class EvalPipeline:
                 )
                 for c in batch[ds_wrapper.text]
             ]
-            results, logprobs, _ = self.infer_pipeline(
-                prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             num_choice = 2 if sub_task == "ViCTSD" else 3
 
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
@@ -695,15 +690,16 @@ class EvalPipeline:
         selected_sample = []
         alphabet2idx = {chr(i + 65): i for i in range(26)}
         if self.continue_infer_data is not None:
-            predictions.extend(self.continue_infer_data['predictions'])
-            references.extend(self.continue_infer_data['references'])
-            generation_probs.extend(self.continue_infer_data['generation_probs'])
-            option_probs.extend(self.continue_infer_data['option_probs'])
-            option_order_all.extend(self.continue_infer_data['option_orders'])
+            predictions.extend(self.continue_infer_data["predictions"])
+            references.extend(self.continue_infer_data["references"])
+            generation_probs.extend(self.continue_infer_data["generation_probs"])
+            option_probs.extend(self.continue_infer_data["option_probs"])
+            option_order_all.extend(self.continue_infer_data["option_orders"])
         if self.few_shot:
 
             def format_original_fewshot0(rec):
                 return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} '''\nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {{ "choice": "{rec[ds_wrapper.answer]}", "confident_level": 1 }} </s><s>[INST]\n"""
+
             def format_original_fewshot1(rec):
                 return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} '''\nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời: {{ "choice": "{rec[ds_wrapper.answer]}", "confident_level": 1 }}\n"""
 
@@ -727,8 +723,7 @@ class EvalPipeline:
                     )
                 )
             )
-            calib_few_shot = "".join(
-                list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -766,16 +761,13 @@ class EvalPipeline:
                     )
                 )
 
-            results, logprobs, _ = self.infer_pipeline(
-                prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts * 4,
-                [chr(choice + 65) for choice in range(4)
-                 for _ in range(len(prompts))],
+                [chr(choice + 65) for choice in range(4) for _ in range(len(prompts))],
             )
             opt_calib_out = [
-                [option_logprobs[i + opt * len(prompts)].tolist()
-                 for opt in range(4)]
+                [option_logprobs[i + opt * len(prompts)].tolist() for opt in range(4)]
                 for i in range(len(prompts))
             ]
 
@@ -823,15 +815,17 @@ class EvalPipeline:
         references = []
         generation_probs = []
         if self.continue_infer_data is not None:
-            predictions.extend(self.continue_infer_data['predictions'])
-            references.extend(self.continue_infer_data['references'])
-            generation_probs.extend(self.continue_infer_data['generation_probs'])
+            predictions.extend(self.continue_infer_data["predictions"])
+            references.extend(self.continue_infer_data["references"])
+            generation_probs.extend(self.continue_infer_data["generation_probs"])
         idx = 0
         original_few_shot = ""
         selected_sample = []
         if self.few_shot:
+
             def format_original_fewshot0(rec):
                 return f"""Khách: "{rec[ds_wrapper.source]}"\nBot:[/INST] {rec[ds_wrapper.target]} </s><s>[INST]\n"""
+
             def format_original_fewshot1(rec):
                 return f"""Khách: "{rec[ds_wrapper.source]}"\nBot: {rec[ds_wrapper.target]}\n"""
 
@@ -858,8 +852,7 @@ class EvalPipeline:
                 for c in batch[ds_wrapper.source]
             ]
 
-            results, logprobs, _ = self.infer_pipeline(
-                prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.target]])
             generation_probs.extend([x.tolist() for x in logprobs])
@@ -885,7 +878,7 @@ class EvalPipeline:
 
     def __information_retrieval(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         predictions = []
-        #sub_task = self.task.split("_")[1]
+        # sub_task = self.task.split("_")[1]
         idx = 0
         original_few_shot = ""
         calib_few_shot = ""
@@ -894,14 +887,14 @@ class EvalPipeline:
 
             def format_original_fewshot0(rec):
                 return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {{ "answer": "{rec["answer"]}" }} </s><s>[INST]\n"""
+
             def format_original_fewshot1(rec):
                 return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot: {{ "answer": "{rec["answer"]}" }}\n"""
 
             def format_calib_fewshot(rec):
                 return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?\nBot:[/INST] {rec["answer"]} </s><s>[INST]\n"""
 
-            random_sample = list(random.sample(
-                list(ds_wrapper.dataset_training), 1))[0]
+            random_sample = list(random.sample(list(ds_wrapper.dataset_training), 1))[0]
             # random_batch_passages = random_sample[ds_wrapper.passage]
             # if sub_task == "mmarco":
             #     ref_passage_id = random_sample[ds_wrapper.answer][0]
@@ -945,9 +938,8 @@ class EvalPipeline:
                     )
                 )
             )
-            calib_few_shot = "".join(
-                list(map(format_calib_fewshot, selected_sample)))
-        #BATCH_PASSAGE_SIZE = 5
+            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
+        # BATCH_PASSAGE_SIZE = 5
         # Create few-shot strings
         # for batch in tqdm(ds_loader):
         #     if idx < start_idx:
@@ -1044,13 +1036,13 @@ class EvalPipeline:
                         ds_wrapper.prompt.format(
                             few_shot=original_few_shot, passage=p, question=query
                         )
-                        for p in top30_passages[psg: psg + BATCH_PASSAGE_SIZE]
+                        for p in top30_passages[psg : psg + BATCH_PASSAGE_SIZE]
                     ]
                     calib_prompts = [
                         ds_wrapper.calibration_prompt.format(
                             few_shot=calib_few_shot, passage=p, question=query
                         )
-                        for p in top30_passages[psg: psg + BATCH_PASSAGE_SIZE]
+                        for p in top30_passages[psg : psg + BATCH_PASSAGE_SIZE]
                     ]
                     results, logprobs, _ = self.infer_pipeline(
                         prompts, return_probs=True
@@ -1067,36 +1059,39 @@ class EvalPipeline:
                     save_each_prompt = list(
                         map(
                             lambda x, y, z, t, q: {
-                                "query_id": query_id.item() if type(query_id) is not str else query_id,
+                                "query_id": query_id.item()
+                                if type(query_id) is not str
+                                else query_id,
                                 "query": query,
                                 "passage_id": z.item() if type(z) is not str else z,
                                 "passage": t,
-                                "label": int(z.item() == ref_passage_id if type(z) is not str else z == ref_passage_id),
+                                "label": int(
+                                    z.item() == ref_passage_id
+                                    if type(z) is not str
+                                    else z == ref_passage_id
+                                ),
                                 "prediction": x,
                                 "generation_probs": y.tolist(),
                                 "calib_probs": [
-                                    option_logprobs[q + opt *
-                                                    len(prompts)].tolist()
+                                    option_logprobs[q + opt * len(prompts)].tolist()
                                     for opt in range(2)
                                 ],
                             },
                             results,
                             logprobs,
-                            top30_passage_ids[psg: psg + BATCH_PASSAGE_SIZE],
-                            top30_passages[psg: psg + BATCH_PASSAGE_SIZE],
+                            top30_passage_ids[psg : psg + BATCH_PASSAGE_SIZE],
+                            top30_passages[psg : psg + BATCH_PASSAGE_SIZE],
                             range(len(prompts)),
                         )
                     )
                     predictions.extend(save_each_prompt)
-                 
 
             idx += 1
 
             if idx % 100 == 0:
                 print(f"Saving results of {idx} batches")
 
-                generations = {"fewshot": selected_sample,
-                               "prediction": predictions}
+                generations = {"fewshot": selected_sample, "prediction": predictions}
                 saving_fn(generations)
         generations = {"fewshot": selected_sample, "prediction": predictions}
         saving_fn(generations)
@@ -1117,12 +1112,15 @@ class EvalPipeline:
         else:
             target = ds_wrapper.target
         if self.continue_infer_data is not None:
-            predictions.extend(self.continue_infer_data['predictions'])
-            references.extend(self.continue_infer_data['references'])
-            generation_probs.extend(self.continue_infer_data['generation_probs'])
-            calib_probs.extend(self.continue_infer_data['calibration_probs'])
-            mat_problem_type.extend(self.continue_infer_data.get('math_problem_type', []))
+            predictions.extend(self.continue_infer_data["predictions"])
+            references.extend(self.continue_infer_data["references"])
+            generation_probs.extend(self.continue_infer_data["generation_probs"])
+            calib_probs.extend(self.continue_infer_data["calibration_probs"])
+            mat_problem_type.extend(
+                self.continue_infer_data.get("math_problem_type", [])
+            )
         if self.few_shot:
+
             def format_original_fewshot0(rec):
                 return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {{ "answer": "{rec[target]}", "confident_level": 1}} </s><s>[INST]\n"""
 
@@ -1132,8 +1130,7 @@ class EvalPipeline:
             def format_calib_fewshot(rec):
                 return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {rec[target]} </s><s>[INST]\n"""
 
-            selected_sample = list(random.sample(
-                list(ds_wrapper.dataset_training), 5))
+            selected_sample = list(random.sample(list(ds_wrapper.dataset_training), 5))
 
             original_few_shot = "".join(
                 list(
@@ -1166,13 +1163,11 @@ class EvalPipeline:
                 for rule in batch[ds_wrapper.source]
             ]
             calib_prompts = [
-                ds_wrapper.calibration_prompt.format(
-                    few_shot=calib_few_shot, rule=rule)
+                ds_wrapper.calibration_prompt.format(few_shot=calib_few_shot, rule=rule)
                 for rule in batch[ds_wrapper.source]
             ]
 
-            results, logprobs, _ = self.infer_pipeline(
-                prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             calibprob_batch, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts, batch[target]
             )
@@ -1215,9 +1210,9 @@ class EvalPipeline:
         original_few_shot = ""
         selected_sample = []
         if self.continue_infer_data is not None:
-            predictions.extend(self.continue_infer_data['predictions'])
-            references.extend(self.continue_infer_data['references'])
-            generation_probs.extend(self.continue_infer_data['generation_probs'])
+            predictions.extend(self.continue_infer_data["predictions"])
+            references.extend(self.continue_infer_data["references"])
+            generation_probs.extend(self.continue_infer_data["generation_probs"])
         if self.few_shot:
 
             def format_original_fewshot0(rec):
@@ -1226,8 +1221,7 @@ class EvalPipeline:
             def format_original_fewshot1(rec):
                 return f"""Khách: "{rec[ds_wrapper.source_language]}"\nBot: {{ "translation": "{rec[ds_wrapper.target_language]}" }}\n"""
 
-            selected_sample = list(random.sample(
-                list(ds_wrapper.dataset_training), 5))
+            selected_sample = list(random.sample(list(ds_wrapper.dataset_training), 5))
 
             original_few_shot = "".join(
                 list(
@@ -1247,13 +1241,11 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(
-                    few_shot=original_few_shot, document=document)
+                ds_wrapper.prompt.format(few_shot=original_few_shot, document=document)
                 for document in batch[ds_wrapper.source_language]
             ]
 
-            results, logprobs, _ = self.infer_pipeline(
-                prompts, return_probs=True)
+            results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.target_language]])
             generation_probs.extend([x.tolist() for x in logprobs])
@@ -1287,7 +1279,7 @@ class EvalPipeline:
         random_mtpc=False,
         cot=False,
         prompting_strategy=0,
-        continue_infer=None
+        continue_infer=None,
     ):
         self.continue_infer_data = continue_infer
         self.prompting_strategy = prompting_strategy
