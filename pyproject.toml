@@ -22,6 +22,22 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 license = {text = "MIT License"}
+dependencies = [
+    "accelerate>=0.21.0",
+    "peft>=0.4.0",
+    "bitsandbytes>=0.40.2",
+    "transformers>=4.31.0",
+    "trl>=0.4.7",
+    "xformers",
+    "torch>=2.0.1",
+    "scipy",
+    "tiktoken",
+    "tqdm",
+    "python-dotenv",
+    "openai==0.27.8",
+    "backoff",
+    "click",
+]
 
 [project.urls]
 Homepage = "https://github.com/martinakaduc/ViEval"

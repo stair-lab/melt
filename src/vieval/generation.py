@@ -1,20 +1,11 @@
 import os
-
-from tools.data import DatasetWrapper
-
-from tools.pipelines import EvalPipeline
-from script_arguments import ScriptArguments
+from .tools.data import DatasetWrapper
+from .tools.pipelines import EvalPipeline
+from .tools.utils.utils import save_to_json, set_seed, read_json
 from torch.utils.data import DataLoader
 
-from transformers import HfArgumentParser
-from tools.utils.utils import save_to_json, set_seed, read_json
-from dotenv import load_dotenv
 
-if __name__ == "__main__":
-    load_dotenv()
-    parser = HfArgumentParser(ScriptArguments)
-    script_args = parser.parse_args_into_dataclasses()[0]
-
+def generation(script_args):
     set_seed(script_args.seed)
 
     # Save results

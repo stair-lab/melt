@@ -176,3 +176,4 @@ class ScriptArguments:
         default=False,
         metadata={"help": "Wheather to continue previous inference process"},
     )
+    mode: str = field(default="generation", metadata={"help": "Select mode to run (generation, evaluation, end2end"})
