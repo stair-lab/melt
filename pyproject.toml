@@ -47,6 +47,8 @@ dependencies = [
     "nptyping",
     "ranx",
     "evaluate",
+    "scikit-learn",
+    "python-Levenshtein",
 ]
 
 [project.urls]
