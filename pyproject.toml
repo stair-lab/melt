@@ -36,7 +36,17 @@ dependencies = [
     "python-dotenv",
     "openai==0.27.8",
     "backoff",
-    "click",
+    "uncertainty-calibration"
+    "jiwer"
+    "underthesea"
+    "sentencepiece"
+    "bert-score"
+    "summ-eval"
+    "rouge-score"
+    "hLepor"
+    "nptyping"
+    "ranx"
+    "evaluate"
 ]
 
 [project.urls]
