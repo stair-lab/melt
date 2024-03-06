@@ -3,13 +3,16 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "ViEval"
+name = "ViLLM-Eval"
 version = "0.0.1"
 authors = [
+  { name="Sang T. Truong", email="sttruong@stanford.edu" },
   { name="Duc Q. Nguyen", email="nqduc@hcmut.edu.vn" },
   { name="Dong D. Le", email="dong.le0110@hcmut.edu.vn" },
   { name="Toan D. V. Nguyen", email="ndvtoan.sdh20@hcmut.edu.vn" },
-  { name="Sang T. Truong", email="sttruong@stanford.edu" },
+  { name="Nhi N. Truong", email="nntruong2601@gmail.com" },
+  { name="Tho Quan", email="qttho@hcmut.edu.vn" },
+  { name="Sanmi Koyejo", email="sanmi@cs.stanford.edu" },
 ]
 description = "A Python package for evaluating Vietnamese LLMs"
 readme = "README.md"
@@ -18,10 +21,12 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
-    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: Apache 2.0 License",
     "Operating System :: OS Independent",
 ]
-license = {text = "MIT License"}
+license = {text = "Apache 2.0 License"}
 dependencies = [
     "accelerate>=0.21.0",
     "peft>=0.4.0",
@@ -52,8 +57,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/martinakaduc/ViEval"
-Issues = "https://github.com/martinakaduc/ViEval/issues"
+Homepage = "https://github.com/koyejo-lab/villm-eval"
+Issues = "https://github.com/koyejo-lab/villm-eval/issues"
 
 [tool.poetry.dependencies]
 python = ">=3.8,<=3.10"
