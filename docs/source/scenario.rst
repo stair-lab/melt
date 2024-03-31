@@ -13,23 +13,11 @@ Scenarios
    :show-inheritance:
    :member-order: alphabetical
 
-.. .. automodule:: vieval.metrics.question_answering
-..    :members:
-..    :undoc-members:
-..    :show-inheritance:
-..    :member-order: alphabetical
-
 .. automodule:: vieval.metrics.text_classification
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
-
-.. .. automodule:: vieval.metrics.knowledge
-..    :members:
-..    :undoc-members:
-..    :show-inheritance:
-..    :member-order: alphabetical
 
 .. automodule:: vieval.metrics.toxicity
    :members:

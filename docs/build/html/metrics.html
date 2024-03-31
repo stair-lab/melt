@@ -107,15 +107,18 @@
 <dt class="sig sig-object py" id="vieval.metrics.base.BaseMetric">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vieval.metrics.base.</span></span><span class="sig-name descname"><span class="pre">BaseMetric</span></span><a class="headerlink" href="#vieval.metrics.base.BaseMetric" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An abstract class that provides a foundation for various metric classes to evaluate different aspects of text data.</p>
 </dd></dl>
 
 <dl class="py function" id="module-vieval.metrics.basic_metrics">
 <dt class="sig sig-object py" id="vieval.metrics.basic_metrics.exact_match">
 <span class="sig-prename descclassname"><span class="pre">vieval.metrics.basic_metrics.</span></span><span class="sig-name descname"><span class="pre">exact_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vieval.metrics.basic_metrics.exact_match" title="Link to this definition"></a></dt>
-<dd><p>Calculates whether the predicted text (pred) exactly matches the gold standard text (gold) after both texts have been normalized. The result is a binary value indicating an exact match (1) or not (0).</p>
-<dl>
-<dt>Args:</dt><dd><p>gold (str): The reference text that is considered the correct or expected result.</p>
-<p>pred (str): The text that is being evaluated against the gold standard.</p>
+<dd><p>Calculates whether the predicted text (pred) exactly matches the gold standard text (gold) after both texts have been normalized.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>gold (str): The reference text that is considered the correct or expected result.
+pred (str): The text produced by a predictive model or some process that is being evaluated against the gold standard.</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: The function returns a float, which will be 1.0 if the normalized pred string exactly matches the normalized gold string, and 0.0 otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -124,9 +127,11 @@
 <dt class="sig sig-object py" id="vieval.metrics.basic_metrics.f1_score">
 <span class="sig-prename descclassname"><span class="pre">vieval.metrics.basic_metrics.</span></span><span class="sig-name descname"><span class="pre">f1_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vieval.metrics.basic_metrics.f1_score" title="Link to this definition"></a></dt>
 <dd><p>Computes the F1 score for the overlap between the predicted text (pred) and the gold standard text (gold).</p>
-<dl>
-<dt>Args:</dt><dd><p>gold (str): The reference text that is considered the correct or expected result.</p>
-<p>pred (str): The text that is being evaluated against the gold standard.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>gold (str): The reference text that is considered the correct or expected result.
+pred (str): The text produced by a predictive model or some process that is being evaluated against the gold standard.</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: The F1 score, ranging from 0.0 to 1.0, where 0.0 indicates no overlap and 1.0 indicates perfect overlap between gold and pred.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -135,20 +140,14 @@
 <dt class="sig sig-object py" id="vieval.metrics.bias.BiasMetric">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vieval.metrics.bias.</span></span><span class="sig-name descname"><span class="pre">BiasMetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.bias.BiasMetric" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vieval.metrics.base.BaseMetric" title="vieval.metrics.base.BaseMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseMetric</span></code></a></p>
-<p>Measure biases in text with respect to demographic categories such as race and gender.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>BaseMetric (_type_):</p>
-</dd>
-</dl>
+<p>Evaluate biases in text data, particularly with demographic categories such as race and gender.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.bias.BiasMetric.count_word_from_text">
 <span class="sig-name descname"><span class="pre">count_word_from_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">word</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.bias.BiasMetric.count_word_from_text" title="Link to this definition"></a></dt>
-<dd><p>Counts occurrences of a specific word in a given text. This method is used to find the frequency of each word from the demographic and target word lists in the texts being analyzed.</p>
+<dd><p>Counts occurrences of a specific word in a given text.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>text (str): Text to search within.
 word (str): Word to count in the text.</p>
-</dd>
-<dt>Returns:</dt><dd><p>The count of the word in the text.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -156,9 +155,9 @@ word (str): Word to count in the text.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.bias.BiasMetric.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#vieval.metrics.bias.BiasMetric.evaluate" title="Link to this definition"></a></dt>
-<dd><p>The main entry point for external calls to the <cite>BiasMetric</cite> class. It processes the input data, computes bias scores, and integrates the results into the return value.</p>
+<dd><p>Main method for external calls to compute and return bias scores.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>data (dict): A dictionary containing the textual data under the “predictions” key, which will be evaluated for bias.</p>
+<dt>Args:</dt><dd><p>data (dict): Contains the text data under the “predictions” key.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -184,11 +183,9 @@ word (str): Word to count in the text.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.bias.BiasMetric.evaluate_stereotypical_associations">
 <span class="sig-name descname"><span class="pre">evaluate_stereotypical_associations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.bias.BiasMetric.evaluate_stereotypical_associations" title="Link to this definition"></a></dt>
-<dd><p>Calculates and returns a mean bias score based on stereotypical associations between demographic groups and target words within the given list of texts. It counts co-occurrences of demographic words and target words and calculates a bias score using these counts.</p>
+<dd><p>Computes a bias score for demographic representation within a list of texts. It first counts how frequently words associated with each demographic group appear in the texts and then computes a bias score based on these counts.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>texts (List[str]): A list of textual content to be analyzed for stereotypical associations between demographic groups and target words.</p>
-</dd>
-<dt>Returns:</dt><dd><p>A list of strings, e.g., [“The engineer fixed the issue.”, “She was very caring and nurturing.”].</p>
 </dd>
 </dl>
 </dd></dl>
@@ -196,9 +193,9 @@ word (str): Word to count in the text.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.bias.BiasMetric.get_bias_score">
 <span class="sig-name descname"><span class="pre">get_bias_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#vieval.metrics.bias.BiasMetric.get_bias_score" title="Link to this definition"></a></dt>
-<dd><p>Orchestrates the evaluation of bias by calling the appropriate methods to compute bias scores for stereotypical associations and demographic representation based on the arguments provided.</p>
+<dd><p>Coordinates the bias evaluation process and computes bias scores for stereotypical associations and demographic representation.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>texts (List[str]): A list of strings that are to be evaluated for bias.</p>
+<dt>Args:</dt><dd><p>texts (List[str]): Texts to evaluate for bias.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -206,7 +203,7 @@ word (str): Word to count in the text.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.bias.BiasMetric.get_group_to_words">
 <span class="sig-name descname"><span class="pre">get_group_to_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.bias.BiasMetric.get_group_to_words" title="Link to this definition"></a></dt>
-<dd><p>Sets the demographic and target category attributes based on the arguments passed. This method prepares the internal state of the class for bias evaluation by identifying which demographic and target word lists to use.</p>
+<dd><p>Sets the demographic and target category attributes based on the arguments passed.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -235,9 +232,9 @@ equal representation.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.bias.BiasMetric.set_demographic_group_to_words">
 <span class="sig-name descname"><span class="pre">set_demographic_group_to_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.bias.BiasMetric.set_demographic_group_to_words" title="Link to this definition"></a></dt>
-<dd><p>Processes a list of texts to extract names and updates the demographic group to words dictionary based on the detected names. It utilizes the <cite>NameDetector</cite> class to detect names within the texts and assign them to their corresponding demographic groups.</p>
+<dd><p>Sets demographic and target category attributes based on the provided arguments.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>texts (List[str]): A list of strings (textual data) that the method will process to extract and categorize names for demographic analysis.</p>
+<dt>Args:</dt><dd><p>texts (List[str]): List of strings to process and extract names from.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -248,32 +245,17 @@ equal representation.</p></li>
 <dt class="sig sig-object py" id="vieval.metrics.calibration_metric.CalibrationMetric">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vieval.metrics.calibration_metric.</span></span><span class="sig-name descname"><span class="pre">CalibrationMetric</span></span><a class="headerlink" href="#vieval.metrics.calibration_metric.CalibrationMetric" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#vieval.metrics.base.BaseMetric" title="vieval.metrics.base.BaseMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseMetric</span></code></a></p>
-<p>The CalibrationMetric class is a subclass of BaseMetric and is designed to evaluate the calibration of probabilistic models. Calibration refers to how well the predicted probabilities of outcomes reflect the true probabilities.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>BaseMetric (_type_):</p>
-</dd>
-</dl>
+<p>Evaluate the calibration of probabilistic models</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.calibration_metric.CalibrationMetric.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.calibration_metric.CalibrationMetric.evaluate" title="Link to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>Evaluates the given predictions against the references in the data dictionary.</dt><dd><ul class="simple">
-<li><p>Processes raw predictions using _get_answer to get the final predictions.</p></li>
-<li><p>Calculates the accuracy by comparing the normalized predictions with the normalized references.</p></li>
-<li><p>Handles special processing if “gpt” is in args.filepath, which involves modifying the probabilities and labels.</p></li>
-<li><p>The softmax_options_prob function is used to process the “option_probs” data, if available.</p></li>
-<li><p>The average of the maximum probabilities and calibration scores are calculated.</p></li>
-</ul>
-</dd>
+<dd><p>Evaluates the given predictions against the references in the dictionary.</p>
+<dl class="simple">
 <dt>Args:</dt><dd><p>data (Dict): A dictionary that must contain the keys “predictions” and “references”; “option_probs” is also used if present.</p>
 </dd>
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>A tuple of two dictionaries:</dt><dd><ul class="simple">
-<li><p>The first dictionary is the updated data with additional key “max_probs”.</p></li>
-<li><p>The second dictionary result contains the mean of max_probs and the calibration scores obtained from get_cal_score.</p></li>
-</ul>
-</dd>
-</dl>
+<dt>Returns:</dt><dd><p>Returns a tuple of two dictionaries:
+- The first dictionary is the updated data with additional key “max_probs”.
+- The second dictionary result contains the mean of max_probs and the calibration scores obtained from get_cal_score.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -281,14 +263,8 @@ equal representation.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.calibration_metric.CalibrationMetric.get_cal_score">
 <span class="sig-name descname"><span class="pre">get_cal_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_probs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.calibration_metric.CalibrationMetric.get_cal_score" title="Link to this definition"></a></dt>
-<dd><dl>
-<dt>Calculates various calibration scores based on the predicted probabilities (max_probs) and the ground truth labels (correct).</dt><dd><ul class="simple">
-<li><p>Calculates the Expected Calibration Error (ECE) using 2 different binning strategies (10 bins and 1 bin) through cal.get_ece_em and cal.get_ece functions.</p></li>
-<li><p>Computes selective accuracy statistics, such as coverage accuracy area and accuracy in the top 10 percentile, using cal.get_selective_stats.</p></li>
-<li><p>If the predictions are all correct or all incorrect, Platt scaling is not applied, and the Platt ECE values are set to 0.0.</p></li>
-<li><p>Otherwise, Platt scaling is applied using cal.get_platt_scaler, and the ECE values are recalculated for the Platt-scaled probabilities.</p></li>
-</ul>
-</dd>
+<dd><p>Calculates various calibration scores based on the predicted probabilities (max_probs) and the ground truth labels (correct).</p>
+<dl>
 <dt>Args:</dt><dd><p>max_probs (List[float]): A list of the maximum probabilities predicted by the model for each instance.</p>
 <p>correct (List[int]): A binary list where each element corresponds to whether the prediction was correct (1) or not (0).</p>
 </dd>
@@ -311,7 +287,7 @@ equal representation.</p></li>
 <dl class="simple">
 <dt>Args:</dt><dd><p>text (str): The input text to process.</p>
 </dd>
-<dt>Returns:</dt><dd><p>A dictionary with classified names.</p>
+<dt>Returns:</dt><dd><p>Returns a dictionary with classified names.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -323,7 +299,7 @@ equal representation.</p></li>
 <dl class="simple">
 <dt>Args:</dt><dd><p>texts (list): A list of text strings to process in batch.</p>
 </dd>
-<dt>Returns:</dt><dd><p>A dictionary with classified names for the batch.</p>
+<dt>Returns:</dt><dd><p>Returns a dictionary with classified names for the batch.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -336,7 +312,7 @@ equal representation.</p></li>
 <dt>Args:</dt><dd><p>text (str): The original text from which entities are extracted.</p>
 <p>entities (list): A list of entity dictionaries detected in the text.</p>
 </dd>
-<dt>Returns:</dt><dd><p>A new list of entities after grouping adjacent entities of the same type.</p>
+<dt>Returns:</dt><dd><p>Returns a new list of entities after grouping adjacent entities of the same type.</p>
 </dd>
 </dl>
 </dd></dl>

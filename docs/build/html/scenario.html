@@ -115,20 +115,13 @@
 <dt class="sig sig-object py" id="vieval.metrics.question_answering.QAMetric">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vieval.metrics.question_answering.</span></span><span class="sig-name descname"><span class="pre">QAMetric</span></span><a class="headerlink" href="#vieval.metrics.question_answering.QAMetric" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="metrics.html#vieval.metrics.base.BaseMetric" title="vieval.metrics.base.BaseMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseMetric</span></code></a></p>
-<p>Evaluate the performance of a question-answering system.</p>
+<p>Evaluate the performance of a question-answering (QA) system.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.question_answering.QAMetric.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.question_answering.QAMetric.evaluate" title="Link to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>Returns evaluation results for QA predictions.</dt><dd><ul class="simple">
-<li><p>Extracts raw predictions from the data dictionary.</p></li>
-<li><p>Processes each raw prediction using the _get_answer method. This method is likely responsible for formatting or normalizing the raw predictions into a comparable form.</p></li>
-<li><p>Retrieves reference answers from the data dictionary.</p></li>
-<li><p>Calculates F1 scores for each pair of predictions and references using a function f1_score.</p></li>
-<li><p>Calculates Exact Match (EM) scores for each pair by normalizing both the prediction and the reference text and comparing them using an exact_match function.</p></li>
-</ul>
-</dd>
-<dt>Args:</dt><dd><p>data (Dict): A dictionary expected to contain the keys “predictions” and “references”.</p>
+<dd><p>Returns evaluation results for QA predictions.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>data (Dict): A dictionary expected to contain the keys “predictions” and “references”. It represents the dataset being evaluated, with “predictions” containing the model’s answers to the questions, and “references” containing the ground truth answers.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -139,24 +132,15 @@
 <dt class="sig sig-object py" id="vieval.metrics.summary.SummaryMetric">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">vieval.metrics.summary.</span></span><span class="sig-name descname"><span class="pre">SummaryMetric</span></span><a class="headerlink" href="#vieval.metrics.summary.SummaryMetric" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="metrics.html#vieval.metrics.base.BaseMetric" title="vieval.metrics.base.BaseMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseMetric</span></code></a></p>
-<p>Evaluate the quality of text summaries</p>
+<p>Evaluate the quality of text summaries.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.summary.SummaryMetric.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.summary.SummaryMetric.evaluate" title="Link to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>Evaluates the generated summaries against reference summaries to assess their quality.</dt><dd><ol class="arabic simple">
-<li><p>Extracts the input documents, raw predictions, and references from the data dictionary.</p></li>
-<li><p>Processes the raw predictions through _get_answer and normalizes the references using normalize_text.</p></li>
-<li><p>Initializes an empty result dictionary to store the evaluation results.</p></li>
-<li><p>Computes the BERTScore for precision, recall, and F1 score between predictions and references, and updates result with these values.</p></li>
-<li><p>Computes custom data statistics like coverage, density, and compression using self.data_stats_metric.evaluate_batch, and updates result.</p></li>
-<li><p>Computes ROUGE scores (ROUGE-1, ROUGE-2, and ROUGE-L) for the predictions and references using self.rouge.compute, and updates result.</p></li>
-</ol>
-</dd>
-</dl>
-<p>Returns a tuple containing the original data dictionary and the result dictionary with all the computed metrics.</p>
+<dd><p>Evaluates the generated summaries against reference summaries and computes various metrics to assess the quality of the generated summaries.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>data (Dict): A dictionary expected to contain original_documents, predictions, and references as keys.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Returns a tuple containing the original data dictionary and the result dictionary with all the computed metrics.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -171,22 +155,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.text_classification.TextClassificationMetric.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#vieval.metrics.text_classification.TextClassificationMetric.evaluate" title="Link to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>Evaluates the classification performance given the predictions, references, and additional arguments.</dt><dd><ol class="arabic simple">
-<li><p>Initializes an empty result dictionary to store evaluation results.</p></li>
-<li><p>Processes raw predictions by passing each through a _get_answer function and normalizes class names.</p></li>
-<li><p>Normalizes references, which may be lists (to handle multi-label cases) or single labels, ensuring that prediction matches are standardized for comparison.</p></li>
-<li><p>Computes the accuracy score using the accuracy_score function, comparing the normalized references with predictions, and updates result.</p></li>
-<li><p>Computes the F1 score using a function f1_score_sklearn, updating result with the macro-averaged F1 score.</p></li>
-<li><p>Processes option_probs from the data dictionary to aggregate per-option probabilities and applies a softmax_options_prob function to them.</p></li>
-<li><p>Converts reference labels into indices based on args.class_names and computes ROC AUC using the roc_auc_score function from sklearn.metrics, updating result with the computed value.</p></li>
-<li><p>Catches any exceptions that may occur during the ROC AUC computation and prints the exception message, setting the ROC AUC entry in result to None if an exception occurs.</p></li>
-</ol>
-</dd>
-</dl>
-<p>Returns a tuple containing the original data dictionary and the result dictionary with all the computed metrics.</p>
+<dd><p>Evaluates the classification performance given the predictions, references, and additional arguments.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>data (Dict): A dictionary expected to contain keys like predictions, references, and option_probs.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Returns a tuple containing the original data dictionary and the result dictionary with all the computed metrics.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -201,19 +174,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.toxicity.ToxicityMetric.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.toxicity.ToxicityMetric.evaluate" title="Link to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>Evaluates the level of toxicity in the text predictions provided via the dictionary.</dt><dd><ol class="arabic simple">
-<li><p>Processes each prediction in data[“predictions”] through a _get_answer method (not provided in the snippet) using the args provided.</p></li>
-<li><p>Truncates each prediction to the first 256 tokens, which is a common preprocessing step to conform to the model input size limitations.</p></li>
-<li><p>Passes the truncated predictions to the self.classifier to get toxicity predictions, with the batch_size specified by args.bs.</p></li>
-<li><p>Extracts the toxicity scores from the classifier’s output using the _get_toxicity_score method.</p></li>
-<li><p>Adds the toxicity scores to the data dictionary under the key “toxicity”.</p></li>
-</ol>
-</dd>
-</dl>
-<p>Returns a tuple containing the updated data dictionary and a new dictionary with the mean toxicity score calculated from the toxicity scores list.</p>
+<dd><p>Evaluates the level of toxicity in the text predictions provided via the dictionary.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>data (Dict): A dictionary expected to contain a key “predictions” with text data that needs to be evaluated for toxicity.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Returns a tuple containing the updated data dictionary and a new dictionary with the mean toxicity score calculated from the toxicity scores list.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -245,17 +210,13 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.language.LanguageMetric.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.language.LanguageMetric.evaluate" title="Link to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>Evaluates the predictions against references and computes various metrics.</dt><dd><ul class="simple">
-<li><p>Processes the predictions using a method _get_answer, which formats or normalizes the predictions based on the provided arguments.</p></li>
-<li><p>Normalizes the reference texts using a function normalize_text.</p></li>
-<li><p>Calculates exact match (EM) scores between predictions and references.</p></li>
-<li><p>Computes CER and WER using the preloaded metrics.</p></li>
-<li><p>Calculates Character Edit Distance (CED) and Word Edit Distance (WED) using the Levenshtein distance algorithm.</p></li>
-<li><p>Calculates perplexity scores and bits per byte and log probabilities per byte for each prediction.</p></li>
-</ul>
+<dd><p>Evaluates the predictions against references and computes various metrics.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>data (Dict): A dictionary that must contain keys “predictions”, “references”, and “generation_probs”. It is used to store the predictions, the references for comparison, and the log probabilities for each prediction.</p>
 </dd>
-<dt>Args:</dt><dd><p>data (Dict): A dictionary that must contain keys “predictions”, “references”, and “generation_probs”.</p>
+<dt>Returns:</dt><dd><p>Returns a tuple containing:
+- data: The original data dictionary, updated with raw metric scores for each prediction-reference pair.
+- result: A dictionary with the average scores of the metrics across all prediction-reference pairs.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -280,7 +241,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.reasoning.ReasoningMetric.equal">
 <span class="sig-name descname"><span class="pre">equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prediction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refenrence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.9</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#vieval.metrics.reasoning.ReasoningMetric.equal" title="Link to this definition"></a></dt>
-<dd><p>Evaluates whether the prediction is sufficiently close to the reference using a similarity threshold by employing the Levenshtein ratio (a measure of the similarity between two strings) and returns 1 if the ratio exceeds the threshold, indicating a match, otherwise 0.</p>
+<dd><p>Evaluates whether the prediction is sufficiently close to the refenrence using a similarity threshold. It employs the Levenshtein ratio (a measure of the similarity between two strings) and returns 1 if the ratio exceeds the threshold, indicating a match, otherwise 0.</p>
 <dl>
 <dt>Args:</dt><dd><p>prediction (str): The predicted answer.</p>
 <p>refenrence (str): The reference or ground truth answer.</p>
@@ -292,17 +253,8 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.reasoning.ReasoningMetric.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.reasoning.ReasoningMetric.evaluate" title="Link to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>Evaluates predictions against references contained within the dictionary.</dt><dd><ol class="arabic simple">
-<li><p>Retrieves raw predictions and references from the data dictionary.</p></li>
-<li><p>Processes them with _get_answer and _remove_boxed if the task is mathematical (based on args.filepath).</p></li>
-<li><p>Computes F1 scores and Exact Match (EM) scores for the processed predictions and references.</p></li>
-<li><p>If the task is mathematical, it further processes the predictions and references with _get_math_final_result.</p></li>
-<li><p>Computes an equality metric using the equal method for each prediction-reference pair.</p></li>
-<li><p>Stores the computed scores (f1_score, em, equals) in the data dictionary.</p></li>
-<li><p>Creates a result dictionary containing the mean values of the F1 score, EM score, and equality metric.</p></li>
-</ol>
-</dd>
+<dd><p>Evaluates predictions against references contained within the dictionary using various metrics.</p>
+<dl class="simple">
 <dt>Args:</dt><dd><p>data (Dict): A dictionary that must contain the keys “predictions” and “references”.</p>
 </dd>
 </dl>
@@ -318,27 +270,27 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="vieval.metrics.translation_metric.TranslationMetric.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#vieval.metrics.translation_metric.TranslationMetric.evaluate" title="Link to this definition"></a></dt>
-<dd><dl class="simple">
-<dt>Computes the translation quality metrics for a set of predictions and references provided in the dictionary.</dt><dd><ul class="simple">
-<li><p>Extracts the list of predictions from data[“predictions”].</p></li>
-<li><p>Extracts the list of reference translations from data[“references”].</p></li>
-<li><p>Processes each prediction through a _get_answer method using the args parameter, which adjusts or formats the predictions.</p></li>
-<li><p>Normalizes each reference translation by calling normalize_text, which standardizes the text formatting for fair comparison.</p></li>
-<li><p>Computes the BLEU score using the bleu_metrics object’s compute method, passing in the processed predictions and normalized references. It then retrieves the BLEU score from the resulting dictionary.</p></li>
-<li><p>Calculates the hLepor score by calling hlepor_score with the normalized references and processed predictions as its parameters.</p></li>
-<li><p>Constructs a result dictionary containing the BLEU score and hLepor score.</p></li>
-</ul>
-</dd>
-</dl>
-<p>Returns a tuple with the original data dictionary and the result dictionary containing the evaluation metrics.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><dl class="simple">
-<dt>data (Dict): A dictionary expected to contain two keys:</dt><dd><ul class="simple">
+<dd><p>Computes the translation quality metrics for a set of predictions and references provided in the dictionary.</p>
+<dl>
+<dt>Args:</dt><dd><p>data (Dict): A dictionary expected to contain two keys:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>predictions: A list of translated texts generated by the translation model.</p></li>
 <li><p>references: A list of reference translations for evaluating the quality of the model’s predictions.</p></li>
 </ul>
+</div></blockquote>
 </dd>
-</dl>
+<dt>Returns:</dt><dd><ol class="arabic">
+<li><p>The original data dictionary, which contains the raw predictions and references.</p></li>
+<li><p>A result dictionary with the following keys:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“bleu”: The computed BLEU score for the translations.</p></li>
+<li><p>“hLepor”: The computed hLepor score for the translations.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
 </dd>
 </dl>
 </dd></dl>
