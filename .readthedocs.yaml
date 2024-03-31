@@ -3,7 +3,7 @@ version: 2
 build:
   os: "ubuntu-20.04"
   tools:
-    python: "3.11"
+    python: "3.11.6"
     rust: "1.64" # Replace with the version of Rust you need
 
 sphinx:
