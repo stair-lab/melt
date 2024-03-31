@@ -6,10 +6,17 @@ from datasets import load_dataset
 
 
 class InformationRetrievalMetric(BaseMetric):
+    """Evaluate information retrieval systems.
+    """
     def __init__(self) -> None:
         pass
 
     def _get_qrel(self, references: List[Dict]) -> Qrels:
+        """Processes a list of reference dictionaries to create a Qrels object, which represents the relevance judgments (i.e., which documents are relevant to which queries).
+
+        Args:
+            references (List[Dict]): A list of dictionaries, each containing an "id" key representing the query ID and a "references" key containing a list of document IDs that are relevant to the query.
+        """
         relevant_dict = {}
         for reference in references:
             query_id = str(reference["id"])
@@ -25,6 +32,16 @@ class InformationRetrievalMetric(BaseMetric):
                                 score: float,
                                 is_positive_predict: bool,
                                 ) -> float:
+        """Converts a log probability score into a regular probability.
+
+        Args:
+            score (float): The log probability score.
+            
+            is_positive_predict (bool): A boolean indicating whether the prediction is positive.
+
+        Returns:
+            float: If the prediction is not positive, the probability is adjusted by subtracting it from 1.
+        """
         prob = np.exp(score)
         prob = 1 - prob if not is_positive_predict else prob
         return prob
@@ -33,6 +50,13 @@ class InformationRetrievalMetric(BaseMetric):
                  predictions: List[Dict],
                  k: int,
                  args) -> Run:
+        """Processes a list of prediction dictionaries to create a Run object, which represents the system's ranked list of documents for each query.
+
+        Args:
+            predictions (List[Dict]): A list of dictionaries, each containing a "query_id", "prediction", and "calib_probs". 
+            
+            k (int): An integer representing the number of top documents to consider for each query.
+        """
         run_dict = {}
         for prediction in predictions:
             query_id = str(prediction["query_id"])
@@ -55,6 +79,11 @@ class InformationRetrievalMetric(BaseMetric):
         return run
 
     def evaluate(self, data: Dict, args, **kwargs) -> (Dict, Dict):
+        """Evaluates the predictions using relevance judgments and computes various metrics.
+
+        Args:
+            data (Dict): A dictionary containing predictions to be evaluated.
+        """
         result = {}
         if "mmarco" in args.filepath:
             refenreces = load_dataset("json",

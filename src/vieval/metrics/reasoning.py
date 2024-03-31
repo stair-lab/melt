@@ -18,6 +18,8 @@ escape_dict = {
 
 
 class ReasoningMetric(BaseMetric):
+    """Evaluate reasoning capabilities, particularly in scenarios that may involve mathematical reasoning.
+    """
     def __init__(self):
         super().__init__()
 
@@ -25,15 +27,34 @@ class ReasoningMetric(BaseMetric):
               prediction: str,
               refenrence: str,
               threshold: int = 0.9) -> float:
+        """Evaluates whether the prediction is sufficiently close to the refenrence using a similarity threshold. It employs the Levenshtein ratio (a measure of the similarity between two strings) and returns 1 if the ratio exceeds the threshold, indicating a match, otherwise 0.
+
+        Args:
+            prediction (str): The predicted answer.
+            
+            refenrence (str): The reference or ground truth answer.
+            
+            threshold (int, optional): A similarity threshold for comparing the prediction and reference, defaulting to 0.9.
+        """
         if Levenshtein.ratio(refenrence, prediction) > threshold:
             return 1
         else:
             return 0
 
     def _has_numbers(self, word: str):
+        """Checks if a given word contains any digit characters.
+
+        Args:
+            word (str): The string to be checked for numeric digits.
+        """
         return any(char.isdigit() for char in word)
 
     def _get_math_final_result(self, text: str) -> str:
+        """Extract and return the numerical result from a mathematical expression represented as a string, text. If no numbers are found, it generates a random 4-letter string.
+
+        Args:
+            text (str): The string containing the mathematical expression.
+        """
         words = text.split(" ")[::-1]
 
         for word in words:
@@ -47,6 +68,11 @@ class ReasoningMetric(BaseMetric):
         return "".join(random.choice(string.ascii_uppercase) for _ in range(4))
 
     def _remove_boxed(self, text: str) -> str:
+        """Removes LaTeX boxed annotations from a given string.
+
+        Args:
+            text (str): The string from which LaTeX boxed annotations are to be removed.
+        """
         text = text.replace(r"\boxed{", "")
         text = text.replace("\boxed{", "")
         if text[-1] == "}":
@@ -54,6 +80,11 @@ class ReasoningMetric(BaseMetric):
         return text
 
     def evaluate(self, data: Dict, args) -> (Dict, Dict):
+        """Evaluates predictions against references contained within the dictionary using various metrics.
+
+        Args:
+            data (Dict): A dictionary that must contain the keys "predictions" and "references".
+        """
         result = {}
         raw_predictions = data["predictions"]
         predictions = [

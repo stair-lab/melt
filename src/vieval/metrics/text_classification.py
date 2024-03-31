@@ -12,11 +12,21 @@ from sklearn.metrics import (
 
 
 class TextClassificationMetric(BaseMetric):
+    """Evaluate text classification models.
+    """
     def __init__(self):
         super().__init__()
         self.roc_auc_score = evaluate.load("roc_auc", "multiclass")
 
     def evaluate(self, data: Dict, args, **kwargs) -> None:
+        """Evaluates the classification performance given the predictions, references, and additional arguments.
+
+        Args:
+            data (Dict): A dictionary expected to contain keys like predictions, references, and option_probs.
+
+        Returns:
+            Returns a tuple containing the original data dictionary and the result dictionary with all the computed metrics.
+        """
         result = {}
         raw_predictions = data["predictions"]
         args.class_names = [normalize_text(str(name))

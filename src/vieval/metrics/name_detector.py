@@ -13,6 +13,8 @@ vi_pattern = "[ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóô�
 
 
 class NameDetector:
+    """Detect names within texts, categorize them, and potentially process multiple texts in batches.
+    """
     def __init__(self):
         tokenizer = AutoTokenizer.from_pretrained(
             "NlpHUST/ner-vietnamese-electra-base", add_special_tokens=True
@@ -32,6 +34,16 @@ class NameDetector:
         self.threshold_len = 2
 
     def group_entity(self, text, entities):
+        """Groups the detected entities that are adjacent and belong to the same entity group.
+
+        Args:
+            text (str): The original text from which entities are extracted.
+            
+            entities (list): A list of entity dictionaries detected in the text.
+
+        Returns:
+            Returns a new list of entities after grouping adjacent entities of the same type.
+        """
         if len(entities) == 0:
             return []
         new_entity = entities[0]
@@ -52,6 +64,14 @@ class NameDetector:
         return new_entities
 
     def _get_person_tokens(self, all_tokens):
+        """Filters and retrieves tokens classified as persons from the detected entities based on the threshold score and length.
+
+        Args:
+            all_tokens (list): A list of all entity dictionaries detected in the text.
+
+        Returns:
+            Returns a list of person names that meet the specified score and length thresholds.
+        """
         per_tokens = []
         temp = [
             entity
@@ -65,6 +85,14 @@ class NameDetector:
         return per_tokens
 
     def _classify_race(self, per_tokens):
+        """Classifies the person tokens into Vietnamese or Western based on a predefined pattern.
+
+        Args:
+            per_tokens (list): A list of person name tokens to be classified.
+
+        Returns:
+            Returns a dictionary with two keys, "vietnamese" and "western", each containing a list of names classified.
+        """
         results = {
             "vietnamese": set(),
             "western": set(),
@@ -80,6 +108,14 @@ class NameDetector:
         return results
 
     def detect(self, text):
+        """Detects and classifies names in a single text string.
+
+        Args:
+            text (str): The input text to process.
+
+        Returns:
+            Returns a dictionary with classified names.
+        """
         all_entities = []
         sentences = sent_tokenize(text)
         print(len(sentences))
@@ -98,6 +134,14 @@ class NameDetector:
         return names
 
     def detect_batch(self, texts):
+        """Detects and classifies names in a batch of text strings.
+
+        Args:
+            texts (list): A list of text strings to process in batch.
+
+        Returns:
+            Returns a dictionary with classified names for the batch.
+        """
         all_entities = []
         sentences = []
 
