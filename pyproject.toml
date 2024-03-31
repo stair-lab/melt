@@ -54,6 +54,7 @@ dependencies = [
     "evaluate",
     "scikit-learn",
     "python-Levenshtein",
+    "maturin"
 ]
 
 [project.urls]
