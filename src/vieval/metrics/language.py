@@ -9,8 +9,8 @@ import Levenshtein
 
 
 class LanguageMetric(BaseMetric):
-    """Evaluate language generation tasks.
-    """
+    """Evaluate language generation tasks."""
+
     def __init__(self) -> None:
         self.cer_metrics = evaluate.load("cer")
         self.wer_metrics = evaluate.load("wer")
@@ -43,8 +43,7 @@ class LanguageMetric(BaseMetric):
         references = [normalize_text(ref) for ref in references]
 
         em_scores = [
-            exact_match(pred, ref)
-            for ref, pred in zip(references, predictions)
+            exact_match(pred, ref) for ref, pred in zip(references, predictions)
         ]
         cer_score = self.cer_metrics.compute(
             predictions=predictions, references=references
@@ -58,8 +57,7 @@ class LanguageMetric(BaseMetric):
             for pred, ref in zip(predictions, references)
         ]
         wed_scores = [
-            Levenshtein.distance(np.array(pred.split(" ")),
-                                 np.array(ref.split(" ")))
+            Levenshtein.distance(np.array(pred.split(" ")), np.array(ref.split(" ")))
             for pred, ref in zip(predictions, references)
         ]
 

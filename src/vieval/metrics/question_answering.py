@@ -6,8 +6,8 @@ from .utils import normalize_text
 
 
 class QAMetric(BaseMetric):
-    """Evaluate the performance of a question-answering (QA) system.
-    """
+    """Evaluate the performance of a question-answering (QA) system."""
+
     def __init__(self):
         super().__init__()
 
@@ -20,13 +20,11 @@ class QAMetric(BaseMetric):
         result = {}
         raw_predictions = data["predictions"]
         predictions = [
-            self._get_answer(raw_prediction, args)
-            for raw_prediction in raw_predictions
+            self._get_answer(raw_prediction, args) for raw_prediction in raw_predictions
         ]
         references = data["references"]
 
-        f1_scores = [f1_score(*batch)
-                     for batch in zip(references, predictions)]
+        f1_scores = [f1_score(*batch) for batch in zip(references, predictions)]
         em_scores = [
             exact_match(normalize_text(pred), normalize_text(ref))
             for ref, pred in zip(references, predictions)

@@ -64,8 +64,7 @@ class LLaMaPipeline:
         generations_probs = []
         num_generated_tokens = []
         for prompt in prompts:
-            inputs = self.tokenizer(
-                prompt, return_tensors="pt").to(self.model.device)
+            inputs = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
             try:
                 with torch.no_grad():
                     generate_dict = self.model.generate(
@@ -85,8 +84,7 @@ class LLaMaPipeline:
                 raise e
             num_generated_token = len(generate_dict.scores)
             num_generated_tokens.append(num_generated_token)
-            generated_tokens = generate_dict.sequences[:, -
-                                                       num_generated_token:]
+            generated_tokens = generate_dict.sequences[:, -num_generated_token:]
 
             generation = self.tokenizer.batch_decode(
                 generated_tokens, skip_special_tokens=True
@@ -138,7 +136,7 @@ class LLaMaPipeline:
 
             # Include probabilities of 'SPIECE_UNDERLINE </s>' tokens
             logits = outputs.logits[
-                :, prompt_num_tokens: prompt_num_tokens + completion_num_tokens
+                :, prompt_num_tokens : prompt_num_tokens + completion_num_tokens
             ]
             logprobs = logits.log_softmax(dim=-1)
             # >>> batch_size, sequence_length, vocab_size
@@ -229,7 +227,7 @@ class LLaMaTGIPipeline:
                     list(
                         map(
                             lambda x: x["logprob"],
-                            completion_w_prompt[len(prompt_tokens):],
+                            completion_w_prompt[len(prompt_tokens) :],
                         )
                     )
                 ]
@@ -251,7 +249,6 @@ class LLaMaTGIPipeline:
     def get_text_logprobs_tgi(self, res):
         return (
             [res["generated_text"]],
-            [torch.tensor(
-                list(map(lambda x: x["logprob"], res["details"]["tokens"])))],
+            [torch.tensor(list(map(lambda x: x["logprob"], res["details"]["tokens"])))],
             [res["details"]["generated_tokens"]],
         )

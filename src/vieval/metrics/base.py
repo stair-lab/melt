@@ -2,8 +2,8 @@ from .post_process import get_answer_auto_from_text
 
 
 class BaseMetric:
-    """An abstract class that provides a foundation for various metric classes to evaluate different aspects of text data.
-    """
+    """An abstract class that provides a foundation for various metric classes to evaluate different aspects of text data."""
+
     def __init__(self):
         return
 

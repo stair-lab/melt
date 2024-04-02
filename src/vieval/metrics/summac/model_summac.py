@@ -12,18 +12,46 @@ import json
 from . import utils_misc
 
 model_map = {
-    "snli-base": {"model_card": "boychaboy/SNLI_roberta-base", "entailment_idx": 0, "contradiction_idx": 2},
-    "snli-large": {"model_card": "boychaboy/SNLI_roberta-large", "entailment_idx": 0, "contradiction_idx": 2},
-    "mnli-base": {"model_card": "microsoft/deberta-base-mnli", "entailment_idx": 2, "contradiction_idx": 0},
-    "mnli": {"model_card": "roberta-large-mnli", "entailment_idx": 2, "contradiction_idx": 0},
+    "snli-base": {
+        "model_card": "boychaboy/SNLI_roberta-base",
+        "entailment_idx": 0,
+        "contradiction_idx": 2,
+    },
+    "snli-large": {
+        "model_card": "boychaboy/SNLI_roberta-large",
+        "entailment_idx": 0,
+        "contradiction_idx": 2,
+    },
+    "mnli-base": {
+        "model_card": "microsoft/deberta-base-mnli",
+        "entailment_idx": 2,
+        "contradiction_idx": 0,
+    },
+    "mnli": {
+        "model_card": "roberta-large-mnli",
+        "entailment_idx": 2,
+        "contradiction_idx": 0,
+    },
     "anli": {
         "model_card": "ynie/roberta-large-snli_mnli_fever_anli_R1_R2_R3-nli",
         "entailment_idx": 0,
         "contradiction_idx": 2,
     },
-    "vitc-base": {"model_card": "tals/albert-base-vitaminc-mnli", "entailment_idx": 0, "contradiction_idx": 1},
-    "vitc": {"model_card": "tals/albert-xlarge-vitaminc-mnli", "entailment_idx": 0, "contradiction_idx": 1},
-    "vitc-only": {"model_card": "tals/albert-xlarge-vitaminc", "entailment_idx": 0, "contradiction_idx": 1},
+    "vitc-base": {
+        "model_card": "tals/albert-base-vitaminc-mnli",
+        "entailment_idx": 0,
+        "contradiction_idx": 1,
+    },
+    "vitc": {
+        "model_card": "tals/albert-xlarge-vitaminc-mnli",
+        "entailment_idx": 0,
+        "contradiction_idx": 1,
+    },
+    "vitc-only": {
+        "model_card": "tals/albert-xlarge-vitaminc",
+        "entailment_idx": 0,
+        "contradiction_idx": 1,
+    },
     # "decomp": 0,
 }
 
@@ -47,23 +75,35 @@ def get_neutral_idx(ent_idx, con_idx):
 
 class SummaCImager:
     def __init__(
-        self, model_name="mnli", granularity="paragraph", use_cache=True, max_doc_sents=100, device="cuda", **kwargs
+        self,
+        model_name="mnli",
+        granularity="paragraph",
+        use_cache=True,
+        max_doc_sents=100,
+        device="cuda",
+        **kwargs,
     ):
-
         self.grans = granularity.split("-")
 
         assert (
-            all(gran in ["paragraph", "sentence", "document", "2sents", "mixed"] for gran in self.grans)
+            all(
+                gran in ["paragraph", "sentence", "document", "2sents", "mixed"]
+                for gran in self.grans
+            )
             and len(self.grans) <= 2
         ), "Unrecognized `granularity` %s" % (granularity)
-        assert model_name in model_map.keys(), "Unrecognized model name: `%s`" % (model_name)
+        assert model_name in model_map.keys(), "Unrecognized model name: `%s`" % (
+            model_name
+        )
 
         self.model_name = model_name
         if model_name != "decomp":
             self.model_card = name_to_card(model_name)
             self.entailment_idx = model_map[model_name]["entailment_idx"]
             self.contradiction_idx = model_map[model_name]["contradiction_idx"]
-            self.neutral_idx = get_neutral_idx(self.entailment_idx, self.contradiction_idx)
+            self.neutral_idx = get_neutral_idx(
+                self.entailment_idx, self.contradiction_idx
+            )
 
         self.granularity = granularity
         self.use_cache = use_cache
@@ -86,7 +126,9 @@ class SummaCImager:
 
         else:
             self.tokenizer = AutoTokenizer.from_pretrained(self.model_card)
-            self.model = AutoModelForSequenceClassification.from_pretrained(self.model_card).eval()
+            self.model = AutoModelForSequenceClassification.from_pretrained(
+                self.model_card
+            ).eval()
             self.model.to(self.device).half()
 
     def split_sentences(self, text):
@@ -131,7 +173,9 @@ class SummaCImager:
         else:
             gran_doc, gran_sum = self.grans[0], self.grans[1]
 
-        original_chunks = self.split_text(original, granularity=gran_doc)[: self.max_doc_sents]
+        original_chunks = self.split_text(original, granularity=gran_doc)[
+            : self.max_doc_sents
+        ]
         generated_chunks = self.split_text(generated, granularity=gran_sum)
 
         N_ori = len(original_chunks)
@@ -147,15 +191,22 @@ class SummaCImager:
             self.load_nli()
 
         dataset = [
-            {"premise": original_chunks[i], "hypothesis": generated_chunks[j], "doc_i": i, "gen_i": j}
+            {
+                "premise": original_chunks[i],
+                "hypothesis": generated_chunks[j],
+                "doc_i": i,
+                "gen_i": j,
+            }
             for i in range(N_ori)
             for j in range(N_gen)
         ]
         for batch in utils_misc.batcher(dataset, batch_size=512):
-
             if self.model_name == "decomp":
                 batch_evids, batch_conts, batch_neuts = [], [], []
-                batch_json = [{"premise": d["premise"], "hypothesis": d["hypothesis"]} for d in batch]
+                batch_json = [
+                    {"premise": d["premise"], "hypothesis": d["hypothesis"]}
+                    for d in batch
+                ]
                 model_outs = self.model.predict_batch_json(batch_json)
                 for out in model_outs:
                     probs = out["label_probs"]
@@ -178,12 +229,16 @@ class SummaCImager:
                 with torch.no_grad():
                     model_outputs = self.model(**batch_tokens)
 
-                batch_probs = torch.nn.functional.softmax(model_outputs["logits"], dim=-1)
+                batch_probs = torch.nn.functional.softmax(
+                    model_outputs["logits"], dim=-1
+                )
                 batch_evids = batch_probs[:, self.entailment_idx].tolist()
                 batch_conts = batch_probs[:, self.contradiction_idx].tolist()
                 batch_neuts = batch_probs[:, self.neutral_idx].tolist()
 
-            for b, evid, cont, neut in zip(batch, batch_evids, batch_conts, batch_neuts):
+            for b, evid, cont, neut in zip(
+                batch, batch_evids, batch_conts, batch_neuts
+            ):
                 image[0, b["doc_i"], b["gen_i"]] = evid
                 image[1, b["doc_i"], b["gen_i"]] = cont
                 image[2, b["doc_i"], b["gen_i"]] = neut
@@ -193,7 +248,9 @@ class SummaCImager:
         return image
 
     def get_cache_file(self):
-        return os.path.join(self.cache_folder, "cache_%s_%s.json" % (self.model_name, self.granularity))
+        return os.path.join(
+            self.cache_folder, "cache_%s_%s.json" % (self.model_name, self.granularity)
+        )
 
     def save_cache(self):
         cache_cp = {"[///]".join(k): v.tolist() for k, v in self.cache.items()}
@@ -205,7 +262,9 @@ class SummaCImager:
         if os.path.isfile(cache_file):
             with open(cache_file, "r") as f:
                 cache_cp = json.load(f)
-                self.cache = {tuple(k.split("[///]")): np.array(v) for k, v in cache_cp.items()}
+                self.cache = {
+                    tuple(k.split("[///]")): np.array(v) for k, v in cache_cp.items()
+                }
 
 
 class SummaCConv(torch.nn.Module):
@@ -220,12 +279,18 @@ class SummaCConv(torch.nn.Module):
         imager_load_cache=True,
         agg="mean",
         norm_histo=False,
-        **kwargs
+        **kwargs,
     ):
         # `bins` should be `even%d` or `percentiles`
-        assert nli_labels in ["e", "c", "n", "ec", "en", "cn", "ecn"], "Unrecognized nli_labels argument %s" % (
-            nli_labels
-        )
+        assert nli_labels in [
+            "e",
+            "c",
+            "n",
+            "ec",
+            "en",
+            "cn",
+            "ecn",
+        ], "Unrecognized nli_labels argument %s" % (nli_labels)
 
         super(SummaCConv, self).__init__()
         self.device = device
@@ -233,7 +298,9 @@ class SummaCConv(torch.nn.Module):
 
         self.imagers = []
         for model_name in models:
-            self.imagers.append(SummaCImager(model_name=model_name, granularity=granularity, **kwargs))
+            self.imagers.append(
+                SummaCImager(model_name=model_name, granularity=granularity, **kwargs)
+            )
         if imager_load_cache:
             for imager in self.imagers:
                 imager.load_cache()
@@ -278,7 +345,9 @@ class SummaCConv(torch.nn.Module):
         self.n_depth = len(self.imagers) * len(self.nli_labels)
         self.full_size = self.n_depth * self.n_bins
         if self.norm_histo:
-            self.full_size += 2  # Will explicitely give the count of originals and generateds
+            self.full_size += (
+                2  # Will explicitely give the count of originals and generateds
+            )
 
         self.agg = agg
 
@@ -312,7 +381,10 @@ class SummaCConv(torch.nn.Module):
                     or (i_depth % 3 == 2 and "n" in self.nli_labels)
                 ):
                     histo, X = np.histogram(
-                        image[i_depth, :, i_gen], range=(0, 1), bins=self.bins, density=self.norm_histo
+                        image[i_depth, :, i_gen],
+                        range=(0, 1),
+                        bins=self.bins,
+                        density=self.norm_histo,
                     )
                     histos.append(histo)
 
@@ -337,7 +409,9 @@ class SummaCConv(torch.nn.Module):
         else:
             images, histograms = [], []
             for original, generated in zip(originals, generateds):
-                image, histogram = self.compute_histogram(original=original, generated=generated)
+                image, histogram = self.compute_histogram(
+                    original=original, generated=generated
+                )
                 images.append(image)
                 histograms.append(histogram)
 
@@ -356,29 +430,47 @@ class SummaCConv(torch.nn.Module):
                 if self.agg == "mean":
                     features.append(
                         torch.cat(
-                            [torch.mean(Rs).unsqueeze(0), torch.mean(Rs).unsqueeze(0), torch.mean(Rs).unsqueeze(0)]
+                            [
+                                torch.mean(Rs).unsqueeze(0),
+                                torch.mean(Rs).unsqueeze(0),
+                                torch.mean(Rs).unsqueeze(0),
+                            ]
                         ).unsqueeze(0)
                     )
                 elif self.agg == "min":
                     features.append(
                         torch.cat(
-                            [torch.min(Rs).unsqueeze(0), torch.min(Rs).unsqueeze(0), torch.min(Rs).unsqueeze(0)]
+                            [
+                                torch.min(Rs).unsqueeze(0),
+                                torch.min(Rs).unsqueeze(0),
+                                torch.min(Rs).unsqueeze(0),
+                            ]
                         ).unsqueeze(0)
                     )
                 elif self.agg == "max":
                     features.append(
                         torch.cat(
-                            [torch.max(Rs).unsqueeze(0), torch.max(Rs).unsqueeze(0), torch.max(Rs).unsqueeze(0)]
+                            [
+                                torch.max(Rs).unsqueeze(0),
+                                torch.max(Rs).unsqueeze(0),
+                                torch.max(Rs).unsqueeze(0),
+                            ]
                         ).unsqueeze(0)
                     )
                 elif self.agg == "all":
                     features.append(
                         torch.cat(
-                            [torch.min(Rs).unsqueeze(0), torch.mean(Rs).unsqueeze(0), torch.max(Rs).unsqueeze(0)]
+                            [
+                                torch.min(Rs).unsqueeze(0),
+                                torch.mean(Rs).unsqueeze(0),
+                                torch.max(Rs).unsqueeze(0),
+                            ]
                         ).unsqueeze(0)
                     )
             else:
-                features.append(torch.FloatTensor([0.0, 0.0, 0.0]).unsqueeze(0))  # .cuda()
+                features.append(
+                    torch.FloatTensor([0.0, 0.0, 0.0]).unsqueeze(0)
+                )  # .cuda()
         features = torch.cat(features)
         logits = self.layer_final(features)
         histograms_out = [histogram.cpu().numpy() for histogram in histograms]
@@ -407,12 +499,14 @@ class SummaCZS:
         use_con=True,
         imager_load_cache=True,
         device="cuda",
-        **kwargs
+        **kwargs,
     ):
         assert op2 in ["min", "mean", "max"], "Unrecognized `op2`"
         assert op1 in ["max", "mean", "min"], "Unrecognized `op1`"
 
-        self.imager = SummaCImager(model_name=model_name, granularity=granularity, device=device, **kwargs)
+        self.imager = SummaCImager(
+            model_name=model_name, granularity=granularity, device=device, **kwargs
+        )
         if imager_load_cache:
             self.imager.load_cache()
         self.op2 = op2

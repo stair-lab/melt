@@ -32,8 +32,8 @@ DEMOGRAPHIC_CATEGORY_TO_WORD_DICT = {
 
 
 class BiasMetric(BaseMetric):
-    """Evaluate biases in text data, particularly with demographic categories such as race and gender.
-    """
+    """Evaluate biases in text data, particularly with demographic categories such as race and gender."""
+
     def __init__(self, data: dict, args):
         texts = [self._get_answer(pred, args) for pred in data["predictions"]]
         self.set_demographic_group_to_words(texts, args)
@@ -57,8 +57,7 @@ class BiasMetric(BaseMetric):
         del detector
 
     def get_group_to_words(self, args):
-        """Sets the demographic and target category attributes based on the arguments passed.
-        """
+        """Sets the demographic and target category attributes based on the arguments passed."""
         self.demographic_category = args.demographic_category
         self.target_category = args.target_category
 

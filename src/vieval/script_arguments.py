@@ -176,16 +176,21 @@ class ScriptArguments:
         default=False,
         metadata={"help": "Wheather to continue previous inference process"},
     )
-    mode: str = field(default="generation", metadata={"help": "Select mode to run (generation, evaluation, end2end"})
+    mode: str = field(
+        default="generation",
+        metadata={"help": "Select mode to run (generation, evaluation, end2end"},
+    )
     output_eval_dir: str = field(
         default="./out_new",
         metadata={
-            "help":"The output folder to save bias score",
+            "help": "The output folder to save bias score",
         },
     )
     device: str = field(default="cuda:0", metadata={"help": "CUDA device"})
     n_bootstrap: int = field(default=100, metadata={"help": "n bootstrap"})
     p_bootstrap: int = field(default=100, metadata={"help": "p bootstrap"})
     bs: int = field(default=128, metadata={"help": "Bias metric"})
-    template_file: str = field(default="evaluation_results_template.xlsx", metadata={"help": ""})
+    template_file: str = field(
+        default="evaluation_results_template.xlsx", metadata={"help": ""}
+    )
     out_file: str = field(default="evaluation_results_std.xlsx", metadata={"help": ""})

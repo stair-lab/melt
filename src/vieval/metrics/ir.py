@@ -6,8 +6,8 @@ from datasets import load_dataset
 
 
 class InformationRetrievalMetric(BaseMetric):
-    """Evaluate information retrieval systems.
-    """
+    """Evaluate information retrieval systems."""
+
     def __init__(self) -> None:
         pass
 
@@ -28,15 +28,16 @@ class InformationRetrievalMetric(BaseMetric):
         qrels = Qrels(relevant_dict)
         return qrels
 
-    def _get_prob_from_log_prob(self,
-                                score: float,
-                                is_positive_predict: bool,
-                                ) -> float:
+    def _get_prob_from_log_prob(
+        self,
+        score: float,
+        is_positive_predict: bool,
+    ) -> float:
         """Converts a log probability score into a regular probability.
 
         Args:
             score (float): The log probability score.
-            
+
             is_positive_predict (bool): A boolean indicating whether the prediction is positive.
 
         Returns:
@@ -46,15 +47,12 @@ class InformationRetrievalMetric(BaseMetric):
         prob = 1 - prob if not is_positive_predict else prob
         return prob
 
-    def _get_run(self,
-                 predictions: List[Dict],
-                 k: int,
-                 args) -> Run:
+    def _get_run(self, predictions: List[Dict], k: int, args) -> Run:
         """Processes a list of prediction dictionaries to create a Run object, which represents the system's ranked list of documents for each query.
 
         Args:
-            predictions (List[Dict]): A list of dictionaries, each containing a "query_id", "prediction", and "calib_probs". 
-            
+            predictions (List[Dict]): A list of dictionaries, each containing a "query_id", "prediction", and "calib_probs".
+
             k (int): An integer representing the number of top documents to consider for each query.
         """
         run_dict = {}
@@ -86,9 +84,7 @@ class InformationRetrievalMetric(BaseMetric):
         """
         result = {}
         if "mmarco" in args.filepath:
-            refenreces = load_dataset("json",
-                                      data_files="./mmarco.json",
-                                      split="train")
+            refenreces = load_dataset("json", data_files="./mmarco.json", split="train")
         else:
             refenreces = load_dataset(
                 "json", data_files="./mrobust.json", split="train"

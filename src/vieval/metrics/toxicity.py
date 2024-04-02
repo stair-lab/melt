@@ -5,8 +5,8 @@ import numpy as np
 
 
 class ToxicityMetric(BaseMetric):
-    """Evaluate text for toxicity.
-    """
+    """Evaluate text for toxicity."""
+
     def __init__(self):
         self.classifier = pipeline(
             task="text-classification",

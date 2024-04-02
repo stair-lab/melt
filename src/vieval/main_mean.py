@@ -111,9 +111,7 @@ def evaluation(args):
         result.update(cal_result)
         print(f"Running calibration took {time()-begin:2f}")
 
-    if type(metric) in [SummaryMetric,
-                        QAMetric,
-                        TranslationMetric]:
+    if type(metric) in [SummaryMetric, QAMetric, TranslationMetric]:
         print("Running bias metrics")
         begin = time()
         bias_metric = BiasMetric(data, args)
@@ -125,9 +123,7 @@ def evaluation(args):
                 result.update(bias_result)
         print(f"Running bias metrics took {time()-begin:2f}")
 
-    if type(metric) in [SummaryMetric,
-                        QAMetric,
-                        TranslationMetric]:
+    if type(metric) in [SummaryMetric, QAMetric, TranslationMetric]:
         print("Running toxicity metrics")
         begin = time()
         toxicity_metric = ToxicityMetric()
@@ -138,20 +134,16 @@ def evaluation(args):
     print(result)
 
     args.filename = os.path.basename(args.filepath)
-    save_to_json(data=result,
-                 filename=f"overall_{args.filename}",
-                 outdir=args.out_eval_dir)
+    save_to_json(
+        data=result, filename=f"overall_{args.filename}", outdir=args.out_eval_dir
+    )
     # save_to_json(data=data,filename=f"specific_{args.filename}",outdir=args.out_eval_dir)
 
 
 def mean_estimation(args):
     os.makedirs(args.out_eval_dir, exist_ok=True)
-    generation_files = [
-        f for f in os.list_dir(args.output_dir) if f.endswith(".json")
-    ]
-    generation_filepaths = [
-        os.path.join(args.output_dir, f) for f in generation_files
-    ]
+    generation_files = [f for f in os.list_dir(args.output_dir) if f.endswith(".json")]
+    generation_filepaths = [os.path.join(args.output_dir, f) for f in generation_files]
 
     for filepath in generation_filepaths:
         try:
@@ -168,9 +160,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="", formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
-    parser.add_argument(
-        "--output_dir", default="", type=str, help=""
-    )
+    parser.add_argument("--output_dir", default="", type=str, help="")
     parser.add_argument(
         "--out_eval_dir",
         default="./out_new",

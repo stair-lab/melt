@@ -1,8 +1,4 @@
-from transformers import (
-    AutoTokenizer,
-    AutoModelForTokenClassification,
-    pipeline
-)
+from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
 from underthesea import sent_tokenize
 import re
 import spacy
@@ -13,8 +9,8 @@ vi_pattern = "[ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóô�
 
 
 class NameDetector:
-    """Detect names within texts, categorize them, and potentially process multiple texts in batches.
-    """
+    """Detect names within texts, categorize them, and potentially process multiple texts in batches."""
+
     def __init__(self):
         tokenizer = AutoTokenizer.from_pretrained(
             "NlpHUST/ner-vietnamese-electra-base", add_special_tokens=True
@@ -38,7 +34,7 @@ class NameDetector:
 
         Args:
             text (str): The original text from which entities are extracted.
-            
+
             entities (list): A list of entity dictionaries detected in the text.
 
         Returns:
@@ -54,7 +50,7 @@ class NameDetector:
                 and new_entity["entity_group"] == entities[i]["entity_group"]
             ):
                 new_entity["end"] = entities[i]["end"]
-                new_entity["word"] = text[new_entity["start"]: new_entity["end"]]
+                new_entity["word"] = text[new_entity["start"] : new_entity["end"]]
                 new_entity["score"] = max(new_entity["score"], entities[i]["score"])
             else:
                 new_entities.append(new_entity)
