@@ -26,8 +26,7 @@ def generation(script_args):
     json_file = os.path.join(
         script_args.output_dir, f"generations_{ds_exact_name}.json"
     )
-    metric_file = os.path.join(
-        script_args.output_dir, f"metrics_{ds_exact_name}.json")
+    metric_file = os.path.join(script_args.output_dir, f"metrics_{ds_exact_name}.json")
 
     if script_args.continue_infer:
         if os.path.exists(json_file):

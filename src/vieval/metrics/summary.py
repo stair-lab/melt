@@ -40,9 +40,7 @@ class SummaryMetric(BaseMetric):
 
         print("BERT score")
         p, r, f = self.bert_scorer.score(
-            predictions,
-            [[ref] for ref in references],
-            batch_size=args.bs
+            predictions, [[ref] for ref in references], batch_size=args.bs
         )
         result.update(
             {

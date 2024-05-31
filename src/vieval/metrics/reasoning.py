@@ -21,10 +21,7 @@ class ReasoningMetric(BaseMetric):
     def __init__(self):
         super().__init__()
 
-    def equal(self,
-              prediction: str,
-              refenrence: str,
-              threshold: int = 0.9) -> float:
+    def equal(self, prediction: str, refenrence: str, threshold: int = 0.9) -> float:
         if Levenshtein.ratio(refenrence, prediction) > threshold:
             return 1
         else:
@@ -57,34 +54,29 @@ class ReasoningMetric(BaseMetric):
         result = {}
         raw_predictions = data["predictions"]
         predictions = [
-            self._get_answer(raw_prediction, args)
-            for raw_prediction in raw_predictions
+            self._get_answer(raw_prediction, args) for raw_prediction in raw_predictions
         ]
         references = data["references"]
         references = [
-            self._get_answer("{" + f"'{args.key_answer}'" + ":" + f"'{reference}'" + "}", args)
+            self._get_answer(
+                "{" + f"'{args.key_answer}'" + ":" + f"'{reference}'" + "}", args
+            )
             for reference in references
         ]
         if "math" in args.filepath:
-            references = [self._remove_boxed(reference)
-                          for reference in references]
-            predictions = [self._remove_boxed(pred)
-                           for pred in predictions]
+            references = [self._remove_boxed(reference) for reference in references]
+            predictions = [self._remove_boxed(pred) for pred in predictions]
 
-        f1_scores = [f1_score(*batch)
-                     for batch in zip(references, predictions)]
-        ems = [exact_match(*batch)
-               for batch in zip(references, predictions)]
+        f1_scores = [f1_score(*batch) for batch in zip(references, predictions)]
+        ems = [exact_match(*batch) for batch in zip(references, predictions)]
         data["f1_score"] = f1_scores
         data["em"] = ems
         if "math" in args.filepath:
             predictions = [
-                self._get_math_final_result(prediction)
-                for prediction in predictions
+                self._get_math_final_result(prediction) for prediction in predictions
             ]
             references = [
-                self._get_math_final_result(reference)
-                for reference in references
+                self._get_math_final_result(reference) for reference in references
             ]
         equals = [
             self.equal(prediction, refenrence)

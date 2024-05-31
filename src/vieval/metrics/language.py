@@ -26,8 +26,7 @@ class LanguageMetric(BaseMetric):
         references = [normalize_text(ref) for ref in references]
 
         em_scores = [
-            exact_match(pred, ref)
-            for ref, pred in zip(references, predictions)
+            exact_match(pred, ref) for ref, pred in zip(references, predictions)
         ]
         cer_score = self.cer_metrics.compute(
             predictions=predictions, references=references
@@ -41,8 +40,7 @@ class LanguageMetric(BaseMetric):
             for pred, ref in zip(predictions, references)
         ]
         wed_scores = [
-            Levenshtein.distance(np.array(pred.split(" ")),
-                                 np.array(ref.split(" ")))
+            Levenshtein.distance(np.array(pred.split(" ")), np.array(ref.split(" ")))
             for pred, ref in zip(predictions, references)
         ]
 

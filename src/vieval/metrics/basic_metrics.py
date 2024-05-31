@@ -1,5 +1,6 @@
 from .utils import f_measure, normalize_text
 
+
 def exact_match(gold: str, pred: str) -> float:
     if not pred:
         return 0

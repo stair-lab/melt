@@ -275,7 +275,9 @@ models = {
 def to_sheet(args):
     out_dirs = args.out_eval_dir
     list_outs = [
-        f for f in os.listdir(out_dirs) if f.startswith("overall") and f.endswith("json")
+        f
+        for f in os.listdir(out_dirs)
+        if f.startswith("overall") and f.endswith("json")
     ]
     data = pd.read_excel(args.template_file, sheet_name=None, header=None)
 
@@ -313,8 +315,7 @@ def to_sheet(args):
                         )
                     ):
                         sheet_name = (
-                            f"{task_id}-{setting_id_i}"
-                            if setting_id_i else task_id
+                            f"{task_id}-{setting_id_i}" if setting_id_i else task_id
                         )
                         sheet_data = data[sheet_name]
                         break
@@ -335,7 +336,7 @@ def to_sheet(args):
         for i in range(len(row_ids) - 1):
             dataset_id_i = sheet_data.iloc[row_ids[i]][0].split("/")[-1]
             if dataset_id == dataset_id_i:
-                dataset_data = sheet_data.iloc[row_ids[i] + 1: row_ids[i + 1]]
+                dataset_data = sheet_data.iloc[row_ids[i] + 1 : row_ids[i + 1]]
                 atributes = list(sheet_data.iloc[row_ids[i]][1:])
                 sub_id = row_ids[i] + 1
                 break
@@ -370,17 +371,23 @@ def to_sheet(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="")
-    parser.add_argument("--out_eval_dir",
-                        default="./out",
-                        type=str,
-                        help="The predictions json file path")
-    parser.add_argument("--template_file",
-                        default="evaluation_results_template.xlsx",
-                        type=str,
-                        help="The predictions json file path")
-    parser.add_argument("--out_file",
-                        default="evaluation_results_std.xlsx",
-                        type=str,
-                        help="The output folder to save bias score")
+    parser.add_argument(
+        "--out_eval_dir",
+        default="./out",
+        type=str,
+        help="The predictions json file path",
+    )
+    parser.add_argument(
+        "--template_file",
+        default="evaluation_results_template.xlsx",
+        type=str,
+        help="The predictions json file path",
+    )
+    parser.add_argument(
+        "--out_file",
+        default="evaluation_results_std.xlsx",
+        type=str,
+        help="The output folder to save bias score",
+    )
     args = parser.parse_args()
     main(args)

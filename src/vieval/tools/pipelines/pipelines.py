@@ -4,7 +4,7 @@ import torch
 from tqdm import tqdm
 from ..config import GenerationConfig
 from ..utils.model import get_model
-from ..wrapper import GPTPipeline, LLaMaPipeline, LLaMaTGIPipeline
+from ..wrapper import AzureGPTWrapper, TGIWrapper, GeminiWrapper, HFWrapper
 from ..utils.utils import *
 
 
@@ -15,15 +15,13 @@ class EvalPipeline:
 
         # Load pipelines
         # print(config.tgi)
-        if config.tgi != "":
-            self.infer_pipeline = LLaMaTGIPipeline(
+        if config.wtype == "tgi":
+            self.infer_pipeline = TGIWrapper(
                 api_endpoint=config.tgi,
                 generation_config=GenerationConfig[extract_task],
+                template=config.ptemplate,
             )
-        elif (
-            "gpt-3.5-turbo" not in config.model_name
-            and "gpt-4" not in config.model_name
-        ):
+        elif config.wtype == "hf":
             # Load model
             self.model, self.tokenizer = get_model(config=config)
             self.model.eval()
@@ -32,12 +30,20 @@ class EvalPipeline:
                 model=self.model,
                 tokenizer=self.tokenizer,
                 generation_config=GenerationConfig[extract_task],
+                template=config.ptemplate,
             )
 
-        else:
-            self.infer_pipeline = GPTPipeline(
+        elif config.wtype == "azuregpt":
+            self.infer_pipeline = AzureGPTWrapper(
+                engine="testing" if config.model_name == "gpt-3.5-turbo" else "gpt-4",
+                generation_config=GenerationConfig[extract_task],
+            )
+        elif config.wtype == "gemini":
+            self.infer_pipeline = GeminiWrapper(
                 generation_config=GenerationConfig[extract_task]
             )
+        else:
+            raise ValueError("Invalid wrapper type")
 
         self.prompting_strategy = 0
         self.few_shot = False
@@ -106,10 +112,16 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(
-                    context=c,
-                    question=q,
-                )
+                [
+                    {"role": "system", "content": ds_wrapper.prompt["system_prompt"]},
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.prompt["prompt"].format(
+                            c,
+                            q,
+                        ),
+                    },
+                ]
                 for c, q in zip(batch[ds_wrapper.context], batch[ds_wrapper.question])
             ]
 
@@ -143,7 +155,8 @@ class EvalPipeline:
         generation_probs = []
         calib_probs = []
         idx = 0
-        original_few_shot = ""
+        original_few_shot = []
+        calibration_few_shot = []
         selected_sample = []
         if self.continue_infer_data is not None:
             predictions.extend(self.continue_infer_data["predictions"])
@@ -152,28 +165,26 @@ class EvalPipeline:
             calib_probs.extend(self.continue_infer_data["calibration_probs"])
         if self.few_shot:
 
-            def format_original_fewshot0(rec):
-                return f"""Câu hỏi: {rec[ds_wrapper.question]}\nCâu trả lời:[/INST] {{ "answer": "{rec[ds_wrapper.answer]}", "confident_level": 1 }} </s><s>[INST]\n"""
-
-            def format_original_fewshot1(rec):
-                return f"""Câu hỏi: {rec[ds_wrapper.question]}\nCâu trả lời: {{ "answer": "{rec[ds_wrapper.answer]}", "confident_level": 1 }}\n"""
+            def preprocessing_a_record(rec):
+                return [rec[ds_wrapper.question], rec[ds_wrapper.answer]]
 
             selected_sample_idx = list(
                 random.sample(range(len(ds_wrapper.dataset_training)), 5)
             )
             selected_sample = [
-                ds_wrapper.dataset_training[s] for s in selected_sample_idx
+                preprocessing_a_record(ds_wrapper.dataset_training[s])
+                for s in selected_sample_idx
             ]
 
-            original_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
-                        selected_sample,
-                    )
-                )
+            original_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.prompt["prompt"],
+                answer_format='{{ "answer": "{}", "confident_level": 1 }}',
+            )
+            calib_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.calibration_prompt["prompt"],
+                answer_format="{}",
             )
 
         for batch in tqdm(ds_loader):
@@ -182,16 +193,39 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(
-                    few_shot=original_few_shot,
-                    question=q,
-                )
+                [
+                    {"role": "system", "content": ds_wrapper.prompt["system_prompt"]},
+                    *original_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.prompt["prompt"].format(
+                            q,
+                        ),
+                    },
+                ]
+                for q in batch[ds_wrapper.question]
+            ]
+
+            calib_prompts = [
+                [
+                    {
+                        "role": "system",
+                        "content": ds_wrapper.calibration_prompt["system_prompt"],
+                    },
+                    *calib_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.calibration_prompt["prompt"].format(
+                            q,
+                        ),
+                    },
+                ]
                 for q in batch[ds_wrapper.question]
             ]
 
             results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             calibprob_batch, _ = self.infer_pipeline.compute_logprob_and_length(
-                prompts, batch[ds_wrapper.answer]
+                calib_prompts, batch[ds_wrapper.answer]
             )
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.answer]])
@@ -237,7 +271,15 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(document=document)
+                [
+                    {"role": "system", "content": ds_wrapper.prompt["system_prompt"]},
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.prompt["prompt"].format(
+                            document,
+                        ),
+                    },
+                ]
                 for document in batch[ds_wrapper.original_text]
             ]
             original_documents.extend([x for x in batch[ds_wrapper.original_text]])
@@ -274,8 +316,8 @@ class EvalPipeline:
         generation_probs = []
         option_probs = []
         idx = 0
-        original_few_shot = ""
-        calib_few_shot = ""
+        original_few_shot = []
+        calib_few_shot = []
         selected_sample = []
         mapping = ["Tiêu cực", "Trung lập", "Tích cực"]
         if self.continue_infer_data is not None:
@@ -285,14 +327,8 @@ class EvalPipeline:
             option_probs.extend(self.continue_infer_data["option_probs"])
         if self.few_shot:
 
-            def format_original_fewshot0(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "sentiment": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
-
-            def format_original_fewshot1(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {{ "sentiment": {rec[ds_wrapper.label]}, "confident_level": 1}}\n"""
-
-            def format_calib_fewshot(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {rec[ds_wrapper.label]} </s><s>[INST]\n"""
+            def preprocessing_a_record(rec):
+                return [rec[ds_wrapper.text], rec[ds_wrapper.label]]
 
             classes = unique(ds_wrapper.dataset_training[ds_wrapper.label])
             selected_sample = []
@@ -300,27 +336,21 @@ class EvalPipeline:
                 cl_samples = ds_wrapper.dataset_training.filter(
                     lambda r: r[ds_wrapper.label] == cl
                 )
-                selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
+                selected_sample.append(
+                    preprocessing_a_record(
+                        cl_samples[random.randint(0, len(cl_samples))]
+                    )
+                )
 
-            original_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
-                        selected_sample,
-                    )
-                )
+            original_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.prompt["prompt"],
+                answer_format='{{ "sentiment": {}, "confident_level": 1}}',
             )
-            calib_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_calib_fewshot,
-                        selected_sample,
-                    )
-                )
+            calib_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.calibration_prompt["prompt"],
+                answer_format="{}",
             )
 
         for batch in tqdm(ds_loader):
@@ -329,11 +359,32 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(context=c, few_shot=original_few_shot)
+                [
+                    {"role": "system", "content": ds_wrapper.prompt["system_prompt"]},
+                    *original_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.prompt["prompt"].format(
+                            c,
+                        ),
+                    },
+                ]
                 for c in batch[ds_wrapper.text]
             ]
             calib_prompts = [
-                ds_wrapper.calibration_prompt.format(context=c, few_shot=calib_few_shot)
+                [
+                    {
+                        "role": "system",
+                        "content": ds_wrapper.calibration_prompt["system_prompt"],
+                    },
+                    *calib_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.calibration_prompt["prompt"].format(
+                            c,
+                        ),
+                    },
+                ]
                 for c in batch[ds_wrapper.text]
             ]
             results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
@@ -395,46 +446,21 @@ class EvalPipeline:
             generation_probs.extend(self.continue_infer_data["generation_probs"])
             option_probs.extend(self.continue_infer_data["option_probs"])
         idx = 0
-        original_few_shot = ""
-        calib_few_shot = ""
+        original_few_shot = []
+        calib_few_shot = []
         selected_sample = []
         if sub_task == "vsmec":
-            mapping = [
-                "Sadness",
-                "Surprise",
-                "Disgust",
-                "Fear",
-                "Anger",
-                "Other",
-                "Enjoyment",
-            ]
             num_choice = 7
 
         elif sub_task == "atis":
-            mapping = [
-                "flight",
-                "airfare",
-                "ground_service",
-                "day_name",
-                "meal",
-                "airport",
-                "airline",
-                "flight_time",
-                "city",
-                "ground_fare",
-                "quantity",
-                "abbreviation",
-                "distance",
-                "aircraft",
-                "capacity",
-                "flight_no",
-                "restriction",
-            ]
             num_choice = 17
         else:
             raise ValueError("Invalid sub task")
 
         if self.few_shot:
+
+            def preprocessing_a_record(rec):
+                return [rec[ds_wrapper.text], rec[ds_wrapper.label]]
 
             def format_original_fewshot0(rec):
                 return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "{"emotion" if sub_task == "vsmec" else "tag"}": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
@@ -454,9 +480,11 @@ class EvalPipeline:
             selected_sample = []
             for cl in classes:
                 cl_samples = ds_wrapper.dataset_training.filter(
-                    lambda r: r[ds_wrapper.label] == cl
-                    if sub_task == "vsmec"
-                    else r[ds_wrapper.label][0] == cl
+                    lambda r: (
+                        r[ds_wrapper.label] == cl
+                        if sub_task == "vsmec"
+                        else r[ds_wrapper.label][0] == cl
+                    )
                 )
                 selected_sample.append(
                     cl_samples[random.randint(0, len(cl_samples) - 1)]
@@ -467,26 +495,17 @@ class EvalPipeline:
                     selected_sample[x][ds_wrapper.label] = selected_sample[x][
                         ds_wrapper.label
                     ][0]
-
-            original_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
-                        selected_sample,
-                    )
-                )
+            selected_sample = [preprocessing_a_record(x) for x in selected_sample]
+            field_name = "emotion" if sub_task == "vsmec" else "tag"
+            original_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.prompt["prompt"],
+                answer_format='{{  "' + field_name + '": {}, "confident_level": 1}}',
             )
-            calib_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_calib_fewshot,
-                        selected_sample,
-                    )
-                )
+            calib_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.calibration_prompt["prompt"],
+                answer_format="{}",
             )
 
         for batch in tqdm(ds_loader):
@@ -495,18 +514,33 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(
-                    few_shot=original_few_shot,
-                    context=c,
-                )
+                [
+                    {"role": "system", "content": ds_wrapper.prompt["system_prompt"]},
+                    *original_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.prompt["prompt"].format(
+                            c,
+                        ),
+                    },
+                ]
                 for c in batch[ds_wrapper.text]
             ]
 
             calib_prompts = [
-                ds_wrapper.calibration_prompt.format(
-                    few_shot=calib_few_shot,
-                    context=c,
-                )
+                [
+                    {
+                        "role": "system",
+                        "content": ds_wrapper.calibration_prompt["system_prompt"],
+                    },
+                    *calib_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.calibration_prompt["prompt"].format(
+                            c,
+                        ),
+                    },
+                ]
                 for c in batch[ds_wrapper.text]
             ]
 
@@ -515,7 +549,7 @@ class EvalPipeline:
             option_logprobs, _ = self.infer_pipeline.compute_logprob_and_length(
                 calib_prompts * num_choice,
                 [
-                    mapping[choice] if self.prompting_strategy == 1 else str(choice)
+                    str(choice)
                     for choice in range(num_choice)
                     for _ in range(len(prompts))
                 ],
@@ -565,8 +599,8 @@ class EvalPipeline:
         generation_probs = []
         option_probs = []
         idx = 0
-        original_few_shot = ""
-        calib_few_shot = ""
+        original_few_shot = []
+        calib_few_shot = []
         selected_sample = []
         if self.continue_infer_data is not None:
             predictions.extend(self.continue_infer_data["predictions"])
@@ -575,14 +609,8 @@ class EvalPipeline:
             option_probs.extend(self.continue_infer_data["option_probs"])
         if self.few_shot:
 
-            def format_original_fewshot0(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {{ "toxicity_level": {rec[ds_wrapper.label]}, "confident_level": 1}} </s><s>[INST]\n"""
-
-            def format_original_fewshot1(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot: {{ "toxicity_level": {rec[ds_wrapper.label]}, "confident_level": 1}}\n"""
-
-            def format_calib_fewshot(rec):
-                return f"""Khách: "{rec[ds_wrapper.text]}"\nBot:[/INST] {rec[ds_wrapper.label]} </s><s>[INST]\n"""
+            def preprocessing_a_record(rec):
+                return [rec[ds_wrapper.text], rec[ds_wrapper.label]]
 
             classes = unique(ds_wrapper.dataset_training[ds_wrapper.label])
             selected_sample = []
@@ -590,19 +618,22 @@ class EvalPipeline:
                 cl_samples = ds_wrapper.dataset_training.filter(
                     lambda r: r[ds_wrapper.label] == cl
                 )
-                selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
-
-            original_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
-                        selected_sample,
+                selected_sample.append(
+                    preprocessing_a_record(
+                        cl_samples[random.randint(0, len(cl_samples))]
                     )
                 )
+
+            original_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.prompt["prompt"],
+                answer_format='{{ "toxicity_level": {}, "confident_level": 1}}',
             )
-            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.calibration_prompt["prompt"],
+                answer_format="{}",
+            )
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -610,18 +641,33 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(
-                    few_shot=original_few_shot,
-                    context=c,
-                )
+                [
+                    {"role": "system", "content": ds_wrapper.prompt["system_prompt"]},
+                    *original_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.prompt["prompt"].format(
+                            c,
+                        ),
+                    },
+                ]
                 for c in batch[ds_wrapper.text]
             ]
 
             calib_prompts = [
-                ds_wrapper.calibration_prompt.format(
-                    few_shot=calib_few_shot,
-                    context=c,
-                )
+                [
+                    {
+                        "role": "system",
+                        "content": ds_wrapper.calibration_prompt["system_prompt"],
+                    },
+                    *calib_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.calibration_prompt["prompt"].format(
+                            c,
+                        ),
+                    },
+                ]
                 for c in batch[ds_wrapper.text]
             ]
             results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
@@ -684,8 +730,8 @@ class EvalPipeline:
         generation_probs = []
         option_probs = []
         idx = 0
-        original_few_shot = ""
-        calib_few_shot = ""
+        original_few_shot = []
+        calib_few_shot = []
         option_order_all = []
         selected_sample = []
         alphabet2idx = {chr(i + 65): i for i in range(26)}
@@ -695,35 +741,35 @@ class EvalPipeline:
             generation_probs.extend(self.continue_infer_data["generation_probs"])
             option_probs.extend(self.continue_infer_data["option_probs"])
             option_order_all.extend(self.continue_infer_data["option_orders"])
+
         if self.few_shot:
 
-            def format_original_fewshot0(rec):
-                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} '''\nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {{ "choice": "{rec[ds_wrapper.answer]}", "confident_level": 1 }} </s><s>[INST]\n"""
-
-            def format_original_fewshot1(rec):
-                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} '''\nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời: {{ "choice": "{rec[ds_wrapper.answer]}", "confident_level": 1 }}\n"""
-
-            def format_calib_fewshot(rec):
-                return f"""Ngữ cảnh: ''' {rec[ds_wrapper.context]} \nCâu hỏi: Hãy lựa chọn đáp án đúng. {rec[ds_wrapper.question]}\n{format_list_ans(rec[ds_wrapper.options])}\n\nCâu trả lời:[/INST] {rec[ds_wrapper.answer]} </s><s>[INST]\n"""
+            def preprocessing_a_record(rec):
+                return [
+                    rec[ds_wrapper.context],
+                    rec[ds_wrapper.question],
+                    format_list_ans(rec[ds_wrapper.options]),
+                    rec[ds_wrapper.answer],
+                ]
 
             selected_sample_idx = list(
                 random.sample(range(len(ds_wrapper.dataset_training)), 2)
             )
             selected_sample = [
-                ds_wrapper.dataset_training[s] for s in selected_sample_idx
+                preprocessing_a_record(ds_wrapper.dataset_training[s])
+                for s in selected_sample_idx
             ]
 
-            original_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
-                        selected_sample,
-                    )
-                )
+            original_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.prompt["prompt"],
+                answer_format='{{ "choice": "{}", "confident_level": 1 }}',
             )
-            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.calibration_prompt["prompt"],
+                answer_format="{}",
+            )
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -745,20 +791,38 @@ class EvalPipeline:
                 remap_order_batch.append(order_shuffle)
                 new_opts = [opts[i] for i in order_shuffle]
                 prompts.append(
-                    ds_wrapper.prompt.format(
-                        few_shot=original_few_shot,
-                        context=c,
-                        question=q,
-                        list_ans=format_list_ans(new_opts),
-                    )
+                    [
+                        {
+                            "role": "system",
+                            "content": ds_wrapper.prompt["system_prompt"],
+                        },
+                        *original_few_shot,
+                        {
+                            "role": "user",
+                            "content": ds_wrapper.prompt["prompt"].format(
+                                c,
+                                q,
+                                format_list_ans(new_opts),
+                            ),
+                        },
+                    ]
                 )
                 calib_prompts.append(
-                    ds_wrapper.calibration_prompt.format(
-                        few_shot=calib_few_shot,
-                        context=c,
-                        question=q,
-                        list_ans=format_list_ans(new_opts),
-                    )
+                    [
+                        {
+                            "role": "system",
+                            "content": ds_wrapper.calibration_prompt["system_prompt"],
+                        },
+                        *calib_few_shot,
+                        {
+                            "role": "user",
+                            "content": ds_wrapper.calibration_prompt["prompt"].format(
+                                c,
+                                q,
+                                format_list_ans(new_opts),
+                            ),
+                        },
+                    ]
                 )
 
             results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
@@ -819,26 +883,20 @@ class EvalPipeline:
             references.extend(self.continue_infer_data["references"])
             generation_probs.extend(self.continue_infer_data["generation_probs"])
         idx = 0
-        original_few_shot = ""
+        original_few_shot = []
         selected_sample = []
         if self.few_shot:
 
-            def format_original_fewshot0(rec):
-                return f"""Khách: "{rec[ds_wrapper.source]}"\nBot:[/INST] {rec[ds_wrapper.target]} </s><s>[INST]\n"""
+            def preprocessing_a_record(rec):
+                return [rec[ds_wrapper.source], rec[ds_wrapper.target]]
 
-            def format_original_fewshot1(rec):
-                return f"""Khách: "{rec[ds_wrapper.source]}"\nBot: {rec[ds_wrapper.target]}\n"""
-
-            selected_sample = ds_wrapper.dataset_training
-            original_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
-                        selected_sample,
-                    )
-                )
+            selected_sample = [
+                preprocessing_a_record(s) for s in ds_wrapper.dataset_training
+            ]
+            original_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.prompt["prompt"],
+                answer_format="{}",
             )
 
         # Create few-shot strings
@@ -848,7 +906,16 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(few_shot=original_few_shot, context=c)
+                [
+                    {"role": "system", "content": ds_wrapper.prompt["system_prompt"]},
+                    *original_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.prompt["prompt"].format(
+                            c,
+                        ),
+                    },
+                ]
                 for c in batch[ds_wrapper.source]
             ]
 
@@ -880,19 +947,17 @@ class EvalPipeline:
         predictions = []
         # sub_task = self.task.split("_")[1]
         idx = 0
-        original_few_shot = ""
-        calib_few_shot = ""
+        original_few_shot = []
+        calib_few_shot = []
         selected_sample = []
         if self.few_shot:
 
-            def format_original_fewshot0(rec):
-                return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot:[/INST] {{ "answer": "{rec["answer"]}" }} </s><s>[INST]\n"""
-
-            def format_original_fewshot1(rec):
-                return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?. Đưa ra câu trả lời của bạn dưới dạng JSON với định dạng là ```json {{ \"answer\": ` \"Yes\" or \"No\" `}} ```\nBot: {{ "answer": "{rec["answer"]}" }}\n"""
-
-            def format_calib_fewshot(rec):
-                return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?\nBot:[/INST] {rec["answer"]} </s><s>[INST]\n"""
+            def preprocessing_a_record(rec):
+                return [
+                    rec[ds_wrapper.passage],
+                    rec[ds_wrapper.query],
+                    rec[ds_wrapper.answer],
+                ]
 
             random_sample = list(random.sample(list(ds_wrapper.dataset_training), 1))[0]
             # random_batch_passages = random_sample[ds_wrapper.passage]
@@ -916,29 +981,30 @@ class EvalPipeline:
             #     rnd_passage_idx = batch_passages["id"].index(rnd_passage_id)
 
             first_sample = {
-                "query": random_sample[ds_wrapper.query],
                 "passage": random_sample["positive"],
+                "query": random_sample[ds_wrapper.query],
                 "answer": "Yes",
             }
             second_sample = {
-                "query": random_sample[ds_wrapper.query],
                 "passage": random_sample["negative"],
+                "query": random_sample[ds_wrapper.query],
                 "answer": "No",
             }
 
-            selected_sample = [first_sample, second_sample]
-
-            original_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
-                        selected_sample,
-                    )
-                )
+            selected_sample = [
+                preprocessing_a_record(s) for s in [first_sample, second_sample]
+            ]
+            original_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.prompt["prompt"],
+                answer_format='{{ "answer": "{}" }}',
             )
-            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.calibration_prompt["prompt"],
+                answer_format="{}",
+            )
+
         # BATCH_PASSAGE_SIZE = 5
         # Create few-shot strings
         # for batch in tqdm(ds_loader):
@@ -1033,15 +1099,41 @@ class EvalPipeline:
                 )
                 for psg in range(0, len(top30_passage_ids), BATCH_PASSAGE_SIZE):
                     prompts = [
-                        ds_wrapper.prompt.format(
-                            few_shot=original_few_shot, passage=p, question=query
-                        )
+                        [
+                            {
+                                "role": "system",
+                                "content": ds_wrapper.prompt["system_prompt"],
+                            },
+                            *original_few_shot,
+                            {
+                                "role": "user",
+                                "content": ds_wrapper.prompt["prompt"].format(
+                                    p,
+                                    query,
+                                ),
+                            },
+                        ]
                         for p in top30_passages[psg : psg + BATCH_PASSAGE_SIZE]
                     ]
                     calib_prompts = [
-                        ds_wrapper.calibration_prompt.format(
-                            few_shot=calib_few_shot, passage=p, question=query
-                        )
+                        [
+                            {
+                                "role": "system",
+                                "content": ds_wrapper.calibration_prompt[
+                                    "system_prompt"
+                                ],
+                            },
+                            *calib_few_shot,
+                            {
+                                "role": "user",
+                                "content": ds_wrapper.calibration_prompt[
+                                    "prompt"
+                                ].format(
+                                    p,
+                                    query,
+                                ),
+                            },
+                        ]
                         for p in top30_passages[psg : psg + BATCH_PASSAGE_SIZE]
                     ]
                     results, logprobs, _ = self.infer_pipeline(
@@ -1059,9 +1151,11 @@ class EvalPipeline:
                     save_each_prompt = list(
                         map(
                             lambda x, y, z, t, q: {
-                                "query_id": query_id.item()
-                                if type(query_id) is not str
-                                else query_id,
+                                "query_id": (
+                                    query_id.item()
+                                    if type(query_id) is not str
+                                    else query_id
+                                ),
                                 "query": query,
                                 "passage_id": z.item() if type(z) is not str else z,
                                 "passage": t,
@@ -1104,8 +1198,8 @@ class EvalPipeline:
         math_problem_type = []
         sub_task = self.task.split("-")[-1]
         idx = 0
-        original_few_shot = ""
-        calib_few_shot = ""
+        original_few_shot = []
+        calib_few_shot = []
         selected_sample = []
         if not self.cot and sub_task == "math":
             target = ds_wrapper.short_target
@@ -1121,36 +1215,22 @@ class EvalPipeline:
             )
         if self.few_shot:
 
-            def format_original_fewshot0(rec):
-                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {{ "answer": "{rec[target]}", "confident_level": 1}} </s><s>[INST]\n"""
+            def preprocessing_a_record(rec):
+                return [rec[ds_wrapper.source], rec[target]]
 
-            def format_original_fewshot1(rec):
-                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}: {{ "answer": "{rec[target]}", "confident_level": 1}}\n"""
-
-            def format_calib_fewshot(rec):
-                return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}:[/INST] {rec[target]} </s><s>[INST]\n"""
-
-            selected_sample = list(random.sample(list(ds_wrapper.dataset_training), 5))
-
-            original_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
-                        selected_sample,
-                    )
-                )
+            selected_sample = [
+                preprocessing_a_record(s)
+                for s in list(random.sample(list(ds_wrapper.dataset_training), 5))
+            ]
+            original_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.prompt["prompt"],
+                answer_format='{{ "answer": "{}", "confident_level": 1 }}',
             )
-            calib_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_calib_fewshot,
-                        selected_sample,
-                    )
-                )
+            calib_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.calibration_prompt["prompt"],
+                answer_format="{}",
             )
 
         for batch in tqdm(ds_loader):
@@ -1159,11 +1239,28 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(few_shot=original_few_shot, rule=rule)
+                [
+                    {"role": "system", "content": ds_wrapper.prompt["system_prompt"]},
+                    *original_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.prompt["prompt"].format(rule),
+                    },
+                ]
                 for rule in batch[ds_wrapper.source]
             ]
             calib_prompts = [
-                ds_wrapper.calibration_prompt.format(few_shot=calib_few_shot, rule=rule)
+                [
+                    {
+                        "role": "system",
+                        "content": ds_wrapper.calibration_prompt["system_prompt"],
+                    },
+                    *calib_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.calibration_prompt["prompt"].format(rule),
+                    },
+                ]
                 for rule in batch[ds_wrapper.source]
             ]
 
@@ -1207,7 +1304,7 @@ class EvalPipeline:
         references = []
         generation_probs = []
         idx = 0
-        original_few_shot = ""
+        original_few_shot = []
         selected_sample = []
         if self.continue_infer_data is not None:
             predictions.extend(self.continue_infer_data["predictions"])
@@ -1215,23 +1312,20 @@ class EvalPipeline:
             generation_probs.extend(self.continue_infer_data["generation_probs"])
         if self.few_shot:
 
-            def format_original_fewshot0(rec):
-                return f"""Khách: "{rec[ds_wrapper.source_language]}"\nBot:[/INST] {{ "translation": "{rec[ds_wrapper.target_language]}" }} </s><s>[INST]\n"""
+            def preprocessing_a_record(rec):
+                return [
+                    rec[ds_wrapper.source_language],
+                    rec[ds_wrapper.target_language],
+                ]
 
-            def format_original_fewshot1(rec):
-                return f"""Khách: "{rec[ds_wrapper.source_language]}"\nBot: {{ "translation": "{rec[ds_wrapper.target_language]}" }}\n"""
-
-            selected_sample = list(random.sample(list(ds_wrapper.dataset_training), 5))
-
-            original_few_shot = "".join(
-                list(
-                    map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
-                        selected_sample,
-                    )
-                )
+            selected_sample = [
+                preprocessing_a_record(s)
+                for s in list(random.sample(list(ds_wrapper.dataset_training), 5))
+            ]
+            original_few_shot = format_fewshot(
+                selected_sample,
+                query_format=ds_wrapper.prompt["prompt"],
+                answer_format='{{ "translation": "{}" }}',
             )
 
         # Create few-shot strings
@@ -1241,7 +1335,16 @@ class EvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(few_shot=original_few_shot, document=document)
+                [
+                    {"role": "system", "content": ds_wrapper.prompt["system_prompt"]},
+                    *original_few_shot,
+                    {
+                        "role": "user",
+                        "content": ds_wrapper.prompt["prompt"].format(
+                            document,
+                        ),
+                    },
+                ]
                 for document in batch[ds_wrapper.source_language]
             ]
 

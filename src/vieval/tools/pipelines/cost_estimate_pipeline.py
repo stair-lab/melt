@@ -142,9 +142,11 @@ class CostEvalPipeline:
             original_few_shot = "".join(
                 list(
                     map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
+                        (
+                            format_original_fewshot1
+                            if self.prompting_strategy == 1
+                            else format_original_fewshot0
+                        ),
                         selected_sample,
                     )
                 )
@@ -247,15 +249,16 @@ class CostEvalPipeline:
                 cl_samples = ds_wrapper.dataset_training.filter(
                     lambda r: r[ds_wrapper.label] == cl
                 )
-                selected_sample.append(
-                    cl_samples[random.randint(0, len(cl_samples))])
+                selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
 
             original_few_shot = "".join(
                 list(
                     map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
+                        (
+                            format_original_fewshot1
+                            if self.prompting_strategy == 1
+                            else format_original_fewshot0
+                        ),
                         selected_sample,
                     )
                 )
@@ -263,9 +266,11 @@ class CostEvalPipeline:
             calib_few_shot = "".join(
                 list(
                     map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_calib_fewshot,
+                        (
+                            format_original_fewshot1
+                            if self.prompting_strategy == 1
+                            else format_calib_fewshot
+                        ),
                         selected_sample,
                     )
                 )
@@ -368,9 +373,11 @@ class CostEvalPipeline:
             selected_sample = []
             for cl in classes:
                 cl_samples = ds_wrapper.dataset_training.filter(
-                    lambda r: r[ds_wrapper.label] == cl
-                    if sub_task == "vsmec"
-                    else r[ds_wrapper.label][0] == cl
+                    lambda r: (
+                        r[ds_wrapper.label] == cl
+                        if sub_task == "vsmec"
+                        else r[ds_wrapper.label][0] == cl
+                    )
                 )
                 selected_sample.append(
                     cl_samples[random.randint(0, len(cl_samples) - 1)]
@@ -385,9 +392,11 @@ class CostEvalPipeline:
             original_few_shot = "".join(
                 list(
                     map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
+                        (
+                            format_original_fewshot1
+                            if self.prompting_strategy == 1
+                            else format_original_fewshot0
+                        ),
                         selected_sample,
                     )
                 )
@@ -395,9 +404,11 @@ class CostEvalPipeline:
             calib_few_shot = "".join(
                 list(
                     map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_calib_fewshot,
+                        (
+                            format_original_fewshot1
+                            if self.prompting_strategy == 1
+                            else format_calib_fewshot
+                        ),
                         selected_sample,
                     )
                 )
@@ -460,14 +471,12 @@ class CostEvalPipeline:
                 cl_samples = ds_wrapper.dataset_training.filter(
                     lambda r: r[ds_wrapper.label] == cl
                 )
-                selected_sample.append(
-                    cl_samples[random.randint(0, len(cl_samples))])
+                selected_sample.append(cl_samples[random.randint(0, len(cl_samples))])
 
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )
-            calib_few_shot = "".join(
-                list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -541,8 +550,7 @@ class CostEvalPipeline:
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )
-            calib_few_shot = "".join(
-                list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
 
         for batch in tqdm(ds_loader):
             if idx < start_idx:
@@ -654,8 +662,7 @@ class CostEvalPipeline:
             def format_calib_fewshot(rec):
                 return f"""Văn bản: ''' {rec["passage"]} '''\nCâu hỏi: ''' {rec["query"]} '''\n"Văn bản trên có thể hỗ trợ trả lời câu hỏi không?\nBot: {rec["answer"]}\n"""
 
-            random_sample = list(random.sample(
-                list(ds_wrapper.dataset_training), 1))[0]
+            random_sample = list(random.sample(list(ds_wrapper.dataset_training), 1))[0]
             # random_batch_passages = random_sample[ds_wrapper.passage]
             # if sub_task == "mmarco":
             #     ref_passage_id = random_sample[ds_wrapper.answer][0]
@@ -692,8 +699,7 @@ class CostEvalPipeline:
             original_few_shot = "".join(
                 list(map(format_original_fewshot, selected_sample))
             )
-            calib_few_shot = "".join(
-                list(map(format_calib_fewshot, selected_sample)))
+            calib_few_shot = "".join(list(map(format_calib_fewshot, selected_sample)))
         # BATCH_PASSAGE_SIZE = 5
         # Create few-shot strings
         # for batch in tqdm(ds_loader):
@@ -797,7 +803,7 @@ class CostEvalPipeline:
                         ds_wrapper.prompt.format(
                             few_shot=original_few_shot, passage=p, question=query
                         )
-                        for p in top30_passages[psg: psg + BATCH_PASSAGE_SIZE]
+                        for p in top30_passages[psg : psg + BATCH_PASSAGE_SIZE]
                     ]
                     num_tokens, cost = self.compute_cost(
                         prompts,
@@ -846,15 +852,16 @@ class CostEvalPipeline:
             def format_calib_fewshot(rec):
                 return f"""{"Quy luật" if sub_task != "math" else "Bài toán"}: ```\n{rec[ds_wrapper.source]}\n```\n{"Kết quả" if sub_task != "math" else "Lời giải"}: {rec[target]}\n"""
 
-            selected_sample = list(random.sample(
-                list(ds_wrapper.dataset_training), 5))
+            selected_sample = list(random.sample(list(ds_wrapper.dataset_training), 5))
 
             original_few_shot = "".join(
                 list(
                     map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
+                        (
+                            format_original_fewshot1
+                            if self.prompting_strategy == 1
+                            else format_original_fewshot0
+                        ),
                         selected_sample,
                     )
                 )
@@ -862,9 +869,11 @@ class CostEvalPipeline:
             calib_few_shot = "".join(
                 list(
                     map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_calib_fewshot,
+                        (
+                            format_original_fewshot1
+                            if self.prompting_strategy == 1
+                            else format_calib_fewshot
+                        ),
                         selected_sample,
                     )
                 )
@@ -880,8 +889,7 @@ class CostEvalPipeline:
                 for rule in batch[ds_wrapper.source]
             ]
             calib_prompts = [
-                ds_wrapper.calibration_prompt.format(
-                    few_shot=calib_few_shot, rule=rule)
+                ds_wrapper.calibration_prompt.format(few_shot=calib_few_shot, rule=rule)
                 for rule in batch[ds_wrapper.source]
             ]
 
@@ -920,15 +928,16 @@ class CostEvalPipeline:
             def format_original_fewshot1(rec):
                 return f"""Đoạn văn: {rec[ds_wrapper.source_language]}\nTrả lời: {rec[ds_wrapper.target_language]}\n\n"""
 
-            selected_sample = list(random.sample(
-                list(ds_wrapper.dataset_training), 5))
+            selected_sample = list(random.sample(list(ds_wrapper.dataset_training), 5))
 
             original_few_shot = "".join(
                 list(
                     map(
-                        format_original_fewshot1
-                        if self.prompting_strategy == 1
-                        else format_original_fewshot0,
+                        (
+                            format_original_fewshot1
+                            if self.prompting_strategy == 1
+                            else format_original_fewshot0
+                        ),
                         selected_sample,
                     )
                 )
@@ -941,8 +950,7 @@ class CostEvalPipeline:
                 continue
 
             prompts = [
-                ds_wrapper.prompt.format(
-                    few_shot=original_few_shot, document=document)
+                ds_wrapper.prompt.format(few_shot=original_few_shot, document=document)
                 for document in batch[ds_wrapper.source_language]
             ]
 

@@ -25,12 +25,12 @@ def get_std(result_list: List) -> Dict:
         for k in result.keys():
             if result[k]:
                 temp[k] = temp[k] + [result[k]] if k in temp else [result[k]]
-    
+
     # print(temp)
     for k in temp.keys():
         if temp[k]:
             final_result[f"{k}_std"] = np.array(temp[k]).std()
-            
+
     return final_result
 
 
@@ -42,7 +42,7 @@ def get_subdata(data: Dict, n: int, indices) -> Dict:
             print(key, len(sub_data[key]))
         else:
             sub_data[key] = data[key]
-    
+
     return sub_data
 
 
@@ -125,10 +125,12 @@ def evaluation(args):
     begin = time()
     data = read_json_file(filepath=args.filepath)
     print(f"Read data took {time()-begin:2f}")
-    n = len(data['predictions'])
+    n = len(data["predictions"])
     results_lst = []
     for i in range(args.n_bootstrap):
-        indices = np.random.choice(np.arange(n), size = int(args.p_bootstrap * n), replace = True)
+        indices = np.random.choice(
+            np.arange(n), size=int(args.p_bootstrap * n), replace=True
+        )
         print(n, len(indices))
         sub_data = get_subdata(data, n, indices)
         result = {}
@@ -145,56 +147,56 @@ def evaluation(args):
             result.update(cal_result)
             print(f"Run calibration took {time()-begin:2f}")
 
-        if type(metric) not in [TextClassificationMetric,
-                                InformationRetrievalMetric,
-                                ReasoningMetric]:
+        if type(metric) not in [
+            TextClassificationMetric,
+            InformationRetrievalMetric,
+            ReasoningMetric,
+        ]:
             print("Run bias metrics")
             begin = time()
             bias_metric = BiasMetric(data, args)
-            for demographic_category in ['race', 'gender']:
-                for target_category in ['profession']:
+            for demographic_category in ["race", "gender"]:
+                for target_category in ["profession"]:
                     args.demographic_category = demographic_category
                     args.target_category = target_category
                     _, bias_result = bias_metric.evaluate(data=sub_data, args=args)
                     result.update(bias_result)
             print(f"Runni bias metrics took {time()-begin:2f}")
 
-        if type(metric) not in [TextClassificationMetric,
-                                LanguageMetric,
-                                InformationRetrievalMetric,
-                                ReasoningMetric]:
+        if type(metric) not in [
+            TextClassificationMetric,
+            LanguageMetric,
+            InformationRetrievalMetric,
+            ReasoningMetric,
+        ]:
             print("Run toxicity metrics")
             begin = time()
             toxicity_metric = ToxicityMetric()
             _, toxic_result = toxicity_metric.evaluate(data=sub_data, args=args)
             result.update(toxic_result)
             print(f"Run toxicity metrics took {time()-begin:2f}")
-        
+
         print(result)
         results_lst.append(result)
-    
+
     result_final = get_std(results_lst)
     print(result_final)
-    data['data'] = results_lst
+    data["data"] = results_lst
     args.filename = os.path.basename(args.filepath)
     os.makedirs(args.out_eval_dir, exist_ok=True)
-    save_to_json(data=data,
-                 filename=f"specific_{args.filename}",
-                 outdir=args.out_eval_dir)
-    save_to_json(data=result_final,
-                 filename=f"overall_{args.filename}",
-                 outdir=args.out_eval_dir)
+    save_to_json(
+        data=data, filename=f"specific_{args.filename}", outdir=args.out_eval_dir
+    )
+    save_to_json(
+        data=result_final, filename=f"overall_{args.filename}", outdir=args.out_eval_dir
+    )
 
 
 def std_estimation(args):
     np.random.seed(args.seed)
     os.makedirs(args.out_eval_dir, exist_ok=True)
-    generation_files = [
-        f for f in os.listdir(args.output_dir) if f.endswith(".json")
-    ]
-    generation_filepaths = [
-        os.path.join(args.output_dir, f) for f in generation_files
-    ]
+    generation_files = [f for f in os.listdir(args.output_dir) if f.endswith(".json")]
+    generation_filepaths = [os.path.join(args.output_dir, f) for f in generation_files]
 
     for filepath in generation_filepaths:
         try:
@@ -211,9 +213,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="", formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
-    parser.add_argument(
-        "--output_dir", default="", type=str, help=""
-    )
+    parser.add_argument("--output_dir", default="", type=str, help="")
     parser.add_argument(
         "--out_eval_dir",
         default="./out_new",

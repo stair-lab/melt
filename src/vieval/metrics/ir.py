@@ -21,18 +21,16 @@ class InformationRetrievalMetric(BaseMetric):
         qrels = Qrels(relevant_dict)
         return qrels
 
-    def _get_prob_from_log_prob(self,
-                                score: float,
-                                is_positive_predict: bool,
-                                ) -> float:
+    def _get_prob_from_log_prob(
+        self,
+        score: float,
+        is_positive_predict: bool,
+    ) -> float:
         prob = np.exp(score)
         prob = 1 - prob if not is_positive_predict else prob
         return prob
 
-    def _get_run(self,
-                 predictions: List[Dict],
-                 k: int,
-                 args) -> Run:
+    def _get_run(self, predictions: List[Dict], k: int, args) -> Run:
         run_dict = {}
         for prediction in predictions:
             query_id = str(prediction["query_id"])
@@ -57,9 +55,7 @@ class InformationRetrievalMetric(BaseMetric):
     def evaluate(self, data: Dict, args, **kwargs) -> (Dict, Dict):
         result = {}
         if "mmarco" in args.filepath:
-            refenreces = load_dataset("json",
-                                      data_files="./mmarco.json",
-                                      split="train")
+            refenreces = load_dataset("json", data_files="./mmarco.json", split="train")
         else:
             refenreces = load_dataset(
                 "json", data_files="./mrobust.json", split="train"
