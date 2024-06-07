@@ -60,9 +60,15 @@ class ScriptArguments:
 
     # TrainingArguments parameters
     output_dir: str = field(
-        default="./results",
+        default="./results/generation",
         metadata={
             "help": "Output directory where the model predictions and checkpoints will be stored"
+        },
+    )
+    output_eval_dir: str = field(
+        default="./results/evaluation",
+        metadata={
+            "help": "The output folder to save metric scores",
         },
     )
     num_train_epochs: Optional[int] = field(
@@ -188,15 +194,10 @@ class ScriptArguments:
         default="llama-2",
         metadata={"help": "Prompting template in chat template: llama-2, mistral, ..."},
     )
-    output_eval_dir: str = field(
-        default="./out_new",
-        metadata={
-            "help": "The output folder to save bias score",
-        },
-    )
+    
     device: str = field(default="cuda:0", metadata={"help": "CUDA device"})
-    n_bootstrap: int = field(default=100, metadata={"help": "n bootstrap"})
-    p_bootstrap: int = field(default=100, metadata={"help": "p bootstrap"})
+    n_bootstrap: int = field(default=2, metadata={"help": "n bootstrap"})
+    p_bootstrap: float = field(default=1.0, metadata={"help": "p bootstrap"})
     bs: int = field(default=128, metadata={"help": "Bias metric"})
     template_file: str = field(
         default="evaluation_results_template.xlsx", metadata={"help": ""}

@@ -42,6 +42,6 @@ class AzureGPTWrapper(BaseWrapper):
         # TODO: Implement when OpenAI support logprobs of sentence
         return completions_logprobs, completions_num_tokens
 
-    @backoff.on_exception(backoff.expo, openai.error.RateLimitError, max_tries=10)
+    @backoff.on_exception(backoff.expo, openai.OpenAIError, max_tries=10)
     def chat_completions_with_backoff(self, **kwargs):
         return self.gpt.chat.completions.create(**kwargs)

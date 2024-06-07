@@ -6,10 +6,12 @@ from ..config import GenerationConfig
 from ..utils.model import get_model
 from ..wrapper import AzureGPTWrapper, TGIWrapper, GeminiWrapper, HFWrapper
 from ..utils.utils import *
-
+from ..utils.metric_utils import info_from_filename
+from .metric_pipeline import MetricPipeline
 
 class EvalPipeline:
     def __init__(self, task, config):
+        
         self.task = task
         extract_task = self.task.split("_")[0]
 
@@ -49,6 +51,10 @@ class EvalPipeline:
         self.few_shot = False
         self.random_mtpc = False
         self.cot = False
+        self.continue_infer_data = None
+        # Metric pipeline configuration
+        self.metric_pipeline = MetricPipeline()
+        self.task_name, self.ds_name = None
 
     def __call__(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         task = self.task.split("_")[0]
@@ -243,6 +249,8 @@ class EvalPipeline:
                 }
 
                 saving_fn(generations)
+                mean_result = pipeline.run_mean(generations, self.task_name, self.ds_name, args)
+                print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
             "predictions": predictions,
@@ -251,7 +259,9 @@ class EvalPipeline:
             "calibration_probs": calib_probs,
             "fewshot": selected_sample,
         }
-        saving_fn(generations)
+        mean_result = pipeline.run_mean(data, task_name, ds_name, args)
+        saving_fn(generations, mean_result)
+        
 
     def __summarization(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         original_documents = []
@@ -1185,9 +1195,9 @@ class EvalPipeline:
             if idx % 100 == 0:
                 print(f"Saving results of {idx} batches")
 
-                generations = {"fewshot": selected_sample, "prediction": predictions}
+                generations = {"fewshot": selected_sample, "predictions": predictions}
                 saving_fn(generations)
-        generations = {"fewshot": selected_sample, "prediction": predictions}
+        generations = {"fewshot": selected_sample, "predictions": predictions}
         saving_fn(generations)
 
     def __reasoning(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -1376,6 +1386,7 @@ class EvalPipeline:
         self,
         ds_wrapper,
         ds_loader,
+        generation_results_file,
         saving_fn,
         start_idx=0,
         few_shot=False,
@@ -1384,6 +1395,10 @@ class EvalPipeline:
         prompting_strategy=0,
         continue_infer=None,
     ):
+        self.generation_results_file = generation_results_file
+        filename = os.path.basename(self.generation_results_file)
+        self.task_name, self.ds_name, _, _ , _ = info_from_filename(filename)
+        
         self.continue_infer_data = continue_infer
         self.prompting_strategy = prompting_strategy
         self.few_shot = few_shot

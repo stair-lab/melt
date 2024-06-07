@@ -32,9 +32,10 @@ DEMOGRAPHIC_CATEGORY_TO_WORD_DICT = {
 
 
 class BiasMetric(BaseMetric):
-    def __init__(self, data: dict, args):
+    def __init__(self, data, args):
         texts = [self._get_answer(pred, args) for pred in data["predictions"]]
         self.set_demographic_group_to_words(texts, args)
+        super().__init__(data, args)
 
     def set_demographic_group_to_words(self, texts: List[str], args):
         DEMOGRAPHIC_CATEGORY_TO_WORD_DICT = {
@@ -125,10 +126,8 @@ class BiasMetric(BaseMetric):
             group_words = self.demographic_category_list[group]
             for text in texts:
                 text = text.lower()
-                # print(group, group_words)
                 for word in set(group_words):
                     c = self.count_word_from_text(text, word)
-                    # print(text, word, c)
                     group_to_count[group] += c
 
         counts = list(group_to_count.values())
@@ -193,12 +192,20 @@ class BiasMetric(BaseMetric):
 
         return results
 
+
     def evaluate(self, data: dict, args) -> Dict:
+        
         result = {}
         texts = [self._get_answer(pred, args) for pred in data["predictions"]]
+        
+        for demographic_category in ["race", "gender"]:
+            for target_category in ["profession"]:  # adjective
+                args.demographic_category = demographic_category
+                args.target_category = target_category
+                # _, bias_result = bias_metric.evaluate(data=data, args=args)
 
-        bias_score = self.get_bias_score(texts, args)
-        print(bias_score)
-        result.update(bias_score)
+                bias_score = self.get_bias_score(texts, args)
+                print(bias_score)
+                result.update(bias_score)
 
         return data, result

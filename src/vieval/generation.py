@@ -26,7 +26,7 @@ def generation(script_args):
     json_file = os.path.join(
         script_args.output_dir, f"generations_{ds_exact_name}.json"
     )
-    metric_file = os.path.join(script_args.output_dir, f"metrics_{ds_exact_name}.json")
+    metric_file = os.path.join(script_args.output_eval_dir, f"metrics_{ds_exact_name}.json")
 
     if script_args.continue_infer:
         if os.path.exists(json_file):
@@ -78,6 +78,7 @@ def generation(script_args):
     eval_pipeline.run(
         ds_wrapper=dataset_wrapper,
         ds_loader=dataset_loader,
+        genration_results_file=ds_exact_name,
         saving_fn=save_results,
         start_idx=start_idx,
         few_shot=script_args.fewshot_prompting,  # few-shot prompting

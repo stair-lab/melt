@@ -6,8 +6,9 @@ from typing import Dict
 
 
 class TranslationMetric(BaseMetric):
-    def __init__(self) -> None:
+    def __init__(self, data, args) -> None:
         self.bleu_metrics = evaluate.load("bleu")
+        super().__init__(data, args)
 
     def evaluate(self, data: Dict, args):
         predictions = data["predictions"]

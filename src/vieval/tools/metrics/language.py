@@ -9,9 +9,11 @@ import Levenshtein
 
 
 class LanguageMetric(BaseMetric):
-    def __init__(self) -> None:
+    def __init__(self, data, args) -> None:
         self.cer_metrics = evaluate.load("cer")
         self.wer_metrics = evaluate.load("wer")
+        super().__init__(data, args)
+        
 
     def get_num_bytes(self, tokens: List[str]) -> int:
         num_bytes = 0
@@ -26,7 +28,8 @@ class LanguageMetric(BaseMetric):
         references = [normalize_text(ref) for ref in references]
 
         em_scores = [
-            exact_match(pred, ref) for ref, pred in zip(references, predictions)
+            exact_match(pred, ref)
+            for ref, pred in zip(references, predictions)
         ]
         cer_score = self.cer_metrics.compute(
             predictions=predictions, references=references
@@ -40,7 +43,8 @@ class LanguageMetric(BaseMetric):
             for pred, ref in zip(predictions, references)
         ]
         wed_scores = [
-            Levenshtein.distance(np.array(pred.split(" ")), np.array(ref.split(" ")))
+            Levenshtein.distance(np.array(pred.split(" ")),
+                                 np.array(ref.split(" ")))
             for pred, ref in zip(predictions, references)
         ]
 

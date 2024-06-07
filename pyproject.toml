@@ -68,13 +68,22 @@ bitsandbytes = "^0.40.2"
 transformers = "^4.31.0"
 trl = "^0.4.7"
 xformers = "*"
-torch = "^2.0.1"
+torch = [
+    { version = "^2.0.1", markers="sys_platform == 'win32'", source = "torch_cuda118" },
+    { version = "^2.0.1", markers="sys_platform != 'win32'", source = "pypi" },
+]
 scipy = "*"
 tiktoken = "*"
 tqdm = "latest"
 python-dotenv = "latest"
 openai = "^0.27.8"
 backoff = "latest"
+
+
+[[tool.poetry.source]]
+name = "torch_cuda118"
+url = "https://download.pytorch.org/whl/cu121"
+priority = "explicit"
 
 [tool.hatch.build.targets.sdist]
 include = [

@@ -6,19 +6,21 @@ from .utils import normalize_text
 
 
 class QAMetric(BaseMetric):
-    def __init__(self):
-        super().__init__()
+    # def __init__(self, data, args):
+    #     super().__init__()
 
     def evaluate(self, data: Dict, args) -> (Dict, Dict):
 
         result = {}
         raw_predictions = data["predictions"]
         predictions = [
-            self._get_answer(raw_prediction, args) for raw_prediction in raw_predictions
+            self._get_answer(raw_prediction, args)
+            for raw_prediction in raw_predictions
         ]
         references = data["references"]
 
-        f1_scores = [f1_score(*batch) for batch in zip(references, predictions)]
+        f1_scores = [f1_score(*batch)
+                     for batch in zip(references, predictions)]
         em_scores = [
             exact_match(normalize_text(pred), normalize_text(ref))
             for ref, pred in zip(references, predictions)

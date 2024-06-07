@@ -6,8 +6,6 @@ from datasets import load_dataset
 
 
 class InformationRetrievalMetric(BaseMetric):
-    def __init__(self) -> None:
-        pass
 
     def _get_qrel(self, references: List[Dict]) -> Qrels:
         relevant_dict = {}
@@ -21,16 +19,18 @@ class InformationRetrievalMetric(BaseMetric):
         qrels = Qrels(relevant_dict)
         return qrels
 
-    def _get_prob_from_log_prob(
-        self,
-        score: float,
-        is_positive_predict: bool,
-    ) -> float:
+    def _get_prob_from_log_prob(self,
+                                score: float,
+                                is_positive_predict: bool,
+                                ) -> float:
         prob = np.exp(score)
         prob = 1 - prob if not is_positive_predict else prob
         return prob
 
-    def _get_run(self, predictions: List[Dict], k: int, args) -> Run:
+    def _get_run(self,
+                 predictions: List[Dict],
+                 k: int,
+                 args) -> Run:
         run_dict = {}
         for prediction in predictions:
             query_id = str(prediction["query_id"])
@@ -39,12 +39,14 @@ class InformationRetrievalMetric(BaseMetric):
 
             predict = self._get_answer(prediction["prediction"], args)
             is_positive_predict = predict == "yes"
-            log_prob = (
-                prediction["calib_probs"][0][0][0]
-                if is_positive_predict
-                else prediction["calib_probs"][1][0][0]
-            )
-
+            try:
+                log_prob = (
+                    prediction["calib_probs"][0][0][0]
+                    if is_positive_predict
+                    else prediction["calib_probs"][1][0][0]
+                )
+            except:
+                log_prob = 0
             prob = self._get_prob_from_log_prob(log_prob, is_positive_predict)
             if len(run_dict[query_id]) < k:
                 run_dict[query_id][str(prediction["passage_id"])] = prob
@@ -55,7 +57,9 @@ class InformationRetrievalMetric(BaseMetric):
     def evaluate(self, data: Dict, args, **kwargs) -> (Dict, Dict):
         result = {}
         if "mmarco" in args.filepath:
-            refenreces = load_dataset("json", data_files="./mmarco.json", split="train")
+            refenreces = load_dataset("json",
+                                      data_files="./mmarco.json",
+                                      split="train")
         else:
             refenreces = load_dataset(
                 "json", data_files="./mrobust.json", split="train"

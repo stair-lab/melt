@@ -8,9 +8,6 @@ from typing import List
 
 
 class CalibrationMetric(BaseMetric):
-    def __init__(self) -> None:
-        pass
-
     def get_cal_score(self, max_probs: List[float], correct: List[int]):
         ece_10_bin = cal.get_ece_em(max_probs, correct, num_bins=10)
         ece_1_bin = cal.get_ece(max_probs, correct, num_bins=1)
@@ -25,8 +22,12 @@ class CalibrationMetric(BaseMetric):
                 np.array(max_probs), np.array(correct), get_clf=True
             )
             cal_max_probs = platt_scaler(np.array(max_probs))
-            platt_ece_10_bin = cal.get_ece_em(cal_max_probs, correct, num_bins=10)
-            platt_ece_1_bin = cal.get_ece(cal_max_probs, correct, num_bins=1)
+            platt_ece_10_bin = cal.get_ece_em(cal_max_probs,
+                                              correct,
+                                              num_bins=10)
+            platt_ece_1_bin = cal.get_ece(cal_max_probs,
+                                          correct,
+                                          num_bins=1)
 
         return {
             "ece_10_bin": ece_10_bin,
@@ -41,7 +42,8 @@ class CalibrationMetric(BaseMetric):
         result = {}
         raw_predictions = data["predictions"]
         predictions = [
-            self._get_answer(raw_prediction, args) for raw_prediction in raw_predictions
+            self._get_answer(raw_prediction, args)
+            for raw_prediction in raw_predictions
         ]
         references = data["references"]
 
@@ -58,7 +60,8 @@ class CalibrationMetric(BaseMetric):
         if "gpt" in args.filepath:
             probs = softmax_options_prob(sum_option_probs)
             probs = np.zeros_like(probs)
-            labels = np.array([args.class_names.index(str(ref)) for ref in references])
+            labels = np.array([args.class_names.index(str(ref))
+                               for ref in references])
 
             for i, label in enumerate(labels):
                 probs[i][label] = 1
