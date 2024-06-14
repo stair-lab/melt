@@ -2,13 +2,13 @@ import torch
 import backoff
 import requests
 from .BaseWrapper import BaseWrapper
+from ..utils.chat_template import apply_chat_template
 
-
-class TGIPipeline(BaseWrapper):
-    def __init__(self, api_endpoint, generation_config, template="llama-2"):
+class TGIWrapper(BaseWrapper):
+    def __init__(self, api_endpoint, generation_config, template=""):
         self.api_endpoint = api_endpoint
         self.generation_config = generation_config
-        self.model_template = ChatTemplateStyle[template]
+        self.model_template = template
 
     def __call__(self, prompts, return_probs=False):
         generations = []

@@ -10,12 +10,11 @@ from ..metrics.reasoning import ReasoningMetric
 from ..metrics.summary import SummaryMetric
 from ..metrics.bias import BiasMetric
 from ..metrics.toxicity import ToxicityMetric
-from ..metrics.utils import read_json_file, save_to_json
 from time import time
 import logging
 
 from typing import Dict, List
-from ..utils.datacard import info_from_filename 
+from ..utils.metric_utils import info_from_filename 
 import numpy as np
 
 class MetricPipeline:
@@ -109,12 +108,13 @@ class MetricPipeline:
         for metric in metric_lst:
             _, metric_result = metric.evaluate(data, args)
             result.update(metric_result)
+            
         return result
     
     def run_std(self, data, task_name, ds_name: str, args) -> Dict:
         result_lst = self._run_bootrap(data, task_name, ds_name, args)
         final_result = self._get_std(result_lst) 
-        
+    
         return final_result
     
     def _get_std(self, result_list: List) -> Dict:

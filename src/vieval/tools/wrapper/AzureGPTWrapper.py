@@ -1,20 +1,19 @@
 import torch
 import os
-from openai import AzureOpenAI
+import openai
 import backoff
 from .BaseWrapper import BaseWrapper
 
 
 class AzureGPTWrapper(BaseWrapper):
     def __init__(self, engine=None, generation_config=None):
-        self.gpt = openai
         self.generation_config = generation_config
-        self.model = AzureOpenAI(
+        self.model = openai.AzureOpenAI(
             azure_endpoint=os.getenv("AZURE_ENDPOINT"),
             api_key=os.getenv("AZURE_KEY"),
             api_version=os.getenv("AZURE_VERSION"),
         )
-        self.engine = model
+        self.engine = engine
 
     def __call__(self, prompts, return_probs=False):
         generations = []
@@ -23,7 +22,7 @@ class AzureGPTWrapper(BaseWrapper):
         for prompt in prompts:
 
             response = self.chat_completions_with_backoff(
-                engine=self.engine,
+                model=self.engine,
                 messages=prompt,
                 temperature=self.generation_config["temperature"],
                 max_tokens=self.generation_config["max_new_tokens"],
@@ -44,4 +43,4 @@ class AzureGPTWrapper(BaseWrapper):
 
     @backoff.on_exception(backoff.expo, openai.OpenAIError, max_tries=10)
     def chat_completions_with_backoff(self, **kwargs):
-        return self.gpt.chat.completions.create(**kwargs)
+        return self.model.chat.completions.create(**kwargs)

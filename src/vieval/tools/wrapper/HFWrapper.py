@@ -1,15 +1,14 @@
 import torch
 from .BaseWrapper import BaseWrapper
 from ..utils.chat_template import apply_chat_template
-from ..config.llm_template import ChatTemplateStyle
 
 
 class HFWrapper(BaseWrapper):
-    def __init__(self, model, tokenizer, generation_config, template="llama-2"):
+    def __init__(self, model, tokenizer, generation_config, template=""):
         self.model = model
         self.tokenizer = tokenizer
         self.generation_config = generation_config
-        self.model_template = ChatTemplateStyle[template]
+        self.model_template = template
 
     def __call__(self, prompts, return_probs=False):
         generations = []

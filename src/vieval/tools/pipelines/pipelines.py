@@ -1,17 +1,25 @@
 import ast
 import torch
-
+import os
+import json
 from tqdm import tqdm
-from ..config import GenerationConfig
 from ..utils.model import get_model
 from ..wrapper import AzureGPTWrapper, TGIWrapper, GeminiWrapper, HFWrapper
 from ..utils.utils import *
 from ..utils.metric_utils import info_from_filename
-from .metric_pipeline import MetricPipeline
+from .metric_pipelines import MetricPipeline
 
 class EvalPipeline:
     def __init__(self, task, config):
         
+        #Load generation configuration
+        with open(os.path.join(config.config_dir, "generation_config.json"), 'r') as f:
+            GenerationConfig = json.load(f)
+    
+        with open(os.path.join(config.config_dir, "llm_template.json"), 'r') as f:
+            LLM_TEMPLATE = json.load(f)
+        
+        #Load task
         self.task = task
         extract_task = self.task.split("_")[0]
 
@@ -21,18 +29,18 @@ class EvalPipeline:
             self.infer_pipeline = TGIWrapper(
                 api_endpoint=config.tgi,
                 generation_config=GenerationConfig[extract_task],
-                template=config.ptemplate,
+                template=LLM_TEMPLATE[config.ptemplate],
             )
         elif config.wtype == "hf":
             # Load model
             self.model, self.tokenizer = get_model(config=config)
             self.model.eval()
 
-            self.infer_pipeline = LLaMaPipeline(
+            self.infer_pipeline = HFWrapper(
                 model=self.model,
                 tokenizer=self.tokenizer,
                 generation_config=GenerationConfig[extract_task],
-                template=config.ptemplate,
+                template=LLM_TEMPLATE[config.ptemplate],
             )
 
         elif config.wtype == "azuregpt":
@@ -42,11 +50,13 @@ class EvalPipeline:
             )
         elif config.wtype == "gemini":
             self.infer_pipeline = GeminiWrapper(
+                model_name = config.model_name,
                 generation_config=GenerationConfig[extract_task]
             )
         else:
             raise ValueError("Invalid wrapper type")
-
+        
+        self.config = config
         self.prompting_strategy = 0
         self.few_shot = False
         self.random_mtpc = False
@@ -54,7 +64,8 @@ class EvalPipeline:
         self.continue_infer_data = None
         # Metric pipeline configuration
         self.metric_pipeline = MetricPipeline()
-        self.task_name, self.ds_name = None
+        self.task_name, self.ds_name = None, None
+        self.config.filepath = None
 
     def __call__(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         task = self.task.split("_")[0]
@@ -145,13 +156,18 @@ class EvalPipeline:
                     "generation_probs": generation_probs,
                 }
                 saving_fn(generations)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
             "predictions": predictions,
             "references": references,
             "generation_probs": generation_probs,
         }
-        saving_fn(generations)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
 
     def __question_answering_without_context(
         self, ds_wrapper, ds_loader, saving_fn, start_idx=0
@@ -249,7 +265,7 @@ class EvalPipeline:
                 }
 
                 saving_fn(generations)
-                mean_result = pipeline.run_mean(generations, self.task_name, self.ds_name, args)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -259,8 +275,10 @@ class EvalPipeline:
             "calibration_probs": calib_probs,
             "fewshot": selected_sample,
         }
-        mean_result = pipeline.run_mean(data, task_name, ds_name, args)
-        saving_fn(generations, mean_result)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
         
 
     def __summarization(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
@@ -309,6 +327,8 @@ class EvalPipeline:
                     "generation_probs": generation_probs,
                 }
                 saving_fn(generations)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
             "original_documents": original_documents,
@@ -316,7 +336,10 @@ class EvalPipeline:
             "references": references,
             "generation_probs": generation_probs,
         }
-        saving_fn(generations)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
 
     def __multiple_choice_sentiment(
         self, ds_wrapper, ds_loader, saving_fn, start_idx=0
@@ -431,6 +454,8 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
             "predictions": predictions,
@@ -440,7 +465,10 @@ class EvalPipeline:
             "fewshot": selected_sample,
         }
 
-        saving_fn(generations)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
 
     def __multiple_choice_text_classification(
         self, ds_wrapper, ds_loader, saving_fn, start_idx=0
@@ -592,6 +620,8 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
             "predictions": predictions,
@@ -600,7 +630,10 @@ class EvalPipeline:
             "option_probs": option_probs,
             "fewshot": selected_sample,
         }
-        saving_fn(generations)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
 
     def __multiple_choice_toxicity(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         sub_task = self.task.split("-")[2]
@@ -714,6 +747,8 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
             "predictions": predictions,
@@ -722,7 +757,10 @@ class EvalPipeline:
             "option_probs": option_probs,
             "fewshot": selected_sample,
         }
-        saving_fn(generations)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
 
     def __multiple_choice(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         def format_list_ans(ans_list):
@@ -872,6 +910,8 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
             "predictions": predictions,
@@ -882,7 +922,10 @@ class EvalPipeline:
             "fewshot": selected_sample,
         }
 
-        saving_fn(generations)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
 
     def __language_modelling(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         predictions = []
@@ -944,6 +987,8 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
             "predictions": predictions,
@@ -951,7 +996,10 @@ class EvalPipeline:
             "generation_probs": generation_probs,
             "fewshot": selected_sample,
         }
-        saving_fn(generations)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
 
     def __information_retrieval(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         predictions = []
@@ -991,14 +1039,14 @@ class EvalPipeline:
             #     rnd_passage_idx = batch_passages["id"].index(rnd_passage_id)
 
             first_sample = {
-                "passage": random_sample["positive"],
+                "passages": random_sample["positive"],
                 "query": random_sample[ds_wrapper.query],
-                "answer": "Yes",
+                "references": "Yes",
             }
             second_sample = {
-                "passage": random_sample["negative"],
+                "passages": random_sample["negative"],
                 "query": random_sample[ds_wrapper.query],
-                "answer": "No",
+                "references": "No",
             }
 
             selected_sample = [
@@ -1014,71 +1062,6 @@ class EvalPipeline:
                 query_format=ds_wrapper.calibration_prompt["prompt"],
                 answer_format="{}",
             )
-
-        # BATCH_PASSAGE_SIZE = 5
-        # Create few-shot strings
-        # for batch in tqdm(ds_loader):
-        #     if idx < start_idx:
-        #         idx += 1
-        #         continue
-        #             prompts = []
-        #             log_data = []
-
-        #             for query_with_a_batch_passages in range(len(batch[ds_wrapper.id])):
-        #                 query_id = batch[ds_wrapper.id][query_with_a_batch_passages]
-        #                 query = batch[ds_wrapper.query][query_with_a_batch_passages]
-        #                 batch_passages = batch[ds_wrapper.passage]
-        #                 try:
-        #                     if sub_task == "mmarco":
-        #                         ref_passage_id = batch[ds_wrapper.answer][0].tolist()[query_with_a_batch_passages]
-        #                         ref_passage_idx = column(batch_passages['id'], query_with_a_batch_passages).index(ref_passage_id)
-        #                         rnd_passage_idx = random.choice([i for i in range(len(column(batch_passages['id'], query_with_a_batch_passages))) if i != ref_passage_idx])
-
-        #                     else:
-        #                         ref_passage_id = batch[ds_wrapper.answer][query_with_a_batch_passages].tolist()[0]
-        #                         ref_passage_idx = batch_passages['id'][query_with_a_batch_passages].tolist().index(ref_passage_id)
-        #                         rnd_passage_id = batch[ds_wrapper.answer][query_with_a_batch_passages].tolist()[-1].item()
-        #                         rnd_passage_idx = batch_passages['id'][query_with_a_batch_passages].tolist().index(rnd_passage_id)
-        #                 except:
-        #                     continue
-        #                 list_passage_idx = [ref_passage_idx, rnd_passage_idx]
-        #                 label_passage = [1, 0]
-        #                 psgl = column(batch_passages['passage'], query_with_a_batch_passages)
-        #                 prompts.extend([
-        #                         ds_wrapper.prompt.format(
-        #                             few_shot=original_few_shot, passage=psgl[p], question=query
-        #                         )
-        #                         for p in list_passage_idx
-        #                     ])
-        #                 log_data.extend([
-        #                     {
-        #                         "query_id": query_id.item(),
-        #                         "query": query,
-        #                         "passage_id": column(batch_passages['id'], query_with_a_batch_passages)[p].item(),
-        #                         "passage": column(batch_passages['passage'], query_with_a_batch_passages)[p],
-        #                         "label": label_passage[i]
-        #                     }
-        #                     for i, p in enumerate(list_passage_idx)
-        #                 ])
-        #             for psg in range(0, len(prompts), BATCH_PASSAGE_SIZE):
-        #                 results, logprobs, _ = self.infer_pipeline(
-        #                         prompts[psg : psg + BATCH_PASSAGE_SIZE], return_probs=True
-        #                 )
-        #                 for l in range(psg, psg+BATCH_PASSAGE_SIZE if psg+BATCH_PASSAGE_SIZE < len(prompts) else len(prompts)):
-        #                    log_data[l]["prediction"] = results[l-psg]
-        #                    log_data[l]["generation_probs"] = logprobs[l-psg].tolist()
-
-        #             predictions.extend(log_data)
-        #             idx += 1
-        #             if idx % 100 == 0:
-        #                 print(f"Saving results of {idx} batches")
-
-        #                 generations = {"fewshot": selected_sample,
-        #                                "prediction": predictions}
-        #                 saving_fn(generations)
-
-        #         generations = {"fewshot": selected_sample, "prediction": predictions}
-        #         saving_fn(generations)
 
         BATCH_PASSAGE_SIZE = 10
         # Create few-shot strings
@@ -1194,11 +1177,16 @@ class EvalPipeline:
 
             if idx % 100 == 0:
                 print(f"Saving results of {idx} batches")
-
                 generations = {"fewshot": selected_sample, "predictions": predictions}
                 saving_fn(generations)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                print(f"Results of {idx} batches: ", mean_result)
+                
         generations = {"fewshot": selected_sample, "predictions": predictions}
-        saving_fn(generations)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
 
     def __reasoning(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         predictions = []
@@ -1297,6 +1285,8 @@ class EvalPipeline:
                 if sub_task == "math":
                     generations["math_problem_type"] = math_problem_type
                 saving_fn(generations)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
             "predictions": predictions,
@@ -1307,7 +1297,11 @@ class EvalPipeline:
         }
         if sub_task == "math":
             generations["math_problem_type"] = math_problem_type
-        saving_fn(generations)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
 
     def __translation(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         predictions = []
@@ -1373,6 +1367,8 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
+                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
             "predictions": predictions,
@@ -1380,7 +1376,10 @@ class EvalPipeline:
             "generation_probs": generation_probs,
             "fewshot": selected_sample,
         }
-        saving_fn(generations)
+        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        final_result = {"mean": mean_result, "std": std_result}
+        saving_fn(generations, final_result)
 
     def run(
         self,
@@ -1398,7 +1397,7 @@ class EvalPipeline:
         self.generation_results_file = generation_results_file
         filename = os.path.basename(self.generation_results_file)
         self.task_name, self.ds_name, _, _ , _ = info_from_filename(filename)
-        
+        self.config.filepath = generation_results_file
         self.continue_infer_data = continue_infer
         self.prompting_strategy = prompting_strategy
         self.few_shot = few_shot

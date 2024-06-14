@@ -11,7 +11,7 @@ load_dotenv()
 
 
 class GeminiWrapper:
-    def __init__(self, model=None, tokenizer=None, generation_config=None):
+    def __init__(self, model_name=None, generation_config=None):
         safety_settings = [
             {
                 "category": "HARM_CATEGORY_DANGEROUS",
@@ -34,18 +34,13 @@ class GeminiWrapper:
                 "threshold": "BLOCK_NONE",
             },
         ]
-        self.list_key = os.getenv("GEMINI_KEYS").split(",")
-        # SUM
-
-        # self.key= "AIzaSyAlvVkuCXB_3YO8lkQ-G3ufHUrsof4r_SU"
-        # MATH
-        self.key = random.choice(self.list_key)
-        self.model = model
+        
+        self.key = os.getenv("GEMINI_KEY")
         dictfilt = lambda x, y: dict([(i, x[i]) for i in x if i in set(y)])
         genai.configure(api_key=self.key)
         generation_config = dictfilt(generation_config, ("top_k", "temperature"))
         self.model = genai.GenerativeModel(
-            "gemini-pro",
+            model_name,
             generation_config=generation_config,
             safety_settings=safety_settings,
         )
@@ -57,15 +52,17 @@ class GeminiWrapper:
         generations_probs = [torch.tensor([])] * len(prompts)
         num_generated_tokens = []
         for prompt in prompts:
-            processed_prompt = [prompt.values() for p in prompt]
+            processed_prompt = [list(p.values())[1] for p in prompt]
+          
             concat_prompt = "\n".join(processed_prompt)
             try:
 
-                response = self.chat_completions_with_backoff(prompt)
+                response = self.chat_completions_with_backoff(concat_prompt)
                 generations.append(response.text)
-                num_generated_tokens.append(
-                    response.usage_metadata.candidates_token_count
-                )
+                # num_generated_tokens.append(
+                #     response.usage_metadata.candidates_token_count
+                # )
+                num_generated_tokens.append(0)
 
             except Exception as e:
                 print(str(e))

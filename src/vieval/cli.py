@@ -8,18 +8,15 @@ from dotenv import load_dotenv
 
 
 def main():
+    import spacy
+    try:
+        spacy.load('en_core_web_sm')
+    except OSError:
+        print('Downloading the spacy en_core_web_sm model\n'
+            "(don't worry, this will only happen once)")
+        from spacy.cli import download
+        download('en_core_web_sm')
     load_dotenv()
     parser = HfArgumentParser(ScriptArguments)
     args = parser.parse_args_into_dataclasses()[0]
-    
-    if args.mode == "generation":
-        generation(args)
-    elif args.mode == "evaluation":
-        evaluation(args)
-    
-    elif args.mode == "end2end":
-        generation(args)
-        evaluation(args)
-        
-    else:
-        raise ValueError("ERROR: No such mode '{}'".format(args.mode))
+    generation(args)

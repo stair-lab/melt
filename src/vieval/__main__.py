@@ -1,3 +1,11 @@
-from .cli import main
+import spacy
 
+try:
+    spacy.load('en_core_web_sm')
+except OSError:
+    print('Downloading the spacy en_core_web_sm model\n'
+        "(don't worry, this will only happen once)")
+    from spacy.cli import download
+    download('en_core_web_sm')
+from .cli import main    
 main()

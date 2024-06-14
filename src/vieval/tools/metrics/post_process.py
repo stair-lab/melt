@@ -73,7 +73,7 @@ def get_answer_auto_from_text(
     if 'math' not in args.filepath:
         text = text.split("\n\n")[0]
         text = normalize_text(text,
-                              keep_punc="keep_punc" in args and args.keep_punc)
+                              keep_punc="keep_punc")
     else:
         if "confident_level" in text:
             text = text[:text.index("confident_level")]

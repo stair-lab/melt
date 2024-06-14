@@ -1,0 +1,2 @@
+[console_scripts]
+blanc = blanc.__main__:main

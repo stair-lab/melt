@@ -59,6 +59,12 @@ class ScriptArguments:
     )
 
     # TrainingArguments parameters
+    config_dir: str = field(
+        default="./config",
+        metadata={
+            "help": "Configuration directory where contains LLM template, prompt template, generation configuration"
+        },
+    )
     output_dir: str = field(
         default="./results/generation",
         metadata={
@@ -182,10 +188,6 @@ class ScriptArguments:
         default=False,
         metadata={"help": "Wheather to continue previous inference process"},
     )
-    mode: str = field(
-        default="generation",
-        metadata={"help": "Select mode to run (generation, evaluation, end2end"},
-    )
     wtype: str = field(
         default="hf",
         metadata={"help": "Select type of wrapper: hf, tgi, azuregpt, gemini"},
@@ -199,7 +201,3 @@ class ScriptArguments:
     n_bootstrap: int = field(default=2, metadata={"help": "n bootstrap"})
     p_bootstrap: float = field(default=1.0, metadata={"help": "p bootstrap"})
     bs: int = field(default=128, metadata={"help": "Bias metric"})
-    template_file: str = field(
-        default="evaluation_results_template.xlsx", metadata={"help": ""}
-    )
-    out_file: str = field(default="evaluation_results_std.xlsx", metadata={"help": ""})

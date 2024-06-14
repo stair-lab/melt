@@ -4,7 +4,6 @@ from .basic_metrics import exact_match, f1_score
 from .base import BaseMetric
 import random
 import Levenshtein
-from .utils import save_to_csv
 import os
 import pandas as pd
 import string as string_func
@@ -214,6 +213,7 @@ class ReasoningMetric(BaseMetric):
 
     def _remove_boxed(self, text: str) -> str:
         if "oxed" in text:
+            text = text.replace(r'"\boxed{', "")
             text = text.replace(r"\boxed{", "")
             text = text.replace(r"\\boxed{", "")
             text = text.replace("\\boxed{", "")
@@ -247,8 +247,8 @@ class ReasoningMetric(BaseMetric):
         ems = [exact_match(*batch)
                for batch in zip(references, predictions)]
         
-        print(predictions[:10])
-        print(references[:10])
+        # print(predictions[:10])
+        # print(references[:10])
         if "math" in args.filepath:
             predictions = [
                 self._get_math_final_result(prediction)
@@ -268,8 +268,8 @@ class ReasoningMetric(BaseMetric):
             data["processed_references"] = references
             del data["generation_probs"]
             del data["calibration_probs"]
-        print(predictions[:10])
-        print(references[:10])
+        # print(predictions[:10])
+        # print(references[:10])
         equals = [
             is_equiv(prediction, refenrence)
             for prediction, refenrence in zip(predictions, references)
@@ -278,15 +278,15 @@ class ReasoningMetric(BaseMetric):
         if "fewshot" in data:
             del data["fewshot"] 
         
-        if 'math' in args.filepath:
-            result = {
-                "f1_score": np.array(f1_scores).mean(),
-                "exact_match": np.array(ems).mean(),
-            }
-        else:
-            result = {
-                "f1_score": np.array(f1_scores).mean(),
-                "exact_match": np.array(ems).mean(),
-                "equality": np.array(equals).mean(),
-            }
+        # if 'math' in args.filepath:
+        #     result = {
+        #         "f1_score": np.array(f1_scores).mean(),
+        #         "exact_match": np.array(ems).mean(),
+        #     }
+        # else:
+        result = {
+            "f1_score": np.array(f1_scores).mean(),
+            "exact_match": np.array(ems).mean(),
+            "equality": np.array(equals).mean(),
+        }
         return data, result
