@@ -30,6 +30,7 @@ def normalize_text(text: str, keep_punc=False) -> str:
 
     return text
 
+
 def read_json_file(filepath: str) -> Dict:
     if os.path.isfile(filepath):
         with open(filepath, "r", encoding="utf8") as f:
@@ -56,10 +57,7 @@ def save_to_csv(data: Dict, filename: str, outdir: str = "./"):
 def save_to_xlsx(data, filename: str):
     writer = pd.ExcelWriter(filename)
     _ = [
-        sheet_data.to_excel(writer,
-                            sheet_name=sheet_name,
-                            index=False,
-                            header=False)
+        sheet_data.to_excel(writer, sheet_name=sheet_name, index=False, header=False)
         for sheet_name, sheet_data in data.items()
     ]
     writer.close()
@@ -67,8 +65,8 @@ def save_to_xlsx(data, filename: str):
 
 def info_from_filename(filename):
     info_arr = filename[:-5].split("_")
-    
-    tasks  = {
+
+    tasks = {
         "question-answering": {
             "xquad_xtreme": "xQUAD EXTREME",
             "mlqa": "MLQA",
@@ -116,8 +114,7 @@ def info_from_filename(filename):
             "srabstract-gcp": "Synthetic Reasoning (Abstract Symbol)- Google Cloud",
         },
     }
-    
-        
+
     dataset_ids = {
         "math_level1_azr": "math-azr",
         "math_level1_gcp": "math-gcp",
@@ -174,7 +171,7 @@ def info_from_filename(filename):
             setting_id = setting_id_i
             if setting_id == "fewshot":
                 setting_id = "fs"
-                
+
             if setting_id == "fewshot_cot":
                 setting_id = "cot"
             break
@@ -192,7 +189,7 @@ def info_from_filename(filename):
                 "MixSUra",
                 "gemini",
                 "Vistral",
-                "GemSUra"
+                "GemSUra",
             )
         ):
             model_id = info
@@ -203,8 +200,7 @@ def info_from_filename(filename):
         if dataset_id in tasks[task_name]:
             task_id = task_name
             break
-            
+
     seed = info_arr[-1]
 
     return task_id, dataset_id, model_id, setting_id, seed
-

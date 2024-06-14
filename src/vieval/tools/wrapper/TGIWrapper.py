@@ -4,6 +4,7 @@ import requests
 from .BaseWrapper import BaseWrapper
 from ..utils.chat_template import apply_chat_template
 
+
 class TGIWrapper(BaseWrapper):
     def __init__(self, api_endpoint, generation_config, template=""):
         self.api_endpoint = api_endpoint

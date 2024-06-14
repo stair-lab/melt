@@ -28,7 +28,9 @@ def generation(script_args):
     json_file = os.path.join(
         script_args.output_dir, f"generations_{ds_exact_name}.json"
     )
-    metric_file = os.path.join(script_args.output_eval_dir, f"metrics_{ds_exact_name}.json")
+    metric_file = os.path.join(
+        script_args.output_eval_dir, f"metrics_{ds_exact_name}.json"
+    )
 
     if script_args.continue_infer:
         if os.path.exists(json_file):
@@ -48,7 +50,7 @@ def generation(script_args):
     # Load dataset (you can process it here)
     dataset_wrapper = DatasetWrapper(
         dataset_name=script_args.dataset_name,
-        config_dir = script_args.config_dir,
+        config_dir=script_args.config_dir,
         prompting_strategy=script_args.prompting_strategy,
         fewshots=fewshots,
     )

@@ -9,17 +9,18 @@ from ..utils.utils import *
 from ..utils.metric_utils import info_from_filename
 from .metric_pipelines import MetricPipeline
 
+
 class EvalPipeline:
     def __init__(self, task, config):
-        
-        #Load generation configuration
-        with open(os.path.join(config.config_dir, "generation_config.json"), 'r') as f:
+
+        # Load generation configuration
+        with open(os.path.join(config.config_dir, "generation_config.json"), "r") as f:
             GenerationConfig = json.load(f)
-    
-        with open(os.path.join(config.config_dir, "llm_template.json"), 'r') as f:
+
+        with open(os.path.join(config.config_dir, "llm_template.json"), "r") as f:
             LLM_TEMPLATE = json.load(f)
-        
-        #Load task
+
+        # Load task
         self.task = task
         extract_task = self.task.split("_")[0]
 
@@ -50,12 +51,12 @@ class EvalPipeline:
             )
         elif config.wtype == "gemini":
             self.infer_pipeline = GeminiWrapper(
-                model_name = config.model_name,
-                generation_config=GenerationConfig[extract_task]
+                model_name=config.model_name,
+                generation_config=GenerationConfig[extract_task],
             )
         else:
             raise ValueError("Invalid wrapper type")
-        
+
         self.config = config
         self.prompting_strategy = 0
         self.few_shot = False
@@ -156,7 +157,9 @@ class EvalPipeline:
                     "generation_probs": generation_probs,
                 }
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -164,8 +167,12 @@ class EvalPipeline:
             "references": references,
             "generation_probs": generation_probs,
         }
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
@@ -265,7 +272,9 @@ class EvalPipeline:
                 }
 
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -275,11 +284,14 @@ class EvalPipeline:
             "calibration_probs": calib_probs,
             "fewshot": selected_sample,
         }
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
-        
 
     def __summarization(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         original_documents = []
@@ -327,7 +339,9 @@ class EvalPipeline:
                     "generation_probs": generation_probs,
                 }
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -336,8 +350,12 @@ class EvalPipeline:
             "references": references,
             "generation_probs": generation_probs,
         }
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
@@ -454,7 +472,9 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -465,8 +485,12 @@ class EvalPipeline:
             "fewshot": selected_sample,
         }
 
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
@@ -620,7 +644,9 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -630,8 +656,12 @@ class EvalPipeline:
             "option_probs": option_probs,
             "fewshot": selected_sample,
         }
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
@@ -747,7 +777,9 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -757,8 +789,12 @@ class EvalPipeline:
             "option_probs": option_probs,
             "fewshot": selected_sample,
         }
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
@@ -910,7 +946,9 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -922,8 +960,12 @@ class EvalPipeline:
             "fewshot": selected_sample,
         }
 
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
@@ -987,7 +1029,9 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -996,8 +1040,12 @@ class EvalPipeline:
             "generation_probs": generation_probs,
             "fewshot": selected_sample,
         }
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
@@ -1179,12 +1227,18 @@ class EvalPipeline:
                 print(f"Saving results of {idx} batches")
                 generations = {"fewshot": selected_sample, "predictions": predictions}
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
-                
+
         generations = {"fewshot": selected_sample, "predictions": predictions}
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
@@ -1285,7 +1339,9 @@ class EvalPipeline:
                 if sub_task == "math":
                     generations["math_problem_type"] = math_problem_type
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -1297,9 +1353,15 @@ class EvalPipeline:
         }
         if sub_task == "math":
             generations["math_problem_type"] = math_problem_type
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
@@ -1367,7 +1429,9 @@ class EvalPipeline:
                     "fewshot": selected_sample,
                 }
                 saving_fn(generations)
-                mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
+                mean_result = self.metric_pipeline.run_mean(
+                    generations, self.task_name, self.ds_name, self.config
+                )
                 print(f"Results of {idx} batches: ", mean_result)
 
         generations = {
@@ -1376,8 +1440,12 @@ class EvalPipeline:
             "generation_probs": generation_probs,
             "fewshot": selected_sample,
         }
-        mean_result = self.metric_pipeline.run_mean(generations, self.task_name, self.ds_name, self.config)
-        std_result = self.metric_pipeline.run_std(generations, self.task_name, self.ds_name, self.config)
+        mean_result = self.metric_pipeline.run_mean(
+            generations, self.task_name, self.ds_name, self.config
+        )
+        std_result = self.metric_pipeline.run_std(
+            generations, self.task_name, self.ds_name, self.config
+        )
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
@@ -1396,7 +1464,7 @@ class EvalPipeline:
     ):
         self.generation_results_file = generation_results_file
         filename = os.path.basename(self.generation_results_file)
-        self.task_name, self.ds_name, _, _ , _ = info_from_filename(filename)
+        self.task_name, self.ds_name, _, _, _ = info_from_filename(filename)
         self.config.filepath = generation_results_file
         self.continue_infer_data = continue_infer
         self.prompting_strategy = prompting_strategy

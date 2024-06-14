@@ -7,6 +7,7 @@ from .base import BaseMetric
 from .utils import normalize_text
 import numpy as np
 
+
 class SummaryMetric(BaseMetric):
     def __init__(self, data, args):
         super().__init__(data, args)
@@ -31,7 +32,7 @@ class SummaryMetric(BaseMetric):
 
     def evaluate(self, data: Dict, args) -> (Dict, Dict):
         inputs = data["original_documents"]
-        raw_predictions = data["predictions"][:len(data["references"])]
+        raw_predictions = data["predictions"][: len(data["references"])]
         predictions = [self._get_answer(r, args) for r in raw_predictions]
         references = [
             str(normalize_text(reference)) for reference in data["references"]
@@ -40,9 +41,7 @@ class SummaryMetric(BaseMetric):
 
         print("BERT score")
         p, r, f = self.bert_scorer.score(
-            predictions,
-            [[ref] for ref in references],
-            batch_size=args.bs
+            predictions, [[ref] for ref in references], batch_size=args.bs
         )
         result.update(
             {
@@ -62,9 +61,11 @@ class SummaryMetric(BaseMetric):
             }
         )
         print("SummaC")
-        result["SummaC"] = np.array(self.summac.score([
-            str(normalize_text(input)) for input in inputs
-        ], predictions)['scores']).mean()
+        result["SummaC"] = np.array(
+            self.summac.score(
+                [str(normalize_text(input)) for input in inputs], predictions
+            )["scores"]
+        ).mean()
         print("rouge")
         result.update(
             self.rouge.compute(

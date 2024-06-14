@@ -1,5 +1,4 @@
 class BaseWrapper:
-
     def __call__(self, prompts, return_probs=False):
         raise NotImplementedError
 

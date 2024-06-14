@@ -196,7 +196,7 @@ class ScriptArguments:
         default="llama-2",
         metadata={"help": "Prompting template in chat template: llama-2, mistral, ..."},
     )
-    
+
     device: str = field(default="cuda:0", metadata={"help": "CUDA device"})
     n_bootstrap: int = field(default=2, metadata={"help": "n bootstrap"})
     p_bootstrap: float = field(default=1.0, metadata={"help": "p bootstrap"})

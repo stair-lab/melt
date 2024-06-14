@@ -34,7 +34,7 @@ class GeminiWrapper:
                 "threshold": "BLOCK_NONE",
             },
         ]
-        
+
         self.key = os.getenv("GEMINI_KEY")
         dictfilt = lambda x, y: dict([(i, x[i]) for i in x if i in set(y)])
         genai.configure(api_key=self.key)
@@ -53,7 +53,7 @@ class GeminiWrapper:
         num_generated_tokens = []
         for prompt in prompts:
             processed_prompt = [list(p.values())[1] for p in prompt]
-          
+
             concat_prompt = "\n".join(processed_prompt)
             try:
 

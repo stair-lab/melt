@@ -18,6 +18,7 @@ escape_dict = {
     "\v": r"\v",
 }
 
+
 def _fix_fracs(string):
     substrs = string.split("\\frac")
     new_str = substrs[0]
@@ -49,6 +50,7 @@ def _fix_fracs(string):
     string = new_str
     return string
 
+
 def _fix_a_slash_b(string):
     if len(string.split("/")) != 2:
         return string
@@ -63,6 +65,7 @@ def _fix_a_slash_b(string):
     except:
         return string
 
+
 def _remove_right_units(string):
     # "\\text{ " only ever occurs (at least in the val set) when describing units
     if "\\text{ " in string:
@@ -72,11 +75,12 @@ def _remove_right_units(string):
     else:
         return string
 
+
 def _fix_sqrt(string):
     if "\\sqrt" not in string:
         return string
     splits = string.split("\\sqrt")
-    new_string = splits[0] 
+    new_string = splits[0]
     for split in splits[1:]:
         if split[0] != "{":
             a = split[0]
@@ -86,36 +90,37 @@ def _fix_sqrt(string):
         new_string += new_substr
     return new_string
 
+
 def _strip_string(string):
-    # linebreaks  
+    # linebreaks
     string = string.replace("\n", "")
-    #print(string)
+    # print(string)
 
     # remove inverse spaces
     string = string.replace("\\!", "")
-    #print(string)
+    # print(string)
 
     # replace \\ with \
     string = string.replace("\\\\", "\\")
-    #print(string)
+    # print(string)
 
     # replace tfrac and dfrac with frac
     string = string.replace("tfrac", "frac")
     string = string.replace("dfrac", "frac")
-    #print(string)
+    # print(string)
 
     # remove \left and \right
     string = string.replace("\\left", "")
     string = string.replace("\\right", "")
-    #print(string)
-    
+    # print(string)
+
     # Remove circ (degrees)
     string = string.replace("^{\\circ}", "")
     string = string.replace("^\\circ", "")
 
     # remove dollar signs
     string = string.replace("\\$", "")
-    
+
     # remove units (on the right)
     string = _remove_right_units(string)
 
@@ -155,6 +160,7 @@ def _strip_string(string):
 
     return string
 
+
 def is_equiv(str1, str2, verbose=False):
     if str1 is None and str2 is None:
         print("WARNING: Both None")
@@ -170,12 +176,10 @@ def is_equiv(str1, str2, verbose=False):
         return ss1 == ss2
     except:
         return str1 == str2
-    
-class ReasoningMetric(BaseMetric):
 
-    def equal(self,
-              prediction: str,
-              refenrence: str) -> float:
+
+class ReasoningMetric(BaseMetric):
+    def equal(self, prediction: str, refenrence: str) -> float:
         if prediction == refenrence:
             return 1
         else:
@@ -183,32 +187,32 @@ class ReasoningMetric(BaseMetric):
 
     def _has_numbers(self, word: str):
         return any(char.isdigit() for char in word)
-    
+
     def _clean_word(self, word: str) -> str:
-        word = word.replace("$", "").split("=")[-1] 
+        word = word.replace("$", "").split("=")[-1]
         word = word.replace("'", "")
         while len(word) > 0 and word[-1] != "}" and (not word[-1].isdigit()):
             word = word[:-1]
         if "{" not in word:
-            word = word.replace("}","")
-        word = word.replace("[\\","")
+            word = word.replace("}", "")
+        word = word.replace("[\\", "")
         return word
 
-    def _get_math_final_result(self, text: str, mode = "p") -> str:
-        text = text.replace("\f","\\f")
-        text = text.replace("\b","\\b")
+    def _get_math_final_result(self, text: str, mode="p") -> str:
+        text = text.replace("\f", "\\f")
+        text = text.replace("\b", "\\b")
         words = text.split(" ")[::-1]
-        
+
         for i, _ in enumerate(words):
             words[i] = self._clean_word(words[i])
         for word in words:
-            if 'boxed' in word:
+            if "boxed" in word:
                 return word
-            
+
         for word in words:
             if self._has_numbers(word):
                 return word
-            
+
         return "".join(random.choice(string_func.ascii_uppercase) for _ in range(4))
 
     def _remove_boxed(self, text: str) -> str:
@@ -222,48 +226,41 @@ class ReasoningMetric(BaseMetric):
             if text and text[-1] == "}":
                 text = text[:-1]
             text = self._clean_word(text)
-        
+
         return text
 
     def evaluate(self, data: Dict, args) -> (Dict, Dict):
         result = {}
         raw_predictions = data["predictions"]
         predictions = [
-            self._get_answer(raw_prediction, args)
-            for raw_prediction in raw_predictions
+            self._get_answer(raw_prediction, args) for raw_prediction in raw_predictions
         ]
         references = data["references"]
         references = [
-            #self._get_answer("{" + f"'{args.key_answer}'" + ":" + f"'{reference}'" + "}", args)
+            # self._get_answer("{" + f"'{args.key_answer}'" + ":" + f"'{reference}'" + "}", args)
             self._get_answer(reference, args)
             for reference in references
         ]
-             
+
         data["predictions"] = predictions
         data["references"] = references
 
-        f1_scores = [f1_score(*batch)
-                     for batch in zip(references, predictions)]
-        ems = [exact_match(*batch)
-               for batch in zip(references, predictions)]
-        
+        f1_scores = [f1_score(*batch) for batch in zip(references, predictions)]
+        ems = [exact_match(*batch) for batch in zip(references, predictions)]
+
         # print(predictions[:10])
         # print(references[:10])
         if "math" in args.filepath:
             predictions = [
-                self._get_math_final_result(prediction)
-                for prediction in predictions
+                self._get_math_final_result(prediction) for prediction in predictions
             ]
             references = [
-                self._get_math_final_result(reference, "r")
-                for reference in references
+                self._get_math_final_result(reference, "r") for reference in references
             ]
-            
-            references = [self._remove_boxed(reference)
-                          for reference in references]
-            
-            predictions = [self._remove_boxed(pred)
-                           for pred in predictions]
+
+            references = [self._remove_boxed(reference) for reference in references]
+
+            predictions = [self._remove_boxed(pred) for pred in predictions]
             data["processed_predictions"] = predictions
             data["processed_references"] = references
             del data["generation_probs"]
@@ -276,8 +273,8 @@ class ReasoningMetric(BaseMetric):
         ]
         data["equals"] = equals
         if "fewshot" in data:
-            del data["fewshot"] 
-        
+            del data["fewshot"]
+
         # if 'math' in args.filepath:
         #     result = {
         #         "f1_score": np.array(f1_scores).mean(),

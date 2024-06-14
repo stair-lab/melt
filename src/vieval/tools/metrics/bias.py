@@ -192,12 +192,11 @@ class BiasMetric(BaseMetric):
 
         return results
 
-
     def evaluate(self, data: dict, args) -> Dict:
-        
+
         result = {}
         texts = [self._get_answer(pred, args) for pred in data["predictions"]]
-        
+
         for demographic_category in ["race", "gender"]:
             for target_category in ["profession"]:  # adjective
                 args.demographic_category = demographic_category

@@ -7,7 +7,7 @@ import torch
 from torch.nn.utils.rnn import pad_sequence
 
 # prefix used by the wordpiece tokenizer to indicate that the token continues the previous word
-WORDPIECE_PREFIX = '##'
+WORDPIECE_PREFIX = "##"
 # a range of reasonable token ids to use for replacement during model training
 TOKEN_REPLACE_RANGE = (1000, 29999)
 # attention mask value that tells the model to not ignore the token
@@ -25,61 +25,67 @@ BERT_MAX_TOKENS = 512
 
 # used to represent inputs to the BERT model
 BertInput = namedtuple(
-    typename='BertInput',
-    field_names=['input_ids', 'attention_mask', 'token_type_ids', 'labels', 'masked_idxs'],
+    typename="BertInput",
+    field_names=[
+        "input_ids",
+        "attention_mask",
+        "token_type_ids",
+        "labels",
+        "masked_idxs",
+    ],
 )
 
 # all the configuration options
 Config = namedtuple(
-    'Config',
+    "Config",
     [
-        'doc_key',
-        'summary_key',
-        'summaries_key',
-        'model_name',
-        'measure',
-        'gap',
-        'gap_mask',
-        'gap_tune',
-        'gap_mask_tune',
-        'min_token_length_normal',
-        'min_token_length_lead',
-        'min_token_length_followup',
-        'min_token_length_normal_tune',
-        'min_token_length_lead_tune',
-        'min_token_length_followup_tune',
-        'device',
-        'random_seed',
-        'inference_batch_size',
-        'inference_mask_evenly',
-        'len_sent_allow_cut',
-        'filler_token',
-        'help_sep',
-        'finetune_batch_size',
-        'finetune_epochs',
-        'finetune_mask_evenly',
-        'finetune_chunk_size',
-        'finetune_chunk_stride',
-        'finetune_top_fully',
-        'id_layer_freeze_below',
-        'id_layer_freeze_above',
-        'show_progress_bar',
-        'p_mask',
-        'p_token_replace',
-        'p_token_original',
-        'learning_rate',
-        'warmup_steps',
+        "doc_key",
+        "summary_key",
+        "summaries_key",
+        "model_name",
+        "measure",
+        "gap",
+        "gap_mask",
+        "gap_tune",
+        "gap_mask_tune",
+        "min_token_length_normal",
+        "min_token_length_lead",
+        "min_token_length_followup",
+        "min_token_length_normal_tune",
+        "min_token_length_lead_tune",
+        "min_token_length_followup_tune",
+        "device",
+        "random_seed",
+        "inference_batch_size",
+        "inference_mask_evenly",
+        "len_sent_allow_cut",
+        "filler_token",
+        "help_sep",
+        "finetune_batch_size",
+        "finetune_epochs",
+        "finetune_mask_evenly",
+        "finetune_chunk_size",
+        "finetune_chunk_stride",
+        "finetune_top_fully",
+        "id_layer_freeze_below",
+        "id_layer_freeze_above",
+        "show_progress_bar",
+        "p_mask",
+        "p_token_replace",
+        "p_token_original",
+        "learning_rate",
+        "warmup_steps",
     ],
 )
 
 # the default configuration options that don't require a GPU
-# We found gap=2 to work the best. To reproduce the original paper results use gap=6 
+# We found gap=2 to work the best. To reproduce the original paper results use gap=6
 Defaults = Config(
-    doc_key='doc',
-    summary_key='summary',
-    summaries_key='summaries',
-    model_name='bert-base-uncased',
-    measure='relative',
+    doc_key="doc",
+    summary_key="summary",
+    summaries_key="summaries",
+    model_name="bert-base-uncased",
+    measure="relative",
     gap=2,
     gap_mask=1,
     gap_tune=-1,
@@ -90,13 +96,13 @@ Defaults = Config(
     min_token_length_normal_tune=-1,
     min_token_length_lead_tune=-1,
     min_token_length_followup_tune=-1,
-    device='cpu',
+    device="cpu",
     random_seed=0,
     inference_batch_size=1,
     inference_mask_evenly=True,
     len_sent_allow_cut=100,
-    filler_token='.',
-    help_sep='',
+    filler_token=".",
+    help_sep="",
     finetune_batch_size=1,
     finetune_epochs=10,
     finetune_chunk_size=64,
@@ -182,14 +188,14 @@ def mask_tokens_evenly(tokens, gap, min_token_lengths, mask_token, gap_mask=1):
         masked_input = []
         answers = {}
         for idx, token in enumerate(tokens):
-            next_token = '' if idx + 1 == len(tokens) else tokens[idx + 1]
+            next_token = "" if idx + 1 == len(tokens) else tokens[idx + 1]
             large_enough = is_token_large_enough(token, next_token, min_token_lengths)
 
             idx_off = idx % gap
             if gap == 1:
                 can_mask = True
             elif modulus + gap_mask >= gap:
-                can_mask = idx_off >= modulus or idx_off < (modulus + gap_mask)%gap
+                can_mask = idx_off >= modulus or idx_off < (modulus + gap_mask) % gap
             else:
                 can_mask = idx_off >= modulus and idx_off < modulus + gap_mask
             if can_mask and large_enough:
@@ -224,7 +230,7 @@ def mask_tokens_randomly(tokens, min_token_lengths, mask_token, p_mask):
 
     token_positions = []
     for idx, token in enumerate(tokens):
-        next_token = '' if idx + 1 == len(tokens) else tokens[idx + 1]
+        next_token = "" if idx + 1 == len(tokens) else tokens[idx + 1]
         if is_token_large_enough(token, next_token, min_token_lengths):
             token_positions.append(idx)
     random.shuffle(token_positions)
@@ -289,8 +295,12 @@ def get_input_tensors(input_batch, device, tokenizer):
 
     (id_pad,) = tokenizer.convert_tokens_to_ids([tokenizer.pad_token])
     input_ids = stack_tensor(input_ids_list, pad_value=id_pad, device=device)
-    attention_mask = stack_tensor(attention_mask_list, pad_value=MASK_PAD, device=device)
-    token_type_ids = stack_tensor(token_type_ids_list, pad_value=TOKEN_TYPE_PAD, device=device)
+    attention_mask = stack_tensor(
+        attention_mask_list, pad_value=MASK_PAD, device=device
+    )
+    token_type_ids = stack_tensor(
+        token_type_ids_list, pad_value=TOKEN_TYPE_PAD, device=device
+    )
 
     if labels_list[0] is not None:
         labels = stack_tensor(labels_list, pad_value=LABEL_IGNORE, device=device)
@@ -362,12 +372,16 @@ def clean_text(text):
     Returns:
         text (str): cleaned text
     """
-    text = unicodedata.normalize('NFKD', text)
+    text = unicodedata.normalize("NFKD", text)
     return text
 
 
 def truncate_sentence_and_summary(
-    sent, summary, len_sep=0, len_sent_allow_cut=0, truncate_bottom=True,
+    sent,
+    summary,
+    len_sep=0,
+    len_sent_allow_cut=0,
+    truncate_bottom=True,
 ):
     """Cut summary+sentence to allowed input size. 2 more tokens: [CLS], [SEP]
     The summary must have at least one sublist (can be empty)
@@ -396,7 +410,9 @@ def truncate_sentence_and_summary(
         if len_excess > len_cut_sent:
             len_summary_max = BERT_MAX_TOKENS - 2 - len_sep - len(sent)
             summary_truncated = truncate_list_of_lists(
-                sents_tokenized=summary, num_max=len_summary_max, truncate_bottom=truncate_bottom,
+                sents_tokenized=summary,
+                num_max=len_summary_max,
+                truncate_bottom=truncate_bottom,
             )
             summary_tokens = [t for sublist in summary_truncated for t in sublist]
     assert len(sent) + len(summary_tokens) + len_sep + 2 <= BERT_MAX_TOKENS

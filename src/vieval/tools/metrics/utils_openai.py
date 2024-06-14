@@ -73,9 +73,7 @@ def usage_token_from_prompts(
         else:
             messages = [{"role": "user", "content": prompt}]
 
-        usage = usage_token_from_messages(messages,
-                                          encoding_name,
-                                          genearion_config)
+        usage = usage_token_from_messages(messages, encoding_name, genearion_config)
         total_tokens += usage["total_tokens"]
         cost += usage["cost"]
 
@@ -84,14 +82,8 @@ def usage_token_from_prompts(
 
 if __name__ == "__main__":
     messages2 = [
-        {
-            "role": "system",
-            "content": "You are an AI bot and you are very smart."
-        },
-        {
-            "role": "user",
-            "content": "Hi my name is Toan"
-        },
+        {"role": "system", "content": "You are an AI bot and you are very smart."},
+        {"role": "user", "content": "Hi my name is Toan"},
     ]
 
     print(usage_token_from_messages(messages2))

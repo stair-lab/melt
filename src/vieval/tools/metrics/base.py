@@ -4,7 +4,7 @@ from .post_process import get_answer_auto_from_text
 class BaseMetric:
     # def __init__(self):
     #     return
-    
+
     def __init__(self, data, args):
         return
 

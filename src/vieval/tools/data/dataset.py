@@ -17,7 +17,9 @@ def eval_keys(keys):
 
 
 class DatasetWrapper:
-    def __init__(self, dataset_name, config_dir, prompting_strategy=0, fewshots=None) -> None:
+    def __init__(
+        self, dataset_name, config_dir, prompting_strategy=0, fewshots=None
+    ) -> None:
         self.dataset_name = dataset_name
         self.prompting_strategy = prompting_strategy
         self.fewshots = fewshots
@@ -28,11 +30,11 @@ class DatasetWrapper:
         self.get_prompt()
 
     def get_prompt(self):
-        with open(os.path.join(self.config_dir, "prompt_template.json"), 'r') as f:
+        with open(os.path.join(self.config_dir, "prompt_template.json"), "r") as f:
             prompt_config = json.load(f)
-        PROMPT_TEMPLATE = prompt_config['PROMPT_TEMPLATE']
-        CALIBRATION_INSTRUCTION = prompt_config['CALIBRATION_INSTRUCTION']
-        
+        PROMPT_TEMPLATE = prompt_config["PROMPT_TEMPLATE"]
+        CALIBRATION_INSTRUCTION = prompt_config["CALIBRATION_INSTRUCTION"]
+
         if self.prompting_strategy not in [0, 1, 2, 3]:
             raise ValueError("Prompting strategy is not supported")
         task = self.task.split("_")[0]
@@ -66,8 +68,7 @@ class DatasetWrapper:
                 data_files="datasets/Robustness/xquad_xtreme_for_robustness.csv",
                 split="train",
             )
-            self.dataset_testing = self.dataset_testing.map(
-                eval_keys("answers"))
+            self.dataset_testing = self.dataset_testing.map(eval_keys("answers"))
             self.context = "context"
             self.question = "question"
             self.answer = "answers"
@@ -79,8 +80,7 @@ class DatasetWrapper:
                 data_files="datasets/Fairness/xquad_xtreme_for_fairness.csv",
                 split="train",
             )
-            self.dataset_testing = self.dataset_testing.map(
-                eval_keys("answers"))
+            self.dataset_testing = self.dataset_testing.map(eval_keys("answers"))
             self.context = "context"
             self.question = "question"
             self.answer = "answers"
@@ -101,8 +101,7 @@ class DatasetWrapper:
                 data_files="datasets/Robustness/mlqa_for_robustness.csv",
                 split="train",
             )
-            self.dataset_testing = self.dataset_testing.map(
-                eval_keys("answers"))
+            self.dataset_testing = self.dataset_testing.map(eval_keys("answers"))
             self.context = "context"
             self.question = "question"
             self.answer = "answers"
@@ -114,8 +113,7 @@ class DatasetWrapper:
                 data_files="datasets/Fairness/mlqa_for_fairness.csv",
                 split="train",
             )
-            self.dataset_testing = self.dataset_testing.map(
-                eval_keys("answers"))
+            self.dataset_testing = self.dataset_testing.map(eval_keys("answers"))
             self.context = "context"
             self.question = "question"
             self.answer = "answers"
@@ -123,8 +121,7 @@ class DatasetWrapper:
         # Summarization
         elif self.dataset_name == "vietnews":
             self.task = "summarization"
-            self.dataset_testing = load_dataset(
-                "Yuhthe/vietnews", split="test")
+            self.dataset_testing = load_dataset("Yuhthe/vietnews", split="test")
             self.dataset_testing.set_format(columns=["article", "abstract"])
             self.original_text = "article"
             self.summarized_text = "abstract"
@@ -142,8 +139,7 @@ class DatasetWrapper:
 
         elif self.dataset_name == "wiki_lingua":
             self.task = "summarization"
-            self.dataset_testing = load_dataset(
-                "GEM/wiki_lingua", "vi", split="test")
+            self.dataset_testing = load_dataset("GEM/wiki_lingua", "vi", split="test")
             self.original_text = "source"
             self.summarized_text = "target"
 
@@ -256,8 +252,7 @@ class DatasetWrapper:
                 data_files="datasets/Training/PhoATIS_training.csv",
                 split="train",
             )
-            self.dataset_training = self.dataset_training.map(
-                eval_keys("label"))
+            self.dataset_training = self.dataset_training.map(eval_keys("label"))
             self.text = "sentence"
             self.label = "label"
 
@@ -274,8 +269,7 @@ class DatasetWrapper:
                 data_files="datasets/Training/PhoATIS_training.csv",
                 split="train",
             )
-            self.dataset_training = self.dataset_training.map(
-                eval_keys("label"))
+            self.dataset_training = self.dataset_training.map(eval_keys("label"))
             self.text = "sentence"
             self.label = "label"
 
@@ -292,8 +286,7 @@ class DatasetWrapper:
                 data_files="datasets/Training/PhoATIS_training.csv",
                 split="train",
             )
-            self.dataset_training = self.dataset_training.map(
-                eval_keys("label"))
+            self.dataset_training = self.dataset_training.map(eval_keys("label"))
             self.text = "sentence"
             self.label = "label"
 
@@ -357,7 +350,10 @@ class DatasetWrapper:
                 self.dataset_training = self.fewshots
                 # Get index of selected samples
                 selected_sample_idx = [
-                    self.dataset_testing[(self.dataset_testing['id'] == s['id'])].index.item() for s in self.dataset_training
+                    self.dataset_testing[
+                        (self.dataset_testing["id"] == s["id"])
+                    ].index.item()
+                    for s in self.dataset_training
                 ]
 
             self.dataset_testing = self.dataset_testing.select(
@@ -388,7 +384,10 @@ class DatasetWrapper:
                 self.dataset_training = self.fewshots
                 # Get index of selected samples
                 selected_sample_idx = [
-                    self.dataset_testing[(self.dataset_testing['id'] == s['id'])].index.item() for s in self.dataset_training
+                    self.dataset_testing[
+                        (self.dataset_testing["id"] == s["id"])
+                    ].index.item()
+                    for s in self.dataset_training
                 ]
             self.dataset_testing = self.dataset_testing.select(
                 [
@@ -405,13 +404,11 @@ class DatasetWrapper:
             self.dataset_testing = load_dataset(
                 "csv", data_files="datasets/Original/ViMMRC.csv", split="train"
             )
-            self.dataset_testing = self.dataset_testing.map(
-                eval_keys("options"))
+            self.dataset_testing = self.dataset_testing.map(eval_keys("options"))
             self.dataset_training = load_dataset(
                 "csv", data_files="datasets/Training/ViMMRC_training.csv", split="train"
             )
-            self.dataset_training = self.dataset_training.map(
-                eval_keys("options"))
+            self.dataset_training = self.dataset_training.map(eval_keys("options"))
             self.context = "article"
             self.question = "question"
             self.options = "options"
@@ -424,13 +421,11 @@ class DatasetWrapper:
                 data_files="datasets/Robustness/ViMMRC_for_robustness.csv",
                 split="train",
             )
-            self.dataset_testing = self.dataset_testing.map(
-                eval_keys("options"))
+            self.dataset_testing = self.dataset_testing.map(eval_keys("options"))
             self.dataset_training = load_dataset(
                 "csv", data_files="datasets/Training/ViMMRC_training.csv", split="train"
             )
-            self.dataset_training = self.dataset_training.map(
-                eval_keys("options"))
+            self.dataset_training = self.dataset_training.map(eval_keys("options"))
             self.context = "article"
             self.question = "question"
             self.options = "options"
@@ -439,10 +434,8 @@ class DatasetWrapper:
         # Toxicity Detection
         elif self.dataset_name == "ViCTSD":
             self.task = "toxicity-detection-ViCTSD"
-            self.dataset_testing = load_dataset(
-                "tarudesu/ViCTSD", split="test")
-            self.dataset_training = load_dataset(
-                "tarudesu/ViCTSD", split="train")
+            self.dataset_testing = load_dataset("tarudesu/ViCTSD", split="test")
+            self.dataset_training = load_dataset("tarudesu/ViCTSD", split="train")
             self.text = "Comment"
             self.label = "Toxicity"
 
@@ -453,8 +446,7 @@ class DatasetWrapper:
                 data_files="datasets/Robustness/ViCTSD_for_robustness.csv",
                 split="train",
             )
-            self.dataset_training = load_dataset(
-                "tarudesu/ViCTSD", split="train")
+            self.dataset_training = load_dataset("tarudesu/ViCTSD", split="train")
             self.text = "Comment"
             self.label = "Toxicity"
 
@@ -465,8 +457,7 @@ class DatasetWrapper:
                 data_files="datasets/Fairness/ViCTSD_for_fairness.csv",
                 split="train",
             )
-            self.dataset_training = load_dataset(
-                "tarudesu/ViCTSD", split="train")
+            self.dataset_training = load_dataset("tarudesu/ViCTSD", split="train")
             self.text = "Comment"
             self.label = "Toxicity"
 
@@ -624,9 +615,10 @@ class DatasetWrapper:
                 # Get index of selected samples
                 selected_sample_idx = [
                     self.dataset_testing[
-                        (self.dataset_testing['masked'] == s['masked']) &
-                        (self.dataset_testing['context'] == s['context'])
-                    ].index.item() for s in self.dataset_training
+                        (self.dataset_testing["masked"] == s["masked"])
+                        & (self.dataset_testing["context"] == s["context"])
+                    ].index.item()
+                    for s in self.dataset_training
                 ]
             self.dataset_testing = self.dataset_testing.select(
                 [
@@ -657,9 +649,10 @@ class DatasetWrapper:
                 # Get index of selected samples
                 selected_sample_idx = [
                     self.dataset_testing[
-                        (self.dataset_testing['masked'] == s['masked']) &
-                        (self.dataset_testing['context'] == s['context'])
-                    ].index.item() for s in self.dataset_training
+                        (self.dataset_testing["masked"] == s["masked"])
+                        & (self.dataset_testing["context"] == s["context"])
+                    ].index.item()
+                    for s in self.dataset_training
                 ]
             self.dataset_testing = self.dataset_testing.select(
                 [
@@ -688,9 +681,10 @@ class DatasetWrapper:
                 # Get index of selected samples
                 selected_sample_idx = [
                     self.dataset_testing[
-                        (self.dataset_testing['text'] == s['text']) &
-                        (self.dataset_testing['correct'] == s['correct'])
-                    ].index.item() for s in self.dataset_training
+                        (self.dataset_testing["text"] == s["text"])
+                        & (self.dataset_testing["correct"] == s["correct"])
+                    ].index.item()
+                    for s in self.dataset_training
                 ]
             self.dataset_testing = self.dataset_testing.select(
                 [
@@ -721,9 +715,10 @@ class DatasetWrapper:
                 # Get index of selected samples
                 selected_sample_idx = [
                     self.dataset_testing[
-                        (self.dataset_testing['text'] == s['text']) &
-                        (self.dataset_testing['correct'] == s['correct'])
-                    ].index.item() for s in self.dataset_training
+                        (self.dataset_testing["text"] == s["text"])
+                        & (self.dataset_testing["correct"] == s["correct"])
+                    ].index.item()
+                    for s in self.dataset_training
                 ]
             self.dataset_testing = self.dataset_testing.select(
                 [
@@ -752,11 +747,13 @@ class DatasetWrapper:
             self.source = "question"
             self.target = "target"
 
-        elif self.dataset_name.startswith("synthetic_induction") or \
-                self.dataset_name.startswith("synthetic_pattern_match") or \
-                self.dataset_name.startswith("synthetic_variable_substitution"):
+        elif (
+            self.dataset_name.startswith("synthetic_induction")
+            or self.dataset_name.startswith("synthetic_pattern_match")
+            or self.dataset_name.startswith("synthetic_variable_substitution")
+        ):
             self.task = "reasoning-synthetic"
-            subset = '_'.join(self.dataset_name.split("_")[1:])
+            subset = "_".join(self.dataset_name.split("_")[1:])
             self.dataset_testing = load_dataset(
                 "ura-hcmut/synthetic_reasoning",
                 subset,
@@ -846,19 +843,15 @@ class DatasetWrapper:
 
         elif self.dataset_name == "opus100_envi":
             self.task = "translation-envi"
-            self.dataset_testing = load_dataset(
-                "vietgpt/opus100_envi", split="test")
-            self.dataset_training = load_dataset(
-                "vietgpt/opus100_envi", split="train")
+            self.dataset_testing = load_dataset("vietgpt/opus100_envi", split="test")
+            self.dataset_training = load_dataset("vietgpt/opus100_envi", split="train")
             self.source_language = "en"
             self.target_language = "vi"
 
         elif self.dataset_name == "opus100_vien":
             self.task = "translation-vien"
-            self.dataset_testing = load_dataset(
-                "vietgpt/opus100_envi", split="test")
-            self.dataset_training = load_dataset(
-                "vietgpt/opus100_envi", split="train")
+            self.dataset_testing = load_dataset("vietgpt/opus100_envi", split="test")
+            self.dataset_training = load_dataset("vietgpt/opus100_envi", split="train")
             self.source_language = "vi"
             self.target_language = "en"
 
@@ -869,8 +862,7 @@ class DatasetWrapper:
                 data_files="datasets/Robustness/opus100_envi_for_robustness.csv",
                 split="train",
             )
-            self.dataset_training = load_dataset(
-                "vietgpt/opus100_envi", split="train")
+            self.dataset_training = load_dataset("vietgpt/opus100_envi", split="train")
             self.source_language = "en"
             self.target_language = "vi"
 
@@ -881,8 +873,7 @@ class DatasetWrapper:
                 data_files="datasets/Robustness/opus100_vien_for_robustness.csv",
                 split="train",
             )
-            self.dataset_training = load_dataset(
-                "vietgpt/opus100_envi", split="train")
+            self.dataset_training = load_dataset("vietgpt/opus100_envi", split="train")
             self.source_language = "vi"
             self.target_language = "en"
 

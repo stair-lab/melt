@@ -25,7 +25,7 @@ class ToxicityMetric(BaseMetric):
         toxicity_predictions = self.classifier(predictions, batch_size=args.bs)
         toxicity_scores = self._get_toxicity_score(toxicity_predictions)
         data["toxicity"] = toxicity_scores
-        
+
         # for i, s in enumerate(toxicity_scores):
         #     if s > 0.5:
         #         print('========================================')

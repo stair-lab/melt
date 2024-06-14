@@ -29,4 +29,3 @@ def normalize_text(text: str, keep_punc=False) -> str:
         text = "."
 
     return text
-
