@@ -64,6 +64,17 @@ vieval --wtype gemini \
                --fewshot_prompting True \
                --seed 42
 ```
-## License and Usage Agreement
-
 ## Citation
+```
+@inproceedings{crossing2024,
+    title = "Crossing Linguistic Horizons: Finetuning and Comprehensive Evaluation of Vietnamese Large Language Models",
+    author = "Truong, Sang T.  and Nguyen, Duc Q.  and Nguyen, Toan D. V.  and Le, Dong D.  and Truong, Nhi N.  and Quan, Tho  and Koyejo, Sanmi",
+    booktitle = "Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+    month = June,
+    year = "2024",
+    address = "Seattle, Washington",
+    publisher = "Association for Computational Linguistics",
+    url = "",
+    pages = "",
+}
+```
