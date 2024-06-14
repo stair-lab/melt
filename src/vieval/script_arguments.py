@@ -59,10 +59,22 @@ class ScriptArguments:
     )
 
     # TrainingArguments parameters
+    config_dir: str = field(
+        default="./config",
+        metadata={
+            "help": "Configuration directory where contains LLM template, prompt template, generation configuration"
+        },
+    )
     output_dir: str = field(
-        default="./results",
+        default="./results/generation",
         metadata={
             "help": "Output directory where the model predictions and checkpoints will be stored"
+        },
+    )
+    output_eval_dir: str = field(
+        default="./results/evaluation",
+        metadata={
+            "help": "The output folder to save metric scores",
         },
     )
     num_train_epochs: Optional[int] = field(
@@ -176,16 +188,16 @@ class ScriptArguments:
         default=False,
         metadata={"help": "Wheather to continue previous inference process"},
     )
-    mode: str = field(default="generation", metadata={"help": "Select mode to run (generation, evaluation, end2end"})
-    output_eval_dir: str = field(
-        default="./out_new",
-        metadata={
-            "help":"The output folder to save bias score",
-        },
+    wtype: str = field(
+        default="hf",
+        metadata={"help": "Select type of wrapper: hf, tgi, azuregpt, gemini"},
     )
+    ptemplate: Optional[str] = field(
+        default="llama-2",
+        metadata={"help": "Prompting template in chat template: llama-2, mistral, ..."},
+    )
+
     device: str = field(default="cuda:0", metadata={"help": "CUDA device"})
-    n_bootstrap: int = field(default=100, metadata={"help": "n bootstrap"})
-    p_bootstrap: int = field(default=100, metadata={"help": "p bootstrap"})
+    n_bootstrap: int = field(default=2, metadata={"help": "n bootstrap"})
+    p_bootstrap: float = field(default=1.0, metadata={"help": "p bootstrap"})
     bs: int = field(default=128, metadata={"help": "Bias metric"})
-    template_file: str = field(default="evaluation_results_template.xlsx", metadata={"help": ""})
-    out_file: str = field(default="evaluation_results_std.xlsx", metadata={"help": ""})

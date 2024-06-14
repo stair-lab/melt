@@ -1,3 +1,6 @@
-from .model_wrapper import *
+from .AzureGPTWrapper import AzureGPTWrapper
+from .GeminiWrapper import GeminiWrapper
+from .TGIWrapper import TGIWrapper
+from .HFWrapper import HFWrapper
 
-__all__ = ["GPTPipeline", "LLaMaPipeline", "LLaMaTGIPipeline"]
+__all__ = ["AzureGPTWrapper", "GeminiWrapper", "TGIWrapper", "HFWrapper"]

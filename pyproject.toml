@@ -6,80 +6,75 @@ build-backend = "hatchling.build"
 name = "ViLLM-Eval"
 version = "0.0.1"
 authors = [
-  { name="Sang T. Truong", email="sttruong@stanford.edu" },
-  { name="Duc Q. Nguyen", email="nqduc@hcmut.edu.vn" },
-  { name="Dong D. Le", email="dong.le0110@hcmut.edu.vn" },
-  { name="Toan D. V. Nguyen", email="ndvtoan.sdh20@hcmut.edu.vn" },
-  { name="Nhi N. Truong", email="nntruong2601@gmail.com" },
-  { name="Tho Quan", email="qttho@hcmut.edu.vn" },
-  { name="Sanmi Koyejo", email="sanmi@cs.stanford.edu" },
+  { name = "Sang T. Truong", email = "sttruong@stanford.edu" },
+  { name = "Duc Q. Nguyen", email = "nqduc@hcmut.edu.vn" },
+  { name = "Dong D. Le", email = "dong.le0110@hcmut.edu.vn" },
+  { name = "Toan D. V. Nguyen", email = "ndvtoan.sdh20@hcmut.edu.vn" },
+  { name = "Nhi N. Truong", email = "nntruong2601@gmail.com" },
+  { name = "Tho Quan", email = "qttho@hcmut.edu.vn" },
+  { name = "Sanmi Koyejo", email = "sanmi@cs.stanford.edu" },
 ]
 description = "A Python package for evaluating Vietnamese LLMs"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "License :: OSI Approved :: Apache 2.0 License",
-    "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
 ]
-license = {text = "Apache 2.0 License"}
+license = { text = "Apache 2.0 License" }
+
 dependencies = [
-    "accelerate>=0.21.0",
-    "peft>=0.4.0",
-    "bitsandbytes>=0.40.2",
-    "transformers>=4.31.0",
-    "trl>=0.4.7",
-    "xformers",
-    "torch>=2.0.1",
-    "scipy",
-    "tiktoken",
-    "tqdm",
-    "python-dotenv",
-    "openai==0.27.8",
-    "backoff",
-    "uncertainty-calibration",
-    "jiwer",
-    "underthesea",
-    "sentencepiece",
-    "bert-score",
-    "summ-eval",
-    "rouge-score",
-    "hLepor",
-    "nptyping",
-    "ranx",
-    "evaluate",
-    "scikit-learn",
-    "python-Levenshtein",
+  "accelerate>=0.30.1",
+  "peft>=0.11.1",
+  "bitsandbytes>=0.40.2",
+  "transformers>=4.31.0",
+  "ranx",
+  "trl>=0.9.4",
+  "xformers==0.0.12", 
+  "scipy>=1.10.0", 
+  "tiktoken",
+  "tqdm>=4.65.0",
+  "python-dotenv>=0.21.0",
+  "openai>=1.14.3",
+  "backoff>=2.2.1",
+  "uncertainty-calibration",
+  "jiwer>=2.6.0",
+  "underthesea>=2.4.1",
+  "sentencepiece>=0.1.97",
+  "nptyping>=1.4.0",
+  "evaluate>=0.4.0",
+  "scikit-learn>=1.2.2",
+  "python-Levenshtein>=0.20.9",
+  "bert-score==0.3.13",
+  "rouge-score==0.1.2",
+  "hLepor==0.0.4",
+  "spacy>=3.5.0",
+  "cython>=0.29.33",
+  "stanza>=1.4.2",
+  "moverscore>=0.0.19",
+  "pyemd==0.5.1",
+  "sacremoses>=0.0.53",
+  "pytorch-pretrained-bert>=0.6.2",
+  "summ-eval>=0.122",
+  "google-generativeai>=0.3.2"
 ]
 
 [project.urls]
 Homepage = "https://github.com/koyejo-lab/villm-eval"
 Issues = "https://github.com/koyejo-lab/villm-eval/issues"
 
-[tool.poetry.dependencies]
-python = ">=3.8,<=3.10"
-accelerate = "^0.21.0"
-peft = "^0.4.0"
-bitsandbytes = "^0.40.2"
-transformers = "^4.31.0"
-trl = "^0.4.7"
-xformers = "*"
-torch = "^2.0.1"
-scipy = "*"
-tiktoken = "*"
-tqdm = "latest"
-python-dotenv = "latest"
-openai = "^0.27.8"
-backoff = "latest"
+[project.scripts]
+vieval = "vieval.cli:main"
 
 [tool.hatch.build.targets.sdist]
 include = [
   "pkg/*.py",
-  "/tests",
+  "tests", 
 ]
 exclude = [
   "*.json",
@@ -91,5 +86,5 @@ packages = ["src/vieval"]
 artifacts = [
   "*.so",
   "*.dll",
-  "!/foo/*.so",
+  "!/foo/*.so", 
 ]

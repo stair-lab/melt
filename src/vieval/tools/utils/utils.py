@@ -55,3 +55,13 @@ def save_to_json(data, name):
 def save_to_csv(data, name):
     df = pd.DataFrame(data)
     df.to_csv(name, index=False)
+
+
+def format_fewshot(recs, query_format="{}", answer_format="{}"):
+    conv = []
+    for rec in recs:  # rec: [query, context, answer]
+        content = query_format.format(*rec[:-1])
+        conv.append({"role": "user", "content": content})
+        conv.append({"role": "assistant", "content": answer_format.format(rec[-1])})
+
+    return conv

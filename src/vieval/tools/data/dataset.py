@@ -1,6 +1,7 @@
 import random
+import os
+import json
 from datasets import load_dataset
-from ..prompt.prompt_template import CALIBRATION_INSTRUCTION, PROMPT_TEMPLATE
 
 
 def eval_keys(keys):
@@ -16,17 +17,24 @@ def eval_keys(keys):
 
 
 class DatasetWrapper:
-    def __init__(self, dataset_name, prompting_strategy=0, fewshots=None) -> None:
+    def __init__(
+        self, dataset_name, config_dir, prompting_strategy=0, fewshots=None
+    ) -> None:
         self.dataset_name = dataset_name
         self.prompting_strategy = prompting_strategy
         self.fewshots = fewshots
         self.dataset_training = None
         self.dataset_testing = None
-
+        self.config_dir = config_dir
         self.get_dataset_config()
         self.get_prompt()
 
     def get_prompt(self):
+        with open(os.path.join(self.config_dir, "prompt_template.json"), "r") as f:
+            prompt_config = json.load(f)
+        PROMPT_TEMPLATE = prompt_config["PROMPT_TEMPLATE"]
+        CALIBRATION_INSTRUCTION = prompt_config["CALIBRATION_INSTRUCTION"]
+
         if self.prompting_strategy not in [0, 1, 2, 3]:
             raise ValueError("Prompting strategy is not supported")
         task = self.task.split("_")[0]
@@ -764,21 +772,21 @@ class DatasetWrapper:
             subset = self.dataset_name.split("_")[2]
             problem_type = self.dataset_name.split("_")[-1]
             self.dataset_testing = load_dataset(
-                "ura-hcmut/MATH",
+                "ura-hcmut/MATH_Level_1",
                 subset,
                 split="test",
             )
-            self.dataset_testing = self.dataset_testing.filter(
-                lambda x: x["type"] == problem_type and x["level"] == "Level 1"
-            )
+            # self.dataset_testing = self.dataset_testing.filter(
+            #     lambda x: x["type"] == problem_type and x["level"] == "Level 1"
+            # )
             self.dataset_training = load_dataset(
-                "ura-hcmut/MATH",
+                "ura-hcmut/MATH_Level_1",
                 subset,
                 split="train",
             )
-            self.dataset_training = self.dataset_training.filter(
-                lambda x: x["type"] == problem_type and x["level"] == "Level 1"
-            )
+            # self.dataset_training = self.dataset_training.filter(
+            #     lambda x: x["type"] == problem_type and x["level"] == "Level 1"
+            # )
             self.source = "problem"
             self.type = "type"
             self.target = "solution"

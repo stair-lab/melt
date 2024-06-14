@@ -1,0 +1,16 @@
+[
+    {
+        "doc": "Jack drove his minivan to the bazaar to purchase milk and honey for his large family.",
+        "summaries": [
+            "Jack bought milk and honey.",
+            "Jack drove to the bazaar in a minivan."
+        ]
+    },
+    {
+        "doc": "As Jill started taking a walk in the park, she certainly noticed that the trees were extra green this year.",
+        "summaries": [
+            "Jill saw green trees in the park.",
+            "The trees were green."
+        ]
+    }
+]
