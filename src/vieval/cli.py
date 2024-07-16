@@ -10,7 +10,7 @@ except OSError:
     from spacy.cli import download
 
     download("en_core_web_sm")
-    
+
 from .script_arguments import ScriptArguments
 from .generation import generation
 

@@ -81,7 +81,7 @@ class SummaCImager:
         use_cache=True,
         max_doc_sents=100,
         device="cuda",
-        **kwargs
+        **kwargs,
     ):
         self.grans = granularity.split("-")
 

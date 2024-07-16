@@ -13,7 +13,7 @@ from sklearn.metrics import (
 
 class TextClassificationMetric(BaseMetric):
     """Evaluate text classification models."""
-    
+
     def __init__(self, data, args):
         super().__init__(data, args)
         self.roc_auc_score = evaluate.load("roc_auc", "multiclass")

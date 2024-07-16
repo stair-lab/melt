@@ -10,7 +10,7 @@ import numpy as np
 
 class SummaryMetric(BaseMetric):
     """Evaluate the quality of text summaries."""
-    
+
     def __init__(self, data, args):
         super().__init__(data, args)
         import warnings

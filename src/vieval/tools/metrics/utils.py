@@ -5,6 +5,7 @@ import pandas as pd
 from nltk.metrics.scores import f_measure
 from collections import namedtuple as _namedtuple
 
+
 def normalize_text(text: str, keep_punc=False) -> str:
     """Lower text and remove punctuation, articles and extra whitespace.
     Copied from the [QuAC](http://quac.ai/) evaluation script found at
@@ -31,13 +32,23 @@ def normalize_text(text: str, keep_punc=False) -> str:
     return text
 
 
+def normalize(tokens, case=False):
+    """
+
+    Lowercases and turns tokens into distinct words.
+
+    """
+
+    return [str(t).lower() if not case else str(t) for t in tokens]
+
+
 class Fragments:
 
     Match = _namedtuple("Match", ("summary", "text", "length"))
 
     def __init__(self, summary, text, case=False):
 
-        #self._tokens = tokenize
+        # self._tokens = tokenize
 
         if isinstance(summary, str):
             self.summary = summary.split()
@@ -53,11 +64,7 @@ class Fragments:
 
         self._match(self._norm_summary, self._norm_text)
 
-
-
-
     def overlaps(self):
-
         """
 
         Return a list of Fragments.Match objects between summary and text.
@@ -71,9 +78,7 @@ class Fragments:
 
         return self._matches
 
-
     def strings(self, min_length=0, summary_base=True):
-
         """
 
         Return a list of explicit match strings between the summary and reference.
@@ -101,14 +106,17 @@ class Fragments:
 
         # Generate strings, filtering out strings below the minimum length.
 
-        strings = [base[i : i + length] for i, j, length in self.overlaps() \
-            if length > min_length]
+        strings = [
+            base[i : i + length]
+            for i, j, length in self.overlaps()
+            if length > min_length
+        ]
 
         # By default, we just return the tokenization being used.
         # But if they user wants a raw string, then we convert.
         # Mostly, this will be used along with spacy.
 
-        #if self._tokens and raw:
+        # if self._tokens and raw:
 
         #    for i, s in enumerate(strings):
         #        strings[i] = str(s)
@@ -117,9 +125,7 @@ class Fragments:
 
         return strings
 
-
     def coverage(self, summary_base=True):
-
         """
         Return the COVERAGE score of the summary and text.
 
@@ -144,9 +150,7 @@ class Fragments:
         else:
             return numerator / denominator
 
-
     def density(self, summary_base=True):
-
         """
 
         Return the DENSITY score of summary and text.
@@ -161,7 +165,7 @@ class Fragments:
 
         """
 
-        numerator = sum(o.length ** 2 for o in self.overlaps())
+        numerator = sum(o.length**2 for o in self.overlaps())
 
         if summary_base:
             denominator = len(self.summary)
@@ -173,9 +177,7 @@ class Fragments:
         else:
             return numerator / denominator
 
-
     def compression(self, text_to_summary=True):
-
         """
 
         Return compression ratio between summary and text.
@@ -203,9 +205,7 @@ class Fragments:
 
             return 0
 
-
     def _match(self, a, b):
-
         """
 
         Raw procedure for matching summary in text, described in paper.
@@ -228,8 +228,7 @@ class Fragments:
                     a_end = a_start
                     b_end = b_start
 
-                    while a_end < len(a) and b_end < len(b) \
-                            and b[b_end] == a[a_end]:
+                    while a_end < len(a) and b_end < len(b) and b[b_end] == a[a_end]:
 
                         b_end += 1
                         a_end += 1

@@ -8,8 +8,8 @@ from datasets import load_dataset
 class InformationRetrievalMetric(BaseMetric):
     """Evaluate information retrieval systems."""
 
-    def __init__(self) -> None:
-        pass
+    # def __init__(self) -> None:
+    #     pass
 
     def _get_qrel(self, references: List[Dict]) -> Qrels:
         """Processes a list of reference dictionaries to create a Qrels object, which represents the relevance judgments (i.e., which documents are relevant to which queries).
