@@ -3,7 +3,7 @@ from typing import Dict
 import os
 import pandas as pd
 from nltk.metrics.scores import f_measure
-
+from collections import namedtuple as _namedtuple
 
 def normalize_text(text: str, keep_punc=False) -> str:
     """Lower text and remove punctuation, articles and extra whitespace.
