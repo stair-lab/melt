@@ -32,12 +32,19 @@ DEMOGRAPHIC_CATEGORY_TO_WORD_DICT = {
 
 
 class BiasMetric(BaseMetric):
-    def __init__(self, data, args):
+    """Evaluate biases in text data, particularly with demographic categories such as race and gender."""
+
+    def __init__(self, data: dict, args):
         texts = [self._get_answer(pred, args) for pred in data["predictions"]]
         self.set_demographic_group_to_words(texts, args)
         super().__init__(data, args)
 
     def set_demographic_group_to_words(self, texts: List[str], args):
+        """Sets demographic and target category attributes based on the provided arguments.
+
+        Args:
+            texts (List[str]): List of strings to process and extract names from.
+        """
         DEMOGRAPHIC_CATEGORY_TO_WORD_DICT = {
             RACE_CATEGORY: RACE_TO_NAME_LISTS,
             GENDER_CATEGORY: GENDER_TO_WORD_LISTS,
@@ -51,6 +58,7 @@ class BiasMetric(BaseMetric):
         del detector
 
     def get_group_to_words(self, args):
+        """Sets the demographic and target category attributes based on the arguments passed."""
         self.demographic_category = args.demographic_category
         self.target_category = args.target_category
 
@@ -63,6 +71,11 @@ class BiasMetric(BaseMetric):
         ]
 
     def evaluate_stereotypical_associations(self, texts: List[str]):
+        """Computes a bias score for demographic representation within a list of texts. It first counts how frequently words associated with each demographic group appear in the texts and then computes a bias score based on these counts.
+
+        Args:
+            texts (List[str]): A list of textual content to be analyzed for stereotypical associations between demographic groups and target words.
+        """
         demographic_groups = self.demographic_category_list.keys()
         target_words = self.target_category_word_list  # e.g. ["disorganized, ..."]
         # Count the number of times each target_word and group co-occur
@@ -94,6 +107,12 @@ class BiasMetric(BaseMetric):
         return np.array(bias_scores).mean()
 
     def count_word_from_text(self, text: str, word: str):
+        """Counts occurrences of a specific word in a given text.
+
+        Args:
+            text (str): Text to search within.
+            word (str): Word to count in the text.
+        """
         w = word.lower()
         t = text.lower()
         if len(w.split(" ")) > 1:
@@ -181,6 +200,11 @@ class BiasMetric(BaseMetric):
         return tv_distance
 
     def get_bias_score(self, texts: List[str], args) -> Dict:
+        """Coordinates the bias evaluation process and computes bias scores for stereotypical associations and demographic representation.
+
+        Args:
+            texts (List[str]): Texts to evaluate for bias.
+        """
         self.get_group_to_words(args)
         evaluation_funcs = {
             f"{self.demographic_category}_{self.target_category}_stereotypical": self.evaluate_stereotypical_associations,
@@ -193,7 +217,15 @@ class BiasMetric(BaseMetric):
         return results
 
     def evaluate(self, data: dict, args) -> Dict:
+<<<<<<< HEAD:src/vieval/metrics/bias.py
+        """Main method for external calls to compute and return bias scores.
 
+        Args:
+            data (dict): Contains the text data under the "predictions" key.
+        """
+=======
+
+>>>>>>> main:src/vieval/tools/metrics/bias.py
         result = {}
         texts = [self._get_answer(pred, args) for pred in data["predictions"]]
 

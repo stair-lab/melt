@@ -83,7 +83,6 @@ class SummaCImager:
         device="cuda",
         **kwargs
     ):
-
         self.grans = granularity.split("-")
 
         assert (
@@ -202,7 +201,6 @@ class SummaCImager:
             for j in range(N_gen)
         ]
         for batch in utils_misc.batcher(dataset, batch_size=512):
-
             if self.model_name == "decomp":
                 batch_evids, batch_conts, batch_neuts = [], [], []
                 batch_json = [
@@ -281,7 +279,7 @@ class SummaCConv(torch.nn.Module):
         imager_load_cache=True,
         agg="mean",
         norm_histo=False,
-        **kwargs
+        **kwargs,
     ):
         # `bins` should be `even%d` or `percentiles`
         assert nli_labels in [
@@ -501,7 +499,7 @@ class SummaCZS:
         use_con=True,
         imager_load_cache=True,
         device="cuda",
-        **kwargs
+        **kwargs,
     ):
         assert op2 in ["min", "mean", "max"], "Unrecognized `op2`"
         assert op1 in ["max", "mean", "min"], "Unrecognized `op1`"

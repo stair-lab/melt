@@ -9,6 +9,11 @@ class BaseMetric:
         return
 
     def _get_answer(self, text: str, args) -> str:
+        """Process a text and extract an answer based on certain arguments
+
+        Args:
+            text (str): A string containing the text from which the answer is to be extracted.
+        """
         return get_answer_auto_from_text(
             text=text,
             key_answer=args.key_answer,

@@ -16,3 +16,5 @@ run_script.sh
 results/*
 !results/.gitkeep
 new_script_gpt
+.venv
+summ_eval-0.892/*
