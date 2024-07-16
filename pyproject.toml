@@ -60,7 +60,6 @@ dependencies = [
   "pyemd==0.5.1",
   "sacremoses>=0.0.53",
   "pytorch-pretrained-bert>=0.6.2",
-  "summ-eval>=0.122",
   "google-generativeai>=0.3.2"
 ]
 

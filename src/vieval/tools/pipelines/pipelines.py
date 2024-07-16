@@ -46,7 +46,7 @@ class EvalPipeline:
 
         elif config.wtype == "azuregpt":
             self.infer_pipeline = AzureGPTWrapper(
-                engine="testing" if config.model_name == "gpt-3.5-turbo" else "gpt-4",
+                engine=config.model_name,
                 generation_config=GenerationConfig[extract_task],
             )
         elif config.wtype == "gemini":

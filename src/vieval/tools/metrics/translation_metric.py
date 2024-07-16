@@ -7,7 +7,7 @@ from typing import Dict
 
 class TranslationMetric(BaseMetric):
     """Evaluate the quality of text translations using metrics like BLEU and hLepor."""
-        
+
     def __init__(self, data, args) -> None:
         self.bleu_metrics = evaluate.load("bleu")
         super().__init__(data, args)

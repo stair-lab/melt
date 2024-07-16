@@ -8,8 +8,8 @@ from .utils import normalize_text
 class QAMetric(BaseMetric):
     """Evaluate the performance of a question-answering (QA) system."""
 
-    def __init__(self):
-        super().__init__()
+    # def __init__(self):
+    #     super().__init__()
 
     def evaluate(self, data: Dict, args) -> (Dict, Dict):
         """Returns evaluation results for QA predictions.

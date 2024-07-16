@@ -10,8 +10,8 @@ from typing import List
 class CalibrationMetric(BaseMetric):
     """Evaluate the calibration of probabilistic models"""
 
-    def __init__(self) -> None:
-        pass
+    # def __init__(self) -> None:
+    #     pass
 
     def get_cal_score(self, max_probs: List[float], correct: List[int]):
         """Calculates various calibration scores based on the predicted probabilities (max_probs) and the ground truth labels (correct).

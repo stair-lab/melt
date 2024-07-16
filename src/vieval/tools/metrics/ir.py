@@ -8,8 +8,8 @@ from datasets import load_dataset
 class InformationRetrievalMetric(BaseMetric):
     """Evaluate information retrieval systems."""
 
-    def __init__(self) -> None:
-        pass
+    # def __init__(self) -> None:
+    #     pass
 
     def _get_qrel(self, references: List[Dict]) -> Qrels:
         """Processes a list of reference dictionaries to create a Qrels object, which represents the relevance judgments (i.e., which documents are relevant to which queries).
@@ -33,7 +33,6 @@ class InformationRetrievalMetric(BaseMetric):
         score: float,
         is_positive_predict: bool,
     ) -> float:
-<<<<<<< HEAD:src/vieval/metrics/ir.py
         """Converts a log probability score into a regular probability.
 
         Args:
@@ -44,14 +43,11 @@ class InformationRetrievalMetric(BaseMetric):
         Returns:
             float: If the prediction is not positive, the probability is adjusted by subtracting it from 1.
         """
-=======
->>>>>>> main:src/vieval/tools/metrics/ir.py
         prob = np.exp(score)
         prob = 1 - prob if not is_positive_predict else prob
         return prob
 
     def _get_run(self, predictions: List[Dict], k: int, args) -> Run:
-<<<<<<< HEAD:src/vieval/metrics/ir.py
         """Processes a list of prediction dictionaries to create a Run object, which represents the system's ranked list of documents for each query.
 
         Args:
@@ -59,8 +55,6 @@ class InformationRetrievalMetric(BaseMetric):
 
             k (int): An integer representing the number of top documents to consider for each query.
         """
-=======
->>>>>>> main:src/vieval/tools/metrics/ir.py
         run_dict = {}
         for prediction in predictions:
             query_id = str(prediction["query_id"])

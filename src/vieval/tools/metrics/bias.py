@@ -217,15 +217,11 @@ class BiasMetric(BaseMetric):
         return results
 
     def evaluate(self, data: dict, args) -> Dict:
-<<<<<<< HEAD:src/vieval/metrics/bias.py
         """Main method for external calls to compute and return bias scores.
 
         Args:
             data (dict): Contains the text data under the "predictions" key.
         """
-=======
-
->>>>>>> main:src/vieval/tools/metrics/bias.py
         result = {}
         texts = [self._get_answer(pred, args) for pred in data["predictions"]]
 
