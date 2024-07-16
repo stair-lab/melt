@@ -9,14 +9,12 @@ conda create -n villm python=3.10
 conda activate villm
 ```
 **Install PyTorch (with CUDA 12.1):**
- **Recommended:** Visit the official PyTorch website ([https://pytorch.org/](https://pytorch.org/)) for the most up-to-date instructions.
+
+**Recommended:** Visit the official PyTorch website ([https://pytorch.org/](https://pytorch.org/)) for the most up-to-date instructions.
+
 **Alternative (if you have CUDA 12.1 set up):**
 ```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-```
-Install custom dependencies:
-```bash
-pip install -e ./blanc
 ```
 Install package:
 ```bash

@@ -2,7 +2,7 @@ from typing import Dict
 from bert_score import BERTScorer
 import evaluate
 from .summac.model_summac import SummaCZS
-from summ_eval.data_stats_metric import DataStatsMetric
+from data_stats_metric import DataStatsMetric
 from .base import BaseMetric
 from .utils import normalize_text
 import numpy as np
