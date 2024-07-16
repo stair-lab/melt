@@ -1,0 +1,6 @@
+nltk<4.0,>=3.1
+numpy<2.0,>=1.0
+scipy>=1.6.0
+torch>=1.0.0
+tqdm<5.0,>=4.27.0
+transformers>=2.4.0

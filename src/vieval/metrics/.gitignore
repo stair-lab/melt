@@ -1,7 +1,0 @@
-*.json
-out/*
-out_new/*
-ura-llama/results/*
-results/*
-*.ipynb_checkpoints*
-*__pycache__*

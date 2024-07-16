@@ -1,4 +1,5 @@
 from .pipelines import EvalPipeline
-from .cost_estimate_pipeline import CostEvalPipeline
+from .metric_pipelines import MetricPipeline
 
-__all__ = ["EvalPipeline", "CostEvalPipeline"]
+
+__all__ = ["EvalPipeline", "MetricPipeline"]
