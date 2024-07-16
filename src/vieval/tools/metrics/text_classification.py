@@ -62,17 +62,6 @@ class TextClassificationMetric(BaseMetric):
             )
 
         probs = softmax_options_prob(sum_option_probs)
-<<<<<<< HEAD:src/vieval/metrics/text_classification.py
-        labels = np.array([args.class_names.index(ref) for ref in references])
-        try:
-            roc_auc = roc_auc_score(labels, probs, multi_class="ovr", average="macro")
-            self.roc_auc_score.compute(
-                references=labels,
-                prediction_scores=probs,
-                multi_class="ovr",
-                average="macro",
-            )
-=======
         if len(args.class_names) == 2:
             probs = probs[:, 1].reshape(-1, 1)
         labels = np.array([args.class_names.index(ref) for ref in references])
@@ -84,7 +73,6 @@ class TextClassificationMetric(BaseMetric):
             #     multi_class="ovr",
             #     average="macro",
             # )
->>>>>>> main:src/vieval/tools/metrics/text_classification.py
             result["roc_auc"] = roc_auc
         except Exception as e:
             print(e)
