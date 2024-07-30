@@ -29,6 +29,7 @@ classifiers = [
 license = { text = "Apache 2.0 License" }
 
 dependencies = [
+  "vllm>=0.5.2",
   "accelerate>=0.30.1",
   "peft>=0.11.1",
   "bitsandbytes>=0.40.2",
