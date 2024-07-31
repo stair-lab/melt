@@ -1,4 +1,3 @@
-import torch
 import json
 import os
 import openai
@@ -49,7 +48,7 @@ class GeminiWrapper:
 
     def __call__(self, prompts, return_probs=False):
         generations = []
-        generations_probs = [torch.tensor([])] * len(prompts)
+        generations_probs = [[]] * len(prompts)
         num_generated_tokens = []
         for prompt in prompts:
             processed_prompt = [list(p.values())[1] for p in prompt]
@@ -74,7 +73,7 @@ class GeminiWrapper:
 
     def compute_logprob_and_length(self, prompts, completions):
         completions_num_tokens = [0] * len(prompts)
-        completions_logprobs = [torch.tensor([])] * len(prompts)
+        completions_logprobs = [[]] * len(prompts)
         # Not Implement
         return completions_logprobs, completions_num_tokens
 
