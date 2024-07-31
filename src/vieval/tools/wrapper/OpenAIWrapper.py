@@ -17,7 +17,7 @@ class OpenAIWrapper(BaseWrapper):
 
     def __call__(self, prompts, return_probs=False):
         generations = []
-        generations_probs = [torch.tensor([])] * len(prompts)
+        generations_probs = [[]] * len(prompts)
         num_generated_tokens = []
         for prompt in prompts:
 
@@ -34,7 +34,7 @@ class OpenAIWrapper(BaseWrapper):
 
     def compute_logprob_and_length(self, prompts, completions):
         completions_num_tokens = [0] * len(prompts)
-        completions_logprobs = [torch.tensor([])] * len(prompts)
+        completions_logprobs = [[]] * len(prompts)
         # TODO: Implement when OpenAI support logprobs of sentence
         return completions_logprobs, completions_num_tokens
 
