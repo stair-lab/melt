@@ -1,10 +1,7 @@
-import json
 import os
-import openai
 import backoff
 from dotenv import load_dotenv
 import google.generativeai as genai
-import random
 
 load_dotenv()
 

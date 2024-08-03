@@ -1,5 +1,3 @@
-import argparse
-import os
 from ..metrics.text_classification import TextClassificationMetric
 from ..metrics.calibration_metric import CalibrationMetric
 from ..metrics.language import LanguageMetric
@@ -10,16 +8,13 @@ from ..metrics.reasoning import ReasoningMetric
 from ..metrics.summary import SummaryMetric
 from ..metrics.bias import BiasMetric
 from ..metrics.toxicity import ToxicityMetric
-from time import time
-import logging
-
 from typing import Dict, List
 import numpy as np
 
 
 class MetricPipeline:
     def __init__(self):
-        
+
         self.metric_classes = {
             "question-answering": [QAMetric, BiasMetric, ToxicityMetric],
             "summarization": [SummaryMetric, BiasMetric, ToxicityMetric],
@@ -45,7 +40,9 @@ class MetricPipeline:
 
         return obj_lst
 
-    def run_mean(self, data, task_name: str, answer_key: str, class_names: List, args, **kwargs) -> Dict:
+    def run_mean(
+        self, data, task_name: str, answer_key: str, class_names: List, args, **kwargs
+    ) -> Dict:
         metric_lst = self._load_metrics(data, task_name, answer_key, class_names, args)
         result = {}
         for metric in metric_lst:
@@ -54,8 +51,12 @@ class MetricPipeline:
 
         return result
 
-    def run_std(self, data, task_name: str, answer_key: str, class_names: List, args, **kwargs) -> Dict:
-        result_lst = self._run_bootrap(data, task_name, answer_key, class_names, args, **kwargs)
+    def run_std(
+        self, data, task_name: str, answer_key: str, class_names: List, args, **kwargs
+    ) -> Dict:
+        result_lst = self._run_bootrap(
+            data, task_name, answer_key, class_names, args, **kwargs
+        )
         final_result = self._get_std(result_lst)
 
         return final_result
@@ -84,7 +85,9 @@ class MetricPipeline:
 
         return sub_data
 
-    def _run_bootrap(self, data, task_name, answer_key, class_names, args, **kwargs) -> Dict:
+    def _run_bootrap(
+        self, data, task_name, answer_key, class_names, args, **kwargs
+    ) -> Dict:
         n_data = len(
             data["predictions"]
         )  # if 'predictions' in data else len(data['prediction'])
@@ -96,7 +99,9 @@ class MetricPipeline:
             )
             print(n_data, len(indices))
             sub_data = self._get_subdata(data, n_data, indices)
-            result = self.run_mean(sub_data, task_name, answer_key, class_names, args, **kwargs)
+            result = self.run_mean(
+                sub_data, task_name, answer_key, class_names, args, **kwargs
+            )
             results_lst.append(result)
 
         return results_lst

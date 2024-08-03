@@ -3,7 +3,6 @@ from typing import Dict, List
 import copy
 from .BaseWrapper import BaseWrapper
 from ..utils.chat_template import apply_chat_template
-from ..utils.model import get_model
 
 
 class VLLMWrapper(BaseWrapper):

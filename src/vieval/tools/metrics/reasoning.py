@@ -1,12 +1,8 @@
 from typing import Dict
 import numpy as np
-import regex
 from .basic_metrics import exact_match, f1_score
 from .base import BaseMetric
 import random
-import Levenshtein
-import os
-import pandas as pd
 import string as string_func
 
 escape_dict = {
