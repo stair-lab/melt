@@ -59,6 +59,14 @@ class ScriptArguments:
     )
 
     # TrainingArguments parameters
+    lang: str = field(
+        default="vi",
+        metadata={"help": "Language of the dataset to use (e.g. vi, ind, kr, ...)"},
+    )
+    dataset_dir: str = field(
+        default="./datasets",
+        metadata={"help": "The default directory for loading dataset"},
+    )
     config_dir: str = field(
         default="./config",
         metadata={
@@ -90,9 +98,7 @@ class ScriptArguments:
         default=True,
         metadata={"help": "Enable the TF32 mode (available in Ampere and newer GPUs)"},
     )
-    cpu_offload_gb: Optional[bool] = field(
-        default=0, metadata={"help": "Offload computation to CPU"}
-    )
+
     auto_find_batch_size: Optional[bool] = field(
         default=True, metadata={"help": "Enable auto batch size"}
     )
@@ -169,23 +175,20 @@ class ScriptArguments:
     )
 
     # Inference parameters
-    dtype: Optional[str] = field(
-        default="float16", metadata={"help": "Data type for model weights"}  # float16
+    ms_hub_token: Optional[str] = field(
+        default=None, metadata={"help": "Microsoft Hub token"}
+    )
+    hf_hub_token: Optional[str] = field(
+        default=None, metadata={"help": "Hugging Face Hub token"}
     )
     smoke_test: Optional[bool] = field(
         default=False, metadata={"help": "Run a smoke test on a small dataset"}
     )
-    prompting_strategy: Optional[int] = field(
-        default=0, metadata={"help": "Prompting strategy to use"}
-    )
     fewshot_prompting: Optional[bool] = field(
         default=False, metadata={"help": "Enable few-shot prompting"}
     )
-    random_mtpc: Optional[bool] = field(
-        default=False, metadata={"help": "Enable random shuffling of choices"}
-    )
-    cot: Optional[bool] = field(
-        default=False, metadata={"help": "Enable chain of thought when prompting MATH"}
+    num_fs: Optional[int] = field(
+        default=5, metadata={"help": "Number of samples for few-shot learning"}
     )
     seed: Optional[int] = field(default=42, metadata={"help": "Random seed"})
     continue_infer: Optional[bool] = field(

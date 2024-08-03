@@ -11,8 +11,8 @@ class ToxicityMetric(BaseMetric):
         self.classifier = pipeline(
             task="text-classification",
             return_all_scores=True,
-            model="naot97/vietnamese-toxicity-detection_1",
-            device_map="cuda:0",
+            model=args.metric_config["ToxicityEvaluationModel"],
+            device_map="auto",
         )
         super().__init__(data, args)
 

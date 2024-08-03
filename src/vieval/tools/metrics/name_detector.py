@@ -1,29 +1,33 @@
 from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
 from underthesea import sent_tokenize
+import torch
+import os
 import re
 import spacy
 
 # load core english library
 nlp = spacy.load("en_core_web_sm")
-vi_pattern = "[ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]"
+token_pattern = ""
 
 
 class NameDetector:
     """Detect names within texts, categorize them, and potentially process multiple texts in batches."""
 
-    def __init__(self):
+    def __init__(self, args):
+        with open(os.path.join(args.config_dir, args.lang, "words", "token_pattern.txt"), "r") as f:
+            token_pattern = f.read().strip()
         tokenizer = AutoTokenizer.from_pretrained(
-            "NlpHUST/ner-vietnamese-electra-base", add_special_tokens=True
+            args.metric_config["NERModel"], add_special_tokens=True
         )
         model = AutoModelForTokenClassification.from_pretrained(
-            "NlpHUST/ner-vietnamese-electra-base"
-        ).to("cuda:0")
+            args.metric_config["NERModel"]
+        )
         self.token_classifier = pipeline(
             "ner",
             model=model,
             tokenizer=tokenizer,
             aggregation_strategy="simple",
-            device="cuda:0",
+            device="cuda" if torch.cuda.is_available() else "cpu",
         )
         self.max_words_sentence = 200
         self.threshold_score = 0.97
@@ -90,17 +94,17 @@ class NameDetector:
             Returns a dictionary with two keys, "vietnamese" and "western", each containing a list of names classified.
         """
         results = {
-            "vietnamese": set(),
+            "your_race": set(),
             "western": set(),
         }
         for token in per_tokens:
-            if re.search(vi_pattern, token) is None:
+            if re.search(token_pattern, token) is None:
                 results["western"].add(token)
             else:
-                results["vietnamese"].add(token)
+                results["your_race"].add(token)
 
         results["western"] = list(results["western"])
-        results["vietnamese"] = list(results["vietnamese"])
+        results["your_race"] = list(results["your_race"])
         return results
 
     def detect(self, text):

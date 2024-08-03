@@ -1,4 +1,5 @@
 import torch
+import copy
 from .BaseWrapper import BaseWrapper
 from ..utils.chat_template import apply_chat_template
 from ..utils.model import get_model
@@ -60,6 +61,7 @@ class HFWrapper(BaseWrapper):
     def compute_logprob_and_length(self, prompts, completions):
         completions_num_tokens = []
         completions_logprobs = []
+        prompts = copy.deepcopy(prompts)
         prompts = apply_chat_template(prompts, self.model_template)
         for prompt, completion in zip(prompts, completions):
             prompt_tokens = self.tokenizer(prompt, return_tensors="pt").to(

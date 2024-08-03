@@ -1,5 +1,6 @@
 from typing import Dict
 from bert_score import BERTScorer
+import torch
 import evaluate
 from .summac.model_summac import SummaCZS
 from .data_stats_metric import DataStatsMetric
@@ -19,17 +20,19 @@ class SummaryMetric(BaseMetric):
 
         self.rouge = evaluate.load("rouge")
         self.bert_scorer = BERTScorer(
-            model_type="bert-base-multilingual-cased",
-            lang="en",
-            rescale_with_baseline=True,
-            device="cuda",
+            model_type=args.metric_config["BERTScoreModel"]["model_type"],
+            lang=args.lang,
+            rescale_with_baseline="baseline_path" in args.metric_config["BERTScoreModel"],
+            baseline_path=args.metric_config["BERTScoreModel"].get("baseline_path", None),
+            device="cuda" if torch.cuda.is_available() else "cpu",
         )
         self.data_stats_metric = DataStatsMetric()
         self.summac = SummaCZS(
             granularity="sentence",
-            model_name="vitc",
+            model_name=args.metric_config["SummaCModel"],
             imager_load_cache=False,
-            device="cuda",
+            device="cuda" if torch.cuda.is_available() else "cpu",
+            args=args
         )
 
     def evaluate(self, data: Dict, args) -> (Dict, Dict):

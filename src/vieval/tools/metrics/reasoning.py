@@ -1,5 +1,6 @@
 from typing import Dict
 import numpy as np
+import regex
 from .basic_metrics import exact_match, f1_score
 from .base import BaseMetric
 import random
@@ -202,7 +203,9 @@ class ReasoningMetric(BaseMetric):
         text = text.replace("\f", "\\f")
         text = text.replace("\b", "\\b")
         words = text.split(" ")[::-1]
-
+        # pattern = regex.compile(r'\\boxed\{(?:[^{}]|(?R))*\}')
+        # res_list = pattern.findall(text)
+        # return res_list[0] if res_list else None
         for i, _ in enumerate(words):
             words[i] = self._clean_word(words[i])
         for word in words:
@@ -232,6 +235,7 @@ class ReasoningMetric(BaseMetric):
     def evaluate(self, data: Dict, args) -> (Dict, Dict):
         result = {}
         raw_predictions = data["predictions"]
+      
         predictions = [
             self._get_answer(raw_prediction, args) for raw_prediction in raw_predictions
         ]
@@ -241,16 +245,15 @@ class ReasoningMetric(BaseMetric):
             self._get_answer(reference, args)
             for reference in references
         ]
-
-        data["predictions"] = predictions
-        data["references"] = references
-
+        # data["predictions"] = predictions
+        # data["references"] = references
+        
         f1_scores = [f1_score(*batch) for batch in zip(references, predictions)]
         ems = [exact_match(*batch) for batch in zip(references, predictions)]
 
         # print(predictions[:10])
         # print(references[:10])
-        if "math" in args.filepath:
+        if args.task == "math":
             predictions = [
                 self._get_math_final_result(prediction) for prediction in predictions
             ]
@@ -263,8 +266,8 @@ class ReasoningMetric(BaseMetric):
             predictions = [self._remove_boxed(pred) for pred in predictions]
             data["processed_predictions"] = predictions
             data["processed_references"] = references
-            del data["generation_probs"]
-            del data["calibration_probs"]
+            # del data["generation_probs"]
+            # del data["calibration_probs"]
         # print(predictions[:10])
         # print(references[:10])
         equals = [

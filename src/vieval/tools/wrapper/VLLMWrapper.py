@@ -50,7 +50,7 @@ class VLLMWrapper(BaseWrapper):
         tokenized_prompts = tokenizer(prompts)["input_ids"]
         len_tokenized_prompts = [len(p) for p in tokenized_prompts]
         completed_prompts = [
-            prompt + completion + tokenizer.eos_token
+            prompt + str(completion) + tokenizer.eos_token
             for prompt, completion in zip(prompts, completions)
         ]
         outputs = self.model.generate(

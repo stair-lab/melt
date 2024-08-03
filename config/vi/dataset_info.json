@@ -1,0 +1,196 @@
+{
+    "xquad_xtreme": {
+        "hf_hub_url": "juletxara/xquad_xtreme",
+        "subset": "vi",
+        "train_split": "translate_train",
+        "test_split": "test",
+        "task": "question-answering",
+        "prompting_strategy": 0,
+        "columns": {
+            "context": "context",
+            "query": "question",
+            "answer": "answers"
+          }
+    },
+    "mlqa": {
+        "hf_hub_url": "mlqa",
+        "subset": "mlqa.vi.vi",
+        "train_split": "validation",
+        "test_split": "test",
+        "task": "question-answering",
+        "prompting_strategy": 0,
+        "columns": {
+            "context": "context",
+            "query": "question",
+            "answer": "answers"
+          }
+    },
+     "vietnews": {
+        "hf_hub_url": "Yuhthe/vietnews",
+        "task": "summarization",
+        "prompting_strategy": 0,
+        "columns": {
+            "source": "article",
+            "target": "abstract"
+          }
+    },
+    "wiki_lingua": {
+        "hf_hub_url": "GEM/wiki_lingua",
+        "subset": "vi",
+        "task": "summarization",
+        "prompting_strategy": 0
+    },
+    "UIT-VSFC": {
+        "file_name": "UIT-VSFC",
+        "task": "sentiment-analysis",
+        "prompting_strategy": 0,
+        "label": [0, 1, 2],
+        "columns": {
+            "query": "text",
+            "answer": "label"
+          }
+    },
+    "ViHSD": {
+        "file_name": "ViHSD",
+        "task": "toxicity-detection",
+        "prompting_strategy": 1,
+        "label": [0, 1, 2],
+        "columns": {
+            "query": "free_text",
+            "answer": "label_id"
+          }
+    },
+    "UIT-VSMEC": {
+        "file_name": "UIT-VSMEC",
+        "task": "text-classification",
+        "prompting_strategy": 0,
+        "label": [0, 1, 2, 3, 4, 5, 6],
+        "columns": {
+            "query": "Sentence",
+            "answer": "Label"
+          }
+    },
+    "ViMMRC": {
+        "file_name": "ViMMRC",
+        "task": "knowledge-mtpchoice",
+        "prompting_strategy": 0,
+        "label": ["A", "B", "C", "D"],
+        "columns": {
+            "context": "article",
+            "query": "question",
+            "options": "options",
+            "answer": "answer"
+            
+          }
+    },
+    "ViMMRC_random": {
+        "file_name": "ViMMRC",
+        "task": "knowledge-mtpchoice",
+        "prompting_strategy": 0,
+        "label": ["A", "B", "C", "D"],
+        "random": true,
+        "columns": {
+            "context": "article",
+            "query": "question",
+            "options": "options",
+            "answer": "answer"
+            
+          }
+    },
+    "zalo_e2eqa": {
+        "file_name": "zalo_e2eqa",
+        "task": "knowledge-openended",
+        "prompting_strategy": 0,
+        "columns": {
+            "query": "question",
+            "answer": "answers"
+          }
+    },
+    "zalo_e2eqa_fairness": {
+        "file_name": "zalo_e2eqa_fairness",
+        "task": "knowledge-openended",
+        "prompting_strategy": 0,
+        "columns": {
+            "query": "question",
+            "answer": "answers"
+          }
+    },
+    "zalo_e2eqa_robustness": {
+        "file_name": "zalo_e2eqa_robustness",
+        "task": "knowledge-openended",
+        "prompting_strategy": 0,
+        "columns": {
+            "query": "question",
+            "answer": "answers"
+          }
+    },
+    "VSEC": {
+        "file": "VSEC",
+        "task": "language-modelling",
+        "prompting_strategy": 1,
+        "columns": {
+            "source": "text",
+            "target": "correct"
+          }
+    },
+    "synthetic_natural_azr": {
+        "hf_hub_url": "ura-hcmut/synthetic_reasoning_natural",
+        "subset": "easy_azr",
+        "task": "reasoning",
+        "prompting_strategy": 0,
+        "columns": {
+            "query": "problem",
+            "answer": "target"
+          }
+    },
+    "synthetic_abstract": {
+        "hf_hub_url": "ura-hcmut/synthetic_reasoning",
+        "subset": "easy_azr",
+        "task": "reasoning",
+        "prompting_strategy": 0,
+        "columns": {
+            "query": "source",
+            "answer": "target"
+          }
+    },
+    "math_level1_azr": {
+        "hf_hub_url": "ura-hcmut/MATH_Level_1",
+        "subset": "azr",
+        "task": "math",
+        "prompting_strategy": 0,
+        "columns": {
+            "type_id": "type",
+            "query": "problem",
+            "answer": "short_solution"
+          }
+    },
+    "math_level1_cot_azr": {
+        "hf_hub_url": "ura-hcmut/MATH_Level_1",
+        "subset": "azr",
+        "task": "math",
+        "prompting_strategy": 0,
+        "columns": {
+            "type_id": "type",
+            "query": "problem",
+            "answer": "solution"
+          }
+    },
+    "opus100_envi": {
+        "hf_hub_url": "vietgpt/opus100_envi",
+        "task": "translation",
+        "prompting_strategy": 0,
+        "columns": {
+            "source": "en",
+            "target": "vi"
+          }
+    },
+    "opus100_vien": {
+        "hf_hub_url": "vietgpt/opus100_envi",
+        "task": "translation",
+        "prompting_strategy": 0,
+        "columns": {
+            "source": "vi",
+            "target": "en"
+          }
+        }
+}

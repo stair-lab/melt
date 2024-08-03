@@ -499,8 +499,11 @@ class SummaCZS:
         use_con=True,
         imager_load_cache=True,
         device="cuda",
+        args=None,
         **kwargs,
     ):
+        with open(os.path.join(args.config_dir, args.lang, "summac_model.json"), "r") as f:
+            model_map = json.load(f)
         assert op2 in ["min", "mean", "max"], "Unrecognized `op2`"
         assert op1 in ["max", "mean", "min"], "Unrecognized `op1`"
 

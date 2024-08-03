@@ -14,95 +14,38 @@ from time import time
 import logging
 
 from typing import Dict, List
-from ..utils.metric_utils import info_from_filename
 import numpy as np
 
 
 class MetricPipeline:
     def __init__(self):
+        
         self.metric_classes = {
             "question-answering": [QAMetric, BiasMetric, ToxicityMetric],
             "summarization": [SummaryMetric, BiasMetric, ToxicityMetric],
             "translation": [TranslationMetric, BiasMetric, ToxicityMetric],
-            "knowledge": [QAMetric, BiasMetric, ToxicityMetric],
+            "knowledge-mtpchoice": [QAMetric, BiasMetric, ToxicityMetric],
+            "knowledge-openended": [QAMetric, BiasMetric, ToxicityMetric],
             "toxicity-detection": [TextClassificationMetric, CalibrationMetric],
             "text-classification": [TextClassificationMetric, CalibrationMetric],
             "sentiment-analysis": [TextClassificationMetric, CalibrationMetric],
             "language-modelling": [LanguageMetric],
             "reasoning": [ReasoningMetric],
-            "informationretrieval": [InformationRetrievalMetric],
+            "information-retrieval": [InformationRetrievalMetric],
         }
 
-        self.key_answers = {
-            "math-azr": "answer",
-            "math-gcp": "answer",
-            "xquad_xtreme": None,
-            "mlqa-mlm": None,
-            "vsec": None,
-            "mlqa": None,
-            "vietnews": None,
-            "wikilingua": None,
-            "vsmec": "emotion",
-            "phoatis": "tag",
-            "victsd": "toxic_level",
-            "vihsd": "toxic_level",
-            "phomt-envi": "translation",
-            "phomt-vien": "translation",
-            "opus100-envi": "translation",
-            "opus100-vien": "translation",
-            "vlsp": "sentiment",
-            "vsfc": "sentiment",
-            "mmarco": "answer",
-            "mrobust": "answer",
-            "zaloe2e": "answer",
-            "vimmrc": "choice",
-            "srnatural-azr": "answer",
-            "srnatural-gcp": "answer",
-            "srabstract-azr": "answer",
-            "srabstract-gcp": "answer",
-        }
-
-        self.class_names = {
-            "math-azr": None,
-            "math-gcp": None,
-            "xquad_xtreme": None,
-            "mlqa-mlm": None,
-            "vsec": None,
-            "mlqa": None,
-            "vietnews": None,
-            "wikilingua": None,
-            "vsmec": [0, 1, 2, 3, 4, 5, 6],
-            "phoatis": [i for i in range(17)],
-            "victsd": [0, 1],
-            "vihsd": [0, 1, 2],
-            "phomt-envi": None,
-            "phomt-vien": None,
-            "opus100-envi": None,
-            "opus100-vien": None,
-            "vlsp": [0, 1, 2],
-            "vsfc": [0, 1, 2],
-            "mmarco": None,
-            "mrobust": None,
-            "zaloe2e": None,
-            "vimmrc": ["A", "B", "C", "D"],
-            "srnatural-azr": None,
-            "srnatural-gcp": None,
-            "srabstract-azr": None,
-            "srabstract-gcp": None,
-        }
-
-    def _load_metrics(self, data, task_name, ds_name, args):
+    def _load_metrics(self, data, task_name, answer_key, class_names, args):
 
         class_lst = self.metric_classes[task_name]
-        args.key_answer = self.key_answers.get(task_name, "")
-        args.class_names = self.class_names.get(ds_name, "")
+        args.key_answer = answer_key
+        args.class_names = class_names
 
         obj_lst = [Cls(data, args) for Cls in class_lst]
 
         return obj_lst
 
-    def run_mean(self, data, task_name: str, ds_name: str, args) -> Dict:
-        metric_lst = self._load_metrics(data, task_name, ds_name, args)
+    def run_mean(self, data, task_name: str, answer_key: str, class_names: List, args) -> Dict:
+        metric_lst = self._load_metrics(data, task_name, answer_key, class_names, args)
         result = {}
         for metric in metric_lst:
             _, metric_result = metric.evaluate(data, args)
@@ -110,8 +53,8 @@ class MetricPipeline:
 
         return result
 
-    def run_std(self, data, task_name, ds_name: str, args) -> Dict:
-        result_lst = self._run_bootrap(data, task_name, ds_name, args)
+    def run_std(self, data, task_name: str, answer_key: str, class_names: List, args) -> Dict:
+        result_lst = self._run_bootrap(data, task_name, answer_key, args)
         final_result = self._get_std(result_lst)
 
         return final_result
@@ -140,7 +83,7 @@ class MetricPipeline:
 
         return sub_data
 
-    def _run_bootrap(self, data, task_name, ds_name: str, args) -> Dict:
+    def _run_bootrap(self, data, task_name, answer_key, class_names, args) -> Dict:
         n_data = len(
             data["predictions"]
         )  # if 'predictions' in data else len(data['prediction'])
@@ -152,7 +95,7 @@ class MetricPipeline:
             )
             print(n_data, len(indices))
             sub_data = self._get_subdata(data, n_data, indices)
-            result = self.run_mean(sub_data, task_name, ds_name, args)
+            result = self.run_mean(sub_data, task_name, answer_key, class_names, args)
             results_lst.append(result)
 
         return results_lst

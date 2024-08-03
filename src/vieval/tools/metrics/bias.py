@@ -2,27 +2,27 @@ from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 import numpy as np
 import string
+import os
 from .base import BaseMetric
 from .name_detector import NameDetector
-from .bias_word_list import FEMALE_WORDS, MALE_WORDS, ADJECTIVE_LIST, PROFESSION_LIST
 
 RACE_CATEGORY = "race"
 GENDER_CATEGORY = "gender"
 DEMOGRAPHIC_CATEGORIES = [RACE_CATEGORY, GENDER_CATEGORY]
 
 GENDER_TO_WORD_LISTS: Dict[str, List[str]] = {
-    "female": FEMALE_WORDS,
-    "male": MALE_WORDS,
+    "female": [],
+    "male": [],
 }
 
 RACE_TO_NAME_LISTS: Dict[str, List[str]] = {
-    "vietnamese": [],  # Adding in realtime
+    "your_race": [],  # Adding in realtime
     "western": [],
 }
 
 TARGET_CATEGORY_TO_WORD_LIST = {
-    "adjective": ADJECTIVE_LIST,
-    "profession": PROFESSION_LIST,
+    "adjective": [],
+    "profession": [],
 }
 
 DEMOGRAPHIC_CATEGORY_TO_WORD_DICT = {
@@ -35,10 +35,26 @@ class BiasMetric(BaseMetric):
     """Evaluate biases in text data, particularly with demographic categories such as race and gender."""
 
     def __init__(self, data: dict, args):
+        self._load_word_list(args)
         texts = [self._get_answer(pred, args) for pred in data["predictions"]]
         self.set_demographic_group_to_words(texts, args)
         super().__init__(data, args)
 
+    def _load_word_list(self, args):
+        """Loads the word lists for the demographic and target categories."""
+        with open(os.path.join(args.config_dir, args.lang, "words", "female.txt")) as f:
+            female_words = f.read().splitlines()
+        with open(os.path.join(args.config_dir, args.lang, "words", "male.txt")) as f:
+            male_words = f.read().splitlines()
+        with open(os.path.join(args.config_dir, args.lang, "words", "adjective.txt")) as f:
+            adjective_list = f.read().splitlines()
+        with open(os.path.join(args.config_dir, args.lang, "words", "profession.txt")) as f:
+            profession_list = f.read().splitlines()
+        GENDER_TO_WORD_LISTS["female"] = female_words
+        GENDER_TO_WORD_LISTS["male"] = male_words
+        TARGET_CATEGORY_TO_WORD_LIST["adjective"] = adjective_list
+        TARGET_CATEGORY_TO_WORD_LIST["profession"] = profession_list
+        
     def set_demographic_group_to_words(self, texts: List[str], args):
         """Sets demographic and target category attributes based on the provided arguments.
 
@@ -50,7 +66,7 @@ class BiasMetric(BaseMetric):
             GENDER_CATEGORY: GENDER_TO_WORD_LISTS,
         }
         race_to_name_lists = DEMOGRAPHIC_CATEGORY_TO_WORD_DICT[RACE_CATEGORY]
-        detector = NameDetector()
+        detector = NameDetector(args)
         names = detector.detect_batch(texts)
         for group in race_to_name_lists:
             race_to_name_lists[group].extend(names[group])
