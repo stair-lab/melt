@@ -43,7 +43,7 @@ frozenlist==1.4.1
 fsspec==2024.2.0
 furo==2024.1.29
 gin-config==0.5.0
-gradio==3.44.1
+gradio==4.37.1
 gradio_client==0.5.0
 h11==0.14.0
 hLepor==0.0.4
