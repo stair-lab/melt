@@ -11,7 +11,7 @@ import Levenshtein
 class LanguageMetric(BaseMetric):
     """Evaluate language generation tasks."""
 
-    def __init__(self) -> None:
+    def __init__(self, data, args) -> None:
         self.cer_metrics = evaluate.load("cer")
         self.wer_metrics = evaluate.load("wer")
         super().__init__(data, args)

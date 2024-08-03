@@ -85,14 +85,9 @@ class InformationRetrievalMetric(BaseMetric):
             data (Dict): A dictionary containing predictions to be evaluated.
         """
         result = {}
-        if "mmarco" in args.filepath:
-            refenreces = load_dataset("json", data_files="./mmarco.json", split="train")
-        else:
-            refenreces = load_dataset(
-                "json", data_files="./mrobust.json", split="train"
-            )
-
-        predictions = data["prediction"]
+       
+        refenreces = kwargs["ref_dataset"]
+        predictions = data["predictions"]
 
         qrels = self._get_qrel(refenreces)
 
