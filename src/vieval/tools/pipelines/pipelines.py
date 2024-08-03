@@ -4,7 +4,7 @@ import os
 import json
 from tqdm import tqdm
 from ..utils.model import get_model
-from ..wrapper import AzureGPTWrapper, TGIWrapper, GeminiWrapper, HFWrapper
+from ..wrapper import OpenAIWrapper, TGIWrapper, GeminiWrapper, HFWrapper
 from ..utils.utils import *
 from ..utils.metric_utils import info_from_filename
 from .metric_pipelines import MetricPipeline
@@ -28,24 +28,23 @@ class EvalPipeline:
         # print(config.tgi)
         if config.wtype == "tgi":
             self.infer_pipeline = TGIWrapper(
-                api_endpoint=config.tgi,
                 generation_config=GenerationConfig[extract_task],
                 template=LLM_TEMPLATE[config.ptemplate],
             )
         elif config.wtype == "hf":
-            # Load model
-            self.model, self.tokenizer = get_model(config=config)
-            self.model.eval()
-
             self.infer_pipeline = HFWrapper(
-                model=self.model,
-                tokenizer=self.tokenizer,
+                config=config,
                 generation_config=GenerationConfig[extract_task],
                 template=LLM_TEMPLATE[config.ptemplate],
             )
-
-        elif config.wtype == "azuregpt":
-            self.infer_pipeline = AzureGPTWrapper(
+        elif config.wtype == "vllm":
+            self.infer_pipeline = VLLMWrapper(
+                config=config,
+                generation_config=GenerationConfig[extract_task],
+                template=LLM_TEMPLATE[config.ptemplate],
+            )
+        elif config.wtype == "openai":
+            self.infer_pipeline = OpenAIWrapper(
                 engine=config.model_name,
                 generation_config=GenerationConfig[extract_task],
             )
@@ -146,7 +145,7 @@ class EvalPipeline:
             results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x[0] for x in batch[ds_wrapper.answer]["text"]])
-            generation_probs.extend([x.tolist() for x in logprobs])
+            generation_probs.extend(logprobs)
 
             idx += 1
             if idx % 100 == 0:
@@ -185,7 +184,7 @@ class EvalPipeline:
         calib_probs = []
         idx = 0
         original_few_shot = []
-        calibration_few_shot = []
+        calib_few_shot = []
         selected_sample = []
         if self.continue_infer_data is not None:
             predictions.extend(self.continue_infer_data["predictions"])
@@ -258,8 +257,8 @@ class EvalPipeline:
             )
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.answer]])
-            generation_probs.extend([x.tolist() for x in logprobs])
-            calib_probs.extend([x.tolist() for x in calibprob_batch])
+            generation_probs.extend(logprobs)
+            calib_probs.extend(calibprob_batch)
             idx += 1
             if idx % 100 == 0:
                 print(f"Saving results of {idx} batches")
@@ -327,7 +326,7 @@ class EvalPipeline:
             results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.summarized_text]])
-            generation_probs.extend([x.tolist() for x in logprobs])
+            generation_probs.extend(logprobs)
 
             idx += 1
             if idx % 100 == 0:
@@ -451,7 +450,7 @@ class EvalPipeline:
             )
             predictions.extend(results)
             references.extend([x.item() for x in batch[ds_wrapper.label]])
-            generation_probs.extend([x.tolist() for x in logprobs])
+            generation_probs.extend(logprobs)
             option_probs.extend(
                 [
                     [
@@ -623,7 +622,7 @@ class EvalPipeline:
                     for x in batch[ds_wrapper.label]
                 ]
             )
-            generation_probs.extend([x.tolist() for x in logprobs])
+            generation_probs.extend(logprobs)
             option_probs.extend(
                 [
                     [
@@ -756,7 +755,7 @@ class EvalPipeline:
             )
             predictions.extend(results)
             references.extend([x.item() for x in batch[ds_wrapper.label]])
-            generation_probs.extend([x.tolist() for x in logprobs])
+            generation_probs.extend(logprobs)
             option_probs.extend(
                 [
                     [
@@ -932,7 +931,7 @@ class EvalPipeline:
                 ]
             )
 
-            generation_probs.extend([x.tolist() for x in logprobs])
+            generation_probs.extend(logprobs)
             option_probs.extend(opt_calib_out)
             idx += 1
             if idx % 100 == 0:
@@ -1017,7 +1016,7 @@ class EvalPipeline:
             results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.target]])
-            generation_probs.extend([x.tolist() for x in logprobs])
+            generation_probs.extend(logprobs)
 
             idx += 1
             if idx % 100 == 0:
@@ -1322,8 +1321,8 @@ class EvalPipeline:
             )
             predictions.extend(results)
             references.extend([x for x in batch[target]])
-            generation_probs.extend([x.tolist() for x in logprobs])
-            calib_probs.extend([x.tolist() for x in calibprob_batch])
+            generation_probs.extend(logprobs)
+            calib_probs.extend(calibprob_batch)
             if sub_task == "math":
                 math_problem_type.extend([x for x in batch[ds_wrapper.type]])
             idx += 1
@@ -1417,7 +1416,7 @@ class EvalPipeline:
             results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
             predictions.extend(results)
             references.extend([x for x in batch[ds_wrapper.target_language]])
-            generation_probs.extend([x.tolist() for x in logprobs])
+            generation_probs.extend(logprobs)
 
             idx += 1
             if idx % 100 == 0:

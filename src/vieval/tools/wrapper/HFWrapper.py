@@ -1,12 +1,14 @@
 import torch
 from .BaseWrapper import BaseWrapper
 from ..utils.chat_template import apply_chat_template
+from ..utils.model import get_model
 
 
 class HFWrapper(BaseWrapper):
-    def __init__(self, model, tokenizer, generation_config, template=""):
-        self.model = model
-        self.tokenizer = tokenizer
+    def __init__(self, config, generation_config, template=None):
+        self.model, self.tokenizer = get_model(config=config)
+        self.model.eval()
+
         self.generation_config = generation_config
         self.model_template = template
 
@@ -51,7 +53,7 @@ class HFWrapper(BaseWrapper):
                     scores=generate_dict.scores,
                     normalize_logits=True,
                 )
-                generations_probs.extend(generation_probs.cpu().numpy())
+                generations_probs.extend(generation_probs.cpu().numpy().tolist())
 
         return generations, generations_probs, num_generated_tokens
 
@@ -67,7 +69,7 @@ class HFWrapper(BaseWrapper):
             prompt_num_tokens = prompt_tokens.input_ids.shape[1] - 1
 
             completion_tokens = self.tokenizer(
-                f"{completion} {self.tokenizer.eos_token}", return_tensors="pt"
+                f"{completion}{self.tokenizer.eos_token}", return_tensors="pt"
             ).to(
                 self.model.device
             )  # <s> SPIECE_UNDERLINE [tokens] SPIECE_UNDERLINE </s>
@@ -101,5 +103,5 @@ class HFWrapper(BaseWrapper):
                 ),
             ).squeeze(-1)
             # >>> batch_size, sequence_length
-            completions_logprobs.append(logprobs.cpu().numpy())
+            completions_logprobs.append(logprobs.cpu().numpy().tolist())
         return completions_logprobs, completions_num_tokens
