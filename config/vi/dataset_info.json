@@ -125,8 +125,8 @@
           }
     },
     "VSEC": {
-        "file": "VSEC",
-        "task": "language-modelling",
+        "file_name": "VSEC",
+        "task": "language-modeling",
         "prompting_strategy": 1,
         "columns": {
             "source": "text",

@@ -17,7 +17,7 @@
         "max_new_tokens": 500,
         "repetition_penalty": 1.1
     },
-    "language-modelling": {
+    "language-modeling": {
         "temperature": 1.0,
         "top_k": 1,
         "max_new_tokens": 500,

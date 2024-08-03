@@ -83,8 +83,8 @@ class EvalPipeline:
             return self.__summarization(ds_wrapper, ds_loader, saving_fn, start_idx)
         elif "translation" in task:
             return self.__translation(ds_wrapper, ds_loader, saving_fn, start_idx)
-        elif "language-modelling" in task:
-            return self.__language_modelling(
+        elif "language-modeling" in task:
+            return self.__language_modeling(
                 ds_wrapper, ds_loader, saving_fn, start_idx
             )
         elif "text-classification" in task:
@@ -1119,7 +1119,7 @@ class EvalPipeline:
         final_result = {"mean": mean_result, "std": std_result}
         saving_fn(generations, final_result)
 
-    def __language_modelling(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
+    def __language_modeling(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
         predictions = []
         references = []
         generation_probs = []

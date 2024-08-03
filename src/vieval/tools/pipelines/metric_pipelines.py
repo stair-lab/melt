@@ -29,7 +29,7 @@ class MetricPipeline:
             "toxicity-detection": [TextClassificationMetric, CalibrationMetric],
             "text-classification": [TextClassificationMetric, CalibrationMetric],
             "sentiment-analysis": [TextClassificationMetric, CalibrationMetric],
-            "language-modelling": [LanguageMetric],
+            "language-modeling": [LanguageMetric],
             "reasoning": [ReasoningMetric],
             "information-retrieval": [InformationRetrievalMetric],
         }

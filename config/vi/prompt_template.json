@@ -54,7 +54,7 @@
                 "answer_key": ""
             }
         ],
-        "language-modelling-filling": [
+        "language-modeling": [
             {
                 "system_prompt": "Hãy xem mình là một Bot có thể thay thế token [MASKED] thành một từ thích hợp trong một câu tiếng Việt. Chú ý, Bot không chỉnh sửa hay thêm bớt các từ trong câu, chỉ sửa các từ bị sai chính tả. Bot không được tự trả lời hay giả dạng thành Khách.\nVà đây là cuộc trò chuyện mới nhất giữa Bot và Khách.\n",
                 "prompt": "Khách: \"{}\"\nBot:",
