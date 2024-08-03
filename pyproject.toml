@@ -23,10 +23,11 @@ classifiers = [
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "License :: OSI Approved :: Apache Software License",
   "Operating System :: OS Independent",
 ]
-license = { text = "Apache 2.0 License" }
+license = { file = "LICENSE" }
 
 dependencies = [
   "vllm>=0.5.2",
@@ -36,7 +37,7 @@ dependencies = [
   "transformers>=4.31.0",
   "ranx",
   "trl>=0.9.4",
-  "xformers==0.0.12", 
+  "xformers>=0.0.12", 
   "scipy>=1.10.0", 
   "tiktoken",
   "tqdm>=4.65.0",
