@@ -31,6 +31,7 @@ class MetricPipeline:
             "sentiment-analysis": [TextClassificationMetric, CalibrationMetric],
             "language-modeling": [LanguageMetric],
             "reasoning": [ReasoningMetric],
+            "math": [ReasoningMetric],
             "information-retrieval": [InformationRetrievalMetric],
         }
 
@@ -58,7 +59,7 @@ class MetricPipeline:
     def run_std(
         self, data, task_name: str, answer_key: str, class_names: List, args
     ) -> Dict:
-        result_lst = self._run_bootrap(data, task_name, answer_key, args)
+        result_lst = self._run_bootrap(data, task_name, answer_key, class_names, args)
         final_result = self._get_std(result_lst)
 
         return final_result

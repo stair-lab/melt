@@ -84,9 +84,7 @@ class EvalPipeline:
         elif "translation" in task:
             return self.__translation(ds_wrapper, ds_loader, saving_fn, start_idx)
         elif "language-modeling" in task:
-            return self.__language_modeling(
-                ds_wrapper, ds_loader, saving_fn, start_idx
-            )
+            return self.__language_modeling(ds_wrapper, ds_loader, saving_fn, start_idx)
         elif "text-classification" in task:
             return self.__multiple_choice_text_classification(
                 ds_wrapper, ds_loader, saving_fn, start_idx
