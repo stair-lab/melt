@@ -6,10 +6,16 @@ from datasets import DatasetDict, load_dataset, load_from_disk
 from transformers.utils.versions import require_version
 from ..utils.constants import FILEEXT2TYPE
 
+
 def load_a_dataset(dataset_attr, args):
-    dataset_training, _ = _load_single_dataset(dataset_attr, args, dataset_attr.train_split)
-    dataset_testing, _ = _load_single_dataset(dataset_attr, args, dataset_attr.test_split)
+    dataset_training, _ = _load_single_dataset(
+        dataset_attr, args, dataset_attr.train_split
+    )
+    dataset_testing, _ = _load_single_dataset(
+        dataset_attr, args, dataset_attr.test_split
+    )
     return dataset_training, dataset_testing
+
 
 def _load_single_dataset(dataset_attr, args, mode):
     print("Loading {} dataset {}...".format(mode, dataset_attr))
@@ -22,7 +28,7 @@ def _load_single_dataset(dataset_attr, args, mode):
     elif dataset_attr.load_from == "file":
         data_files = {}
         local_path = os.path.join(args.dataset_dir, dataset_attr.dataset_name)
-     
+
         if os.path.isdir(local_path):  # is directory
             for file_name in os.listdir(local_path):
                 if Path(file_name).stem.split("_")[-1] == mode:
@@ -31,7 +37,7 @@ def _load_single_dataset(dataset_attr, args, mode):
                         data_path = FILEEXT2TYPE.get(file_name.split(".")[-1], None)
                     elif data_path != FILEEXT2TYPE.get(file_name.split(".")[-1], None):
                         raise ValueError("File types should be identical.")
-                
+
             if len(data_files) < 1:
                 raise ValueError("File name is not approriate.")
         # elif os.path.isfile(local_path):  # is file
@@ -41,9 +47,13 @@ def _load_single_dataset(dataset_attr, args, mode):
             raise ValueError("File {} not found.".format(local_path))
 
         if data_path is None:
-            raise ValueError("Allowed file types: {}.".format(",".join(FILEEXT2TYPE.keys())))
+            raise ValueError(
+                "Allowed file types: {}.".format(",".join(FILEEXT2TYPE.keys()))
+            )
     else:
-        raise NotImplementedError("Unknown load type: {}.".format(dataset_attr.load_from))
+        raise NotImplementedError(
+            "Unknown load type: {}.".format(dataset_attr.load_from)
+        )
 
     if dataset_attr.load_from == "ms_hub":
         require_version("modelscope>=1.11.0", "To fix: pip install modelscope>=1.11.0")

@@ -61,7 +61,9 @@ def generation(script_args):
     )
 
     # Initialize pipeline
-    eval_pipeline = EvalPipeline(task=dataset_wrapper.dataset_info.task, config=script_args)
+    eval_pipeline = EvalPipeline(
+        task=dataset_wrapper.dataset_info.task, config=script_args
+    )
 
     # Evaluate
     def save_results(generations, metrics=None):

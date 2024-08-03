@@ -22,8 +22,11 @@ class SummaryMetric(BaseMetric):
         self.bert_scorer = BERTScorer(
             model_type=args.metric_config["BERTScoreModel"]["model_type"],
             lang=args.lang,
-            rescale_with_baseline="baseline_path" in args.metric_config["BERTScoreModel"],
-            baseline_path=args.metric_config["BERTScoreModel"].get("baseline_path", None),
+            rescale_with_baseline="baseline_path"
+            in args.metric_config["BERTScoreModel"],
+            baseline_path=args.metric_config["BERTScoreModel"].get(
+                "baseline_path", None
+            ),
             device="cuda" if torch.cuda.is_available() else "cpu",
         )
         self.data_stats_metric = DataStatsMetric()
@@ -32,7 +35,7 @@ class SummaryMetric(BaseMetric):
             model_name=args.metric_config["SummaCModel"],
             imager_load_cache=False,
             device="cuda" if torch.cuda.is_available() else "cpu",
-            args=args
+            args=args,
         )
 
     def evaluate(self, data: Dict, args) -> (Dict, Dict):

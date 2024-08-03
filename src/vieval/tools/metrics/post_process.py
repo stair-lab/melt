@@ -9,15 +9,16 @@ from types import SimpleNamespace
 
 
 def get_json_from_text(text: str, key_answer=None) -> Dict:
-    pattern = regex.compile(r'\{(?:[^{}]|(?R))*\}')
+    pattern = regex.compile(r"\{(?:[^{}]|(?R))*\}")
     jsonObject = pattern.findall(text)
-    
+
     try:
         processedText = jsonObject[0].replace("\n", "\\n")
-        jsonObjectDone = ast.literal_eval(fr"{processedText}")
+        jsonObjectDone = ast.literal_eval(rf"{processedText}")
     except:
         jsonObjectDone = {}
-    return  jsonObjectDone
+    return jsonObjectDone
+
 
 def get_class_name_from_text(text: str, class_names: List[str]) -> str:
     text = normalize_text(text)
@@ -72,5 +73,7 @@ def get_answer_auto_from_text(
         if "confident_level" in text:
             text = text[: text.index("confident_level")]
         if f'{{ "{key_answer}":' in text:
-            text = text[text.index(f'{{ "{key_answer}":') + len(f'{{ "{key_answer}":') :]
-    return text.replace(",","").replace(".","")
+            text = text[
+                text.index(f'{{ "{key_answer}":') + len(f'{{ "{key_answer}":') :
+            ]
+    return text.replace(",", "").replace(".", "")

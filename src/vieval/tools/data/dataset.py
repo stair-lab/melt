@@ -4,6 +4,7 @@ import json
 from .loader import load_a_dataset
 from .parser import get_dataset_list
 
+
 def eval_keys(keys):
     def eval_x(x):
         if isinstance(keys, str):
@@ -17,23 +18,24 @@ def eval_keys(keys):
 
 
 class DatasetWrapper:
-    def __init__(
-        self, args
-    ) -> None:
+    def __init__(self, args) -> None:
         self.dataset_name = args.dataset_name
         # self.fewshots = fewshots
-        
+
         self.dataset_info = None
         self.dataset_training = None
         self.dataset_testing = None
-        
+
         self.args = args
         self.get_dataset_config()
         self.prompting_strategy = dataset_info.prompting_strategy
         self.get_prompt()
 
     def get_prompt(self):
-        with open(os.path.join(self.args.config_dir, self.args.lang, "prompt_template.json"), "r") as f:
+        with open(
+            os.path.join(self.args.config_dir, self.args.lang, "prompt_template.json"),
+            "r",
+        ) as f:
             prompt_config = json.load(f)
         PROMPT_TEMPLATE = prompt_config["PROMPT_TEMPLATE"]
         CALIBRATION_INSTRUCTION = prompt_config["CALIBRATION_INSTRUCTION"]
@@ -50,9 +52,13 @@ class DatasetWrapper:
             self.calibration_prompt = None
 
     def get_dataset_config(self):
-        self.dataset_info = get_dataset_list(dataset_names=[self.dataset_name], dataset_dir=os.path.join(self.args.config_dir, self.args.lang))[0]
-        self.dataset_training, self.dataset_testing = load_a_dataset(self.dataset_info, self.args)
-                                             
+        self.dataset_info = get_dataset_list(
+            dataset_names=[self.dataset_name],
+            dataset_dir=os.path.join(self.args.config_dir, self.args.lang),
+        )[0]
+        self.dataset_training, self.dataset_testing = load_a_dataset(
+            self.dataset_info, self.args
+        )
 
     def get_dataset_testing(self):
         if self.dataset_testing is None:

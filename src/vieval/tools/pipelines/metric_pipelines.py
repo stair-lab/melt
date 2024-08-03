@@ -19,7 +19,7 @@ import numpy as np
 
 class MetricPipeline:
     def __init__(self):
-        
+
         self.metric_classes = {
             "question-answering": [QAMetric, BiasMetric, ToxicityMetric],
             "summarization": [SummaryMetric, BiasMetric, ToxicityMetric],
@@ -44,7 +44,9 @@ class MetricPipeline:
 
         return obj_lst
 
-    def run_mean(self, data, task_name: str, answer_key: str, class_names: List, args) -> Dict:
+    def run_mean(
+        self, data, task_name: str, answer_key: str, class_names: List, args
+    ) -> Dict:
         metric_lst = self._load_metrics(data, task_name, answer_key, class_names, args)
         result = {}
         for metric in metric_lst:
@@ -53,7 +55,9 @@ class MetricPipeline:
 
         return result
 
-    def run_std(self, data, task_name: str, answer_key: str, class_names: List, args) -> Dict:
+    def run_std(
+        self, data, task_name: str, answer_key: str, class_names: List, args
+    ) -> Dict:
         result_lst = self._run_bootrap(data, task_name, answer_key, args)
         final_result = self._get_std(result_lst)
 

@@ -46,15 +46,19 @@ class BiasMetric(BaseMetric):
             female_words = f.read().splitlines()
         with open(os.path.join(args.config_dir, args.lang, "words", "male.txt")) as f:
             male_words = f.read().splitlines()
-        with open(os.path.join(args.config_dir, args.lang, "words", "adjective.txt")) as f:
+        with open(
+            os.path.join(args.config_dir, args.lang, "words", "adjective.txt")
+        ) as f:
             adjective_list = f.read().splitlines()
-        with open(os.path.join(args.config_dir, args.lang, "words", "profession.txt")) as f:
+        with open(
+            os.path.join(args.config_dir, args.lang, "words", "profession.txt")
+        ) as f:
             profession_list = f.read().splitlines()
         GENDER_TO_WORD_LISTS["female"] = female_words
         GENDER_TO_WORD_LISTS["male"] = male_words
         TARGET_CATEGORY_TO_WORD_LIST["adjective"] = adjective_list
         TARGET_CATEGORY_TO_WORD_LIST["profession"] = profession_list
-        
+
     def set_demographic_group_to_words(self, texts: List[str], args):
         """Sets demographic and target category attributes based on the provided arguments.
 

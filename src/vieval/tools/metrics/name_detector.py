@@ -14,7 +14,9 @@ class NameDetector:
     """Detect names within texts, categorize them, and potentially process multiple texts in batches."""
 
     def __init__(self, args):
-        with open(os.path.join(args.config_dir, args.lang, "words", "token_pattern.txt"), "r") as f:
+        with open(
+            os.path.join(args.config_dir, args.lang, "words", "token_pattern.txt"), "r"
+        ) as f:
             token_pattern = f.read().strip()
         tokenizer = AutoTokenizer.from_pretrained(
             args.metric_config["NERModel"], add_special_tokens=True

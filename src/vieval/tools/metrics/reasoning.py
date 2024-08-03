@@ -235,7 +235,7 @@ class ReasoningMetric(BaseMetric):
     def evaluate(self, data: Dict, args) -> (Dict, Dict):
         result = {}
         raw_predictions = data["predictions"]
-      
+
         predictions = [
             self._get_answer(raw_prediction, args) for raw_prediction in raw_predictions
         ]
@@ -247,7 +247,7 @@ class ReasoningMetric(BaseMetric):
         ]
         # data["predictions"] = predictions
         # data["references"] = references
-        
+
         f1_scores = [f1_score(*batch) for batch in zip(references, predictions)]
         ems = [exact_match(*batch) for batch in zip(references, predictions)]
 
