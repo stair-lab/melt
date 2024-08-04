@@ -85,7 +85,7 @@ class InformationRetrievalMetric(BaseMetric):
             data (Dict): A dictionary containing predictions to be evaluated.
         """
         result = {}
-
+       
         refenreces = kwargs["ref_dataset"]
         predictions = data["predictions"]
 
