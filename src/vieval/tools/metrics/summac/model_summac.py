@@ -460,6 +460,7 @@ class SummaCZS:
         args=None,
         **kwargs,
     ):
+        global model_map
         with open(os.path.join(args.config_dir, "summac_model.json"), "r") as f:
             model_map = json.load(f)
         assert op2 in ["min", "mean", "max"], "Unrecognized `op2`"

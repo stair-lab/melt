@@ -14,6 +14,7 @@ class NameDetector:
     """Detect names within texts, categorize them, and potentially process multiple texts in batches."""
 
     def __init__(self, args):
+        global token_pattern
         with open(
             os.path.join(args.config_dir, args.lang, "words", "token_pattern.txt"), "r"
         ) as f:
