@@ -58,7 +58,7 @@ class TGIWrapper(BaseWrapper):
     def compute_logprob_and_length(self, prompts, completions):
         completions_num_tokens = []
         completions_logprobs = []
-        promtps = copy.deepcopy(prompts)
+        prompts = copy.deepcopy(prompts)
         prompts = apply_chat_template(prompts, self.model_template)
         # tokenized_prompts = self.tokenizer(prompts)["input_ids"]
         # len_tokenized_prompts = [len(p) for p in tokenized_prompts]
