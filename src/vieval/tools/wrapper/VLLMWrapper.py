@@ -24,6 +24,7 @@ class VLLMWrapper(BaseWrapper):
         generations = []
         generations_probs = []
         num_generated_tokens = []
+        prompts = copy.deepcopy(prompts)
         prompts = apply_chat_template(prompts, self.model_template)
         try:
             outputs = self.model.generate(prompts, self.generation_config)
@@ -45,6 +46,7 @@ class VLLMWrapper(BaseWrapper):
         tokenizer = self.model.get_tokenizer()
         completions_num_tokens = []
         completions_logprobs = []
+        prompts = copy.deepcopy(prompts)
         prompts = apply_chat_template(prompts, self.model_template)
         tokenized_prompts = tokenizer(prompts)["input_ids"]
         len_tokenized_prompts = [len(p) for p in tokenized_prompts]
