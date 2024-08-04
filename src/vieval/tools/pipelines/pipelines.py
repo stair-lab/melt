@@ -20,7 +20,7 @@ class EvalPipeline:
             GenerationConfig = json.load(f)
 
         with open(
-            os.path.join(config.config_dir, config.lang, "llm_template.json"), "r"
+            os.path.join(config.config_dir, "llm_template.json"), "r"
         ) as f:
             LLM_TEMPLATE = json.load(f)
 
