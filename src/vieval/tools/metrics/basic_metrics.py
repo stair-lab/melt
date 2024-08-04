@@ -1,5 +1,5 @@
-from .utils import f_measure, normalize_text
-
+from .utils import normalize_text
+from nltk.metrics.scores import f_measure
 
 def exact_match(gold: str, pred: str) -> float:
     """Calculates whether the predicted text (pred) exactly matches the gold standard text (gold) after both texts have been normalized.
