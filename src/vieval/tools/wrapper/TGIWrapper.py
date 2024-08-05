@@ -77,7 +77,9 @@ class TGIWrapper(BaseWrapper):
                     )["details"]["prefill"]
                     completion_w_prompt = self.generate_with_backoff(
                         {
-                            "inputs": prompt + str(completion) + self.tokenizer.eos_token,
+                            "inputs": prompt
+                            + str(completion)
+                            + self.tokenizer.eos_token,
                             "parameters": {
                                 "truncate": self.model_info["max_input_tokens"],
                                 "decoder_input_details": True,

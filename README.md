@@ -21,15 +21,273 @@ Install package:
 pip install -e .
 ```
 
+## Dataset configuration
+### Upload dataset
+- First, create a folder named "datasets" (if you use another folder instead "datasets", please add argument "**--dataset_dir <YOUR_NEW_DIR>**)
+- Second, put all your necessary dataset in the folder, the package allows extention "csv, json, txt", the folder structure:
+```
+    villm-eval/datasets--<your_dataset_name>----<your_dataset_name>_train.<ext>
+                                             |
+                                             ----<your_dataset_name>_test.<ext>
+```
+- Finally, open the file "configs/<your_language>/datasets_info.json" to add your dataset
+### Dataset info structure
+After uploading your dataset, access to directory **config** to create a folder which is named a language code. Please refer ***confg/***
+```json
+{
+    "<your_dataset_name": {
+      "hf_hub_url": "<HF_URL> (Optional)",
+      "ms_hub_url": "<MS_HUB_URL> (Optional)",
+      "file_name": "<Directory_to_your_dataset> (Optional)",
+      "subset": "<YOUR_SUBSET_DATA> (Optional)",
+      "task": "<TASK_NAME> (Required)",
+      "train_split": "<Name_subset_for_train_split> (Optional, default: 'train')",
+      "test_split": "<Name_subset_for_train_split> (Optional, default: 'test')",
+      "label": ["<List_all_your_labels_on_classification_task>"]
+      "prompting_strategy": 0, #Select prompt that you specify in ***prompt_template.json*** in a specific task (Optional, default: 0)
+      "columns": {
+          "type_id": "type_id",
+          "passages": "passages",
+          "context": "context",
+          "query": "query",
+          "answer": "answer",
+          "options": "options",
+          "source": "source",
+          "target": "target"
+        }
+    }
+}
+```
+The above json is a description how to specify a dataset to operate this package. For first 3 fields, please select one of them to specify the source of your data. For field "columns", each task has some necessary column. If the column names of your dataset are similar to the key field in column, we can skip these fields. Please strictly follow the format standard on your new dataset. The list of task is as follow.
+#### Summarization
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "source": "source",
+          "target": "target"
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+#### Question Answering
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "context": "context",
+          "query": "query",
+          "answer": "answer"
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+#### Openended Knowledge
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "query": "query",
+          "answer": "answer"
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+#### Multiple Choice With Context
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "context": "context",
+          "query": "query",
+          "answer": "answer",
+          "options": "options"
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+#### Sentiment Analysis
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "query": "query",
+          "answer": "answer"
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+#### Text Classification
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "query": "query",
+          "answer": "answer"
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+#### Toxic Detection
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "query": "query",
+          "answer": "answer"
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+#### Translation
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "source": "source",
+          "target": "target"
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+#### Information Retrieval
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "type_id": "type_id",
+          "passages": "passages",
+          "query": "query",
+          "answer": "answer"
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+#### Reasoning
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "query": "query",
+          "answer": "answer",
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+#### Math
+```json
+{
+    "<your_dataset_name": {
+      ...
+      "columns": {
+          "query": "query",
+          "answer": "answer",
+        }
+    }
+}
+```
+- Example dataset: \<updating\>
+
+For more references, please check in 2 folders ***config/vi/dataset_info.json*** and ***config/ind/dataset_info.json***
+
+## Prompt template configuration
+Please refer the example in file ***config/{language_code}/prompt_template.json***. You need to define prompt in both PROMPT_TEMPLATE and CALIBRATION_PROMPT (if the required). The answer format and answer key in CALIBRATION_PROMPT, please leave them empty. For each task, you can add as many as possible all type of prompt you would like, and specific in the ***prompting_strategy*** in ***dataset_info.json***
+
+## Other configurations
+### Summac Model
+- You add model maps which will be used for evaluating SummaC, please refer to ***config/summac_model.json***
+
+### LLM template
+- You can add a new chat template for your current LLM (**Note**: The template only work when you use wrapper types such as "tgi", "vllm", "hf"). Please refer to ***config/llm_template.json***
+
+### Metric configuration
+```json
+{
+    "NERModel": "<Name Entity Recognition Model On HF",
+    "BERTScoreModel": {
+        "model_type": "bert-base-multilingual-cased"
+    },
+    "SummaCModel": "<Select one of evaluating SummaC model that you specify in ***summac_model.json***>",
+    "ToxicityEvaluationModel": "<Toxicity detection model in your langauge on HF>"
+}
+```
+Please refer to ***config/{language_code}/metric_configuration.json***
+### Generation configuration
+You can add some parameter to control the generation of model for each task. Please concern on which wrapper type you use to select approriate parameters (For examples: If you use GeminiWrapper, it does not allow "top_k", you can only set "top_p")
+Please refer to ***config/{language_code}/generation_config.json***
+
+### Adjective, profession, gender
+There are some files containing words of a specific topic which is adjective or profession or gender. They would be used for evaluating the bias on LLM. Please refer to ***config/{language_code}/words***
+
+
 ## Running pipeline
+### Setup necessary environment variables
+First, rename your ***env.template*** to ***.env***
+Depend on wrapper type, it have other environment variables
+- ***openai***
+```
+OPENAI_API_KEY="your OpenAI key"
+```
+- ***openai*** (in case of your provider from AzureGPT)
+```
+OPENAI_API_TYPE="azure"
+OPENAI_API_BASE="https://<your-endpoint.openai.azure.com/>"
+OPENAI_API_KEY="your AzureOpenAI key"
+OPENAI_API_VERSION="2023-05-15"
+```
+
+- ***tgi***
+```
+TGI_ENDPOINT="http://localhost:10025"
+```
+- ***gemini***
+```
+GEMINI_KEY="random_api_Keyyyyyy"
+```
+
 ### Run on local computer
+**HF loading**
 ```bash
 vieval --wtype hf \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
                --prompting_strategy 0 \
+               --num_fs 3 \
                --fewshot_prompting True \
                --ptemplate mistral \
+               --lang vi \
+               --seed 42
+```
+**VLLM**
+```bash
+vieval --wtype vllm \
+               --model_name ura-hcmut/MixSUra \
+               --dataset_name zalo_e2eqa \
+               --prompting_strategy 0 \
+               --num_fs 3 \
+               --fewshot_prompting True \
+               --ptemplate mistral \
+               --lang vi \
                --seed 42
 ```
 ### Run on TGI
@@ -37,18 +295,17 @@ vieval --wtype hf \
 vieval --wtype tgi \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
-               --prompting_strategy 0 \
                --fewshot_prompting True \
                --seed 42 \
                --ptemplate mistral \
-               --tgi http://127.0.0.1:10025
+               --lang vi \
 ```
 ### Run on GPT (gpt-3.5-turbo, gpt-4)
 ```bash
-vieval --wtype azuregpt \
+vieval --wtype openai \
                --model_name gpt-4 \
                --dataset_name zalo_e2eqa \
-               --prompting_strategy 0 \
+               --lang vi \
                --fewshot_prompting True \
                --seed 42
 ```
@@ -58,7 +315,7 @@ vieval --wtype azuregpt \
 vieval --wtype gemini \
                --model_name gemini-pro \
                --dataset_name zalo_e2eqa \
-               --prompting_strategy 0 \
+               --lang vi \
                --fewshot_prompting True \
                --seed 42
 ```
