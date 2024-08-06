@@ -232,12 +232,34 @@ Please refer the example in file ***config/{language_code}/prompt_template.json*
 }
 ```
 Please refer to ***config/{language_code}/metric_configuration.json***
-### Generation configuration
-You can add some parameter to control the generation of model for each task. Please concern on which wrapper type you use to select approriate parameters (For examples: If you use GeminiWrapper, it does not allow "top_k", you can only set "top_p")
-Please refer to ***config/{language_code}/generation_config.json***
+## Controlling Text Generation and Bias Evaluation
 
-### Adjective, profession, gender
-There are some files containing words of a specific topic which is adjective or profession or gender. They would be used for evaluating the bias on LLM. Please refer to ***config/{language_code}/words***
+This section explains how to adjust text generation parameters and access resources for evaluating bias in the language model.
+
+### Customizing Generation Parameters
+
+You can fine-tune the text generation process by adjusting specific parameters. The available parameters depend on the chosen wrapper type.  
+
+**Important:** Pay close attention to the wrapper type you are using, as each supports a different set of parameters. For example, the `GeminiWrapper` does not support `top_k` but allows you to configure `top_p`. 
+
+For a complete list of available parameters and their descriptions, please refer to the language-specific configuration file:
+
+**`config/{language_code}/generation_config.json`**
+
+### Evaluating Bias in Language Models
+
+This framework provides resources for evaluating potential bias related to adjectives, professions, and gender. These resources consist of word lists organized by topic:
+
+* **Adjectives:** A compilation of adjectives commonly used to describe individuals or groups.
+* **Professions:** A list of various professions, occupations, and job titles.
+* **Gender:**  Words related to different genders and gender identities. 
+
+These word lists are located in the following directory: 
+
+**`config/{language_code}/words`**
+
+You can utilize these resources to assess and mitigate potential biases present in the language model's output. 
+
 
 
 ## Running pipeline
