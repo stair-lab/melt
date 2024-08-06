@@ -71,7 +71,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [WikiLingua](https://huggingface.co/datasets/GEM/wiki_lingua)
 #### Question Answering
 ```json
 {
@@ -85,7 +85,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [MLQA](https://huggingface.co/datasets/facebook/mlqa)
 #### Openended Knowledge
 ```json
 {
@@ -98,7 +98,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [OpenEnded Knowledge](https://huggingface.co/datasets/ura-hcmut/Open-ended_knowledge)
 #### Multiple Choice With Context
 ```json
 {
@@ -113,7 +113,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [MTPC_Context](https://huggingface.co/datasets/ura-hcmut/MTPC_Context)
 #### Sentiment Analysis
 ```json
 {
@@ -126,7 +126,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [Sample](https://huggingface.co/datasets/ura-hcmut/sentiment_analysis)
 #### Text Classification
 ```json
 {
@@ -139,7 +139,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [Emotion classification](https://huggingface.co/datasets/ura-hcmut/text_classification)
 #### Toxic Detection
 ```json
 {
@@ -152,7 +152,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [Toxic detection](https://huggingface.co/datasets/ura-hcmut/toxic_detection)
 #### Translation
 ```json
 {
@@ -165,7 +165,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [OPUS100](https://huggingface.co/datasets/vietgpt/opus100_envi)
 #### Information Retrieval
 ```json
 {
@@ -180,7 +180,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [Information Retrieval](https://huggingface.co/datasets/ura-hcmut/Information_Retrieval)
 #### Reasoning
 ```json
 {
@@ -193,7 +193,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [Synthetic Natural Reasoning](https://huggingface.co/datasets/ura-hcmut/synthetic_reasoning_natural)
 #### Math
 ```json
 {
@@ -206,7 +206,7 @@ The above json is a description how to specify a dataset to operate this package
     }
 }
 ```
-- Example dataset: \<updating\>
+- Example dataset: [MATH](https://huggingface.co/datasets/ura-hcmut/MATH)
 
 For more references, please check in 2 folders ***config/vi/dataset_info.json*** and ***config/ind/dataset_info.json***
 
