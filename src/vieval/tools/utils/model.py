@@ -35,7 +35,6 @@ def get_model(config):
     # Load base model
     if config.model_name == "vinai/PhoGPT-7B5-Instruct":
         cfg = AutoConfig.from_pretrained(config.model_name, trust_remote_code=True)
-        # cfg.init_device = device_map
         model = AutoModelForCausalLM.from_pretrained(
             config.model_name,
             config=cfg,
@@ -66,9 +65,8 @@ def get_model(config):
         model.config.use_cache = True
         model.config.pretraining_tp = 1
 
-        # Load LLaMA tokenizer
         tokenizer = AutoTokenizer.from_pretrained(
-            config.tokenizer_name, trust_remote_code=True
+            config.model_name, trust_remote_code=True
         )
         tokenizer.pad_token = tokenizer.eos_token
         if "gpt" in config.model_name:

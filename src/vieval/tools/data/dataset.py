@@ -20,7 +20,6 @@ def eval_keys(keys):
 class DatasetWrapper:
     def __init__(self, args) -> None:
         self.dataset_name = args.dataset_name
-        # self.fewshots = fewshots
 
         self.dataset_info = None
         self.dataset_training = None
@@ -28,7 +27,7 @@ class DatasetWrapper:
 
         self.args = args
         self.get_dataset_config()
-        self.prompting_strategy = dataset_info.prompting_strategy
+        self.prompting_strategy = self.dataset_info.prompting_strategy
         self.get_prompt()
 
     def get_prompt(self):

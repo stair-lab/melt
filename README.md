@@ -293,7 +293,6 @@ GEMINI_KEY="random_api_Keyyyyyy"
 vieval --wtype hf \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
-               --prompting_strategy 0 \
                --num_fs 3 \
                --fewshot_prompting True \
                --ptemplate mistral \
@@ -305,7 +304,6 @@ vieval --wtype hf \
 vieval --wtype vllm \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
-               --prompting_strategy 0 \
                --num_fs 3 \
                --fewshot_prompting True \
                --ptemplate mistral \
@@ -341,6 +339,64 @@ vieval --wtype gemini \
                --fewshot_prompting True \
                --seed 42
 ```
+
+### List of arguments
+```bash
+vieval [-h] [--model_name MODEL_NAME] [--dataset_name DATASET_NAME] [--use_4bit [USE_4BIT]] [--bnb_4bit_compute_dtype BNB_4BIT_COMPUTE_DTYPE]
+              [--bnb_4bit_quant_type BNB_4BIT_QUANT_TYPE] [--use_nested_quant [USE_NESTED_QUANT]] [--lang LANG] [--dataset_dir DATASET_DIR] [--config_dir CONFIG_DIR]
+              [--output_dir OUTPUT_DIR] [--output_eval_dir OUTPUT_EVAL_DIR] [--per_device_eval_batch_size PER_DEVICE_EVAL_BATCH_SIZE] [--ms_hub_token MS_HUB_TOKEN]
+              [--hf_hub_token HF_HUB_TOKEN] [--smoke_test [SMOKE_TEST]] [--fewshot_prompting [FEWSHOT_PROMPTING]] [--num_fs NUM_FS] [--seed SEED]
+              [--continue_infer [CONTINUE_INFER]] [--wtype WTYPE] [--ptemplate PTEMPLATE] [--device DEVICE] [--n_bootstrap N_BOOTSTRAP] [--p_bootstrap P_BOOTSTRAP]
+              [--bs BS]
+
+options:
+  -h, --help            show this help message and exit
+  --model_name MODEL_NAME
+                        The model that you want to train from the Hugging Face hub (default: meta-llama/Llama-2-7b-chat-hf)
+  --dataset_name DATASET_NAME
+                        The instruction dataset to use (default: vietgpt/wikipedia_vi)
+  --use_4bit [USE_4BIT]
+                        Activate 4-bit precision base model loading (default: False)
+  --bnb_4bit_compute_dtype BNB_4BIT_COMPUTE_DTYPE
+                        Compute dtype for 4-bit base models (default: bfloat16)
+  --bnb_4bit_quant_type BNB_4BIT_QUANT_TYPE
+                        Quantization type (fp4 or nf4) (default: nf4)
+  --use_nested_quant [USE_NESTED_QUANT]
+                        Activate nested quantization for 4-bit base models (double quantization) (default: False)
+  --lang LANG           Language of the dataset to use (e.g. vi, ind, kr, ...) (default: vi)
+  --dataset_dir DATASET_DIR
+                        The default directory for loading dataset (default: ./datasets)
+  --config_dir CONFIG_DIR
+                        Configuration directory where contains LLM template, prompt template, generation configuration (default: ./config)
+  --output_dir OUTPUT_DIR
+                        Output directory where the model predictions and checkpoints will be stored (default: ./results/generation)
+  --output_eval_dir OUTPUT_EVAL_DIR
+                        The output folder to save metric scores (default: ./results/evaluation)
+  --per_device_eval_batch_size PER_DEVICE_EVAL_BATCH_SIZE
+                        Batch size per GPU for evaluation (default: 1)
+  --ms_hub_token MS_HUB_TOKEN
+                        Microsoft Hub token (default: None)
+  --hf_hub_token HF_HUB_TOKEN
+                        Hugging Face Hub token (default: None)
+  --smoke_test [SMOKE_TEST]
+                        Run a smoke test on a small dataset (default: False)
+  --fewshot_prompting [FEWSHOT_PROMPTING]
+                        Enable few-shot prompting (default: False)
+  --num_fs NUM_FS       Number of samples for few-shot learning (default: 5)
+  --seed SEED           Random seed (default: 42)
+  --continue_infer [CONTINUE_INFER]
+                        Wheather to continue previous inference process (default: False)
+  --wtype WTYPE         Select type of wrapper: hf, tgi, azuregpt, gemini (default: hf)
+  --ptemplate PTEMPLATE
+                        Prompting template in chat template: llama-2, mistral, ... (default: llama-2)
+  --device DEVICE       CUDA device (default: cuda:0)
+  --n_bootstrap N_BOOTSTRAP
+                        n bootstrap (default: 2)
+  --p_bootstrap P_BOOTSTRAP
+                        p bootstrap (default: 1.0)
+  --bs BS               Bias metric (default: 128)
+```
+
 ## Citation
 ```
 @inproceedings{crossing2024,
