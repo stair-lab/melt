@@ -2,7 +2,6 @@ import json
 from typing import Dict
 import os
 import pandas as pd
-from nltk.metrics.scores import f_measure
 
 
 def normalize_text(text: str, keep_punc=False) -> str:

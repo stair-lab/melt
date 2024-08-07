@@ -1,8 +1,6 @@
 import os
-import sys
 from pathlib import Path
-import numpy as np
-from datasets import DatasetDict, load_dataset, load_from_disk
+from datasets import load_dataset
 from transformers.utils.versions import require_version
 from ..utils.constants import FILEEXT2TYPE
 

@@ -1,5 +1,6 @@
+import copy
 from vllm import LLM, SamplingParams
-from typing import Dict, List
+from typing import Dict
 from .BaseWrapper import BaseWrapper
 from ..utils.chat_template import apply_chat_template
 

@@ -3,7 +3,6 @@ import os
 from dataclasses import dataclass
 from typing import Any, Dict, List, Literal, Optional, Sequence
 
-from transformers.utils import cached_file
 from ..utils.constants import DATA_CONFIG
 
 

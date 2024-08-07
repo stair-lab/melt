@@ -4,9 +4,8 @@ import os
 import json
 from tqdm import tqdm
 import random
-from ..utils.model import get_model
 from ..wrapper import OpenAIWrapper, TGIWrapper, GeminiWrapper, VLLMWrapper, HFWrapper
-from ..utils.utils import *
+from ..utils.utils import column, format_fewshot, unique
 from .metric_pipelines import MetricPipeline
 
 

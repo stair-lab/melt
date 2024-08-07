@@ -11,8 +11,7 @@ try:
 except OSError:
     print(
         "Downloading the spacy en_core_web_sm model\n"
-        "(don't worry, this will only happen once)",
-        file=stderr,
+        "(don't worry, this will only happen once)"
     )
     from spacy.cli import download
 

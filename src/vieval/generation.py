@@ -8,27 +8,6 @@ from torch.utils.data import DataLoader
 def generation(script_args):
     set_seed(script_args.seed)
 
-    # Save results
-    if not os.path.exists(script_args.output_dir):
-        os.makedirs(script_args.output_dir)
-    if not os.path.exists(script_args.output_eval_dir):
-        os.makedirs(script_args.output_eval_dir)
-
-    if script_args.continue_infer:
-        if os.path.exists(json_file):
-            # df1, fewshots = read_json(json_file)
-            continue_results, current_batch_idx = read_json(
-                json_file, script_args.per_device_eval_batch_size
-            )
-            start_idx = current_batch_idx
-        else:
-            start_idx = 0
-            continue_results = None
-    else:
-        start_idx = 0
-        continue_results = None
-    fewshots = None
-
     # Load dataset (you can process it here)
     dataset_wrapper = DatasetWrapper(
         args=script_args,
@@ -54,6 +33,25 @@ def generation(script_args):
         script_args.output_eval_dir, f"metrics_{ds_exact_name}.json"
     )
 
+    # Save results
+    if not os.path.exists(script_args.output_dir):
+        os.makedirs(script_args.output_dir)
+    if not os.path.exists(script_args.output_eval_dir):
+        os.makedirs(script_args.output_eval_dir)
+
+    if script_args.continue_infer:
+        if os.path.exists(json_file):
+            continue_results, current_batch_idx = read_json(
+                json_file, script_args.per_device_eval_batch_size
+            )
+            start_idx = current_batch_idx
+        else:
+            start_idx = 0
+            continue_results = None
+    else:
+        start_idx = 0
+        continue_results = None
+
     dataset_loader = DataLoader(
         dataset_wrapper.get_dataset_testing(),
         batch_size=script_args.per_device_eval_batch_size,
@@ -67,11 +65,6 @@ def generation(script_args):
 
     # Evaluate
     def save_results(generations, metrics=None):
-        # if script_args.continue_infer and os.path.exists(json_file):
-        # df2 = pd.DataFrame(generations)
-        # df3 = df1.append(df2, ignore_index=True)
-        #    generations = df3.to_dict(orient="list")
-
         save_to_json(generations, json_file)
         if metrics is not None:
             save_to_json(metrics, metric_file)

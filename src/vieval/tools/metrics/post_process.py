@@ -49,11 +49,10 @@ def get_answer_auto_from_text(
     args=SimpleNamespace(),
 ) -> str:
     if key_answer:
-        # print(text)
         json_data = get_json_from_text(text, key_answer)
         if (
             json_data
-            and type(json_data) == dict
+            and isinstance(json_data, dict)
             and key_answer in json_data
             and json_data[key_answer]
             and remove_special_character(str(json_data[key_answer]))
