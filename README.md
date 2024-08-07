@@ -22,7 +22,7 @@ pip install -e .
 ```
 
 ## Dataset configuration
-### Upload dataset
+### Using local dataset (Optional)
 - First, create a folder named "datasets" (if you use another folder instead "datasets", please add argument "**--dataset_dir <YOUR_NEW_DIR>**)
 - Second, put all your necessary dataset in the folder, the package allows extention "csv, json, txt", the folder structure:
 ```
@@ -31,8 +31,8 @@ pip install -e .
                                              ----<your_dataset_name>_test.<ext>
 ```
 - Finally, open the file "configs/<your_language>/datasets_info.json" to add your dataset
-### Dataset info structure
-After uploading your dataset, access to directory **config** to create a folder which is named a language code. Please refer ***confg/***
+### Configuring dataset info
+After having your dataset, access to directory **config** to create a folder which is named a language code. Please refer ***confg/***
 ```json
 {
     "<your_dataset_name": {
