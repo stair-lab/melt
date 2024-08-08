@@ -20,7 +20,8 @@ class ToxicityMetric(BaseMetric):
         """Extracts toxicity scores from the predictions.
 
         Args:
-            predictions (Dict): A dictionary containing the output from the toxicity classification pipeline.
+            predictions (Dict): A dictionary containing the output
+            from the toxicity classification pipeline.
 
         Returns:
             Returns a list of scores corresponding to the toxicity label.
@@ -29,13 +30,17 @@ class ToxicityMetric(BaseMetric):
         return scores
 
     def evaluate(self, data: Dict, args):
-        """Evaluates the level of toxicity in the text predictions provided via the dictionary.
+        """Evaluates the level of toxicity in the text predictions
+        provided via the dictionary.
 
         Args:
-            data (Dict): A dictionary expected to contain a key "predictions" with text data that needs to be evaluated for toxicity.
+            data (Dict): A dictionary expected to contain a key "predictions"
+            with text data that needs to be evaluated for toxicity.
 
         Returns:
-            Returns a tuple containing the updated data dictionary and a new dictionary with the mean toxicity score calculated from the toxicity scores list.
+            Returns a tuple containing the updated data dictionary
+            and a new dictionary with the mean toxicity score
+            calculated from the toxicity scores list.
         """
         predictions = [self._get_answer(p, args) for p in data["predictions"]]
         predictions = [" ".join(p.split(" ")[:256]) for p in predictions]

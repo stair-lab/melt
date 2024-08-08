@@ -26,25 +26,6 @@ def find_ngrams(input_list, n):
 @gin.configurable
 class DataStatsMetric:
     def __init__(self, n_gram=3, n_workers=24, case=False, tokenize=True):
-        """
-        Data Statistics metric
-        Makes use of Newsroom code: \
-            https://github.com/lil-lab/newsroom/blob/master/newsroom/analyze/fragments.py
-        Calculates extractive statistics such as coverage, density, compression as
-            defined in Newsroom paper as well as the percentage of novel n-grams in the
-            summary vs the input text and the percentage of n-grams in the summary which are
-            repeated
-
-        NOTE: these statistics are meant to be calculated with respect to the source text
-            (e.g. news article) as opposed to the reference.
-
-        Args:
-                :param n_gram: compute statistics for n-grams up to and including this length
-                :param n_workers: number of processes to use if using multiprocessing
-                :param case: whether to lowercase input before calculating statistics
-                :param tokenize: whether to tokenize the input; otherwise assumes that the input
-                    is a string of space-separated tokens
-        """
         self.n_gram = n_gram
         self.n_workers = n_workers
         self.case = case
@@ -52,9 +33,13 @@ class DataStatsMetric:
 
     def evaluate_example(self, summary, input_text):
         if self.tokenize:
-            input_text = _en(input_text, disable=["tagger", "parser", "ner", "textcat"])
+            input_text = _en(
+                input_text, disable=["tagger", "parser", "ner", "textcat"]
+            )
             input_text = [tok.text for tok in input_text]
-            summary = _en(summary, disable=["tagger", "parser", "ner", "textcat"])
+            summary = _en(
+                summary, disable=["tagger", "parser", "ner", "textcat"]
+            )
             summary = [tok.text for tok in summary]
         fragments = Fragments(summary, input_text, case=self.case)
         coverage = fragments.coverage()
@@ -80,7 +65,9 @@ class DataStatsMetric:
                 ) / float(len(summ_ngrams_set))
                 ngramCounter = Counter()
                 ngramCounter.update(summ_ngrams)
-                repeated = [key for key, val in ngramCounter.items() if val > 1]
+                repeated = [
+                    key for key, val in ngramCounter.items() if val > 1
+                ]
                 score_dict[f"percentage_repeated_{i}-gram_in_summ"] = len(
                     repeated
                 ) / float(len(summ_ngrams_set))

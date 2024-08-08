@@ -6,7 +6,10 @@ from typing import Optional
 class ScriptArguments:
     model_name: Optional[str] = field(
         default="meta-llama/Llama-2-7b-chat-hf",
-        metadata={"help": "The model that you want to train from the Hugging Face hub"},
+        metadata={
+            "help": "The model that you want to train \
+                from the Hugging Face hub"
+        },
     )
     dataset_name: Optional[str] = field(
         default="vietgpt/wikipedia_vi",
@@ -15,10 +18,12 @@ class ScriptArguments:
 
     # bitsandbytes parameters
     use_4bit: Optional[bool] = field(
-        default=False, metadata={"help": "Activate 4-bit precision base model loading"}
+        default=False,
+        metadata={"help": "Activate 4-bit precision base model loading"},
     )
     bnb_4bit_compute_dtype: Optional[str] = field(
-        default="bfloat16", metadata={"help": "Compute dtype for 4-bit base models"}
+        default="bfloat16",
+        metadata={"help": "Compute dtype for 4-bit base models"},
     )
     bnb_4bit_quant_type: Optional[str] = field(
         default="nf4", metadata={"help": "Quantization type (fp4 or nf4)"}
@@ -26,14 +31,17 @@ class ScriptArguments:
     use_nested_quant: Optional[bool] = field(
         default=False,
         metadata={
-            "help": "Activate nested quantization for 4-bit base models (double quantization)"
+            "help": "Activate nested quantization for \
+                4-bit base models (double quantization)"
         },
     )
 
     # TrainingArguments parameters
     lang: str = field(
         default="vi",
-        metadata={"help": "Language of the dataset to use (e.g. vi, ind, kr, ...)"},
+        metadata={
+            "help": "Language of the dataset to use (e.g. vi, ind, kr, ...)"
+        },
     )
     dataset_dir: str = field(
         default="./datasets",
@@ -42,13 +50,15 @@ class ScriptArguments:
     config_dir: str = field(
         default="./config",
         metadata={
-            "help": "Configuration directory where contains LLM template, prompt template, generation configuration"
+            "help": "Configuration directory where contains \
+                LLM template, prompt template, generation configuration"
         },
     )
     output_dir: str = field(
         default="./results/generation",
         metadata={
-            "help": "Output directory where the model predictions and checkpoints will be stored"
+            "help": "Output directory where the model predictions \
+                and checkpoints will be stored"
         },
     )
     output_eval_dir: str = field(
@@ -88,7 +98,10 @@ class ScriptArguments:
     )
     ptemplate: Optional[str] = field(
         default="llama-2",
-        metadata={"help": "Prompting template in chat template: llama-2, mistral, ..."},
+        metadata={
+            "help": "Prompting template in chat template:\
+                llama-2, mistral, ..."
+        },
     )
 
     device: str = field(default="cuda:0", metadata={"help": "CUDA device"})

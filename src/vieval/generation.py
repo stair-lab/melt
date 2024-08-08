@@ -14,8 +14,8 @@ def generation(script_args):
     )
     if script_args.smoke_test:
         n_examples = 8
-        dataset_wrapper.dataset_testing = dataset_wrapper.dataset_testing.select(
-            range(n_examples)
+        dataset_wrapper.dataset_testing = (
+            dataset_wrapper.dataset_testing.select(range(n_examples))
         )
     ds_exact_name = (
         script_args.dataset_name.split("/")[-1]

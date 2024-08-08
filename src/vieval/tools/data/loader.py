@@ -32,8 +32,12 @@ def _load_single_dataset(dataset_attr, args, mode):
                 if Path(file_name).stem.split("_")[-1] == mode:
                     data_files[mode] = os.path.join(local_path, file_name)
                     if data_path is None:
-                        data_path = FILEEXT2TYPE.get(file_name.split(".")[-1], None)
-                    elif data_path != FILEEXT2TYPE.get(file_name.split(".")[-1], None):
+                        data_path = FILEEXT2TYPE.get(
+                            file_name.split(".")[-1], None
+                        )
+                    elif data_path != FILEEXT2TYPE.get(
+                        file_name.split(".")[-1], None
+                    ):
                         raise ValueError("File types should be identical.")
 
             if len(data_files) < 1:
@@ -54,7 +58,9 @@ def _load_single_dataset(dataset_attr, args, mode):
         )
 
     if dataset_attr.load_from == "ms_hub":
-        require_version("modelscope>=1.11.0", "To fix: pip install modelscope>=1.11.0")
+        require_version(
+            "modelscope>=1.11.0", "To fix: pip install modelscope>=1.11.0"
+        )
         from modelscope import MsDataset
         from modelscope.utils.config_ds import MS_DATASETS_CACHE
 

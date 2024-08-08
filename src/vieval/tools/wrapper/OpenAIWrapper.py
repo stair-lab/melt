@@ -5,7 +5,9 @@ from .BaseWrapper import BaseWrapper
 
 class OpenAIWrapper(BaseWrapper):
     def __init__(self, engine=None, generation_config=None):
-        generation_config["max_tokens"] = generation_config.pop("max_new_tokens")
+        generation_config["max_tokens"] = generation_config.pop(
+            "max_new_tokens"
+        )
         generation_config["frequency_penalty"] = generation_config.pop(
             "repetition_penalty"
         )

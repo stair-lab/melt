@@ -7,7 +7,9 @@ from ..utils.chat_template import apply_chat_template
 
 class VLLMWrapper(BaseWrapper):
     def __init__(self, config, generation_config, template: Dict = None):
-        generation_config["max_tokens"] = generation_config.pop("max_new_tokens")
+        generation_config["max_tokens"] = generation_config.pop(
+            "max_new_tokens"
+        )
         generation_config["frequency_penalty"] = generation_config.pop(
             "repetition_penalty"
         )
@@ -64,7 +66,9 @@ class VLLMWrapper(BaseWrapper):
                 skip_special_tokens=False,
             ),
         )
-        for output, len_tokenized_prompt in zip(outputs, len_tokenized_prompts):
+        for output, len_tokenized_prompt in zip(
+            outputs, len_tokenized_prompts
+        ):
             completions_num_tokens.append(
                 len(output.prompt_logprobs) - len_tokenized_prompt
             )
@@ -72,7 +76,9 @@ class VLLMWrapper(BaseWrapper):
                 [
                     [
                         list(logprob.values())[0].logprob
-                        for logprob in output.prompt_logprobs[len_tokenized_prompt:]
+                        for logprob in output.prompt_logprobs[
+                            len_tokenized_prompt:
+                        ]
                     ]
                 ]
             )

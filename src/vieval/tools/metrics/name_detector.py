@@ -1,4 +1,8 @@
-from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
+from transformers import (
+    AutoTokenizer,
+    AutoModelForTokenClassification,
+    pipeline,
+)
 from underthesea import sent_tokenize
 import torch
 import os
@@ -11,12 +15,16 @@ token_pattern = ""
 
 
 class NameDetector:
-    """Detect names within texts, categorize them, and potentially process multiple texts in batches."""
+    """Detect names within texts, categorize them, and potentially
+    process multiple texts in batches."""
 
     def __init__(self, args):
         global token_pattern
         with open(
-            os.path.join(args.config_dir, args.lang, "words", "token_pattern.txt"), "r"
+            os.path.join(
+                args.config_dir, args.lang, "words", "token_pattern.txt"
+            ),
+            "r",
         ) as f:
             token_pattern = f.read().strip()
         tokenizer = AutoTokenizer.from_pretrained(
@@ -37,15 +45,18 @@ class NameDetector:
         self.threshold_len = 2
 
     def group_entity(self, text, entities):
-        """Groups the detected entities that are adjacent and belong to the same entity group.
+        """Groups the detected entities that are adjacent and
+        belong to the same entity group.
 
         Args:
             text (str): The original text from which entities are extracted.
 
-            entities (list): A list of entity dictionaries detected in the text.
+            entities (list): A list of entity dictionaries
+            detected in the text.
 
         Returns:
-            Returns a new list of entities after grouping adjacent entities of the same type.
+            Returns a new list of entities after grouping
+            adjacent entities of the same type.
         """
         if len(entities) == 0:
             return []
@@ -57,8 +68,12 @@ class NameDetector:
                 and new_entity["entity_group"] == entities[i]["entity_group"]
             ):
                 new_entity["end"] = entities[i]["end"]
-                new_entity["word"] = text[new_entity["start"] : new_entity["end"]]
-                new_entity["score"] = max(new_entity["score"], entities[i]["score"])
+                new_entity["word"] = text[
+                    new_entity["start"]:new_entity["end"]
+                ]
+                new_entity["score"] = max(
+                    new_entity["score"], entities[i]["score"]
+                )
             else:
                 new_entities.append(new_entity)
                 new_entity = entities[i]
@@ -67,13 +82,17 @@ class NameDetector:
         return new_entities
 
     def _get_person_tokens(self, all_tokens):
-        """Filters and retrieves tokens classified as persons from the detected entities based on the threshold score and length.
+        """Filters and retrieves tokens classified as persons
+        from the detected entities
+        based on the threshold score and length.
 
         Args:
-            all_tokens (list): A list of all entity dictionaries detected in the text.
+            all_tokens (list): A list of all entity dictionaries detected
+            in the text.
 
         Returns:
-            Returns a list of person names that meet the specified score and length thresholds.
+            Returns a list of person names that meet the specified score
+            and length thresholds.
         """
         per_tokens = []
         temp = [
@@ -88,13 +107,15 @@ class NameDetector:
         return per_tokens
 
     def _classify_race(self, per_tokens):
-        """Classifies the person tokens into Vietnamese or Western based on a predefined pattern.
+        """Classifies the person tokens into Vietnamese or Western based on
+        a predefined pattern.
 
         Args:
             per_tokens (list): A list of person name tokens to be classified.
 
         Returns:
-            Returns a dictionary with two keys, "vietnamese" and "western", each containing a list of names classified.
+            Returns a dictionary with two keys, "vietnamese" and "western",
+            each containing a list of names classified.
         """
         results = {
             "your_race": set(),

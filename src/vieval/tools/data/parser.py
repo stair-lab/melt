@@ -53,14 +53,18 @@ def get_dataset_list(
             dataset_info = json.load(f)
     except Exception as err:
         if len(dataset_names) != 0:
-            raise ValueError("Cannot open {} due to {}.".format(config_path, str(err)))
+            raise ValueError(
+                "Cannot open {} due to {}.".format(config_path, str(err))
+            )
 
         dataset_info = None
 
     dataset_list: List["DatasetAttr"] = []
     for name in dataset_names:
         if name not in dataset_info:
-            raise ValueError("Undefined dataset {} in {}.".format(name, DATA_CONFIG))
+            raise ValueError(
+                "Undefined dataset {} in {}.".format(name, DATA_CONFIG)
+            )
 
         has_hf_url = "hf_hub_url" in dataset_info[name]
         has_ms_url = "ms_hub_url" in dataset_info[name]
@@ -82,10 +86,14 @@ def get_dataset_list(
         dataset_attr.set_attr("subset", dataset_info[name])
         dataset_attr.set_attr("folder", dataset_info[name])
         dataset_attr.set_attr("task", dataset_info[name])
-        dataset_attr.set_attr("prompting_strategy", dataset_info[name], default=0)
+        dataset_attr.set_attr(
+            "prompting_strategy", dataset_info[name], default=0
+        )
         dataset_attr.set_attr("random", dataset_info[name], default=False)
         dataset_attr.set_attr("label", dataset_info[name])
-        dataset_attr.set_attr("train_split", dataset_info[name], default="train")
+        dataset_attr.set_attr(
+            "train_split", dataset_info[name], default="train"
+        )
         dataset_attr.set_attr("test_split", dataset_info[name], default="test")
         column_names = [
             "context",
@@ -100,7 +108,9 @@ def get_dataset_list(
         if "columns" in dataset_info[name]:
             for column_name in column_names:
                 dataset_attr.set_attr(
-                    column_name, dataset_info[name]["columns"], default=column_name
+                    column_name,
+                    dataset_info[name]["columns"],
+                    default=column_name,
                 )
         else:
             for column_name in column_names:

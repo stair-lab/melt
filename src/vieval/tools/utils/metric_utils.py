@@ -56,7 +56,9 @@ def save_to_csv(data: Dict, filename: str, outdir: str = "./"):
 def save_to_xlsx(data, filename: str):
     writer = pd.ExcelWriter(filename)
     _ = [
-        sheet_data.to_excel(writer, sheet_name=sheet_name, index=False, header=False)
+        sheet_data.to_excel(
+            writer, sheet_name=sheet_name, index=False, header=False
+        )
         for sheet_name, sheet_data in data.items()
     ]
     writer.close()

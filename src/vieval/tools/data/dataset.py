@@ -31,7 +31,9 @@ class DatasetWrapper:
 
     def get_prompt(self):
         with open(
-            os.path.join(self.args.config_dir, self.args.lang, "prompt_template.json"),
+            os.path.join(
+                self.args.config_dir, self.args.lang, "prompt_template.json"
+            ),
             "r",
         ) as f:
             prompt_config = json.load(f)

@@ -28,7 +28,7 @@ def _fix_fracs(string):
             else:
                 try:
                     assert len(substr) >= 2
-                except:
+                except Exception:
                     return string
                 a = substr[0]
                 b = substr[1]
@@ -59,12 +59,11 @@ def _fix_a_slash_b(string):
         assert string == "{}/{}".format(a, b)
         new_string = "\\frac{" + str(a) + "}{" + str(b) + "}"
         return new_string
-    except:
+    except Exception:
         return string
 
 
 def _remove_right_units(string):
-    # "\\text{ " only ever occurs (at least in the val set) when describing units
     if "\\text{ " in string:
         splits = string.split("\\text{ ")
         assert len(splits) == 2
@@ -125,7 +124,8 @@ def _strip_string(string):
     string = string.replace("\\%", "")
     string = string.replace(r"\%", "")
 
-    # " 0." equivalent to " ." and "{0." equivalent to "{." Alternatively, add "0" if "." is the start of the string
+    # " 0." equivalent to " ." and "{0." equivalent to
+    # "{." Alternatively, add "0" if "." is the start of the string
     string = string.replace(" .", " 0.")
     string = string.replace("{.", "{0.")
     # if empty, return empty string
@@ -145,14 +145,16 @@ def _strip_string(string):
     # remove spaces
     string = string.replace(" ", "")
 
-    # \frac1b or \frac12 --> \frac{1}{b} and \frac{1}{2}, etc. Even works with \frac1{72} (but not \frac{72}1). Also does a/b --> \\frac{a}{b}
+    # \frac1b or \frac12 --> \frac{1}{b} and \frac{1}{2}, etc. Even works with
+    # \frac1{72} (but not \frac{72}1). Also does a/b --> \\frac{a}{b}
     string = _fix_fracs(string)
 
     # manually change 0.5 --> \frac{1}{2}
     if string == "0.5":
         string = "\\frac{1}{2}"
 
-    # NOTE: X/Y changed to \frac{X}{Y} in dataset, but in simple cases fix in case the model output is X/Y
+    # NOTE: X/Y changed to \frac{X}{Y} in dataset, but in simple cases fix
+    # in case the model output is X/Y
     string = _fix_a_slash_b(string)
 
     return string
@@ -171,7 +173,7 @@ def is_equiv(str1, str2, verbose=False):
         if verbose:
             print(ss1, ss2)
         return ss1 == ss2
-    except:
+    except Exception:
         return str1 == str2
 
 
@@ -212,7 +214,9 @@ class ReasoningMetric(BaseMetric):
             if self._has_numbers(word):
                 return word
 
-        return "".join(random.choice(string_func.ascii_uppercase) for _ in range(4))
+        return "".join(
+            random.choice(string_func.ascii_uppercase) for _ in range(4)
+        )
 
     def _remove_boxed(self, text: str) -> str:
         if "oxed" in text:
@@ -233,31 +237,37 @@ class ReasoningMetric(BaseMetric):
         raw_predictions = data["predictions"]
 
         predictions = [
-            self._get_answer(raw_prediction, args) for raw_prediction in raw_predictions
+            self._get_answer(raw_prediction, args)
+            for raw_prediction in raw_predictions
         ]
         references = data["references"]
         references = [
-            # self._get_answer("{" + f"'{args.key_answer}'" + ":" + f"'{reference}'" + "}", args)
             self._get_answer(reference, args)
             for reference in references
         ]
         # data["predictions"] = predictions
         # data["references"] = references
 
-        f1_scores = [f1_score(*batch) for batch in zip(references, predictions)]
+        f1_scores = [
+            f1_score(*batch) for batch in zip(references, predictions)
+        ]
         ems = [exact_match(*batch) for batch in zip(references, predictions)]
 
         # print(predictions[:10])
         # print(references[:10])
         if args.task == "math":
             predictions = [
-                self._get_math_final_result(prediction) for prediction in predictions
+                self._get_math_final_result(prediction)
+                for prediction in predictions
             ]
             references = [
-                self._get_math_final_result(reference, "r") for reference in references
+                self._get_math_final_result(reference, "r")
+                for reference in references
             ]
 
-            references = [self._remove_boxed(reference) for reference in references]
+            references = [
+                self._remove_boxed(reference) for reference in references
+            ]
 
             predictions = [self._remove_boxed(pred) for pred in predictions]
             data["processed_predictions"] = predictions

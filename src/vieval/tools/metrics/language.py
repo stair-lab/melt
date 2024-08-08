@@ -17,10 +17,12 @@ class LanguageMetric(BaseMetric):
         super().__init__(data, args)
 
     def get_num_bytes(self, tokens: List[str]) -> int:
-        """Calculates the total number of bytes of a list of tokens when encoded in UTF-8.
+        """Calculates the total number of bytes of a list of tokens
+        when encoded in UTF-8.
 
         Args:
-            tokens (List[str]): A list of string tokens for which the byte length is to be calculated.
+            tokens (List[str]): A list of string tokens for which the byte
+            length is to be calculated.
         """
         num_bytes = 0
         for token in tokens:
@@ -28,15 +30,22 @@ class LanguageMetric(BaseMetric):
         return num_bytes
 
     def evaluate(self, data: Dict, args) -> (Dict, Dict):
-        """Evaluates the predictions against references and computes various metrics.
+        """Evaluates the predictions against references and
+        computes various metrics.
 
         Args:
-            data (Dict): A dictionary that must contain keys "predictions", "references", and "generation_probs". It is used to store the predictions, the references for comparison, and the log probabilities for each prediction.
+            data (Dict): A dictionary that must contain keys
+            "predictions", "references", and "generation_probs".
+            It is used to store the predictions, the references for comparison,
+            and the log probabilities for each prediction.
 
         Returns:
             Returns a tuple containing:
-            - data: The original data dictionary, updated with raw metric scores for each prediction-reference pair.
-            - result: A dictionary with the average scores of the metrics across all prediction-reference pairs.
+            - data: The original data dictionary, updated
+            with raw metric scores
+            for each prediction-reference pair.
+            - result: A dictionary with the average scores of the metrics
+            across all prediction-reference pairs.
         """
         predictions = data["predictions"]
         predictions = [self._get_answer(pred, args) for pred in predictions]
@@ -44,7 +53,8 @@ class LanguageMetric(BaseMetric):
         references = [normalize_text(ref) for ref in references]
 
         em_scores = [
-            exact_match(pred, ref) for ref, pred in zip(references, predictions)
+            exact_match(pred, ref)
+            for ref, pred in zip(references, predictions)
         ]
         cer_score = self.cer_metrics.compute(
             predictions=predictions, references=references
@@ -58,7 +68,9 @@ class LanguageMetric(BaseMetric):
             for pred, ref in zip(predictions, references)
         ]
         wed_scores = [
-            Levenshtein.distance(np.array(pred.split(" ")), np.array(ref.split(" ")))
+            Levenshtein.distance(
+                np.array(pred.split(" ")), np.array(ref.split(" "))
+            )
             for pred, ref in zip(predictions, references)
         ]
 
@@ -74,7 +86,9 @@ class LanguageMetric(BaseMetric):
                 self.get_num_bytes(prediction.split(" ")),
             )
 
-            perplexity_scores.append(math.e ** (-logprob / num_perplexity_tokens))
+            perplexity_scores.append(
+                math.e ** (-logprob / num_perplexity_tokens)
+            )
             bits_per_byte.append(-logprob / num_bytes / math.log(2))
             logprob_per_byte.append(logprob / num_bytes)
 

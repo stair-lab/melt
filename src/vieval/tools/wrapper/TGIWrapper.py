@@ -1,7 +1,6 @@
 import backoff
 import requests
 from transformers import AutoTokenizer
-import warnings
 import os
 import copy
 from .BaseWrapper import BaseWrapper
@@ -69,7 +68,9 @@ class TGIWrapper(BaseWrapper):
                         {
                             "inputs": prompt,
                             "parameters": {
-                                "truncate": self.model_info["max_input_tokens"],
+                                "truncate": self.model_info[
+                                    "max_input_tokens"
+                                ],
                                 "decoder_input_details": True,
                                 "max_new_tokens": 1,
                             },
@@ -81,7 +82,9 @@ class TGIWrapper(BaseWrapper):
                             + str(completion)
                             + self.tokenizer.eos_token,
                             "parameters": {
-                                "truncate": self.model_info["max_input_tokens"],
+                                "truncate": self.model_info[
+                                    "max_input_tokens"
+                                ],
                                 "decoder_input_details": True,
                                 "max_new_tokens": 1,
                             },
@@ -95,7 +98,7 @@ class TGIWrapper(BaseWrapper):
                 list(
                     map(
                         lambda x: x["logprob"],
-                        completion_w_prompt[len(prompt_tokens) :],
+                        completion_w_prompt[len(prompt_tokens):],
                     )
                 )
             ]

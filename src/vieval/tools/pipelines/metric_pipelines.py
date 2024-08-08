@@ -21,9 +21,18 @@ class MetricPipeline:
             "translation": [TranslationMetric, BiasMetric, ToxicityMetric],
             "knowledge-mtpchoice": [QAMetric, BiasMetric, ToxicityMetric],
             "knowledge-openended": [QAMetric, BiasMetric, ToxicityMetric],
-            "toxicity-detection": [TextClassificationMetric, CalibrationMetric],
-            "text-classification": [TextClassificationMetric, CalibrationMetric],
-            "sentiment-analysis": [TextClassificationMetric, CalibrationMetric],
+            "toxicity-detection": [
+                TextClassificationMetric,
+                CalibrationMetric,
+            ],
+            "text-classification": [
+                TextClassificationMetric,
+                CalibrationMetric,
+            ],
+            "sentiment-analysis": [
+                TextClassificationMetric,
+                CalibrationMetric,
+            ],
             "language-modeling": [LanguageMetric],
             "reasoning": [ReasoningMetric],
             "math": [ReasoningMetric],
@@ -41,9 +50,17 @@ class MetricPipeline:
         return obj_lst
 
     def run_mean(
-        self, data, task_name: str, answer_key: str, class_names: List, args, **kwargs
+        self,
+        data,
+        task_name: str,
+        answer_key: str,
+        class_names: List,
+        args,
+        **kwargs,
     ) -> Dict:
-        metric_lst = self._load_metrics(data, task_name, answer_key, class_names, args)
+        metric_lst = self._load_metrics(
+            data, task_name, answer_key, class_names, args
+        )
         result = {}
         for metric in metric_lst:
             _, metric_result = metric.evaluate(data, args, **kwargs)
@@ -52,7 +69,13 @@ class MetricPipeline:
         return result
 
     def run_std(
-        self, data, task_name: str, answer_key: str, class_names: List, args, **kwargs
+        self,
+        data,
+        task_name: str,
+        answer_key: str,
+        class_names: List,
+        args,
+        **kwargs,
     ) -> Dict:
         result_lst = self._run_bootrap(
             data, task_name, answer_key, class_names, args, **kwargs
@@ -67,10 +90,16 @@ class MetricPipeline:
         for result in result_list:
             for k in result.keys():
                 if result[k]:
-                    temp[k] = temp[k] + [result[k]] if k in temp else [result[k]]
+                    temp[k] = (
+                        temp[k] + [result[k]] if k in temp else [result[k]]
+                    )
 
         final_result.update(
-            {f"{k}_std": np.array(temp[k]).std() for k in temp.keys() if temp[k]}
+            {
+                f"{k}_std": np.array(temp[k]).std()
+                for k in temp.keys()
+                if temp[k]
+            }
         )
         return final_result
 
@@ -95,7 +124,9 @@ class MetricPipeline:
         n_times = args.n_bootstrap
         for i in range(n_times):
             indices = np.random.choice(
-                np.arange(n_data), size=int(args.p_bootstrap * n_data), replace=True
+                np.arange(n_data),
+                size=int(args.p_bootstrap * n_data),
+                replace=True,
             )
             print(n_data, len(indices))
             sub_data = self._get_subdata(data, n_data, indices)
