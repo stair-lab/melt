@@ -1,7 +1,12 @@
 # ViLLM Evaluation
 
 ## Overview
+Our package offers a holistic evaluation of your Large Language Model (LLM) for a specific language.
+Based on these insightful results, you can:
+- Fine-tune your LLM for optimal performance using powerful tools like [LLaMa-Factory](https://github.com/hiyouga/LLaMA-Factory).
+- Easily deploy your fine-tuned LLM for real-world applications with [Text Generation Inference](https://github.com/huggingface/text-generation-inference)
 
+Gain valuable insights, optimize your LLM, and unlock its full potential with our comprehensive evaluation package
 ## Installation
 Initialize environment:
 ```bash
