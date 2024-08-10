@@ -35,8 +35,10 @@ class ScriptArguments:
                 4-bit base models (double quantization)"
         },
     )
-
-    # TrainingArguments parameters
+    cpu_offload_gb: int = field(
+        default=0,
+        metadata={"help": "Amount of memory to offload to CPU"},
+    )
     lang: str = field(
         default="vi",
         metadata={
