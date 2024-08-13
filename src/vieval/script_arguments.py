@@ -4,14 +4,14 @@ from typing import Optional
 
 @dataclass
 class ScriptArguments:
-    model_name: Optional[str] = field(
+    model_name: str = field(
         default="meta-llama/Llama-2-7b-chat-hf",
         metadata={
             "help": "The model that you want to train \
                 from the Hugging Face hub"
         },
     )
-    dataset_name: Optional[str] = field(
+    dataset_name: str = field(
         default="vietgpt/wikipedia_vi",
         metadata={"help": "The instruction dataset to use"},
     )
