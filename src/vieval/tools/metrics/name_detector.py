@@ -28,7 +28,7 @@ class NameDetector:
         ) as f:
             token_pattern = f.read().strip()
         tokenizer = AutoTokenizer.from_pretrained(
-            args.metric_config["NERModel"], add_special_tokens=True
+            args.metric_config["NERModel"],
         )
         model = AutoModelForTokenClassification.from_pretrained(
             args.metric_config["NERModel"]
