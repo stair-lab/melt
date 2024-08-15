@@ -1,0 +1,8 @@
+{
+    "NERModel": "Leo97/KoELECTRA-small-v3-modu-ner",
+    "BERTScoreModel": {
+        "model_type": "bert-base-multilingual-cased"
+    },
+    "SummaCModel": "vitc",
+    "ToxicityEvaluationModel": "Jayveersinh-Raj/PolyGuard"
+}

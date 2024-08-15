@@ -1,0 +1,49 @@
+{
+  "naver_sum": {
+    "hf_hub_url": "daekeun-ml/naver-news-summarization-ko",
+    "task": "summarization",
+    "prompting_strategy": 0,
+    "columns": {
+        "source": "document",
+        "target": "summary"
+      }
+  },
+  "squad_kr": {
+      "hf_hub_url": "KorQuAD/squad_kor_v2",
+      "test_split": "validation",
+      "task": "question-answering",
+      "prompting_strategy": 0,
+      "columns": {
+          "context": "context",
+          "query": "question",
+          "answer": "answer"
+        }
+  },
+  "korean_history": {
+      "hf_hub_url": "ura-hcmut/Korean-history",
+      "task": "knowledge-openended",
+      "prompting_strategy": 0,
+      "columns": {
+          "query": "question",
+          "answer": "answer"
+        }
+  },
+  "tedtalk_enkr": {
+      "hf_hub_url": "msarmi9/korean-english-multitarget-ted-talks-task",
+      "task": "translation",
+      "prompting_strategy": 0,
+      "columns": {
+          "source": "english",
+          "target": "korean"
+        }
+  },
+  "tedtalk_kren": {
+      "hf_hub_url": "msarmi9/korean-english-multitarget-ted-talks-task",
+      "task": "translation",
+      "prompting_strategy": 0,
+      "columns": {
+          "source": "korean",
+          "target": "english"
+        }
+    }
+}
