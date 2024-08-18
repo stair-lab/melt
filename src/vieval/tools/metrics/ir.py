@@ -2,20 +2,21 @@ from typing import Dict, List
 import numpy as np
 from .base import BaseMetric
 from ranx import Qrels, Run, evaluate as ranx_evaluate
-from datasets import load_dataset
 
 
 class InformationRetrievalMetric(BaseMetric):
     """Evaluate information retrieval systems."""
 
-    # def __init__(self) -> None:
-    #     pass
-
     def _get_qrel(self, references: List[Dict]) -> Qrels:
-        """Processes a list of reference dictionaries to create a Qrels object, which represents the relevance judgments (i.e., which documents are relevant to which queries).
+        """Processes a list of reference dictionaries to create
+        a Qrels object, which represents the relevance judgments
+        (i.e., which documents are relevant to which queries).
 
         Args:
-            references (List[Dict]): A list of dictionaries, each containing an "id" key representing the query ID and a "references" key containing a list of document IDs that are relevant to the query.
+            references (List[Dict]): A list of dictionaries,
+            each containing an "id" key representing the query ID
+            and a "references" key containing
+            a list of document IDs that are relevant to the query.
         """
         relevant_dict = {}
         for reference in references:
@@ -38,22 +39,28 @@ class InformationRetrievalMetric(BaseMetric):
         Args:
             score (float): The log probability score.
 
-            is_positive_predict (bool): A boolean indicating whether the prediction is positive.
+            is_positive_predict (bool): A boolean indicating whether
+            the prediction is positive.
 
         Returns:
-            float: If the prediction is not positive, the probability is adjusted by subtracting it from 1.
+            float: If the prediction is not positive, the probability
+            is adjusted by subtracting it from 1.
         """
         prob = np.exp(score)
         prob = 1 - prob if not is_positive_predict else prob
         return prob
 
     def _get_run(self, predictions: List[Dict], k: int, args) -> Run:
-        """Processes a list of prediction dictionaries to create a Run object, which represents the system's ranked list of documents for each query.
+        """Processes a list of prediction dictionaries to create
+        a Run object, which represents the system's ranked
+        list of documents for each query.
 
         Args:
-            predictions (List[Dict]): A list of dictionaries, each containing a "query_id", "prediction", and "calib_probs".
+            predictions (List[Dict]): A list of dictionaries,
+            each containing a "query_id", "prediction", and "calib_probs".
 
-            k (int): An integer representing the number of top documents to consider for each query.
+            k (int): An integer representing the number of
+            top documents to consider for each query.
         """
         run_dict = {}
         for prediction in predictions:
@@ -69,7 +76,7 @@ class InformationRetrievalMetric(BaseMetric):
                     if is_positive_predict
                     else prediction["calib_probs"][1][0][0]
                 )
-            except:
+            except Exception:
                 log_prob = 0
             prob = self._get_prob_from_log_prob(log_prob, is_positive_predict)
             if len(run_dict[query_id]) < k:
@@ -79,20 +86,16 @@ class InformationRetrievalMetric(BaseMetric):
         return run
 
     def evaluate(self, data: Dict, args, **kwargs) -> (Dict, Dict):
-        """Evaluates the predictions using relevance judgments and computes various metrics.
+        """Evaluates the predictions using relevance judgments
+        and computes various metrics.
 
         Args:
             data (Dict): A dictionary containing predictions to be evaluated.
         """
         result = {}
-        if "mmarco" in args.filepath:
-            refenreces = load_dataset("json", data_files="./mmarco.json", split="train")
-        else:
-            refenreces = load_dataset(
-                "json", data_files="./mrobust.json", split="train"
-            )
 
-        predictions = data["prediction"]
+        refenreces = kwargs["ref_dataset"]
+        predictions = data["predictions"]
 
         qrels = self._get_qrel(refenreces)
 

@@ -1,8 +1,3 @@
-import json
-from typing import Dict
-import os
-import pandas as pd
-from nltk.metrics.scores import f_measure
 from collections import namedtuple as _namedtuple
 
 
@@ -81,18 +76,22 @@ class Fragments:
     def strings(self, min_length=0, summary_base=True):
         """
 
-        Return a list of explicit match strings between the summary and reference.
-        Note that this will be in the same format as the strings are input. This is
-        important to remember if tokenization is done manually. If tokenization is
-        specified automatically on the raw strings, raw strings will automatically
-        be returned rather than SpaCy tokenized sequences.
+        Return a list of explicit match strings between
+        the summary and reference.
+        Note that this will be in the same format as the strings are input.
+        This is important to remember if tokenization is done manually.
+        If tokenization is specified automatically on the raw strings,
+        raw strings will automaticallybe returned rather than
+        SpaCy tokenized sequences.
 
         Arguments:
 
-            - min_length (int): filter out overlaps shorter than this (default = 0)
+            - min_length (int): filter out overlaps shorter than this
+                (default = 0)
             - raw (bool): return raw input rather than stringified
                 - (default = False if automatic tokenization, True otherwise)
-            - summary_base (true): strings are based of summary text (default = True)
+            - summary_base (true): strings are based of summary text \
+                (default = True)
 
         Returns:
 
@@ -107,7 +106,7 @@ class Fragments:
         # Generate strings, filtering out strings below the minimum length.
 
         strings = [
-            base[i : i + length]
+            base[i:i + length]
             for i, j, length in self.overlaps()
             if length > min_length
         ]
@@ -184,7 +183,8 @@ class Fragments:
 
         Arguments:
 
-            - text_to_summary (bool): compute text/summary ratio (default = True)
+            - text_to_summary (bool): compute text/summary ratio\
+            (default = True)
 
         Returns:
 
@@ -228,7 +228,11 @@ class Fragments:
                     a_end = a_start
                     b_end = b_start
 
-                    while a_end < len(a) and b_end < len(b) and b[b_end] == a[a_end]:
+                    while (
+                        a_end < len(a)
+                        and b_end < len(b)
+                        and b[b_end] == a[a_end]
+                    ):
 
                         b_end += 1
                         a_end += 1

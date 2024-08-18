@@ -1,4 +1,5 @@
 import torch
+import copy
 from .BaseWrapper import BaseWrapper
 from ..utils.chat_template import apply_chat_template
 from ..utils.model import get_model
@@ -18,7 +19,9 @@ class HFWrapper(BaseWrapper):
         num_generated_tokens = []
         prompts = apply_chat_template(prompts, self.model_template)
         for prompt in prompts:
-            inputs = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
+            inputs = self.tokenizer(prompt, return_tensors="pt").to(
+                self.model.device
+            )
             try:
                 with torch.no_grad():
                     generate_dict = self.model.generate(
@@ -39,7 +42,9 @@ class HFWrapper(BaseWrapper):
                 raise e
             num_generated_token = len(generate_dict.scores)
             num_generated_tokens.append(num_generated_token)
-            generated_tokens = generate_dict.sequences[:, -num_generated_token:]
+            generated_tokens = generate_dict.sequences[
+                :, -num_generated_token:
+            ]
 
             generation = self.tokenizer.batch_decode(
                 generated_tokens, skip_special_tokens=True
@@ -53,13 +58,16 @@ class HFWrapper(BaseWrapper):
                     scores=generate_dict.scores,
                     normalize_logits=True,
                 )
-                generations_probs.extend(generation_probs.cpu().numpy().tolist())
+                generations_probs.extend(
+                    generation_probs.cpu().numpy().tolist()
+                )
 
         return generations, generations_probs, num_generated_tokens
 
     def compute_logprob_and_length(self, prompts, completions):
         completions_num_tokens = []
         completions_logprobs = []
+        prompts = copy.deepcopy(prompts)
         prompts = apply_chat_template(prompts, self.model_template)
         for prompt, completion in zip(prompts, completions):
             prompt_tokens = self.tokenizer(prompt, return_tensors="pt").to(
@@ -72,8 +80,7 @@ class HFWrapper(BaseWrapper):
                 f"{completion}{self.tokenizer.eos_token}", return_tensors="pt"
             ).to(
                 self.model.device
-            )  # <s> SPIECE_UNDERLINE [tokens] SPIECE_UNDERLINE </s>
-            # Actual number of tokens in completion (without `<s> SPIECE_UNDERLINE`)
+            )
             completion_num_tokens = completion_tokens.input_ids.shape[1] - 1
             if completion_tokens.input_ids[0, 1] == 29871:
                 completion_num_tokens = completion_num_tokens - 1
@@ -91,16 +98,17 @@ class HFWrapper(BaseWrapper):
 
             # Include probabilities of 'SPIECE_UNDERLINE </s>' tokens
             logits = outputs.logits[
-                :, prompt_num_tokens : prompt_num_tokens + completion_num_tokens
+                :,
+                prompt_num_tokens:prompt_num_tokens + completion_num_tokens,
             ]
             logprobs = logits.log_softmax(dim=-1)
             # >>> batch_size, sequence_length, vocab_size
 
             logprobs = logprobs.gather(
                 dim=-1,
-                index=completion_tokens.input_ids[:, -completion_num_tokens:].unsqueeze(
-                    -1
-                ),
+                index=completion_tokens.input_ids[
+                    :, -completion_num_tokens:
+                ].unsqueeze(-1),
             ).squeeze(-1)
             # >>> batch_size, sequence_length
             completions_logprobs.append(logprobs.cpu().numpy().tolist())

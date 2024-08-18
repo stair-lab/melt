@@ -1,0 +1,73 @@
+{
+  "lr_sum": {
+      "hf_hub_url": "bltlab/lr-sum",
+      "subset": "ind",
+      "task": "summarization",
+      "prompting_strategy": 0,
+      "columns": {
+          "source": "text",
+          "target": "summary"
+        }
+  },
+  "indo_sentiment": {
+      "hf_hub_url": "sepidmnorozy/Indonesian_sentiment",
+      "task": "sentiment-analysis",
+      "prompting_strategy": 0,
+      "label": [0, 1],
+      "columns": {
+          "query": "text",
+          "answer": "label"
+        }
+  },
+  "id_abusive_2": {
+      "file_name": "id_abusive_2label",
+      "task": "toxicity-detection",
+      "prompting_strategy": 0,
+      "label": [1, 2],
+      "columns": {
+          "query": "Tweet",
+          "answer": "Label"
+        }
+  },
+  "id_abusive_3": {
+      "file_name": "id_abusive_3label",
+      "task": "toxicity-detection",
+      "prompting_strategy": 0,
+      "label": [1, 2, 3],
+      "columns": {
+          "query": "Tweet",
+          "answer": "Label"
+        }
+  },
+  "indonlu_emotion": {
+      "hf_hub_url": "indonlp/indonlu",
+      "task": "text-classification",
+      "subset": "emot",
+      "prompting_strategy": 0,
+      "label": [0, 1, 2, 3, 4],
+      "columns": {
+          "query": "tweet",
+          "answer": "label"
+        }
+  },
+  "smsspam_enid": {
+      "hf_hub_url": "dbarbedillo/SMS_Spam_Multilingual_Collection_Dataset",
+      "test_split": "train",
+      "task": "translation",
+      "prompting_strategy": 0,
+      "columns": {
+          "source": "text",
+          "target": "text_id"
+        }
+  },
+  "smsspam_iden": {
+      "hf_hub_url": "dbarbedillo/SMS_Spam_Multilingual_Collection_Dataset",
+      "test_split": "train",
+      "task": "translation",
+      "prompting_strategy": 0,
+      "columns": {
+          "source": "text_id",
+          "target": "text"
+        }
+      }
+}

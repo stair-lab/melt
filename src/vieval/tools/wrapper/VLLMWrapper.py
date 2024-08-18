@@ -1,13 +1,15 @@
+import copy
 from vllm import LLM, SamplingParams
-from typing import Dict, List
+from typing import Dict
 from .BaseWrapper import BaseWrapper
 from ..utils.chat_template import apply_chat_template
-from ..utils.model import get_model
 
 
 class VLLMWrapper(BaseWrapper):
     def __init__(self, config, generation_config, template: Dict = None):
-        generation_config["max_tokens"] = generation_config.pop("max_new_tokens")
+        generation_config["max_tokens"] = generation_config.pop(
+            "max_new_tokens"
+        )
         generation_config["frequency_penalty"] = generation_config.pop(
             "repetition_penalty"
         )
@@ -25,6 +27,7 @@ class VLLMWrapper(BaseWrapper):
         generations = []
         generations_probs = []
         num_generated_tokens = []
+        prompts = copy.deepcopy(prompts)
         prompts = apply_chat_template(prompts, self.model_template)
         try:
             outputs = self.model.generate(prompts, self.generation_config)
@@ -46,11 +49,12 @@ class VLLMWrapper(BaseWrapper):
         tokenizer = self.model.get_tokenizer()
         completions_num_tokens = []
         completions_logprobs = []
+        prompts = copy.deepcopy(prompts)
         prompts = apply_chat_template(prompts, self.model_template)
         tokenized_prompts = tokenizer(prompts)["input_ids"]
         len_tokenized_prompts = [len(p) for p in tokenized_prompts]
         completed_prompts = [
-            prompt + completion + tokenizer.eos_token
+            prompt + str(completion) + tokenizer.eos_token
             for prompt, completion in zip(prompts, completions)
         ]
         outputs = self.model.generate(
@@ -62,7 +66,9 @@ class VLLMWrapper(BaseWrapper):
                 skip_special_tokens=False,
             ),
         )
-        for output, len_tokenized_prompt in zip(outputs, len_tokenized_prompts):
+        for output, len_tokenized_prompt in zip(
+            outputs, len_tokenized_prompts
+        ):
             completions_num_tokens.append(
                 len(output.prompt_logprobs) - len_tokenized_prompt
             )
@@ -70,7 +76,9 @@ class VLLMWrapper(BaseWrapper):
                 [
                     [
                         list(logprob.values())[0].logprob
-                        for logprob in output.prompt_logprobs[len_tokenized_prompt:]
+                        for logprob in output.prompt_logprobs[
+                            len_tokenized_prompt:
+                        ]
                     ]
                 ]
             )

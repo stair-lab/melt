@@ -73,7 +73,9 @@ def usage_token_from_prompts(
         else:
             messages = [{"role": "user", "content": sys_user_prompt[0]}]
 
-        usage = usage_token_from_messages(messages, encoding_name, generation_config)
+        usage = usage_token_from_messages(
+            messages, encoding_name, generation_config
+        )
         input_tokens += usage["prompt_tokens"]
         output_tokens += usage["completion_tokens"]
         total_tokens += usage["total_tokens"]
@@ -88,7 +90,10 @@ def usage_token_from_prompts(
 
 if __name__ == "__main__":
     messages2 = [
-        {"role": "system", "content": "You are an AI bot and you are very smart."},
+        {
+            "role": "system",
+            "content": "You are an AI bot and you are very smart.",
+        },
         {"role": "user", "content": "Hi my name is TOan"},
     ]
 

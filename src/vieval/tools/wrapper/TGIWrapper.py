@@ -1,9 +1,8 @@
-import torch
 import backoff
 import requests
 from transformers import AutoTokenizer
-import warnings
 import os
+import copy
 from .BaseWrapper import BaseWrapper
 from ..utils.chat_template import apply_chat_template
 
@@ -22,6 +21,7 @@ class TGIWrapper(BaseWrapper):
         generations = []
         generations_probs = []
         num_generated_tokens = []
+        prompts = copy.deepcopy(prompts)
         prompts = apply_chat_template(prompts, self.model_template)
         for prompt in prompts:
             try:
@@ -57,6 +57,7 @@ class TGIWrapper(BaseWrapper):
     def compute_logprob_and_length(self, prompts, completions):
         completions_num_tokens = []
         completions_logprobs = []
+        prompts = copy.deepcopy(prompts)
         prompts = apply_chat_template(prompts, self.model_template)
         # tokenized_prompts = self.tokenizer(prompts)["input_ids"]
         # len_tokenized_prompts = [len(p) for p in tokenized_prompts]
@@ -67,7 +68,9 @@ class TGIWrapper(BaseWrapper):
                         {
                             "inputs": prompt,
                             "parameters": {
-                                "truncate": self.model_info["max_input_tokens"],
+                                "truncate": self.model_info[
+                                    "max_input_tokens"
+                                ],
                                 "decoder_input_details": True,
                                 "max_new_tokens": 1,
                             },
@@ -75,9 +78,13 @@ class TGIWrapper(BaseWrapper):
                     )["details"]["prefill"]
                     completion_w_prompt = self.generate_with_backoff(
                         {
-                            "inputs": prompt + completion + self.tokenizer.eos_token,
+                            "inputs": prompt
+                            + str(completion)
+                            + self.tokenizer.eos_token,
                             "parameters": {
-                                "truncate": self.model_info["max_input_tokens"],
+                                "truncate": self.model_info[
+                                    "max_input_tokens"
+                                ],
                                 "decoder_input_details": True,
                                 "max_new_tokens": 1,
                             },
@@ -91,7 +98,7 @@ class TGIWrapper(BaseWrapper):
                 list(
                     map(
                         lambda x: x["logprob"],
-                        completion_w_prompt[len(prompt_tokens) :],
+                        completion_w_prompt[len(prompt_tokens):],
                     )
                 )
             ]

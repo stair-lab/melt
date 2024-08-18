@@ -62,6 +62,8 @@ def format_fewshot(recs, query_format="{}", answer_format="{}"):
     for rec in recs:  # rec: [query, context, answer]
         content = query_format.format(*rec[:-1])
         conv.append({"role": "user", "content": content})
-        conv.append({"role": "assistant", "content": answer_format.format(rec[-1])})
+        conv.append(
+            {"role": "assistant", "content": answer_format.format(rec[-1])}
+        )
 
     return conv

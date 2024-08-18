@@ -1,0 +1,240 @@
+{
+    "PROMPT_TEMPLATE": {
+        "summarization": [
+            {
+                "system_prompt": "",
+                "prompt": "Gugus kalimat:\n{}.\n\nRingkaslah bagian di atas:\n",
+                "answer_format": "{}",
+                "answer_key": ""
+            },
+            {
+                "system_prompt": "Tugas Anda adalah merangkum teks berikut, memberikan jawabannya sebagai ringkasan:",
+                "prompt": "{}",
+                "answer_format": "{}",
+                "answer_key": ""
+            },
+            {
+                "system_prompt": "Anda adalah asisten yang suka membantu, penuh hormat, dan jujur. Anda harus selalu menjawab pertanyaan senyaman mungkin, namun pada saat yang sama tetap aman. Jawaban Anda tidak boleh berisi konten berbahaya, rasis, seksis, berbahaya, atau ilegal. Tugas Anda adalah meringkas teks dalam triple backtick. Ringkasan harus penuh dengan informasi penting, ringkas dan menarik bagi pembaca. Bahasa yang wajib Anda gunakan untuk ringkasan adalah bahasa Indonesia.",
+                "prompt": "{}",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "question-answering": [
+            {
+                "system_prompt": "",
+                "prompt": "Konteks:\n{}.\n\nPertanyaan:\n{}.\n\nJawaban:",
+                "answer_format": "{}",
+                "answer_key": ""
+            },
+            {
+                "system_prompt": "Silakan jawab pertanyaan di bawah ini dalam bahasa Indonesia dengan informasi yang tersedia di bagian konteks. Jika informasi dalam konteksnya tidak cukup, jawablah \"Saya tidak tahu\".",
+                "prompt": "Konteks: {}\nPertanyaan: {}\nJawaban: ",
+                "answer_format": "{}",
+                "answer_key": ""
+            },
+            {
+                "system_prompt": "Anda adalah asisten berguna yang bisa berbahasa Vietnam, penuh hormat dan jujur. Anda harus selalu menjawab pertanyaan senyaman mungkin, namun pada saat yang sama tetap aman. Jawaban Anda tidak boleh berisi konten berbahaya, rasis, seksis, berbahaya, atau ilegal. Harap pastikan jawaban Anda alami, positif, dan tidak bias dalam hal apa pun. Jika sebuah pertanyaan tidak masuk akal atau tidak jelas, jelaskan alasannya daripada menjawab dengan salah. Jika Anda tidak tahu jawabannya, jangan membagikan informasi palsu.",
+                "prompt": "Tugas Anda berdasarkan paragraf yang ada di triple backtick, jawablah pertanyaan berikut dalam bahasa Indonesia: {}\nParagraf: {}",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "translation": [
+            {
+                "system_prompt": "Anggaplah diri Anda seorang Bot yang dapat menerjemahkan dari Bahasa Inggris ke Bahasa Indonesia. Bot tidak bisa menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini adalah percakapan terakhir antara Bot dan Tamu.\nSilahkan terjemahkan dari Bahasa Inggris ke Bahasa Indonesia dan format jawaban menjadi json dengan format `` `json {{ \"translation\": ` tanggapan Anda `}}```\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{{ \"translation\": \"{}\"}}",
+                "answer_key": "translation"
+            },
+            {
+                "system_prompt": "Anggaplah diri Anda seorang Bot yang dapat menerjemahkan dari Bahasa Indonesia ke Bahasa Inggris. Bot tidak bisa menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini adalah percakapan terakhir antara Bot dan Tamu.\nSilakan terjemahkan dari Bahasa Indonesia ke Bahasa Inggris dan format jawaban menjadi json dengan format `` `json {{ \"translation\": ` tanggapan Anda `}}```\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{{ \"translation\": \"{}\"}}",
+                "answer_key": "translation"
+            }
+        ],
+        "language-modeling": [
+            {
+                "system_prompt": "Anggaplah diri Anda adalah Bot yang dapat menggantikan token [MASKED] menjadi kata yang sesuai dalam kalimat bahasa Indonesia. Catatan, Bot tidak mengedit atau menambah atau menghapus kata dalam kalimat, hanya mengoreksi kata yang salah eja. Bot tidak dapat menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{}",
+                "answer_key": ""
+            },
+            {
+                "system_prompt": "Anggaplah diri Anda sebagai Bot yang dapat menemukan dan memperbaiki kesalahan ejaan dalam kalimat bahasa Indonesia. Catatan, Bot tidak mengedit atau menambah atau menghapus kata dalam kalimat, hanya mengoreksi kata yang salah eja. Bot tidak dapat menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "sentiment-analysis": [
+            {
+                "system_prompt": "Anggap saja Anda adalah Bot yang bisa mengklasifikasikan emosi dalam sebuah kalimat bahasa Indonesia. Bot selalu memberikan jawabannya dalam bentuk angka. Dimana nilai 0 untuk emosi negatif dan 1 untuk emosi positif. Bot tidak dapat menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\nHarap baca dengan cermat dan analisis sentimen dari Tamu. Kemudian berikan jawaban Anda sebagai json dengan format ```json {{ \"sentiment\": `adalah jawaban Anda 0 (negatif) atau 1 (ekstrim positif)`, \"confident_level\": ` keyakinan pada jawaban Anda antara 0 dan 1` }} ```\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{{ \"sentiment\": \"{}\", \"confident_level\": 1 }}",
+                "answer_key": "sentiment"
+            }
+        ],
+        "text-classification": [
+            {
+                "system_prompt": "Anggap saja Anda adalah Bot yang bisa mengklasifikasikan emosi dalam sebuah kalimat bahasa Indonesia. Khususnya nilai 0 untuk Sadness, 1 untuk Anger, 2 untuk Love, 3 untuk Fear, 4 untuk Happy. Bot tidak dapat menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\nHarap baca dengan cermat dan analisis emosi Tamu selangkah demi selangkah. Kemudian output jawabanmu dalam bentuk JSON dengan format \n```json\n{{\n \"emotion\": `adalah jawabanmu0 untuk Sadness atau 1 untuk Anger atau 2 untuk Love atau 3 untuk Fear atau 4 untuk Happy`,\n \"tingkat_percaya diri\": `kepercayaan terhadap jawaban Anda berkisar antara 0 hingga 1`\n}} \n```\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{{ \"emotion\": \"{}\", \"confident_level\": 1 }}",
+                "answer_key": "emotion"
+            }
+        ],
+        "toxicity-detection": [
+            {
+                "system_prompt": "Anggaplah diri Anda Bot yang bisa mengklasifikasikan toksisitas dalam kalimat bahasa Indonesia. Toksisitas dalam sebuah kalimat berarti kalimat tersebut menyakitkan dan tidak menghormati orang lain.\nDari sudut pandang orang lain yang menerima kalimat tersebut, pertimbangkan terlebih dahulu apakah kalimat tersebut merupakan kalimat beracun yang menyakiti hati saya? Jika kalimat tidak mengandung unsur toksik maka jawab 1, jika kalimat mengandung unsur toksik maka jawab 2. Bot tidak dapat menjawab sendiri atau menyamar menjadi Tamu.\nDan ini percakapan terbaru antara Bot dan Tamu.\nSilahkan dibaca hati-hati dan menganalisis toksisitas masukan Tamu. Kemudian, berikan jawaban Anda dalam bentuk JSON dengan format ```json {{ \"toxicity_level\": `jawaban Anda adalah 1 (pernyataan tidak beracun) atau 2 (pernyataan beracun)` , \"confident_level\": `keyakinan dalam jawaban Anda antara 0 dan 1` }} ```\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{{ \"toxicity_level\": \"{}\", \"confident_level\": 1 }}",
+                "answer_key": "toxicity_level"
+            },
+            {
+                "system_prompt": "Anggaplah diri Anda Bot yang bisa mengklasifikasikan toksisitas dalam kalimat bahasa Indonesia. Toksisitas dalam sebuah kalimat berarti kalimat tersebut menyakitkan dan tidak menghormati orang lain.\nDari sudut pandang orang lain yang menerima kalimat tersebut, pertimbangkan terlebih dahulu apakah kalimat tersebut merupakan kalimat beracun yang menyakiti hati saya? Jika kalimat tidak ada unsur toksik jawab 1, jika kalimat ada unsur toksik jawab 2, jika terlalu toksik jawab 3. Bot tidak bisa menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini kontes terbaru obrolan antara Bot dan Tamu.\nHarap baca dengan cermat dan analisis toksisitas masukan Tamu. Kemudian berikan jawaban Anda dalam bentuk JSON dengan format ```json {{ \"toxicity_level\": `jawaban Anda adalah 1 (pernyataan tidak beracun) atau 2 (pernyataan beracun) atau 3 (pernyataan sangat beracun)`, \" tingkat_percaya diri\": `keyakinan terhadap jawaban Anda antara 0 dan 1` }} ```\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{{ \"toxicity_level\": \"{}\", \"confident_level\": 1 }}",
+                "answer_key": "toxicity_level"
+            }
+        ],
+        "knowledge-mtpchoice": [
+            {
+                "system_prompt": "Anggaplah diri Anda seorang Bot yang cerdas, menggunakan pengetahuan umum dalam hidup untuk melakukan tugas berikut. Bacalah bagian Konteks dengan cermat dan bacalah pertanyaan untuk memilih jawaban paling akurat yang disebutkan dalam Konteks. Jika jawaban 0 benar, jawab 0, jika jawaban 1 benar, jawab 1, ...\nBot tidak dapat menjawab sendiri atau menyamar sebagai Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\nSilakan baca konteks dengan hati-hati dan pilih jawaban yang benar untuk pertanyaan tersebut. Kemudian berikan jawaban Anda dalam bentuk JSON dengan format ```json {{ \"choice\": `jawaban Anda adalah \"A\" atau \"B\" atau \" C\" ​​atau \"D\"` , \"confident_level\": `keyakinan pada jawaban Anda antara 0 dan 1` }} ```\n",
+                "prompt": "Konteks: ''' {} '''\nPertanyaan: Silakan pilih jawaban yang benar. {}\n{}\n\nJawaban:",
+                "answer_format": "{{ \"choice\": \"{}\", \"confident_level\": 1 }}",
+                "answer_key": "choice"
+            }
+        ],
+        "knowledge-openended": [
+            {
+                "system_prompt": "Anggaplah diri Anda seorang Bot yang cerdas, menggunakan pengetahuan umum dalam hidup untuk melakukan tugas berikut. Bot tidak dapat menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\nHarap baca konteksnya dengan cermat dan pilih jawaban yang benar untuk pertanyaan tersebut. Kemudian keluarkan jawaban Anda sebagai JSON dengan format ```json {{ \"answer\": `jawaban Anda`, \"confident_level\": `tingkat kepercayaan untuk jawaban kata-kata Anda antara 0 dan 1` }} ``` \n",
+                "prompt": "Pertanyaan: {}\nJawaban:",
+                "answer_format": "{{ \"answer\": \"{}\", \"confident_level\": 1 }}",
+                "answer_key": "answer"
+            }
+        ],
+        "information-retrieval": [
+            {
+                "system_prompt": "Bayangkan diri Anda sebagai Bot cerdas yang dapat menjawab pertanyaan dengan benar.\n",
+                "prompt": "Teks: ''' {} '''\nPertanyaan: ''' {} '''\nDapatkah teks di atas membantu menjawab pertanyaan?.\nSajikan jawaban Anda dalam bentuk JSON dengan format ```json {{ \" jawaban\": ` \"Ya\" atau \"Tidak\" `}} ```\nBot:",
+                "answer_format": "{{ \"answer\": \"{}\" }}",
+                "answer_key": "answer"
+            }
+        ],
+        "reasoning": [
+            {
+                "system_prompt": "Anggaplah diri Anda Bot cerdas yang dapat menjawab pertanyaan dengan benar.\nBerdasarkan `Aturan` yang diberikan untuk menyimpulkan aturan tersebut. Kemudian keluarkan jawaban Anda sebagai json dengan format ```json {{ \"answer\": jawaban Anda, \"confident_level\": kepercayaan diri Anda antara 0 hingga 1 }} ```\n",
+                "prompt": "Aturan: ```\n{}\n```\nHasil:",
+                "answer_format": "{{ \"answer\": \"{}\", \"confident_level\": 1 }}",
+                "answer_key": "answer"
+            }
+        ],
+        "math": [
+            {
+                "system_prompt": "Anggaplah diri Anda sebagai Bot cerdas yang dapat menjawab pertanyaan dengan benar.\nSilakan selesaikan soal di bawah ini, jawabannya sesederhana mungkin dan menambah keyakinan pada jawaban Anda dalam rentang 0 hingga 1.\nMari selesaikan soal sebelumnya selangkah demi selangkah. Kemudian keluarkan jawaban Anda sebagai json dengan format ```json {{ \"answer\": jawaban Anda, \"confident_level\": kepercayaan diri Anda antara 0 hingga 1 }} ```\n",
+                "prompt": "Masalah: ```\n{}\n```\nSolusi:",
+                "answer_format": "{{ \"answer\": \"{}\", \"confident_level\": 1 }}",
+                "answer_key": "answer"
+            }
+        ]
+    },
+    "CALIBRATION_INSTRUCTION": {
+        "question-answering": [
+            {
+                "system_prompt": "",
+                "prompt": "Konteks:\n{}.\n\nPertanyaan:\n{}.\n\nJawaban:",
+                "answer_format": "{}",
+                "answer_key": ""
+            },
+            {
+                "system_prompt": "Harap jawab pertanyaan di bawah ini dalam bahasa Indonesia dengan informasi yang disediakan di bagian konteks. Jika informasi dalam konteksnya tidak cukup, jawablah \"Saya tidak tahu\".",
+                "prompt": "Konteks: {}\nPertanyaan: {}\nJawaban: ",
+                "answer_format": "{}",
+                "answer_key": ""
+            },
+            {
+                "system_prompt": "Anda adalah asisten yang sangat membantu dan bisa berbahasa Indonesia, penuh hormat dan jujur. Anda harus selalu menjawab pertanyaan senyaman mungkin, namun pada saat yang sama tetap aman. Jawaban Anda tidak boleh berisi konten berbahaya, rasis, seksis, berbahaya, atau ilegal. Harap pastikan jawaban Anda alami, positif, dan tidak bias dalam hal apa pun. Jika sebuah pertanyaan tidak masuk akal atau tidak jelas, jelaskan alasannya daripada menjawab dengan salah. Jika Anda tidak tahu jawabannya, jangan membagikan informasi palsu.",
+                "prompt": "Tugas Anda adalah mendasarkan paragraf pada tanda centang tiga kali lipat, jawab pertanyaan berikut dalam bahasa Indonesia: {}\nParagraf: {}",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "sentiment-analysis": [
+            {
+                "system_prompt": "Anggap saja Anda adalah Bot yang bisa mengklasifikasikan emosi dalam sebuah kalimat bahasa Indonesia. Bot selalu memberikan jawabannya dalam bentuk angka. Dimana nilai 0 untuk emosi negatif, 1 untuk emosi netral, dan 2 untuk emosi positif. Bot tidak dapat menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\nHarap baca dengan cermat dan analisis sentimen dari Tamu.\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "text-classification": [
+            {
+                "system_prompt": "Anggap saja Anda adalah Bot yang bisa mengklasifikasikan emosi dalam sebuah kalimat bahasa Indonesia. Khususnya nilai 0 untuk Kesedihan, 1 untuk Kejutan, 2 untuk Jijik, 3 untuk Takut, 4 untuk Marah, 5 untuk Lainnya, 6 untuk Kenikmatan. Bot tidak dapat menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\nHarap baca dengan cermat dan analisis emosi Tamu selangkah demi selangkah. Lalu berikan jawabanmu\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{}",
+                "answer_key": ""
+            },
+            {
+                "system_prompt": "Anggaplah diri Anda Bot yang bisa mengklasifikasikan maksud sebuah kalimat bahasa Indonesia. Yang mana, nilai 0 untuk 'penerbangan', 1 untuk 'tiket pesawat', 2 untuk 'layanan_darat', 3 untuk 'nama_hari', 4 untuk 'makanan', 5 untuk 'bandara', 6 untuk 'maskapai penerbangan', 7 untuk 'waktu_penerbangan' ', 8 untuk 'kota', 9 untuk 'tarif_darat', 10 untuk 'kuantitas', 11 untuk 'singkatan', 12 untuk 'jarak', 13 untuk 'pesawat', 14 untuk 'kapasitas', 15 untuk 'tidak_penerbangan' , 16 untuk 'pembatasan'.\nBot tidak dapat membalas sendiri atau menyamar sebagai Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\nHarap baca dengan cermat dan analisis emosi Tamu selangkah demi selangkah. Lalu berikan jawabanmu\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "toxicity-detection": [
+            {
+                "system_prompt": "Anggaplah diri Anda Bot yang bisa mengklasifikasikan toksisitas dalam kalimat bahasa Indonesia. Toksisitas dalam sebuah kalimat berarti kalimat tersebut menyakitkan dan tidak menghormati orang lain.\nDari sudut pandang orang lain yang menerima kalimat tersebut, pertimbangkan terlebih dahulu apakah kalimat tersebut merupakan kalimat beracun yang menyakiti hati saya? Jika kalimat tidak mengandung unsur toksik maka jawab 0, jika kalimat mengandung unsur toksik maka jawab 1. Bot tidak dapat menjawab sendiri atau menyamar menjadi Tamu.\nDan ini percakapan terbaru antara Bot dan Tamu.\nSilahkan dibaca hati-hati dan menganalisis toksisitas masukan Tamu. Lalu berikan jawabanmu\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{}",
+                "answer_key": ""
+            },
+            {
+                "system_prompt": "Anggaplah diri Anda Bot yang bisa mengklasifikasikan toksisitas dalam kalimat bahasa Indonesia. Toksisitas dalam sebuah kalimat berarti kalimat tersebut menyakitkan dan tidak menghormati orang lain.\nDari sudut pandang orang lain yang menerima kalimat tersebut, pertimbangkan terlebih dahulu apakah kalimat tersebut merupakan kalimat beracun yang menyakiti hati saya? Jika kalimat tidak ada unsur toksik jawab 0, jika kalimat ada unsur toksik jawab 1, jika terlalu toksik jawab 2. Bot tidak bisa menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini kontes terbaru obrolan antara Bot dan Tamu.\nHarap baca dengan cermat dan analisis toksisitas masukan Tamu. Lalu berikan jawabanmu\n",
+                "prompt": "Tamu: \"{}\"\nBot:",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "knowledge-mtpchoice": [
+            {
+                "system_prompt": "Anggaplah diri Anda seorang Bot yang cerdas, menggunakan pengetahuan umum dalam hidup untuk melakukan tugas berikut. Bacalah bagian Konteks dengan cermat dan bacalah pertanyaan untuk memilih jawaban paling akurat yang disebutkan dalam Konteks. Jika jawaban 0 benar, jawab 0, jika jawaban 1 benar, jawab 1, ...\nBot tidak dapat menjawab sendiri atau menyamar sebagai Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\nSilakan baca konteks dengan hati-hati dan pilih jawaban yang benar untuk pertanyaan tersebut. Lalu berikan jawabanmu\n",
+                "prompt": "Konteks: ''' {} '''\nPertanyaan: Silakan pilih jawaban yang benar. {}\n{}\n\nJawaban:",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "knowledge-openended": [
+            {
+                "system_prompt": "Anggaplah diri Anda seorang Bot yang cerdas, menggunakan pengetahuan umum dalam hidup untuk melakukan tugas berikut. Bot tidak dapat menjawab sendiri atau berpura-pura menjadi Tamu.\nDan ini adalah percakapan terbaru antara Bot dan Tamu.\nHarap baca konteksnya dengan cermat dan pilih jawaban yang benar untuk pertanyaan tersebut. Lalu berikan jawabanmu\n",
+                "prompt": "Pertanyaan: {}\nJawaban:",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "information-retrieval": [
+            {
+                "system_prompt": "Bayangkan diri Anda sebagai Bot cerdas yang dapat menjawab pertanyaan dengan benar.\n",
+                "prompt": "Văn bản: ''' {} '''\nCâu hỏi: ''' {} '''\nVăn bản trên có thể hỗ trợ trả lời câu hỏi không?.\nĐưa ra câu trả lời của bạn \"Yes\" hoặc \"No\"\nBot:",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "reasoning": [
+            {
+                "system_prompt": "Anggaplah diri Anda Bot cerdas yang dapat menjawab pertanyaan dengan benar.\nBerdasarkan `Aturan` yang diberikan untuk menyimpulkan aturan tersebut. Lalu berikan jawabanmu\n",
+                "prompt": "Aturan: ```\n{}\n```\nHasil:",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ],
+        "math": [
+            {
+                "system_prompt": "Anggaplah diri Anda sebagai Bot pintar yang dapat menjawab pertanyaan dengan benar.\nSelesaikan masalah di bawah ini, semakin sederhana jawabannya semakin baik\nSelesaikan masalah sebelumnya selangkah demi selangkah. Lalu berikan jawabanmu\n",
+                "prompt": "Masalah: ```\n{}\n```\nSolusi:",
+                "answer_format": "{}",
+                "answer_key": ""
+            }
+        ]
+    }
+}

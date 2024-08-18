@@ -19,24 +19,31 @@ class TextClassificationMetric(BaseMetric):
         self.roc_auc_score = evaluate.load("roc_auc", "multiclass")
 
     def evaluate(self, data: Dict, args, **kwargs) -> None:
-        """Evaluates the classification performance given the predictions, references, and additional arguments.
+        """Evaluates the classification performance
+        given the predictions, references, and additional arguments.
 
         Args:
-            data (Dict): A dictionary expected to contain keys like predictions, references, and option_probs.
+            data (Dict): A dictionary expected to contain keys
+            like predictions, references, and option_probs.
 
         Returns:
-            Returns a tuple containing the original data dictionary and the result dictionary with all the computed metrics.
+            Returns a tuple containing the original data dictionary and
+            the result dictionary with all the computed metrics.
         """
         result = {}
         raw_predictions = data["predictions"]
-        args.class_names = [normalize_text(str(name)) for name in args.class_names]
+        args.class_names = [
+            normalize_text(str(name)) for name in args.class_names
+        ]
         predictions = [
             str(self._get_answer(raw_prediction, args))
             for raw_prediction in raw_predictions
         ]
         references = data["references"]
 
-        for i, (prediction, reference) in enumerate(zip(predictions, references)):
+        for i, (prediction, reference) in enumerate(
+            zip(predictions, references)
+        ):
             if isinstance(reference, list):
                 reference = [normalize_text(str(ref)) for ref in reference]
                 if prediction in reference:
@@ -51,7 +58,9 @@ class TextClassificationMetric(BaseMetric):
             [ref for ref in references], [pred for pred in predictions]
         )
         f1_score = f1_score_sklearn(
-            [ref for ref in references], [pred for pred in predictions], average="macro"
+            [ref for ref in references],
+            [pred for pred in predictions],
+            average="macro",
         )
         result["f1_score"] = f1_score
 
@@ -66,7 +75,9 @@ class TextClassificationMetric(BaseMetric):
             probs = probs[:, 1].reshape(-1, 1)
         labels = np.array([args.class_names.index(ref) for ref in references])
         try:
-            roc_auc = roc_auc_score(labels, probs, multi_class="ovr", average="macro")
+            roc_auc = roc_auc_score(
+                labels, probs, multi_class="ovr", average="macro"
+            )
             # self.roc_auc_score.compute(
             #     references=labels,
             #     prediction_scores=probs,

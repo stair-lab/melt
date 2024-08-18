@@ -15,16 +15,24 @@ class QAMetric(BaseMetric):
         """Returns evaluation results for QA predictions.
 
         Args:
-            data (Dict): A dictionary expected to contain the keys "predictions" and "references". It represents the dataset being evaluated, with "predictions" containing the model's answers to the questions, and "references" containing the ground truth answers.
+            data (Dict): A dictionary expected to contain the keys
+            "predictions" and "references".
+            It represents the dataset being evaluated,
+            with "predictions" containing the model's
+            answers to the questions, and "references" containing
+            the ground truth answers.
         """
         result = {}
         raw_predictions = data["predictions"]
         predictions = [
-            self._get_answer(raw_prediction, args) for raw_prediction in raw_predictions
+            self._get_answer(raw_prediction, args)
+            for raw_prediction in raw_predictions
         ]
         references = data["references"]
 
-        f1_scores = [f1_score(*batch) for batch in zip(references, predictions)]
+        f1_scores = [
+            f1_score(*batch) for batch in zip(references, predictions)
+        ]
         em_scores = [
             exact_match(normalize_text(pred), normalize_text(ref))
             for ref, pred in zip(references, predictions)

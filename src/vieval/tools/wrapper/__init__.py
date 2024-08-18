@@ -4,4 +4,10 @@ from .TGIWrapper import TGIWrapper
 from .HFWrapper import HFWrapper
 from .VLLMWrapper import VLLMWrapper
 
-__all__ = ["OpenAIWrapper", "GeminiWrapper", "TGIWrapper", "HFWrapper"]
+__all__ = [
+    "OpenAIWrapper",
+    "GeminiWrapper",
+    "TGIWrapper",
+    "HFWrapper",
+    "VLLMWrapper",
+]

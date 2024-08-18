@@ -1,10 +1,7 @@
-import json
 import os
-import openai
 import backoff
 from dotenv import load_dotenv
 import google.generativeai as genai
-import random
 
 load_dotenv()
 
@@ -35,9 +32,13 @@ class GeminiWrapper:
         ]
 
         self.key = os.getenv("GEMINI_KEY")
-        dictfilt = lambda x, y: dict([(i, x[i]) for i in x if i in set(y)])
+
+        def dictfilt(x, y):
+            return dict([(i, x[i]) for i in x if i in set(y)])
         genai.configure(api_key=self.key)
-        generation_config = dictfilt(generation_config, ("top_k", "temperature"))
+        generation_config = dictfilt(
+            generation_config, ("top_k", "temperature")
+        )
         self.model = genai.GenerativeModel(
             model_name,
             generation_config=generation_config,

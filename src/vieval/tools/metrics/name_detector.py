@@ -1,44 +1,62 @@
-from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
+from transformers import (
+    AutoTokenizer,
+    AutoModelForTokenClassification,
+    pipeline,
+)
 from underthesea import sent_tokenize
+import torch
+import os
 import re
 import spacy
 
 # load core english library
 nlp = spacy.load("en_core_web_sm")
-vi_pattern = "[ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]"
+token_pattern = ""
 
 
 class NameDetector:
-    """Detect names within texts, categorize them, and potentially process multiple texts in batches."""
+    """Detect names within texts, categorize them, and potentially
+    process multiple texts in batches."""
 
-    def __init__(self):
+    def __init__(self, args):
+        global token_pattern
+        with open(
+            os.path.join(
+                args.config_dir, args.lang, "words", "token_pattern.txt"
+            ),
+            "r",
+        ) as f:
+            token_pattern = f.read().strip()
         tokenizer = AutoTokenizer.from_pretrained(
-            "NlpHUST/ner-vietnamese-electra-base", add_special_tokens=True
+            args.metric_config["NERModel"],
         )
         model = AutoModelForTokenClassification.from_pretrained(
-            "NlpHUST/ner-vietnamese-electra-base"
-        ).to("cuda:0")
+            args.metric_config["NERModel"]
+        )
         self.token_classifier = pipeline(
             "ner",
             model=model,
             tokenizer=tokenizer,
             aggregation_strategy="simple",
-            device="cuda:0",
+            device="cuda" if torch.cuda.is_available() else "cpu",
         )
         self.max_words_sentence = 200
         self.threshold_score = 0.97
         self.threshold_len = 2
 
     def group_entity(self, text, entities):
-        """Groups the detected entities that are adjacent and belong to the same entity group.
+        """Groups the detected entities that are adjacent and
+        belong to the same entity group.
 
         Args:
             text (str): The original text from which entities are extracted.
 
-            entities (list): A list of entity dictionaries detected in the text.
+            entities (list): A list of entity dictionaries
+            detected in the text.
 
         Returns:
-            Returns a new list of entities after grouping adjacent entities of the same type.
+            Returns a new list of entities after grouping
+            adjacent entities of the same type.
         """
         if len(entities) == 0:
             return []
@@ -50,8 +68,12 @@ class NameDetector:
                 and new_entity["entity_group"] == entities[i]["entity_group"]
             ):
                 new_entity["end"] = entities[i]["end"]
-                new_entity["word"] = text[new_entity["start"] : new_entity["end"]]
-                new_entity["score"] = max(new_entity["score"], entities[i]["score"])
+                new_entity["word"] = text[
+                    new_entity["start"]:new_entity["end"]
+                ]
+                new_entity["score"] = max(
+                    new_entity["score"], entities[i]["score"]
+                )
             else:
                 new_entities.append(new_entity)
                 new_entity = entities[i]
@@ -60,13 +82,17 @@ class NameDetector:
         return new_entities
 
     def _get_person_tokens(self, all_tokens):
-        """Filters and retrieves tokens classified as persons from the detected entities based on the threshold score and length.
+        """Filters and retrieves tokens classified as persons
+        from the detected entities
+        based on the threshold score and length.
 
         Args:
-            all_tokens (list): A list of all entity dictionaries detected in the text.
+            all_tokens (list): A list of all entity dictionaries detected
+            in the text.
 
         Returns:
-            Returns a list of person names that meet the specified score and length thresholds.
+            Returns a list of person names that meet the specified score
+            and length thresholds.
         """
         per_tokens = []
         temp = [
@@ -81,26 +107,28 @@ class NameDetector:
         return per_tokens
 
     def _classify_race(self, per_tokens):
-        """Classifies the person tokens into Vietnamese or Western based on a predefined pattern.
+        """Classifies the person tokens into Vietnamese or Western based on
+        a predefined pattern.
 
         Args:
             per_tokens (list): A list of person name tokens to be classified.
 
         Returns:
-            Returns a dictionary with two keys, "vietnamese" and "western", each containing a list of names classified.
+            Returns a dictionary with two keys, "vietnamese" and "western",
+            each containing a list of names classified.
         """
         results = {
-            "vietnamese": set(),
+            "your_race": set(),
             "western": set(),
         }
         for token in per_tokens:
-            if re.search(vi_pattern, token) is None:
+            if re.search(token_pattern, token) is None:
                 results["western"].add(token)
             else:
-                results["vietnamese"].add(token)
+                results["your_race"].add(token)
 
         results["western"] = list(results["western"])
-        results["vietnamese"] = list(results["vietnamese"])
+        results["your_race"] = list(results["your_race"])
         return results
 
     def detect(self, text):

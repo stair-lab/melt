@@ -37,7 +37,7 @@ dependencies = [
   "transformers>=4.31.0",
   "ranx",
   "trl>=0.9.4",
-  "xformers>=0.0.12", 
+  "xformers>=0.0.27", 
   "scipy>=1.10.0", 
   "tiktoken",
   "tqdm>=4.65.0",
@@ -62,7 +62,9 @@ dependencies = [
   "pyemd==0.5.1",
   "sacremoses>=0.0.53",
   "pytorch-pretrained-bert>=0.6.2",
-  "google-generativeai>=0.3.2"
+  "google-generativeai>=0.3.2",
+  "modelscope",
+  "gin-config==0.5.0"
 ]
 
 [project.urls]

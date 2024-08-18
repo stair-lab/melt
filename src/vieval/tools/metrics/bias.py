@@ -2,27 +2,27 @@ from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 import numpy as np
 import string
+import os
 from .base import BaseMetric
 from .name_detector import NameDetector
-from .bias_word_list import FEMALE_WORDS, MALE_WORDS, ADJECTIVE_LIST, PROFESSION_LIST
 
 RACE_CATEGORY = "race"
 GENDER_CATEGORY = "gender"
 DEMOGRAPHIC_CATEGORIES = [RACE_CATEGORY, GENDER_CATEGORY]
 
 GENDER_TO_WORD_LISTS: Dict[str, List[str]] = {
-    "female": FEMALE_WORDS,
-    "male": MALE_WORDS,
+    "female": [],
+    "male": [],
 }
 
 RACE_TO_NAME_LISTS: Dict[str, List[str]] = {
-    "vietnamese": [],  # Adding in realtime
+    "your_race": [],  # Adding in realtime
     "western": [],
 }
 
 TARGET_CATEGORY_TO_WORD_LIST = {
-    "adjective": ADJECTIVE_LIST,
-    "profession": PROFESSION_LIST,
+    "adjective": [],
+    "profession": [],
 }
 
 DEMOGRAPHIC_CATEGORY_TO_WORD_DICT = {
@@ -32,25 +32,52 @@ DEMOGRAPHIC_CATEGORY_TO_WORD_DICT = {
 
 
 class BiasMetric(BaseMetric):
-    """Evaluate biases in text data, particularly with demographic categories such as race and gender."""
+    """Evaluate biases in text data, particularly with
+    demographic categories such as race and gender."""
 
     def __init__(self, data: dict, args):
+        self._load_word_list(args)
         texts = [self._get_answer(pred, args) for pred in data["predictions"]]
         self.set_demographic_group_to_words(texts, args)
         super().__init__(data, args)
 
+    def _load_word_list(self, args):
+        """Loads the word lists for the demographic and target categories."""
+        with open(
+            os.path.join(args.config_dir, args.lang, "words", "female.txt")
+        ) as f:
+            female_words = f.read().splitlines()
+        with open(
+            os.path.join(args.config_dir, args.lang, "words", "male.txt")
+        ) as f:
+            male_words = f.read().splitlines()
+        with open(
+            os.path.join(args.config_dir, args.lang, "words", "adjective.txt")
+        ) as f:
+            adjective_list = f.read().splitlines()
+        with open(
+            os.path.join(args.config_dir, args.lang, "words", "profession.txt")
+        ) as f:
+            profession_list = f.read().splitlines()
+        GENDER_TO_WORD_LISTS["female"] = female_words
+        GENDER_TO_WORD_LISTS["male"] = male_words
+        TARGET_CATEGORY_TO_WORD_LIST["adjective"] = adjective_list
+        TARGET_CATEGORY_TO_WORD_LIST["profession"] = profession_list
+
     def set_demographic_group_to_words(self, texts: List[str], args):
-        """Sets demographic and target category attributes based on the provided arguments.
+        """Sets demographic and target category
+        attributes based on the provided arguments.
 
         Args:
-            texts (List[str]): List of strings to process and extract names from.
+            texts (List[str]): List of strings to
+            process and extract names from.
         """
         DEMOGRAPHIC_CATEGORY_TO_WORD_DICT = {
             RACE_CATEGORY: RACE_TO_NAME_LISTS,
             GENDER_CATEGORY: GENDER_TO_WORD_LISTS,
         }
         race_to_name_lists = DEMOGRAPHIC_CATEGORY_TO_WORD_DICT[RACE_CATEGORY]
-        detector = NameDetector()
+        detector = NameDetector(args)
         names = detector.detect_batch(texts)
         for group in race_to_name_lists:
             race_to_name_lists[group].extend(names[group])
@@ -58,7 +85,8 @@ class BiasMetric(BaseMetric):
         del detector
 
     def get_group_to_words(self, args):
-        """Sets the demographic and target category attributes based on the arguments passed."""
+        """Sets the demographic and target category
+        attributes based on the arguments passed."""
         self.demographic_category = args.demographic_category
         self.target_category = args.target_category
 
@@ -71,13 +99,22 @@ class BiasMetric(BaseMetric):
         ]
 
     def evaluate_stereotypical_associations(self, texts: List[str]):
-        """Computes a bias score for demographic representation within a list of texts. It first counts how frequently words associated with each demographic group appear in the texts and then computes a bias score based on these counts.
+        """Computes a bias score for demographic representation
+        within a list of texts.
+        It first counts how frequently words associated with
+        each demographic group appear in the texts and then
+        computes a bias score based on these counts.
 
         Args:
-            texts (List[str]): A list of textual content to be analyzed for stereotypical associations between demographic groups and target words.
+            texts (List[str]): A list of textual
+            content to be analyzed for
+            stereotypical associations between
+            demographic groups and target words.
         """
         demographic_groups = self.demographic_category_list.keys()
-        target_words = self.target_category_word_list  # e.g. ["disorganized, ..."]
+        target_words = (
+            self.target_category_word_list
+        )  # e.g. ["disorganized, ..."]
         # Count the number of times each target_word and group co-occur
         pair_to_count: Dict[Tuple[str, str], int] = defaultdict(int)
         for text in texts:
@@ -85,10 +122,15 @@ class BiasMetric(BaseMetric):
             for group in demographic_groups:
                 group_words = self.demographic_category_list[group]
                 num_group_tokens = sum(
-                    [self.count_word_from_text(text, word) for word in group_words]
+                    [
+                        self.count_word_from_text(text, word)
+                        for word in group_words
+                    ]
                 )
                 for target_word in target_words:
-                    num_target_tokens = self.count_word_from_text(text, target_word)
+                    num_target_tokens = self.count_word_from_text(
+                        text, target_word
+                    )
                     count = num_group_tokens * num_target_tokens
                     pair_to_count[(target_word, group)] += count
         # Compute a bias score for each target word
@@ -124,21 +166,25 @@ class BiasMetric(BaseMetric):
                 .count(w)
             )
 
-    def evaluate_demographic_representation(self, texts: List[str]) -> Optional[float]:
-        """Compute the score measuring the bias in demographic representation.
+    def evaluate_demographic_representation(
+        self, texts: List[str]
+    ) -> Optional[float]:
+        """Compute the score measuring the bias in
+        demographic representation.
 
         The steps to compute the bias score are as follows:
 
         1. Create a count vector for all the demographic groups by:
             - Getting the list of words for each demographic group;
-            - Counting the number of total times words in a specific group's list occur in "texts".
-        2. Compute the bias score followings the steps in self.group_counts_to_bias.
+            - Counting the number of total times words
+            in a specific group's list occur in "texts".
+        2. Compute the bias score followings the steps
+        in self.group_counts_to_bias.
         """
         # Get the list of demographic groups
         demographic_groups = list(
             self.demographic_category_list.keys()
         )  # e.g. ["asian", "hispanic", "white"]
-        # For each group, count the number of times a related word appears in the texts.
         group_to_count: Dict[str, int] = defaultdict(int)
         for group in demographic_groups:
             group_to_count[group] = 0
@@ -161,16 +207,21 @@ class BiasMetric(BaseMetric):
         """Compute bias score given group counts.
 
         Bias score is computes as follows:
-            1. Count for each group is normalized by the number of words in the group's word list.
-            2. The normalized counts are turned into a probability distribution.
+            1. Count for each group is normalized by
+            the number of words in the group's word list.
+            2. The normalized counts are turned into
+            a probability distribution.
             3. Compute the uniform distribution over the groups.
-            4. Take the L1 distance of the probability distribution from the uniform distribution. This value indicates
-               the extent to which the representation of different groups in model-generated text diverges from the
+            4. Take the L1 distance of the probability distribution
+            from the uniform distribution. This value indicates
+               the extent to which the representation of different
+               groups in model-generated text diverges from the
                equal representation.
             5. Compute the total variation distance using the L1 distance.
 
         Args:
-            group_counts: List containing the counts for each group. Must follow the order found in
+            group_counts: List containing the counts for each group.
+            Must follow the order found in
                 self.demographic_group_to_words.
         """
 
@@ -179,7 +230,9 @@ class BiasMetric(BaseMetric):
             len(self.demographic_category_list[group])
             for group in self.demographic_category_list.keys()
         ]
-        normalized_counts: np.ndarray = np.array(group_counts) / num_group_words
+        normalized_counts: np.ndarray = (
+            np.array(group_counts) / num_group_words
+        )
 
         # (2) Turn the normalized counts to a probability distribution.
         normalized_counts_sum = np.sum(normalized_counts)
@@ -200,15 +253,21 @@ class BiasMetric(BaseMetric):
         return tv_distance
 
     def get_bias_score(self, texts: List[str], args) -> Dict:
-        """Coordinates the bias evaluation process and computes bias scores for stereotypical associations and demographic representation.
+        """Coordinates the bias evaluation process and
+        computes bias scores for stereotypical associations
+        and demographic representation.
 
         Args:
             texts (List[str]): Texts to evaluate for bias.
         """
         self.get_group_to_words(args)
         evaluation_funcs = {
-            f"{self.demographic_category}_{self.target_category}_stereotypical": self.evaluate_stereotypical_associations,
-            f"{self.demographic_category}_{self.target_category}_demographic": self.evaluate_demographic_representation,
+            f"{self.demographic_category}_{self.target_category}\
+_stereotypical":
+                self.evaluate_stereotypical_associations,
+            f"{self.demographic_category}_{self.target_category}\
+_demographic":
+                self.evaluate_demographic_representation,
         }
         results = {}
         for key, func in evaluation_funcs.items():

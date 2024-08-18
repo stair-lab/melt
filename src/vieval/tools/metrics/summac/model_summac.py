@@ -11,49 +11,7 @@ import os
 import json
 from . import utils_misc
 
-model_map = {
-    "snli-base": {
-        "model_card": "boychaboy/SNLI_roberta-base",
-        "entailment_idx": 0,
-        "contradiction_idx": 2,
-    },
-    "snli-large": {
-        "model_card": "boychaboy/SNLI_roberta-large",
-        "entailment_idx": 0,
-        "contradiction_idx": 2,
-    },
-    "mnli-base": {
-        "model_card": "microsoft/deberta-base-mnli",
-        "entailment_idx": 2,
-        "contradiction_idx": 0,
-    },
-    "mnli": {
-        "model_card": "roberta-large-mnli",
-        "entailment_idx": 2,
-        "contradiction_idx": 0,
-    },
-    "anli": {
-        "model_card": "ynie/roberta-large-snli_mnli_fever_anli_R1_R2_R3-nli",
-        "entailment_idx": 0,
-        "contradiction_idx": 2,
-    },
-    "vitc-base": {
-        "model_card": "tals/albert-base-vitaminc-mnli",
-        "entailment_idx": 0,
-        "contradiction_idx": 1,
-    },
-    "vitc": {
-        "model_card": "tals/albert-xlarge-vitaminc-mnli",
-        "entailment_idx": 0,
-        "contradiction_idx": 1,
-    },
-    "vitc-only": {
-        "model_card": "tals/albert-xlarge-vitaminc",
-        "entailment_idx": 0,
-        "contradiction_idx": 1,
-    },
-    # "decomp": 0,
-}
+model_map = {}
 
 
 def card_to_name(card):
@@ -87,14 +45,15 @@ class SummaCImager:
 
         assert (
             all(
-                gran in ["paragraph", "sentence", "document", "2sents", "mixed"]
+                gran
+                in ["paragraph", "sentence", "document", "2sents", "mixed"]
                 for gran in self.grans
             )
             and len(self.grans) <= 2
         ), "Unrecognized `granularity` %s" % (granularity)
-        assert model_name in model_map.keys(), "Unrecognized model name: `%s`" % (
-            model_name
-        )
+        assert (
+            model_name in model_map.keys()
+        ), "Unrecognized model name: `%s`" % (model_name)
 
         self.model_name = model_name
         if model_name != "decomp":
@@ -120,7 +79,8 @@ class SummaCImager:
             from allennlp.predictors.predictor import Predictor
 
             self.model = Predictor.from_path(
-                "https://storage.googleapis.com/allennlp-public-models/decomposable-attention-elmo-2020.04.09.tar.gz",
+                "https://storage.googleapis.com/allennlp-public-models\
+/decomposable-attention-elmo-2020.04.09.tar.gz",
                 cuda_device=0,
             )
 
@@ -139,7 +99,9 @@ class SummaCImager:
     def split_2sents(self, text):
         sentences = nltk.tokenize.sent_tokenize(text)
         sentences = [sent for sent in sentences if len(sent) > 10]
-        two_sents = [" ".join(sentences[i : (i + 2)]) for i in range(len(sentences))]
+        two_sents = [
+            " ".join(sentences[i:(i + 2)]) for i in range(len(sentences))
+        ]
         return two_sents
 
     def split_paragraphs(self, text):
@@ -165,7 +127,7 @@ class SummaCImager:
         cache_key = (original, generated)
         if self.use_cache and cache_key in self.cache:
             cached_image = self.cache[cache_key]
-            cached_image = cached_image[:, : self.max_doc_sents, :]
+            cached_image = cached_image[:, :self.max_doc_sents, :]
             return cached_image
 
         if len(self.grans) == 1:
@@ -174,7 +136,7 @@ class SummaCImager:
             gran_doc, gran_sum = self.grans[0], self.grans[1]
 
         original_chunks = self.split_text(original, granularity=gran_doc)[
-            : self.max_doc_sents
+           :self.max_doc_sents
         ]
         generated_chunks = self.split_text(generated, granularity=gran_sum)
 
@@ -225,7 +187,9 @@ class SummaCImager:
                     return_tensors="pt",
                     truncation_strategy="only_first",
                 )
-                batch_tokens = {k: v.to(self.device) for k, v in batch_tokens.items()}
+                batch_tokens = {
+                    k: v.to(self.device) for k, v in batch_tokens.items()
+                }
                 with torch.no_grad():
                     model_outputs = self.model(**batch_tokens)
 
@@ -249,7 +213,8 @@ class SummaCImager:
 
     def get_cache_file(self):
         return os.path.join(
-            self.cache_folder, "cache_%s_%s.json" % (self.model_name, self.granularity)
+            self.cache_folder,
+            "cache_%s_%s.json" % (self.model_name, self.granularity),
         )
 
     def save_cache(self):
@@ -263,7 +228,8 @@ class SummaCImager:
             with open(cache_file, "r") as f:
                 cache_cp = json.load(f)
                 self.cache = {
-                    tuple(k.split("[///]")): np.array(v) for k, v in cache_cp.items()
+                    tuple(k.split("[///]")): np.array(v)
+                    for k, v in cache_cp.items()
                 }
 
 
@@ -299,7 +265,9 @@ class SummaCConv(torch.nn.Module):
         self.imagers = []
         for model_name in models:
             self.imagers.append(
-                SummaCImager(model_name=model_name, granularity=granularity, **kwargs)
+                SummaCImager(
+                    model_name=model_name, granularity=granularity, **kwargs
+                )
             )
         if imager_load_cache:
             for imager in self.imagers:
@@ -345,9 +313,7 @@ class SummaCConv(torch.nn.Module):
         self.n_depth = len(self.imagers) * len(self.nli_labels)
         self.full_size = self.n_depth * self.n_bins
         if self.norm_histo:
-            self.full_size += (
-                2  # Will explicitely give the count of originals and generateds
-            )
+            self.full_size += 2
 
         self.agg = agg
 
@@ -358,7 +324,9 @@ class SummaCConv(torch.nn.Module):
             print(self.load_state_dict(torch.load(start_file)))
 
     def build_image(self, original, generated):
-        images = [imager.build_image(original, generated) for imager in self.imagers]
+        images = [
+            imager.build_image(original, generated) for imager in self.imagers
+        ]
         image = np.concatenate(images, axis=0)
         return image
 
@@ -485,7 +453,9 @@ class SummaCConv(torch.nn.Module):
             logits, histograms, images = self.forward(originals, generateds)
             probs = torch.nn.functional.softmax(logits, dim=-1)
             batch_scores = probs[:, 1].tolist()
-        return {"scores": batch_scores}  # , "histograms": histograms, "images": images
+        return {
+            "scores": batch_scores
+        }  # , "histograms": histograms, "images": images
 
 
 class SummaCZS:
@@ -499,13 +469,22 @@ class SummaCZS:
         use_con=True,
         imager_load_cache=True,
         device="cuda",
+        args=None,
         **kwargs,
     ):
+        global model_map
+        with open(
+            os.path.join(args.config_dir, "summac_model.json"), "r"
+        ) as f:
+            model_map = json.load(f)
         assert op2 in ["min", "mean", "max"], "Unrecognized `op2`"
         assert op1 in ["max", "mean", "min"], "Unrecognized `op1`"
 
         self.imager = SummaCImager(
-            model_name=model_name, granularity=granularity, device=device, **kwargs
+            model_name=model_name,
+            granularity=granularity,
+            device=device,
+            **kwargs,
         )
         if imager_load_cache:
             self.imager.load_cache()
