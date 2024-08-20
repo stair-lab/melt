@@ -1,37 +1,37 @@
 Metrics
 =======
 
-.. automodule:: vieval.metrics.base
+.. automodule:: melt.metrics.base
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.basic_metrics
+.. automodule:: melt.metrics.basic_metrics
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.bias
+.. automodule:: melt.metrics.bias
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.calibration_metric
+.. automodule:: melt.metrics.calibration_metric
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.name_detector
+.. automodule:: melt.metrics.name_detector
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. .. automodule:: vieval.metrics.post_process
+.. .. automodule:: melt.metrics.post_process
 ..    :members:
 ..    :undoc-members:
 ..    :show-inheritance:

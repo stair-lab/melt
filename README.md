@@ -1,11 +1,11 @@
-# Welcome to the ViLLM Evaluation Project!
+# Welcome to the MELT Evaluation Project!
 
-ViLLM Evaluation is a comprehensive package designed for evaluating Large Language Models (LLMs) in a specific language. By providing insightful metrics and analyses, our tool empowers you to:
+MELT Evaluation is a comprehensive package designed for evaluating Large Language Models (LLMs) in a specific language. By providing insightful metrics and analyses, our tool empowers you to:
 
 - **Fine-tune your LLMs:** Leverage the evaluation results to fine-tune your LLMs for optimal performance using tools like [LLaMa-Factory](https://github.com/hiyouga/LLaMA-Factory).
 - **Deploy with confidence:** Easily deploy your fine-tuned LLMs for real-world applications using [Text Generation Inference](https://github.com/huggingface/text-generation-inference).
 
-ViLLM is hosted by [Stanford AI Lab](https://ai.stanford.edu/) 
+MELT is hosted by [Stanford AI Lab](https://ai.stanford.edu/) 
 
 ## Getting Started
 
@@ -13,8 +13,8 @@ ViLLM is hosted by [Stanford AI Lab](https://ai.stanford.edu/)
 
 1. **Initialize environment:**
    ```bash
-   conda create -n villm python=3.10
-   conda activate villm
+   conda create -n melt python=3.10
+   conda activate melt
    ```
 
 2. **Install PyTorch (with CUDA 12.1):**
@@ -24,7 +24,7 @@ ViLLM is hosted by [Stanford AI Lab](https://ai.stanford.edu/)
      pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
      ```
 
-3. **Install ViLLM Evaluation:**
+3. **Install MELT Evaluation:**
    ```bash
    pip install -e .
    ```
@@ -36,7 +36,7 @@ ViLLM is hosted by [Stanford AI Lab](https://ai.stanford.edu/)
 1. Create a "datasets" folder (or specify a custom directory using the `--dataset_dir` argument).
 2. Place your datasets (`.csv`, `.json`, `.txt`) within the folder, structured as follows:
    ```
-   villm-eval/datasets--<your_dataset_name>----<your_dataset_name>_train.<ext>
+   melt/datasets--<your_dataset_name>----<your_dataset_name>_train.<ext>
                                              |
                                              ----<your_dataset_name>_test.<ext>
    ```
@@ -84,7 +84,7 @@ The `configs/<your_language>/datasets_info.json` file defines dataset configurat
     - `"subset"`:  Subset of the data to use (if applicable).
     - `"train_split"`/`"test_split"`: Custom names for train/test splits (defaults: "train"/"test").
     - `"prompting_strategy"`: Index of the prompt template to use from `prompt_template.json` (default: 0).
-    - `"columns"`:  Mapping of column names in your dataset to the standard column names used by ViLLM Evaluation. If your dataset uses the standard names, you can omit this field.
+    - `"columns"`:  Mapping of column names in your dataset to the standard column names used by MELT Evaluation. If your dataset uses the standard names, you can omit this field.
 
 #### Supported Tasks and Data Formats
 
@@ -425,12 +425,12 @@ Rename `.env.template` to `.env` and set up the required environment variables b
 
 ### Running the Evaluation
 
-Use the `vieval` command with appropriate arguments to run the evaluation pipeline. 
+Use the `melt` command with appropriate arguments to run the evaluation pipeline. 
 
 **Example:**
 
 ```bash
-vieval --wtype hf \
+melt --wtype hf \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
                --num_fs 3 \
@@ -442,7 +442,7 @@ vieval --wtype hf \
 
 **VLLM**
 ```bash
-vieval --wtype vllm \
+melt --wtype vllm \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
                --num_fs 3 \
@@ -453,7 +453,7 @@ vieval --wtype vllm \
 ```
 **TGI**
 ```bash
-vieval --wtype tgi \
+melt --wtype tgi \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
                --fewshot_prompting True \
@@ -463,7 +463,7 @@ vieval --wtype tgi \
 ```
 **GPT (gpt-3.5-turbo, gpt-4)**
 ```bash
-vieval --wtype openai \
+melt --wtype openai \
                --model_name gpt-4 \
                --dataset_name zalo_e2eqa \
                --lang vi \
@@ -473,7 +473,7 @@ vieval --wtype openai \
 
 **Gemini**
 ```bash
-vieval --wtype gemini \
+melt --wtype gemini \
                --model_name gemini-pro \
                --dataset_name zalo_e2eqa \
                --lang vi \
@@ -482,7 +482,7 @@ vieval --wtype gemini \
 ```
 **List of arguments**
 ```bash
-vieval [-h] [--model_name MODEL_NAME] [--dataset_name DATASET_NAME] [--use_4bit [USE_4BIT]] [--bnb_4bit_compute_dtype BNB_4BIT_COMPUTE_DTYPE]
+melt [-h] [--model_name MODEL_NAME] [--dataset_name DATASET_NAME] [--use_4bit [USE_4BIT]] [--bnb_4bit_compute_dtype BNB_4BIT_COMPUTE_DTYPE]
               [--bnb_4bit_quant_type BNB_4BIT_QUANT_TYPE] [--use_nested_quant [USE_NESTED_QUANT]] [--lang LANG] [--dataset_dir DATASET_DIR] [--config_dir CONFIG_DIR]
               [--output_dir OUTPUT_DIR] [--output_eval_dir OUTPUT_EVAL_DIR] [--per_device_eval_batch_size PER_DEVICE_EVAL_BATCH_SIZE] [--ms_hub_token MS_HUB_TOKEN]
               [--hf_hub_token HF_HUB_TOKEN] [--smoke_test [SMOKE_TEST]] [--fewshot_prompting [FEWSHOT_PROMPTING]] [--num_fs NUM_FS] [--seed SEED]
@@ -556,13 +556,13 @@ We welcome contributions from the community! Please refer to our [Contributor Gu
 
 ## Communications
 
-- **GitHub Issues:** [https://github.com/stair-lab/villm-eval/issues](https://github.com/stair-lab/villm-eval/issues)
+- **GitHub Issues:** [https://github.com/stair-lab/melt/issues](https://github.com/stair-lab/melt/issues)
 
 **We are actively working on establishing more communication channels.**
 
 ## Resources
 
-- **Leaderboard:** [https://ai.stanford.edu/~sttruong/villm](https://ai.stanford.edu/~sttruong/villm)
+- **Leaderboard:** [https://ai.stanford.edu/~sttruong/MELT](https://ai.stanford.edu/~sttruong/melt)
 
 ## License
 
@@ -570,7 +570,7 @@ This project is licensed under MIT - see the [LICENSE](./LICENSE) file for detai
 
 ## Conduct
 
-We adhere to the ViLLM Code of Conduct - see the [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) file for details. 
+We adhere to the MELT Code of Conduct - see the [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) file for details. 
 
 ## Citation
 ```

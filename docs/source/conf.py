@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath("../../src"))
 
 # -- Project information -----------------------------------------------------
 
-project = "ViLLMs"
+project = "MELTs"
 author = "Thu Nguyen Hoang Anh"
 copyright = "{}, {}".format(datetime.datetime.now().year, author)
 
@@ -46,7 +46,7 @@ autodoc_mock_imports = ["pyemd"]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 
-# apidoc_module_dir = '../../src/vieval/'
+# apidoc_module_dir = '../../src/melt/'
 # apidoc_output_dir = 'api'
 # apidoc_excluded_paths = []
 # apidoc_separate_modules = True

@@ -1,4 +1,4 @@
-How to use ViLLM?
+How to use MELT?
 =================
 
 Running Pipeline
@@ -8,7 +8,7 @@ Run on local computer
 
 .. code-block:: bash
 
-    vieval --mode generation \
+    melt --mode generation \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
                --prompting_strategy 0 \
@@ -19,7 +19,7 @@ Run on TGI
 
 .. code-block:: bash
 
-    vieval --mode generation \
+    melt --mode generation \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
                --prompting_strategy 0 \
@@ -31,7 +31,7 @@ Run on GPT (gpt-3.5-turbo, gpt-4)
 
 .. code-block:: bash
 
-    vieval --mode generation \
+    melt --mode generation \
                --model_name gpt-4 \
                --dataset_name zalo_e2eqa \
                --prompting_strategy 0 \
@@ -43,7 +43,7 @@ Evaluation
 
 .. code-block:: bash
 
-    vieval --mode evaluation \
+    melt --mode evaluation \
                --model_name gpt-4 \
                --dataset_name zalo_e2eqa \
                --prompting_strategy 0 \
@@ -57,7 +57,7 @@ End2End Pipeline
 
 .. code-block:: bash
 
-    vieval --mode end2end \
+    melt --mode end2end \
                --model_name gpt-4 \
                --dataset_name zalo_e2eqa \
                --prompting_strategy 0 \

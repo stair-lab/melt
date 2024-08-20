@@ -1,49 +1,49 @@
 Scenarios
 =========
 
-.. automodule:: vieval.metrics.question_answering
+.. automodule:: melt.metrics.question_answering
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.summary
+.. automodule:: melt.metrics.summary
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.text_classification
+.. automodule:: melt.metrics.text_classification
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.toxicity
+.. automodule:: melt.metrics.toxicity
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.ir
+.. automodule:: melt.metrics.ir
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.language
+.. automodule:: melt.metrics.language
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.reasoning
+.. automodule:: melt.metrics.reasoning
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: alphabetical
 
-.. automodule:: vieval.metrics.translation_metric
+.. automodule:: melt.metrics.translation_metric
    :members:
    :undoc-members:
    :show-inheritance:
