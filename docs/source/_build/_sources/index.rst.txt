@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ViLLM documentations!
+Welcome to MELT documentations!
 ================================
 
-**ViLLM** is a framework for refining and deploying Vietnamese language models, built on the Hugging Face Transformers library. It provides tools for fine-tuning, evaluating, and deploying models, with a flexible design that allows for easy expansion with new models and datasets.
+**MELT** is a framework for refining and deploying Vietnamese language models, built on the Hugging Face Transformers library. It provides tools for fine-tuning, evaluating, and deploying models, with a flexible design that allows for easy expansion with new models and datasets.
 
 See our `paper <https://arxiv.org/abs/2403.02715/>`_ for more information.
 

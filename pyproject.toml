@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "ViLLM-Eval"
+name = "MELT"
 version = "0.0.1"
 authors = [
   { name = "Sang T. Truong", email = "sttruong@stanford.edu" },
@@ -68,11 +68,11 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/koyejo-lab/villm-eval"
-Issues = "https://github.com/koyejo-lab/villm-eval/issues"
+Homepage = "https://github.com/koyejo-lab/melt"
+Issues = "https://github.com/koyejo-lab/melt/issues"
 
 [project.scripts]
-vieval = "vieval.cli:main"
+melt = "melt.cli:main"
 
 [tool.hatch.build.targets.sdist]
 include = [
@@ -85,7 +85,7 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/vieval"]
+packages = ["src/melt"]
 artifacts = [
   "*.so",
   "*.dll",
