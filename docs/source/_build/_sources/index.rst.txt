@@ -1,4 +1,4 @@
-.. open-source-villms documentation master file, created by
+.. open-source-melts documentation master file, created by
    sphinx-quickstart on Tue Mar 26 16:00:04 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.

@@ -13,8 +13,8 @@ MELT is hosted by [Stanford AI Lab](https://ai.stanford.edu/)
 
 1. **Initialize environment:**
    ```bash
-   conda create -n villm python=3.10
-   conda activate villm
+   conda create -n melt python=3.10
+   conda activate melt
    ```
 
 2. **Install PyTorch (with CUDA 12.1):**
@@ -562,7 +562,7 @@ We welcome contributions from the community! Please refer to our [Contributor Gu
 
 ## Resources
 
-- **Leaderboard:** [https://ai.stanford.edu/~sttruong/MELT](https://ai.stanford.edu/~sttruong/villm)
+- **Leaderboard:** [https://ai.stanford.edu/~sttruong/MELT](https://ai.stanford.edu/~sttruong/melt)
 
 ## License
 
