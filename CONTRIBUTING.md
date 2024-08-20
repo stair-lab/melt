@@ -1,143 +1,106 @@
-# Contributing Guide
+:+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
 
-[Instructions](https://contribute.cncf.io/maintainers/github/templates/required/contributing/#introduction)
+The following is a set of guidelines for contributing to the `Python` package `MELT`. 
 
-* [New Contributor Guide](#contributing-guide)
-  * [Ways to Contribute](#ways-to-contribute)
-  * [Find an Issue](#find-an-issue)
-  * [Ask for Help](#ask-for-help)
-  * [Pull Request Lifecycle](#pull-request-lifecycle)
-  * [Development Environment Setup](#development-environment-setup)
-  * [Sign Your Commits](#sign-your-commits)
-  * [Pull Request Checklist](#pull-request-checklist)
+## Code Licensing
 
-Welcome! We are glad that you want to contribute to our project! 💖
+The **MELT** project is [licensed under the MIT license](https://github.com/stair-lab/melt/blob/main/LICENSE). By contributing, you understand and agree that your work becomes a part of the **MELT** project and you grant permission to the **MELT** project to  license your contribution under the [MIT license](https://opensource.org/licenses/MIT) or a compatible license.
 
-As you get started, you are in the best position to give us feedback on areas of
-our project that we need help with including:
+## Reporting Bugs and Submitting Suggestions
 
-* Problems found during setting up a new developer environment
-* Gaps in our Quickstart Guide or documentation
-* Bugs in our automation scripts
+* Ensure the bug was not already reported by searching on GitHub under [Issues](https://github.com/stair-lab/melt/issues).
+* If you're unable to find an open issue addressing the problem, open a new one. Be sure to include a title and clear description, as much relevant information as possible, and a code sample or an executable test case demonstrating the expected behavior that is not occurring.
+* The ideal minimal working example is a unit test.
 
-If anything doesn't make sense, or doesn't work when you run it, please open a
-bug report and let us know!
+## Code and Documentation Style Guide
 
-## Ways to Contribute
+* This project loosely adheres to the [PEP 8 style guide](https://www.python.org/dev/peps/pep-0008/) but this is not enforced. 
+* Documentation strings are written in [NumPy style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy). Whenever touching a function, please take the time to check its documentation.
+* Figures should be generated using `matplotlib.pyplot`. We have not settled on a more detailed style for these yet.
 
-[Instructions](https://contribute.cncf.io/maintainers/github/templates/required/contributing/#ways-to-contribute)
+<!-- 
+## Figures Style Guide
 
-We welcome many different types of contributions including:
+* Plots and figures are generated using matplotlib.pyplot
+* There is no guideline for these yet
+ -->
+ 
+ 
+## Working With Git
 
-* New features
-* Builds, CI/CD
-* Bug fixes
-* Documentation
-* Issue Triage
-* Answering questions on Slack/Mailing List
-* Web design
-* Communications / Social Media / Blog Posts
-* Release management
+### Branches
+This project follows the [`git flow` branching model](https://nvie.com/posts/a-successful-git-branching-model/), starting with version 0.2.3.
 
-Not everything happens through a GitHub pull request. Please come to our
-[meetings](TODO) or [contact us](TODO) and let's discuss how we can work
-together. 
+<img src='https://nvie.com/img/git-model@2x.png' width='400px'>
 
-### Come to Meetings
+#### Briefly
 
-[Instructions](https://contribute.cncf.io/maintainers/github/templates/required/contributing/#come-to-meetings)
+The branch `main` contains stable releases that are tested and guaranteed to work. It is not allowed to contribute directly to `main`.
 
-Absolutely everyone is welcome to come to any of our meetings. You never need an
-invite to join us. In fact, we want you to join us, even if you don’t have
-anything you feel like you want to contribute. Just being there is enough!
+The branch `develop` contains latest delivered development changes for the next release. When `develop` reaches a stable point and is ready to be released, it gets merged to `main` and tagged with a version number (e.g. 'v0.99.21'). 
 
-You can find out more about our meetings [here](TODO). You don’t have to turn on
-your video. The first time you come, introducing yourself is more than enough.
-Over time, we hope that you feel comfortable voicing your opinions, giving
-feedback on others’ ideas, and even sharing your own ideas, and experiences.
+You *should not* directly contribute to `develop`, unless the change is trivial (e.g. a typo). Instead, for any new feature or bugfix, please create a separate supporting branch. We use a default naming convention for them:
 
-## Find an Issue
+* `feature/###-<feature_name>` for new features. Generally, for a new feature you should open an issue which *at least* describes the intended feature; it may go further and allow for discussion and refinement before much effort is expended.  `###` is the corresponding [issue number](https://github.com/stair-lab/melt/issues).
+* `bugfix/###-<bugfix_name>` for bugfixes
+* `release/x.y.z` for release preparation, where `x.y.z.` is the version to be released. See section "Release process" below for details.
 
-[Instructions](https://contribute.cncf.io/maintainers/github/templates/required/contributing/#find-an-issue)
+Please make sure that all checks and unit tests are passed before merging back into `develop`. 
+<!--
+If you are making a significant change, please also add an entry to `NEWS.md`.
+-->
 
-We have good first issues for new contributors and help wanted issues suitable
-for any contributor. [good first issue](TODO) has extra information to
-help you make your first contribution. [help wanted](TODO) are issues
-suitable for someone who isn't a core maintainer and is good to move onto after
-your first pull request.
+#### Wait, What if I'm not Allowed to Create a Branch in the Main Repository?
 
-Sometimes there won’t be any issues with these labels. That’s ok! There is
-likely still something for you to work on. If you want to contribute but you
-don’t know where to start or can't find a suitable issue, you can ⚠️ **explain how people can ask for an issue to work on**.
+If you are not a member of the project then you cannot create a branch in the main repository. But this is not a problem! In this case, you simply fork the main repository, make the changes starting off the `develop` branch, and merge it back into the `develop` branch of the main repository via a pull request.
 
-Once you see an issue that you'd like to work on, please post a comment saying
-that you want to work on it. Something like "I want to work on this" is fine.
+After a successful code review the pull request gets accepted, and your changes are represented in the main repo as a separate branch (in accordance with our guidelines). After that you can delete your fork, if you'd like.
 
-## Ask for Help
+### Pull Requests
 
-[Instructions](https://contribute.cncf.io/maintainers/github/templates/required/contributing/#ask-for-help)
+Open a pull request via GitHub interface to let others see your work and review it. It is a collaborative tool, so we encourage you to open a ['draft pull request'](https://github.blog/2019-02-14-introducing-draft-pull-requests/) as soon as you start working on your part. This provides a place for the community to discuss your work and correct it as you go. Once your part is completed, change the status to “Ready for review”.
+<!--
+The project maintainer may want to merge your pull request when your work is usable, even before it is 100% complete. In such a case, the branch must be deleted and a new one created off the `develop` branch. You can use the same name for it to indicate that this is a continuation. It will be merged, as usual, via a new pull request. This may seem to be an overhead at first glance, but it leads to a faster integration and makes the the pull requests smaller and less overwhelming.
+-->
+Merged support branches [should be deleted - they're clutter](https://ardalis.com/why-delete-old-git-branches). If you want to keep their name for reference, just apply a `git tag` after the merge. Never reuse merged branches, [it can lead to problems](https://stackoverflow.com/a/29319178).
 
-The best way to reach us with a question when contributing is to ask on:
 
-⚠️ **Pick the way(s) that you prefer people ask for help**
+### Git Commits
 
-* The original github issue
-* The developer mailing list
-* Our Slack channel
+Commit often, try to make small atomic commits.
+An atomic commit addresses only a small separate fix or change and is more or less self-consistent.
+Every commit should be related to one feature only, but the commit should group strongly related changes together (e.g. when refactoring to rename a function, all files that are affected by this should be in the same commit).
 
-## Pull Request Lifecycle
+### Commit Messages
 
-[Instructions](https://contribute.cncf.io/maintainers/github/templates/required/contributing/#pull-request-lifecycle)
+* Use the present tense ("Add feature" not "Added feature")
+* Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
+* Limit the first line to 72 characters or less
+* Reference issues and pull requests liberally after the first line
+* Give a high-level description of the what and *why* of the changes
+  (similar to good code comments) already in the first line
+* Use the most specialized verb that describes the situation
 
-⚠️ **Explain your pull request process**
+## Versioning
 
-## Development Environment Setup
+The project adheres to the semantic versioning guidelines, as outlined at https://semver.org/. Deviations might still occur for versions `0.x.x`.
 
-[Instructions](https://contribute.cncf.io/maintainers/github/templates/required/contributing/#development-environment-setup)
+Briefly, the version string has the form `x.y.z` (or `major.minor.patch`), where the major number gets incremeted if a release introduces breaking changes, the minor one after any changes in functionality (new features of bugfixes), and the patch number is increased after any trivial change. If a major or minor number is incremented, all subsequent ones are set to zero.
 
-⚠️ **Explain how to set up a development environment**
+The version numbers refer only to commits in the `main` branch, and get incremented in one of two cases:
+* during the release preparation, when a `release/x.y.z` branch buds off `develop` and merges into `main`.
+* after a hotfix, which also results in a new commit on `main`.
 
-## Sign Your Commits
+### Release Process
+The process starts when the package is in a stable state that can be released to PyPI (release candidate). First, decide on a new version number `x.y.z` based on the severity of changes. Then:
 
-[Instructions](https://contribute.cncf.io/maintainers/github/templates/required/contributing/#sign-your-commits)
+* Create a `release/x.y.z` branch.
+* Open a pull request that merges into `main`.
+* Update the version number in the `setup.py` file.
+* Confirm that all check are passed.
+* If any bugs are found, they must be fixed in the very same branch (see [here](https://stackoverflow.com/a/57507373/6029703) for details)
+* Once everything works, merge the release branch into both `main` and `develop`, and assign a tag to the newly created commit in the `main` branch.
 
-⚠️ **Keep either the DCO or CLA section depending on which you use**
+<hr>
 
-### DCO
-Licensing is important to open source projects. It provides some assurances that
-the software will continue to be available based under the terms that the
-author(s) desired. We require that contributors sign off on commits submitted to
-our project's repositories. The [Developer Certificate of Origin
-(DCO)](https://probot.github.io/apps/dco/) is a way to certify that you wrote and
-have the right to contribute the code you are submitting to the project.
-
-You sign-off by adding the following to your commit messages. Your sign-off must
-match the git user and email associated with the commit.
-
-    This is my commit message
-
-    Signed-off-by: Your Name <your.name@example.com>
-
-Git has a `-s` command line option to do this automatically:
-
-    git commit -s -m 'This is my commit message'
-
-If you forgot to do this and have not yet pushed your changes to the remote
-repository, you can amend your commit with the sign-off by running 
-
-    git commit --amend -s 
-
-### CLA
-We require that contributors have signed our Contributor License Agreement (CLA). 
-
-⚠️ **Explain how to sign the CLA**
-
-## Pull Request Checklist
-
-When you submit your pull request, or you push new commits to it, our automated
-systems will run some checks on your new code. We require that your pull request
-passes these checks, but we also have more criteria than just that before we can
-accept and merge it. We recommend that you check the following things locally
-before you submit your code:
-
-⚠️ **Create a checklist that authors should use before submitting a pull request**
+Thanks! :heart:
