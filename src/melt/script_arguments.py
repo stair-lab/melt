@@ -72,7 +72,9 @@ class ScriptArguments:
     per_device_eval_batch_size: Optional[int] = field(
         default=1, metadata={"help": "Batch size per GPU for evaluation"}
     )
-
+    dtype: str = field(
+        default="half", metadata={"help": "Data type for model loading"}
+    )
     # Inference parameters
     ms_hub_token: Optional[str] = field(
         default=None, metadata={"help": "Microsoft Hub token"}
