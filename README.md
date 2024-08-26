@@ -1,51 +1,67 @@
-# Welcome to the MELT Evaluation Project!
+# MELT: Multilingual Evaluation Toolkits
 
-MELT Evaluation is a comprehensive package designed for evaluating Large Language Models (LLMs) in a specific language. By providing insightful metrics and analyses, our tool empowers you to:
+<div align="center">
+<img src="melt_logo.jpg" alt="Project MELT" width="400"/>
+</div>
 
-- **Fine-tune your LLMs:** Leverage the evaluation results to fine-tune your LLMs for optimal performance using tools like [LLaMa-Factory](https://github.com/hiyouga/LLaMA-Factory).
-- **Deploy with confidence:** Easily deploy your fine-tuned LLMs for real-world applications using [Text Generation Inference](https://github.com/huggingface/text-generation-inference).
+The recent emergence of multilingual large language models (LLMs) is revolutionizing natural language processing, bridging communication gaps across diverse cultures and languages. However, to truly harness the potential of these models, it's crucial to understand their strengths and limitations across a wide range of languages and tasks. MELT is designed with this in mind, offering a comprehensive approach to evaluate LLMs in various linguistic contexts. Recognizing that proficiency in one language or task does not guarantee similar performance elsewhere, MELT enables users to pinpoint specific areas for improvement, fostering the development of robust and reliable multilingual language technologies.
 
-MELT is hosted by [Stanford AI Lab](https://ai.stanford.edu/) 
+MELT includes ten carefully selected evaluation scenarios, each targeting a key aspect of LLM capability:
 
-## Getting Started
+1. **Summarization:** Evaluates the model's ability to condense large texts while retaining essential information.
+2. **Question-Answering:** Assesses comprehension and accurate extraction of answers from provided contexts.
+3. **Knowledge:** Tests the model's ability to recall and apply information across different domains.
+4. **Sentiment Analysis:** Measures the ability to detect and classify emotional tones in text.
+5. **Text Classification:** Evaluates accuracy in categorizing text into predefined labels.
+6. **Toxic Detection:** Identifies the model's capacity to flag harmful or biased language.
+7. **Language Modeling:** Tests fluency and coherence in generating contextually appropriate text.
+8. **Reasoning:** Measures logical deduction and understanding of complex relationships.
+9. **Math:** Assesses competency in solving mathematical problems in text form.
+10. **Information Retrieval:** Tests effectiveness in searching, retrieving, and synthesizing relevant information.
 
-### Installation
+MELT also includes tools to ensure the ethical deployment of LLMs:
 
-1. **Initialize environment:**
-   ```bash
-   conda create -n melt python=3.10
-   conda activate melt
-   ```
+- **Bias Assessment:** Identifies and mitigates potential biases in model outputs.
+- **Toxicity Assessment:** Measures and controls the generation of harmful or offensive language.
+- **Fairness Evaluation:** Ensures equitable performance across demographic groups and languages.
+- **Robustness Analysis:** Examines resilience to noisy inputs and adversarial attacks, ensuring reliable performance in real-world scenarios.
 
-2. **Install PyTorch (with CUDA 12.1):**
-   - **Recommended:** Visit [https://pytorch.org/](https://pytorch.org/) for the latest instructions.
-   - **Alternative (CUDA 12.1 already set up):**
-     ```bash
-     pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-     ```
+MELT offers a holistic evaluation framework that not only assesses performance but also emphasizes ethical considerations, making it an essential tool for developing multilingual language models that are both effective and responsible. MELT currently supports the following languages and tasks:
 
-3. **Install MELT Evaluation:**
-   ```bash
+| Task                      | Vietnamese | Indonesian   |  Korean  |
+| :------------------------:| :---------:| :---------:  | :-----:  |
+| Summarization             |    ✅      |      ✅     |   ✅     |
+| Question Answering        |    ✅      |             |    ✅    |
+| Sentiment Analysis        |    ✅      |      ✅     |          |
+| Text Classification       |    ✅      |      ✅     |          |
+| Toxicity Detection        |    ✅      |      ✅     |          |
+| Open-ended Knowledge      |    ✅      |             |    ✅    |
+| Multiple Choice Knowledge |    ✅      |             |           |
+| Translation               |    ✅      |       ✅    |   ✅     |
+| Reasoning                 |    ✅      |             |           |
+| Math                      |    ✅      |             |           |
+| Information Retrieval     |    ✅      |             |           |
+
+MELT utilizes various metrics to ensure comprehensive evaluation:
+- **[SummaC Model](https://arxiv.org/abs/2111.09525) (`config/summac_model.json`):** Add model maps for SummaC evaluation.
+- **LLM Template (`config/llm_template.json`):** Define chat templates for specific LLM wrappers (e.g., `tgi`, `vllm`, `hf`).
+- **Metric Configuration (`config/{language_code}/metric_configuration.json`):** Specify models for NER, [BERTScore](https://arxiv.org/abs/1904.09675), SummaC, and Toxicity evaluation.
+- **Professions Words (`config/{language_code}/words/professions.txt`):**  List of vocabulary of occupation
+- **Gender Words (`config/{language_code}/words/male.txt | female.txt`):** List of vocabulary of genders (male/female)
+- **Adjective Words (`config/{language_code}/words/adjective.txt`):** List of adjective words
+- **Token Pattern (`config/{language_code}/words/token_pattern.txt`):** List of possible token in a specific language. 
+
+Explore MELT’s performance leaderboard at [​​https://ai.stanford.edu/~sttruong/villm/](https://ai.stanford.edu/~sttruong/villm/).
+
+## Configuration
+To get started, install the package:
+```bash
    pip install -e .
-   ```
+```
 
-### Dataset Configuration
+To begin evaluating a new language, start by creating a folder for it within the `config` directory. Use language codes like "vi" for Vietnamese or "ind" for Indonesian as folder names. Once the folder is set up, proceed to configure your language dataset by following the instructions in the subsequent sections. This setup is essential to successfully run the evaluation process. 
 
-#### Using a Local Dataset (Optional)
-
-1. Create a "datasets" folder (or specify a custom directory using the `--dataset_dir` argument).
-2. Place your datasets (`.csv`, `.json`, `.txt`) within the folder, structured as follows:
-   ```
-   melt/datasets--<your_dataset_name>----<your_dataset_name>_train.<ext>
-                                             |
-                                             ----<your_dataset_name>_test.<ext>
-   ```
-3. Add your dataset information to `configs/<your_language>/datasets_info.json` (see **Configuring Dataset Info** below).
-
-#### Configuring Dataset Info
-
-The `configs/<your_language>/datasets_info.json` file defines dataset configurations. Each dataset entry should follow this structure:
-
+One component of an evaluation pipeline is the instruction prompt. You need to define your prompt templates in `config/{language_code}/prompt_template.json`. You can define multiple prompts per task and select the desired one using the `"prompting_strategy"` field in `datasets_info.json`. Another component of the evaluation pipeline is the datasets. The `configs/<your_language>/dataset_info.json` file defines dataset configurations. Each dataset entry should follow this structure:
 ```json
 {
     "<your_dataset_name>": {
@@ -86,351 +102,44 @@ The `configs/<your_language>/datasets_info.json` file defines dataset configurat
     - `"prompting_strategy"`: Index of the prompt template to use from `prompt_template.json` (default: 0).
     - `"columns"`:  Mapping of column names in your dataset to the standard column names used by MELT Evaluation. If your dataset uses the standard names, you can omit this field.
 
-#### Supported Tasks and Data Formats
-
-##### Summarization (task: "summarization") 
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "summarization", 
-      "columns": {
-          "source": "<column_name_for_source_text>",
-          "target": "<column_name_for_summary_text>"
-        }
-    }
-}
-```
-
-- **Example Dataset:** [WikiLingua](https://huggingface.co/datasets/GEM/wiki_lingua)
-
-**Data Format:**
-
-```
-{"source": "Alice went to the store to buy some milk.", "target": "Alice went shopping for milk."}
-{"source": "Bob is a programmer. He works at Google.", "target": "Bob, a programmer, is employed by Google."}
-// ... more examples
-```
-
-##### Question Answering (task: "question-answering")
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "question-answering", 
-      "columns": {
-          "context": "<column_name_for_context_text>",
-          "query": "<column_name_for_question>",
-          "answer": "<column_name_for_answer_text>"
-        }
-    }
-}
-```
-
-- **Example Dataset:** [MLQA](https://huggingface.co/datasets/facebook/mlqa)
-
-**Data Format:**
-
-```
-{"context": "The cat sat on the mat. The mat is blue.", "query": "Where is the cat?", "answer": {"text": ["on the mat"]}}
-{"context": "The Eiffel Tower is in Paris.", "query": "What city is the Eiffel Tower in?", "answer": {"text": ["Paris"]}}
-// ... more examples
-```
-
-##### Open-ended Knowledge (task: "knowledge-openended")
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "knowledge-openended",
-      "columns": {
-          "query": "<column_name_for_question>",
-          "answer": "<column_name_for_answer_text>"
-        }
-    }
-}
-```
-
-- **Example Dataset:** [OpenEnded Knowledge](https://huggingface.co/datasets/ura-hcmut/Open-ended_knowledge)
-
-**Data Format:**
-
-```
-{"query": "What is the capital of France?", "answer": "Paris"}
-{"query": "Who painted the Mona Lisa?", "answer": "Leonardo da Vinci"} 
-// ... more examples
-```
-
-##### Multiple Choice with Context (task: "knowledge-mtpchoice")
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "knowledge-mtpchoice", 
-      "columns": {
-          "context": "<column_name_for_context_text>",
-          "query": "<column_name_for_question>",
-          "answer": "<column_name_for_correct_answer_option>",
-          "options": "<column_name_for_list_of_answer_options>" 
-        }
-    }
-}
-```
-
-- **Example Dataset:** [MTPC_Context](https://huggingface.co/datasets/ura-hcmut/MTPC_Context)
-
-**Data Format:**
-
-```
-{"context": "The sky is blue because of Rayleigh scattering.", "query": "Why is the sky blue?", "answer": "C", "options": ["Reflection", "Refraction", "Rayleigh scattering", "Diffraction"]}
-// ... more examples
-```
-
-##### Sentiment Analysis (task: "sentiment-analysis")
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "sentiment-analysis",
-      "columns": {
-          "query": "<column_name_for_text>",
-          "answer": "<column_name_for_sentiment_label>" 
-        }
-    }
-}
-```
-
-- **Example Dataset:** [Sample](https://huggingface.co/datasets/ura-hcmut/sentiment_analysis)
-
-**Data Format:**
-
-```
-{"query": "This movie was amazing!", "answer": "1"}
-{"query": "I'm feeling really down today.", "answer": "0"}
-// ... more examples
-```
-
-##### Text Classification (task: "text-classification")
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "text-classification",
-      "columns": {
-          "query": "<column_name_for_text>",
-          "answer": "<column_name_for_class_label>" 
-        }
-    }
-}
-```
-
-- **Example Dataset:** [Emotion classification](https://huggingface.co/datasets/ura-hcmut/text_classification)
-
-**Data Format:**
-
-```
-{"query": "This is the best day ever!", "answer": "0"}
-{"query": "I'm so scared right now.", "answer": "1"}
-// ... more examples 
-```
-
-##### Toxic Detection (task: "toxic-detection")
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "toxic-detection", 
-      "columns": {
-          "query": "<column_name_for_text>",
-          "answer": "<column_name_for_toxicity_label>" 
-        }
-    }
-}
-```
-
-- **Example Dataset:** [Toxic detection](https://huggingface.co/datasets/ura-hcmut/toxic_detection)
-
-**Data Format:**
-
-```
-{"query": "You are an idiot!", "answer": "1"}
-{"query": "Have a great day!", "answer": "0"}
-// ... more examples
-```
-
-##### Translation (task: "translation")
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "translation", 
-      "columns": {
-          "source": "<column_name_for_source_language_text>",
-          "target": "<column_name_for_target_language_text>"
-        }
-    }
-}
-```
-
-- **Example Dataset:** [OPUS100](https://huggingface.co/datasets/vietgpt/opus100_envi)
-
-**Data Format:**
-
-```
-{"source": "Hello world", "target": "Xin chào thế giới"}
-{"source": "How are you?", "target": "Bạn có khỏe không?"} 
-// ... more examples
-```
-
-##### Information Retrieval (task: "information-retrieval")
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "information-retrieval", 
-      "columns": {
-          "type_id": "<column_name_for_passage_type>", 
-          "passages": "<column_name_for_list_of_passages>",
-          "query": "<column_name_for_query>",
-          "answer": "<column_name_for_relevant_passage_index>" 
-        }
-    }
-}
-```
-
-- **Example Dataset:** [Information Retrieval](https://huggingface.co/datasets/ura-hcmut/Information_Retrieval)
-
-**Data Format:**
-- Training set
-```
-{ 
-    "query": "User's search query", 
-    "positive": "A relevant passage", 
-    "negative": "An irrelevant passage"
-}
-// ... more examples
-```
-- Testing set
-```
-{
-    "type_id": 1, 
-    "query": "User's search query",
-    "answer": [1],
-    "passages": { 
-        "id": [1, 2, 3], 
-        "passage": ["Passage 1 text", "Passage 2 text", "Passage 3 text"] 
-    }
-    
-// ... more examples
-```
-##### Reasoning (task: "reasoning")
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "reasoning", 
-      "columns": {
-          "query": "<column_name_for_reasoning_problem_or_question>", 
-          "answer": "<column_name_for_answer_or_solution>" 
-        }
-    }
-}
-```
-
-- **Example Dataset:** [Synthetic Natural Reasoning](https://huggingface.co/datasets/ura-hcmut/synthetic_reasoning_natural)
-
-**Data Format:**
-
-```
-{"query": "If A is taller than B, and B is taller than C, who is the shortest?", "answer": "C"}
-// ... more examples 
-```
-
-##### Math (task: "math")
-
-```json
-{
-    "<your_dataset_name>": {
-      // ... other fields
-      "task": "math", 
-      "columns": {
-          "query": "<column_name_for_math_problem>",
-          "answer": "<column_name_for_answer>"
-        }
-    }
-}
-```
-
-- **Example Dataset:** [MATH](https://huggingface.co/datasets/ura-hcmut/MATH)
-
-**Data Format:**
-
-```
-{
-    "query": "Let $r=3^s-s$ and $s=2^n+1$. What is the value of $r$ when $n=2$?", 
-    "answer": "First substitute $n=2$ into the expression for $s$ to find $s=2^2+1=5$. Then substitute $s=5$ into the expression for $r$ to find $r=3^5-5=243-5=\boxed{238}$"}
-{
-    "query": "If $g(x) = x^2$ and $f(x) = 2x - 1$, what is the value of $f(g(2))$?", 
-    "answer": "\[ f(g(2))=f\left(2^2\right)=f(4)=2\cdot4-1=\boxed{7} \]"
-}
-// ... more examples
-```
-
-#### Prompt Template Configuration
-
-Define your prompt templates in `config/{language_code}/prompt_template.json`. You can define multiple prompts per task and select the desired one using the `"prompting_strategy"` field in `datasets_info.json`.
-
-#### Other Configurations
-
-- **SummaC Model (`config/summac_model.json`):** Add model maps for SummaC evaluation.
-- **LLM Template (`config/llm_template.json`):** Define chat templates for specific LLM wrappers (e.g., "tgi", "vllm", "hf").
-- **Metric Configuration (`config/{language_code}/metric_configuration.json`):** Specify models for NER, BERTScore, SummaC, and Toxicity evaluation.
-
-#### Available datasets
-
-| Task                      | Vietnamese | Indonesian | Korean |
-| :------------------------:| :---------:| :---------:| :-----:|
-| Summarization             |    ✅      |      ✅     |   ✅    |
-| Question Answering        |    ✅      |             |    ✅   |`
-| Sentiment Analysis        |    ✅      |      ✅     |        |
-| Text Classification       |    ✅      |      ✅     |        |
-| Toxicity Detection        |    ✅      |      ✅     |        |
-| Open-ended Knowledge      |    ✅      |            |    ✅   |`
-| Multiple Choice Knowledge |    ✅      |            |        |
-| Translation               |    ✅      |       ✅    |   ✅    |
-| Reasoning                 |    ✅      |            |        |
-| Math                      |    ✅      |            |        |
-
-
-## Running the Evaluation Pipeline
-
-### Environment Variables
-
-Rename `.env.template` to `.env` and set up the required environment variables based on your chosen LLM wrapper:
-
+Below, we outline the dataset format for our 10 core scenarios:
+|                           | Task                      | Column                   | Dataset example                                              |
+| :---------------:         | :------------------------:| :---------:              | :---------:                                                  | 
+| Summarization             | `summarization`  |  `source`, `target`      | [WikiLingua](https://huggingface.co/datasets/GEM/wiki_lingua)| 
+| Question Answering        | `question-answering` | `context`, `query`, `answer`| [MLQA](https://huggingface.co/datasets/facebook/mlqa) |
+| Sentiment Analysis        | `sentiment-analysis` | `query`, `answer` |   [VSFC](https://huggingface.co/datasets/ura-hcmut/sentiment_analysis)         |  
+| Text Classification       | `text-classification`| `query`, `answer` |   [VSMEC](https://huggingface.co/datasets/ura-hcmut/text_classification)  | 
+| Toxicity Detection        | `toxic-detection`    | `query`, `answer` |   [ViHSD](https://huggingface.co/datasets/ura-hcmut/toxic_detection)|
+| Open-ended Knowledge      | `knowledge-openended`| `query`, `answer` |   [zalo_e2eqa](https://huggingface.co/datasets/ura-hcmut/Open-ended_knowledge)  | 
+| Multiple Choice Knowledge | `knowledge-mtpchoice`|  `context`, `query`, `answer`, `options` |   [ViMMRC](https://huggingface.co/datasets/ura-hcmut/MTPC_Context)         |
+| Translation               | `translation`        |  `source`, `target`         | [OPUS100](https://huggingface.co/datasets/vietgpt/opus100_envi) |
+| Reasoning                 | `reasoning`          |  `query`, `answer`         | [Synthetic Natural Reasoning](https://huggingface.co/datasets/ura-hcmut/synthetic_reasoning_natural) |
+| Math                      |  `math`              |  `type_id`, `query`, `answer`    | [MATH](https://huggingface.co/datasets/ura-hcmut/MATH)|
+| Information Retrieval     | `information-retrieval` | `type_id`, `passages`, `query`, `answer` | [Information Retrieval](https://huggingface.co/datasets/ura-hcmut/Information_Retrieval) |
+
+We also support using local datasets via the following steps:
+1. Create a "datasets" folder (or specify a custom directory using the `--dataset_dir` argument).
+2. Place your datasets (`.csv`, `.json`, `.txt`) within the folder, structured as follows:
+   ```
+   melt/datasets--<your_dataset_name>----<your_dataset_name>_train.<ext>
+                                             |
+                                             ----<your_dataset_name>_test.<ext>
+   ```
+3. Add your dataset information to `configs/<your_language>/datasets_info.json`.
+
+## Execution
+First, one would need to configure the environment variables. Rename `.env.template` to `.env` and set up the required environment variables based on your chosen LLM wrapper:
 - **OpenAI (`OPENAI_API_KEY`)**
 - **AzureGPT (`OPENAI_API_TYPE`, `OPENAI_API_BASE`, `OPENAI_API_KEY`, `OPENAI_API_VERSION`)**
 - **TGI (`TGI_ENDPOINT`)**
 - **Gemini (`GEMINI_KEY`)** 
 
-### Running the Evaluation
-
-Use the `melt` command with appropriate arguments to run the evaluation pipeline. 
+Then, we can use the `vieval` command with appropriate arguments to run the evaluation pipeline. 
 
 **Example:**
 
 ```bash
-melt --wtype hf \
+vieval --wtype hf \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
                --num_fs 3 \
@@ -442,7 +151,7 @@ melt --wtype hf \
 
 **VLLM**
 ```bash
-melt --wtype vllm \
+vieval --wtype vllm \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
                --num_fs 3 \
@@ -453,7 +162,7 @@ melt --wtype vllm \
 ```
 **TGI**
 ```bash
-melt --wtype tgi \
+vieval --wtype tgi \
                --model_name ura-hcmut/MixSUra \
                --dataset_name zalo_e2eqa \
                --fewshot_prompting True \
@@ -463,7 +172,7 @@ melt --wtype tgi \
 ```
 **GPT (gpt-3.5-turbo, gpt-4)**
 ```bash
-melt --wtype openai \
+vieval --wtype openai \
                --model_name gpt-4 \
                --dataset_name zalo_e2eqa \
                --lang vi \
@@ -473,7 +182,7 @@ melt --wtype openai \
 
 **Gemini**
 ```bash
-melt --wtype gemini \
+vieval --wtype gemini \
                --model_name gemini-pro \
                --dataset_name zalo_e2eqa \
                --lang vi \
@@ -482,7 +191,7 @@ melt --wtype gemini \
 ```
 **List of arguments**
 ```bash
-melt [-h] [--model_name MODEL_NAME] [--dataset_name DATASET_NAME] [--use_4bit [USE_4BIT]] [--bnb_4bit_compute_dtype BNB_4BIT_COMPUTE_DTYPE]
+vieval [-h] [--model_name MODEL_NAME] [--dataset_name DATASET_NAME] [--use_4bit [USE_4BIT]] [--bnb_4bit_compute_dtype BNB_4BIT_COMPUTE_DTYPE]
               [--bnb_4bit_quant_type BNB_4BIT_QUANT_TYPE] [--use_nested_quant [USE_NESTED_QUANT]] [--lang LANG] [--dataset_dir DATASET_DIR] [--config_dir CONFIG_DIR]
               [--output_dir OUTPUT_DIR] [--output_eval_dir OUTPUT_EVAL_DIR] [--per_device_eval_batch_size PER_DEVICE_EVAL_BATCH_SIZE] [--ms_hub_token MS_HUB_TOKEN]
               [--hf_hub_token HF_HUB_TOKEN] [--smoke_test [SMOKE_TEST]] [--fewshot_prompting [FEWSHOT_PROMPTING]] [--num_fs NUM_FS] [--seed SEED]
@@ -536,43 +245,14 @@ options:
                         p bootstrap (default: 1.0)
   --bs BS               Bias metric (default: 128)
 ```
-## Scope
 
-### In Scope
+## Q&A
+Our software is designed to offer comprehensive functionality for evaluating large language models (LLMs). It includes a range of metrics and analyses to assess LLM performance across different languages. The software supports flexible datasets, allowing users to load data from various formats, either locally or from the Hugging Face Hub. Additionally, it provides customizable prompting options, enabling users to define and select multiple prompt templates tailored to specific tasks. To accommodate different user preferences, the software is compatible with various LLM wrappers, including Hugging Face Transformers, Text Generation Inference, OpenAI, and Gemini.
 
-- **Comprehensive LLM Evaluation:** Provides a suite of metrics and analyses for evaluating LLM performance in a specific language.
-- **Dataset Flexibility:** Supports various dataset formats and loading from local files or Hugging Face Hub.
-- **Customizable Prompting:** Allows defining and selecting from multiple prompt templates for different tasks.
-- **Multiple LLM Wrappers:** Supports running evaluations with different LLM wrappers (Hugging Face Transformers, Text Generation Inference, OpenAI, Gemini).
+However, it's important to note that some functionalities fall outside the scope of our software. Specifically, it does not support LLM training; the focus is solely on evaluation. Furthermore, while the tool can provide valuable insights for model fine-tuning, it does not offer automatic hyperparameter optimization for LLMs.
 
-### Out of Scope
+If you encounter any issues, please submit them via our GitHub page at [https://github.com/stair-lab/melt/issues](https://github.com/stair-lab/melt/issues). This project is licensed under the MIT License—details can be found in the [LICENSE](./LICENSE) file. We follow the MELT Code of Conduct, outlined in the [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) file. If you find this project helpful, please consider citing us in your work.
 
-- **LLM Training:** This tool focuses on evaluation and does not provide LLM training capabilities. 
-- **Automatic Hyperparameter Optimization:** While the evaluation results can guide fine-tuning, this tool does not offer automatic hyperparameter optimization for LLMs.
-
-## Contributing
-
-We welcome contributions from the community! Please refer to our [Contributor Guide](./CONTRIBUTING.md) to get started.
-
-## Communications
-
-- **GitHub Issues:** [https://github.com/stair-lab/melt/issues](https://github.com/stair-lab/melt/issues)
-
-**We are actively working on establishing more communication channels.**
-
-## Resources
-
-- **Leaderboard:** [https://ai.stanford.edu/~sttruong/MELT](https://ai.stanford.edu/~sttruong/melt)
-
-## License
-
-This project is licensed under MIT - see the [LICENSE](./LICENSE) file for details.
-
-## Conduct
-
-We adhere to the MELT Code of Conduct - see the [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) file for details. 
-
-## Citation
 ```
 @inproceedings{crossing2024,
     title = "Crossing Linguistic Horizons: Finetuning and Comprehensive Evaluation of Vietnamese Large Language Models",
@@ -582,7 +262,5 @@ We adhere to the MELT Code of Conduct - see the [CODE_OF_CONDUCT.md](./CODE_OF_C
     year = "2024",
     address = "Seattle, Washington",
     publisher = "Association for Computational Linguistics",
-    url = "",
-    pages = "",
 }
 ```
