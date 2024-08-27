@@ -1,5 +1,6 @@
 import spacy
 import nltk
+from .cli import main
 
 nltk.download('punkt_tab')
 try:
@@ -12,6 +13,5 @@ except OSError:
     from spacy.cli import download
 
     download("en_core_web_sm")
-from .cli import main
 
 main()
