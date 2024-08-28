@@ -53,6 +53,10 @@ MELT utilizes various metrics to ensure comprehensive evaluation:
 
 Explore MELT’s performance leaderboard at [​​https://ai.stanford.edu/~sttruong/villm/](https://ai.stanford.edu/~sttruong/villm/).
 
+##Dataset Generation with MELT-chat
+
+In addition to the aforementioned resources, we offer MELT-chat, an interactive user interface designed to facilitate dataset generation through direct interaction with large language models (LLMs). MELT-chat empowers users to engage in conversations with various LLMs and leverage their capabilities to produce tailored datasets. Users can interact with the language model in [here](https://www.ura.hcmut.edu.vn/melt/). For more details, please refer to [MELT-chat](https://github.com/stair-lab/fastchat). 
+
 ## Configuration
 To get started, install the package:
 ```bash
@@ -245,7 +249,6 @@ options:
                         p bootstrap (default: 1.0)
   --bs BS               Bias metric (default: 128)
 ```
-
 ## Q&A
 Our software is designed to offer comprehensive functionality for evaluating large language models (LLMs). It includes a range of metrics and analyses to assess LLM performance across different languages. The software supports flexible datasets, allowing users to load data from various formats, either locally or from the Hugging Face Hub. Additionally, it provides customizable prompting options, enabling users to define and select multiple prompt templates tailored to specific tasks. To accommodate different user preferences, the software is compatible with various LLM wrappers, including Hugging Face Transformers, Text Generation Inference, OpenAI, and Gemini.
 
