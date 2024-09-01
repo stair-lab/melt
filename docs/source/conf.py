@@ -1,71 +1,65 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+onfiguration file for the Sphinx documentation builder.
 
-# -- Path setup --------------------------------------------------------------
+This file contains a selection of common options. For a complete list,
+refer to the Sphinx documentation:
+https://www.sphinx-doc.org/en/master/usage/configuration.html
+"""
 
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
 import datetime
 import os
 import sys
 
+# -- Path setup --------------------------------------------------------------
 sys.path.insert(0, os.path.abspath("../../src"))
 
 # -- Project information -----------------------------------------------------
-
-project = "MELTs"
-author = "Thu Nguyen Hoang Anh"
-copyright = "{}, {}".format(datetime.datetime.now().year, author)
+PROJECT_NAME = "MELTs"
+AUTHOR_NAME = "Thu Nguyen Hoang Anh"
+COPYRIGHT_YEAR = datetime.datetime.now().year
+COPYRIGHT_TEXT = f"{COPYRIGHT_YEAR}, {AUTHOR_NAME}"
 
 # The full version, including alpha/beta/rc tags
-release = "0.1"
-
+RELEASE_VERSION = "0.1"
 
 # -- General configuration ---------------------------------------------------
-
-master_doc = "index"
+# The master document is the root document for the documentation.
+MASTER_DOC = "index"
 
 # Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
-extensions = [
+# extensions coming with Sphinx (e.g., 'sphinx.ext.*') or custom extensions.
+EXTENSIONS = [
     "sphinx.ext.duration",
     "sphinx.ext.autodoc",
     "sphinx.ext.coverage",
     "sphinx_rtd_theme",
     "sphinx.ext.doctest",
+    # Uncomment these extensions if needed
+    # "sphinx.ext.viewcode",  # To include source code in documentation
+    # "sphinx.ext.napoleon",  # For Google-style and NumPy-style docstrings
 ]
 
-autodoc_mock_imports = ["pyemd"]
+# Mock imports to avoid errors when certain modules are not available
+AUTODOC_MOCK_IMPORTS = ["pyemd"]
 
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ["_templates"]
+# Add paths that contain templates here, relative to this directory.
+TEMPLATES_PATH = ["_templates"]
 
-# apidoc_module_dir = '../../src/melt/'
-# apidoc_output_dir = 'api'
-# apidoc_excluded_paths = []
-# apidoc_separate_modules = True
+# Uncomment and configure the following lines if using `apidoc`
+# APIDOC_MODULE_DIR = '../../src/melt/'
+# APIDOC_OUTPUT_DIR = 'api'
+# APIDOC_EXCLUDED_PATHS = []
+# APIDOC_SEPARATE_MODULES = True
 
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+# List of patterns to ignore when looking for source files
+EXCLUDE_PATTERNS = ['_build', 'Thumbs.db', '.DS_Store']
 
-autodoc_member_order = "alphabetical"
+# Order of members in autodoc documentation
+AUTODOC_MEMBER_ORDER = "alphabetical"
 
 # -- Options for HTML output -------------------------------------------------
+# The theme to use for HTML and HTML Help pages
+HTML_THEME = "sphinx_rtd_theme"
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = "sphinx_rtd_theme"
-
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+# Add any paths that contain custom static files (e.g., style sheets) here,
+# relative to this directory. These files are copied after the built-in static files.
+HTML_STATIC_PATH = ["_static"]
