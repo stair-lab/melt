@@ -53,7 +53,23 @@ MELT utilizes various metrics to ensure comprehensive evaluation:
 
 Explore MELT’s performance leaderboard at [​​https://ai.stanford.edu/~sttruong/villm/](https://ai.stanford.edu/~sttruong/villm/).
 
-##Dataset Generation with MELT-chat
+## MELT Compatibility with Existing Evaluation Framework
+| **Features** | **MELT** | [**HELM**](https://github.com/stanford-crfm/helm) | [**LM Evaluation Hardness**](https://github.com/EleutherAI/lm-evaluation-harness) | [**DeepEval**l](https://github.com/confident-ai/deepeval) | [**MLflow LLM Evaluate**](https://mlflow.org/docs/latest/llms/llm-evaluate/index.html) | [**Phoenix**](https://github.com/Arize-ai/phoenix) |
+| :------------------------: | :---------:| :---------:  | :-----:  | :-------:  | :-----:   | :-----:  |
+| Support non-English languages | ✅  | - | - |  - | ✅ | ✅  |
+| Support human evaluation |  ✅ | - |  - |  - | - | - |
+| Unique tasks | 10 | ~10 |  ~5   | - | -  | -  |
+| Different scenarios | 5 | 5  | - | - | - | -  |
+| Support LLM Deployment | All common deployments | All common deployments | HuggingFace | Llama Index | - | All common deployments |
+| Automatic Prompt design | Planned | - | - | - | - | - |
+| Running command | `melt --args` | `helm-run --args` | `lm_eval --args` | use in code | `mlflow run --args` | use in code |
+
+Example running commands
+| **MELT** | [**HELM**](https://github.com/stanford-crfm/helm) | [**LM Evaluation Hardness**](https://github.com/EleutherAI/lm-evaluation-harness) |
+| :-----:  | :---------:  | :-----:  |
+| ```melt --wtype hf --model_name meta-llama/Meta-Llama-3.1-8B-Instruct --dataset_name zalo_e2eqa --lang vi``` | ```helm-run --conf-paths run_entries.conf --suite v1``` | ```lm_eval --model hf --model_args pretrained=meta-llama/Meta-Llama-3.1-8B-Instruct --tasks hellaswag  --batch_size 8``` |
+
+## Dataset Generation with MELT-chat
 
 In addition to the aforementioned resources, we offer MELT-chat, an interactive user interface designed to facilitate dataset generation through direct interaction with large language models (LLMs). MELT-chat empowers users to engage in conversations with various LLMs and leverage their capabilities to produce tailored datasets. Users can interact with the language model in [here](https://www.ura.hcmut.edu.vn/melt/). For more details, please refer to [MELT-chat](https://github.com/stair-lab/fastchat). 
 
