@@ -1,22 +1,32 @@
+"""
+This module provides utilities for applying a chat template using Jinja2.
+The chat template is rendered based on conversation data.
+"""
+
 from typing import Union, List, Optional, Dict
 from packaging import version
+import jinja2
+from jinja2.exceptions import TemplateError
+from jinja2.sandbox import ImmutableSandboxedEnvironment
 
 
 def _compile_jinja_template(chat_template):
-    try:
-        import jinja2
-        from jinja2.exceptions import TemplateError
-        from jinja2.sandbox import ImmutableSandboxedEnvironment
-    except ImportError:
-        raise ImportError(
-            "apply_chat_template requires jinja2 to be installed."
-        )
+    """
+    Compiles the given Jinja2 chat template.
 
+    Args:
+        chat_template (str): The chat template in string format.
+
+    Returns:
+        Template: A compiled Jinja2 template object.
+
+    Raises:
+        ImportError: If Jinja2 is not installed or the version is less than 3.0.0.
+    """
     if version.parse(jinja2.__version__) < version.parse("3.0.0"):
         raise ImportError(
-            "apply_chat_template requires jinja2>=3.0.0 to be installed. \
-                Your version is "
-            f"{jinja2.__version__}."
+            "apply_chat_template requires jinja2>=3.0.0 to be installed. "
+            f"Your version is {jinja2.__version__}."
         )
 
     def raise_exception(message):
@@ -36,7 +46,17 @@ def apply_chat_template(
     chat_template: Optional[str] = None,
     add_generation_prompt: bool = True,
 ) -> Union[str]:
+    """
+    Applies a chat template to a conversation or a list of conversations.
 
+    Args:
+        conversation (Union[List[Dict[str, str]], List[List[Dict[str, str]]]]): The conversation data.
+        chat_template (Optional[str]): The Jinja2 chat template to use.
+        add_generation_prompt (bool): Whether to add a generation prompt to the output.
+
+    Returns:
+        Union[str]: The rendered chat conversation(s) as a string.
+    """
     # Compilation function uses a cache to avoid recompiling the same template
     compiled_template = _compile_jinja_template(chat_template["template"])
 
