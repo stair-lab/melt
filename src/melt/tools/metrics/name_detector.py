@@ -2,14 +2,24 @@
 This module provides functionality for detecting names in text using natural
 language processing techniques.
 """
-
 import os
 import re
-
-from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
-from underthesea import sent_tokenize
 import torch
-import spacy
+
+try:
+    from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
+except ImportError:
+    print("The 'transformers' library is not installed. Please pip install transformers'.")
+
+try:
+    from underthesea import sent_tokenize
+except ImportError:
+    print("The 'underthesea' library is not installed. Please'pip install underthesea'.")
+
+try:
+    import spacy
+except ImportError:
+    print("The 'spacy' library is not installed. Please 'pip install spacy'.")
 
 # Load the core English NLP library
 nlp = spacy.load("en_core_web_sm")
