@@ -25,10 +25,23 @@ Example:
 import copy
 from typing import Dict
 
-from vllm import LLM, SamplingParams
+try:
+    from vllm import LLM, SamplingParams
+except ModuleNotFoundError as e:
+    print(f"Module 'vllm' not found: {e}")
+except ImportError as e:
+    print(f"Failed to import 'LLM' or 'SamplingParams' from 'vllm': {e}")
+
+
 
 from .BaseWrapper import BaseWrapper
-from ..utils.chat_template import apply_chat_template
+
+try:
+    from ..utils.chat_template import apply_chat_template
+except ModuleNotFoundError as e:
+    print(f"Module 'utils.chat_template' not found: {e}")
+except ImportError as e:
+    print(f"Failed to import 'apply_chat_template' from 'utils.chat_template': {e}")
 
 
 
