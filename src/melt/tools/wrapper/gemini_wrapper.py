@@ -5,8 +5,23 @@ handling prompts.
 """
 
 import os
-import backoff
-import google.generativeai as genai
+try:
+    import backoff
+except ModuleNotFoundError as e:
+    print(f"Module 'backoff' not found: {e}")
+except ImportError as e:
+    print(f"Failed to import the 'backoff' module: {e}")
+
+
+
+try:
+    import google.generativeai as genai
+except ModuleNotFoundError as e:
+    print(f"Module 'google.generativeai' not found: {e}")
+except ImportError as e:
+    print(f"Failed to import 'google.generativeai': {e}")
+
+
 
 
 
