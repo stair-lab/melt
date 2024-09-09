@@ -21,9 +21,24 @@ Usage:
 """
 import os
 import copy
-import backoff
+
+try:
+    import backoff
+except ImportError as e:
+    print(f"Failed to import the 'backoff' module: {e}")
+
+
 import requests
-from transformers import AutoTokenizer
+
+try:
+    from transformers import AutoTokenizer
+except ModuleNotFoundError as e:
+    print(f"Module 'transformers' not found: {e}")
+except ImportError as e:
+    print(f"Failed to import 'AutoTokenizer' from 'transformers': {e}")
+
+
+
 from utils.chat_template import apply_chat_template
 from .BaseWrapper import BaseWrapper
 
