@@ -7,8 +7,21 @@ import copy
 import torch
 
 from .BaseWrapper import BaseWrapper
-from ..utils.chat_template import apply_chat_template
-from ..utils.model import get_model
+
+try:
+    from ..utils.model import get_model
+except ModuleNotFoundError as e:
+    print(f"Module not found: {e}")
+except ImportError as e:
+    print(f"Import error occurred: {e}")
+
+
+try:
+    from ..utils.chat_template import apply_chat_template
+except ModuleNotFoundError as e:
+    print(f"Module not found: {e}")
+except ImportError as e:
+    print(f"Import error occurred: {e}")
 
 
 class HFWrapper(BaseWrapper):
