@@ -2,8 +2,23 @@
 This module provides the OpenAIWrapper class for interacting with OpenAI's
 API with retry capabilities and custom configurations.
 """
-import openai
-import backoff
+try:
+    import openai
+except ModuleNotFoundError as e:
+    print(f"Module not found: {e}")
+except ImportError as e:
+    print(f"Import error occurred: {e}")
+
+
+try:
+    import backoff
+except ModuleNotFoundError as e:
+    print(f"Module not found: {e}")
+except ImportError as e:
+    print(f"Import error occurred: {e}")
+
+
+
 from .BaseWrapper import BaseWrapper
 
 
