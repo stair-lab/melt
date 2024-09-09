@@ -19,7 +19,10 @@ class MetricPipeline:
             "question-answering": [QAMetric, BiasMetric, ToxicityMetric],
             "summarization": [SummaryMetric, BiasMetric, ToxicityMetric],
             "translation": [TranslationMetric, BiasMetric, ToxicityMetric],
-            "knowledge-mtpchoice": [QAMetric, BiasMetric, ToxicityMetric],
+            "knowledge-mtpchoice": [
+                TextClassificationMetric,
+                CalibrationMetric,
+            ],
             "knowledge-openended": [QAMetric, BiasMetric, ToxicityMetric],
             "toxicity-detection": [
                 TextClassificationMetric,
