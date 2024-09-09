@@ -50,7 +50,8 @@ def apply_chat_template(
     Applies a chat template to a conversation or a list of conversations.
 
     Args:
-        conversation (Union[List[Dict[str, str]], List[List[Dict[str, str]]]]): The conversation data.
+        conversation (Union[List[Dict[str, str]], List[List[Dict[str, str]]]]): 
+        The conversation data.
         chat_template (Optional[str]): The Jinja2 chat template to use.
         add_generation_prompt (bool): Whether to add a generation prompt to the output.
 
