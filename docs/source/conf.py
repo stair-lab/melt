@@ -1,10 +1,14 @@
 """
 Configuration file for the Sphinx documentation builder.
+
+This file contains a selection of the most common options.
+For a full list, see the documentation:
+https://www.sphinx-doc.org/en/master/usage/configuration.html
 """
 
-import datetime
 import os
 import sys
+from datetime import datetime
 
 # -- Path setup --------------------------------------------------------------
 
@@ -43,10 +47,8 @@ TEMPLATES_PATH = ["_templates"]
 # Patterns to ignore when looking for source files
 EXCLUDE_PATTERNS = []
 
-# Member order in autodoc
+# Sort members alphabetically in the autodoc
 AUTODOC_MEMBER_ORDER = "alphabetical"
-
-# -- Options for HTML output -------------------------------------------------
 
 # Theme to use for HTML and HTML Help pages
 HTML_THEME = "sphinx_rtd_theme"

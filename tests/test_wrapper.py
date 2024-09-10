@@ -85,6 +85,5 @@ class TestWrapper(unittest.TestCase):
         dataset_name = "zalo_e2eqa"
         self.run_melt_command(dataset_name, "vllm")
 
-
 if __name__ == "__main__":
     unittest.main()

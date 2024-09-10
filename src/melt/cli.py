@@ -60,6 +60,16 @@ def main():
         None
     """
     load_dotenv()
+
+    # Ensure spaCy model is available
+    ensure_spacy_model()
+
+    # Parse command-line arguments
     parser = HfArgumentParser(ScriptArguments)
     args = parser.parse_args_into_dataclasses()[0]
+
+    # Execute the generation function with parsed arguments
     generation(args)
+
+if __name__ == "__main__":
+    main()

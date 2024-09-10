@@ -16,33 +16,38 @@ class TestTasks(unittest.TestCase):
         self.model_name = "Qwen/Qwen2-0.5B-Instruct"
         self.ptemplate = "chatglm"
         self.wrapper_type = "vllm"
-        self.lang = "vi"  # Set the lang argument to "vi"
-        self.seed = 42  # Set the seed to 42
-        self.smoke_test = True  # Set the smoke_test argument to True
+        self.lang = "vi"
+        self.seed = 42
+        self.smoke_test = True
 
     def run_melt_command(self, dataset_name):
-        result = subprocess.run(
-            [
-                "melt",
-                "--wtype",
-                self.wrapper_type,
-                "--model_name",
-                self.model_name,
-                "--dataset_name",
-                dataset_name,
-                "--ptemplate",
-                self.ptemplate,
-                "--lang",
-                self.lang,
-                "--seed",
-                str(self.seed),
-                "--smoke_test",
-                str(self.smoke_test),
-            ],
-            capture_output=True,
-            text=True,
-        )
-        self.assertEqual(result.returncode, 0)
+        """
+        Run the melt command with given dataset name and verify it executes successfully.
+
+        Args:
+            dataset_name (str): Name of the dataset to use with the melt command.
+
+        Raises:
+            AssertionError: If the command fails with a non-zero exit code.
+        """
+        command = [
+            "melt",
+            "--wtype", self.wrapper_type,
+            "--model_name", self.model_name,
+            "--dataset_name", dataset_name,
+            "--ptemplate", self.ptemplate,
+            "--lang", self.lang,
+            "--seed", str(self.seed),
+            "--smoke_test", str(self.smoke_test)
+        ]
+        
+        result = subprocess.run(command, capture_output=True, text=True)
+
+        # Provide detailed error information if the command fails
+        if result.returncode != 0:
+            self.fail(f"Command failed for dataset '{dataset_name}' with exit code {result.returncode}\n"
+                      f"stdout: {result.stdout}\n"
+                      f"stderr: {result.stderr}")
 
     def test_sentiment_analysis(self):
         """Test sentiment analysis task."""
