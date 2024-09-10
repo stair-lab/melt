@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Optional, Literal
 
 
 @dataclass
@@ -87,6 +87,13 @@ class ScriptArguments:
     )
     fewshot_prompting: Optional[bool] = field(
         default=False, metadata={"help": "Enable few-shot prompting"}
+    )
+    prompt_type: Literal["normal", "weaker", "medium"] = field(
+        default="normal",
+        metadata={"help": "Prompting type: normal, weaker, medium"},
+    )
+    category: Literal["zero-shot", "few-shot", "robustness-aware", "fairness-aware", "chain-of-thought", "randomized-choice"] = field(
+        default="zero-shot",
     )
     num_fs: Optional[int] = field(
         default=5, metadata={"help": "Number of samples for few-shot learning"}

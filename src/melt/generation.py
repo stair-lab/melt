@@ -18,11 +18,20 @@ def generation(script_args):
             dataset_wrapper.dataset_testing.select(range(n_examples))
         )
     ds_exact_name = (
-        script_args.dataset_name.split("/")[-1]
+        script_args.lang
         + "_"
-        + script_args.model_name.split("/")[-1]
+        + dataset_wrapper.dataset_info.task
+        + "_"
+        + script_args.dataset_name.split("/")[-1].replace("_", "-")
+        + "_"
+        + script_args.model_name.split("/")[-1].replace("_","-")
+        + "_"
+        + script_args.prompt_type
+        + "_"
+        + script_args.category
+        + "_"
+        + f"script_args.num_fs-shot"
         + f"_pt{dataset_wrapper.prompting_strategy}"
-        + ("_fewshot" if script_args.fewshot_prompting else "")
         + f"_seed{script_args.seed}"
     )
 
@@ -30,7 +39,7 @@ def generation(script_args):
         script_args.output_dir, f"generations_{ds_exact_name}.json"
     )
     metric_file = os.path.join(
-        script_args.output_eval_dir, f"metrics_{ds_exact_name}.json"
+        script_args.output_eval_dir, f"{ds_exact_name}.json"
     )
 
     # Save results
