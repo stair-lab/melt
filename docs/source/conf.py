@@ -1,39 +1,31 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# This file only contains a selection of the most common options. For a full
-# list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+"""
+Configuration file for the Sphinx documentation builder.
 
-# -- Path setup --------------------------------------------------------------
+This file contains a selection of the most common options.
+For a full list, see the documentation:
+https://www.sphinx-doc.org/en/master/usage/configuration.html
+"""
 
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-import datetime
 import os
 import sys
+from datetime import datetime
 
+# Path setup
 sys.path.insert(0, os.path.abspath("../../src"))
 
-# -- Project information -----------------------------------------------------
-
-project = "MELTs"
-author = "Thu Nguyen Hoang Anh"
-copyright = "{}, {}".format(datetime.datetime.now().year, author)
+# Project information
+PROJECT = "MELTs"
+AUTHOR = "Thu Nguyen Hoang Anh"
+COPYRIGHT = f"{datetime.now().year}, {AUTHOR}"
 
 # The full version, including alpha/beta/rc tags
-release = "0.1"
+RELEASE = "0.1"
 
+# General configuration
+MASTER_DOC = "index"
 
-# -- General configuration ---------------------------------------------------
-
-master_doc = "index"
-
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
-extensions = [
+# Sphinx extension modules as strings, can be built-in or custom
+EXTENSIONS = [
     "sphinx.ext.duration",
     "sphinx.ext.autodoc",
     "sphinx.ext.coverage",
@@ -41,31 +33,20 @@ extensions = [
     "sphinx.ext.doctest",
 ]
 
-autodoc_mock_imports = ["pyemd"]
+# List of modules to mock during autodoc generation
+AUTODOC_MOCK_IMPORTS = ["pyemd"]
 
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ["_templates"]
+# Paths that contain templates
+TEMPLATES_PATH = ["_templates"]
 
-# apidoc_module_dir = '../../src/melt/'
-# apidoc_output_dir = 'api'
-# apidoc_excluded_paths = []
-# apidoc_separate_modules = True
+# List of patterns to ignore when looking for source files
+EXCLUDE_PATTERNS = []
 
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+# Sort members alphabetically in the autodoc
+AUTODOC_MEMBER_ORDER = "alphabetical"
 
-autodoc_member_order = "alphabetical"
+# Options for HTML output
+HTML_THEME = "sphinx_rtd_theme"
 
-# -- Options for HTML output -------------------------------------------------
-
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = "sphinx_rtd_theme"
-
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+# Paths for custom static files (like style sheets)
+HTML_STATIC_PATH = ["_static"]

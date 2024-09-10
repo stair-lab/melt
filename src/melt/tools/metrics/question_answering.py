@@ -1,3 +1,10 @@
+"""
+This module contains the QAMetric class, which evaluates the performance
+of a question-answering (QA) system by calculating F1 scores and exact match scores
+between predictions and references.
+The QAMetric class inherits from the BaseMetric class and implements the
+evaluate method to compute these metrics.
+"""
 from typing import Dict
 import numpy as np
 from .basic_metrics import exact_match, f1_score
