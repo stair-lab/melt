@@ -11,7 +11,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger("nlp_utils")
 
-
 def download_nltk_resources() -> NoReturn:
     """Download the necessary NLTK resources.
 

@@ -1,6 +1,7 @@
 import subprocess
 import unittest
 
+
 class TestTasks(unittest.TestCase):
     """
     Unit tests for various tasks using the melt command-line tool.

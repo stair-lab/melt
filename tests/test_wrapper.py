@@ -1,6 +1,7 @@
 import subprocess
 import unittest
 
+
 class TestWrapper(unittest.TestCase):
     """
     Unit tests for various wrappers used with the melt command-line tool.
@@ -79,5 +80,6 @@ class TestWrapper(unittest.TestCase):
         """Test vllm wrapper."""
         self.run_melt_command("zalo_e2eqa", "vllm")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
