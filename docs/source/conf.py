@@ -10,43 +10,53 @@ import os
 import sys
 from datetime import datetime
 
-# Path setup
+# -- Path setup --------------------------------------------------------------
+
+# Add the path to your source code here.
 sys.path.insert(0, os.path.abspath("../../src"))
 
-# Project information
+# -- Project information -----------------------------------------------------
+
 PROJECT = "MELTs"
 AUTHOR = "Thu Nguyen Hoang Anh"
-COPYRIGHT = f"{datetime.now().year}, {AUTHOR}"
+COPYRIGHT = f"{datetime.datetime.now().year}, {AUTHOR}"
 
-# The full version, including alpha/beta/rc tags
-RELEASE = "0.1"
+# The version info for the project
+VERSION = "0.1"  # Short version (e.g., '0.1')
+RELEASE = "0.1"  # Full version (e.g., '0.1.0')
 
-# General configuration
-MASTER_DOC = "index"
+# -- General configuration ---------------------------------------------------
 
-# Sphinx extension modules as strings, can be built-in or custom
+MASTER_DOC = "index"  # The name of the master document
+
+# Sphinx extensions to use
 EXTENSIONS = [
-    "sphinx.ext.duration",
-    "sphinx.ext.autodoc",
-    "sphinx.ext.coverage",
-    "sphinx_rtd_theme",
-    "sphinx.ext.doctest",
+    "sphinx.ext.duration",  # Measure build time
+    "sphinx.ext.autodoc",   # Include documentation from docstrings
+    "sphinx.ext.coverage",  # Check for documentation coverage
+    "sphinx.ext.doctest",   # Test embedded doctests
+    "sphinx_rtd_theme",     # Read the Docs theme
 ]
 
-# List of modules to mock during autodoc generation
+# Mock import for autodoc
 AUTODOC_MOCK_IMPORTS = ["pyemd"]
 
 # Paths that contain templates
 TEMPLATES_PATH = ["_templates"]
 
-# List of patterns to ignore when looking for source files
+# Patterns to ignore when looking for source files
 EXCLUDE_PATTERNS = []
 
 # Sort members alphabetically in the autodoc
 AUTODOC_MEMBER_ORDER = "alphabetical"
 
-# Options for HTML output
+# Theme to use for HTML and HTML Help pages
 HTML_THEME = "sphinx_rtd_theme"
 
-# Paths for custom static files (like style sheets)
+# Theme options for customizing the appearance of the theme
+HTML_THEME_OPTIONS = {
+    # You can add theme-specific options here
+}
+
+# Paths that contain custom static files (e.g., style sheets)
 HTML_STATIC_PATH = ["_static"]

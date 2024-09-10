@@ -1,3 +1,14 @@
+"""
+This script initializes NLP models and runs the main function from the 'cli' module.
+
+The script performs the following tasks:
+1. Downloads the 'punkt' tokenizer models using nltk.
+2. Loads the spaCy 'en_core_web_sm' model, downloading it if necessary.
+3. Imports and executes the 'main' function from the 'cli' module.
+
+If any module or function cannot be imported, appropriate error messages are displayed.
+"""
+
 import logging
 import spacy
 import nltk

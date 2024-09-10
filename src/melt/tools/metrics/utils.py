@@ -1,3 +1,7 @@
+"""
+This module provides utilities for text normalization and 
+fragments matching, particularly for summarization tasks.
+"""
 from collections import namedtuple as _namedtuple
 
 
@@ -38,7 +42,11 @@ def normalize(tokens, case=False):
 
 
 class Fragments:
-
+    """
+    A class to compute and analyze matches between summary 
+    and reference text, including coverage, density, 
+    and compression metrics.
+    """
     Match = _namedtuple("Match", ("summary", "text", "length"))
 
     def __init__(self, summary, text, case=False):
@@ -146,8 +154,7 @@ class Fragments:
 
         if denominator == 0:
             return 0
-        else:
-            return numerator / denominator
+        return numerator / denominator
 
     def density(self, summary_base=True):
         """
@@ -173,8 +180,7 @@ class Fragments:
 
         if denominator == 0:
             return 0
-        else:
-            return numerator / denominator
+        return numerator / denominator
 
     def compression(self, text_to_summary=True):
         """
@@ -198,8 +204,7 @@ class Fragments:
 
             if text_to_summary:
                 return ratio[0] / ratio[1]
-            else:
-                return ratio[1] / ratio[0]
+            return ratio[1] / ratio[0]
 
         except ZeroDivisionError:
 

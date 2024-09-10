@@ -1,16 +1,18 @@
+"""
+This module contains a test suite for evaluating various tasks
+using the MELT command-line interface with different datasets.
+"""
+
 import subprocess
 import unittest
 
 
 class TestTasks(unittest.TestCase):
-    """
-    Unit tests for various tasks using the melt command-line tool.
-    """
+    """Test suite for evaluating various tasks using the MELT command-line interface."""
 
-    def setUp(self):
-        """
-        Set up test parameters that are used across all test cases.
-        """
+    def __init__(self, *args, **kwargs):
+        """Initialize the test with default model settings."""
+        super().__init__(*args, **kwargs)
         self.model_name = "Qwen/Qwen2-0.5B-Instruct"
         self.ptemplate = "chatglm"
         self.wrapper_type = "vllm"
@@ -49,47 +51,58 @@ class TestTasks(unittest.TestCase):
 
     def test_sentiment_analysis(self):
         """Test sentiment analysis task."""
-        self.run_melt_command("UIT-VSFC")
+        dataset_name = "UIT-VSFC"
+        self.run_melt_command(dataset_name)
 
     def test_text_classification(self):
         """Test text classification task."""
-        self.run_melt_command("UIT-VSMEC")
+        dataset_name = "UIT-VSMEC"
+        self.run_melt_command(dataset_name)
 
     def test_toxic_detection(self):
         """Test toxic detection task."""
-        self.run_melt_command("ViHSD")
+        dataset_name = "ViHSD"
+        self.run_melt_command(dataset_name)
 
     def test_reasoning(self):
         """Test reasoning task."""
-        self.run_melt_command("synthetic_natural_azr")
+        dataset_name = "synthetic_natural_azr"
+        self.run_melt_command(dataset_name)
 
     def test_open_ended_knowledge(self):
         """Test open-ended knowledge task."""
-        self.run_melt_command("zalo_e2eqa")
+        dataset_name = "zalo_e2eqa"
+        self.run_melt_command(dataset_name)
 
     def test_multiple_choice_knowledge(self):
         """Test multiple choice knowledge task."""
-        self.run_melt_command("ViMMRC")
+        dataset_name = "ViMMRC"
+        self.run_melt_command(dataset_name)
 
     def test_math(self):
         """Test math task."""
-        self.run_melt_command("math_level1_azr")
+        dataset_name = "math_level1_azr"
+        self.run_melt_command(dataset_name)
 
     def test_translation(self):
         """Test translation task."""
-        self.run_melt_command("opus100_envi")
+        dataset_name = "opus100_envi"
+        self.run_melt_command(dataset_name)
 
     def test_summarization(self):
         """Test summarization task."""
-        self.run_melt_command("wiki_lingua")
+        dataset_name = "wiki_lingua"
+        self.run_melt_command(dataset_name)
 
     def test_question_answering(self):
         """Test question answering task."""
-        self.run_melt_command("xquad_xtreme")
+        dataset_name = "xquad_xtreme"
+        self.run_melt_command(dataset_name)
 
     def test_information_retrieval(self):
         """Test information retrieval task."""
-        self.run_melt_command("mmarco")
+        dataset_name = "mmarco"
+        self.run_melt_command(dataset_name)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
