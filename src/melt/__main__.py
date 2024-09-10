@@ -24,8 +24,6 @@ else:
 nltk.download('punkt')
 
 
-
-
 try:
     import spacy
 except ImportError as import_error:

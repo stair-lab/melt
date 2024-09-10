@@ -5,6 +5,7 @@ Unit tests for the wrapper functionality using the 'melt' command.
 import subprocess
 import unittest
 
+
 class TestWrapper(unittest.TestCase):
     """
     Test cases for various wrapper types using the 'melt' command.
@@ -30,9 +31,21 @@ class TestWrapper(unittest.TestCase):
             wrapper_type (str): The type of wrapper to use.
         """
         command = [
-            "melt", "--wtype", wrapper_type, "--model_name", self.model_name,
-            "--dataset_name", dataset_name, "--ptemplate", self.ptemplate,
-            "--lang", self.lang, "--seed", str(self.seed), "--smoke_test", str(self.smoke_test)
+            "melt",
+            "--wtype",
+            wrapper_type,
+            "--model_name",
+            self.model_name,
+            "--dataset_name",
+            dataset_name,
+            "--ptemplate",
+            self.ptemplate,
+            "--lang",
+            self.lang,
+            "--seed",
+            str(self.seed),
+            "--smoke_test",
+            str(self.smoke_test),
         ]
         result = subprocess.run(command, capture_output=True, text=True, check=True)
         self.assertEqual(result.returncode, 0)
@@ -72,5 +85,6 @@ class TestWrapper(unittest.TestCase):
         dataset_name = "zalo_e2eqa"
         self.run_melt_command(dataset_name, "vllm")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

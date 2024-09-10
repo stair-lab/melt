@@ -6,6 +6,7 @@ using the MELT command-line interface with different datasets.
 import subprocess
 import unittest
 
+
 class TestTasks(unittest.TestCase):
     """Test suite for evaluating various tasks using the MELT command-line interface."""
 
@@ -20,12 +21,27 @@ class TestTasks(unittest.TestCase):
         self.smoke_test = True  # Set the smoke_test argument to True
 
     def run_melt_command(self, dataset_name):
-        """Run the MELT command with the given dataset name."""
         result = subprocess.run(
-            ["melt", "--wtype", self.wrapper_type, "--model_name", self.model_name,
-             "--dataset_name", dataset_name, "--ptemplate", self.ptemplate, "--lang",
-             self.lang, "--seed", str(self.seed), "--smoke_test", str(self.smoke_test)],
-            capture_output=True, text=True, check=True)
+            [
+                "melt",
+                "--wtype",
+                self.wrapper_type,
+                "--model_name",
+                self.model_name,
+                "--dataset_name",
+                dataset_name,
+                "--ptemplate",
+                self.ptemplate,
+                "--lang",
+                self.lang,
+                "--seed",
+                str(self.seed),
+                "--smoke_test",
+                str(self.smoke_test),
+            ],
+            capture_output=True,
+            text=True,
+        )
         self.assertEqual(result.returncode, 0)
 
     def test_sentiment_analysis(self):
