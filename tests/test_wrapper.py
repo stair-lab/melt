@@ -1,6 +1,7 @@
 import subprocess
 import unittest
 
+
 class TestWrapper(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestWrapper, self).__init__(*args, **kwargs)
@@ -11,7 +12,27 @@ class TestWrapper(unittest.TestCase):
         self.smoke_test = True  # Set the smoke_test argument to True
 
     def run_melt_command(self, dataset_name, wrapper_type):
-        result = subprocess.run(["melt", "--wtype", wrapper_type, "--model_name", self.model_name, "--dataset_name", dataset_name, "--ptemplate", self.ptemplate, "--lang", self.lang, "--seed", str(self.seed), "--smoke_test", str(self.smoke_test)], capture_output=True, text=True)
+        result = subprocess.run(
+            [
+                "melt",
+                "--wtype",
+                wrapper_type,
+                "--model_name",
+                self.model_name,
+                "--dataset_name",
+                dataset_name,
+                "--ptemplate",
+                self.ptemplate,
+                "--lang",
+                self.lang,
+                "--seed",
+                str(self.seed),
+                "--smoke_test",
+                str(self.smoke_test),
+            ],
+            capture_output=True,
+            text=True,
+        )
         self.assertEqual(result.returncode, 0)
 
     def test_wrapper_hf(self):
@@ -39,5 +60,6 @@ class TestWrapper(unittest.TestCase):
         dataset_name = "zalo_e2eqa"
         self.run_melt_command(dataset_name, "vllm")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

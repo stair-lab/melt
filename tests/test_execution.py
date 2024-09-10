@@ -1,6 +1,7 @@
 import subprocess
 import unittest
 
+
 class TestTasks(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestTasks, self).__init__(*args, **kwargs)
@@ -12,7 +13,27 @@ class TestTasks(unittest.TestCase):
         self.smoke_test = True  # Set the smoke_test argument to True
 
     def run_melt_command(self, dataset_name):
-        result = subprocess.run(["melt", "--wtype", self.wrapper_type, "--model_name", self.model_name, "--dataset_name", dataset_name, "--ptemplate", self.ptemplate, "--lang", self.lang, "--seed", str(self.seed), "--smoke_test", str(self.smoke_test)], capture_output=True, text=True)
+        result = subprocess.run(
+            [
+                "melt",
+                "--wtype",
+                self.wrapper_type,
+                "--model_name",
+                self.model_name,
+                "--dataset_name",
+                dataset_name,
+                "--ptemplate",
+                self.ptemplate,
+                "--lang",
+                self.lang,
+                "--seed",
+                str(self.seed),
+                "--smoke_test",
+                str(self.smoke_test),
+            ],
+            capture_output=True,
+            text=True,
+        )
         self.assertEqual(result.returncode, 0)
 
     def test_sentiment_analysis(self):
@@ -29,7 +50,7 @@ class TestTasks(unittest.TestCase):
         # Test toxic detection task
         dataset_name = "ViHSD"
         self.run_melt_command(dataset_name)
-        
+
     def test_reasoning(self):
         # Test reasoning task
         dataset_name = "synthetic_natural_azr"
@@ -70,5 +91,6 @@ class TestTasks(unittest.TestCase):
         dataset_name = "mmarco"
         self.run_melt_command(dataset_name)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
