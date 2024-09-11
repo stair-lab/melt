@@ -6,7 +6,7 @@ This module contains the HFWrapper class for handling text generation with Huggi
 import copy
 import torch
 
-from .BaseWrapper import BaseWrapper
+from .base_wrapper import BaseWrapper
 
 try:
     from ..utils.model import get_model
