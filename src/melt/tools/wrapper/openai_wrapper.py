@@ -19,7 +19,7 @@ except ImportError as e:
 
 
 
-from .BaseWrapper import BaseWrapper
+from .base_wrapper import BaseWrapper
 
 
 class OpenAIWrapper(BaseWrapper):
