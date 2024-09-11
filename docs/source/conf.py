@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath("../../src"))
 
 PROJECT = "MELTs"
 AUTHOR = "Thu Nguyen Hoang Anh"
-COPYRIGHT = f"{datetime.datetime.now().year}, {AUTHOR}"
+COPYRIGHT = f"{datetime.now().year}, {AUTHOR}"
 
 # The version info for the project
 VERSION = "0.1"  # Short version (e.g., '0.1')
