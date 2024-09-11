@@ -8,11 +8,11 @@ The available wrappers are:
 - HFWrapper: A wrapper for Hugging Face models.
 - VLLMWrapper: A wrapper for VLLM models.
 """
-from .OpenAIWrapper import OpenAIWrapper
-from .GeminiWrapper import GeminiWrapper
-from .TGIWrapper import TGIWrapper
-from .HFWrapper import HFWrapper
-from .VLLMWrapper import VLLMWrapper
+from .openai_wrapper import OpenAIWrapper
+from .gemini_wrapper import GeminiWrapper
+from .tgi_wrapper import TGIWrapper
+from .hf_wrapper import HFWrapper
+from .vllm_wrapper import VLLMWrapper
 
 __all__ = [
     "OpenAIWrapper",
