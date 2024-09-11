@@ -62,8 +62,6 @@ def main():
     load_dotenv()
 
     # Ensure spaCy model is available
-    ensure_spacy_model()
-
     # Parse command-line arguments
     parser = HfArgumentParser(ScriptArguments)
     args = parser.parse_args_into_dataclasses()[0]
