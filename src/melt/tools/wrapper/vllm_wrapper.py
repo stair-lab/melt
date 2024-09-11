@@ -34,7 +34,7 @@ except ImportError as e:
 
 
 
-from .BaseWrapper import BaseWrapper
+from .base_wrapper import BaseWrapper
 
 try:
     from ..utils.chat_template import apply_chat_template
