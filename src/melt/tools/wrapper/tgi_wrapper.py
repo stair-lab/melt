@@ -40,7 +40,7 @@ except ImportError as e:
 
 
 from utils.chat_template import apply_chat_template
-from .BaseWrapper import BaseWrapper
+from .base_wrapper import BaseWrapper
 
 
 
