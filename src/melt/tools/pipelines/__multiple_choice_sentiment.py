@@ -54,8 +54,8 @@ class MultipleChoiceSentimentPipeline:
         self.metric_pipeline = metric_pipeline
         self.infer_pipeline = infer_pipeline
 
-    def run(self, ds_wrapper: DatasetWrapper, ds_loader: Any,
-            saving_fn: Callable, start_idx: int = 0) -> None:
+    def multiple_choice_sentiment(self, ds_wrapper: DatasetWrapper, ds_loader: Any,
+                                  saving_fn: Callable, start_idx: int = 0) -> None:
         """Run the multiple choice sentiment pipeline."""
         data = self._initialize_data()
         num_choice = len(ds_wrapper.dataset_info.label)
@@ -63,8 +63,7 @@ class MultipleChoiceSentimentPipeline:
             selected_sample,original_few_shot,calib_few_shot=self._prepare_few_shot_data(ds_wrapper)
         else:
             selected_sample, original_few_shot, calib_few_shot = [], [], []
-        batch_context = BatchContext(ds_wrapper, original_few_shot,
-                                     calib_few_shot, num_choice)
+        batch_context = BatchContext(ds_wrapper, original_few_shot, calib_few_shot, num_choice)
         result_context = ResultContext(data, selected_sample, ds_wrapper)
 
         for idx, batch in enumerate(tqdm(ds_loader)):
@@ -77,6 +76,11 @@ class MultipleChoiceSentimentPipeline:
                 self._save_intermediate_results(idx + 1, result_context, saving_fn)
 
         self._save_final_results(result_context, saving_fn)
+
+    # Other methods remain the same
+    def get_config(self) -> PipelineConfig:
+        """Return the current configuration of the pipeline."""
+        return self.config
 
     def analyze_results(self, result_context: ResultContext) -> Dict[str, Any]:
         """Analyze the results of the pipeline."""
