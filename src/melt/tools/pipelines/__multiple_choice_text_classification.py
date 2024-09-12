@@ -7,14 +7,18 @@ from typing import Callable, List, Dict, Any
 import random
 from dataclasses import dataclass
 from utils.utils import format_fewshot, unique
+
+
 def tqdm_fallback(iterable):
     """Fallback for tqdm if it's not installed."""
     return iterable
+
 
 try:
     from tqdm import tqdm
 except ImportError:
     tqdm = tqdm_fallback
+
 
 @dataclass
 class ClassificationConfig:
@@ -50,7 +54,7 @@ class MultipleChoiceTextClassification:
         self.infer_pipeline = infer_pipeline
         self.ds_wrapper = None
 
-    def classify(
+    def multiple_choice_text_classification(
         self,
         ds_wrapper: Any,
         ds_loader: Any,
@@ -66,7 +70,7 @@ class MultipleChoiceTextClassification:
         num_choice = len(ds_wrapper.dataset_info.label)
         few_shot_data = self.prepare_few_shot(ds_wrapper) if self.config.few_shot else None
 
-        idx = start_idx - 1  # Initialize idx before the loop
+        idx = start_idx - 1
         for idx, batch in enumerate(tqdm(ds_loader), start=start_idx):
             if idx < start_idx:
                 continue
