@@ -3,8 +3,10 @@ This module provides a wrapper class for interacting with the Gemini
 Generative Model API, including methods for generating content and
 handling prompts.
 """
-
 import os
+from requests.exceptions import RequestException
+from google.api_core.exceptions import GoogleAPIError
+
 try:
     import backoff
 except ModuleNotFoundError as e:
@@ -83,7 +85,7 @@ class GeminiWrapper:
                 response = self.chat_completions_with_backoff(concat_prompt)
                 generations.append(response.text)
                 num_generated_tokens.append(0)
-            except (backoff.BackoffError, genai.GenerativeAIError) as e:
+            except (RequestException, GoogleAPIError) as e:
                 print(str(e))
                 print(prompt)
                 generations.append("[ERROR]")
