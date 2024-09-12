@@ -40,12 +40,12 @@ class TestTasks(unittest.TestCase):
             "--seed", str(self.seed),
             "--smoke_test", str(self.smoke_test)
         ]
-        
-        result = subprocess.run(command, capture_output=True, text=True)
+        result = subprocess.run(command, capture_output=True, text=True, check=False)
 
         # Provide detailed error information if the command fails
         if result.returncode != 0:
-            self.fail(f"Command failed for dataset '{dataset_name}' with exit code {result.returncode}\n"
+            self.fail(f"Command failed for dataset '{dataset_name}' "
+                      f"with exit code {result.returncode}\n"
                       f"stdout: {result.stdout}\n"
                       f"stderr: {result.stderr}")
 
