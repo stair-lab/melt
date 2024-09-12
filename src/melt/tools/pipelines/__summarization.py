@@ -49,7 +49,7 @@ class SummarizationPipeline:
         self.task_name = task_name
         self.data = self._initialize_data()
 
-    def run_summarization(self, ds_wrapper: Any, ds_loader:
+    def _summarization(self, ds_wrapper: Any, ds_loader:
          Any, saving_fn: Callable, start_idx: int = 0) -> None:
         """
         Run the summarization pipeline.
