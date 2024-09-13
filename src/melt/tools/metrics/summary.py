@@ -1,12 +1,20 @@
+"""
+This module provides utilities for working with dictionaries.
+
+Functions:
+- function_name: Description of the function's purpose.
+"""
+import warnings
 from typing import Dict
 from bert_score import BERTScorer
 import torch
 import evaluate
+import numpy as np
 from .summac.model_summac import SummaCZS
 from .data_stats_metric import DataStatsMetric
 from .base import BaseMetric
 from .utils import normalize_text
-import numpy as np
+
 
 
 class SummaryMetric(BaseMetric):
@@ -14,7 +22,6 @@ class SummaryMetric(BaseMetric):
 
     def __init__(self, data, args):
         super().__init__(data, args)
-        import warnings
 
         warnings.filterwarnings("ignore")
 
@@ -95,3 +102,9 @@ class SummaryMetric(BaseMetric):
             )
         )
         return data, result
+    def calculate_score(self, summary):
+        """Calculate the score for the given summary."""
+        # Implementation here
+    def report(self):
+        """Generate a report based on the calculated scores."""
+        # Implementation here

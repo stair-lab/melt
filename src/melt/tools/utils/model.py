@@ -1,13 +1,58 @@
+"""
+This module contains functions for loading pre-trained 
+models and tokenizers with configuration options.
+
+Functions:
+- get_model(config): Loads a pre-trained causal language 
+model and tokenizer based on the provided configuration.
+    - config (object): An instance of a configuration 
+    class that contains model parameters and settings.
+
+Dependencies:
+- torch: For handling model computation and GPU compatibility checks.
+- transformers: For loading and configuring models and tokenizers.
+
+Usage:
+- Initialize a configuration object with necessary parameters.
+- Call `get_model` with the configuration object to load the desired model and tokenizer.
+"""
 import torch
-from transformers import (
+
+try:
+    from transformers import (
     AutoConfig,
     AutoModelForCausalLM,
     AutoTokenizer,
     BitsAndBytesConfig,
 )
-
+except ImportError as e:
+    print("Error importing 'transformers':", e)
+else:
+    print("Successfully imported 'transformers'.")
 
 def get_model(config):
+    """
+    Loads a pre-trained causal language model and its associated tokenizer 
+    based on the provided configuration.
+
+    Args:
+        config (Config): An instance of a configuration class 
+        containing model parameters and settings. 
+                         It should include attributes such as `model_name`, 
+                         `bnb_4bit_compute_dtype`, `use_4bit`,
+                         `bnb_4bit_quant_type`, `use_nested_quant`, and others as required.
+
+    Returns:
+        tuple: A tuple containing:
+            - model (AutoModelForCausalLM): The loaded pre-trained language model.
+            - tokenizer (AutoTokenizer): The tokenizer associated with the model.
+
+    Notes:
+        - The function checks GPU compatibility with bfloat16 if 
+        `use_4bit` is enabled and adjusts configuration settings accordingly.
+        - The `BitsAndBytesConfig` is used to configure quantization settings for the model.
+        - The function handles different model names with specific loading configurations.
+    """
     device_map = "auto"
 
     # Load tokenizer and model with QLoRA configuration
