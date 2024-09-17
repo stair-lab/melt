@@ -1,11 +1,69 @@
+"""
+This module provides functionality for evaluating and 
+generating data using specified pipelines and datasets.
+
+The `generation` function is the main entry point of this script. It performs the following tasks:
+1. Initializes the seed for reproducibility.
+2. Loads and processes the dataset using `DatasetWrapper`.
+3. Sets up directories for saving results if they don't already exist.
+4. Handles continuation of inference from a previous run if specified.
+5. Creates a DataLoader for batching dataset examples.
+6. Initializes the evaluation pipeline (`EvalPipeline`).
+7. Runs the evaluation pipeline and saves the results to JSON files.
+
+The script is designed to work with various configurations 
+specified in the `script_args` parameter, including options for 
+few-shot prompting and continuing from previous results.
+
+Modules used:
+- `os`: For file and directory operations.
+- `.tools.data`: Contains `DatasetWrapper` for 
+dataset management.
+- `.tools.pipelines`: Contains `EvalPipeline` for 
+evaluation processes.
+- `.tools.utils.utils`: Provides utility functions such as 
+`save_to_json`, `set_seed`, and `read_json`.
+- `torch.utils.data`: For data loading with `DataLoader`.
+"""
 import os
+from torch.utils.data import DataLoader
 from .tools.data import DatasetWrapper
 from .tools.pipelines import EvalPipeline
 from .tools.utils.utils import save_to_json, set_seed, read_json
-from torch.utils.data import DataLoader
+
 
 
 def generation(script_args):
+    """
+    Executes the data generation process based on the provided script arguments.
+
+    This function performs the following steps:
+    1. Sets the random seed for reproducibility using `set_seed`.
+    2. Loads and optionally processes the dataset using `DatasetWrapper`.
+    3. Constructs filenames for saving generation results and metrics based on the script arguments.
+    4. Creates necessary directories for saving results if they don't already exist.
+    5. Determines the starting index and results to continue 
+    inference from a previous run if specified.
+    6. Initializes a `DataLoader` for batching the dataset examples.
+    7. Initializes an `EvalPipeline` for evaluating the data.
+    8. Runs the evaluation pipeline and saves the results using the `save_results` function.
+    Args:
+        script_args (ScriptArguments): An object containing the configuration 
+        and parameters for the data generation process.
+            - seed (int): Random seed for reproducibility.
+            - smoke_test (bool): Flag to indicate if a smaller subset 
+            of data should be used for testing.
+            - dataset_name (str): Name of the dataset.
+            - model_name (str): Name of the model.
+            - output_dir (str): Directory to save generation results.
+            - output_eval_dir (str): Directory to save evaluation metrics.
+            - continue_infer (bool): Flag to continue inference from a previous run.
+            - per_device_eval_batch_size (int): Batch size for evaluation.
+            - fewshot_prompting (bool): Flag for few-shot prompting.
+
+    Returns:
+        None
+    """
     set_seed(script_args.seed)
 
     # Load dataset (you can process it here)
