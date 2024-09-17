@@ -1,5 +1,5 @@
-"""Module providing a function printing python version."""
-from .dataset import DatasetWrapper
+"init"
+from melt.tools.data.dataset import DatasetWrapper
 
 __all__ = [
     "DatasetWrapper",
