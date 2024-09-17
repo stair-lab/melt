@@ -1,6 +1,13 @@
-"cli"
+"Cli"
+import os
+import sys
 import spacy
+from transformers import HfArgumentParser
+from dotenv import load_dotenv
+from melt.script_arguments import ScriptArguments
+from melt.generation import generation
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 try:
     spacy.load("en_core_web_sm")
 except OSError:
@@ -11,16 +18,14 @@ except OSError:
     from spacy.cli import download
 
     download("en_core_web_sm")
-from transformers import HfArgumentParser
-from dotenv import load_dotenv
-from script_arguments import ScriptArguments
-from generation import generation
+
+
 
 # from .to_sheet import to_sheet
 # from .to_sheet_std import to_sheet_std
 
 def main():
-    "Cli"
+    "CLI"
     load_dotenv()
     parser = HfArgumentParser(ScriptArguments)
     args = parser.parse_args_into_dataclasses()[0]
