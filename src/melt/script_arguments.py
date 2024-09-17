@@ -1,4 +1,4 @@
-"script"
+"script_arguments"
 from dataclasses import dataclass, field
 from typing import Optional, Dict, Union
 
