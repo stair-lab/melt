@@ -1,7 +1,10 @@
+"Main"
+import os
+import sys
 import spacy
 import nltk
-from .cli import main
-
+from melt.cli import main
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 nltk.download('punkt_tab')
 try:
     spacy.load("en_core_web_sm")
