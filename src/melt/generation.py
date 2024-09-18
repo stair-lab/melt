@@ -1,11 +1,12 @@
 "Generation"
 import os
+import sys
 from torch.utils.data import DataLoader
-from .tools.data import DatasetWrapper
-from .tools.pipelines import EvalPipeline
-from .tools.utils.utils import save_to_json, set_seed, read_json
+from melt.tools.data import DatasetWrapper
+from melt.tools.pipelines import EvalPipeline
+from melt.tools.utils.utils import save_to_json, set_seed, read_json
 
-
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 def generation(script_args):
     "Generation"
     set_seed(script_args.seed)
@@ -32,10 +33,11 @@ def generation(script_args):
         + "_"
         + script_args.category
         + "_"
-        + str(script_args.num_fs_shot)  # Fix: removed f-string as no interpolation is needed
-        + f"_pt{dataset_wrapper.prompting_strategy}"
+        + str(script_args.num_fs_shot)
+        + "_pt" + dataset_wrapper.prompting_strategy
         + f"_seed{script_args.seed}"
-    )
+)
+
 
     json_file = os.path.join(
         script_args.output_dir, f"generations_{ds_exact_name}.json"
