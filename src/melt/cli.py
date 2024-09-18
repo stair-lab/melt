@@ -1,13 +1,9 @@
 "Cli"
-import os
-import sys
 import spacy
 from transformers import HfArgumentParser
 from dotenv import load_dotenv
 from melt.script_arguments import ScriptArguments
 from melt.generation import generation
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 try:
     spacy.load("en_core_web_sm")
 except OSError:
