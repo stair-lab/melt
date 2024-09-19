@@ -1,4 +1,3 @@
-"""Module providing a function printing python version."""
-from .data_stats_metric import DataStatsMetric
-
+"init"
+from melt.tools.metrics.data_stats_metric.data_stats_metric import DataStatsMetric
 __all__ = ["DataStatsMetric"]
