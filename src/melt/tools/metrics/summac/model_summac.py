@@ -734,7 +734,6 @@ class SummaCZS:
         if options is None:
             options = {}
         self.model_map = self._load_model_map(args)
-        # Thiết lập giá trị mặc định cho các tùy chọn
         default_options = {
             "op1": "max",
             "op2": "mean",
@@ -742,7 +741,6 @@ class SummaCZS:
             "use_con": True,
             "imager_load_cache": True
         }
-        # Cập nhật tùy chọn mặc định với các tùy chọn được cung cấp
         default_options.update(options)
         assert default_options["op2"] in ["min", "mean", "max"], "Không nhận ra `op2`"
         assert default_options["op1"] in ["max", "mean", "min"], "Không nhận ra `op1`"
