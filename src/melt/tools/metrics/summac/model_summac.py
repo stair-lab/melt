@@ -436,12 +436,13 @@ class SummaCImager:
 
     def _validate_inputs(self, model_name, granularity):
         assert all(
-                gran in ["paragraph", "sentence", "document", "2sents", "mixed"]
-                for gran in self.grans
-            ) and len(self.grans) <= 2, (
-                f"Unrecognized `granularity` {granularity}"
-            )
-        assert model_name in model_map.keys(), f"Unrecognized model name: `{model_name}`"
+            gran in ["paragraph", "sentence", "document", "2sents", "mixed"]
+            for gran in self.grans
+        ) and len(self.grans) <= 2, (
+            f"Unrecognized `granularity` {granularity}"
+        )
+        # pylint: disable=undefined-variable
+        assert model_name in model_map, f"Unrecognized model name: `{model_name}`"
 
     def load_nli(self):
         """
@@ -732,14 +733,8 @@ class SummaCZS:
     ):
         if options is None:
             options = {}
-        global model_map
-        with open(
-            os.path.join(args.config_dir, "summac_model.json"),
-            "r", 
-            encoding="utf-8"
-        ) as f:
-            model_map = json.load(f)
-        # Set default values for options
+        self.model_map = self._load_model_map(args)
+        # Thiết lập giá trị mặc định cho các tùy chọn
         default_options = {
             "op1": "max",
             "op2": "mean",
@@ -747,10 +742,10 @@ class SummaCZS:
             "use_con": True,
             "imager_load_cache": True
         }
-        # Update default options with provided options
+        # Cập nhật tùy chọn mặc định với các tùy chọn được cung cấp
         default_options.update(options)
-        assert default_options["op2"] in ["min", "mean", "max"], "Unrecognized `op2`"
-        assert default_options["op1"] in ["max", "mean", "min"], "Unrecognized `op1`"
+        assert default_options["op2"] in ["min", "mean", "max"], "Không nhận ra `op2`"
+        assert default_options["op1"] in ["max", "mean", "min"], "Không nhận ra `op1`"
 
         self.imager = SummaCImager(
             model_name=model_name,
@@ -763,6 +758,14 @@ class SummaCZS:
         self.op1 = default_options["op1"]
         self.use_ent = default_options["use_ent"]
         self.use_con = default_options["use_con"]
+
+    def _load_model_map(self, args):
+        with open(
+            os.path.join(args.config_dir, "summac_model.json"),
+            "r", 
+            encoding="utf-8"
+        ) as f:
+            return json.load(f)
 
     def save_imager_cache(self):
         """
