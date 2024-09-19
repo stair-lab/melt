@@ -1,29 +1,22 @@
-"""
-This module provides utilities for working with dictionaries.
-
-Functions:
-- function_name: Description of the function's purpose.
-"""
-import warnings
+"summary"
 from typing import Dict
+import warnings
 from bert_score import BERTScorer
 import torch
 import evaluate
 import numpy as np
-from .summac.model_summac import SummaCZS
-from .data_stats_metric import DataStatsMetric
-from .base import BaseMetric
-from .utils import normalize_text
+from melt.tools.metrics.summac.model_summac import SummaCZS
+from melt.tools.metrics.data_stats_metric import DataStatsMetric
+from melt.tools.metrics.base import BaseMetric
+from melt.tools.metrics.utils import normalize_text
 
-
+warnings.filterwarnings("ignore")
 
 class SummaryMetric(BaseMetric):
     """Evaluate the quality of text summaries."""
 
     def __init__(self, data, args):
         super().__init__(data, args)
-
-        warnings.filterwarnings("ignore")
 
         self.rouge = evaluate.load("rouge")
         self.bert_scorer = BERTScorer(
@@ -47,15 +40,14 @@ class SummaryMetric(BaseMetric):
 
     def evaluate(self, data: Dict, args) -> (Dict, Dict):
         """Evaluates the generated summaries against reference summaries and
-        computes various metrics to assess \
-            the quality of the generated summaries.
+        computes various metrics to assess the quality of the generated summaries.
 
         Args:
-            data (Dict): A dictionary expected to contain \
+            data (Dict): A dictionary expected to contain 
                 original_documents, predictions, and references as keys.
 
         Returns:
-            Returns a tuple containing the original data dictionary and \
+            Returns a tuple containing the original data dictionary and 
                 the result dictionary with all the computed metrics.
         """
         inputs = data["original_documents"]
@@ -102,9 +94,3 @@ class SummaryMetric(BaseMetric):
             )
         )
         return data, result
-    def calculate_score(self, summary):
-        """Calculate the score for the given summary."""
-        # Implementation here
-    def report(self):
-        """Generate a report based on the calculated scores."""
-        # Implementation here
