@@ -1,15 +1,13 @@
 """
 hf_wrapper.py
-
-This module contains the HFWrapper class for handling text generation with Hugging Face models.
 """
 import copy
 import torch
 
-from .BaseWrapper import BaseWrapper
+from melt.tools.wrapper.base_wrapper import BaseWrapper
 
 try:
-    from ..utils.model import get_model
+    from melt.tools.utils.model import get_model
 except ModuleNotFoundError as e:
     print(f"Module not found: {e}")
 except ImportError as e:
@@ -17,7 +15,7 @@ except ImportError as e:
 
 
 try:
-    from ..utils.chat_template import apply_chat_template
+    from melt.tools.utils.chat_template import apply_chat_template
 except ModuleNotFoundError as e:
     print(f"Module not found: {e}")
 except ImportError as e:
@@ -27,12 +25,6 @@ except ImportError as e:
 class HFWrapper(BaseWrapper):
     """
     HFWrapper for generating text and computing log probabilities using Hugging Face models.
-
-    Attributes:
-        model: The model used for text generation.
-        tokenizer: The tokenizer corresponding to the model.
-        generation_config: Configuration for text generation.
-        model_template: Optional template for applying to prompts.
     """
     def __init__(self, config, generation_config, template=None):
         self.model, self.tokenizer = get_model(config=config)

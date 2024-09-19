@@ -19,17 +19,12 @@ except ImportError as e:
 
 
 
-from .BaseWrapper import BaseWrapper
+from melt.tools.wrapper.base_wrapper import BaseWrapper
 
 
 class OpenAIWrapper(BaseWrapper):
     """
     A wrapper class for interacting with the OpenAI API with retry capabilities.
-
-    Attributes:
-        generation_config (dict): Configuration for text generation.
-        model (openai.OpenAI): OpenAI API model instance.
-        engine (str): The engine to use for generating text.
     """
     def __init__(self, engine=None, generation_config=None):
         generation_config["max_tokens"] = generation_config.pop(
@@ -45,13 +40,6 @@ class OpenAIWrapper(BaseWrapper):
     def __call__(self, prompts, return_probs=False):
         """
         Generates text completions for a list of prompts.
-
-        Args:
-            prompts (list): A list of prompts to generate completions for.
-            return_probs (bool): Whether to return probabilities (not implemented).
-
-        Returns:
-            tuple: A tuple containing lists of generations, probabilities, and token counts.
         """
         generations = []
         generations_probs = [[]] * len(prompts)
@@ -72,13 +60,6 @@ class OpenAIWrapper(BaseWrapper):
     def compute_logprob_and_length(self, prompts, completions):
         """
         Computes log probabilities and lengths of completions.
-
-        Args:
-            prompts (list): A list of prompts.
-            completions (list): A list of completions for the prompts.
-
-        Returns:
-            tuple: A tuple containing lists of log probabilities and token counts.
         """
         completions_num_tokens = [0] * len(prompts)
         completions_logprobs = [[]] * len(prompts)
@@ -88,15 +69,5 @@ class OpenAIWrapper(BaseWrapper):
     def chat_completions_with_backoff(self, **kwargs):
         """
         Retrieves chat completions from the OpenAI API with retry capabilities.
-
-        Args:
-            **kwargs: Keyword arguments passed to the OpenAI API's chat completions method.
-        
-        Returns:
-            openai.ChatCompletionResponse: The response object from the OpenAI API 
-            containing the generated completions.
-        
-        Raises:
-            openai.OpenAIError: If the OpenAI API request fails after the specified retries.
         """
         return self.model.chat.completions.create(**kwargs)

@@ -7,8 +7,7 @@ from collections import Counter
 from multiprocessing import Pool
 import subprocess
 import sys
-import pkg_resources
-
+import importlib.metadata
 # Import statements
 try:
     import gin
@@ -28,19 +27,27 @@ except ImportError:
 
 from ..utils import Fragments
 
-# Ensure required packages are installed
-def install_packages():
+def install_package(package_name):
+    """Install a package using pip."""
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', package_name])
+
+# Function to check and install required packages
+def check_and_install_packages():
     """
     Check for and install required packages if they are missing.
     """
     required_packages = ['gin-config', 'spacy']
-    installed_packages = {pkg.key for pkg in pkg_resources.working_set}
-    missing_packages = [pkg for pkg in required_packages if pkg not in installed_packages]
+    installed_packages = {pkg.metadata["Name"].lower()
+                          for pkg in importlib.metadata.distributions()}
 
-    if missing_packages:
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', *missing_packages])
+    for package in required_packages:
+        if package.lower() not in installed_packages:
+            print(f"{package} package is not installed.")
+            install_package(package)
 
-install_packages()
+check_and_install_packages()
+
+
 
 # Load spacy model
 try:
