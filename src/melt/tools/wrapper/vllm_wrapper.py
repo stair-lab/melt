@@ -1,25 +1,5 @@
 """
 This module contains the VLLMWrapper class for interacting with the VLLM model.
-
-The VLLMWrapper class provides methods to generate text, compute log probabilities,
-and handle prompts using the VLLM API. It includes functionality for handling model
-configurations, applying templates, and processing results.
-
-Classes:
-    VLLMWrapper: A wrapper class for the VLLM model, providing text generation and
-    log probability computation.
-
-Usage:
-    - Initialize with model configuration and generation settings.
-    - Call the instance with prompts to generate text.
-    - Compute log probabilities and token counts for given completions.
-
-Example:
-    config = Config(model_name="my-model", cpu_offload_gb=4, dtype="float32")
-    generation_config = {"max_new_tokens": 50, "repetition_penalty": 1.2}
-    wrapper = VLLMWrapper(config, generation_config)
-    prompts = ["Hello, world!"]
-    generations, probs, num_tokens = wrapper(prompts, return_probs=True)
 """
 
 import copy
@@ -34,10 +14,10 @@ except ImportError as e:
 
 
 
-from .base_wrapper import BaseWrapper
+from melt.tools.wrapper.base_wrapper import BaseWrapper
 
 try:
-    from ..utils.chat_template import apply_chat_template
+    from melt.tools.utils.chat_template import apply_chat_template
 except ModuleNotFoundError as e:
     print(f"Module 'utils.chat_template' not found: {e}")
 except ImportError as e:
@@ -48,22 +28,6 @@ except ImportError as e:
 class VLLMWrapper(BaseWrapper):
     """
     A wrapper class for interacting with the VLLM model API.
-
-    This class provides methods to generate text and compute log probabilities
-    using the VLLM model. It handles model configuration, applies text templates,
-    and processes API responses to return generated text and related information.
-
-    Attributes:
-        model (LLM): An instance of the LLM model from the vllm package.
-        generation_config (SamplingParams): Configuration parameters for text generation.
-        model_template (Dict, optional): Template for processing prompts.
-
-    Methods:
-        __call__(prompts, return_probs=False):
-            Generates text from prompts and optionally returns log probabilities.
-        
-        compute_logprob_and_length(prompts, completions):
-            Computes the log probabilities and lengths of completions relative to prompts.
     """
 
     def __init__(self, config, generation_config, template: Dict = None):
