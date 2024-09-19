@@ -1,8 +1,9 @@
-import evaluate
-from .base import BaseMetric
-from hlepor import hlepor_score
-from .utils import normalize_text
+"translation"
 from typing import Dict
+import evaluate
+from hlepor import hlepor_score
+from melt.tools.metrics.base import BaseMetric
+from melt.tools.metrics.utils import normalize_text
 
 
 class TranslationMetric(BaseMetric):
