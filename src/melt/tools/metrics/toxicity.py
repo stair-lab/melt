@@ -1,20 +1,14 @@
-"""
-This module provides the ToxicityMetric class to evaluate text for toxicity
-using a pre-trained classification model.
-"""
-
+"toxicity"
 from typing import Dict
-import numpy as np
 from transformers import pipeline
-from .base import BaseMetric
+import numpy as np
+from melt.tools.metrics.base import BaseMetric
+
 
 class ToxicityMetric(BaseMetric):
     """Evaluate text for toxicity."""
 
     def __init__(self, data, args):
-        """
-        Initializes the ToxicityMetric with a text classification pipeline for toxicity evaluation.
-        """
         self.classifier = pipeline(
             task="text-classification",
             return_all_scores=True,
@@ -56,10 +50,14 @@ class ToxicityMetric(BaseMetric):
         toxicity_scores = self._get_toxicity_score(toxicity_predictions)
         data["toxicity"] = toxicity_scores
 
+        # for i, s in enumerate(toxicity_scores):
+        #     if s > 0.5:
+        #         print('========================================')
+        #         print(i)
+        #         print(s, data["predictions"][i])
+        #         print(s, data["original_documents"][i])
+        #         print('========================================')
+
         return data, {
             "toxicity": np.array(toxicity_scores).mean(),
         }
-
-    def get_classifier(self):
-        """Returns the classifier used for toxicity evaluation."""
-        return self.classifier

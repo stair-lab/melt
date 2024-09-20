@@ -10,53 +10,43 @@ import os
 import sys
 from datetime import datetime
 
-# -- Path setup --------------------------------------------------------------
-
-# Add the path to your source code here.
+# Path setup
 sys.path.insert(0, os.path.abspath("../../src"))
 
-# -- Project information -----------------------------------------------------
-
+# Project information
 PROJECT = "MELTs"
 AUTHOR = "Thu Nguyen Hoang Anh"
-COPYRIGHT = f"{datetime.datetime.now().year}, {AUTHOR}"
+COPYRIGHT = f"{datetime.now().year}, {AUTHOR}"
 
-# The version info for the project
-VERSION = "0.1"  # Short version (e.g., '0.1')
-RELEASE = "0.1"  # Full version (e.g., '0.1.0')
+# The full version, including alpha/beta/rc tags
+RELEASE = "0.1"
 
-# -- General configuration ---------------------------------------------------
+# General configuration
+MASTER_DOC = "index"
 
-MASTER_DOC = "index"  # The name of the master document
-
-# Sphinx extensions to use
+# Sphinx extension modules as strings, can be built-in or custom
 EXTENSIONS = [
-    "sphinx.ext.duration",  # Measure build time
-    "sphinx.ext.autodoc",   # Include documentation from docstrings
-    "sphinx.ext.coverage",  # Check for documentation coverage
-    "sphinx.ext.doctest",   # Test embedded doctests
-    "sphinx_rtd_theme",     # Read the Docs theme
+    "sphinx.ext.duration",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.coverage",
+    "sphinx_rtd_theme",
+    "sphinx.ext.doctest",
 ]
 
-# Mock import for autodoc
+# List of modules to mock during autodoc generation
 AUTODOC_MOCK_IMPORTS = ["pyemd"]
 
 # Paths that contain templates
 TEMPLATES_PATH = ["_templates"]
 
-# Patterns to ignore when looking for source files
+# List of patterns to ignore when looking for source files
 EXCLUDE_PATTERNS = []
 
 # Sort members alphabetically in the autodoc
 AUTODOC_MEMBER_ORDER = "alphabetical"
 
-# Theme to use for HTML and HTML Help pages
+# Options for HTML output
 HTML_THEME = "sphinx_rtd_theme"
 
-# Theme options for customizing the appearance of the theme
-HTML_THEME_OPTIONS = {
-    # You can add theme-specific options here
-}
-
-# Paths that contain custom static files (e.g., style sheets)
+# Paths for custom static files (like style sheets)
 HTML_STATIC_PATH = ["_static"]

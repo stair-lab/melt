@@ -1,115 +1,125 @@
-"""Module for evaluating information retrieval systems."""
-
+"ir"
 from typing import Dict, List
 import numpy as np
-try:
-    from ranx import Qrels, Run, evaluate as ranx_evaluate
-except ImportError as e:
-    raise ImportError(
-        "Failed to import 'ranx'. Ensure that 'ranx' is installed in your environment. "
-        "You can install it using 'pip install ranx'. Original error: " + str(e)
-    ) from e
+from ranx import Qrels, Run, evaluate as ranx_evaluate
+from melt.tools.metrics.base import BaseMetric
 
-from .base import BaseMetric  # Local import
 
 class InformationRetrievalMetric(BaseMetric):
     """Evaluate information retrieval systems."""
 
     def _get_qrel(self, references: List[Dict]) -> Qrels:
-        """Processes a list of reference dictionaries to create a Qrels object.
+        """Processes a list of reference dictionaries to create
+        a Qrels object, which represents the relevance judgments
+        (i.e., which documents are relevant to which queries).
 
         Args:
-            references (List[Dict]): List of dictionaries with "id" and "references" keys.
-
-        Returns:
-            Qrels: An object representing relevance judgments.
+            references (List[Dict]): A list of dictionaries,
+            each containing an "id" key representing the query ID
+            and a "references" key containing
+            a list of document IDs that are relevant to the query.
         """
         relevant_dict = {}
         for reference in references:
             query_id = str(reference["id"])
-            relevant_dict.setdefault(query_id, {})
+            if query_id not in relevant_dict:
+                relevant_dict[query_id] = {}
             for doc_id in reference["references"]:
                 relevant_dict[query_id][str(doc_id)] = 1
 
-        return Qrels(relevant_dict)
+        qrels = Qrels(relevant_dict)
+        return qrels
 
-    def _get_prob_from_log_prob(self, score: float, is_positive_predict: bool) -> float:
+    def _get_prob_from_log_prob(
+        self,
+        score: float,
+        is_positive_predict: bool,
+    ) -> float:
         """Converts a log probability score into a regular probability.
 
         Args:
             score (float): The log probability score.
-            is_positive_predict (bool): Whether the prediction is positive.
+
+            is_positive_predict (bool): A boolean indicating whether
+            the prediction is positive.
 
         Returns:
-            float: Adjusted probability.
+            float: If the prediction is not positive, the probability
+            is adjusted by subtracting it from 1.
         """
         prob = np.exp(score)
-        return prob if is_positive_predict else 1 - prob
+        prob = 1 - prob if not is_positive_predict else prob
+        return prob
 
     def _get_run(self, predictions: List[Dict], k: int, args) -> Run:
-        """Processes predictions to create a Run object.
+        """Processes a list of prediction dictionaries to create
+        a Run object, which represents the system's ranked
+        list of documents for each query.
 
         Args:
-            predictions (List[Dict]): List of dictionaries with "query_id", "prediction", 
-            and "calib_probs" keys.
-            k (int): Number of top documents to consider.
-            args: Additional arguments.
+            predictions (List[Dict]): A list of dictionaries,
+            each containing a "query_id", "prediction", and "calib_probs".
 
-        Returns:
-            Run: An object representing the ranked list of documents.
+            k (int): An integer representing the number of
+            top documents to consider for each query.
         """
         run_dict = {}
         for prediction in predictions:
             query_id = str(prediction["query_id"])
-            run_dict.setdefault(query_id, {})
+            if query_id not in run_dict:
+                run_dict[query_id] = {}
 
             predict = self._get_answer(prediction["prediction"], args)
             is_positive_predict = predict == "yes"
-
             try:
                 log_prob = (
-                    prediction["calib_probs"][0][0][0]
+                prediction["calib_probs"][0][0][0]
                     if is_positive_predict
                     else prediction["calib_probs"][1][0][0]
                 )
             except (IndexError, KeyError):
                 log_prob = 0
-
             prob = self._get_prob_from_log_prob(log_prob, is_positive_predict)
             if len(run_dict[query_id]) < k:
                 run_dict[query_id][str(prediction["passage_id"])] = prob
 
-        return Run(run_dict)
+        run = Run(run_dict)
+        return run
 
     def evaluate(self, data: Dict, args, **kwargs) -> (Dict, Dict):
-        """Evaluates predictions and computes various metrics.
+        """Evaluates the predictions using relevance judgments
+        and computes various metrics.
 
         Args:
-            data (Dict): Dictionary with predictions to be evaluated.
-            args: Additional arguments.
-            **kwargs: Additional keyword arguments including "ref_dataset".
-
-        Returns:
-            Tuple[Dict, Dict]: Updated data with metrics results.
+            data (Dict): A dictionary containing predictions to be evaluated.
         """
         result = {}
 
-        references = kwargs.get("ref_dataset", [])
-        if not references:
-            raise ValueError("Reference dataset is missing in kwargs")
+        refenreces = kwargs["ref_dataset"]
+        predictions = data["predictions"]
 
-        predictions = data.get("predictions", [])
-        qrels = self._get_qrel(references)
+        qrels = self._get_qrel(refenreces)
 
         for mode in ["regular", "boosted"]:
-            k = 30 if mode == "regular" else 9999
+            if mode == "regular":
+                k = 30
+            else:
+                k = 9999
             run = self._get_run(predictions, k, args)
-
-            for metric in [
-                "recall@10", "precision@10", "hit_rate@10", "mrr@10", "ndcg@10"
-            ]:
-                result[f"{mode}_{metric}"] = ranx_evaluate(
-                    qrels, run, metric, make_comparable=True
-                )
-        print(result)
+            result[f"{mode}_recall@10"] = ranx_evaluate(
+                qrels, run, "recall@10", make_comparable=True
+            )
+            result[f"{mode}_precision@10"] = ranx_evaluate(
+                qrels, run, "precision@10", make_comparable=True
+            )
+            result[f"{mode}_hit_rate@10"] = ranx_evaluate(
+                qrels, run, "hit_rate@10", make_comparable=True
+            )
+            result[f"{mode}_mrr@10"] = ranx_evaluate(
+                qrels, run, "mrr@10", make_comparable=True
+            )
+            result[f"{mode}_ndcg@10"] = ranx_evaluate(
+                qrels, run, "ndcg@10", make_comparable=True
+            )
+            print(result)
         return data, result
