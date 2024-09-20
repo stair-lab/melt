@@ -1,271 +1,227 @@
-"information_retrieval"
+"information retrieval"
 import random
-from typing import List
-
-from dataclasses import dataclass
 from tqdm import tqdm
-from utils.utils import format_fewshot, column
+from melt.tools.utils.utils import column, format_fewshot
 
-@dataclass
-class PromptCreationConfig:
-    "Class"
-    system_prompt: str
-    few_shot: List[dict]
-    prompt_format: str
-    batch_passage_size: int
-    top30_passages: List[str]
-    query: str = None
+def __information_retrieval(
+    self, ds_wrapper, ds_loader, saving_fn, start_idx=0
+):
+    predictions = []
+    idx = 0
+    original_few_shot = []
+    calib_few_shot = []
+    selected_sample = []
+    if self.few_shot:
+        def preprocessing_a_record(rec):
+            return [
+                rec[ds_wrapper.dataset_info.passages],
+                rec[ds_wrapper.dataset_info.query],
+                rec[ds_wrapper.dataset_info.answer],
+            ]
 
-@dataclass
-class SavePromptConfig:
-    "Class"
-    results: list
-    logprobs: list
-    top30_passages: list
-    ds_wrapper: object
-    ref_passage_id: str
-
-@dataclass
-class BatchProcessingParams:
-    "Class"
-    batch: dict
-    ds_wrapper: object
-    original_few_shot: list
-    calib_few_shot: list
-    batch_passage_size: int
-    self: object
-
-@dataclass
-class InformationRetrievalConfig:
-    "Class"
-    ds_wrapper: object
-    ds_loader: object
-    saving_fn: callable
-    start_idx: int
-    batch_passage_size: int
-    self: object
-
-@dataclass
-class InformationRetrievalParams:
-    "Class"
-    ds_wrapper: object
-    ds_loader: object
-    saving_fn: callable
-    start_idx: int
-    batch_passage_size: int
-    self: object
-
-@dataclass
-class FinalSavingMetricsParams:
-    "Class"
-    predictions: list
-    selected_sample: list
-    saving_fn: callable
-    self: object
-    ds_wrapper: object
-
-def preprocess_record(rec, ds_wrapper):
-    """Preprocess a record to extract passages, query, and answer."""
-    return [
-        rec[ds_wrapper.dataset_info.passages],
-        rec[ds_wrapper.dataset_info.query],
-        rec[ds_wrapper.dataset_info.answer],
-    ]
-
-def create_fewshot_samples(ds_wrapper):
-    """Create fewshot samples for training and calibration."""
-    random_sample = list(random.sample(list(ds_wrapper.dataset_training), 1))[0]
-    first_sample = {
-        "passages": random_sample["positive"],
-        "query": random_sample[ds_wrapper.dataset_info.query],
-        "references": ds_wrapper.dataset_info.label[0],
-    }
-    second_sample = {
-        "passages": random_sample["negative"],
-        "query": random_sample[ds_wrapper.dataset_info.query],
-        "references": ds_wrapper.dataset_info.label[1],
-    }
-    selected_sample = [
-        preprocess_record(s, ds_wrapper)
-        for s in [first_sample, second_sample]
-    ]
-    original_few_shot = format_fewshot(
-        selected_sample,
-        query_format=ds_wrapper.prompt["prompt"],
-        answer_format=ds_wrapper.prompt["answer_format"],
-    )
-    calib_few_shot = format_fewshot(
-        selected_sample,
-        query_format=ds_wrapper.calibration_prompt["prompt"],
-        answer_format=ds_wrapper.prompt["answer_format"],
-    )
-    return original_few_shot, calib_few_shot, selected_sample
-
-def generate_batch_prompts(batch, ds_wrapper, config: PromptCreationConfig):
-    """Generate prompts and calibration prompts for the given batch."""
-    passages = batch[ds_wrapper.dataset_info.passages]
-    prompts, calib_prompts = [], []
-
-    for i in range(len(batch[ds_wrapper.dataset_info.type_id])):
-        query = batch[ds_wrapper.dataset_info.query][i]
-        top30_passages = column(passages["passage"], i)
-
-        prompt_config = PromptCreationConfig(
-            system_prompt=config.system_prompt,
-            few_shot=config.few_shot,
-            prompt_format=config.prompt_format,
-            batch_passage_size=config.batch_passage_size,
-            top30_passages=top30_passages,
-            query=query
-        )
-
-        prompts.extend(create_prompts(prompt_config))
-        calib_prompts.extend(create_prompts(
-            PromptCreationConfig(
-                system_prompt=config.system_prompt,
-                few_shot=config.calib_few_shot,
-                prompt_format=config.prompt_format,
-                batch_passage_size=config.batch_passage_size,
-                top30_passages=top30_passages,
-                query=query
-            )
-        ))
-
-    return prompts, calib_prompts
-
-
-def create_prompts(config: PromptCreationConfig) -> List[List[dict]]:
-    """Create prompts for a batch of passages."""
-    if config.query is None:
-        config.query = "default_query_value"  # Or compute from other arguments
-
-    return [
-        [
-            {"role": "system", "content": config.system_prompt},
-            *config.few_shot,
-            {"role": "user", "content": config.prompt_format.format(p, config.query)},
-        ]
-        for start in range(0, len(config.top30_passages), config.batch_passage_size)
-        for p in config.top30_passages[start:start + config.batch_passage_size]
-    ]
-
-def generate_save_each_prompt(config: SavePromptConfig):
-    """Generate the final data structure for saving each prompt's results."""
-    return [
-        {
-            "query_id": query_id,
-            "query": query,
-            "passage_id": psg_id,
-            "passage": passage,
-            "label": int(psg_id == config.ref_passage_id),
-            "prediction": result,
-            "generation_probs": prob,
-            "calib_probs": calib_prob
+        random_sample = list(
+            random.sample(list(ds_wrapper.dataset_training), 1)
+        )[0]
+        first_sample = {
+            "passages": random_sample["positive"],
+            "query": random_sample[ds_wrapper.dataset_info.query],
+            "references": ds_wrapper.dataset_info.label[0],
         }
-        for result, prob, psg_id, passage, query_id, query, calib_prob in zip(
-            config.results,
-            config.logprobs,
-            column(config.top30_passages, 0),
-            config.top30_passages,
-            range(len(config.top30_passages)),
-            [config.ds_wrapper.dataset_info.query] * len(config.top30_passages),
-            [0] * len(config.top30_passages)  # Placeholder for calibration probabilities
+        second_sample = {
+            "passages": random_sample["negative"],
+            "query": random_sample[ds_wrapper.dataset_info.query],
+            "references": ds_wrapper.dataset_info.label[1],
+        }
+
+        selected_sample = [
+            preprocessing_a_record(s)
+            for s in [first_sample, second_sample]
+        ]
+        original_few_shot = format_fewshot(
+            selected_sample,
+            query_format=ds_wrapper.prompt["prompt"],
+            answer_format=ds_wrapper.prompt["answer_format"],
         )
-    ]
+        calib_few_shot = format_fewshot(
+            selected_sample,
+            query_format=ds_wrapper.calibration_prompt["prompt"],
+            answer_format=ds_wrapper.prompt["answer_format"],
+        )
 
-def process_batch(params: BatchProcessingParams):
-    """Process a single batch of data."""
-    config = PromptCreationConfig(
-        top30_passages=params.ds_wrapper.dataset_info.passages,
-        query=params.ds_wrapper.dataset_info.query,
-        few_shot=params.original_few_shot,
-        system_prompt=params.ds_wrapper.prompt["system_prompt"],
-        prompt_format=params.ds_wrapper.prompt["prompt"],
-        batch_passage_size=params.batch_passage_size
-    )
+    batch_passage_size = 10
+    # Create few-shot strings
+    for batch in tqdm(ds_loader):
+        if idx < start_idx:
+            idx += 1
+            continue
+        for query_with_a_batch_passages in range(
+            len(batch[ds_wrapper.dataset_info.type_id])
+        ):
+            query_id = batch[ds_wrapper.dataset_info.type_id][
+                query_with_a_batch_passages
+            ]
+            query = batch[ds_wrapper.dataset_info.query][
+                query_with_a_batch_passages
+            ]
+            try:
+                ref_passage_id = batch[ds_wrapper.dataset_info.answer][0][
+                    query_with_a_batch_passages
+                ]
+            except IndexError:
+                if len(list(batch[ds_wrapper.dataset_info.answer])) < 1:
+                    continue
+                ref_passage_id = list(
+                    batch[ds_wrapper.dataset_info.answer][0]
+                )[query_with_a_batch_passages]
+            batch_passages = batch[ds_wrapper.dataset_info.passages]
 
-    prompts, _ = generate_batch_prompts(params.batch, params.ds_wrapper, config)
-    results, logprobs, _ = params.self.infer_pipeline(prompts, return_probs=True)
-    ref_passage_id = params.batch[params.ds_wrapper.dataset_info.answer][0][0]
-    top30_passages = column(params.batch[params.ds_wrapper.dataset_info.passages]["passage"], 0)
+            top30_passage_ids = column(
+                batch_passages["id"], query_with_a_batch_passages
+            )
+            top30_passages = column(
+                batch_passages["passage"], query_with_a_batch_passages
+            )
+            for psg in range(
+                0, len(top30_passage_ids), batch_passage_size
+            ):
+                prompts = [
+                    [
+                        {
+                            "role": "system",
+                            "content": ds_wrapper.prompt["system_prompt"],
+                        },
+                        *original_few_shot,
+                        {
+                            "role": "user",
+                            "content": ds_wrapper.prompt["prompt"].format(
+                                p,
+                                query,
+                            ),
+                        },
+                    ]
+                    for p in top30_passages[psg:psg + batch_passage_size]
+                ]
+                calib_prompts = [
+                    [
+                        {
+                            "role": "system",
+                            "content": ds_wrapper.calibration_prompt[
+                                "system_prompt"
+                            ],
+                        },
+                        *calib_few_shot,
+                        {
+                            "role": "user",
+                            "content": ds_wrapper.calibration_prompt[
+                                "prompt"
+                            ].format(
+                                p,
+                                query,
+                            ),
+                        },
+                    ]
+                    for p in top30_passages[psg:psg + batch_passage_size]
+                ]
+                results, logprobs, _ = self.infer_pipeline(
+                    prompts, return_probs=True
+                )
 
-    save_config = SavePromptConfig(
-        results=results,
-        logprobs=logprobs,
-        top30_passages=top30_passages,
-        ds_wrapper=params.ds_wrapper,
-        ref_passage_id=ref_passage_id
-    )
-    return generate_save_each_prompt(save_config)
+                option_logprobs, _ = (
+                    self.infer_pipeline.compute_logprob_and_length(
+                        calib_prompts * len(ds_wrapper.dataset_info.label),
+                        [
+                            choice
+                            for choice in ds_wrapper.dataset_info.label
+                            for _ in range(len(prompts))
+                        ],
+                    )
+                )
+                # Use a separate function to avoid cell-var-from-loop warnings
+                def create_prompt_dict(data):
+                    return {
+                        "query_id": (
+                            data['query_id'].item()
+                            if not isinstance(data['query_id'], str)
+                            else data['query_id']
+                        ),
+                        "query": data['query'],
+                        "passage_id": (
+                            data['passage_id'].item() if not isinstance(
+                                data['passage_id'], str) else data['passage_id']
+                        ),
+                        "passage": data['passage'],
+                        "label": int(
+                            data['passage_id'].item() == data['ref_passage_id']
+                            if not isinstance(data['passage_id'], str)
+                            else data['passage_id'] == data['ref_passage_id']
+                        ),
+                        "prediction": data['prediction'],
+                        "generation_probs": data['generation_probs'],
+                        "calib_probs": [
+                            data['option_logprobs'][data['q'] + opt * len(data['prompts'])]
+                            for opt in range(
+                                len(ds_wrapper.dataset_info.label)
+                            )
+                        ],
+                    }
+                save_each_prompt = [
+                    create_prompt_dict({
+                        'prediction': x,
+                        'generation_probs': y,
+                        'passage_id': z,
+                        'passage': t,
+                        'q': q,
+                        'query_id': query_id,
+                        'query': query,
+                        'ref_passage_id': ref_passage_id,
+                        'option_logprobs': option_logprobs,
+                        'prompts': prompts
+                    })
+                    for x, y, z, t, q in zip(
+                        results,
+                        logprobs,
+                        top30_passage_ids[psg:psg + batch_passage_size],
+                        top30_passages[psg:psg + batch_passage_size],
+                        range(len(prompts))
+                    )
+                ]
+                predictions.extend(save_each_prompt)
 
-def save_and_print_results(self, idx, predictions, selected_sample, saving_fn):
-    """Save intermediate results and print metrics."""
-    print(f"Saving results of {idx} batches")
-    generations = {
-        "fewshot": selected_sample,
-        "predictions": predictions,
-    }
-    saving_fn(generations)
-    mean_result = self.metric_pipeline.run_mean(
-        generations,
-        self.task_name,
-        self.ds_wrapper.prompt["answer_key"],
-        self.ds_wrapper.dataset_info.label,
-        self.config,
-        ref_dataset=self.ds_wrapper.dataset_testing,
-    )
-    print(f"Results of {idx} batches: ", mean_result)
-    return mean_result
+        idx += 1
 
-def final_saving_and_metrics(self, predictions, selected_sample, saving_fn):
-    """Final saving and metrics calculation."""
+        if idx % 100 == 0:
+            print(f"Saving results of {idx} batches")
+            generations = {
+                "fewshot": selected_sample,
+                "predictions": predictions,
+            }
+            saving_fn(generations)
+            mean_result = self.metric_pipeline.run_mean(
+                generations,
+                self.task_name,
+                ds_wrapper.prompt["answer_key"],
+                ds_wrapper.dataset_info.label,
+                self.config,
+                ref_dataset=ds_wrapper.dataset_testing,
+            )
+            print(f"Results of {idx} batches: ", mean_result)
+
     generations = {"fewshot": selected_sample, "predictions": predictions}
     mean_result = self.metric_pipeline.run_mean(
         generations,
         self.task_name,
-        self.ds_wrapper.prompt["answer_key"],
-        self.ds_wrapper.dataset_info.label,
+        ds_wrapper.prompt["answer_key"],
+        ds_wrapper.dataset_info.label,
         self.config,
-        ref_dataset=self.ds_wrapper.dataset_testing,
+        ref_dataset=ds_wrapper.dataset_testing,
     )
     std_result = self.metric_pipeline.run_std(
         generations,
         self.task_name,
-        self.ds_wrapper.prompt["answer_key"],
-        self.ds_wrapper.dataset_info.label,
+        ds_wrapper.prompt["answer_key"],
+        ds_wrapper.dataset_info.label,
         self.config,
-        ref_dataset=self.ds_wrapper.dataset_testing,
+        ref_dataset=ds_wrapper.dataset_testing,
     )
     final_result = {"mean": mean_result, "std": std_result}
     saving_fn(generations, final_result)
-
-def __information_retrieval(config: InformationRetrievalConfig):
-    """Main function for information retrieval."""
-    predictions = []
-
-    # Create fewshot samples
-    original_few_shot, calib_few_shot, selected_sample = create_fewshot_samples(config.ds_wrapper)
-
-    for idx, batch in enumerate(tqdm(config.ds_loader), start=0):
-        if idx < config.start_idx:
-            continue
-
-        # Setup configurations
-        batch_params = BatchProcessingParams(
-            batch=batch,
-            ds_wrapper=config.ds_wrapper,
-            original_few_shot=original_few_shot,
-            calib_few_shot=calib_few_shot,
-            batch_passage_size=config.batch_passage_size,
-            self=config.self
-        )
-
-        # Process batch
-        save_each_prompt = process_batch(batch_params)
-        predictions.extend(save_each_prompt)
-
-        if idx % 100 == 0:
-            config.self.save_and_print_results(idx, predictions, selected_sample, config.saving_fn)
-
-    # Final saving
-    config.self.final_saving_and_metrics(predictions, selected_sample, config.saving_fn)
