@@ -1,78 +1,114 @@
-"__translation"
+"translation"
+import random
 from tqdm import tqdm
-
+from melt.tools.utils.utils import format_fewshot
 def __translation(self, ds_wrapper, ds_loader, saving_fn, start_idx=0):
-    # Group related variables into a dictionary
-    results_data = {
-        "predictions": [],
-        "references": [],
-        "generation_probs": [],
-    }
-    # Helper function to save generations and compute results
-    def save_results(idx, generations):
-        print(f"Saving results of {idx} batches")
-        saving_fn(generations)
-        mean_result = self.metric_pipeline.run_mean(
-            generations,
-            self.task_name,
-            ds_wrapper.prompt["answer_key"],
-            ds_wrapper.dataset_info.label,
-            self.config,
-        )
-        print(f"Results of {idx} batches: ", mean_result)
-
+    predictions = []
+    references = []
+    generation_probs = []
     idx = 0
     original_few_shot = []
+    selected_sample = []
 
     if self.continue_infer_data is not None:
-        results_data["predictions"].extend(self.continue_infer_data["predictions"])
-        results_data["references"].extend(self.continue_infer_data["references"])
-        results_data["generation_probs"].extend(self.continue_infer_data["generation_probs"])
+        predictions.extend(self.continue_infer_data["predictions"])
+        references.extend(self.continue_infer_data["references"])
+        generation_probs.extend(self.continue_infer_data["generation_probs"])
 
     if self.few_shot:
-        # Extract few-shot data into a separate function
-        _, original_few_shot = self.get_few_shot(ds_wrapper)
 
-    # Create few-shot strings and process batches
+        def preprocessing_a_record(rec):
+            return [
+                rec[ds_wrapper.dataset_info.source],
+                rec[ds_wrapper.dataset_info.target],
+            ]
+
+        selected_sample = [
+            preprocessing_a_record(s)
+            for s in list(
+                random.sample(
+                    list(ds_wrapper.dataset_training), self.config.num_fs
+                )
+            )
+        ]
+        original_few_shot = format_fewshot(
+            selected_sample,
+            query_format=ds_wrapper.prompt["prompt"],
+            answer_format=ds_wrapper.prompt["answer_format"],
+        )
+
+    # Create few-shot strings
     for batch in tqdm(ds_loader):
         if idx < start_idx:
             idx += 1
             continue
 
-        # Inline prompts construction
         prompts = [
             [
-                {"role": "system", "content": ds_wrapper.prompt["system_prompt"]},
+                {
+                    "role": "system",
+                    "content": ds_wrapper.prompt["system_prompt"],
+                },
                 *original_few_shot,
-                {"role": "user", "content": ds_wrapper.prompt["prompt"].format(document)},
+                {
+                    "role": "user",
+                    "content": ds_wrapper.prompt["prompt"].format(
+                        document,
+                    ),
+                },
             ]
             for document in batch[ds_wrapper.dataset_info.source]
         ]
 
-        results, logprobs, _ = self.infer_pipeline(prompts, return_probs=True)
-        results_data["predictions"].extend(results)
-        results_data["references"].extend(list(
-            batch[ds_wrapper.dataset_info.target]))# Fixed unnecessary comprehension
-        results_data["generation_probs"].extend(logprobs)
+        results, logprobs, _ = self.infer_pipeline(
+            prompts, return_probs=True
+        )
+        predictions.extend(results)
+        references.extend(
+            list(batch[ds_wrapper.dataset_info.target])  # Direct list instead of comprehension
+        )
+        generation_probs.extend(logprobs)
+
         idx += 1
         if idx % 100 == 0:
-            save_results(idx, results_data)
-    # Save generations and compute final results
-    final_result = {
-        "mean": self.metric_pipeline.run_mean(
-            results_data,
-            self.task_name,
-            ds_wrapper.prompt["answer_key"],
-            ds_wrapper.dataset_info.label,
-            self.config,
-        ),
-        "std": self.metric_pipeline.run_std(
-            results_data,
-            self.task_name,
-            ds_wrapper.prompt["answer_key"],
-            ds_wrapper.dataset_info.label,
-            self.config,
-        ),
+            print(f"Saving results of {idx} batches")
+            generations = {
+                "predictions": predictions,
+                "references": references,
+                "generation_probs": generation_probs,
+                "fewshot": selected_sample,
+            }
+            saving_fn(generations)
+            mean_result = self.metric_pipeline.run_mean(
+                generations,
+                self.task_name,
+                ds_wrapper.prompt["answer_key"],
+                ds_wrapper.dataset_info.label,
+                self.config,
+            )
+            print(f"Results of {idx} batches: ", mean_result)
+
+    generations = {
+        "predictions": predictions,
+        "references": references,
+        "generation_probs": generation_probs,
+        "fewshot": selected_sample,
     }
 
-    saving_fn(results_data, final_result)
+    mean_result = self.metric_pipeline.run_mean(
+        generations,
+        self.task_name,
+        ds_wrapper.prompt["answer_key"],
+        ds_wrapper.dataset_info.label,
+        self.config,
+    )
+    std_result = self.metric_pipeline.run_std(
+        generations,
+        self.task_name,
+        ds_wrapper.prompt["answer_key"],
+        ds_wrapper.dataset_info.label,
+        self.config,
+    )
+
+    final_result = {"mean": mean_result, "std": std_result}
+    saving_fn(generations, final_result)
