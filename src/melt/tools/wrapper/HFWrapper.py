@@ -1,44 +1,67 @@
 import torch
 import copy
+from transformers import AutoProcessor, AutoModelForSeq2SeqLM
+from io import BytesIO
+from urllib.request import urlopen
+import librosa
+import os
 from .BaseWrapper import BaseWrapper
 from ..utils.chat_template import apply_chat_template
 from ..utils.model import get_model
+from ..utils.utils import is_local
 
 
 class HFWrapper(BaseWrapper):
     def __init__(self, config, generation_config, template=None):
         self.model, self.tokenizer = get_model(config=config)
         self.model.eval()
-
+        self.config = config
         self.generation_config = generation_config
         self.model_template = template
 
     def __call__(self, prompts, return_probs=False):
+        if self.config.model_name == "Qwen/Qwen2-Audio-7B-Instruct":
+            texts = [self.tokenizer.apply_chat_template(prompt, add_generation_prompt=True, tokenize=False) for prompt in prompts]
+            audios = []
+            for prompt in prompts:
+                audio = []
+                for message in prompt:
+                    if isinstance(message["content"], list):
+                        for ele in message["content"]:
+                            if ele["type"] == "audio":
+                                audio_file = ele['audio_url']
+                                if is_local(ele['audio_url']):
+                                    audio_file = "file://"+os.path.abspath(ele['audio_url'])
+                               
+                                audio.append(
+                                    librosa.load(
+                                        BytesIO(urlopen(audio_file).read()), 
+                                        sr=self.tokenizer.feature_extractor.sampling_rate)[0]
+                                )
+                audios.append(audio)
+            processed_prompts = [self.tokenizer(text=text, audios=audio, return_tensors="pt").to(self.model.device) for text, audio in zip(texts,audios)]
+        else:
+            processed_prompts = apply_chat_template(prompts, self.model_template)
+            processed_prompts = [self.tokenizer(prompt, return_tensors="pt").to(
+                self.model.device) for prompt in prompts]
+            
+        # print(prompts[0])
+        # exit(0)
         generations = []
         generations_probs = []
         num_generated_tokens = []
-        prompts = apply_chat_template(prompts, self.model_template)
-        for prompt in prompts:
-            inputs = self.tokenizer(prompt, return_tensors="pt").to(
-                self.model.device
-            )
+        for idx, prompt in enumerate(processed_prompts):
+            inputs = prompt
             try:
                 with torch.no_grad():
                     generate_dict = self.model.generate(
-                        inputs=inputs.input_ids,
-                        attention_mask=inputs.attention_mask,
                         output_scores=True,
                         return_dict_in_generate=True,
-                        eos_token_id=self.tokenizer.eos_token_id,
-                        pad_token_id=(
-                            self.tokenizer.pad_token_id
-                            if self.tokenizer.pad_token_id
-                            else self.tokenizer.eos_token_id
-                        ),
+                        **inputs,
                         **self.generation_config,
                     )
             except Exception as e:
-                print(prompt)
+                print(prompts[idx])
                 raise e
             num_generated_token = len(generate_dict.scores)
             num_generated_tokens.append(num_generated_token)

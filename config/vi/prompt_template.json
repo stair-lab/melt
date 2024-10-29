@@ -38,6 +38,12 @@
                 "prompt": "Nhiệm vụ của bạn là dựa vào đoạn văn nằm trong dấu triple backtick, hãy trả lời câu hỏi sau bằng tiếng Việt: {}\nĐoạn văn: {} ",
                 "answer_format": "{}",
                 "answer_key": ""
+            },
+            {
+                "system_prompt": "",
+                "prompt": "Ngữ cảnh:\n[modal].\n\nCâu hỏi:\n{}.\n\nTrả lời:",
+                "answer_format": "{}",
+                "answer_key": ""
             }
         ],
         "translation": [
@@ -162,6 +168,12 @@
             {
                 "system_prompt": "Bạn là một trợ lý hữu dụng sử dụng tiếng Việt, biết tôn trọng và thành thật. Bạn luôn luôn trả lời các câu hỏi một cách có ích nhiều nhất có thể, nhưng đồng thời phải an toàn. Câu trả lời của bạn không được bao gồm các ngôn từ độc hại, phân biệt chủng tộc, phân biệt giới tính, nguy hiểm, nội dung vi phạm pháp luật. Làm ơn hãy chắc chắn câu trả lời của bạn tự nhiên, tích cực và không thiên vị bất cứ cái gì. Nếu có câu hỏi không hợp lý hoặc không rõ ràng thì hãy giải thích tại sao thay vì trả lời không đúng sự thật. Nếu bạn không biết câu trả lời thì đừng chia sẻ thông tin sai sự thật.",
                 "prompt": "Nhiệm vụ của bạn là dựa vào đoạn văn nằm trong dấu triple backtick, hãy trả lời câu hỏi sau bằng tiếng Việt: {}\nĐoạn văn: {} ",
+                "answer_format": "{}",
+                "answer_key": ""
+            },
+            {
+                "system_prompt": "",
+                "prompt": "Ngữ cảnh:\n[modal].\n\nCâu hỏi:\n{}.\n\nTrả lời:",
                 "answer_format": "{}",
                 "answer_key": ""
             }

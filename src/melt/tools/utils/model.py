@@ -2,6 +2,8 @@ import torch
 from transformers import (
     AutoConfig,
     AutoModelForCausalLM,
+    AutoProcessor,
+    AutoModelForSeq2SeqLM,
     AutoTokenizer,
     BitsAndBytesConfig,
 )
@@ -35,7 +37,11 @@ def get_model(config):
     )
 
     # Load base model
-    if config.model_name == "vinai/PhoGPT-7B5-Instruct":
+    if config.model_name == "Qwen/Qwen2-Audio-7B-Instruct":
+        model = AutoModelForSeq2SeqLM.from_pretrained("Qwen/Qwen2-Audio-7B-Instruct")
+        tokenizer = AutoProcessor.from_pretrained("Qwen/Qwen2-Audio-7B-Instruct")
+        
+    elif config.model_name == "vinai/PhoGPT-7B5-Instruct":
         cfg = AutoConfig.from_pretrained(
             config.model_name, trust_remote_code=True
         )

@@ -1,6 +1,6 @@
 import json
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, Dict, List, Literal, Optional, Sequence
 
 from ..utils.constants import DATA_CONFIG
@@ -24,6 +24,7 @@ class DatasetAttr:
     random: Optional[bool] = False
     folder: Optional[str] = None
     num_samples: Optional[int] = None
+    modalities: Optional[List[Literal["text", "audio", "image", "video"]]] = field(default_factory=lambda: ["text"])
     query: Optional[str] = "input"
     response: Optional[str] = "output"
     history: Optional[str] = None
@@ -95,6 +96,9 @@ def get_dataset_list(
             "train_split", dataset_info[name], default="train"
         )
         dataset_attr.set_attr("test_split", dataset_info[name], default="test")
+        dataset_attr.set_attr(
+            "modalities", dataset_info[name], default=["text"]
+        )
         column_names = [
             "context",
             "query",

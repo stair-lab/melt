@@ -1,4 +1,17 @@
 {
+  "NMSQA": {
+      "hf_hub_url": "voidful/NMSQA",
+      "train_split": "train",
+      "test_split": "test",
+      "task": "question-answering",
+      "modalities": ["text", "audio"],
+      "prompting_strategy": 3,
+      "columns": {
+          "context": "content_full_audio_path",
+          "query": "question",
+          "answer": "answers"
+        }
+  },
   "xquad_xtreme": {
       "hf_hub_url": "juletxara/xquad_xtreme",
       "subset": "vi",
