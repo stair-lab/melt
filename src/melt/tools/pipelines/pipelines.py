@@ -214,9 +214,14 @@ class EvalPipeline:
                 prompts, return_probs=True
             )
             predictions.extend(results)
-            references.extend(
-                [x[0] for x in batch[ds_wrapper.dataset_info.answer]["text"]]
-            )
+            if len(predictions) != len(batch[ds_wrapper.dataset_info.answer]["text"]):
+                references.extend(
+                    [x[0] for x in [batch[ds_wrapper.dataset_info.answer]["text"]]]
+                )
+            else:
+                references.extend(
+                    [x[0] for x in batch[ds_wrapper.dataset_info.answer]["text"]]
+                )
             generation_probs.extend(logprobs)
 
             idx += 1
