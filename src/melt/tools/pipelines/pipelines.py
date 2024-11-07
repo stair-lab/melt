@@ -44,29 +44,29 @@ class EvalPipeline:
 
         # Load pipelines
         # print(config.tgi)
-        if config.wtype == "tgi":
+        if config.model == "tgi":
             self.infer_pipeline = TGIWrapper(
                 generation_config=GenerationConfig[self.task_name],
                 template=LLM_TEMPLATE[config.ptemplate],
             )
-        elif config.wtype == "hf":
+        elif config.model == "hf":
             self.infer_pipeline = HFWrapper(
                 config=config,
                 generation_config=GenerationConfig[self.task_name],
                 template=LLM_TEMPLATE[config.ptemplate],
             )
-        elif config.wtype == "vllm":
+        elif config.model == "vllm":
             self.infer_pipeline = VLLMWrapper(
                 config=config,
                 generation_config=GenerationConfig[self.task_name],
                 template=LLM_TEMPLATE[config.ptemplate],
             )
-        elif config.wtype == "openai":
+        elif config.model == "openai":
             self.infer_pipeline = OpenAIWrapper(
                 engine=config.model_name,
                 generation_config=GenerationConfig[self.task_name],
             )
-        elif config.wtype == "gemini":
+        elif config.model == "gemini":
             self.infer_pipeline = GeminiWrapper(
                 model_name=config.model_name,
                 generation_config=GenerationConfig[self.task_name],
@@ -77,7 +77,6 @@ class EvalPipeline:
         self.config = config
         self.config.task = self.task_name
         self.config.metric_config = METRIC_CONFIG
-        self.few_shot = False
         self.continue_infer_data = None
         # Metric pipeline configuration
         self.metric_pipeline = MetricPipeline()
@@ -150,7 +149,7 @@ class EvalPipeline:
                 self.continue_infer_data["generation_probs"]
             )
         idx = 0
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -161,7 +160,7 @@ class EvalPipeline:
 
             selected_sample_idx = list(
                 random.sample(
-                    range(len(ds_wrapper.dataset_training)), self.config.num_fs
+                    range(len(ds_wrapper.dataset_training)), self.config.num_fewshot
                 )
             )
             selected_sample = [
@@ -269,7 +268,7 @@ class EvalPipeline:
                 self.continue_infer_data["generation_probs"]
             )
             calib_probs.extend(self.continue_infer_data["calibration_probs"])
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -279,7 +278,7 @@ class EvalPipeline:
 
             selected_sample_idx = list(
                 random.sample(
-                    range(len(ds_wrapper.dataset_training)), self.config.num_fs
+                    range(len(ds_wrapper.dataset_training)), self.config.num_fewshot
                 )
             )
             selected_sample = [
@@ -417,7 +416,7 @@ class EvalPipeline:
                 self.continue_infer_data["generation_probs"]
             )
         idx = 0
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -427,7 +426,7 @@ class EvalPipeline:
 
             selected_sample_idx = list(
                 random.sample(
-                    range(len(ds_wrapper.dataset_training)), self.config.num_fs
+                    range(len(ds_wrapper.dataset_training)), self.config.num_fewshot
                 )
             )
             selected_sample = [
@@ -537,7 +536,7 @@ class EvalPipeline:
                 self.continue_infer_data["generation_probs"]
             )
             option_probs.extend(self.continue_infer_data["option_probs"])
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -704,7 +703,7 @@ class EvalPipeline:
         selected_sample = []
         num_choice = len(ds_wrapper.dataset_info.label)
 
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -876,7 +875,7 @@ class EvalPipeline:
                 self.continue_infer_data["generation_probs"]
             )
             option_probs.extend(self.continue_infer_data["option_probs"])
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -1056,7 +1055,7 @@ class EvalPipeline:
             option_probs.extend(self.continue_infer_data["option_probs"])
             option_order_all.extend(self.continue_infer_data["option_orders"])
 
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -1070,7 +1069,7 @@ class EvalPipeline:
 
             selected_sample_idx = list(
                 random.sample(
-                    range(len(ds_wrapper.dataset_training)), self.config.num_fs
+                    range(len(ds_wrapper.dataset_training)), self.config.num_fewshot
                 )
             )
             selected_sample = [
@@ -1252,7 +1251,7 @@ class EvalPipeline:
         idx = 0
         original_few_shot = []
         selected_sample = []
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -1262,7 +1261,7 @@ class EvalPipeline:
 
             selected_sample_idx = list(
                 random.sample(
-                    range(len(ds_wrapper.dataset_training)), self.config.num_fs
+                    range(len(ds_wrapper.dataset_training)), self.config.num_fewshot
                 )
             )
             selected_sample = [
@@ -1358,7 +1357,7 @@ class EvalPipeline:
         original_few_shot = []
         calib_few_shot = []
         selected_sample = []
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -1577,7 +1576,7 @@ class EvalPipeline:
             )
             calib_probs.extend(self.continue_infer_data["calibration_probs"])
 
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -1589,7 +1588,7 @@ class EvalPipeline:
                 preprocessing_a_record(s)
                 for s in list(
                     random.sample(
-                        list(ds_wrapper.dataset_training), self.config.num_fs
+                        list(ds_wrapper.dataset_training), self.config.num_fewshot
                     )
                 )
             ]
@@ -1725,7 +1724,7 @@ class EvalPipeline:
             math_problem_type.extend(
                 self.continue_infer_data.get("math_problem_type", [])
             )
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -1737,7 +1736,7 @@ class EvalPipeline:
                 preprocessing_a_record(s)
                 for s in list(
                     random.sample(
-                        list(ds_wrapper.dataset_training), self.config.num_fs
+                        list(ds_wrapper.dataset_training), self.config.num_fewshot
                     )
                 )
             ]
@@ -1870,7 +1869,7 @@ class EvalPipeline:
             generation_probs.extend(
                 self.continue_infer_data["generation_probs"]
             )
-        if self.few_shot:
+        if self.config.num_fewshot:
 
             def preprocessing_a_record(rec):
                 return [
@@ -1882,7 +1881,7 @@ class EvalPipeline:
                 preprocessing_a_record(s)
                 for s in list(
                     random.sample(
-                        list(ds_wrapper.dataset_training), self.config.num_fs
+                        list(ds_wrapper.dataset_training), self.config.num_fewshot
                     )
                 )
             ]
@@ -1973,13 +1972,11 @@ class EvalPipeline:
         generation_results_file,
         saving_fn,
         start_idx=0,
-        few_shot=False,
         continue_infer=None,
     ):
         self.generation_results_file = generation_results_file
         self.config.filepath = generation_results_file
         self.continue_infer_data = continue_infer
-        self.few_shot = few_shot
         with torch.no_grad():
             results = self(ds_wrapper, ds_loader, saving_fn, start_idx)
         return results

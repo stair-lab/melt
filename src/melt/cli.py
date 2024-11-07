@@ -1,6 +1,6 @@
 """
-This script initializes and runs the text generation pipeline using spaCy, 
-transformers, and dotenv. It also handles downloading the spaCy 'en_core_web_sm' 
+This script initializes and runs the text generation pipeline using spaCy,
+transformers, and dotenv. It also handles downloading the spaCy 'en_core_web_sm'
 model if it is not already present.
 
 The main function is responsible for:
@@ -8,6 +8,9 @@ The main function is responsible for:
 2. Parsing script arguments.
 3. Running the generation process with the parsed arguments.
 """
+
+import sys
+
 try:
     import spacy
 except ImportError as e:
@@ -17,15 +20,15 @@ try:
     spacy.load("en_core_web_sm")
 except OSError:
     print(
-        "Downloading the spacy en_core_web_sm model\n"
+        "Downloading the spaCy en_core_web_sm model\n"
         "(don't worry, this will only happen once)"
     )
     try:
         from spacy.cli import download
         download("en_core_web_sm")
-
     except ImportError as e:
         print(f"Failed to import 'spacy.cli': {e}")
+
 try:
     from transformers import HfArgumentParser
 except ImportError as e:
@@ -40,6 +43,7 @@ try:
     from .script_arguments import ScriptArguments
 except ImportError as e:
     print(f"Failed to import 'ScriptArguments' from 'script_arguments': {e}")
+
 try:
     from .generation import generation
 except ImportError as e:
@@ -61,11 +65,12 @@ def main():
     """
     load_dotenv()
 
-    # Ensure spaCy model is available
-    ensure_spacy_model()
-
     # Parse command-line arguments
     parser = HfArgumentParser(ScriptArguments)
+    if len(sys.argv) == 1:
+        parser.print_help()
+        return
+
     args = parser.parse_args_into_dataclasses()[0]
 
     # Execute the generation function with parsed arguments

@@ -67,7 +67,7 @@ Explore MELT’s performance leaderboard at [​​https://ai.stanford.edu/~sttr
 Example running commands
 | **MELT** | [**HELM**](https://github.com/stanford-crfm/helm) | [**LM Evaluation Hardness**](https://github.com/EleutherAI/lm-evaluation-harness) |
 | :-----:  | :---------:  | :-----:  |
-| ```melt --wtype hf --model_name meta-llama/Meta-Llama-3.1-8B-Instruct --dataset_name zalo_e2eqa --lang vi``` | ```helm-run --conf-paths run_entries.conf --suite v1``` | ```lm_eval --model hf --model_args pretrained=meta-llama/Meta-Llama-3.1-8B-Instruct --tasks hellaswag  --batch_size 8``` |
+| ```melt --model hf --model_name meta-llama/Meta-Llama-3.1-8B-Instruct --tasks zalo_e2eqa --batch_size 8 --num_fewshot 3 --lang vi``` | ```helm-run --conf-paths run_entries.conf --suite v1``` | ```lm_eval --model hf --model_args pretrained=meta-llama/Meta-Llama-3.1-8B-Instruct --tasks hellaswag --num_fewshot 3  --batch_size 8``` |
 
 ## Dataset Generation with MELT-chat
 
@@ -154,16 +154,16 @@ First, one would need to configure the environment variables. Rename `.env.templ
 - **TGI (`TGI_ENDPOINT`)**
 - **Gemini (`GEMINI_KEY`)** 
 
-Then, we can use the `vieval` command with appropriate arguments to run the evaluation pipeline. 
+Then, we can use the `melt` command with appropriate arguments to run the evaluation pipeline. 
 
 **Example:**
 
 ```bash
-vieval --wtype hf \
+melt --model hf \
                --model_name ura-hcmut/MixSUra \
-               --dataset_name zalo_e2eqa \
+               --tasks zalo_e2eqa \
                --num_fs 3 \
-               --fewshot_prompting True \
+               --num_fewshot 3 \
                --ptemplate mistral \
                --lang vi \
                --seed 42
@@ -171,59 +171,58 @@ vieval --wtype hf \
 
 **VLLM**
 ```bash
-vieval --wtype vllm \
+melt --model vllm \
                --model_name ura-hcmut/MixSUra \
-               --dataset_name zalo_e2eqa \
+               --tasks zalo_e2eqa \
                --num_fs 3 \
-               --fewshot_prompting True \
+               --num_fewshot 3 \
                --ptemplate mistral \
                --lang vi \
                --seed 42
 ```
 **TGI**
 ```bash
-vieval --wtype tgi \
+melt --model tgi \
                --model_name ura-hcmut/MixSUra \
-               --dataset_name zalo_e2eqa \
-               --fewshot_prompting True \
+               --tasks zalo_e2eqa \
+               --num_fewshot 3 \
                --seed 42 \
                --ptemplate mistral \
                --lang vi \
 ```
 **GPT (gpt-3.5-turbo, gpt-4)**
 ```bash
-vieval --wtype openai \
+melt --model openai \
                --model_name gpt-4 \
-               --dataset_name zalo_e2eqa \
+               --tasks zalo_e2eqa \
                --lang vi \
-               --fewshot_prompting True \
+               --num_fewshot 3 \
                --seed 42
 ```
 
 **Gemini**
 ```bash
-vieval --wtype gemini \
+melt --model gemini \
                --model_name gemini-pro \
-               --dataset_name zalo_e2eqa \
+               --tasks zalo_e2eqa \
                --lang vi \
-               --fewshot_prompting True \
+               --num_fewshot 3 \
                --seed 42
 ```
 **List of arguments**
 ```bash
-vieval [-h] [--model_name MODEL_NAME] [--dataset_name DATASET_NAME] [--use_4bit [USE_4BIT]] [--bnb_4bit_compute_dtype BNB_4BIT_COMPUTE_DTYPE]
-              [--bnb_4bit_quant_type BNB_4BIT_QUANT_TYPE] [--use_nested_quant [USE_NESTED_QUANT]] [--lang LANG] [--dataset_dir DATASET_DIR] [--config_dir CONFIG_DIR]
-              [--output_dir OUTPUT_DIR] [--output_eval_dir OUTPUT_EVAL_DIR] [--per_device_eval_batch_size PER_DEVICE_EVAL_BATCH_SIZE] [--ms_hub_token MS_HUB_TOKEN]
-              [--hf_hub_token HF_HUB_TOKEN] [--smoke_test [SMOKE_TEST]] [--fewshot_prompting [FEWSHOT_PROMPTING]] [--num_fs NUM_FS] [--seed SEED]
-              [--continue_infer [CONTINUE_INFER]] [--wtype WTYPE] [--ptemplate PTEMPLATE] [--device DEVICE] [--n_bootstrap N_BOOTSTRAP] [--p_bootstrap P_BOOTSTRAP]
-              [--bs BS]
+usage: melt [-h] [--model_name MODEL_NAME] [--tasks TASKS] [--use_4bit [USE_4BIT]] [--bnb_4bit_compute_dtype BNB_4BIT_COMPUTE_DTYPE] [--bnb_4bit_quant_type BNB_4BIT_QUANT_TYPE]
+            [--use_nested_quant [USE_NESTED_QUANT]] [--cpu_offload_gb CPU_OFFLOAD_GB] [--lang LANG] [--dataset_dir DATASET_DIR] [--config_dir CONFIG_DIR] [--output_dir OUTPUT_DIR]
+            [--output_eval_dir OUTPUT_EVAL_DIR] [--per_device_eval_batch_size PER_DEVICE_EVAL_BATCH_SIZE] [--dtype DTYPE] [--ms_hub_token MS_HUB_TOKEN] [--hf_hub_token HF_HUB_TOKEN]
+            [--smoke_test [SMOKE_TEST]] [--prompt_type {normal,weaker,medium}] [--category {zero-shot,few-shot,robustness-aware,fairness-aware,chain-of-thought,randomized-choice}]
+            [--num_fewshot NUM_FEWSHOT] [--seed SEED] [--continue_infer [CONTINUE_INFER]] [--model MODEL] [--ptemplate PTEMPLATE] [--device DEVICE] [--n_bootstrap N_BOOTSTRAP]
+            [--p_bootstrap P_BOOTSTRAP] [--bs BS]
 
 options:
   -h, --help            show this help message and exit
   --model_name MODEL_NAME
                         The model that you want to train from the Hugging Face hub (default: meta-llama/Llama-2-7b-chat-hf)
-  --dataset_name DATASET_NAME
-                        The instruction dataset to use (default: vietgpt/wikipedia_vi)
+  --tasks TASKS         The instruction dataset to use (default: vietgpt/wikipedia_vi)
   --use_4bit [USE_4BIT]
                         Activate 4-bit precision base model loading (default: False)
   --bnb_4bit_compute_dtype BNB_4BIT_COMPUTE_DTYPE
@@ -231,33 +230,39 @@ options:
   --bnb_4bit_quant_type BNB_4BIT_QUANT_TYPE
                         Quantization type (fp4 or nf4) (default: nf4)
   --use_nested_quant [USE_NESTED_QUANT]
-                        Activate nested quantization for 4-bit base models (double quantization) (default: False)
-  --lang LANG           Language of the dataset to use (e.g. vi, ind, kr, ...) (default: vi)
+                        Activate nested quantization for 4-bit base models (default: False)
+  --cpu_offload_gb CPU_OFFLOAD_GB
+                        Amount of memory to offload to CPU (default: 0)
+  --lang LANG           Language of the dataset to use (e.g., vi, ind, kr, ...) (default: vi)
   --dataset_dir DATASET_DIR
                         The default directory for loading dataset (default: ./datasets)
   --config_dir CONFIG_DIR
-                        Configuration directory where contains LLM template, prompt template, generation configuration (default: ./config)
+                        Configuration directory for templates and configs (default: ./config)
   --output_dir OUTPUT_DIR
-                        Output directory where the model predictions and checkpoints will be stored (default: ./results/generation)
+                        Directory for model predictions and checkpoints (default: ./results/generation)
   --output_eval_dir OUTPUT_EVAL_DIR
                         The output folder to save metric scores (default: ./results/evaluation)
   --per_device_eval_batch_size PER_DEVICE_EVAL_BATCH_SIZE
                         Batch size per GPU for evaluation (default: 1)
+  --dtype DTYPE         Data type for model loading (default: half)
   --ms_hub_token MS_HUB_TOKEN
                         Microsoft Hub token (default: None)
   --hf_hub_token HF_HUB_TOKEN
                         Hugging Face Hub token (default: None)
   --smoke_test [SMOKE_TEST]
                         Run a smoke test on a small dataset (default: False)
-  --fewshot_prompting [FEWSHOT_PROMPTING]
-                        Enable few-shot prompting (default: False)
-  --num_fs NUM_FS       Number of samples for few-shot learning (default: 5)
+  --prompt_type {normal,weaker,medium}
+                        Prompting type: normal, weaker, medium (default: normal)
+  --category {zero-shot,few-shot,robustness-aware,fairness-aware,chain-of-thought,randomized-choice}
+                        Prompting category (default: zero-shot)
+  --num_fewshot NUM_FEWSHOT
+                        Number of samples for few-shot learning (default: 2)
   --seed SEED           Random seed (default: 42)
   --continue_infer [CONTINUE_INFER]
-                        Wheather to continue previous inference process (default: False)
-  --wtype WTYPE         Select type of wrapper: hf, tgi, azuregpt, gemini (default: hf)
+                        Whether to continue the previous inference process (default: False)
+  --model MODEL         Select type of wrapper: hf, tgi, azuregpt, gemini (default: hf)
   --ptemplate PTEMPLATE
-                        Prompting template in chat template: llama-2, mistral, ... (default: llama-2)
+                        Prompting template in chat template (default: llama-2)
   --device DEVICE       CUDA device (default: cuda:0)
   --n_bootstrap N_BOOTSTRAP
                         n bootstrap (default: 2)

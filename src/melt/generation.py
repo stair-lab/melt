@@ -59,7 +59,6 @@ def generation(script_args):
             - output_eval_dir (str): Directory to save evaluation metrics.
             - continue_infer (bool): Flag to continue inference from a previous run.
             - per_device_eval_batch_size (int): Batch size for evaluation.
-            - fewshot_prompting (bool): Flag for few-shot prompting.
 
     Returns:
         None
@@ -76,11 +75,20 @@ def generation(script_args):
             dataset_wrapper.dataset_testing.select(range(n_examples))
         )
     ds_exact_name = (
-        script_args.dataset_name.split("/")[-1]
+        script_args.lang
         + "_"
-        + script_args.model_name.split("/")[-1]
+        + dataset_wrapper.dataset_info.task
+        + "_"
+        + script_args.tasks.split("/")[-1].replace("_", "-")
+        + "_"
+        + script_args.model_name.split("/")[-1].replace("_","-")
+        + "_"
+        + script_args.prompt_type
+        + "_"
+        + script_args.category
+        + "_"
+        + f"{script_args.num_fewshot}-shot"
         + f"_pt{dataset_wrapper.prompting_strategy}"
-        + ("_fewshot" if script_args.fewshot_prompting else "")
         + f"_seed{script_args.seed}"
     )
 
@@ -88,7 +96,7 @@ def generation(script_args):
         script_args.output_dir, f"generations_{ds_exact_name}.json"
     )
     metric_file = os.path.join(
-        script_args.output_eval_dir, f"metrics_{ds_exact_name}.json"
+        script_args.output_eval_dir, f"{ds_exact_name}.json"
     )
 
     # Save results
@@ -133,6 +141,5 @@ def generation(script_args):
         generation_results_file=ds_exact_name,
         saving_fn=save_results,
         start_idx=start_idx,
-        few_shot=script_args.fewshot_prompting,  # few-shot prompting
         continue_infer=continue_results,
     )
