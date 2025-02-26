@@ -11,7 +11,7 @@
 
 
 ### Ideas
-- [ ] Logo
+- [x] Logo
 
 ### Done  ✓
 - [x] Rename the package
